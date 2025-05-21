@@ -1,0 +1,2 @@
+class_name EntityAnimator
+extends Node3D

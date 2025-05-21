@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bki6cchfp2tv7"]
+
+[ext_resource type="PackedScene" uid="uid://dqt7pplnjhp3d" path="res://entities/entity_list/player/player.tscn" id="1_b07an"]
+
+[sub_resource type="Environment" id="Environment_vg51l"]
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(20, 0.001, 20)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.857167, 0.216034, -0.46754, 0, 0.907777, 0.419452, 0.515038, 0.359541, -0.778117, -6.444, 5.516, -7.411)
+projection = 1
+size = 16.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vg51l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.982094, -0.0941965, 0.163153, 4.54687e-10, 0.866026, 0.5, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.945589, 0.0436031, -0.322428, 0.039668, 0.968137, 0.24726, 0.322935, -0.246596, 0.91373, 4.54384, 5, -0.331621)
+
+[node name="Player" parent="." instance=ExtResource("1_b07an")]

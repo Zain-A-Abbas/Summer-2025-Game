@@ -1,5 +1,7 @@
 class_name State
 extends RefCounted
+ 
+var state_machine: StateMachine
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	pass
@@ -7,8 +9,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 func exit_state(next_state: State, args: Dictionary[String, Variant]):
 	pass
 
-func state_process(delta: float) -> void:
+func st_process(delta: float) -> void:
 	pass
 
-func state_physics_process(delta: float) -> void:
+func st_physics_process(delta: float) -> void:
 	pass
