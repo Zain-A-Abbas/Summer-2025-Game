@@ -13,3 +13,7 @@ config_version=5
 config/name="Summer 2025 Game"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
