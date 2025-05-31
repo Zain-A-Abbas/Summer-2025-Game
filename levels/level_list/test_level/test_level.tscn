@@ -18,9 +18,9 @@ size = 16.0
 environment = SubResource("Environment_vg51l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.982094, -0.0941965, 0.163153, 4.54687e-10, 0.866026, 0.5, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
+transform = Transform3D(-0.980208, -0.0403766, 0.193808, 0.0608279, 0.870197, 0.488935, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.945589, 0.0436031, -0.322428, 0.039668, 0.968137, 0.24726, 0.322935, -0.246596, 0.91373, 4.54384, 5, -0.331621)
+transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561765, 0.286571, -0.580875, 0.76188, 4.54384, 5, -0.331621)
 
 [node name="Player" parent="." instance=ExtResource("1_b07an")]
