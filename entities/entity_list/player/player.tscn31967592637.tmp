@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqt7pplnjhp3d"]
+
+[ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
+[ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
+
+[node name="Player" instance=ExtResource("1_0kr36")]
+script = ExtResource("1_xb04b")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="EntityAnimator" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_xb04b")
