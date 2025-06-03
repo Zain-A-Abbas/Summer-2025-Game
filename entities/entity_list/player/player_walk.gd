@@ -10,7 +10,6 @@ func st_physics_process(delta: float) -> void:
 		return
 
 	if Input.is_action_just_released("dodge"):
-		print("Dodging")
 		state_machine.change_state("Dodge")
 		return
 
