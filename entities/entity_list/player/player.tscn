@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=26 format=4 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -88,6 +88,104 @@ shadow_mesh = SubResource("ArrayMesh_6hpnk")
 radius = 0.75
 height = 2.5
 
+[sub_resource type="Animation" id="Animation_fvuh8"]
+resource_name = "basic_attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ActionParameters:can_move")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ActionParameters:can_dodge")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_bqsy2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ActionParameters:can_move")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ActionParameters:can_dodge")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqsy2"]
+_data = {
+&"RESET": SubResource("Animation_bqsy2"),
+&"basic_attack": SubResource("Animation_fvuh8")
+}
+
+[sub_resource type="Animation" id="Animation_034pk"]
+resource_name = "basic_attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/AttackParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tvlpa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/AttackParticle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn7ef"]
+_data = {
+&"RESET": SubResource("Animation_tvlpa"),
+&"basic_attack": SubResource("Animation_034pk")
+}
+
 [node name="Player" instance=ExtResource("1_0kr36")]
 script = ExtResource("1_xb04b")
 
@@ -95,23 +193,37 @@ script = ExtResource("1_xb04b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xb04b")
 
-[node name="Attack" type="Node3D" parent="." index="3"]
+[node name="Attacks" type="Node3D" parent="." index="3"]
+
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="AttackParticle" type="GPUParticles3D" parent="Attack" index="0"]
+[node name="AttackParticle" type="GPUParticles3D" parent="Attacks/basic_attack" index="0"]
 material_override = SubResource("ShaderMaterial_bqsy2")
 emitting = false
 amount = 1
-lifetime = 0.4
+lifetime = 0.25
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_seik3")
 draw_pass_1 = SubResource("ArrayMesh_bqsy2")
 
-[node name="AttackObject" parent="Attack" index="1" instance=ExtResource("6_fvuh8")]
+[node name="AttackObject" parent="Attacks/basic_attack" index="1" instance=ExtResource("6_fvuh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
 
-[node name="CollisionShape3D" parent="Attack/AttackObject" index="0"]
+[node name="CollisionShape3D" parent="Attacks/basic_attack/AttackObject" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.2)
 shape = SubResource("CapsuleShape3D_bqsy2")
 
-[editable path="Attack/AttackObject"]
+[node name="ActionParameters" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_bqsy2")
+}
+can_move = true
+can_dodge = true
+
+[node name="AnimationEffects" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_qn7ef")
+}
+
+[editable path="Attacks/basic_attack/AttackObject"]

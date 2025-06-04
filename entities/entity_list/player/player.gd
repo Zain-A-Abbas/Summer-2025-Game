@@ -10,7 +10,8 @@ func prepare_states():
 	var player_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", PlayerIdle.new(self)),
 		StateInitializer.new(&"Walk", PlayerWalk.new(self)),
-		StateInitializer.new(&"Dodge", PlayerDodge.new(self))
+		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
+		StateInitializer.new(&"Attack", PlayerAttack.new(self))
 	]
 	
 	state_machine.assign_states(player_states)

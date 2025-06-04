@@ -5,3 +5,5 @@ extends CharacterBody3D
 
 @onready var entity_animator: EntityAnimator = %EntityAnimator
 @onready var state_machine: StateMachine = %StateMachine
+@onready var action_parameters: ActionParameters = $ActionParameters
+@onready var animation_effects: AnimationPlayer = $AnimationEffects
