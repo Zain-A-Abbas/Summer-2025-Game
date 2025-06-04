@@ -18,7 +18,7 @@ func st_physics_process(delta: float) -> void:
 	delta_count += delta
 
 	if delta_count >= DODGE_TIME:
-		state_machine.change_state("Idle")
+		state_machine.change_state(&"Idle")
 		return
 	
 	player.velocity = movement_vector * dodge_speed * delta

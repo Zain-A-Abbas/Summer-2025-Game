@@ -1,0 +1,47 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgn4qpgyse87m"]
+
+[ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="1_22y8p"]
+[ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="2_4tu0t"]
+[ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="2_f3glr"]
+[ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="2_o1mgy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_f3glr"]
+seed = 640
+frequency = 0.0238
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4tu0t"]
+width = 256
+noise = SubResource("FastNoiseLite_f3glr")
+
+[sub_resource type="Curve" id="Curve_f3glr"]
+_data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4tu0t"]
+texture_mode = 1
+curve = SubResource("Curve_f3glr")
+
+[sub_resource type="Curve" id="Curve_o1mgy"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f3glr"]
+texture_mode = 1
+curve = SubResource("Curve_o1mgy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3glr"]
+render_priority = 0
+shader = ExtResource("1_22y8p")
+shader_parameter/slash_texture = ExtResource("2_f3glr")
+shader_parameter/slash_curve = SubResource("CurveTexture_f3glr")
+shader_parameter/slash_alpha = ExtResource("2_4tu0t")
+shader_parameter/dissolve = SubResource("NoiseTexture2D_4tu0t")
+shader_parameter/dissolve_curve = SubResource("CurveTexture_4tu0t")
+shader_parameter/lifetime_test = 0.01
+
+[node name="AttackSlash" type="Node3D"]
+
+[node name="SlashCurve" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_f3glr")
+mesh = ExtResource("2_o1mgy")
