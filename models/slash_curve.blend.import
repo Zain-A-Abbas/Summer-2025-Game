@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bqm1ehrg8oh7c"
-path="res://.godot/imported/slash_curve.blend-f6b0177b6d7f375800a96b6299b9d8bb.scn"
+valid=false
 
 [deps]
 
 source_file="res://models/slash_curve.blend"
-dest_files=["res://.godot/imported/slash_curve.blend-f6b0177b6d7f375800a96b6299b9d8bb.scn"]
 
 [params]
 

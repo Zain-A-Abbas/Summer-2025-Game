@@ -11,7 +11,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0
 	direction = get_player_movement()
 	if direction == Vector2.ZERO:
-		direction = Vector2(1, 0).rotated(deg_to_rad(31))
+		direction = Vector2(0, player.rotation.y)
 	movement_vector = Vector3(-direction.x, 0, direction.y)
 
 func st_physics_process(delta: float) -> void:

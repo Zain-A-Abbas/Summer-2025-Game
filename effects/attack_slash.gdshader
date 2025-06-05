@@ -1,18 +1,15 @@
 shader_type spatial;
+render_mode shadows_disabled, ambient_light_disabled, unshaded;
 
 uniform sampler2D slash_texture: repeat_disable;
 uniform sampler2D slash_curve;
 uniform sampler2D slash_alpha;
 uniform sampler2D dissolve;
 uniform sampler2D dissolve_curve;
-uniform float lifetime_test: hint_range(0.01, 0.99, 0.01) = 0.0;
+instance uniform float lifetime: hint_range(0.01, 0.99, 0.01) = 0.0;
 
-varying float lifetime;
 
 void vertex() {
-	lifetime = max(0.01, INSTANCE_CUSTOM.y);
-	lifetime = min(0.99, lifetime);
-	// Called for every vertex the material is visible on.
 }
 
 void fragment() {

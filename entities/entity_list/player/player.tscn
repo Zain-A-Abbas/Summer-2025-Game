@@ -1,40 +1,47 @@
-[gd_scene load_steps=26 format=4 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=22 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_bqsy2"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="3_j773i"]
+[ext_resource type="Resource" uid="uid://b5ijx7pfigen4" path="res://entities/entity_list/player/attacks/basic_attack.tres" id="4_034pk"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="4_seik3"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="5_fvuh8"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="6_fvuh8"]
+[ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="9_tvlpa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f3glr"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
+radius = 0.75
+height = 2.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qn7ef"]
 seed = 640
 frequency = 0.0238
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4tu0t"]
 width = 256
-noise = SubResource("FastNoiseLite_f3glr")
+noise = SubResource("FastNoiseLite_qn7ef")
 
-[sub_resource type="Curve" id="Curve_f3glr"]
+[sub_resource type="Curve" id="Curve_okb7e"]
 _data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_4tu0t"]
 texture_mode = 1
-curve = SubResource("Curve_f3glr")
+curve = SubResource("Curve_okb7e")
 
-[sub_resource type="Curve" id="Curve_o1mgy"]
+[sub_resource type="Curve" id="Curve_037cv"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_f3glr"]
 texture_mode = 1
-curve = SubResource("Curve_o1mgy")
+curve = SubResource("Curve_037cv")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqsy2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y07nu"]
 render_priority = 0
 shader = ExtResource("3_j773i")
 shader_parameter/slash_texture = ExtResource("5_fvuh8")
@@ -42,148 +49,54 @@ shader_parameter/slash_curve = SubResource("CurveTexture_f3glr")
 shader_parameter/slash_alpha = ExtResource("4_seik3")
 shader_parameter/dissolve = SubResource("NoiseTexture2D_4tu0t")
 shader_parameter/dissolve_curve = SubResource("CurveTexture_4tu0t")
-shader_parameter/lifetime_test = 0.68
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_seik3"]
-gravity = Vector3(0, 0, 0)
-scale_min = 2.0
-scale_max = 2.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvuh8"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_6hpnk"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 1.38268),
-"format": 34896613377,
-"index_count": 240,
-"index_data": PackedByteArray("LAADAC0ALQADAAIALAABAAMABgAsAC0ABgAtACoABAAsAAYALQACAC4AKgAtAC4AKgAuACsALgACACgAKwAuACcALgAoACcAJwAoACkABAAvACwALwABACwABQAvAAQALwAAAAEABQAwAC8AMAAAAC8ACAAwAAUAMAAHAAAACAAxADAAMQAHADAACgAxAAgAMQAJAAcACgAyADEAMgAJADEADAAyAAoAMgALAAkADAAzADIAMwALADIADgAzAAwAMwANAAsADgA0ADMANAANADMAEAA0AA4ANAAPAA0AEAA1ADQANQAPADQAEQA1ABAANQAWAA8AEQA2ADUANgAWADUAEgA2ABEANgAVABYAEgA3ADYANwAVADYAFAA3ABIANwATABUAFAA4ADcAOAATADcAGAA4ABQAOAAXABMAGAA5ADgAOQAXADgAGgA5ABgAOQAZABcAGgA6ADkAOgAZADkAHAA6ABoAOgAbABkAHAA7ADoAOwAbADoAHgA7ABwAOwAdABsAHgA8ADsAPAAdADsAIAA8AB4APAAfAB0AIAA9ADwAPQAfADwAIgA9ACAAPQAhAB8AIgA+AD0APgAhAD0APgAjACEAJAA+ACIAJQAjAD4AJAAlAD4AJgAlACQA"),
-"lods": [1e-10, PackedByteArray("AAABAAIAAgABAAMABAAAAAIABQAAAAQABAACAAYABQAHAAAACAAHAAUACAAJAAcACgAJAAgACgALAAkADAALAAoADAANAAsADgANAAwADgAPAA0AEAAPAA4AEQAPABAAEgAPABEAEgATAA8AFAATABIAEwAVAA8ADwAVABYAFAAXABMAGAAXABQAGAAZABcAGgAZABgAGgAbABkAHAAbABoAHAAdABsAHgAdABwAHgAfAB0AIAAfAB4AIAAhAB8AIgAhACAAIgAjACEAJAAjACIAJAAlACMAJgAlACQAJwAoACkAJwACACgAKgACACcABgACACoAKgAnACsA")],
-"name": "Circle",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 63,
-"vertex_data": PackedByteArray("bOoAAEhSAABA9gAASnIAAP//AAAkuQAAif0AAAaVAABX0AAAB6IAAK7LAADMiwAA6tEAACS5AACB2gAAOjYAABzEAABQdwAAHMcAADMfAADsuQAAW2UAAPuwAAAXDgAAgq0AAJ9WAAD4mAAAjgMAAFifAACrSwAA/38AAAAAAAD6jwAA7UQAAP9/AACmQgAABHAAAO1EAADiOAAAMx8AAKZgAACrSwAAA08AABcOAAAGZwAAjgMAAH0lAAA6NgAAfFIAAJ9WAACSFQAASFIAABJGAABbZQAAvgkAAEpyAADiOwAAUHcAAHUCAAAGlQAAUDQAAMyLAAAAAAAAJLkAAKcvAAAHogAAdQIAAEPdAAAULgAAJLkAAL4JAAD//wAApy8AAELQAABkIQAA0/EAAFA0AAB95gAAmt4AANPxAACJ/QAAQ90AAED2AAD//wAAV9AAAELQAACuywAAfeYAAG3kAAA/nAAAZeYAACS5AABt5AAACtYAAJreAAB2gAAAI9UAANtmAABnyAAAaVAAAOO4AAD9PQAAL6cAAE0wAAD5kwAA3ycAAP9/AAAHJQAABWwAAN8nAADPWAAATTAAABtHAAD9PQAAlzcAAGlQAADbKgAA22YAAGQhAAB2gAAAkRsAAD+cAACZGQAAJLkAAJEbAAAK1gAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_bqsy2"]
-_surfaces = [{
-"aabb": AABB(-1, 0, -1, 2, 1e-05, 1.38268),
-"attribute_data": PackedByteArray("/78AAMzMAABl5gAAmNkAAJjZ///MzP//Zeb//zKzAAD/v///ZaYAADKz//+ZmQAAZab//8yMAACZmf///38AAMyM////f///MnP//59aAABmZv//ZmYAADJzAADMTAAAn1r///8/AADMTP//MzMAAP8///9mJgAAMzP//5kZAABmJv//zAwAAJkZ//8AAAAAzAz//wAA/38AAP//////fzLzAAD//wAAMvP///////+Y2f9/Zeb/fzLz/3/MzP9//7//fzKz/39lpv9/mZn/f8yM/3//f/9/MnP/f2Zm/3+fWv9/zEz/f/8//38zM/9/Zib/f5kZ/3/MDP9/"),
-"format": 34896613399,
-"index_count": 240,
-"index_data": PackedByteArray("LAADAC0ALQADAAIALAABAAMABgAsAC0ABgAtACoABAAsAAYALQACAC4AKgAtAC4AKgAuACsALgACACgAKwAuACcALgAoACcAJwAoACkABAAvACwALwABACwABQAvAAQALwAAAAEABQAwAC8AMAAAAC8ACAAwAAUAMAAHAAAACAAxADAAMQAHADAACgAxAAgAMQAJAAcACgAyADEAMgAJADEADAAyAAoAMgALAAkADAAzADIAMwALADIADgAzAAwAMwANAAsADgA0ADMANAANADMAEAA0AA4ANAAPAA0AEAA1ADQANQAPADQAEQA1ABAANQAWAA8AEQA2ADUANgAWADUAEgA2ABEANgAVABYAEgA3ADYANwAVADYAFAA3ABIANwATABUAFAA4ADcAOAATADcAGAA4ABQAOAAXABMAGAA5ADgAOQAXADgAGgA5ABgAOQAZABcAGgA6ADkAOgAZADkAHAA6ABoAOgAbABkAHAA7ADoAOwAbADoAHgA7ABwAOwAdABsAHgA8ADsAPAAdADsAIAA8AB4APAAfAB0AIAA9ADwAPQAfADwAIgA9ACAAPQAhAB8AIgA+AD0APgAhAD0APgAjACEAJAA+ACIAJQAjAD4AJAAlAD4AJgAlACQA"),
-"lods": [1e-10, PackedByteArray("AAABAAIAAgABAAMABAAAAAIABQAAAAQABAACAAYABQAHAAAACAAHAAUACAAJAAcACgAJAAgACgALAAkADAALAAoADAANAAsADgANAAwADgAPAA0AEAAPAA4AEQAPABAAEgAPABEAEgATAA8AFAATABIAEwAVAA8ADwAVABYAFAAXABMAGAAXABQAGAAZABcAGgAZABgAGgAbABkAHAAbABoAHAAdABsAHgAdABwAHgAfAB0AIAAfAB4AIAAhAB8AIgAhACAAIgAjACEAJAAjACIAJAAlACMAJgAlACQAJwAoACkAJwACACgAKgACACcABgACACoAKgAnACsA")],
-"material": SubResource("ShaderMaterial_fvuh8"),
-"name": "Circle",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 63,
-"vertex_data": PackedByteArray("bOoAAEhSIMlA9gAASnLIzP//AAAkuVTVif0AAAaV39BX0AAAB6Lf0K7LAADMi8jM6tEAACS5VNWB2gAAOjb8xRzEAABQdyDJHMcAADMfb8PsuQAAW2X8xfuwAAAXDozBgq0AAJ9Wb8P4mAAAjgNjwFifAACrS4zB/38AAAAA/7/6jwAA7URjwP9/AACmQv+/BHAAAO1EY8DiOAAAMx9vw6ZgAACrS4zBA08AABcOjMEGZwAAjgNjwH0lAAA6NvzFfFIAAJ9Wb8OSFQAASFIgyRJGAABbZfzFvgkAAEpyyMziOwAAUHcgyXUCAAAGld/QUDQAAMyLyMwAAAAAJLlU1acvAAAHot/QdQIAAEPdF9oULgAAJLlU1b4JAAD//5Dcpy8AAELQF9pkIQAA0/GQ3FA0AAB95pHcmt4AANPxkNyJ/QAAQ90X2kD2AAD//5DcV9AAAELQF9quywAAfeaR3G3kAAA/nN/QZeYAACS5VNVt5AAACtYX2preAAB2gMjMI9UAANtmIMlnyAAAaVD8xeO4AAD9PW/DL6cAAE0wjMH5kwAA3ydjwP9/AAAHJf+/BWwAAN8nY8DPWAAATTCMwRtHAAD9PW/DlzcAAGlQ/MXbKgAA22YgyWQhAAB2gMjMkRsAAD+c39CZGQAAJLlU1ZEbAAAK1hfa3L0Qoci2mqSqqqqqdbDEp3WwxKfItpqkqqqpqgDG/pzcvRChqc8qmADG/pyR2zaSqc8qmO7qh4qR2zaS////f+7qh4r+//9/dvXvatTnqk/I7ZFbyO2RW3b172r/4gFG1OeqT+3e3T3/4gFGY9vJNu3e3T062HUwY9vJNlTVqio62HUwntI9JVTVqipP0aAintI9JU/RoCJP0Z8in6Kvrj2lYK2foq+uPaVgrZ+ir651sMSnqqqpqj2lYK3Itpqk3L0QoQDG/pypzyqYkds2ku7qh4r+//9/dvXvasjtkVvU56pP/+IBRu3e3T1j28k2Oth1MFTVqiqe0j0l")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_6hpnk")
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
-radius = 0.75
-height = 2.5
-
-[sub_resource type="Animation" id="Animation_fvuh8"]
-resource_name = "basic_attack"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ActionParameters:can_move")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ActionParameters:can_dodge")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_bqsy2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ActionParameters:can_move")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ActionParameters:can_dodge")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqsy2"]
-_data = {
-&"RESET": SubResource("Animation_bqsy2"),
-&"basic_attack": SubResource("Animation_fvuh8")
-}
-
-[sub_resource type="Animation" id="Animation_034pk"]
-resource_name = "basic_attack"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attacks/basic_attack/AttackParticle:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_tvlpa"]
+resource_name = "basic_attack"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.99]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qn7ef"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Attacks/basic_attack/AttackParticle:emitting")
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.01]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn7ef"]
 _data = {
-&"RESET": SubResource("Animation_tvlpa"),
-&"basic_attack": SubResource("Animation_034pk")
+&"RESET": SubResource("Animation_qn7ef"),
+&"basic_attack": SubResource("Animation_tvlpa")
 }
 
 [node name="Player" instance=ExtResource("1_0kr36")]
@@ -195,33 +108,28 @@ mesh = SubResource("CapsuleMesh_xb04b")
 
 [node name="Attacks" type="Node3D" parent="." index="3"]
 
-[node name="basic_attack" type="Node3D" parent="Attacks" index="0"]
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_bqsy2")
+entity = NodePath("../..")
+attack_data = ExtResource("4_034pk")
+hitbox = NodePath("AttackObject")
 
-[node name="AttackParticle" type="GPUParticles3D" parent="Attacks/basic_attack" index="0"]
-material_override = SubResource("ShaderMaterial_bqsy2")
-emitting = false
-amount = 1
-lifetime = 0.25
-one_shot = true
-process_material = SubResource("ParticleProcessMaterial_seik3")
-draw_pass_1 = SubResource("ArrayMesh_bqsy2")
-
-[node name="AttackObject" parent="Attacks/basic_attack" index="1" instance=ExtResource("6_fvuh8")]
+[node name="AttackObject" parent="Attacks/basic_attack" index="0" instance=ExtResource("6_fvuh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
+monitorable = false
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackObject" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.2)
 shape = SubResource("CapsuleShape3D_bqsy2")
 
-[node name="ActionParameters" parent="." index="4"]
-libraries = {
-&"": SubResource("AnimationLibrary_bqsy2")
-}
-can_move = true
-can_dodge = true
+[node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
+material_override = SubResource("ShaderMaterial_y07nu")
+instance_shader_parameters/lifetime = 0.01
+mesh = ExtResource("9_tvlpa")
 
-[node name="AnimationEffects" parent="." index="5"]
+[node name="AnimationEffects" parent="." index="4"]
 libraries = {
 &"": SubResource("AnimationLibrary_qn7ef")
 }

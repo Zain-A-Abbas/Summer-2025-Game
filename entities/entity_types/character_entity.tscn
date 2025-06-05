@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3q754psqt24l"]
+[gd_scene load_steps=5 format=3 uid="uid://3q754psqt24l"]
 
 [ext_resource type="Script" uid="uid://drhokcqics5p5" path="res://entities/entity_types/character_entity.gd" id="1_5bmi2"]
 [ext_resource type="PackedScene" uid="uid://c4tkuwag4ip5x" path="res://entities/entity_animator.tscn" id="2_dc4g8"]
 [ext_resource type="Script" uid="uid://3ilqij2x3es4" path="res://entities/state_machine/state_machine.gd" id="3_5dc3o"]
-[ext_resource type="Script" uid="uid://eedh10uhq20s" path="res://entities/action_parameters.gd" id="4_oq72m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_f22sw"]
 
 [node name="CharacterEntity" type="CharacterBody3D"]
 script = ExtResource("1_5bmi2")
@@ -23,11 +20,5 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 script = ExtResource("3_5dc3o")
 metadata/_custom_type_script = "uid://3ilqij2x3es4"
-
-[node name="ActionParameters" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_f22sw")
-}
-script = ExtResource("4_oq72m")
 
 [node name="AnimationEffects" type="AnimationPlayer" parent="."]

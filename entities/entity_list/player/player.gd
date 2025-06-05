@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterEntity
 
+@onready var basic_attack: AttackObject = %basic_attack
+
 func _ready() -> void:
 	prepare_states()
 
@@ -11,7 +13,7 @@ func prepare_states():
 		StateInitializer.new(&"Idle", PlayerIdle.new(self)),
 		StateInitializer.new(&"Walk", PlayerWalk.new(self)),
 		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
-		StateInitializer.new(&"Attack", PlayerAttack.new(self))
+		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack))
 	]
 	
 	state_machine.assign_states(player_states)
