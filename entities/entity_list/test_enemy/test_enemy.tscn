@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvgf8gcq24c8"]
+
+[ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_6myxx"]
+[ext_resource type="Script" uid="uid://ci26usb7hj062" path="res://entities/entity_types/enemy.gd" id="2_xtrms"]
+[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="3_tbq2j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thtn2"]
+render_priority = 0
+shader = ExtResource("3_tbq2j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbq2j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xtrms"]
+
+[sub_resource type="Animation" id="Animation_tbq2j"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_thtn2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uwf7"]
+_data = {
+&"RESET": SubResource("Animation_thtn2"),
+&"hurt": SubResource("Animation_tbq2j")
+}
+
+[node name="TestEnemy" instance=ExtResource("1_6myxx")]
+script = ExtResource("2_xtrms")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EntityAnimator" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_overlay = SubResource("ShaderMaterial_thtn2")
+instance_shader_parameters/hit_effect = false
+material = SubResource("StandardMaterial3D_tbq2j")
+
+[node name="Hurtbox" type="Area3D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_xtrms")
+
+[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_1uwf7")
+}
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,16 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=25 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_bqsy2"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="3_j773i"]
-[ext_resource type="Resource" uid="uid://b5ijx7pfigen4" path="res://entities/entity_list/player/attacks/basic_attack.tres" id="4_034pk"]
+[ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_okb7e"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="4_seik3"]
+[ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_037cv"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="5_fvuh8"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="6_fvuh8"]
+[ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_qn7ef"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="9_tvlpa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
+
+[sub_resource type="Resource" id="Resource_y07nu"]
+script = ExtResource("5_037cv")
+damage = 1
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
 radius = 0.75
@@ -50,6 +57,21 @@ shader_parameter/slash_alpha = ExtResource("4_seik3")
 shader_parameter/dissolve = SubResource("NoiseTexture2D_4tu0t")
 shader_parameter/dissolve_curve = SubResource("CurveTexture_4tu0t")
 
+[sub_resource type="Animation" id="Animation_qn7ef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
 [sub_resource type="Animation" id="Animation_tvlpa"]
 resource_name = "basic_attack"
 length = 0.25
@@ -78,21 +100,6 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_qn7ef"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.01]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn7ef"]
 _data = {
 &"RESET": SubResource("Animation_qn7ef"),
@@ -113,12 +120,15 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_bqsy2")
 entity = NodePath("../..")
-attack_data = ExtResource("4_034pk")
+attack_effects = Array[ExtResource("4_okb7e")]([SubResource("Resource_y07nu")])
 hitbox = NodePath("AttackObject")
 
 [node name="AttackObject" parent="Attacks/basic_attack" index="0" instance=ExtResource("6_fvuh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
+collision_layer = 2
+collision_mask = 0
 monitorable = false
+script = ExtResource("6_qn7ef")
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackObject" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.2)

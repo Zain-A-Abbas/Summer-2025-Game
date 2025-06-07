@@ -7,6 +7,7 @@ const LENGTH: float = 0.25
 const CANCEL_THRESHOLD: float = 0.1
 const COMBO_TIME: float = 0.4
 const MOVE_SPEED: float = 40.0
+const ACTIVE_FRAMES: Array[float] = [0.07, 0.16]
 
 var delta_count: float = 0.0
 var animation_time: float = 0.0
@@ -42,6 +43,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	
+	attack_object.hitbox.monitorable = delta_count >= ACTIVE_FRAMES[0] && delta_count <= ACTIVE_FRAMES[1]
 	
 	if delta_count > CANCEL_THRESHOLD:
 		if Input.is_action_just_pressed("dodge"):
