@@ -3,5 +3,8 @@ extends AttackEffect
 
 @export var damage: int = 1
 
-func apply_effect(target: Node3D):
-	print(damage)
+func apply_effect(target: CharacterEntity):
+	target.health_data.set_current_health(target.health_data.current_health - damage)
+	print(target.health_data.current_health)
+	if target.health_data.current_health == 0:
+		target.char_entity_die({})

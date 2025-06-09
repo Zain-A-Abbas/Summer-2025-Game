@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dvgf8gcq24c8"]
+[gd_scene load_steps=12 format=3 uid="uid://dvgf8gcq24c8"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_6myxx"]
 [ext_resource type="Script" uid="uid://ci26usb7hj062" path="res://entities/entity_types/enemy.gd" id="2_xtrms"]
 [ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="3_tbq2j"]
+[ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_object.gd" id="4_thtn2"]
+[ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_data.gd" id="5_1uwf7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_thtn2"]
 render_priority = 0
@@ -12,6 +14,21 @@ shader = ExtResource("3_tbq2j")
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xtrms"]
+
+[sub_resource type="Animation" id="Animation_thtn2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tbq2j"]
 resource_name = "hurt"
@@ -27,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_thtn2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1uwf7"]
@@ -73,5 +75,22 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_1uwf7")
 }
+
+[node name="Stats" type="Node3D" parent="." index="6"]
+
+[node name="Health" type="Node3D" parent="Stats" index="0" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("4_thtn2")
+entity = NodePath("../..")
+current_health = 3
+max_health = 3
+metadata/_custom_type_script = "uid://f25cvuecvk54"
+
+[node name="MovementData" type="Node3D" parent="Stats" index="1" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("5_1uwf7")
+entity = NodePath("../..")
+move_speed = 550.0
+metadata/_custom_type_script = "uid://cytojthox684"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

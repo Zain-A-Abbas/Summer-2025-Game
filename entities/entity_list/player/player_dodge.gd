@@ -1,11 +1,12 @@
 class_name PlayerDodge
 extends PlayerState
 
+const DODGE_TIME: float = 0.12
+
 var dodge_speed: float = 2000.0
 var delta_count: float = 0
 var direction: Vector2 = Vector2.ZERO
 var movement_vector: Vector3 = Vector3.ZERO
-const DODGE_TIME: float = 0.12
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0

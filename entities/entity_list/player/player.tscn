@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=27 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="6_fvuh8"]
 [ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_qn7ef"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="9_tvlpa"]
+[ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_object.gd" id="12_037cv"]
+[ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_data.gd" id="13_y07nu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
 
@@ -143,5 +145,22 @@ mesh = ExtResource("9_tvlpa")
 libraries = {
 &"": SubResource("AnimationLibrary_qn7ef")
 }
+
+[node name="Stats" type="Node3D" parent="." index="5"]
+
+[node name="Health" type="Node3D" parent="Stats" index="0" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("12_037cv")
+entity = NodePath("../..")
+current_health = 10
+max_health = 10
+metadata/_custom_type_script = "uid://f25cvuecvk54"
+
+[node name="MovementData" type="Node3D" parent="Stats" index="1" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("13_y07nu")
+entity = NodePath("../..")
+move_speed = 550.0
+metadata/_custom_type_script = "uid://cytojthox684"
 
 [editable path="Attacks/basic_attack/AttackObject"]

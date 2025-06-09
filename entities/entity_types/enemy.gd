@@ -10,7 +10,6 @@ func _ready() -> void:
 func prepare_states():
 	pass
 
-
 func _on_hurtbox_area_entered(area: Area3D) -> void:
 	enemy_animation_player.play("hurt")
 	resolve_hit(area)
@@ -21,3 +20,6 @@ func resolve_hit(attack_area: Area3D):
 		var attack_effects: Array[AttackEffect] = attack_object.attack_effects
 		for effect in attack_effects:
 			effect.apply_effect(self)
+
+func char_entity_die(args: Dictionary[String, Variant]):
+	queue_free()
