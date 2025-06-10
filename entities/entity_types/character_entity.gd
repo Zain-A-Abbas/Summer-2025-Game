@@ -10,5 +10,5 @@ extends CharacterBody3D
 @onready var health_data: HealthObject = %Health
 @onready var move_data: MovementData = %MovementData
 
-func char_entity_die(args: Dictionary[String, Variant]):
+func char_entity_die(args: Dictionary[String, Variant] = {}):
 	pass

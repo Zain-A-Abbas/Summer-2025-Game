@@ -21,5 +21,5 @@ func resolve_hit(attack_area: Area3D):
 		for effect in attack_effects:
 			effect.apply_effect(self)
 
-func char_entity_die(args: Dictionary[String, Variant]):
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	queue_free()

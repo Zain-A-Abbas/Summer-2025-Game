@@ -76,21 +76,19 @@ libraries = {
 &"": SubResource("AnimationLibrary_1uwf7")
 }
 
-[node name="Stats" type="Node3D" parent="." index="6"]
+[node name="Stats" type="Node" parent="." index="6"]
 
-[node name="Health" type="Node3D" parent="Stats" index="0" node_paths=PackedStringArray("entity")]
+[node name="Health" type="Node" parent="Stats" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 script = ExtResource("4_thtn2")
 entity = NodePath("../..")
 current_health = 3
 max_health = 3
-metadata/_custom_type_script = "uid://f25cvuecvk54"
 
-[node name="MovementData" type="Node3D" parent="Stats" index="1" node_paths=PackedStringArray("entity")]
+[node name="MovementData" type="Node" parent="Stats" index="1" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 script = ExtResource("5_1uwf7")
 entity = NodePath("../..")
 move_speed = 550.0
-metadata/_custom_type_script = "uid://cytojthox684"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -1,5 +1,5 @@
 class_name HealthObject
-extends Node3D
+extends Node
 
 ## Contains data for health properties
 
@@ -20,3 +20,6 @@ func set_current_health(new: int) -> void:
 		current_health = max_health
 	elif current_health < 0:
 		current_health = 0
+		
+func lose_health(new: int) -> void:
+	set_current_health(new)

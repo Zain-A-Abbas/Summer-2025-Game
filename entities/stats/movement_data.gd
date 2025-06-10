@@ -1,5 +1,5 @@
 class_name MovementData
-extends Node3D
+extends Node
 
 ## Contains the basic data properties for entity movement
 
