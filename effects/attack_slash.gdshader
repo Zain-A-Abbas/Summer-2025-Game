@@ -20,11 +20,11 @@ void fragment() {
 	vec4 slash_tx = texture(slash_texture, vec2(UV.x - slash_uv, UV.y));
 	vec4 dissolve_tx = texture(dissolve, UV);
 	vec4 dissolve_curve_tx = texture(dissolve_curve, vec2(lifetime, 0.0));
-	
+
 	float dissolve_threshold = dissolve_curve_tx.r;
-	
+
 	ALPHA = slash_tx.a * slash_al.r;
-	
+
 	if (dissolve_tx.r < dissolve_threshold) {
 		ALPHA = 0.0;
 	}

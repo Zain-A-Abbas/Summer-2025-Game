@@ -3,11 +3,11 @@ extends PlayerState
 
 # Used to access the AnimationEffects node for visuals.
 const ACTION_NAME: String = "basic_attack"
-const LENGTH: float = 0.25
+const LENGTH: float = 0.15
 const CANCEL_THRESHOLD: float = 0.1
 const COMBO_TIME: float = 0.4
-const MOVE_SPEED: float = 40.0
-const ACTIVE_FRAMES: Array[float] = [0.07, 0.16]
+const MOVE_SPEED: float = 400.0
+const ACTIVE_FRAMES: Array[float] = [0.06, 0.12]
 
 var delta_count: float = 0.0
 var animation_time: float = 0.0

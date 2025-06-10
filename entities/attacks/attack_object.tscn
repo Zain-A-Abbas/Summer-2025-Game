@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dpcw6gj5l4iw8"]
 
-[node name="AttackObject" type="Area3D"]
+[node name="AttackHitbox" type="Area3D"]
 monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

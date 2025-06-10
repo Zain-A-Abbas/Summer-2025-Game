@@ -3,6 +3,8 @@ extends CharacterEntity
 
 @onready var basic_attack: AttackObject = %basic_attack
 
+@export var hurtbox: HurtboxComponent
+
 func _ready() -> void:
 	prepare_states()
 
@@ -20,3 +22,7 @@ func prepare_states():
 	
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass
+
+func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
+	print("player hit")
+	resolve_hit(attack_object)

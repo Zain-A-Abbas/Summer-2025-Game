@@ -1,6 +1,7 @@
 class_name PlayerDodge
 extends PlayerState
 
+const INVINCIBILITY_PERIOD: float = 0.7
 const DODGE_TIME: float = 0.12
 
 var dodge_speed: float = 2000.0
@@ -14,6 +15,11 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if direction == Vector2.ZERO:
 		direction = Vector2(0, player.rotation.y)
 	movement_vector = Vector3(-direction.x, 0, direction.y)
+	
+	player.hurtbox.invincibility_frames = true
+
+func exit_state(previous_state: State, args: Dictionary[String, Variant]):
+	player.hurtbox.invincibility_frames = false
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

@@ -1,4 +1,4 @@
-class_name HealthObject
+class_name HealthComponent
 extends Node
 
 ## Contains data for health properties
@@ -10,7 +10,7 @@ extends Node
 func _ready() -> void:
 	assert(entity)
 
-func initialize_health_data(max: int) -> void:
+func initialize_health_component(max: int) -> void:
 	max_health = max
 	current_health = max
 

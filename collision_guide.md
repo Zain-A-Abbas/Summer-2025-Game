@@ -1,2 +1,4 @@
-Character Entities: 1
-Attacks: 2
+Character Entities (Collision): 1
+
+Player attacks/Enemy hurtboxes: 2
+Enemy attacks/Player hurtboxes: 3

@@ -16,6 +16,6 @@ func st_physics_process(delta: float) -> void:
 
 	var movement_vector: Vector3 = Vector3(-movement_input.x, 0.0, movement_input.y)
 
-	player.velocity = movement_vector * player.move_data.move_speed * delta
+	player.velocity = movement_vector * player.movement_component.move_speed * delta
 	player.rotation.y = Vector2(-movement_vector.x, movement_vector.z).angle() + deg_to_rad(90)
 	player.move_and_slide()

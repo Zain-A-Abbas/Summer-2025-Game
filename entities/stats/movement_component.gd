@@ -1,4 +1,4 @@
-class_name MovementData
+class_name MovementComponent
 extends Node
 
 ## Contains the basic data properties for entity movement
