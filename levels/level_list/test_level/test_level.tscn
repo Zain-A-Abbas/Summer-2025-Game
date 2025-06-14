@@ -1,26 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://bki6cchfp2tv7"]
+[gd_scene load_steps=5 format=3 uid="uid://bki6cchfp2tv7"]
 
 [ext_resource type="PackedScene" uid="uid://dqt7pplnjhp3d" path="res://entities/entity_list/player/player.tscn" id="1_b07an"]
+[ext_resource type="PackedScene" uid="uid://d26y43ovn1t2h" path="res://entities/entity_list/basic_enemy/basic_enemy.tscn" id="2_po12i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcfu6"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
 
 [sub_resource type="Environment" id="Environment_vg51l"]
 
 [node name="TestLevel" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_kcfu6")
 size = Vector3(20, 0.001, 20)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.857167, 0.216034, -0.46754, 0, 0.907777, 0.419452, 0.515038, 0.359541, -0.778117, -6.444, 5.516, -7.411)
+transform = Transform3D(-0.857167, 0.216034, -0.46754, 0, 0.907777, 0.419453, 0.515038, 0.359541, -0.778117, -6.444, 5.516, -7.411)
 projection = 1
 size = 16.0
+metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vg51l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.982094, -0.0941965, 0.163153, 4.54687e-10, 0.866026, 0.5, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
+transform = Transform3D(-0.980208, -0.0403766, 0.193808, 0.0608279, 0.870197, 0.488935, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.945589, 0.0436031, -0.322428, 0.039668, 0.968137, 0.24726, 0.322935, -0.246596, 0.91373, 4.54384, 5, -0.331621)
+transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561765, 0.286571, -0.580875, 0.76188, 4.54384, 5, -0.331621)
 
 [node name="Player" parent="." instance=ExtResource("1_b07an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="BasicEnemy" parent="." instance=ExtResource("2_po12i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4)

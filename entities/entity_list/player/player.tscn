@@ -1,13 +1,183 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=29 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_bqsy2"]
+[ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="3_j773i"]
+[ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_okb7e"]
+[ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="4_seik3"]
+[ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_037cv"]
+[ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="5_fvuh8"]
+[ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="6_fvuh8"]
+[ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_qn7ef"]
+[ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="9_tvlpa"]
+[ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="12_037cv"]
+[ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="12_w7qv5"]
+[ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="13_y07nu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
 
-[node name="Player" instance=ExtResource("1_0kr36")]
-script = ExtResource("1_xb04b")
+[sub_resource type="Resource" id="Resource_y07nu"]
+script = ExtResource("5_037cv")
+damage = 1
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="EntityAnimator" index="0"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
+radius = 0.75
+height = 2.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qn7ef"]
+seed = 640
+frequency = 0.0238
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7qv5"]
+width = 256
+noise = SubResource("FastNoiseLite_qn7ef")
+
+[sub_resource type="Curve" id="Curve_okb7e"]
+_data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nda3u"]
+texture_mode = 1
+curve = SubResource("Curve_okb7e")
+
+[sub_resource type="Curve" id="Curve_037cv"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7byxq"]
+texture_mode = 1
+curve = SubResource("Curve_037cv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y07nu"]
+render_priority = 0
+shader = ExtResource("3_j773i")
+shader_parameter/slash_texture = ExtResource("5_fvuh8")
+shader_parameter/slash_curve = SubResource("CurveTexture_7byxq")
+shader_parameter/slash_alpha = ExtResource("4_seik3")
+shader_parameter/dissolve = SubResource("NoiseTexture2D_w7qv5")
+shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
+
+[sub_resource type="Animation" id="Animation_qn7ef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
+[sub_resource type="Animation" id="Animation_tvlpa"]
+resource_name = "basic_attack"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.99]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qn7ef"]
+_data = {
+&"RESET": SubResource("Animation_qn7ef"),
+&"basic_attack": SubResource("Animation_tvlpa")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
+
+[node name="Player" node_paths=PackedStringArray("hurtbox", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
+script = ExtResource("1_xb04b")
+hurtbox = NodePath("Hurtbox")
+health_component = NodePath("Components/HealthComponent")
+movement_component = NodePath("Components/MovementComponent")
+
+[node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xb04b")
+
+[node name="Attacks" type="Node3D" parent="." index="3"]
+
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("3_bqsy2")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("4_okb7e")]([SubResource("Resource_y07nu")])
+hitbox = NodePath("AttackHitbox")
+
+[node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("6_fvuh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+collision_layer = 2
+collision_mask = 0
+monitorable = false
+script = ExtResource("6_qn7ef")
+
+[node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_bqsy2")
+
+[node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
+material_override = SubResource("ShaderMaterial_y07nu")
+instance_shader_parameters/lifetime = 0.01
+mesh = ExtResource("9_tvlpa")
+
+[node name="AnimationEffects" parent="." index="4"]
+libraries = {
+&"": SubResource("AnimationLibrary_qn7ef")
+}
+
+[node name="Hurtbox" type="Area3D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("12_w7qv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_y07nu")
+
+[node name="Components" type="Node" parent="." index="6"]
+
+[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("12_037cv")
+entity = NodePath("../..")
+current_health = 10
+max_health = 10
+
+[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("13_y07nu")
+entity = NodePath("../..")
+move_speed = 550.0
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
+
+[editable path="Attacks/basic_attack/AttackHitbox"]

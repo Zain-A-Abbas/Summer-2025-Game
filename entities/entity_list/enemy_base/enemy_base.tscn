@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://dvgf8gcq24c8"]
+
+[ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_6myxx"]
+[ext_resource type="Script" uid="uid://ci26usb7hj062" path="res://entities/entity_types/enemy.gd" id="2_xtrms"]
+[ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="4_6omki"]
+[ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="4_thtn2"]
+[ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_1uwf7"]
+[ext_resource type="Texture2D" uid="uid://b7ys383dwg6t0" path="res://effects/attack_indicator.png" id="6_mppf5"]
+
+[sub_resource type="Animation" id="Animation_48pjb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackIndicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w0vey"]
+resource_name = "hide_indicator"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackIndicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6omki"]
+resource_name = "show_indicator"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackIndicator:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qj4n2"]
+_data = {
+&"RESET": SubResource("Animation_48pjb"),
+&"hide_indicator": SubResource("Animation_w0vey"),
+&"show_indicator": SubResource("Animation_6omki")
+}
+
+[node name="EnemyBase" node_paths=PackedStringArray("health_component", "movement_component") instance=ExtResource("1_6myxx")]
+script = ExtResource("2_xtrms")
+health_component = NodePath("Components/HealthComponent")
+movement_component = NodePath("Components/MovementComponent")
+
+[node name="Attacks" type="Node3D" parent="." index="3"]
+
+[node name="Hurtbox" type="Area3D" parent="." index="4"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("4_6omki")
+
+[node name="ActionAnimator" type="AnimationPlayer" parent="." index="5"]
+unique_name_in_owner = true
+
+[node name="Components" type="Node" parent="." index="6"]
+
+[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("4_thtn2")
+entity = NodePath("../..")
+current_health = 3
+max_health = 3
+
+[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("5_1uwf7")
+entity = NodePath("../..")
+move_speed = 550.0
+
+[node name="AttackIndicator" type="Sprite3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+modulate = Color(1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("6_mppf5")
+
+[node name="AttackIndicatorAnimator" type="AnimationPlayer" parent="AttackIndicator" index="0"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_qj4n2")
+}
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

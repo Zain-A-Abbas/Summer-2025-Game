@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://3q754psqt24l"]
+[gd_scene load_steps=4 format=3 uid="uid://3q754psqt24l"]
 
 [ext_resource type="Script" uid="uid://drhokcqics5p5" path="res://entities/entity_types/character_entity.gd" id="1_5bmi2"]
-[ext_resource type="PackedScene" uid="uid://c4tkuwag4ip5x" path="res://entities/entity_animator.tscn" id="2_dc4g8"]
 [ext_resource type="Script" uid="uid://3ilqij2x3es4" path="res://entities/state_machine/state_machine.gd" id="3_5dc3o"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
@@ -13,10 +12,9 @@ script = ExtResource("1_5bmi2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_inrej")
 
-[node name="EntityAnimator" parent="." instance=ExtResource("2_dc4g8")]
-unique_name_in_owner = true
-
 [node name="StateMachine" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_5dc3o")
 metadata/_custom_type_script = "uid://3ilqij2x3es4"
+
+[node name="AnimationEffects" type="AnimationPlayer" parent="."]

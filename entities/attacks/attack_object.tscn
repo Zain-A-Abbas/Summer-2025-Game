@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dpcw6gj5l4iw8"]
+
+[node name="AttackHitbox" type="Area3D"]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+debug_color = Color(0.999962, 0, 0.0947074, 0.42)
