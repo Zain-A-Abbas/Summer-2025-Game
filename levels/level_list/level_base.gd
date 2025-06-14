@@ -3,6 +3,8 @@ extends Node3D
 
 signal level_completed(level: LevelBase)
 
+const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
+
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
 @onready var enemies: Node3D = %Enemies
@@ -12,7 +14,7 @@ signal level_completed(level: LevelBase)
 @onready var enemy_positions: Node3D = %EnemyPositions
 @onready var player: Player = %Player
 
-const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
+@export var enemy_limit: int = 3
 
 var enemy_count: int = 0
 var enemies_killed: int = 0

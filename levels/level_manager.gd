@@ -1,7 +1,7 @@
 class_name LevelManager
 extends Node
 
-const LEVEL_AMOUNT: int = 5
+const LEVEL_AMOUNT: int = 8
 
 @onready var level_holder: Node3D = %LevelHolder
 @onready var fade: ColorRect = %Fade
@@ -19,9 +19,9 @@ func begin_run():
 	create_level()
 
 func create_level():
-	var enemy_count: int = randi_range(1, 3)
 	var new_level: LevelBase = random_levels.pick_random().instantiate()
 	level_holder.add_child(new_level)
+	var enemy_count: int = randi_range(1, new_level.enemy_limit)
 	new_level.setup_level(enemy_count)
 	new_level.level_completed.connect(level_complete)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8arawh4uq5bj"]
+[gd_scene load_steps=6 format=3 uid="uid://c8arawh4uq5bj"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_l001e"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="2_p54ty"]
@@ -7,6 +7,10 @@
 albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td3eg"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p54ty"]
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
@@ -22,7 +26,21 @@ material = SubResource("StandardMaterial3D_td3eg")
 
 [node name="LevelExit2" parent="StaticGeometry" index="2" instance=ExtResource("2_p54ty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10.5)
-material = SubResource("StandardMaterial3D_td3eg")
+material = SubResource("StandardMaterial3D_p54ty")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticGeometry" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 13.375, -6)
+use_collision = true
+collision_layer = 32
+collision_mask = 0
+height = 26.75
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="StaticGeometry" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 13.375, 5)
+use_collision = true
+collision_layer = 32
+collision_mask = 0
+height = 26.75
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)

@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 
 [node name="CharacterEntity" type="CharacterBody3D"]
+collision_mask = 33
 script = ExtResource("1_5bmi2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

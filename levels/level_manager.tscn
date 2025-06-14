@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://brn15rjrgdutk"]
+[gd_scene load_steps=5 format=3 uid="uid://brn15rjrgdutk"]
 
 [ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://c8arawh4uq5bj" path="res://levels/level_list/normal_level_a/normal_level_a.tscn" id="2_k4541"]
+[ext_resource type="PackedScene" uid="uid://du60bp5fltich" path="res://levels/level_list/normal_level_a/normal_level_b.tscn" id="3_ce4gc"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")
-random_levels = Array[PackedScene]([ExtResource("2_k4541")])
+random_levels = Array[PackedScene]([ExtResource("2_k4541"), ExtResource("3_ce4gc")])
 
 [node name="LevelHolder" type="Node3D" parent="."]
 unique_name_in_owner = true
