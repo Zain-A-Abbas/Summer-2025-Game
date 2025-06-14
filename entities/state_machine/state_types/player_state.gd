@@ -11,4 +11,4 @@ func get_player_movement() -> Vector2:
 	if move_vector.y != 0:
 		move_vector.y *= 2.0
 	
-	return move_vector.rotated(deg_to_rad(31))
+	return move_vector.rotated(deg_to_rad(45))

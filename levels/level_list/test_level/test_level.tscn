@@ -15,7 +15,7 @@ material_override = SubResource("StandardMaterial3D_kcfu6")
 size = Vector3(20, 0.001, 20)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.857167, 0.216034, -0.46754, 0, 0.907777, 0.419453, 0.515038, 0.359541, -0.778117, -6.444, 5.516, -7.411)
+transform = Transform3D(-0.707107, 0.296597, -0.641896, 0, 0.907777, 0.419452, 0.707106, 0.296597, -0.641896, -6.444, 5.516, -7.411)
 projection = 1
 size = 16.0
 metadata/_edit_lock_ = true

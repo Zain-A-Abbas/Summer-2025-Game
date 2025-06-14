@@ -5,6 +5,6 @@ extends AttackEffect
 
 func apply_effect(target: CharacterEntity):
 	target.health_component.lose_health(target.health_component.current_health - damage)
-	print(target.health_component.current_health)
+	#print(target.health_component.current_health)
 	if target.health_component.current_health == 0:
 		target.char_entity_die()

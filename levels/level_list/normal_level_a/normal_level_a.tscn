@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8arawh4uq5bj"]
+
+[ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_l001e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l001e"]
+albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+
+[node name="LevelBase" instance=ExtResource("1_l001e")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="0"]
+material_override = SubResource("StandardMaterial3D_l001e")
+size = Vector3(20, 0.001, 20)
+
+[node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
+transform = Transform3D(-0.980208, -0.0403766, 0.193808, 0.0608279, 0.870197, 0.488935, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
+transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561765, 0.286571, -0.580875, 0.76188, 4.54384, 5, -0.331621)
+
+[node name="Player" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)

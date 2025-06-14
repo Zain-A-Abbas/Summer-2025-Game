@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterEntity
 
+signal enemy_killed
 
 @onready var attack_indicator_animator: AnimationPlayer = %AttackIndicatorAnimator
 @onready var action_animator: AnimationPlayer = %ActionAnimator
@@ -17,6 +18,10 @@ func _ready() -> void:
 			player = new_player
 	
 	prepare_states()
+	set_process(false)
+
+func activate_enemy():
+	set_process(true)
 
 # Virtual function
 func prepare_states():
@@ -33,4 +38,5 @@ func hurt_effect():
 	mesh.set_instance_shader_parameter("hit_effect", false)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	enemy_killed.emit()
 	queue_free()

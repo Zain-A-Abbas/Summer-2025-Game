@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cguscb1nqrveo"]
+
+[ext_resource type="Script" uid="uid://bln6lw3lelyap" path="res://debug/scene_documentation.gd" id="1_m4d3m"]
+
+[sub_resource type="Theme" id="Theme_m4d3m"]
+Label/constants/outline_size = 8
+Label/font_sizes/font_size = 20
+
+[node name="SceneDocumentation" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m4d3m")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = ExtResource("1_m4d3m")
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true

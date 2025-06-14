@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbqo8sih7vhnd"]
+
+[ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="1_banr2"]
+[ext_resource type="Script" uid="uid://c3h7kc3phhyww" path="res://levels/level_list/level_base.gd" id="1_y4roy"]
+[ext_resource type="PackedScene" uid="uid://dqt7pplnjhp3d" path="res://entities/entity_list/player/player.tscn" id="3_6i55e"]
+
+[sub_resource type="Environment" id="Environment_y4roy"]
+
+[node name="LevelBase" type="Node3D"]
+script = ExtResource("1_y4roy")
+
+[node name="StaticGeometry" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="DynamicGeometry" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemies" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="EnemyPositions" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Lighting" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lighting"]
+unique_name_in_owner = true
+environment = SubResource("Environment_y4roy")
+
+[node name="LevelCamera" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-0.707107, 0.296597, -0.641896, 0, 0.907777, 0.419452, 0.707106, 0.296597, -0.641896, -6.444, 5.516, -7.411)
+projection = 1
+size = 16.0
+metadata/_edit_lock_ = true
+
+[node name="SceneDocumentation" parent="." instance=ExtResource("1_banr2")]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneDocumentation"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneDocumentation/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1.335)
+layout_mode = 2
+text = "StaticGeometry - Geometry that is set within this type of level
+
+DynamicGeometry - Geometry which can change in \"sub-types\" of a level e.g. the same overall, but one version of the level holds pillars
+
+Enemies - Holds all the enemies
+
+Lighting - WorldEnvironment plus other lighting
+
+EnemyPositions - Holds Marker3Ds which mark the locations of enemies to spawn. Enemies CAN spawn here, but not necessarily WILL spawn here.
+
+LevelCamera - The camera."
+autowrap_mode = 2
+
+[node name="Player" parent="." instance=ExtResource("3_6i55e")]

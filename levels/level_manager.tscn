@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://brn15rjrgdutk"]
+
+[ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
+[ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
+[ext_resource type="PackedScene" uid="uid://c8arawh4uq5bj" path="res://levels/level_list/normal_level_a/normal_level_a.tscn" id="2_k4541"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("1_6tvrh")
+random_levels = Array[PackedScene]([ExtResource("2_k4541")])
+
+[node name="LevelHolder" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="ScreenTransitions" type="CanvasLayer" parent="."]
+
+[node name="Fade" type="ColorRect" parent="ScreenTransitions"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="SceneDocumentation" parent="." instance=ExtResource("2_6tvrh")]
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SceneDocumentation"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneDocumentation/VBoxContainer2"]
+layout_mode = 2
+text = "LevelManager holds and manages the data of the current level and connects it to future levels
+
+LevelHolder - Level scene itself is loaded into the node
+
+The level changing process is as follows:
+1. On run start, a level is created while connecting itself to the \"level_complete\" function and the screen then fades in.
+2. When a player hits the exit in a level, the level emits a signal communicating this (while passing along itself as an arg)
+3. \"level_complete\" fades out the current level, ticks current_level by +1, then creates a new level"
+autowrap_mode = 2
