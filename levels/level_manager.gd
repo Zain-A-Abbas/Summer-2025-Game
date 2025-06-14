@@ -1,7 +1,7 @@
 class_name LevelManager
 extends Node
 
-const LEVEL_AMOUNT: int = 10
+const LEVEL_AMOUNT: int = 5
 
 @onready var level_holder: Node3D = %LevelHolder
 @onready var fade: ColorRect = %Fade

@@ -112,6 +112,7 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
 
 [node name="Player" node_paths=PackedStringArray("hurtbox", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
+collision_layer = 17
 script = ExtResource("1_xb04b")
 hurtbox = NodePath("Hurtbox")
 health_component = NodePath("Components/HealthComponent")

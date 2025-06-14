@@ -10,6 +10,7 @@ signal level_completed(level: LevelBase)
 @onready var world_environment: WorldEnvironment = %WorldEnvironment
 @onready var level_camera: Camera3D = %LevelCamera
 @onready var enemy_positions: Node3D = %EnemyPositions
+@onready var player: Player = %Player
 
 const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
 
@@ -24,11 +25,14 @@ func setup_level(enemy_spawn_count: int):
 		
 		var new_enemy: Enemy = BASIC_ENEMY.instantiate()
 		enemies.add_child(new_enemy)
+		new_enemy.initialize_enemy(player)
 		new_enemy.position = enemy_positions.get_child(n).position
 		new_enemy.enemy_killed.connect(enemy_kill)
 		
 		enemy_count += 1
-		
+	
+	for exit in get_level_exits():
+		exit.exit_chosen.connect(exit_choose)
 
 func start_level():
 	for enemy in enemies.get_children():
@@ -39,3 +43,21 @@ func start_level():
 
 func enemy_kill():
 	enemies_killed += 1
+	
+	if enemies_killed == enemy_count:
+		for exit in get_level_exits():
+			exit.activate()
+
+func exit_choose():
+	level_completed.emit(self)
+
+func get_level_exits() -> Array[LevelExit]:
+	var exits: Array[LevelExit] = []
+	
+	for exit in get_tree().get_nodes_in_group("level_exits"):
+		if exit is LevelExit:
+			exits.append(exit)
+		else:
+			push_error("Non-levelexit found in level_exits group")
+	
+	return exits

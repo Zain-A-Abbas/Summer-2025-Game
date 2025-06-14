@@ -9,16 +9,16 @@ signal enemy_killed
 @export var mesh: MeshInstance3D
 @export var animation_tree: AnimationTree
 
-static var player: Player
+var player: Player
 
 func _ready() -> void:
-	if !player:
-		var new_player: Player = get_tree().get_first_node_in_group("player")
-		if new_player:
-			player = new_player
+	set_process(false)
+
+func initialize_enemy(new_player: Player):
+	if new_player:
+		player = new_player
 	
 	prepare_states()
-	set_process(false)
 
 func activate_enemy():
 	set_process(true)

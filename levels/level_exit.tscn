@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://du2rjh43hdgwk"]
+
+[ext_resource type="Script" uid="uid://mxsvq6le0u6o" path="res://levels/level_exit.gd" id="1_uktl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p54ty"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uktl4"]
+size = Vector3(3, 5, 1)
+
+[node name="LevelExit" type="CSGBox3D" groups=["level_exits"]]
+collision_layer = 0
+collision_mask = 0
+size = Vector3(3, 5, 1)
+material = SubResource("StandardMaterial3D_p54ty")
+script = ExtResource("1_uktl4")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_uktl4")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
