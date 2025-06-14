@@ -10,7 +10,7 @@ var states: Array[State] = []
 ## dictionary lookups.
 var state_map: Dictionary[StringName, State] = {}
 
-var current_state: State
+var current_state: State = null
 
 func _physics_process(delta: float) -> void:
 	if current_state:
@@ -30,6 +30,7 @@ func assign_states(state_initializers: Array[StateInitializer], starting_state: 
 	
 	if !starting_state: # 'if object:' means 'if object is not null'
 		starting_state = states[0]
+	#current_state = starting_state
 	
 	change_state_process(starting_state)
 
