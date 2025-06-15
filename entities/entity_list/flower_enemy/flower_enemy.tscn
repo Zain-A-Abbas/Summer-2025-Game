@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkg1kd5coyvwy"]
+
+[ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_rvb6p"]
+[ext_resource type="Script" uid="uid://ceysowvphmxnq" path="res://entities/entity_list/flower_enemy/flower_enemy.gd" id="2_efnkb"]
+[ext_resource type="PackedScene" uid="uid://dkarhrwy2lhiu" path="res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.tscn" id="3_a3b3d"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_il3ly"]
+
+[sub_resource type="Animation" id="Animation_68gr5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kh8l7"]
+resource_name = "basic_attack"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68gr5"]
+_data = {
+&"RESET": SubResource("Animation_68gr5"),
+&"basic_attack": SubResource("Animation_kh8l7")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwsr8"]
+
+[node name="FlowerEnemy" instance=ExtResource("1_rvb6p")]
+transform = Transform3D(0.158158, 0, 0.987414, 0, 1, 0, -0.987414, 0, 0.158158, 0, 0, 0)
+script = ExtResource("2_efnkb")
+
+[node name="AnimationEffects" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_68gr5")
+}
+
+[node name="Attacks" parent="." index="4"]
+transform = Transform3D(0.0252865, -0.987136, 0.157869, 0.987414, -4.31612e-08, -0.158158, 0.156124, 0.159881, 0.974712, 0.91071, 2.9074, -0.145872)
+
+[node name="FlowerEnemyBomb" parent="Attacks" index="0" instance=ExtResource("3_a3b3d")]
+unique_name_in_owner = true
+
+[node name="BombData" type="Node3D" parent="Attacks" index="1" node_paths=PackedStringArray("entity")]
+unique_name_in_owner = true
+script = ExtResource("3_il3ly")
+entity = NodePath("../..")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_cwsr8")
+
+[node name="HealthComponent" parent="Components" index="0"]
+current_health = 20
+max_health = 20

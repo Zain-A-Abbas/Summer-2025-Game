@@ -23,5 +23,11 @@ func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
 	enemy_animation_player.play("hurt")
 	resolve_hit(attack_object)
 
+func get_direction_to_player(enemy: Enemy) -> Vector3:
+	return enemy.position.direction_to(enemy.player.position)
+	
+func face_direction(enemy: Enemy, dir: Vector3) -> void:
+	enemy.rotation.y = Vector2(-dir.x, dir.z).angle() + deg_to_rad(270)
+
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	queue_free()

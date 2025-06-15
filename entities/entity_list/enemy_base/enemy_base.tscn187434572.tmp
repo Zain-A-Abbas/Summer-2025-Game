@@ -133,15 +133,13 @@ libraries = {
 
 [node name="Components" type="Node" parent="." index="7"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+[node name="HealthComponent" type="Node" parent="Components" index="0"]
 unique_name_in_owner = true
 script = ExtResource("5_6omki")
-entity = NodePath("../..")
 
-[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+[node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true
 script = ExtResource("6_48pjb")
-entity = NodePath("../..")
 
 [node name="AttackIndicator" type="Sprite3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

@@ -164,16 +164,13 @@ shape = SubResource("CapsuleShape3D_y07nu")
 
 [node name="Components" type="Node" parent="." index="6"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+[node name="HealthComponent" type="Node" parent="Components" index="0"]
 unique_name_in_owner = true
 script = ExtResource("13_w7qv5")
-entity = NodePath("../..")
 
-[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+[node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true
 script = ExtResource("14_nda3u")
-entity = NodePath("../..")
-move_speed = 550.0
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

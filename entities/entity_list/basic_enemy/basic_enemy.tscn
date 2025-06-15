@@ -128,4 +128,10 @@ mesh = ExtResource("10_5sssr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_cwsr8")
 
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
+
+[node name="MovementComponent" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
+
 [editable path="Attacks/basic_attack/AttackHitbox"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkg1kd5coyvwy"]
+
+[ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_rvb6p"]
+[ext_resource type="Script" uid="uid://ceysowvphmxnq" path="res://entities/entity_list/flower_enemy/flower_enemy.gd" id="2_efnkb"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_ylkkv"]
+[ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="4_il3ly"]
+[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="5_a3b3d"]
+
+[sub_resource type="Animation" id="Animation_68gr5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kh8l7"]
+resource_name = "basic_attack"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68gr5"]
+_data = {
+&"RESET": SubResource("Animation_68gr5"),
+&"basic_attack": SubResource("Animation_kh8l7")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a3b3d"]
+radius = 0.678667
+height = 2.08717
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thtn2"]
+render_priority = 0
+shader = ExtResource("5_a3b3d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbq2j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwsr8"]
+
+[node name="FlowerEnemy" instance=ExtResource("1_rvb6p")]
+transform = Transform3D(0.158158, 0, 0.987414, 0, 1, 0, -0.987414, 0, 0.158158, 0, 0, 0)
+script = ExtResource("2_efnkb")
+
+[node name="AnimationEffects" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_68gr5")
+}
+
+[node name="seed_bomb" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("3_ylkkv")
+entity = NodePath("../..")
+hitbox = NodePath("AttackHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="AttackHitbox" parent="Attacks/seed_bomb" index="0" instance=ExtResource("4_il3ly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.18369)
+
+[node name="BombHitbox" type="CollisionShape3D" parent="Attacks/seed_bomb/AttackHitbox" index="1"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 1.174, 0)
+shape = SubResource("CapsuleShape3D_a3b3d")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Attacks/seed_bomb/AttackHitbox" index="2"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.023468, 1.167, 0)
+material_overlay = SubResource("ShaderMaterial_thtn2")
+instance_shader_parameters/hit_effect = false
+radius = 0.525391
+height = 1.75885
+material = SubResource("StandardMaterial3D_tbq2j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_cwsr8")
+
+[node name="HealthComponent" parent="Components" index="0"]
+current_health = 30
+max_health = 30
+
+[node name="MovementComponent" parent="Components" index="1"]
+move_speed = 1.0
