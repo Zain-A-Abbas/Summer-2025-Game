@@ -33,4 +33,3 @@ transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
 
 [node name="FlowerEnemy" parent="." instance=ExtResource("3_kcfu6")]
-transform = Transform3D(0.158158, 0, 0.987414, 0, 1, 0, -0.987414, 0, 0.158158, 3.83024, 0, -5.20758)

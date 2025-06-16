@@ -10,7 +10,7 @@ var direction_timer: float = 0.0
 var direction: Vector3 = Vector3.ZERO
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	direction = enemy.get_direction_to_player(enemy)
+	face_player()
 	if args.has("from_attack"):
 		is_attack_cooldown = true
 		attack_cooldown_timer = 0.0
@@ -23,7 +23,7 @@ func st_physics_process(delta: float) -> void:
 	direction_timer += delta
 	
 	if direction_timer >= 0.15:
-		direction = enemy.get_direction_to_player(enemy)
+		face_player()
 		direction_timer = 0.0
 	
 	if attack_cooldown_timer > ATTACK_COOLDOWN && is_attack_cooldown:
@@ -42,3 +42,6 @@ func st_physics_process(delta: float) -> void:
 			state_machine.change_state(&"Wait", {"time": ATTACK_COOLDOWN - attack_cooldown_timer})
 			attack_cooldown_timer = 0.0
 			is_attack_cooldown = false'''
+
+func face_player():
+	direction = enemy.position.direction_to(enemy.player.position)

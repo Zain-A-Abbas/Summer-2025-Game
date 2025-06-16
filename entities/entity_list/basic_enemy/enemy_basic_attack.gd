@@ -59,7 +59,6 @@ func st_physics_process(delta: float) -> void:
 	enemy.velocity = movement_vector * MOVE_SPEED * delta
 	enemy.move_and_slide()
 
-
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !warning_hidden:
 		enemy.attack_indicator_animator.play("hide_indicator")

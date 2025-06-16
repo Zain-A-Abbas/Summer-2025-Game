@@ -2,8 +2,8 @@ class_name FlowerEnemyShoot
 extends EnemyState
 
 # Used to access the AnimationEffects node for visuals.
-const SHOOT_TIMES: Array[float] = [0.6, 1.3]
-const WARNING_TIMES: Array[float] = [0.3, 0.6]
+const SHOOT_TIMES: Array[float] = [0.6, 1.8]
+const WARNING_TIMES: Array[float] = [0.5, 1.5]
 
 var bomb_shot: bool= false
 var warning_trackers: Array[float] = [0.0, 0.0]
@@ -12,14 +12,14 @@ var warning_hidden: bool = false
 
 var delta_count: float = 0.0
 #var animation_time: float = 0.0
-var attack_object: AttackObject
 var bomb: CharacterEntity
+var atk_node: Node3D
 var direction: Vector3 = Vector3.ZERO
 
-func _init(new_enemy: Enemy, object: CharacterEntity, atk_object: AttackObject) -> void:
+func _init(new_enemy: Enemy, object: CharacterEntity, atk: Node3D) -> void:
 	enemy = new_enemy
 	bomb = object
-	attack_object = atk_object
+	atk_node = atk
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	bomb_shot = false
@@ -47,11 +47,9 @@ func st_physics_process(delta: float) -> void:
 	
 	if delta_count >= SHOOT_TIMES[0] && !bomb_shot:
 		bomb_shot = true
-		bomb.state_machine.change_state(&"Midair", {
-			"dir" = direction.normalized(),
-			"return" = bomb.position
-			})
-	
+		bomb.state_machine.change_state(&"Wait")
+		atk_node.global_position = enemy.player.position
+		
 	if delta_count > SHOOT_TIMES[1]:
 		state_machine.change_state(&"Idle")
 		return

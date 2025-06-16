@@ -48,7 +48,7 @@ _data = {
 &"basic_attack": SubResource("Animation_kh8l7")
 }
 
-[sub_resource type="Resource" id="Resource_p3v48"]
+[sub_resource type="Resource" id="Resource_kh8l7"]
 script = ExtResource("5_fdidt")
 damage = 1
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
@@ -105,14 +105,17 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_cwsr8")
 entity = NodePath("../..")
-attack_effects = Array[ExtResource("4_qlgqh")]([SubResource("Resource_p3v48")])
+attack_effects = Array[ExtResource("4_qlgqh")]([SubResource("Resource_kh8l7")])
 hitbox = NodePath("AttackHitbox")
 
-[node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("3_u4wqx")]
+[node name="AttackHitbox" parent="Attacks/basic_attack" index="0" node_paths=PackedStringArray("entity", "hitbox") instance=ExtResource("3_u4wqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
+script = ExtResource("3_cwsr8")
+entity = NodePath("../../..")
+hitbox = NodePath(".")
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.172851)
@@ -128,10 +131,11 @@ mesh = ExtResource("10_5sssr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_cwsr8")
 
-[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
-entity = NodePath("../..")
+[node name="HealthComponent" parent="Components" index="0"]
+current_health = 10
+max_health = 10
 
-[node name="MovementComponent" parent="Components" index="1" node_paths=PackedStringArray("entity")]
-entity = NodePath("../..")
+[node name="MovementComponent" parent="Components" index="1"]
+move_speed = 600.0
 
 [editable path="Attacks/basic_attack/AttackHitbox"]

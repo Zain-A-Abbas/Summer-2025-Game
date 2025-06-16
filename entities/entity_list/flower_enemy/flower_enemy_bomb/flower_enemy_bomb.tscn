@@ -1,10 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkarhrwy2lhiu"]
+[gd_scene load_steps=18 format=3 uid="uid://dkarhrwy2lhiu"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_w4grh"]
 [ext_resource type="Script" uid="uid://cwcebqxt4o7w6" path="res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.gd" id="2_xeb4n"]
 [ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="3_kuo1v"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="4_ci5yc"]
+[ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="4_qjyki"]
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="4_xeb4n"]
+[ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="5_ap08c"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_qjyki"]
+[ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="6_o43dr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_thtn2"]
 render_priority = 0
@@ -12,6 +16,18 @@ shader = ExtResource("3_kuo1v")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbq2j"]
 albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_t2ogd"]
+script = ExtResource("6_o43dr")
+damage = 1
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d4bo7"]
+height = 0.379822
+radius = 3.25586
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap08c"]
+albedo_color = Color(0.494752, 0.825707, 3.85046e-07, 1)
 
 [sub_resource type="Animation" id="Animation_thtn2"]
 length = 0.001
@@ -60,6 +76,33 @@ instance_shader_parameters/hit_effect = false
 material = SubResource("StandardMaterial3D_tbq2j")
 
 [node name="Attacks" type="Node3D" parent="." index="4"]
+
+[node name="Explosion" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("4_ci5yc")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("5_ap08c")]([SubResource("Resource_t2ogd")])
+hitbox = NodePath("AttackHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="AttackHitbox" type="Area3D" parent="Attacks/Explosion" index="0"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("4_qjyki")
+metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/Explosion/AttackHitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
+shape = SubResource("CylinderShape3D_d4bo7")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Attacks/Explosion/AttackHitbox" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129866, 0)
+radius = 3.37158
+height = 0.294922
+sides = 18
+material = SubResource("StandardMaterial3D_ap08c")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 unique_name_in_owner = true
