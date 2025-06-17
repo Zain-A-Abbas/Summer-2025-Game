@@ -30,7 +30,6 @@ libraries = {
 
 [node name="Attacks" parent="." index="4"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="FlowerEnemyBomb" parent="Attacks" index="0" instance=ExtResource("3_a3b3d")]
 unique_name_in_owner = true

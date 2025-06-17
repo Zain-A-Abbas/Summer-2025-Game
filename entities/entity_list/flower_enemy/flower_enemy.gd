@@ -1,8 +1,6 @@
 class_name FlowerEnemy
 extends Enemy
 
-var direction: Vector3 = Vector3.ZERO
-
 @onready var bomb: FlowerEnemyBomb = %FlowerEnemyBomb
 @onready var attacks: Node3D = %Attacks
 
