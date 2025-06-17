@@ -4,7 +4,6 @@ extends CharacterBody3D
 ## A class used for characters. Holds an animator, collision, a state machine, 
 ## and stats
 
-@onready var entity_animator: EntityAnimator = %EntityAnimator
 @onready var state_machine: StateMachine = %StateMachine
 @onready var animation_effects: AnimationPlayer = $AnimationEffects
 

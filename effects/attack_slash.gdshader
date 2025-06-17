@@ -6,7 +6,7 @@ uniform sampler2D slash_curve;
 uniform sampler2D slash_alpha;
 uniform sampler2D dissolve;
 uniform sampler2D dissolve_curve;
-instance uniform float lifetime: hint_range(0.01, 0.99, 0.01) = 0.0;
+instance uniform float lifetime: hint_range(0.01, 0.99, 0.01) = 0.99;
 
 
 void vertex() {

@@ -19,10 +19,10 @@ func prepare_states():
 	]
 	
 	state_machine.assign_states(player_states)
+	
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	pass
 
 func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
 	print("player hit")
 	resolve_hit(attack_object)
-
-func char_entity_die(args: Dictionary[String, Variant]  = {}):
-	pass
