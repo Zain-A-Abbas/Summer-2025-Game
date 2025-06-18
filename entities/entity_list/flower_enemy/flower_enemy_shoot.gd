@@ -1,9 +1,9 @@
 class_name FlowerEnemyShoot
 extends EnemyState
 
-# Used to access the AnimationEffects node for visuals.
-const SHOOT_TIMES: Array[float] = [0.6, 1.8]
-const WARNING_TIMES: Array[float] = [0.5, 1.5]
+const BOMB = preload("res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.tscn")
+const SHOOT_TIMES: Array[float] = [0.7, 1.6]
+const WARNING_TIMES: Array[float] = [0.1, 0.9]
 
 var bomb_shot: bool= false
 var warning_trackers: Array[float] = [0.0, 0.0]
@@ -12,14 +12,14 @@ var warning_hidden: bool = false
 
 var delta_count: float = 0.0
 #var animation_time: float = 0.0
-var bomb: CharacterEntity
 var atk_node: Node3D
 var direction: Vector3 = Vector3.ZERO
+var model: Node3D
 
-func _init(new_enemy: Enemy, object: CharacterEntity, atk: Node3D) -> void:
+func _init(new_enemy: Enemy, attack_object: Node3D, mod: Node3D) -> void:
 	enemy = new_enemy
-	bomb = object
-	atk_node = atk
+	atk_node = attack_object
+	model = mod
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	bomb_shot = false
@@ -27,6 +27,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	warning_hidden = false
 	warning_shown = false
 	delta_count = 0.0
+	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -42,13 +43,15 @@ func st_physics_process(delta: float) -> void:
 		warning_hidden = true
 		
 	# enemy is always facing player
-	direction = enemy.get_direction_to_player(enemy)
-	enemy.entity_animator.rotation.y = Vector2(-direction.x, direction.z).angle() + deg_to_rad(270)
+	direction = face_player()
+	model.rotation.y = Vector2(direction.x, -direction.z).angle() + deg_to_rad(90)
 	
 	if delta_count >= SHOOT_TIMES[0] && !bomb_shot:
 		bomb_shot = true
-		bomb.state_machine.change_state(&"Wait")
-		atk_node.global_position = enemy.player.position
+		var bomb = BOMB.instantiate()
+		atk_node.add_child(bomb)
+		bomb.initialize_bomb()
+		bomb.global_position = enemy.player.position
 		
 	if delta_count > SHOOT_TIMES[1]:
 		state_machine.change_state(&"Idle")

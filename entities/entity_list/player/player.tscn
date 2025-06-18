@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=30 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -17,48 +17,7 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
 
-[sub_resource type="Resource" id="Resource_y07nu"]
-script = ExtResource("5_037cv")
-damage = 1
-metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
-radius = 0.75
-height = 2.5
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qn7ef"]
-seed = 640
-frequency = 0.0238
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7qv5"]
-width = 256
-noise = SubResource("FastNoiseLite_qn7ef")
-
-[sub_resource type="Curve" id="Curve_okb7e"]
-_data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_nda3u"]
-texture_mode = 1
-curve = SubResource("Curve_okb7e")
-
-[sub_resource type="Curve" id="Curve_037cv"]
-_limits = [-1.0, 1.0, 0.0, 1.0]
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7byxq"]
-texture_mode = 1
-curve = SubResource("Curve_037cv")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y07nu"]
-render_priority = 0
-shader = ExtResource("3_j773i")
-shader_parameter/slash_texture = ExtResource("5_fvuh8")
-shader_parameter/slash_curve = SubResource("CurveTexture_7byxq")
-shader_parameter/slash_alpha = ExtResource("4_seik3")
-shader_parameter/dissolve = SubResource("NoiseTexture2D_w7qv5")
-shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w7qv5"]
 
 [sub_resource type="Animation" id="Animation_qn7ef"]
 length = 0.001
@@ -109,6 +68,49 @@ _data = {
 &"basic_attack": SubResource("Animation_tvlpa")
 }
 
+[sub_resource type="Resource" id="Resource_y07nu"]
+script = ExtResource("5_037cv")
+damage = 1
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
+radius = 0.75
+height = 2.5
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qn7ef"]
+seed = 640
+frequency = 0.0238
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7qv5"]
+width = 256
+noise = SubResource("FastNoiseLite_qn7ef")
+
+[sub_resource type="Curve" id="Curve_okb7e"]
+_data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nda3u"]
+texture_mode = 1
+curve = SubResource("Curve_okb7e")
+
+[sub_resource type="Curve" id="Curve_037cv"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7byxq"]
+texture_mode = 1
+curve = SubResource("Curve_037cv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y07nu"]
+render_priority = 0
+shader = ExtResource("3_j773i")
+shader_parameter/slash_texture = ExtResource("5_fvuh8")
+shader_parameter/slash_curve = SubResource("CurveTexture_7byxq")
+shader_parameter/slash_alpha = ExtResource("4_seik3")
+shader_parameter/dissolve = SubResource("NoiseTexture2D_w7qv5")
+shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
 
 [node name="Player" node_paths=PackedStringArray("hurtbox", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
@@ -122,7 +124,17 @@ movement_component = NodePath("Components/MovementComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xb04b")
 
-[node name="Attacks" type="Node3D" parent="." index="3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_w7qv5")
+
+[node name="AnimationEffects" parent="." index="3"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qn7ef")
+}
+
+[node name="Attacks" type="Node3D" parent="." index="4"]
 
 [node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
@@ -147,11 +159,6 @@ shape = SubResource("CapsuleShape3D_bqsy2")
 material_override = SubResource("ShaderMaterial_y07nu")
 instance_shader_parameters/lifetime = 0.01
 mesh = ExtResource("9_tvlpa")
-
-[node name="AnimationEffects" parent="." index="4"]
-libraries = {
-&"": SubResource("AnimationLibrary_qn7ef")
-}
 
 [node name="Hurtbox" type="Area3D" parent="." index="5"]
 collision_layer = 0

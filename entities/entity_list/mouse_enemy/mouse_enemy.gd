@@ -1,7 +1,7 @@
 class_name MouseEnemy
 extends Enemy
 
-@onready var thrust: Node3D = %basic_attack
+@onready var thrust: AttackObject = %basic_attack
 
 func prepare_states():
 	var enemy_states: Array[StateInitializer] = [

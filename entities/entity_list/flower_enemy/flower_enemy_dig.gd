@@ -8,9 +8,14 @@ var delta_count: float = 0.0
 var cooldown_timer: int = 0
 var dig_on_cooldown: bool = false
 var direction: Vector3 = Vector3.ZERO
+var model: Node3D
 
 # temporary example
 var dig_spots: Array[Vector3] = [Vector3(-7, 0, 7), Vector3(7, 0, 7), Vector3(-7, 0, -7)]
+
+func _init(new_enemy: Enemy, mod: Node3D) -> void:
+	enemy = new_enemy
+	model = mod
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
@@ -30,8 +35,8 @@ func st_physics_process(delta: float) -> void:
 	
 	if delta_count >= DIG_TIME:
 		enemy.position = dig_spots.pick_random()
-		direction = enemy.get_direction_to_player(enemy)
-		enemy.face_direction(enemy, direction)
+		direction = face_player()
+		model.rotation.y = Vector2(direction.x, -direction.z).angle() + deg_to_rad(90)
 		state_machine.change_state(&"Idle")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):

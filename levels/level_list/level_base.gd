@@ -4,6 +4,9 @@ extends Node3D
 signal level_completed(level: LevelBase)
 
 const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
+const FLOWER_ENEMY = preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn")
+const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn")
+const ENEMY_TYPE_LIST: Array[Resource] = [FLOWER_ENEMY, MOUSE_ENEMY]
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -25,7 +28,7 @@ func setup_level(enemy_spawn_count: int):
 			push_error("More enemies provided to a level than it has positions for.")
 			break
 		
-		var new_enemy: Enemy = BASIC_ENEMY.instantiate()
+		var new_enemy: Enemy = ENEMY_TYPE_LIST.pick_random().instantiate()
 		enemies.add_child(new_enemy)
 		new_enemy.initialize_enemy(player)
 		new_enemy.position = enemy_positions.get_child(n).position

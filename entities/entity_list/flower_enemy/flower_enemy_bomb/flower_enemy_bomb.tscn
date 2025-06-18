@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dkarhrwy2lhiu"]
+[gd_scene load_steps=13 format=3 uid="uid://dkarhrwy2lhiu"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_w4grh"]
 [ext_resource type="Script" uid="uid://cwcebqxt4o7w6" path="res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.gd" id="2_xeb4n"]
-[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="3_kuo1v"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="4_ci5yc"]
 [ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="4_qjyki"]
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="4_xeb4n"]
@@ -10,12 +9,8 @@
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_qjyki"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="6_o43dr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_thtn2"]
-render_priority = 0
-shader = ExtResource("3_kuo1v")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbq2j"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bo7"]
+albedo_color = Color(0, 0.579476, 0.348665, 1)
 
 [sub_resource type="Resource" id="Resource_t2ogd"]
 script = ExtResource("6_o43dr")
@@ -29,53 +24,20 @@ radius = 3.25586
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap08c"]
 albedo_color = Color(0.494752, 0.825707, 3.85046e-07, 1)
 
-[sub_resource type="Animation" id="Animation_thtn2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_tbq2j"]
-resource_name = "hurt"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EntityAnimator/CSGCylinder3D:instance_shader_parameters/hit_effect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1uwf7"]
-_data = {
-&"RESET": SubResource("Animation_thtn2"),
-&"hurt": SubResource("Animation_tbq2j")
-}
-
 [node name="FlowerEnemyBomb" instance=ExtResource("1_w4grh")]
 script = ExtResource("2_xeb4n")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="EntityAnimator" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_overlay = SubResource("ShaderMaterial_thtn2")
-instance_shader_parameters/hit_effect = false
-material = SubResource("StandardMaterial3D_tbq2j")
+[node name="placeholder_model" type="CSGSphere3D" parent="." index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223961, 0)
+collision_layer = 0
+collision_mask = 0
+material = SubResource("StandardMaterial3D_d4bo7")
 
-[node name="Attacks" type="Node3D" parent="." index="4"]
+[node name="AnimationEffects" parent="." index="2"]
+unique_name_in_owner = true
+
+[node name="Attacks" type="Node3D" parent="." index="3"]
 
 [node name="Explosion" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
@@ -104,13 +66,7 @@ height = 0.294922
 sides = 18
 material = SubResource("StandardMaterial3D_ap08c")
 
-[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="." index="5"]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_1uwf7")
-}
-
-[node name="Components" type="Node" parent="." index="6"]
+[node name="Components" type="Node" parent="." index="4"]
 
 [node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
