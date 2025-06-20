@@ -17,6 +17,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	movement_vector = Vector3(-direction.x, 0, direction.y)
 	
 	player.hurtbox.invincibility_frames = true
+	player.consume_stamina(player.DODGE_REQUIREMENT, 0.4)
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.hurtbox.invincibility_frames = false

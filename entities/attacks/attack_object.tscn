@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://dpcw6gj5l4iw8"]
+[gd_scene load_steps=2 format=3 uid="uid://dpcw6gj5l4iw8"]
+
+[ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="1_ri8f1"]
 
 [node name="AttackHitbox" type="Area3D"]
 monitoring = false
+script = ExtResource("1_ri8f1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 debug_color = Color(0.999962, 0, 0.0947074, 0.42)

@@ -7,7 +7,7 @@ const LENGTH: float = 1.5333
 const ACTIVE_FRAMES: Array[float] = [0.4, 0.65]
 const WARNING_TIMES: Array[float] = [0.1, 0.3]
 
-var attack_activated: bool= false
+var attack_activated: bool = false
 var warning_trackers: Array[float] = [0.0, 0.0]
 var warning_shown: bool = false
 var warning_hidden: bool = false

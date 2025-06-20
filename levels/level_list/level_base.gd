@@ -6,7 +6,7 @@ signal level_completed(level: LevelBase)
 const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
 const FLOWER_ENEMY = preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn")
 const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn")
-const ENEMY_TYPE_LIST: Array[Resource] = [FLOWER_ENEMY, MOUSE_ENEMY]
+const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY]
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry

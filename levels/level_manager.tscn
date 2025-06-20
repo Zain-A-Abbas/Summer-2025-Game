@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://brn15rjrgdutk"]
+[gd_scene load_steps=6 format=3 uid="uid://brn15rjrgdutk"]
 
 [ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://c8arawh4uq5bj" path="res://levels/level_list/normal_level_a/normal_level_a.tscn" id="2_k4541"]
 [ext_resource type="PackedScene" uid="uid://du60bp5fltich" path="res://levels/level_list/normal_level_a/normal_level_b.tscn" id="3_ce4gc"]
+[ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/player_ui.tscn" id="5_6qk6f"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")
@@ -26,6 +27,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="SceneDocumentation" parent="." instance=ExtResource("2_6tvrh")]
+visible = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SceneDocumentation"]
 layout_mode = 2
@@ -41,3 +43,6 @@ The level changing process is as follows:
 2. When a player hits the exit in a level, the level emits a signal communicating this (while passing along itself as an arg)
 3. \"level_complete\" fades out the current level, ticks current_level by +1, then creates a new level"
 autowrap_mode = 2
+
+[node name="PlayerUI" parent="." instance=ExtResource("5_6qk6f")]
+unique_name_in_owner = true

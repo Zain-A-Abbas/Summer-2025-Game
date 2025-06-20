@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=33 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -9,13 +9,24 @@
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_037cv"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="5_fvuh8"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="6_fvuh8"]
-[ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_qn7ef"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="9_tvlpa"]
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="12_037cv"]
 [ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="12_w7qv5"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="13_y07nu"]
 
+[sub_resource type="Gradient" id="Gradient_w7qv5"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.1, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nda3u"]
+gradient = SubResource("Gradient_w7qv5")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7byxq"]
+albedo_texture = SubResource("GradientTexture1D_nda3u")
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xb04b"]
+material = SubResource("StandardMaterial3D_7byxq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w7qv5"]
 
@@ -40,26 +51,26 @@ length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
+tracks/0/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.01, 0.99]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
+tracks/1/path = NodePath("Attacks/basic_attack/SlashCurve:instance_shader_parameters/lifetime")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.01, 0.99]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qn7ef"]
@@ -68,26 +79,27 @@ _data = {
 &"basic_attack": SubResource("Animation_tvlpa")
 }
 
-[sub_resource type="Resource" id="Resource_y07nu"]
+[sub_resource type="Resource" id="Resource_w7qv5"]
 script = ExtResource("5_037cv")
-damage = 1
+damage = 8
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
 radius = 0.75
 height = 2.5
 
+[sub_resource type="Gradient" id="Gradient_nda3u"]
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_qn7ef"]
-seed = 640
-frequency = 0.0238
+seed = 836
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7qv5"]
-width = 256
+color_ramp = SubResource("Gradient_nda3u")
 noise = SubResource("FastNoiseLite_qn7ef")
 
 [sub_resource type="Curve" id="Curve_okb7e"]
-_data = [Vector2(0.59542, 0), 0.0, 0.0, 0, 0, Vector2(0.839695, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.4, 0), 0.0, 2.94382, 0, 0, Vector2(0.8, 1), 2.5, 0.0, 1, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_nda3u"]
 texture_mode = 1
@@ -124,7 +136,7 @@ movement_component = NodePath("Components/MovementComponent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_xb04b")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_w7qv5")
 
@@ -141,7 +153,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_bqsy2")
 entity = NodePath("../..")
-attack_effects = Array[ExtResource("4_okb7e")]([SubResource("Resource_y07nu")])
+attack_effects = Array[ExtResource("4_okb7e")]([SubResource("Resource_w7qv5")])
 hitbox = NodePath("AttackHitbox")
 
 [node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("6_fvuh8")]
@@ -149,7 +161,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 collision_layer = 2
 collision_mask = 0
 monitorable = false
-script = ExtResource("6_qn7ef")
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -176,8 +187,8 @@ shape = SubResource("CapsuleShape3D_y07nu")
 unique_name_in_owner = true
 script = ExtResource("12_037cv")
 entity = NodePath("../..")
-current_health = 10
-max_health = 10
+current_health = 100
+max_health = 100
 
 [node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true

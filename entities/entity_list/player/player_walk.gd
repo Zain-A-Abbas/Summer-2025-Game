@@ -3,14 +3,15 @@ extends PlayerState
 
 func st_physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
-		return state_machine.change_state(&"Attack", {"attack_name": &"basic_attack"})
+		state_machine.change_state(&"Attack", {"attack_name": &"basic_attack"})
+		return
 	
 	var movement_input: Vector2 = get_player_movement()
 	if movement_input == Vector2.ZERO: # if no movement register, go back to idle state
 		state_machine.change_state(&"Idle")
 		return
 
-	if Input.is_action_just_pressed("dodge"):
+	if Input.is_action_just_pressed("dodge") && player.can_dodge():
 		state_machine.change_state(&"Dodge")
 		return
 

@@ -47,7 +47,7 @@ func st_physics_process(delta: float) -> void:
 	attack_object.hitbox.monitorable = delta_count >= ACTIVE_FRAMES[0] && delta_count <= ACTIVE_FRAMES[1]
 	
 	if delta_count > CANCEL_THRESHOLD:
-		if Input.is_action_just_pressed("dodge"):
+		if Input.is_action_just_pressed("dodge") && player.can_dodge():
 			state_machine.change_state(&"Dodge")
 			return
 		

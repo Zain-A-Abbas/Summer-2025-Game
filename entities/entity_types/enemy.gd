@@ -2,9 +2,11 @@ class_name Enemy
 extends CharacterEntity
 
 signal enemy_killed
+signal enemy_damage_taken(enemy: Enemy, damage: int)
 
 @onready var attack_indicator_animator: AnimationPlayer = %AttackIndicatorAnimator
 @onready var action_animator: AnimationPlayer = %ActionAnimator
+@onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
 
 @export var mesh: MeshInstance3D
 @export var animation_tree: AnimationTree
@@ -18,6 +20,9 @@ func initialize_enemy(new_player: Player):
 	if new_player:
 		player = new_player
 	
+	enemy_hp_bar.max_value = health_component.max_health
+	enemy_hp_bar.value = health_component.current_health
+	enemy_damage_taken.connect(damage_taken)
 	prepare_states()
 
 func activate_enemy():
@@ -31,6 +36,9 @@ func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
 	#shader_animator.play("hurt")
 	hurt_effect()
 	resolve_hit(attack_object)
+
+func damage_taken(enemy: Enemy, damage: int):
+	enemy_hp_bar.value = health_component.current_health
 
 func hurt_effect():
 	mesh.set_instance_shader_parameter("hit_effect", true)

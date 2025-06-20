@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckonyraiy8awm"]
+
+[ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/player_ui.gd" id="1_iwa1g"]
+[ext_resource type="Texture2D" uid="uid://covrc1aenufh2" path="res://ui/hp_bar.png" id="2_lp0io"]
+[ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/player_hp.gdshader" id="3_ykvpg"]
+[ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/stamina_bar.png" id="4_hff70"]
+[ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/control_shake_component.gd" id="4_lp0io"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa8ul"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3uyut"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_l3tyk"]
+noise_type = 2
+frequency = 0.1062
+fractal_type = 0
+cellular_distance_function = 1
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yrpma"]
+width = 128
+height = 32
+noise = SubResource("FastNoiseLite_l3tyk")
+
+[sub_resource type="Gradient" id="Gradient_fa8ul"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3uyut"]
+gradient = SubResource("Gradient_fa8ul")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uyut"]
+shader = ExtResource("3_ykvpg")
+shader_parameter/visibility_gradient = SubResource("GradientTexture1D_3uyut")
+shader_parameter/noise = SubResource("NoiseTexture2D_yrpma")
+
+[node name="PlayerUI" type="CanvasLayer"]
+script = ExtResource("1_iwa1g")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HPBarContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/HPBarContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_lp0io")
+patch_margin_left = 9
+patch_margin_top = 4
+patch_margin_right = 14
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HPBarContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 4
+
+[node name="HPUnderBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HPBarContainer/MarginContainer"]
+unique_name_in_owner = true
+clip_children = 2
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_fa8ul")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3uyut")
+value = 100.0
+show_percentage = false
+
+[node name="HPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HPBarContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.611765, 0.0352941, 0.0352941, 1)
+clip_children = 2
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_fa8ul")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3uyut")
+value = 100.0
+show_percentage = false
+
+[node name="TextureRect" type="ColorRect" parent="MarginContainer/VBoxContainer/HPBarContainer/MarginContainer/HPBar"]
+material = SubResource("ShaderMaterial_3uyut")
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="ControlShakeComponent" type="Node" parent="MarginContainer/VBoxContainer/HPBarContainer/MarginContainer" node_paths=PackedStringArray("parent")]
+unique_name_in_owner = true
+script = ExtResource("4_lp0io")
+parent = NodePath("..")
+metadata/_custom_type_script = "uid://cw7150qpip3ff"
+
+[node name="StaminaBarContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/StaminaBarContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_hff70")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/StaminaBarContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="StaminaUnderBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/StaminaBarContainer/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.513726, 0.811765, 0.462745, 1)
+clip_children = 2
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_3uyut")
+value = 100.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/StaminaBarContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.513726, 0.811765, 0.462745, 1)
+clip_children = 2
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_3uyut")
+value = 100.0
+show_percentage = false

@@ -10,9 +10,9 @@ extends Node
 func _ready() -> void:
 	assert(entity)
 
-func initialize_health_component(max: int) -> void:
-	max_health = max
-	current_health = max
+func initialize_health_component(max_amount: int) -> void:
+	max_health = max_amount
+	current_health = max_amount
 
 func set_current_health(new: int) -> void:
 	current_health = new
@@ -20,6 +20,6 @@ func set_current_health(new: int) -> void:
 		current_health = max_health
 	elif current_health < 0:
 		current_health = 0
-		
+
 func lose_health(new: int) -> void:
 	set_current_health(new)

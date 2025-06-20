@@ -14,7 +14,7 @@ albedo_color = Color(0, 0.579476, 0.348665, 1)
 
 [sub_resource type="Resource" id="Resource_t2ogd"]
 script = ExtResource("6_o43dr")
-damage = 1
+damage = 15
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d4bo7"]
@@ -33,9 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223961, 0)
 collision_layer = 0
 collision_mask = 0
 material = SubResource("StandardMaterial3D_d4bo7")
-
-[node name="AnimationEffects" parent="." index="2"]
-unique_name_in_owner = true
 
 [node name="Attacks" type="Node3D" parent="." index="3"]
 
@@ -78,3 +75,6 @@ unique_name_in_owner = true
 script = ExtResource("5_qjyki")
 entity = NodePath("../..")
 move_speed = 550.0
+
+[node name="AnimationEffects" parent="." index="5"]
+unique_name_in_owner = true

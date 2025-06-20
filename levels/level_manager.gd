@@ -5,6 +5,7 @@ const LEVEL_AMOUNT: int = 8
 
 @onready var level_holder: Node3D = %LevelHolder
 @onready var fade: ColorRect = %Fade
+@onready var player_ui: PlayerUI = %PlayerUI
 
 @export var random_levels: Array[PackedScene] = []
 
@@ -24,6 +25,7 @@ func create_level():
 	var enemy_count: int = randi_range(1, new_level.enemy_limit)
 	new_level.setup_level(enemy_count)
 	new_level.level_completed.connect(level_complete)
+	player_ui.refresh_player(new_level)
 	
 	await fade_transition(false)
 	new_level.start_level()
@@ -32,6 +34,8 @@ func level_complete(level: LevelBase):
 	await fade_transition(true)
 	level.queue_free()
 	current_level += 1
+	
+	await get_tree().process_frame
 	
 	if current_level == LEVEL_AMOUNT:
 		return

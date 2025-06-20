@@ -1,6 +1,7 @@
 class_name CharacterEntity
 extends CharacterBody3D
 
+
 ## A class used for characters. Holds an animator, collision, a state machine, 
 ## and stats
 

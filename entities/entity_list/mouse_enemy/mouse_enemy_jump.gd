@@ -24,4 +24,4 @@ func st_physics_process(delta: float) -> void:
 		state_machine.change_state(&"Idle")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-	false
+	pass
