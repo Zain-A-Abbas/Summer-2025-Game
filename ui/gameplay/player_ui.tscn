@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckonyraiy8awm"]
+[gd_scene load_steps=17 format=3 uid="uid://ckonyraiy8awm"]
 
 [ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/gameplay/player_ui.gd" id="1_iwa1g"]
 [ext_resource type="Texture2D" uid="uid://covrc1aenufh2" path="res://ui/hp_bar.png" id="2_lp0io"]
 [ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/gameplay/player_hp.gdshader" id="3_ykvpg"]
 [ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/gameplay/stamina_bar.png" id="4_hff70"]
 [ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/gameplay/control_shake_component.gd" id="4_lp0io"]
+[ext_resource type="FontFile" uid="uid://6vdnir0giynu" path="res://ui/fonts/EBGaramond-Medium.ttf" id="6_ju7b5"]
+[ext_resource type="Texture2D" uid="uid://d1fb1y5jqb5by" path="res://ui/gameplay/parry_icon.png" id="6_sdglq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa8ul"]
 
@@ -33,6 +35,33 @@ gradient = SubResource("Gradient_fa8ul")
 shader = ExtResource("3_ykvpg")
 shader_parameter/visibility_gradient = SubResource("GradientTexture1D_3uyut")
 shader_parameter/noise = SubResource("NoiseTexture2D_yrpma")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8or87"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.834516, 0.51829, 7.70092e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdglq"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.000241665, 0.0790673, 0.361131, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="PlayerUI" type="CanvasLayer"]
 script = ExtResource("1_iwa1g")
@@ -149,3 +178,38 @@ layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_3uyut")
 value = 100.0
 show_percentage = false
+
+[node name="ParryIconContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ParryIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ParryIconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("6_sdglq")
+
+[node name="ParryIcon2" type="TextureRect" parent="MarginContainer/VBoxContainer/ParryIconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("6_sdglq")
+
+[node name="ParryIcon3" type="TextureRect" parent="MarginContainer/VBoxContainer/ParryIconContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("6_sdglq")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_8or87")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ju7b5")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_sdglq")
+text = "100"
+horizontal_alignment = 2

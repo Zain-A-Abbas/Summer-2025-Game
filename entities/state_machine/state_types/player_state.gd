@@ -9,7 +9,7 @@ func _init(new_player: Player) -> void:
 func get_player_movement() -> Vector2:
 	var move_vector: Vector2 = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 	
-	print(move_vector)
 	move_vector = move_vector.rotated(deg_to_rad(45))
 	
 	return move_vector
+	

@@ -13,9 +13,12 @@ const PARRY_REQUIREMENT: float = 20
 var stamina: float = 100.0
 var regenerating_stamina: bool = true
 var stamina_regeneration_cooldown: SceneTreeTimer = null
+var parry_counter: int = 0
+var can_get_parry_point: bool = false
 
 func _ready() -> void:
 	prepare_states()
+	hurtbox.hit_parried.connect(parry_received)
 
 func _physics_process(delta: float) -> void:
 	if regenerating_stamina:
@@ -28,6 +31,7 @@ func prepare_states():
 		StateInitializer.new(&"Idle", PlayerIdle.new(self)),
 		StateInitializer.new(&"Walk", PlayerWalk.new(self)),
 		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
+		StateInitializer.new(&"Parry", PlayerParry.new(self)),
 		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack))
 	]
 	
@@ -57,6 +61,12 @@ func can_dodge():
 
 func can_parry():
 	return stamina > 0.0
+
+func parry_received(attack_object: AttackObject):
+	if can_get_parry_point:
+		print("Got parrry point")
+		parry_counter = mini(parry_counter + 1, 3)
+		can_get_parry_point = false
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass

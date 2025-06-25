@@ -13,6 +13,8 @@ script = ExtResource("1_y4roy")
 [node name="StaticGeometry" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="GridMap" type="GridMap" parent="StaticGeometry"]
+
 [node name="DynamicGeometry" type="Node3D" parent="."]
 unique_name_in_owner = true
 

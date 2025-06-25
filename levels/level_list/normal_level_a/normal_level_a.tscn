@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8arawh4uq5bj"]
+[gd_scene load_steps=9 format=3 uid="uid://c8arawh4uq5bj"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_l001e"]
+[ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="2_bcpq6"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="2_p54ty"]
+[ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="3_bcpq6"]
+[ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="5_gj8st"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l001e"]
-albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bcpq6"]
+data = PackedVector3Array(-10, -10, 10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, 10, -10, -10, -10, -10, -10, -10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, 10, 10, 10, -10, 10, -10, -10, 10, 10, -10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td3eg"]
 resource_local_to_scene = true
@@ -16,31 +19,48 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="LevelBase" instance=ExtResource("1_l001e")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="0"]
-material_override = SubResource("StandardMaterial3D_l001e")
+[node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="0"]
 size = Vector3(20, 0.001, 20)
+material = ExtResource("2_bcpq6")
 
-[node name="LevelExit" parent="StaticGeometry" index="1" instance=ExtResource("2_p54ty")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5, 2.5, 0.5)
+[node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+flip_faces = true
+size = Vector3(20, 20, 20)
+material = ExtResource("3_bcpq6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/RoomBorders" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/RoomBorders/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("ConcavePolygonShape3D_bcpq6")
+
+[node name="LevelExit" parent="StaticGeometry" index="2" instance=ExtResource("2_p54ty")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 2.5, 0.5)
 material = SubResource("StandardMaterial3D_td3eg")
 
-[node name="LevelExit2" parent="StaticGeometry" index="2" instance=ExtResource("2_p54ty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10.5)
+[node name="LevelExit2" parent="StaticGeometry" index="3" instance=ExtResource("2_p54ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10)
 material = SubResource("StandardMaterial3D_p54ty")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticGeometry" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 13.375, -6)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticGeometry" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 10, -6)
 use_collision = true
 collision_layer = 32
 collision_mask = 0
-height = 26.75
+height = 20.0
+material = ExtResource("5_gj8st")
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="StaticGeometry" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 13.375, 5)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="StaticGeometry" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 10, 5)
 use_collision = true
 collision_layer = 32
 collision_mask = 0
-height = 26.75
+height = 20.0
+material = ExtResource("5_gj8st")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
@@ -52,10 +72,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 5)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
-transform = Transform3D(-0.980208, -0.0403766, 0.193808, 0.0608279, 0.870197, 0.488935, -0.188393, 0.491047, -0.850518, 2.23887, 5, 3.72436)
+transform = Transform3D(-0.965926, 0.12941, -0.224144, 0, 0.866026, 0.5, 0.258819, 0.482963, -0.836516, 2.23887, 5, 3.72436)
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
-transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561765, 0.286571, -0.580875, 0.76188, 4.54384, 5, -0.331621)
+transform = Transform3D(-0.965925, -0.12941, 0.224144, 0, -0.866025, -0.5, 0.258819, -0.482963, 0.836516, 4.54384, 5, -0.331621)
 
 [node name="Player" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)

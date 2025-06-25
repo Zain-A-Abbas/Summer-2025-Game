@@ -6,14 +6,17 @@ extends CanvasLayer
 @onready var stamina_under_bar: ProgressBar = %StaminaUnderBar
 @onready var stamina_bar: ProgressBar = %StaminaBar
 @onready var control_shake_component: ControlShakeComponent = %ControlShakeComponent
+@onready var parry_icons: Array[TextureRect] = [%ParryIcon, %ParryIcon2, %ParryIcon3]
 
 var player: Player = null
 
 # Runs every frame as stamina naturally regens
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if !player:
 		return
 	stamina_bar.value = player.stamina
+	for n in parry_icons.size():
+		parry_icons[n].visible = player.parry_counter > n
 
 # Runs when the player variable has to be refreshed
 func refresh_player(level: LevelBase):
