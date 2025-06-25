@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbqo8sih7vhnd"]
+[gd_scene load_steps=6 format=3 uid="uid://cbqo8sih7vhnd"]
 
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="1_banr2"]
 [ext_resource type="Script" uid="uid://c3h7kc3phhyww" path="res://levels/level_list/level_base.gd" id="1_y4roy"]
+[ext_resource type="Script" uid="uid://ov64hjfwby7d" path="res://levels/level_camera.gd" id="2_wo181"]
 [ext_resource type="PackedScene" uid="uid://dqt7pplnjhp3d" path="res://entities/entity_list/player/player.tscn" id="3_6i55e"]
 
 [sub_resource type="Environment" id="Environment_y4roy"]
@@ -30,9 +31,10 @@ environment = SubResource("Environment_y4roy")
 
 [node name="LevelCamera" type="Camera3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-0.707107, 0.296597, -0.641896, 0, 0.907777, 0.419452, 0.707106, 0.296597, -0.641896, -6.444, 5.516, -7.411)
+transform = Transform3D(-0.707106, 0.5, -0.5, 0, 0.707106, 0.707107, 0.707106, 0.5, -0.5, -8, 5.516, -8)
 projection = 1
 size = 16.0
+script = ExtResource("2_wo181")
 metadata/_edit_lock_ = true
 
 [node name="SceneDocumentation" parent="." instance=ExtResource("1_banr2")]

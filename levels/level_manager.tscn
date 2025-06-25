@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://c8arawh4uq5bj" path="res://levels/level_list/normal_level_a/normal_level_a.tscn" id="2_k4541"]
 [ext_resource type="PackedScene" uid="uid://du60bp5fltich" path="res://levels/level_list/normal_level_a/normal_level_b.tscn" id="3_ce4gc"]
-[ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/player_ui.tscn" id="5_6qk6f"]
+[ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/gameplay/player_ui.tscn" id="5_6qk6f"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")

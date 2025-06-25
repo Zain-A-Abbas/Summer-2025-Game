@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://ckonyraiy8awm"]
 
-[ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/player_ui.gd" id="1_iwa1g"]
+[ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/gameplay/player_ui.gd" id="1_iwa1g"]
 [ext_resource type="Texture2D" uid="uid://covrc1aenufh2" path="res://ui/hp_bar.png" id="2_lp0io"]
-[ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/player_hp.gdshader" id="3_ykvpg"]
-[ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/stamina_bar.png" id="4_hff70"]
-[ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/control_shake_component.gd" id="4_lp0io"]
+[ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/gameplay/player_hp.gdshader" id="3_ykvpg"]
+[ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/gameplay/stamina_bar.png" id="4_hff70"]
+[ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/gameplay/control_shake_component.gd" id="4_lp0io"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa8ul"]
 

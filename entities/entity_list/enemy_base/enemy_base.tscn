@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="4_thtn2"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_1uwf7"]
 [ext_resource type="Texture2D" uid="uid://b7ys383dwg6t0" path="res://effects/attack_indicator.png" id="6_mppf5"]
-[ext_resource type="Script" uid="uid://d3f44frlk47uw" path="res://ui/enemy_hp_bar.gd" id="7_6omki"]
+[ext_resource type="Script" uid="uid://d3f44frlk47uw" path="res://ui/gameplay/enemy_hp_bar.gd" id="7_6omki"]
 
 [sub_resource type="Animation" id="Animation_48pjb"]
 length = 0.001

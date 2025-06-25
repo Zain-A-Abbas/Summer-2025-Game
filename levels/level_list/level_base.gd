@@ -23,6 +23,7 @@ var enemy_count: int = 0
 var enemies_killed: int = 0
 
 func setup_level(enemy_spawn_count: int):
+	level_camera.initialize(player)
 	for n in enemy_spawn_count:
 		if n > enemy_positions.get_child_count():
 			push_error("More enemies provided to a level than it has positions for.")

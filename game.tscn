@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://nma1y4wurkbf"]
+
+[ext_resource type="Script" uid="uid://cu81hjiakt2wf" path="res://game.gd" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://bfqtt0b8q08g3" path="res://ui/title/title_layer.tscn" id="2_e2o6t"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_80nbo")
+
+[node name="TitleLayer" parent="." instance=ExtResource("2_e2o6t")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SimpleTransitions" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
