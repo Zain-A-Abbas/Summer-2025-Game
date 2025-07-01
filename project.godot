@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Summer 2025 Game"
-run/main_scene="uid://brn15rjrgdutk"
+run/main_scene="uid://nma1y4wurkbf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

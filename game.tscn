@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://nma1y4wurkbf"]
+[gd_scene load_steps=4 format=3 uid="uid://nma1y4wurkbf"]
 
 [ext_resource type="Script" uid="uid://cu81hjiakt2wf" path="res://game.gd" id="1_80nbo"]
 [ext_resource type="PackedScene" uid="uid://bfqtt0b8q08g3" path="res://ui/title/title_layer.tscn" id="2_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://brn15rjrgdutk" path="res://levels/level_manager.tscn" id="2_feb5d"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_80nbo")
+
+[node name="GameplayLayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="LevelManager" parent="GameplayLayer" instance=ExtResource("2_feb5d")]
+unique_name_in_owner = true
 
 [node name="TitleLayer" parent="." instance=ExtResource("2_e2o6t")]
 unique_name_in_owner = true

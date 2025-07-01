@@ -12,10 +12,11 @@ const LEVEL_AMOUNT: int = 8
 var current_level: int = 0
 
 func _ready() -> void:
-	begin_run()
+	pass
 
 func begin_run():
 	current_level = 1
+	player_ui.visible = true
 	await fade_transition(true)
 	create_level()
 

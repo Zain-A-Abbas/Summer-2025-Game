@@ -10,6 +10,10 @@ extends CanvasLayer
 
 var player: Player = null
 
+func _ready() -> void:
+	for icon in parry_icons:
+		icon.visible = false
+
 # Runs every frame as stamina naturally regens
 func _physics_process(delta: float) -> void:
 	if !player:
