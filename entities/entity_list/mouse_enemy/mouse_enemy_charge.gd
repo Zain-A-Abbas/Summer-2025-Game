@@ -8,20 +8,18 @@ var delta_count: float = 0
 var direction: Vector3 = Vector3.ZERO
 var distance_to_run: float = 0
 
-func _init(new_enemy: Enemy) -> void:
-	enemy = new_enemy
-
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	indicator_shown = false
 	if args.has("DISTANCE_TO_RUN"):
 		distance_to_run = args["DISTANCE_TO_RUN"]
+	enemy.action_animator.play("basic_enemy_animation_library/RESET")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 
 	direction = face_player()
-	enemy.rotation.y = Vector2(direction.x, -direction.z).angle() + deg_to_rad(90)
+	enemy.rotation.y = get_angle_to_face_player(direction)
 
 	if delta_count >= CHARGE_TIME * 0.5 && !indicator_shown:
 		indicator_shown = true

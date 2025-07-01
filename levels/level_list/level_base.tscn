@@ -21,7 +21,19 @@ unique_name_in_owner = true
 [node name="Enemies" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="EnemyData" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="JumpPositions" type="Node3D" parent="EnemyData"]
+
+[node name="DigPositions" type="Node3D" parent="EnemyData"]
+
+[node name="HatterPath" type="Node3D" parent="EnemyData"]
+
 [node name="EnemyPositions" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Projectiles" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="Lighting" type="Node3D" parent="."]

@@ -6,7 +6,17 @@ signal level_completed(level: LevelBase)
 const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
 const FLOWER_ENEMY = preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn")
 const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn")
-const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY]
+const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn")
+const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
+const CATERPILLAR_ENEMY = preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn")
+const ENEMY_TYPE_LIST: Array[Resource] = [
+	BASIC_ENEMY,
+	FLOWER_ENEMY,
+	MOUSE_ENEMY,
+	MAD_HATTER_ENEMY,
+	RED_KNIGHT_ENEMY,
+	CATERPILLAR_ENEMY
+	]
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -15,6 +25,8 @@ const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY
 @onready var world_environment: WorldEnvironment = %WorldEnvironment
 @onready var level_camera: Camera3D = %LevelCamera
 @onready var enemy_positions: Node3D = %EnemyPositions
+@onready var enemy_data: Node3D = %EnemyData
+@onready var projectiles: Node3D = %Projectiles
 @onready var player: Player = %Player
 
 @export var enemy_limit: int = 3
@@ -31,7 +43,7 @@ func setup_level(enemy_spawn_count: int):
 		
 		var new_enemy: Enemy = ENEMY_TYPE_LIST.pick_random().instantiate()
 		enemies.add_child(new_enemy)
-		new_enemy.initialize_enemy(player)
+		new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 		new_enemy.position = enemy_positions.get_child(n).position
 		new_enemy.enemy_killed.connect(enemy_kill)
 		

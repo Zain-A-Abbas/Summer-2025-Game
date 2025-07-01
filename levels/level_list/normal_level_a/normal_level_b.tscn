@@ -150,6 +150,39 @@ use_collision = true
 collision_layer = 32
 collision_mask = 0
 
+[node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90559, 0, 8.39041)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyData/JumpPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4172, 0, 7.4241)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyData/JumpPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7606, 0, -2.0269)
+
+[node name="Marker3D" type="Marker3D" parent="EnemyData/DigPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55553, 0, 4.33662)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyData/DigPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4812, 0, 1.48482)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyData/DigPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.89893, 0, 2.82823)
+
+[node name="Marker3D4" type="Marker3D" parent="EnemyData/DigPositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34327, 0, 2.33329)
+
+[node name="Marker3D" type="Marker3D" parent="EnemyData/HatterPath" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.23555, 0, -2.16831)
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyData/HatterPath" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39054, 0, 8.39041)
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyData/HatterPath" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9088, 0, 5.27936)
+
+[node name="Marker3D4" type="Marker3D" parent="EnemyData/HatterPath" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.818, 0, -2.99321)
+
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -2)
 gizmo_extents = 0.96
