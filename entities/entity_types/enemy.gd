@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterEntity
 
-signal enemy_killed
+signal enemy_killed(enemy: Enemy)
 signal enemy_damage_taken(enemy: Enemy, damage: int)
 
 @onready var attack_indicator_animator: AnimationPlayer = %AttackIndicatorAnimator
@@ -46,5 +46,5 @@ func hurt_effect():
 	mesh.set_instance_shader_parameter("hit_effect", false)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
-	enemy_killed.emit()
+	enemy_killed.emit(self)
 	queue_free()

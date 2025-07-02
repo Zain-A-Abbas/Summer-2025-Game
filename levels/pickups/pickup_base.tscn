@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://onushv8dgjk8"]
+
+[ext_resource type="Script" uid="uid://ckeumob1m6we5" path="res://levels/pickups/pickup_base.gd" id="1_qmy16"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qmy16"]
+height = 2.74951
+
+[node name="Pickup" type="Marker3D"]
+script = ExtResource("1_qmy16")
+
+[node name="PickupModel" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(0.999992, 0, 0.00408822, 0, 1, 0, -0.00408822, 0, 0.999992, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.375, 0)
+shape = SubResource("CapsuleShape3D_qmy16")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

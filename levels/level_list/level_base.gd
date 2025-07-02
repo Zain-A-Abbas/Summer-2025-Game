@@ -1,8 +1,17 @@
 class_name LevelBase
 extends Node3D
 
-signal level_completed(level: LevelBase)
+signal level_completed(level: LevelBase, next_level: LevelType)
 
+enum LevelType {
+	NORMAL,
+	ELITE,
+	SHOP,
+	HEALING,
+	BOSS
+}
+
+const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
 const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
 const FLOWER_ENEMY = preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn")
 const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn")
@@ -17,12 +26,17 @@ const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY
 @onready var enemy_positions: Node3D = %EnemyPositions
 @onready var player: Player = %Player
 
+@export var has_enemies: bool = true
 @export var enemy_limit: int = 3
 
 var enemy_count: int = 0
 var enemies_killed: int = 0
+var level_manager: LevelManager
+var type: LevelType
 
-func setup_level(enemy_spawn_count: int):
+func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_count: int):
+	level_manager = _level_manager 
+	type = _type
 	level_camera.initialize(player)
 	for n in enemy_spawn_count:
 		if n > enemy_positions.get_child_count():
@@ -38,6 +52,7 @@ func setup_level(enemy_spawn_count: int):
 		enemy_count += 1
 	
 	for exit in get_level_exits():
+		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
 
 func start_level():
@@ -47,15 +62,20 @@ func start_level():
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 
-func enemy_kill():
+func enemy_kill(enemy: Enemy):
 	enemies_killed += 1
+	
+	var enemy_position: Vector3 = enemy.position
+	var money_pickup: MoneyPickup = MONEY_PICKUP.instantiate()
+	add_child(money_pickup)
+	money_pickup.position = enemy_position + Vector3(0.0, 1.0 * randf(), 0.0)
 	
 	if enemies_killed == enemy_count:
 		for exit in get_level_exits():
 			exit.activate()
 
-func exit_choose():
-	level_completed.emit(self)
+func exit_choose(exit_type: LevelType):
+	level_completed.emit(self, exit_type)
 
 func get_level_exits() -> Array[LevelExit]:
 	var exits: Array[LevelExit] = []

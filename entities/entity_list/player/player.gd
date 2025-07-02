@@ -2,6 +2,8 @@ class_name Player
 extends CharacterEntity
 
 signal player_damage_taken(player: Player, damage: int)
+signal player_hp_recovered(player: Player)
+signal obtained_money(amount: int)
 
 const DODGE_REQUIREMENT: float = 50
 const PARRY_REQUIREMENT: float = 20
@@ -11,10 +13,12 @@ const PARRY_REQUIREMENT: float = 20
 
 # Required for parrying/dodging
 var stamina: float = 100.0
+var max_stamina: float = 100.0
 var regenerating_stamina: bool = true
 var stamina_regeneration_cooldown: SceneTreeTimer = null
 var parry_counter: int = 0
 var can_get_parry_point: bool = false
+var upgrades: PlayerUpgrades
 
 func _ready() -> void:
 	prepare_states()
@@ -22,7 +26,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if regenerating_stamina:
-		stamina = minf(stamina + delta * 100.0, 100.0)
+		stamina = minf(stamina + delta * 100.0, max_stamina)
 
 func prepare_states():
 	# The & before string declarations marks it as a StringName, which is a
@@ -36,6 +40,13 @@ func prepare_states():
 	]
 	
 	state_machine.assign_states(player_states)
+
+# Any code that has to be run on initializing a character scene
+# involving upgrades
+func initialize_upgrades(_upgrades: PlayerUpgrades):
+	upgrades = _upgrades
+	health_component.max_health = 100 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
+	max_stamina = 100 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
 
 # regeneration_cooldown is the amount of time before stamina starts regenerating again
 # is overwritten whenever another stamina action is taken
@@ -70,6 +81,13 @@ func parry_received(attack_object: AttackObject):
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass
+
+func heal(heal_amount: int):
+	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
+	player_hp_recovered.emit(self)
+
+func gain_money(amount: int):
+	obtained_money.emit(amount)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
 	print("player hit")

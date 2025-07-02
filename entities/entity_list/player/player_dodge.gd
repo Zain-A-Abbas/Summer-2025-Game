@@ -3,8 +3,8 @@ extends PlayerState
 
 const INVINCIBILITY_PERIOD: float = 0.7
 const DODGE_TIME: float = 0.12
+const DODGE_SPEED: float = 2000.0
 
-var dodge_speed: float = 2000.0
 var delta_count: float = 0
 var direction: Vector2 = Vector2.ZERO
 var movement_vector: Vector3 = Vector3.ZERO
@@ -29,5 +29,5 @@ func st_physics_process(delta: float) -> void:
 		state_machine.change_state(&"Idle")
 		return
 	
-	player.velocity = movement_vector * dodge_speed * delta
+	player.velocity = movement_vector * DODGE_SPEED * delta
 	player.move_and_slide()

@@ -54,4 +54,9 @@ attack={
 
 [layer_names]
 
-3d_physics/layer_6="level geometry"
+3d_physics/layer_1="Character Entities"
+3d_physics/layer_2="Player Attacks / Enemy Hurtboxes"
+3d_physics/layer_3="Enemy Attacks / Player Hurtboxes"
+3d_physics/layer_5="Player entity"
+3d_physics/layer_6="Level Geometry"
+3d_physics/layer_7="Pickups"

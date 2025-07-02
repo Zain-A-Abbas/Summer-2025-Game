@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6p3lqty2vji6"]
+
+[ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_yv52d"]
+[ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="2_qaiub"]
+[ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="3_34f4p"]
+[ext_resource type="PackedScene" uid="uid://gmsq1y4yy4qy" path="res://levels/pickups/health_pickup.tscn" id="3_45j1t"]
+[ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="5_lvp2l"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_34f4p"]
+data = PackedVector3Array(-2.5, -10, 10, -2.5, 10, -10, -2.5, -10, -10, 2.5, -10, -10, -2.5, -10, 10, -2.5, -10, -10, -2.5, 10, -10, 2.5, -10, -10, -2.5, -10, -10, -2.5, 10, -10, -2.5, -10, 10, -2.5, 10, 10, -2.5, -10, 10, 2.5, 10, 10, -2.5, 10, 10, 2.5, 10, 10, -2.5, 10, -10, -2.5, 10, 10, -2.5, -10, 10, 2.5, -10, -10, 2.5, -10, 10, 2.5, 10, 10, -2.5, -10, 10, 2.5, -10, 10, 2.5, -10, -10, 2.5, 10, 10, 2.5, -10, 10, 2.5, -10, -10, -2.5, 10, -10, 2.5, 10, -10, -2.5, 10, -10, 2.5, 10, 10, 2.5, 10, -10, 2.5, 10, 10, 2.5, -10, -10, 2.5, 10, -10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4w3o"]
+resource_local_to_scene = true
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="HealingLevel" instance=ExtResource("1_yv52d")]
+has_enemies = false
+enemy_limit = 0
+
+[node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0303588, -0.018055, -0.0148363)
+size = Vector3(5, 0.001, 20)
+material = ExtResource("2_qaiub")
+
+[node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0303588, 9.98195, -0.0148363)
+flip_faces = true
+size = Vector3(5, 20, 20)
+material = ExtResource("3_34f4p")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/RoomBorders" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/RoomBorders/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("ConcavePolygonShape3D_34f4p")
+
+[node name="LevelExit" parent="StaticGeometry" index="3" instance=ExtResource("5_lvp2l")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 10)
+material = SubResource("StandardMaterial3D_h4w3o")
+always_active = true
+
+[node name="Pickup" parent="DynamicGeometry" index="0" instance=ExtResource("3_45j1t")]
+
+[node name="Player" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)

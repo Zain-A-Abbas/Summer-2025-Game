@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckonyraiy8awm"]
+[gd_scene load_steps=25 format=3 uid="uid://ckonyraiy8awm"]
 
 [ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/gameplay/player_ui.gd" id="1_iwa1g"]
 [ext_resource type="Texture2D" uid="uid://covrc1aenufh2" path="res://ui/hp_bar.png" id="2_lp0io"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/gameplay/control_shake_component.gd" id="4_lp0io"]
 [ext_resource type="FontFile" uid="uid://6vdnir0giynu" path="res://ui/fonts/EBGaramond-Medium.ttf" id="6_ju7b5"]
 [ext_resource type="Texture2D" uid="uid://d1fb1y5jqb5by" path="res://ui/gameplay/parry_icon.png" id="6_sdglq"]
+[ext_resource type="PackedScene" uid="uid://dow5xh6u62ut6" path="res://ui/gameplay/upgrade_icon.tscn" id="7_px7i6"]
+[ext_resource type="Texture2D" uid="uid://b7q61alf85a1m" path="res://ui/gameplay/upgrade_icons.png" id="7_sa7yd"]
+[ext_resource type="Script" uid="uid://cop5jayavrbqi" path="res://ui/gameplay/money_label.gd" id="8_uammv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa8ul"]
 
@@ -35,6 +38,31 @@ gradient = SubResource("Gradient_fa8ul")
 shader = ExtResource("3_ykvpg")
 shader_parameter/visibility_gradient = SubResource("GradientTexture1D_3uyut")
 shader_parameter/noise = SubResource("NoiseTexture2D_yrpma")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa7yd"]
+resource_local_to_scene = true
+atlas = ExtResource("7_sa7yd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px7i6"]
+resource_local_to_scene = true
+atlas = ExtResource("7_sa7yd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73dah"]
+resource_local_to_scene = true
+atlas = ExtResource("7_sa7yd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jpfb"]
+resource_local_to_scene = true
+atlas = ExtResource("7_sa7yd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho7n4"]
+resource_local_to_scene = true
+atlas = ExtResource("7_sa7yd")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8or87"]
 content_margin_left = 4.0
@@ -197,6 +225,36 @@ unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("6_sdglq")
 
+[node name="UpgradeIconsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="UpgradeIcon" parent="MarginContainer/VBoxContainer/UpgradeIconsContainer" instance=ExtResource("7_px7i6")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_sa7yd")
+
+[node name="UpgradeIcon2" parent="MarginContainer/VBoxContainer/UpgradeIconsContainer" instance=ExtResource("7_px7i6")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_px7i6")
+type = 1
+
+[node name="UpgradeIcon3" parent="MarginContainer/VBoxContainer/UpgradeIconsContainer" instance=ExtResource("7_px7i6")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_73dah")
+type = 2
+
+[node name="UpgradeIcon4" parent="MarginContainer/VBoxContainer/UpgradeIconsContainer" instance=ExtResource("7_px7i6")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3jpfb")
+type = 3
+
+[node name="UpgradeIcon5" parent="MarginContainer/VBoxContainer/UpgradeIconsContainer" instance=ExtResource("7_px7i6")]
+layout_mode = 2
+texture = SubResource("AtlasTexture_ho7n4")
+type = 4
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
@@ -206,10 +264,12 @@ layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_8or87")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+[node name="MoneyLabel" type="Label" parent="MarginContainer/VBoxContainer2/PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_ju7b5")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_sdglq")
-text = "100"
+text = "0"
 horizontal_alignment = 2
+script = ExtResource("8_uammv")

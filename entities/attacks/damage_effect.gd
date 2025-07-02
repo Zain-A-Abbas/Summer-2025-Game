@@ -7,7 +7,8 @@ func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
 	var final_damage: int = damage
 	if delivering_object.entity is Player:
 		var player: Player = delivering_object.entity
-		final_damage = damage * (1 + player.parry_counter)
+		final_damage = (damage + player.upgrades.extra_damage * player.upgrades.EXTRA_DAMAGE_AMOUNT)
+		final_damage *= (1 + (0.5 + player.upgrades.extra_parry_damage * player.upgrades.EXTRA_PARRY_DAMAGE_AMOUNT) * player.parry_counter)
 		player.parry_counter = 0
 	
 	target.health_component.lose_health(target.health_component.current_health - final_damage)

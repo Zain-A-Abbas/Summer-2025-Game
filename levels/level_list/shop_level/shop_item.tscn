@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm305f8o7tal4"]
+
+[ext_resource type="Script" uid="uid://c8o7bbwbne1r" path="res://levels/level_list/shop_level/shop_item.gd" id="1_08rys"]
+[ext_resource type="Texture2D" uid="uid://b7q61alf85a1m" path="res://ui/gameplay/upgrade_icons.png" id="1_y37k2"]
+[ext_resource type="FontFile" uid="uid://ctndt3nkkcfpe" path="res://ui/fonts/EBGaramond-Bold.ttf" id="3_08rys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nt1ym"]
+resource_local_to_scene = true
+atlas = ExtResource("1_y37k2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kltmr"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_08rys"]
+radius = 1.0
+
+[node name="ShopItem" type="Node3D"]
+script = ExtResource("1_08rys")
+
+[node name="ItemSprite" type="Sprite3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+pixel_size = 0.0313
+billboard = 1
+texture = SubResource("AtlasTexture_nt1ym")
+
+[node name="PlayerDetectionArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kltmr")
+
+[node name="PlayerHitArea" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_08rys")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+
+[node name="PriceLabel" type="Label3D" parent="Node3D"]
+unique_name_in_owner = true
+pixel_size = 0.01
+billboard = 1
+text = "200 GOLD"
+font = ExtResource("3_08rys")
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="area_entered" from="PlayerHitArea" to="." method="_on_player_hit_area_area_entered"]
