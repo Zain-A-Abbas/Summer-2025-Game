@@ -10,7 +10,7 @@ albedo_color = Color(0.389287, 0.389287, 0.389287, 1)
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="LevelBase" instance=ExtResource("1_ram35")]
+[node name="BossLevel" instance=ExtResource("1_ram35")]
 enemy_limit = 1
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="0"]

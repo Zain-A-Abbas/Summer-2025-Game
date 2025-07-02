@@ -10,6 +10,7 @@ const LEVEL_AMOUNT: int = 8
 @export var random_levels: Array[PackedScene] = []
 
 var current_level: int = 0
+var is_boss_level: bool = false
 
 func _ready() -> void:
 	pass
@@ -21,10 +22,14 @@ func begin_run():
 	create_level()
 
 func create_level():
-	var new_level: LevelBase = random_levels.pick_random().instantiate()
+	#var new_level: LevelBase = random_levels.pick_random().instantiate()
+	var new_level: LevelBase = random_levels[2].instantiate()
 	level_holder.add_child(new_level)
 	var enemy_count: int = randi_range(1, new_level.enemy_limit)
-	new_level.setup_level(enemy_count)
+	if new_level.name == &"BossLevel":
+		is_boss_level = true
+	
+	new_level.setup_level(enemy_count, is_boss_level)
 	new_level.level_completed.connect(level_complete)
 	player_ui.refresh_player(new_level)
 	
