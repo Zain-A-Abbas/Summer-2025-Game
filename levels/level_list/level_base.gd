@@ -45,7 +45,6 @@ func setup_level(enemy_spawn_count: int, is_boss_level: bool):
 		boss.position =enemy_positions.get_child(0).position
 		
 		enemy_count += 1
-	
 	else:
 		for n in enemy_spawn_count:
 			if n > enemy_positions.get_child_count():
