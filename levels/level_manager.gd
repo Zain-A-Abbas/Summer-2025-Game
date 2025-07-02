@@ -29,7 +29,7 @@ func begin_run():
 	current_level = 1
 	player_ui.visible = true
 	await fade_transition(true)
-	create_level(LevelBase.LevelType.SHOP)
+	create_level()
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase
