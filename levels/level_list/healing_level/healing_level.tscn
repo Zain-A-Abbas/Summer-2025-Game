@@ -44,5 +44,5 @@ always_active = true
 
 [node name="Pickup" parent="DynamicGeometry" index="0" instance=ExtResource("3_45j1t")]
 
-[node name="Player" parent="." index="7"]
+[node name="Player" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)

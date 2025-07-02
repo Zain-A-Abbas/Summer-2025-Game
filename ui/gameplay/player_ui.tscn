@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://ckonyraiy8awm"]
 
 [ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/gameplay/player_ui.gd" id="1_iwa1g"]
-[ext_resource type="Texture2D" uid="uid://covrc1aenufh2" path="res://ui/hp_bar.png" id="2_lp0io"]
+[ext_resource type="Texture2D" uid="uid://bhcoxvch2vy50" path="res://ui/gameplay/hp_bar.png" id="2_lp0io"]
 [ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/gameplay/player_hp.gdshader" id="3_ykvpg"]
 [ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/gameplay/stamina_bar.png" id="4_hff70"]
 [ext_resource type="Script" uid="uid://cw7150qpip3ff" path="res://ui/gameplay/control_shake_component.gd" id="4_lp0io"]
@@ -118,17 +118,17 @@ size_flags_horizontal = 0
 texture_filter = 1
 layout_mode = 2
 texture = ExtResource("2_lp0io")
-patch_margin_left = 9
+patch_margin_left = 5
 patch_margin_top = 4
-patch_margin_right = 14
+patch_margin_right = 5
 patch_margin_bottom = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HPBarContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 6
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
 [node name="HPUnderBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HPBarContainer/MarginContainer"]
 unique_name_in_owner = true

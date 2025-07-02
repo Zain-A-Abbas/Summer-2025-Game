@@ -12,13 +12,25 @@ signal enemy_damage_taken(enemy: Enemy, damage: int)
 @export var animation_tree: AnimationTree
 
 var player: Player
+var enemy_data: Node3D
+var enemy_positions: Node3D
+var enemy_list: Node3D
+var projectiles: Node3D
 
 func _ready() -> void:
 	set_process(false)
 
-func initialize_enemy(new_player: Player):
+func initialize_enemy(new_player: Player, data: Node3D, positions: Node3D, list: Node3D, projs: Node3D):
 	if new_player:
 		player = new_player
+	if data:
+		enemy_data = data
+	if positions:
+		enemy_positions = positions
+	if list:
+		enemy_list = list
+	if projs:
+		projectiles = projs
 	
 	enemy_hp_bar.max_value = health_component.max_health
 	enemy_hp_bar.value = health_component.current_health
@@ -33,9 +45,7 @@ func prepare_states():
 	pass
 
 func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
-	#shader_animator.play("hurt")
-	hurt_effect()
-	resolve_hit(attack_object)
+	pass
 
 func damage_taken(enemy: Enemy, damage: int):
 	enemy_hp_bar.value = health_component.current_health

@@ -90,5 +90,5 @@ func gain_money(amount: int):
 	obtained_money.emit(amount)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
-	print("player hit")
+	#print("player hit")
 	resolve_hit(attack_object)
