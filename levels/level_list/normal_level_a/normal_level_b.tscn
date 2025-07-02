@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://du60bp5fltich"]
+[gd_scene load_steps=9 format=3 uid="uid://du60bp5fltich"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_cqy00"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="2_u0w40"]
 [ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="3_nwbf8"]
 [ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="4_ey1mq"]
+[ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="5_ey1mq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ey1mq"]
 resource_local_to_scene = true
@@ -27,134 +28,12 @@ material = SubResource("StandardMaterial3D_ey1mq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 10)
 material = SubResource("StandardMaterial3D_u0w40")
 
-[node name="Node3D" type="Node3D" parent="StaticGeometry" index="3"]
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Node3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.5, 2)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="StaticGeometry/Node3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.5, 1)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="StaticGeometry/Node3D" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.5, 0)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="StaticGeometry/Node3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, -1)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="StaticGeometry/Node3D" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.5, 3)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="StaticGeometry/Node3D" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.5, 2)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="StaticGeometry/Node3D" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 1)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="StaticGeometry/Node3D" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.5, 0)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="StaticGeometry/Node3D" index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.5, 4)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="StaticGeometry/Node3D" index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.5, 3)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="StaticGeometry/Node3D" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 2)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="StaticGeometry/Node3D" index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="StaticGeometry/Node3D" index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 5)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="StaticGeometry/Node3D" index="13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 4)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="StaticGeometry/Node3D" index="14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 3)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="StaticGeometry/Node3D" index="15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 2)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="StaticGeometry/Node3D" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.5, 6)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="StaticGeometry/Node3D" index="17"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.5, 5)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="StaticGeometry/Node3D" index="18"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 4)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="StaticGeometry/Node3D" index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 3)
-use_collision = true
-collision_layer = 32
-collision_mask = 0
-
-[node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="4"]
+[node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 size = Vector3(32, 0.001, 20)
 material = ExtResource("3_nwbf8")
 
-[node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="5"]
+[node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 10, 0)
 flip_faces = true
 size = Vector3(32, 20, 20)
@@ -168,6 +47,68 @@ collision_mask = 0
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/RoomBorders/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 shape = SubResource("ConcavePolygonShape3D_q5buu")
+
+[node name="Walls" type="Node3D" parent="StaticGeometry" index="5"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry/Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="StaticGeometry/Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="StaticGeometry/Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, -5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="StaticGeometry/Walls" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="StaticGeometry/Walls" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="StaticGeometry/Walls" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="StaticGeometry/Walls" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="StaticGeometry/Walls" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="StaticGeometry/Walls" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="StaticGeometry/Walls" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="StaticGeometry/Walls" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
+size = Vector3(0.5, 2, 6)
+material = ExtResource("5_ey1mq")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90559, 0, 8.39041)

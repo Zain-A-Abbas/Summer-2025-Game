@@ -13,6 +13,7 @@ const LEVEL_AMOUNT: int = 10
 @export var elite_levels: Array[PackedScene] = []
 @export var healing_level: PackedScene
 @export var shop_level: PackedScene
+@export var boss_level: PackedScene
 
 var current_level: int = 0
 var money: int = 1000
@@ -29,7 +30,7 @@ func begin_run():
 	current_level = 1
 	player_ui.visible = true
 	await fade_transition(true)
-	create_level()
+	create_level(LevelBase.LevelType.BOSS)
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase
@@ -44,6 +45,8 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		new_level = healing_level.instantiate()
 	elif new_level_type == LevelBase.LevelType.SHOP:
 		new_level = shop_level.instantiate()
+	elif new_level_type == LevelBase.LevelType.BOSS:
+		new_level = boss_level.instantiate()
 	
 	level_holder.add_child(new_level)
 	var enemy_count: int = randi_range(1, new_level.enemy_limit)

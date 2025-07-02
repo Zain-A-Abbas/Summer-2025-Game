@@ -13,3 +13,5 @@ script = ExtResource("3_5dc3o")
 metadata/_custom_type_script = "uid://3ilqij2x3es4"
 
 [node name="AnimationEffects" type="AnimationPlayer" parent="."]
+
+[node name="Sounds" type="Node3D" parent="."]

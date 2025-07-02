@@ -15,6 +15,10 @@ run/main_scene="uid://nma1y4wurkbf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SE="*res://audio/se.gd"
+
 [global_group]
 
 player=""

@@ -75,7 +75,6 @@ func can_parry():
 
 func parry_received(attack_object: AttackObject):
 	if can_get_parry_point:
-		print("Got parrry point")
 		parry_counter = mini(parry_counter + 1, 3)
 		can_get_parry_point = false
 
