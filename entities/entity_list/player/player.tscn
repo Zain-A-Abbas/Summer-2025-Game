@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=40 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_bqsy2"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="3_j773i"]
+[ext_resource type="PackedScene" uid="uid://dt20yjd5m0pa8" path="res://entities/entity_list/player/player_animator.tscn" id="3_w7qv5"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_okb7e"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="4_seik3"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_037cv"]
@@ -79,6 +80,162 @@ _data = {
 &"basic_attack": SubResource("Animation_tvlpa")
 }
 
+[sub_resource type="Animation" id="Animation_nda3u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/WalkBlend/blend_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/AnimationTree:parameters/Attack1/request")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimator/AnimationTree:parameters/WalkTimeScale/scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerAnimator/AnimationTree:parameters/Attack2/request")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PlayerAnimator/AnimationTree:parameters/Attack2TimeScale/scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_vvnrl"]
+resource_name = "attack_1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/Attack1/request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("basic_attack"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_0y12j"]
+resource_name = "attack_2"
+length = 0.5
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("basic_attack"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/AnimationTree:parameters/Attack2/request")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_w7qv5"]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/WalkBlend/blend_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7byxq"]
+resource_name = "walk"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/WalkBlend/blend_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nda3u"]
+_data = {
+&"RESET": SubResource("Animation_nda3u"),
+&"attack_1": SubResource("Animation_vvnrl"),
+&"attack_2": SubResource("Animation_0y12j"),
+&"idle": SubResource("Animation_w7qv5"),
+&"walk": SubResource("Animation_7byxq")
+}
+
 [sub_resource type="Resource" id="Resource_w7qv5"]
 script = ExtResource("5_037cv")
 damage = 8
@@ -125,28 +282,67 @@ shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
 
-[node name="Player" node_paths=PackedStringArray("hurtbox", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
+[node name="Player" node_paths=PackedStringArray("hurtbox", "animation_tree", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
 collision_layer = 17
 script = ExtResource("1_xb04b")
 hurtbox = NodePath("Hurtbox")
+animation_tree = NodePath("PlayerAnimator/AnimationTree")
 health_component = NodePath("Components/HealthComponent")
 movement_component = NodePath("Components/MovementComponent")
 
-[node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="0"]
+[node name="PlayerAnimator" parent="." index="0" instance=ExtResource("3_w7qv5")]
+transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
+
+[node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
+bones/1/position = Vector3(-0.00297523, 2.70462, -0.409255)
+bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
+bones/3/rotation = Quaternion(0.166886, -0.0412831, 5.77858e-05, 0.985112)
+bones/4/rotation = Quaternion(0.281784, -0.114568, -0.0274857, 0.952217)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0205385, 0.942777, -0.332743, 0.00569932)
+bones/7/rotation = Quaternion(0.205827, -0.768345, 0.334128, 0.505608)
+bones/8/rotation = Quaternion(0.0537605, 0.648813, 0.0694092, 0.755866)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.0378251, 0.0173373, 0.0123011, 0.999058)
+bones/13/rotation = Quaternion(-0.171587, 0.0774335, 0.0188029, 0.981941)
+bones/14/rotation = Quaternion(0.102472, 0.172754, -0.0155161, 0.979497)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.209203, 0.751055, -0.28673, 0.55672)
+bones/19/rotation = Quaternion(-0.0215102, -0.613571, -0.000971916, 0.789346)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.00130537, 0.227443, 0.955739, -0.18663)
+bones/26/rotation = Quaternion(0.0392324, 0.848039, -0.524564, 0.0642131)
+bones/27/rotation = Quaternion(-0.0842954, 0.599501, -0.792283, 0.0760316)
+bones/28/rotation = Quaternion(0.00212408, 0.0247376, 0.952452, 0.303676)
+bones/29/rotation = Quaternion(-0.16162, 0.79778, -0.524386, -0.249891)
+bones/30/rotation = Quaternion(0.21924, 0.463572, -0.849086, 0.126842)
+
+[node name="AnimationTree" parent="PlayerAnimator" index="2"]
+parameters/Attack1/request = 2
+
+[node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_xb04b")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_w7qv5")
 
-[node name="AnimationEffects" parent="." index="3"]
+[node name="AnimationEffects" parent="." index="4"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_qn7ef")
 }
 
-[node name="Attacks" type="Node3D" parent="." index="4"]
+[node name="ActionAnimator" type="AnimationPlayer" parent="." index="5"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_nda3u")
+}
+
+[node name="Attacks" type="Node3D" parent="." index="6"]
 
 [node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
@@ -167,11 +363,12 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 
 shape = SubResource("CapsuleShape3D_bqsy2")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_y07nu")
 instance_shader_parameters/lifetime = 0.01
 mesh = ExtResource("9_tvlpa")
 
-[node name="Hurtbox" type="Area3D" parent="." index="5"]
+[node name="Hurtbox" type="Area3D" parent="." index="7"]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -181,7 +378,7 @@ script = ExtResource("12_w7qv5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_y07nu")
 
-[node name="Components" type="Node" parent="." index="6"]
+[node name="Components" type="Node" parent="." index="8"]
 
 [node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
@@ -196,12 +393,11 @@ script = ExtResource("13_y07nu")
 entity = NodePath("../..")
 move_speed = 550.0
 
-[node name="AudioListener3D" type="AudioListener3D" parent="." index="7"]
+[node name="AudioListener3D" type="AudioListener3D" parent="." index="9"]
 current = true
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]
 
+[editable path="PlayerAnimator"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

@@ -1,6 +1,10 @@
 class_name PlayerWalk
 extends PlayerState
 
+
+func enter_state(previous_state: State, args: Dictionary[String, Variant]):
+	player.action_animator.play("walk")
+
 func st_physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		state_machine.change_state(&"Attack", {"attack_name": &"basic_attack"})

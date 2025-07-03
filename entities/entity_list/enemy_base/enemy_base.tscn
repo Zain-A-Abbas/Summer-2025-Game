@@ -86,6 +86,7 @@ health_component = NodePath("Components/HealthComponent")
 movement_component = NodePath("Components/MovementComponent")
 
 [node name="Attacks" type="Node3D" parent="." index="2"]
+unique_name_in_owner = true
 
 [node name="Hurtbox" type="Area3D" parent="." index="3"]
 collision_layer = 0

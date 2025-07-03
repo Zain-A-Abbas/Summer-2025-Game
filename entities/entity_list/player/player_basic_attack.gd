@@ -3,7 +3,7 @@ extends PlayerState
 
 # Used to access the AnimationEffects node for visuals.
 const ACTION_NAME: String = "basic_attack"
-const LENGTH: float = 0.15
+const LENGTH: float = 0.2
 const CANCEL_THRESHOLD: float = 0.1
 const COMBO_TIME: float = 0.4
 const MOVE_SPEED: float = 400.0
@@ -34,8 +34,11 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	# Flip second attack
 	if combo == 2:
 		attack_object.scale.x = -1
+		player.action_animator.play("attack_2")
 	else:
 		attack_object.scale.x = 1 
+		player.animation_tree["parameters/Attack1TimeSeek/seek_request"] = 0.3
+		player.action_animator.play("attack_1")
 	
 	movement_vector = Vector3(0, 0, -MOVE_SPEED).rotated(Vector3.UP, player.rotation.y).normalized()
 	
@@ -63,6 +66,7 @@ func st_physics_process(delta: float) -> void:
 	player.velocity = movement_vector * MOVE_SPEED * delta
 	player.move_and_slide()
 
-
 func exit_state(next_state: State, args: Dictionary[String, Variant]):
 	time_on_last_attack = Time.get_ticks_msec() / 1000.0
+	player.animation_tree["parameters/Attack1/request"] = 2
+	player.animation_tree["parameters/Attack2/request"] = 2

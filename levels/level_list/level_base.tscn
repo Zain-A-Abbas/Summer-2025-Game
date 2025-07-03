@@ -47,7 +47,7 @@ environment = SubResource("Environment_y4roy")
 unique_name_in_owner = true
 transform = Transform3D(-0.707106, 0.5, -0.5, 0, 0.707106, 0.707107, 0.707106, 0.5, -0.5, -8, 5.516, -8)
 projection = 1
-size = 16.0
+size = 12.0
 script = ExtResource("2_wo181")
 metadata/_edit_lock_ = true
 
