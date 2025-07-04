@@ -58,7 +58,7 @@ animation = &"placeholder_animations/Jog_Fwd"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lor2s"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lor2s"]
-graph_offset = Vector2(361.957, 139.733)
+graph_offset = Vector2(1141.42, 507.485)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lor2s")
 nodes/Animation/position = Vector2(-540, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lfi0l")
@@ -100,34 +100,34 @@ node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeSca
 
 [node name="GeneralSkeleton" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/1/position = Vector3(0.0618294, 2.78328, -0.409158)
+bones/1/position = Vector3(-0.00323228, 2.70476, -0.409017)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
 bones/2/enabled = false
 bones/3/enabled = false
-bones/3/rotation = Quaternion(0.167809, -0.0413341, 0.000199346, 0.984953)
-bones/4/rotation = Quaternion(0.28508, -0.114726, -0.0269616, 0.951231)
+bones/3/rotation = Quaternion(0.16462, -0.0411571, -0.000289124, 0.985498)
+bones/4/rotation = Quaternion(0.27442, -0.11421, -0.0286516, 0.954374)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0276863, 0.941123, -0.33688, 0.00577018)
-bones/7/rotation = Quaternion(0.204598, -0.77013, 0.33491, 0.502866)
-bones/8/rotation = Quaternion(0.0340808, 0.668605, 0.06704, 0.739805)
+bones/6/rotation = Quaternion(0.019905, 0.942921, -0.332372, 0.00569299)
+bones/7/rotation = Quaternion(0.205991, -0.768106, 0.334024, 0.505973)
+bones/8/rotation = Quaternion(0.0537247, 0.648852, 0.0694048, 0.755836)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0265904, 0.0121878, 0.00864752, 0.999535)
-bones/13/rotation = Quaternion(-0.173848, 0.0775515, 0.0184513, 0.981541)
-bones/14/rotation = Quaternion(0.143964, 0.163664, -0.0332556, 0.975388)
+bones/10/rotation = Quaternion(0.0384093, 0.0176051, 0.012491, 0.999029)
+bones/13/rotation = Quaternion(-0.166542, 0.0771663, 0.0195851, 0.982815)
+bones/14/rotation = Quaternion(0.0967492, 0.174771, -0.00989688, 0.979794)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.18282, 0.763694, -0.251134, 0.565932)
-bones/19/rotation = Quaternion(-0.000603743, -0.613947, -0.0278512, 0.788855)
+bones/18/rotation = Quaternion(0.197561, 0.756864, -0.271025, 0.560956)
+bones/19/rotation = Quaternion(-0.0238752, -0.613483, 0.00207085, 0.789344)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00119659, 0.209402, 0.962748, -0.171076)
-bones/26/rotation = Quaternion(0.0406193, 0.866968, -0.491367, 0.0726322)
-bones/27/rotation = Quaternion(-0.0690584, 0.613519, -0.783424, 0.0712171)
-bones/28/rotation = Quaternion(0.00208406, 0.0122625, 0.954499, 0.297953)
-bones/29/rotation = Quaternion(-0.152151, 0.820601, -0.484543, -0.262074)
-bones/30/rotation = Quaternion(0.225222, 0.492463, -0.83191, 0.121166)
+bones/25/rotation = Quaternion(-0.00130547, 0.22734, 0.955761, -0.186645)
+bones/26/rotation = Quaternion(0.0392247, 0.848081, -0.524496, 0.0642121)
+bones/27/rotation = Quaternion(-0.0843271, 0.599482, -0.792292, 0.076052)
+bones/28/rotation = Quaternion(0.00212487, 0.0249374, 0.952409, 0.303794)
+bones/29/rotation = Quaternion(-0.1616, 0.79783, -0.524306, -0.249914)
+bones/30/rotation = Quaternion(0.219246, 0.463552, -0.849097, 0.126826)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.615083, -0.72552, 0.308695, 0.593517, -0.683781, -0.424477, 0.519047, -0.0778727, 0.851191, -1.52498, 2.56692, -2.13137)
+transform = Transform3D(-0.624631, -0.715885, 0.312001, 0.594693, -0.695008, -0.404108, 0.506139, -0.0668738, 0.859856, -1.64641, 2.51977, -2.05823)
 bone_name = "RightHand"
 bone_idx = 19
 

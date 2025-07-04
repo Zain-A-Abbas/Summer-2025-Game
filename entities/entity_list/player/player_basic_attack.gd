@@ -22,7 +22,7 @@ func _init(new_player: Player, object: AttackObject) -> void:
 	attack_object = object
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	player.animation_effects.play(ACTION_NAME)
+	#player.animation_effects.play(ACTION_NAME)
 	
 	var is_combo: bool = args.has("combo") || Time.get_ticks_msec() / 1000.0 - time_on_last_attack < COMBO_TIME
 	

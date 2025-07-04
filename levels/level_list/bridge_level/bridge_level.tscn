@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bul1qv25y7gbq"]
+[gd_scene load_steps=17 format=3 uid="uid://bul1qv25y7gbq"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_116be"]
 [ext_resource type="Material" uid="uid://uhccc1d63o67" path="res://levels/materials/stone_brick.tres" id="2_cmt2u"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2jobe8kqx0eb" path="res://levels/decorations/Textures/roof.png" id="3_ywebd"]
 [ext_resource type="Texture2D" uid="uid://eve3jdi3iq6x" path="res://levels/skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="4_bc2ch"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="5_27bmw"]
+[ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="6_27bmw"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tvmtm"]
 top_radius = 2.0
@@ -472,6 +473,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 7)
 
 [node name="LevelExit2" parent="StaticGeometry" index="7" instance=ExtResource("5_27bmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7)
+
+[node name="Window" parent="StaticGeometry" index="8" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 29, 4, 7)
+
+[node name="Window2" parent="StaticGeometry" index="9" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 15, 4, 7)
+
+[node name="Window3" parent="StaticGeometry" index="10" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 4, 7)
+
+[node name="Window4" parent="StaticGeometry" index="11" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 41, 4, -9.2)
+
+[node name="Window5" parent="StaticGeometry" index="12" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, 34, 4, -6.2)
+
+[node name="Window6" parent="StaticGeometry" index="13" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, 48, 4, -6.2)
+
+[node name="Window7" parent="StaticGeometry" index="14" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -41, 4, -9.2)
+
+[node name="Window8" parent="StaticGeometry" index="15" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, -48, 4, -6.2)
+
+[node name="Window9" parent="StaticGeometry" index="16" instance=ExtResource("6_27bmw")]
+transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, -34, 4, -6.2)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -4)

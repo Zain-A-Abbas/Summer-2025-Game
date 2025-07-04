@@ -1,16 +1,16 @@
 [gd_scene load_steps=8 format=3 uid="uid://brn15rjrgdutk"]
 
 [ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
+[ext_resource type="PackedScene" uid="uid://ck150mu7ims48" path="res://levels/castle_level/castle_level.tscn" id="2_3uyut"]
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://dcjcmlny666i0" path="res://levels/level_list/shop_level/shop_level.tscn" id="4_3uyut"]
-[ext_resource type="PackedScene" uid="uid://cnjmyiuqw1wh2" path="res://levels/water_level/water_level.tscn" id="4_plt5s"]
 [ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/gameplay/player_ui.tscn" id="5_6qk6f"]
 [ext_resource type="PackedScene" uid="uid://c6p3lqty2vji6" path="res://levels/level_list/healing_level/healing_level.tscn" id="5_l3tyk"]
 [ext_resource type="PackedScene" uid="uid://fmgq27fbt57v" path="res://levels/level_list/boss_level/boss_level.tscn" id="6_l3tyk"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")
-normal_levels = Array[PackedScene]([ExtResource("4_plt5s")])
+normal_levels = Array[PackedScene]([ExtResource("2_3uyut")])
 healing_level = ExtResource("5_l3tyk")
 shop_level = ExtResource("4_3uyut")
 boss_level = ExtResource("6_l3tyk")

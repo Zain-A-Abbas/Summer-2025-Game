@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cnjmyiuqw1wh2"]
+[gd_scene load_steps=29 format=3 uid="uid://cnjmyiuqw1wh2"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_pn1ho"]
 [ext_resource type="Material" uid="uid://cibvmstybnpug" path="res://levels/materials/cobblestone_floor.tres" id="2_eq2dq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://uhccc1d63o67" path="res://levels/materials/stone_brick.tres" id="4_28bi3"]
 [ext_resource type="Texture2D" uid="uid://b3fveeyaj3w7g" path="res://levels/materials/Wood_0.png" id="6_dqkj3"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="6_kxl8o"]
+[ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="8_edlmi"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kxl8o"]
 data = PackedVector3Array(-50, -16, 7, -50, -16, -7, -50, 16, -7, 50, -16, -7, -50, -16, -7, -50, -16, 7, -50, 16, -7, -50, -16, -7, 50, -16, -7, -50, 16, -7, -50, 16, 7, -50, -16, 7, -50, -16, 7, -50, 16, 7, 50, 16, 7, 50, 16, 7, -50, 16, 7, -50, 16, -7, -50, -16, 7, 50, -16, 7, 50, -16, -7, 50, 16, 7, 50, -16, 7, -50, -16, 7, 50, -16, -7, 50, -16, 7, 50, 16, 7, 50, -16, -7, 50, 16, -7, -50, 16, -7, -50, 16, -7, 50, 16, -7, 50, 16, 7, 50, 16, 7, 50, 16, -7, 50, -16, -7)
@@ -116,7 +117,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
 shader_parameter/specular = 0.0
 shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(18, 18, 6)
+shader_parameter/uv1_scale = Vector3(25, 25, 25)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
@@ -358,6 +359,20 @@ debug_color = Color(0.536666, 0, 0.7, 1)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.9879, 1.5, -0.0358963)
 shape = SubResource("BoxShape3D_4lf7l")
 debug_color = Color(0.536666, 0, 0.7, 1)
+
+[node name="Node3D" type="Node3D" parent="StaticGeometry" index="9"]
+
+[node name="Window" parent="StaticGeometry/Node3D" index="0" instance=ExtResource("8_edlmi")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 34, 4, 24)
+
+[node name="Window2" parent="StaticGeometry/Node3D" index="1" instance=ExtResource("8_edlmi")]
+transform = Transform3D(-1.5, 0, 1.31134e-07, 0, 1.5, 0, -1.31134e-07, 0, -1.5, 25, 4, 34)
+
+[node name="Window3" parent="StaticGeometry/Node3D" index="2" instance=ExtResource("8_edlmi")]
+transform = Transform3D(-1.5, 0, 1.31134e-07, 0, 1.5, 0, -1.31134e-07, 0, -1.5, 4, 4, 34)
+
+[node name="Window4" parent="StaticGeometry/Node3D" index="3" instance=ExtResource("8_edlmi")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 34, 4, 3)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
