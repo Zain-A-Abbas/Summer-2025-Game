@@ -24,6 +24,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.can_get_parry_point = true
 	player.hurtbox.parry_frames = true
 	player.consume_stamina(player.PARRY_REQUIREMENT, 0.2)
+	
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.can_get_parry_point = false

@@ -20,6 +20,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	if !is_child: # create 4 new seeds
+		proj.sounds.get_node("explode").play()
+		
 		for n in 4: # initialize directions
 			if n == 0:
 				seed_direction = starting_dir.rotated(Vector3(0, 1, 0), deg_to_rad(45))

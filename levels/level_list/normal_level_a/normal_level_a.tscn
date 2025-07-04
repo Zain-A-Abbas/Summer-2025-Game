@@ -18,6 +18,7 @@ resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
 [node name="LevelBase" instance=ExtResource("1_l001e")]
+enemy_limit = 1
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="0"]
 size = Vector3(20, 0.001, 20)

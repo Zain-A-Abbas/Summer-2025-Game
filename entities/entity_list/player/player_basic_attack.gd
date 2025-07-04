@@ -14,7 +14,6 @@ var animation_time: float = 0.0
 var attack_object: AttackObject
 var movement_vector: Vector3
 var time_on_last_attack: float
-
 var combo: int = 1
 
 func _init(new_player: Player, object: AttackObject) -> void:
@@ -22,12 +21,13 @@ func _init(new_player: Player, object: AttackObject) -> void:
 	attack_object = object
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
+	delta_count = 0.0
 	player.animation_effects.play(ACTION_NAME)
 	
 	var is_combo: bool = args.has("combo") || Time.get_ticks_msec() / 1000.0 - time_on_last_attack < COMBO_TIME
 	
 	if is_combo:
-		combo += 1
+		combo += + 1
 	else:
 		combo = 1
 	
@@ -39,7 +39,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	movement_vector = Vector3(0, 0, -MOVE_SPEED).rotated(Vector3.UP, player.rotation.y).normalized()
 	
-	delta_count = 0.0
+	#print("sword_whoosh_%d" % ((combo % 3) + 1))
+	player.play_sound_fx(player.sounds, "sword_whoosh_%d" % ((combo % 3) + 1))
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

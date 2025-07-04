@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=37 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -13,6 +13,10 @@
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="12_037cv"]
 [ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="12_w7qv5"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="13_y07nu"]
+[ext_resource type="AudioStream" uid="uid://fiuv1qcohimj" path="res://audio/Arrow_Whoosh_01.wav" id="14_vvnrl"]
+[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/Sword_Whoosh_01.wav" id="14_w7qv5"]
+[ext_resource type="AudioStream" uid="uid://byxxr2fujg0n8" path="res://audio/Sword_Whoosh_No_Shing_02.wav" id="16_0y12j"]
+[ext_resource type="AudioStream" uid="uid://v4fec0kuo08c" path="res://audio/Sword_Whoosh_03.wav" id="16_vvnrl"]
 
 [sub_resource type="Gradient" id="Gradient_w7qv5"]
 interpolation_mode = 1
@@ -81,7 +85,7 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_w7qv5"]
 script = ExtResource("5_037cv")
-damage = 8
+damage = 10
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
@@ -199,7 +203,21 @@ move_speed = 550.0
 [node name="AudioListener3D" type="AudioListener3D" parent="." index="7"]
 current = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+[node name="dodge_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("14_vvnrl")
+max_db = -1.165
+
+[node name="sword_whoosh_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+stream = ExtResource("14_w7qv5")
+max_db = 0.0
+
+[node name="sword_whoosh_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+stream = ExtResource("16_0y12j")
+max_db = 0.0
+
+[node name="sword_whoosh_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
+stream = ExtResource("16_vvnrl")
+max_db = 0.0
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

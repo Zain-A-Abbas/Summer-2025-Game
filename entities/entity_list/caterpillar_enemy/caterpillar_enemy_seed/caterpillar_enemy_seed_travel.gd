@@ -1,7 +1,7 @@
 class_name CaterpillarEnemySeedTravel
 extends ProjectileState
 
-const TTL: float = 1.5
+const TTL: float = 1.1
 
 var delta_count: float = 0.0
 var direction: Vector3

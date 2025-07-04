@@ -18,7 +18,18 @@ const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.
 const CATERPILLAR_ENEMY = preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn")
 const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn")
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
-const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY, CATERPILLAR_ENEMY, MAD_HATTER_ENEMY, RED_KNIGHT_ENEMY]
+const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
+const ENEMY_TYPE_LIST: Array[Resource] = [
+	CATERPILLAR_ENEMY
+]
+"""
+	BASIC_ENEMY,
+	FLOWER_ENEMY, 
+	MOUSE_ENEMY, 
+	CATERPILLAR_ENEMY, 
+	MAD_HATTER_ENEMY, 
+	RED_KNIGHT_ENEMY
+"""
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -44,18 +55,29 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	level_manager = _level_manager 
 	type = _type
 	level_camera.initialize(player)
-	for n in enemy_spawn_count:
-		if n > enemy_positions.get_child_count():
-			push_error("More enemies provided to a level than it has positions for.")
-			break
-		
-		var new_enemy: Enemy = ENEMY_TYPE_LIST.pick_random().instantiate()
-		enemies.add_child(new_enemy)
-		new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
-		new_enemy.position = enemy_positions.get_child(n).position
-		new_enemy.enemy_killed.connect(enemy_kill)
+	
+	if _type == LevelType.BOSS:
+		var boss: Enemy = JABBERWOCK_ENEMY.instantiate()
+		enemies.add_child(boss)
+		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
+		boss.position = enemy_positions.get_child(0).position
+		boss.enemy_killed.connect(enemy_kill)
 		
 		enemy_count += 1
+		
+	else:
+		for n in enemy_spawn_count:
+			if n > enemy_positions.get_child_count():
+				push_error("More enemies provided to a level than it has positions for.")
+				break
+			
+			var new_enemy: Enemy = ENEMY_TYPE_LIST.pick_random().instantiate()
+			enemies.add_child(new_enemy)
+			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
+			new_enemy.position = enemy_positions.get_child(n).position
+			new_enemy.enemy_killed.connect(enemy_kill)
+			
+			enemy_count += 1
 	
 	for exit in get_level_exits():
 		exit.initialize(self)

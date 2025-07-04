@@ -3,6 +3,7 @@ extends Node
 
 const RAGE_DECAY: int = 5
 const RAGE_DECAY_TIME: float = 0.8
+const RAGE_COST_TO_COMBO: int = 100
 
 @export var entity: CharacterEntity
 @export var current_rage: int
@@ -19,7 +20,7 @@ func increase_rage() -> void:
 	if current_rage < max_rage:
 		current_rage += 10
 
-func decrease_rage(delta: float) -> void:
+func decay_rage(delta: float) -> void:
 	delta_count += delta
 	
 	if delta_count > RAGE_DECAY_TIME:
@@ -30,3 +31,8 @@ func decrease_rage(delta: float) -> void:
 		
 		delta_count = 0.0
 		print("Rage: ", current_rage)
+	
+func consume_rage() -> void:
+	current_rage -= RAGE_COST_TO_COMBO
+	if current_rage < 0:
+		current_rage = 0

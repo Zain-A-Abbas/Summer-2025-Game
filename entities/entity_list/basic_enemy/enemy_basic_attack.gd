@@ -32,7 +32,6 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	warning_shown = false
 	delta_count = 0.0
 	
-	
 	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
@@ -43,25 +42,24 @@ func st_physics_process(delta: float) -> void:
 	attack_object.hitbox.monitorable = delta_count >= ACTIVE_FRAMES[0] && delta_count <= ACTIVE_FRAMES[1]
 	if delta_count >= ACTIVE_FRAMES[0] && !attack_activated:
 		attack_activated = true
-		enemy.animation_effects.play("basic_attack")
+		enemy.play_sound_fx(enemy.sounds, "attack_whoosh")
 	
 	if delta_count > LENGTH:
 		state_machine.change_state(&"Chase", {"from_attack": true})
 		return
 	
 	if warning_trackers[0] > WARNING_TIMES[0] && !warning_shown:
-		enemy.attack_indicator_animator.play("show_indicator")
+		enemy.show_attack_indicator()
 		warning_shown = true
 	
 	if warning_trackers[1] > WARNING_TIMES[1] && !warning_hidden:
-		enemy.attack_indicator_animator.play("hide_indicator")
+		enemy.hide_attack_indicator()
 		warning_hidden = true
 	
 	enemy.velocity = 2.0 * enemy.animation_tree.get_root_motion_position().rotated(Vector3.UP, enemy.rotation.y) / delta
-	
 	enemy.move_and_slide()
 
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !warning_hidden:
-		enemy.attack_indicator_animator.play("hide_indicator")
+		enemy.hide_attack_indicator()

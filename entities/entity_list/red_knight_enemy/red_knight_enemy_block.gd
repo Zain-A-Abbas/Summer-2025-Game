@@ -27,7 +27,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	
 	direction_to_player = face_player()
-	enemy.rotation.y = Vector2(direction_to_player.x, -direction_to_player.z).angle() + deg_to_rad(90)
+	enemy.rotation.y = get_angle_to_face_player(direction_to_player)
 
 	block_time = randf_range(4.0, 5.5)
 	instant_turn_hp_threshold = enemy.health_component.current_health - INSTANT_TURN_HP_OFFSET

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcjcmlny666i0" path="res://levels/level_list/shop_level/shop_level.tscn" id="4_3uyut"]
 [ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/gameplay/player_ui.tscn" id="5_6qk6f"]
 [ext_resource type="PackedScene" uid="uid://c6p3lqty2vji6" path="res://levels/level_list/healing_level/healing_level.tscn" id="5_l3tyk"]
-[ext_resource type="PackedScene" uid="uid://fmgq27fbt57v" path="res://levels/level_list/boss_level/boss_level.tscn" id="6_l3tyk"]
+[ext_resource type="PackedScene" uid="uid://krqa0edksq88" path="res://levels/level_list/boss_level/boss_level.tscn" id="6_l3tyk"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqvq5fv3lodkg"]
+[gd_scene load_steps=13 format=3 uid="uid://bqvq5fv3lodkg"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_asst4"]
 [ext_resource type="Script" uid="uid://b82iv3b6y5uo" path="res://entities/entity_list/caterpillar_enemy/caterpillar_enemy_seed/caterpillar_enemy_seed.gd" id="2_ph4oc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_0qy1d"]
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="7_cdm54"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="8_y08bq"]
+[ext_resource type="AudioStream" uid="uid://dg3j71lo8p0m2" path="res://audio/Fast_Magic_Whoosh_07.wav" id="9_sofxr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bo7"]
 albedo_color = Color(0, 0.579476, 0.348665, 1)
@@ -67,4 +68,8 @@ entity = NodePath("../..")
 unique_name_in_owner = true
 script = ExtResource("8_y08bq")
 entity = NodePath("../..")
-move_speed = 550.0
+move_speed = 900.0
+
+[node name="explode" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("9_sofxr")
+max_db = 0.0

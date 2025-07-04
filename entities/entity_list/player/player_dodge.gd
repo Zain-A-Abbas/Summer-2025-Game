@@ -18,6 +18,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	player.hurtbox.invincibility_frames = true
 	player.consume_stamina(player.DODGE_REQUIREMENT, 0.4)
+	player.play_sound_fx(player.sounds, "dodge_whoosh")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.hurtbox.invincibility_frames = false

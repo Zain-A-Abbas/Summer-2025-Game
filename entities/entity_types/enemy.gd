@@ -58,3 +58,10 @@ func hurt_effect():
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
 	queue_free()
+
+func show_attack_indicator():
+	attack_indicator_animator.play("show_indicator")
+	# play sound effect here
+	
+func hide_attack_indicator():
+	attack_indicator_animator.play("hide_indicator")

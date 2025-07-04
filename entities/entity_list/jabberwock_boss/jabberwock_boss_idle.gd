@@ -1,19 +1,22 @@
 class_name JabberwockBossIdle
 extends EnemyState
 
-const ACTION_LIST: Array[StringName] = [&"Sweep", &"Swipe"]
+const MELEE_DISTANCE: float = 8.5
 
 var rage_component: JabberwockBossRageComponent
 var delta_count: float = 0.0
 var cooldown: float = 0.0
-var direction: Vector3
 var next_action_time: float = 0.0
+
+var direction_to_player: Vector3
+var forward_direction: Vector3
 
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent) -> void:
 	enemy = new_enemy
 	rage_component = rage
-	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	
+	direction_to_player = face_player()
+	enemy.rotation.y = get_angle_to_face_player(direction_to_player)
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	cooldown = 0.0
@@ -22,11 +25,22 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if args.has(&"cooldown"):
 		cooldown = args['cooldown']
 		
-	next_action_time = randf_range(0.8, 2.0) + cooldown
+	next_action_time = randf_range(0.8, 2.0) + cooldown 
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
-	rage_component.decrease_rage(delta)
+	rage_component.decay_rage(delta)
 	
+	direction_to_player = face_player()
+	forward_direction = enemy.global_transform.basis.z
+	
+	#print(distance_to_player())
 	if delta_count >= next_action_time:
-		state_machine.change_state(&"Swipe")
+		if distance_to_player() < MELEE_DISTANCE:
+			if forward_direction.dot(direction_to_player) >= -0.2:
+				return state_machine.change_state(&"Swipe")
+				#print("in front", forward_direction.dot(direction_to_player))
+			elif forward_direction.dot(direction_to_player) < -0.2:
+				return state_machine.change_state(&"Sweep")
+				#print("behind", forward_direction.dot(direction_to_player))
+		return state_machine.change_state(&"Shoot")

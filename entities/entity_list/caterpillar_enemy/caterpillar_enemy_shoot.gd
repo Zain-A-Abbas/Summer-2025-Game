@@ -37,15 +37,16 @@ func st_physics_process(delta: float) -> void:
 		warning_trackers[n] += delta
 	
 	if warning_trackers[0] > WARNING_TIMES[0] && !warning_shown:
-		enemy.attack_indicator_animator.play("show_indicator")
+		enemy.show_attack_indicator()
 		warning_shown = true
 	
 	if warning_trackers[1] > WARNING_TIMES[1] && !warning_hidden:
-		enemy.attack_indicator_animator.play("hide_indicator")
+		enemy.hide_attack_indicator()
 		warning_hidden = true
 
 	if delta_count >= SHOOT_TIMES[0] && !seed_shot:
 		seed_shot = true
+		enemy.play_sound_fx(enemy.sounds, "seed_shoot")
 	
 		var seed = SEED.instantiate()
 		enemy.projectiles.add_child(seed)
