@@ -143,7 +143,12 @@ script = ExtResource("7_6omki")
 
 [node name="EnemyHP" type="Sprite3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+cast_shadow = 0
+extra_cull_margin = 128.0
+pixel_size = 0.0025
 billboard = 1
+no_depth_test = true
+fixed_size = true
 texture = SubResource("ViewportTexture_mppf5")
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

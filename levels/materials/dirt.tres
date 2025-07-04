@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c66jq4sxyu7pw"]
+
+[ext_resource type="Texture2D" uid="uid://3vewa7627a0s" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Dirt.png" id="1_f7khf"]
+
+[resource]
+albedo_texture = ExtResource("1_f7khf")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+texture_filter = 0

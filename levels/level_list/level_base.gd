@@ -33,6 +33,7 @@ const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY
 @onready var projectiles: Node3D = %Projectiles
 
 @export var has_enemies: bool = true
+@export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
 
 var enemy_count: int = 0

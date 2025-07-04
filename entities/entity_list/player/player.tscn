@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=41 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -142,6 +142,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [1.5]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryTimeSeek/seek_request")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.23]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryOneShot/request")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryTimeScale/scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_vvnrl"]
 resource_name = "attack_1"
@@ -211,6 +247,46 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_l2wyb"]
+resource_name = "parry"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryTimeSeek/seek_request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryOneShot/request")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryTimeScale/scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
 [sub_resource type="Animation" id="Animation_7byxq"]
 resource_name = "walk"
 length = 0.2
@@ -233,6 +309,7 @@ _data = {
 &"attack_1": SubResource("Animation_vvnrl"),
 &"attack_2": SubResource("Animation_0y12j"),
 &"idle": SubResource("Animation_w7qv5"),
+&"parry": SubResource("Animation_l2wyb"),
 &"walk": SubResource("Animation_7byxq")
 }
 
@@ -294,32 +371,37 @@ movement_component = NodePath("Components/MovementComponent")
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(-0.00297523, 2.70462, -0.409255)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.166886, -0.0412831, 5.77858e-05, 0.985112)
-bones/4/rotation = Quaternion(0.281784, -0.114568, -0.0274857, 0.952217)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0205385, 0.942777, -0.332743, 0.00569932)
-bones/7/rotation = Quaternion(0.205827, -0.768345, 0.334128, 0.505608)
-bones/8/rotation = Quaternion(0.0537605, 0.648813, 0.0694092, 0.755866)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0378251, 0.0173373, 0.0123011, 0.999058)
-bones/13/rotation = Quaternion(-0.171587, 0.0774335, 0.0188029, 0.981941)
-bones/14/rotation = Quaternion(0.102472, 0.172754, -0.0155161, 0.979497)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.209203, 0.751055, -0.28673, 0.55672)
-bones/19/rotation = Quaternion(-0.0215102, -0.613571, -0.000971916, 0.789346)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00130537, 0.227443, 0.955739, -0.18663)
-bones/26/rotation = Quaternion(0.0392324, 0.848039, -0.524564, 0.0642131)
-bones/27/rotation = Quaternion(-0.0842954, 0.599501, -0.792283, 0.0760316)
-bones/28/rotation = Quaternion(0.00212408, 0.0247376, 0.952452, 0.303676)
-bones/29/rotation = Quaternion(-0.16162, 0.79778, -0.524386, -0.249891)
-bones/30/rotation = Quaternion(0.21924, 0.463572, -0.849086, 0.126842)
+bones/1/position = Vector3(0.196988, 2.71749, -0.40634)
+bones/3/rotation = Quaternion(0.168264, -0.0413589, 0.00026926, 0.984874)
+bones/4/rotation = Quaternion(0.285876, -0.114763, -0.0268348, 0.950991)
+bones/6/rotation = Quaternion(0.0446143, 0.937045, -0.346296, 0.00593143)
+bones/7/rotation = Quaternion(0.201462, -0.774624, 0.336879, 0.495866)
+bones/8/rotation = Quaternion(0.0506248, 0.652118, 0.0690219, 0.75327)
+bones/10/rotation = Quaternion(0.00190303, 0.000872261, 0.000618842, 0.999998)
+bones/13/rotation = Quaternion(-0.174394, 0.0775799, 0.0183662, 0.981443)
+bones/14/rotation = Quaternion(0.111543, 0.1704, -0.020954, 0.978817)
+bones/18/rotation = Quaternion(0.211066, 0.75009, -0.289244, 0.556016)
+bones/19/rotation = Quaternion(-0.0168796, -0.613715, -0.00692824, 0.789317)
+bones/25/rotation = Quaternion(-0.00109187, 0.244693, 0.956951, -0.156106)
+bones/26/rotation = Quaternion(0.0464346, 0.841262, -0.5335, 0.0741526)
+bones/27/rotation = Quaternion(-0.0491626, 0.600549, -0.795817, 0.0599965)
+bones/28/rotation = Quaternion(0.00230589, 0.0368874, 0.943374, 0.329665)
+bones/29/rotation = Quaternion(-0.154527, 0.810004, -0.506962, -0.251007)
+bones/30/rotation = Quaternion(0.240421, 0.499739, -0.823833, 0.117293)
+
+[node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
+cast_shadow = 0
+
+[node name="Cube_002" parent="PlayerAnimator/Armature/GeneralSkeleton" index="1"]
+cast_shadow = 0
+
+[node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
+transform = Transform3D(-0.584311, -0.743644, 0.324922, 0.62387, -0.667678, -0.406192, 0.519005, -0.0346326, 0.854069, -1.44421, 2.55428, -2.05206)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
+parameters/ParryTimeScale/scale = 1.0
+parameters/ParryTimeSeek/seek_request = 0.23
 
 [node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -394,6 +476,7 @@ entity = NodePath("../..")
 move_speed = 550.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="." index="9"]
+visible = false
 current = true
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

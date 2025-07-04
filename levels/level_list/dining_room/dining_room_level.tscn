@@ -333,6 +333,7 @@ enemy_limit = 5
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+layers = 33
 size = Vector3(24, 0.001, 64)
 material = SubResource("StandardMaterial3D_1n4xr")
 
@@ -357,10 +358,10 @@ shape = SubResource("ConcavePolygonShape3D_mypw1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
 [node name="LevelExit" parent="StaticGeometry" index="5" instance=ExtResource("6_geui1")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.5, 0, 16)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 16)
 
 [node name="LevelExit2" parent="StaticGeometry" index="6" instance=ExtResource("6_geui1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.45058e-08, 0, 47.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 48)
 
 [node name="TableDecor" type="Node3D" parent="StaticGeometry" index="7"]
 
@@ -414,9 +415,10 @@ mesh = SubResource("ArrayMesh_0kra5")
 skeleton = NodePath("../../..")
 
 [node name="TableB" type="Node3D" parent="StaticGeometry/TableDecor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31)
 
 [node name="Candle3" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="0"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -3.82429, 3.6, 28.9948)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -3.82429, 3.6, -1.0052)
 mesh = SubResource("ArrayMesh_aql06")
 skeleton = NodePath("../../..")
 
@@ -428,37 +430,37 @@ shadow_enabled = true
 omni_range = 12.599
 
 [node name="Cooking Dish4" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="1"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, 3, 3.6, 30.75)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, 3, 3.6, 0.75)
 mesh = SubResource("ArrayMesh_0kra5")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Mug4" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="2"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -1.5, 3.6, 27.75)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -1.5, 3.6, -2.25)
 mesh = SubResource("ArrayMesh_3dca2")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Plate4" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="3"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, 0.499999, 3.6, 27.75)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, 0.499999, 3.6, -2.25)
 mesh = SubResource("ArrayMesh_1mt50")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Pot3" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="4"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -0.5, 3.6, 32.75)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -0.5, 3.6, 2.75)
 mesh = SubResource("ArrayMesh_cidjn")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Mug5" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="5"]
-transform = Transform3D(4, 6.99382e-07, -3.0571e-14, 0, -1.74846e-07, -4, -6.99382e-07, 4, -1.74846e-07, 0.500001, 3.6, 38.75)
+transform = Transform3D(4, 6.99382e-07, -3.0571e-14, 0, -1.74846e-07, -4, -6.99382e-07, 4, -1.74846e-07, 0.500001, 3.6, 8.75)
 mesh = SubResource("ArrayMesh_3dca2")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Plate5" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="6"]
-transform = Transform3D(4, 6.99382e-07, -3.0571e-14, 0, -1.74846e-07, -4, -6.99382e-07, 4, -1.74846e-07, -1.5, 3.6, 38.75)
+transform = Transform3D(4, 6.99382e-07, -3.0571e-14, 0, -1.74846e-07, -4, -6.99382e-07, 4, -1.74846e-07, -1.5, 3.6, 8.75)
 mesh = SubResource("ArrayMesh_1mt50")
 skeleton = NodePath("../../..")
 
 [node name="Cooking Dish5" type="MeshInstance3D" parent="StaticGeometry/TableDecor/TableB" index="7"]
-transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -1, 3.6, 34.75)
+transform = Transform3D(-4, -3.49691e-07, 1.52855e-14, 0, -1.74846e-07, -4, 3.49691e-07, -4, 1.74846e-07, -1, 3.6, 4.75)
 mesh = SubResource("ArrayMesh_0kra5")
 skeleton = NodePath("../../..")
 

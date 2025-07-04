@@ -49,7 +49,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		new_level = boss_level.instantiate()
 	
 	level_holder.add_child(new_level)
-	var enemy_count: int = randi_range(1, new_level.enemy_limit)
+	var enemy_count: int = randi_range(new_level.enemy_minimum, new_level.enemy_limit)
 	if !new_level.has_enemies:
 		enemy_count = 0
 	new_level.setup_level(self, new_level_type, enemy_count)

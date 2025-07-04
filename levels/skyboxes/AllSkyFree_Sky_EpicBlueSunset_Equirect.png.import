@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de43lm7h11ntk"
-path.s3tc="res://.godot/imported/Roof-Tiles.png-8b35824e6351a60abde4c4e1c511508d.s3tc.ctex"
+uid="uid://eve3jdi3iq6x"
+path.s3tc="res://.godot/imported/AllSkyFree_Sky_EpicBlueSunset_Equirect.png-6cc6cdb6944bcfaea18a506987c0a1f6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://levels/materials/3D Retro Medieval Fantasy Kit/Roof-Tiles.png"
-dest_files=["res://.godot/imported/Roof-Tiles.png-8b35824e6351a60abde4c4e1c511508d.s3tc.ctex"]
+source_file="res://levels/skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png"
+dest_files=["res://.godot/imported/AllSkyFree_Sky_EpicBlueSunset_Equirect.png-6cc6cdb6944bcfaea18a506987c0a1f6.s3tc.ctex"]
 
 [params]
 
