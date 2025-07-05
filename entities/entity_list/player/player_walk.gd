@@ -5,7 +5,7 @@ const STEP_TIME: float = 0.3
 
 var delta_count: float = 0.0
 var step_index: int = 1
-
+	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	step_index = 2

@@ -12,10 +12,7 @@ func _init(new_enemy: Enemy) -> void:
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
-	if args.has("from_thrust"):
-		from_thrust = args["from_thrust"]
-	else:
-		from_thrust = false
+	from_thrust = args.has("from_thrust")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -23,7 +20,6 @@ func st_physics_process(delta: float) -> void:
 	# thrust cooldown
 	if from_thrust:
 		if delta_count <= THRUST_COOLDOWN:
-			
 			return
 		else:
 			from_thrust = false

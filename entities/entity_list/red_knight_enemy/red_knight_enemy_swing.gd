@@ -27,7 +27,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	swing_duration = time_to_swing + 0.1
 	warning_time = time_to_swing - 0.5
 	
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(direction)
 	
 	enemy.action_animator.play("basic_enemy_animation_library/RESET")
 

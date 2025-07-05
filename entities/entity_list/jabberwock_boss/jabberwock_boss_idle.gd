@@ -15,8 +15,7 @@ func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent) -> void:
 	enemy = new_enemy
 	rage_component = rage
 	
-	direction_to_player = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction_to_player)
+	enemy.face_direction(face_player())
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	cooldown = 0.0

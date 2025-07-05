@@ -28,8 +28,6 @@ unique_name_in_owner = true
 
 [node name="DigPositions" type="Node3D" parent="EnemyData"]
 
-[node name="HatterPath" type="Node3D" parent="EnemyData"]
-
 [node name="EnemyPositions" type="Node3D" parent="."]
 unique_name_in_owner = true
 

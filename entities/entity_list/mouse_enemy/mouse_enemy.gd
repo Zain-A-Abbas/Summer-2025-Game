@@ -20,6 +20,11 @@ func prepare_states():
 	
 	state_machine.assign_states(enemy_states)
 
-func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
-	hurt_effect()
-	resolve_hit(attack_object)
+func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
+	if !invin:
+		hurt_effect()
+		resolve_hit(attack_object)
+
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	enemy_killed.emit(self)
+	queue_free()

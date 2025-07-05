@@ -46,7 +46,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.animation_tree["parameters/WalkRun/blend_position"] = move_toward(enemy.animation_tree["parameters/WalkRun/blend_position"], 0, delta * 4.0)
 
 	enemy.velocity = direction * move_speed * delta
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(direction)
 	enemy.move_and_slide()
 
 	# play footstep sound fx

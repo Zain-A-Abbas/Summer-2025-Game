@@ -1,19 +1,27 @@
 class_name MadHatterEnemy
 extends Enemy
 
-var hatter_path: Node3D
+@onready var ray_cast: RayCast3D = %ray_cast
+
+var summoned_list: Array[Enemy] = []
 
 func prepare_states():
-	hatter_path = enemy_data.get_node("HatterPath")
-	
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", MadHatterEnemyIdle.new(self)),
-		StateInitializer.new(&"Wander", MadHatterEnemyWander.new(self, hatter_path)),
+		StateInitializer.new(&"Wander", MadHatterEnemyWander.new(self, ray_cast)),
 		StateInitializer.new(&"Summon", MadHatterEnemySummon.new(self))
 	]
 	
 	state_machine.assign_states(enemy_states)
 
-func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
-	hurt_effect()
-	resolve_hit(attack_object)
+func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
+	if !invin:
+		hurt_effect()
+		resolve_hit(attack_object)
+	
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	enemy_killed.emit(self)
+	queue_free()
+	
+	for summoned in summoned_list:
+		summoned.char_entity_die()

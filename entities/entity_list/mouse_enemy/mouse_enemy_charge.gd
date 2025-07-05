@@ -18,8 +18,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 
-	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(face_player())
 
 	if delta_count >= CHARGE_TIME * 0.5 && !indicator_shown:
 		indicator_shown = true
@@ -32,5 +31,5 @@ func st_physics_process(delta: float) -> void:
 		return
  
 	if delta_count >= CHARGE_TIME:
-		state_machine.change_state(&"Thrust", {"direction" = direction})
+		state_machine.change_state(&"Thrust")
 		return

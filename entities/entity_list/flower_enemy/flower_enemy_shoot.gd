@@ -13,7 +13,6 @@ var warning_hidden: bool = false
 var delta_count: float = 0.0
 var shoot_times: Array[float] = [0.0, 0.0]
 var warning_times: Array[float] = [0.0, 0.0]
-var direction: Vector3 = Vector3.ZERO
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	bomb_shot = false
@@ -45,8 +44,7 @@ func st_physics_process(delta: float) -> void:
 		warning_hidden = true
 		
 	# enemy is always facing player
-	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(face_player())
 	
 	if delta_count >= shoot_times[0] && !bomb_shot:
 		bomb_shot = true

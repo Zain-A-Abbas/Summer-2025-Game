@@ -17,9 +17,9 @@ var swipe: AttackObject
 var n_swipes: int = 0
 var swipe_count: int = 0
 
+var direction: Vector3
 var delta_count: float = 0.0
 var cooldown: float = 0.0
-var direction: Vector3
 var from_sweep: bool = false
 
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent, atk: AttackObject) -> void:
@@ -45,7 +45,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		cooldown += args['from_sweep']	# increase cooldown
 	
 	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(direction)
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -81,8 +81,7 @@ func st_physics_process(delta: float) -> void:
 		warning_trackers.fill(0.0)
 		enemy.action_animator.play("basic_enemy_animation_library/RESET")
 		
-		direction = face_player()
-		enemy.rotation.y = get_angle_to_face_player(direction)
+		enemy.face_direction(face_player())
 	
 	if swipe_count == n_swipes && !swipe.hitbox.monitorable:
 		if !from_sweep && enemy.can_combo():

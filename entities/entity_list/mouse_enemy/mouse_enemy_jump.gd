@@ -31,4 +31,4 @@ func st_physics_process(delta: float) -> void:
 		return state_machine.change_state(&"Idle")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-	pass
+	enemy.hurtbox.invincibility_frames = false

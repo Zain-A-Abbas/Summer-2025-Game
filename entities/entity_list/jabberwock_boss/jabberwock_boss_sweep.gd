@@ -12,6 +12,7 @@ var attack_activated: bool = false
 var warning_hidden: bool = false
 
 var rage_component: JabberwockBossRageComponent
+var direction: Vector3
 var forward_vector: Vector3
 var delta_count: float = 0.0
 var cooldown: float = 0.0
@@ -39,13 +40,13 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		from_swipe = true
 		cooldown += args['from_swipe'] 	# increase cooldown
 		
-		var direction: Vector3 = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
-		enemy.rotation.y = get_angle_to_face_player(direction)
+		direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
+		enemy.face_direction(direction)
 	elif args.has('from_shoot'):
 		cooldown += args['from_shoot']
 		
-		var direction: Vector3 = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
-		enemy.rotation.y = get_angle_to_face_player(direction)
+		direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
+		enemy.face_direction(direction)
 	
 	forward_vector = enemy.global_transform.basis.z 			# get forward vector
 	sweep_rotation_start = sweep.rotation.y 					# save initial rotation for sweep attack object
@@ -79,5 +80,4 @@ func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	sweep.hitbox.monitorable = false
 	
 	# face player
-	var direction: Vector3 = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(face_player())

@@ -49,7 +49,7 @@ func st_physics_process(delta: float) -> void:
 		step_time = RUN_TIME
 	
 	enemy.velocity = direction * enemy.movement_component.move_speed * delta * (1.0 - 0.5 * float(is_attack_cooldown)) # Half speed on cooldown
-	enemy.rotation.y = Vector2(enemy.velocity.x, -enemy.velocity.z).angle() + deg_to_rad(90)
+	enemy.face_direction(direction)
 	enemy.move_and_slide()
 	
 	if distance_to_player() < CHASE_STOP_DISTANCE:

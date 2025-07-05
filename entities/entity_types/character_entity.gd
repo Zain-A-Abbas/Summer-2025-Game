@@ -23,3 +23,6 @@ func resolve_hit(attack_object: AttackObject):
 	var attack_effects: Array[AttackEffect] = attack_object.attack_effects
 	for effect in attack_effects:
 		effect.apply_effect(self, attack_object)
+
+func face_direction(dir: Vector3):
+	rotation.y = Vector2(dir.x, -dir.z).angle() + deg_to_rad(90)

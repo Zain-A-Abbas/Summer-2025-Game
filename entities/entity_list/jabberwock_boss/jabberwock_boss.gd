@@ -17,10 +17,15 @@ func prepare_states():
 	
 	state_machine.assign_states(boss_states)
 
-func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
-	rage_component.increase_rage()
-	hurt_effect()
-	resolve_hit(attack_object)
+func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
+	if !invin:
+		rage_component.increase_rage()
+		hurt_effect()
+		resolve_hit(attack_object)
+
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	enemy_killed.emit(self)
+	queue_free()
 
 func can_combo() -> bool:
 	if rage_component.current_rage < rage_component.RAGE_COST_TO_COMBO:

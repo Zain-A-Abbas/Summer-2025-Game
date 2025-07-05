@@ -44,7 +44,7 @@ func activate_enemy():
 func prepare_states():
 	pass
 
-func _on_hurtbox_hit_received(attack_object: AttackObject) -> void:
+func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	pass
 
 func damage_taken(enemy: Enemy, damage: int):
@@ -54,10 +54,6 @@ func hurt_effect():
 	mesh.set_instance_shader_parameter("hit_effect", true)
 	await get_tree().create_timer(0.1).timeout
 	mesh.set_instance_shader_parameter("hit_effect", false)
-
-func char_entity_die(args: Dictionary[String, Variant]  = {}):
-	enemy_killed.emit(self)
-	queue_free()
 
 func show_attack_indicator():
 	attack_indicator_animator.play("show_indicator")

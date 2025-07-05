@@ -15,8 +15,7 @@ func _init(new_enemy: Enemy, object: AttackObject) -> void:
 	attack_object = object
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	if args.has("direction"):
-		direction = args["direction"]
+	direction = face_player()
 	
 	delta_count = 0.0
 	

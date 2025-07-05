@@ -10,13 +10,13 @@ var warning_trackers: Array[float] = [0.0, 0.0]
 var warning_shown: bool = false
 var warning_hidden: bool = false
 
-var atk_node: Node3D
+var ray_cast: RayCast3D
 var direction: Vector3 = Vector3.ZERO
 var delta_count: float = 0.0
 
-func _init(new_enemy: Enemy, attack_object: Node3D) -> void:
+func _init(new_enemy: Enemy, ray: RayCast3D) -> void:
 	enemy = new_enemy
-	atk_node = attack_object
+	ray_cast = ray
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	seed_shot = false
@@ -26,7 +26,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	
 	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(face_player())
 	
 	enemy.action_animator.play("basic_enemy_animation_library/RESET")
 	enemy.action_animator.play("basic_enemy_animation_library/attack")

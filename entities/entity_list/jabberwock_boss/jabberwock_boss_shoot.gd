@@ -46,8 +46,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	action_index = randi_range(0, 2)
 	action = ACTION_LIST[action_index]
 	
-	direction = face_player()
-	enemy.rotation.y = get_angle_to_face_player(direction)
+	enemy.face_direction(face_player())
 	
 	shoot_times[0] = randf_range(0.7, 1.2)
 	shoot_times[1] = shoot_times[0] + ACTION_DURATIONS[action_index]

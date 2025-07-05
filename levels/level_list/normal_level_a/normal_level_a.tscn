@@ -17,8 +17,15 @@ albedo_color = Color(1, 0, 0, 1)
 resource_local_to_scene = true
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="LevelBase" instance=ExtResource("1_l001e")]
-enemy_limit = 1
+[node name="LevelA" instance=ExtResource("1_l001e")]
+enemy_spawn_limits = Dictionary[String, int]({
+"BASIC": 3,
+"CATERPILLAR": 1,
+"FLOWER": 1,
+"MAD_HATTER": 1,
+"MOUSE": 1,
+"RED_KNIGHT": 1
+})
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="0"]
 size = Vector3(20, 0.001, 20)
@@ -77,15 +84,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.66991, 0, -2.21544)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyData/DigPositions" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.99986, 0, 2.42756)
-
-[node name="Marker3D" type="Marker3D" parent="EnemyData/HatterPath" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6498, 0, -8.06045)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/HatterPath" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55553, 0, 7.37696)
-
-[node name="Marker3D3" type="Marker3D" parent="EnemyData/HatterPath" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43422, 0, 2.89894)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)

@@ -8,10 +8,7 @@ var delta_count: float = 0.0
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
-	if args.has("from_swing"):
-		from_swing = args["from_swing"]
-	else:
-		from_swing = false
+	from_swing = args.has("from_swing")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

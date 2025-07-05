@@ -49,6 +49,7 @@ func st_physics_process(delta: float) -> void:
 	
 	if delta_count >= DIG_DOWN_TIME && delta_count < dig_duration:
 		enemy.hurtbox.invincibility_frames = true
+		enemy.hide()
 		
 		# play digging fx
 		if dig_sound_timer > DIG_SOUND_TIME:
@@ -60,6 +61,8 @@ func st_physics_process(delta: float) -> void:
 				dig_sound_index = 1
 	
 	if delta_count >= dig_duration:
+		enemy.show()
+		
 		enemy.position = dig_positions.get_child(dig_spot_index).position
 		enemy.play_sound_fx(enemy.sounds, &"dig_stop")
 		#print("resurfaced")
