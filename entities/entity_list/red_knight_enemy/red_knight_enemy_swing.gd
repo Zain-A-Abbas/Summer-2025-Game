@@ -43,7 +43,8 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= time_to_swing && !attack_activated:
 		attack_object.hitbox.monitorable = true
 		attack_activated = true
-		enemy.animation_effects.play("basic_attack")
+		enemy.action_animator.play("basic_enemy_animation_library/attack")
+		enemy.play_sound_fx(enemy.sounds, &"big_sword")
 	
 	if attack_activated:
 		enemy.velocity = direction * MOVE_SPEED * delta

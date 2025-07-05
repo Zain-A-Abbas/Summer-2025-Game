@@ -1,6 +1,8 @@
 class_name FlowerEnemy
 extends Enemy
 
+@export var hurtbox: HurtboxComponent
+
 var dig_positions: Node3D
 
 func prepare_states():

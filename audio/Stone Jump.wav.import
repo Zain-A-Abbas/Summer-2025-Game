@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxrwilssdsh4s"
+path="res://.godot/imported/Stone Jump.wav-6b31a37ba863409d8b07b3b0ca0ac64a.sample"
+
+[deps]
+
+source_file="res://audio/Stone Jump.wav"
+dest_files=["res://.godot/imported/Stone Jump.wav-6b31a37ba863409d8b07b3b0ca0ac64a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,6 +1,8 @@
 class_name MouseEnemy
 extends Enemy
 
+@export var hurtbox: HurtboxComponent
+
 @onready var thrust: AttackObject = %basic_attack
 
 var jump_positions: Node3D

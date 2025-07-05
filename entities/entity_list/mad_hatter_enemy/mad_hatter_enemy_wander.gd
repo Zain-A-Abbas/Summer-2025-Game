@@ -3,13 +3,17 @@ extends EnemyState
 
 const WANDER_TIME: float = 4.0
 const MAX_SPEED: float = 600
-const CLOSE_TO_STOP: float = 2.0
+const CLOSE_TO_STOP: float = 0.7
+const HOP_TIME: float = 0.1
+const TIME_TO_LAND: float = 0.4
 
 var move_speed: float = 0.0
 var delta_count: float = 0.0
+var hop_timer: float = 0.0
 var direction: Vector3 = Vector3.ZERO
 var hatter_stops: Node3D
 var marker_index: int = 0
+var is_hopping: bool = false
 
 func _init(new_enemy: Enemy, path: Node3D) -> void:
 	enemy = new_enemy
@@ -22,6 +26,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	else:
 		move_speed = enemy.movement_component.move_speed
 		delta_count = 0.0
+		hop_timer = 0.0
+		is_hopping = false
 	
 	direction = enemy.position.direction_to(hatter_stops.get_child(marker_index).position)
 	direction = Vector3(direction.x, 0, direction.z)
@@ -30,6 +36,18 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	hop_timer += delta
+	
+	# play movement sfx
+	if hop_timer > HOP_TIME && !is_hopping:
+		enemy.play_sound_fx(enemy.sounds, &"jump")
+		is_hopping = true
+		hop_timer = 0.0
+	
+	if hop_timer > TIME_TO_LAND && is_hopping:
+		enemy.play_sound_fx(enemy.sounds, &"land")
+		is_hopping = false
+		hop_timer = 0.0
 	
 	if move_speed < MAX_SPEED:
 		move_speed += 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkarhrwy2lhiu"]
+[gd_scene load_steps=14 format=3 uid="uid://dkarhrwy2lhiu"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_w4grh"]
 [ext_resource type="Script" uid="uid://cwcebqxt4o7w6" path="res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.gd" id="2_xeb4n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="5_ap08c"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_qjyki"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="6_o43dr"]
+[ext_resource type="AudioStream" uid="uid://bdhsihiwi8o82" path="res://audio/Fireball 1.wav" id="9_ap08c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bo7"]
 albedo_color = Color(0, 0.579476, 0.348665, 1)
@@ -33,6 +34,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223961, 0)
 collision_layer = 0
 collision_mask = 0
 material = SubResource("StandardMaterial3D_d4bo7")
+
+[node name="AnimationEffects" parent="." index="2"]
+unique_name_in_owner = true
 
 [node name="Attacks" type="Node3D" parent="." index="3"]
 
@@ -76,5 +80,6 @@ script = ExtResource("5_qjyki")
 entity = NodePath("../..")
 move_speed = 550.0
 
-[node name="AnimationEffects" parent="." index="5"]
-unique_name_in_owner = true
+[node name="explode" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("9_ap08c")
+max_db = 0.0

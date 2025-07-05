@@ -20,7 +20,7 @@ const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/ma
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
 const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
 const ENEMY_TYPE_LIST: Array[Resource] = [
-	CATERPILLAR_ENEMY
+	RED_KNIGHT_ENEMY
 ]
 """
 	BASIC_ENEMY,

@@ -34,6 +34,8 @@ func st_physics_process(delta: float) -> void:
 		return
 	
 	if !just_summoned && delta_count >= SUMMON_TIME:
+		enemy.play_sound_fx(enemy.sounds, &"summon")
+		
 		var new_enemy: Enemy = ENEMY_LIST.pick_random().instantiate()
 		enemy.enemy_list.add_child(new_enemy)
 		new_enemy.initialize_enemy(enemy.player, enemy.enemy_data, enemy.enemy_positions, enemy_list, enemy.projectiles)
@@ -43,7 +45,6 @@ func st_physics_process(delta: float) -> void:
 		delta_count = 0.0
 		
 		enemy.action_animator.play("basic_enemy_animation_library/attack")
-		return
 	
 	if just_summoned && delta_count >= SUMMON_COOLDOWN:
 		state_machine.change_state(&"Idle")

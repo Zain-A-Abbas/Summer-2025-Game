@@ -17,7 +17,7 @@ func prepare_states():
 	var bomb_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", FlowerEnemyBombIdle.new(self)),
 		StateInitializer.new(&"Wait", FlowerEnemyBombWait.new(bomb)),
-		StateInitializer.new(&"Explode", FlowerEnemyBombExplode.new(bomb, atk_obj))
+		StateInitializer.new(&"Explode", FlowerEnemyBombExplode.new(self, bomb, atk_obj))
 	]
 	
 	state_machine.assign_states(bomb_states)

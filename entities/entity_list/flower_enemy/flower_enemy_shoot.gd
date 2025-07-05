@@ -3,7 +3,7 @@ extends EnemyState
 
 const BOMB = preload("res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.tscn")
 const WARNING_DURATION: float = 0.8
-const SHOT_COOLDOWN: float = 0.9
+const SHOT_COOLDOWN: float = 1.1
 
 var bomb_shot: bool= false
 var warning_trackers: Array[float] = [0.0, 0.0]
@@ -55,9 +55,10 @@ func st_physics_process(delta: float) -> void:
 		bomb.initialize_bomb()
 		bomb.global_position = enemy.player.global_position
 		
+		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
+		
 	if delta_count > shoot_times[1]:
-		state_machine.change_state(&"Idle")
-		return
+		return state_machine.change_state(&"Idle")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !warning_hidden:

@@ -6,6 +6,7 @@ const INSTANT_TURN_HP_OFFSET: int = 40
 const AGGRO_RADIUS: float = 9.0
 const DEAGGRO_RADIUS: float = 2.0
 const DISTANCE_TO_ATTACK: float = 7.0
+const NEXT_STEP: float = 0.6
 #const PLAYER_PUSHBACK: float = 300.0
 
 var hurtbox: HurtboxComponent
@@ -17,6 +18,8 @@ var move_direction: Vector3
 var block_time: float = 0.0
 var instant_turn_hp_threshold: int = 0
 var delta_count: float = 0.0
+var step_timer: float = 0.0
+var step_index: int = 1
 var is_aggro: bool = true
 
 func _init(new_enemy: Enemy, hb: HurtboxComponent) -> void:
@@ -25,6 +28,8 @@ func _init(new_enemy: Enemy, hb: HurtboxComponent) -> void:
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
+	step_timer = 0.0
+	step_index = 2
 	
 	direction_to_player = face_player()
 	enemy.rotation.y = get_angle_to_face_player(direction_to_player)
@@ -33,10 +38,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	instant_turn_hp_threshold = enemy.health_component.current_health - INSTANT_TURN_HP_OFFSET
 	is_aggro = true
 	
+	enemy.play_sound_fx(enemy.sounds, &"run_step_1")
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	step_timer += delta
 	
 	direction_to_player = face_player()
 	forward_direction = enemy.global_transform.basis.z
@@ -79,6 +86,15 @@ func st_physics_process(delta: float) -> void:
 
 	enemy.velocity = move_direction * enemy.movement_component.move_speed * delta
 	enemy.move_and_slide()
+	
+	# play footstep sound fx
+	if step_timer > NEXT_STEP:
+		enemy.play_sound_fx(enemy.sounds, "run_step_%d" % step_index)
+		step_index += 1
+		
+		step_timer = 0.0
+		if step_index > 5:
+			step_index = 1
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	hurtbox.invincibility_frames = false
