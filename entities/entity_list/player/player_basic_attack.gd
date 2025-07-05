@@ -63,7 +63,8 @@ func st_physics_process(delta: float) -> void:
 		state_machine.change_state(&"Idle")
 		return
 	
-	player.velocity = movement_vector * MOVE_SPEED * delta
+	player.velocity = player.gravity_velocity() + movement_vector * MOVE_SPEED
+	player.velocity *= delta
 	player.move_and_slide()
 
 func exit_state(next_state: State, args: Dictionary[String, Variant]):

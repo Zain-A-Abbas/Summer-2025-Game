@@ -22,7 +22,8 @@ var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
 
 func _ready() -> void:
-	pass
+	if get_tree().root.get_children().has(self):
+		begin_run()
 
 func begin_run():
 	player_upgrades = PlayerUpgrades.new()

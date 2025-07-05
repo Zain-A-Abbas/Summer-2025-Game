@@ -11,6 +11,8 @@ const PARRY_REQUIREMENT: float = 20
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
 
+@onready var camera: LevelCamera
+
 @export var hurtbox: HurtboxComponent
 @export var animation_tree: AnimationTree
 

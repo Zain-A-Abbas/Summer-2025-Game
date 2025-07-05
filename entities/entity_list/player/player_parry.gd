@@ -46,5 +46,5 @@ func st_physics_process(delta: float) -> void:
 		parry_over = true
 	
 	
-	player.velocity = Vector3.ZERO
+	player.velocity = player.gravity_velocity() * delta
 	player.move_and_slide()
