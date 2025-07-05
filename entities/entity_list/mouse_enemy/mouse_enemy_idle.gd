@@ -16,6 +16,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		from_thrust = args["from_thrust"]
 	else:
 		from_thrust = false
+	enemy.action_animator.play("mouse/idle") 
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

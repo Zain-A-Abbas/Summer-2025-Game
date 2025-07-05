@@ -123,7 +123,6 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/CSGCylinder3D/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_itu5n")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="2"]

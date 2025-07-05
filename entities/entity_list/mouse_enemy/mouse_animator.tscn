@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo04khk2ec1vx"]
+
+[ext_resource type="PackedScene" uid="uid://b8du63b1uu057" path="res://models/enemies/rodent.glb" id="1_ab5q7"]
+[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="2_cgenr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_di0kg"]
+render_priority = 0
+shader = ExtResource("2_cgenr")
+
+[node name="rodent" instance=ExtResource("1_ab5q7")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-3.98959e-15, 0.471198, -1.23107)
+bones/0/rotation = Quaternion(0.701816, -9.34118e-07, -9.20293e-07, 0.712358)
+bones/1/rotation = Quaternion(-1.72295e-08, 6.25375e-13, 4.47975e-14, 1)
+bones/2/rotation = Quaternion(-0.0135904, 5.68666e-13, 3.56422e-08, 0.999908)
+bones/3/position = Vector3(0.253916, 0.700559, 0.162385)
+bones/3/rotation = Quaternion(0.451399, -0.00929047, -0.735261, 0.505514)
+bones/4/rotation = Quaternion(-0.0295165, -0.113881, 0.553936, 0.824206)
+bones/5/position = Vector3(-0.253915, 0.700559, 0.162387)
+bones/5/rotation = Quaternion(0.451401, 0.00929194, 0.735259, 0.505514)
+bones/6/rotation = Quaternion(-0.0295166, 0.113881, -0.553936, 0.824206)
+bones/7/position = Vector3(0.211839, 0.204135, 0.162511)
+bones/7/rotation = Quaternion(0.363127, 0.89561, 0.253867, 0.0396584)
+bones/8/rotation = Quaternion(-0.223192, -9.68723e-08, 0.242034, 0.944248)
+bones/9/position = Vector3(-0.211839, 0.204135, 0.162512)
+bones/9/rotation = Quaternion(-0.363127, 0.89561, 0.253868, -0.0396608)
+bones/10/rotation = Quaternion(-0.223192, 1.089e-07, -0.242034, 0.944248)
+bones/11/rotation = Quaternion(1.11232e-06, 0.0874274, 0.996171, -1.31668e-07)
+bones/12/rotation = Quaternion(-0.187981, 8.59559e-12, -7.32004e-08, 0.982173)
+bones/13/rotation = Quaternion(0.00283092, -1.84319e-14, 1.1024e-09, 0.999996)
+bones/14/rotation = Quaternion(-0.02465, 8.48129e-14, -9.59904e-09, 0.999696)
+bones/15/rotation = Quaternion(-0.0702093, 1.19807e-13, -2.73404e-08, 0.997532)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+material_overlay = SubResource("ShaderMaterial_di0kg")

@@ -13,7 +13,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	indicator_shown = false
 	if args.has("DISTANCE_TO_RUN"):
 		distance_to_run = args["DISTANCE_TO_RUN"]
-	enemy.action_animator.play("basic_enemy_animation_library/RESET")
+	enemy.action_animator.play("mouse/charge")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

@@ -1,7 +1,7 @@
 class_name CharacterEntity
 extends CharacterBody3D
 
-const GRAVITY_ACCELERATION: float = 9.8
+const GRAVITY_ACCELERATION: float = 98
 
 ## A class used for characters. Holds an animator, collision, a state machine, 
 ## and stats
