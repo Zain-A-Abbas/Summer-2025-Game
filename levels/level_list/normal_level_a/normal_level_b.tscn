@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://du60bp5fltich"]
+[gd_scene load_steps=10 format=3 uid="uid://du60bp5fltich"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_cqy00"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="2_u0w40"]
 [ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="3_nwbf8"]
 [ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="4_ey1mq"]
 [ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="5_ey1mq"]
+[ext_resource type="AudioStream" uid="uid://btgsehlib4ugd" path="res://audio/levels/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="6_q5buu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ey1mq"]
 resource_local_to_scene = true
@@ -20,10 +21,10 @@ data = PackedVector3Array(-16, -10, 10, -16, 10, -10, -16, -10, -10, 16, -10, -1
 [node name="LevelB" instance=ExtResource("1_cqy00")]
 enemy_limit = 6
 enemy_spawn_limits = Dictionary[String, int]({
-"BASIC": 3,
+"BASIC": 4,
 "CATERPILLAR": 2,
 "FLOWER": 2,
-"MAD_HATTER": 1,
+"MAD_HATTER": 0,
 "MOUSE": 1,
 "RED_KNIGHT": 1
 })
@@ -169,3 +170,8 @@ transform = Transform3D(-0.980208, -0.0403766, 0.193808, 0.0608279, 0.870197, 0.
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
 transform = Transform3D(0.945589, 0.0436029, -0.322427, 0.15407, 0.812824, 0.561765, 0.286571, -0.580875, 0.76188, 4.54384, 5, -0.331621)
+
+[node name="ambience" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("6_q5buu")
+max_db = 0.5
+autoplay = true

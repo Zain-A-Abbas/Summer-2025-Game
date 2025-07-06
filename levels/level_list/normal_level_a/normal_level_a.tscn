@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8arawh4uq5bj"]
+[gd_scene load_steps=10 format=3 uid="uid://c8arawh4uq5bj"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_l001e"]
 [ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="2_bcpq6"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="2_p54ty"]
 [ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="3_bcpq6"]
 [ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="5_gj8st"]
+[ext_resource type="AudioStream" uid="uid://btgsehlib4ugd" path="res://audio/levels/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="6_gj8st"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bcpq6"]
 data = PackedVector3Array(-10, -10, 10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, 10, -10, -10, -10, -10, -10, -10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, 10, 10, 10, -10, 10, -10, -10, 10, 10, -10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10)
@@ -100,5 +101,10 @@ transform = Transform3D(-0.965926, 0.12941, -0.224144, 0, 0.866026, 0.5, 0.25881
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
 transform = Transform3D(-0.965925, -0.12941, 0.224144, 0, -0.866025, -0.5, 0.258819, -0.482963, 0.836516, 4.54384, 5, -0.331621)
 
-[node name="Player" parent="." index="9"]
+[node name="ambience" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("6_gj8st")
+max_db = 0.5
+autoplay = true
+
+[node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)

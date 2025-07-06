@@ -49,6 +49,9 @@ size = 16.0
 script = ExtResource("2_wo181")
 metadata/_edit_lock_ = true
 
+[node name="Sounds" type="Node3D" parent="."]
+unique_name_in_owner = true
+
 [node name="SceneDocumentation" parent="." instance=ExtResource("1_banr2")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneDocumentation"]

@@ -14,6 +14,7 @@ func prepare_states():
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
+		play_sound_fx(sounds, &"damaged")
 		hurt_effect()
 		resolve_hit(attack_object)
 

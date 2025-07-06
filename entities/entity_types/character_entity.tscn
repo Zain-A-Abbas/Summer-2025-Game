@@ -17,3 +17,6 @@ metadata/_custom_type_script = "uid://3ilqij2x3es4"
 [node name="Sounds" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="damaged" type="AudioStreamPlayer3D" parent="Sounds"]
+max_db = 0.0

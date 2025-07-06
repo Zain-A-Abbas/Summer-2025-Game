@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=46 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -13,15 +13,19 @@
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="12_037cv"]
 [ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="12_w7qv5"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="13_y07nu"]
-[ext_resource type="AudioStream" uid="uid://fiuv1qcohimj" path="res://audio/Arrow_Whoosh_01.wav" id="14_vvnrl"]
-[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/Sword_Whoosh_01.wav" id="14_w7qv5"]
-[ext_resource type="AudioStream" uid="uid://byxxr2fujg0n8" path="res://audio/Sword_Whoosh_No_Shing_02.wav" id="16_0y12j"]
-[ext_resource type="AudioStream" uid="uid://v4fec0kuo08c" path="res://audio/Sword_Whoosh_03.wav" id="16_vvnrl"]
-[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/Stone Chain Run 1.wav" id="18_lyphk"]
-[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/Stone Chain Run 2.wav" id="19_en3iv"]
-[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/Stone Chain Run 3.wav" id="20_ejd1t"]
-[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/Stone Chain Run 4.wav" id="21_arapp"]
-[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/Stone Chain Run 5.wav" id="22_rwmd0"]
+[ext_resource type="AudioStream" uid="uid://fiuv1qcohimj" path="res://audio/entities/Arrow_Whoosh_01.wav" id="14_lyphk"]
+[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/entities/Sword_Whoosh_01.wav" id="15_en3iv"]
+[ext_resource type="AudioStream" uid="uid://byxxr2fujg0n8" path="res://audio/entities/Sword_Whoosh_No_Shing_02.wav" id="16_ejd1t"]
+[ext_resource type="AudioStream" uid="uid://v4fec0kuo08c" path="res://audio/entities/Sword_Whoosh_03.wav" id="17_arapp"]
+[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/entities/Stone Chain Run 1.wav" id="18_rwmd0"]
+[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/entities/Stone Chain Run 2.wav" id="19_p772y"]
+[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/entities/Stone Chain Run 3.wav" id="20_wlnxk"]
+[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/entities/Stone Chain Run 4.wav" id="21_apdix"]
+[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/entities/Stone Chain Run 5.wav" id="22_5635v"]
+[ext_resource type="AudioStream" uid="uid://cckd6y0i2jc6" path="res://audio/entities/SFX_Sword_Sheathe_01.wav" id="23_ejd1t"]
+[ext_resource type="AudioStream" uid="uid://k6oqv6j7txg5" path="res://audio/entities/Sword Impact Hit 2.wav" id="23_en3iv"]
+[ext_resource type="AudioStream" uid="uid://8ff0m2uifoof" path="res://audio/entities/SFX_Potion_01.wav" id="25_arapp"]
+[ext_resource type="AudioStream" uid="uid://c7dkpunjqyefl" path="res://audio/entities/SFX_Key_Take_08.wav" id="26_rwmd0"]
 
 [sub_resource type="Gradient" id="Gradient_w7qv5"]
 interpolation_mode = 1
@@ -209,41 +213,74 @@ move_speed = 550.0
 current = true
 
 [node name="dodge_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_vvnrl")
+stream = ExtResource("14_lyphk")
 max_db = -1.165
+pitch_scale = 0.65
 
 [node name="sword_whoosh_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("14_w7qv5")
+stream = ExtResource("15_en3iv")
+volume_db = -5.0
 max_db = 0.0
 
 [node name="sword_whoosh_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_0y12j")
+stream = ExtResource("16_ejd1t")
+volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.82
 
 [node name="sword_whoosh_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("16_vvnrl")
+stream = ExtResource("17_arapp")
+volume_db = -5.0
 max_db = 0.0
 pitch_scale = 1.21
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_lyphk")
+stream = ExtResource("18_rwmd0")
+volume_db = -5.0
 max_db = 0.0
+pitch_scale = 0.8
 
 [node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
-stream = ExtResource("19_en3iv")
+stream = ExtResource("19_p772y")
+volume_db = -5.0
 max_db = 0.0
+pitch_scale = 0.8
 
 [node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
-stream = ExtResource("20_ejd1t")
+stream = ExtResource("20_wlnxk")
+volume_db = -5.0
 max_db = 0.0
+pitch_scale = 0.8
 
 [node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
-stream = ExtResource("21_arapp")
+stream = ExtResource("21_apdix")
+volume_db = -5.0
 max_db = 0.0
+pitch_scale = 0.8
 
 [node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="8"]
-stream = ExtResource("22_rwmd0")
+stream = ExtResource("22_5635v")
+volume_db = -5.0
+max_db = 0.0
+pitch_scale = 0.8
+
+[node name="parried" type="AudioStreamPlayer3D" parent="Sounds" index="9"]
+stream = ExtResource("23_ejd1t")
+max_db = 0.0
+pitch_scale = 0.85
+
+[node name="damaged" parent="Sounds" index="10"]
+stream = ExtResource("23_en3iv")
+pitch_scale = 0.8
+
+[node name="heal" type="AudioStreamPlayer3D" parent="Sounds" index="11"]
+stream = ExtResource("25_arapp")
+volume_db = -5.0
+max_db = 0.0
+
+[node name="gain_money" type="AudioStreamPlayer3D" parent="Sounds" index="12"]
+stream = ExtResource("26_rwmd0")
+volume_db = -5.0
 max_db = 0.0
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

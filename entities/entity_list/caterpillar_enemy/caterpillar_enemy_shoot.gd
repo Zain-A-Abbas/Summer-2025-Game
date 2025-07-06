@@ -46,7 +46,7 @@ func st_physics_process(delta: float) -> void:
 
 	if delta_count >= SHOOT_TIMES[0] && !seed_shot:
 		seed_shot = true
-		enemy.play_sound_fx(enemy.sounds, "seed_shoot")
+		enemy.play_sound_fx(enemy.sounds, &"seed_shoot")
 	
 		var seed = SEED.instantiate()
 		enemy.projectiles.add_child(seed)
@@ -54,6 +54,6 @@ func st_physics_process(delta: float) -> void:
 		seed.global_position = enemy.global_position
 		
 	if delta_count > SHOOT_TIMES[1]:
-		state_machine.change_state(&"Idle")
-		return
-		
+		return state_machine.change_state(&"Idle")
+	
+	enemy.face_direction(face_player())

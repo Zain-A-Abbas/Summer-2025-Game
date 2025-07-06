@@ -27,8 +27,6 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	warning_times[0] = shoot_times[0] - 0.6
 	warning_times[1] = warning_times[0] + WARNING_DURATION
-	
-	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -53,6 +51,7 @@ func st_physics_process(delta: float) -> void:
 		bomb.initialize_bomb()
 		bomb.global_position = enemy.player.global_position
 		
+		enemy.action_animator.play("basic_enemy_animation_library/attack")
 		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
 		
 	if delta_count > shoot_times[1]:

@@ -5,6 +5,7 @@ class_name ShopItem
 @onready var player_detection_area: Area3D = %PlayerDetectionArea
 @onready var player_hit_area: Area3D = %PlayerHitArea
 @onready var price_label: Label3D = %PriceLabel
+@onready var sounds: Node3D = %Sounds
 
 const UPGRADE_PRICES: Dictionary[PlayerUpgrades.UpgradeTypes, int] = {
 	PlayerUpgrades.UpgradeTypes.PARRY_FRAME_BONUS: 80,
@@ -92,6 +93,7 @@ func _on_player_detection_area_body_entered(body: Node3D) -> void:
 func _on_player_detection_area_body_exited(body: Node3D) -> void:
 	hide_price_label()
 
-
 func _on_player_hit_area_area_entered(area: Area3D) -> void:
+	var name: String = "get_item_%d" % randi_range(1, 3)
+	sounds.get_node(name).play()
 	resolve_buy()

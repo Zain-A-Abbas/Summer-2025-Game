@@ -22,6 +22,7 @@ var step_timer: float = 0.0
 var step_index: int = 1
 var is_aggro: bool = true
 var reset_played: bool = false
+var walk_played: bool = false
 
 func _init(new_enemy: Enemy, hb: HurtboxComponent, ray: RayCast3D) -> void:
 	enemy = new_enemy
@@ -43,6 +44,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	enemy.play_sound_fx(enemy.sounds, &"run_step_1")
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
+	walk_played = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -84,12 +86,17 @@ func st_physics_process(delta: float) -> void:
 		if !reset_played:
 			enemy.action_animator.play("basic_enemy_animation_library/RESET")
 			reset_played = true
+			walk_played = false
 	elif is_aggro:
 		move_direction = face_player()
 		reset_played = false
 	else:
 		move_direction = face_player().rotated(Vector3(0,1,0), deg_to_rad(180))
 		reset_played = false
+
+	if !walk_played:
+		enemy.action_animator.play("basic_enemy_animation_library/walk")
+		walk_played = true
 
 	enemy.velocity = move_direction * enemy.movement_component.move_speed * delta
 	enemy.move_and_slide()

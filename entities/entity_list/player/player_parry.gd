@@ -1,7 +1,7 @@
 class_name PlayerParry
 extends PlayerState
 
-const BASE_INVINCIBILITY_PERIOD: float = 0.1
+const BASE_INVINCIBILITY_PERIOD: float = 0.15
 const STATE_TIME: float = 0.2
 
 var invincibility_period: float = BASE_INVINCIBILITY_PERIOD

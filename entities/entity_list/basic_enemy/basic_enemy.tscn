@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=37 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
@@ -13,12 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="9_k5gch"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="10_5sssr"]
 [ext_resource type="AnimationLibrary" uid="uid://c6ddaqnbh0i5m" path="res://entities/entity_list/basic_enemy/basic_enemy_animation_library.res" id="12_k5gch"]
-[ext_resource type="AudioStream" uid="uid://38w54su7hfex" path="res://audio/Sword_Whoosh_No_Shing_04.wav" id="14_i6hqh"]
-[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/Stone Chain Run 1.wav" id="15_bfcs5"]
-[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/Stone Chain Run 2.wav" id="16_fl2vc"]
-[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/Stone Chain Run 3.wav" id="17_wxn5g"]
-[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/Stone Chain Run 4.wav" id="18_16uoj"]
-[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/Stone Chain Run 5.wav" id="19_e60tt"]
+[ext_resource type="AudioStream" uid="uid://38w54su7hfex" path="res://audio/entities/Sword_Whoosh_No_Shing_04.wav" id="14_i6hqh"]
+[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/entities/Stone Chain Run 1.wav" id="15_bfcs5"]
+[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/entities/Stone Chain Run 2.wav" id="16_fl2vc"]
+[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/entities/Stone Chain Run 3.wav" id="17_wxn5g"]
+[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/entities/Stone Chain Run 4.wav" id="18_16uoj"]
+[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/entities/Stone Chain Run 5.wav" id="19_e60tt"]
+[ext_resource type="AudioStream" uid="uid://b4eqf1xo1ljv2" path="res://audio/entities/Impact 4.wav" id="20_fl2vc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
 render_priority = 0
@@ -118,35 +119,35 @@ animation_tree = NodePath("placeholder_model/AnimationTree")
 [node name="placeholder_model" parent="." index="0" instance=ExtResource("3_68gr5")]
 
 [node name="Skeleton3D" parent="placeholder_model/Rig" index="0"]
-bones/1/position = Vector3(-0.000639929, 0.110252, 0.729701)
+bones/1/position = Vector3(0.00658714, 0.110336, 0.739961)
 bones/1/rotation = Quaternion(0.67421, -0.14968, -0.147378, 0.708038)
-bones/3/rotation = Quaternion(0.0875052, -0.0411051, 0.00151211, 0.995315)
-bones/4/rotation = Quaternion(0.273417, -0.11319, -0.0324221, 0.954662)
-bones/5/rotation = Quaternion(-0.0559168, 0.0784477, 0.0135294, 0.995257)
-bones/6/rotation = Quaternion(0.0195425, 0.172679, -0.0289858, 0.984358)
+bones/3/rotation = Quaternion(0.0922523, -0.0413323, 0.00224325, 0.994875)
+bones/4/rotation = Quaternion(0.287993, -0.113966, -0.030133, 0.950349)
+bones/5/rotation = Quaternion(-0.0662425, 0.0788568, 0.0119094, 0.994611)
+bones/6/rotation = Quaternion(0.0497125, 0.162627, -0.0465418, 0.984335)
 bones/7/rotation = Quaternion(-0.599503, -0.37346, -0.394205, 0.587985)
-bones/8/rotation = Quaternion(-0.0437422, 0.701175, -0.410415, 0.581378)
-bones/9/rotation = Quaternion(0.397194, -0.186114, 0.0908822, 0.894058)
-bones/10/rotation = Quaternion(0.0781792, -0.0750088, 0.0119846, 0.994041)
-bones/11/rotation = Quaternion(0.0366881, 0.706157, -0.0366884, 0.706152)
-bones/12/rotation = Quaternion(0.142092, -1.57394e-07, 2.32249e-08, 0.989854)
-bones/13/rotation = Quaternion(0.142092, 3.52894e-08, -2.61474e-07, 0.989853)
-bones/14/rotation = Quaternion(0.0883396, 0.696615, -0.121376, 0.701564)
-bones/15/rotation = Quaternion(0.148332, 0.000224377, 0.00149663, 0.988936)
-bones/16/rotation = Quaternion(0.148332, -0.000167499, -0.00111703, 0.988937)
-bones/17/rotation = Quaternion(0.19821, 0.663952, -0.243252, 0.678755)
-bones/18/rotation = Quaternion(0.312336, -0.000260691, -0.000792473, 0.949971)
-bones/19/rotation = Quaternion(0.312337, 0.000190207, 0.000579302, 0.949971)
-bones/20/rotation = Quaternion(0.164436, 0.681434, -0.188817, 0.687719)
-bones/21/rotation = Quaternion(0.249827, 2.98861e-06, 1.1591e-05, 0.968291)
-bones/22/rotation = Quaternion(0.249827, -0.000266399, -0.00103317, 0.96829)
+bones/8/rotation = Quaternion(-0.0429736, 0.700444, -0.413707, 0.579981)
+bones/9/rotation = Quaternion(0.397121, -0.186827, 0.091199, 0.893909)
+bones/10/rotation = Quaternion(0.0707252, -0.0626529, 0.0177002, 0.995369)
+bones/11/rotation = Quaternion(0.0321488, 0.706379, -0.0321492, 0.706373)
+bones/12/rotation = Quaternion(0.135726, -1.30385e-07, 3.80213e-07, 0.990746)
+bones/13/rotation = Quaternion(0.135725, -7.60697e-08, -1.69966e-07, 0.990747)
+bones/14/rotation = Quaternion(0.0838281, 0.697381, -0.116895, 0.702117)
+bones/15/rotation = Quaternion(0.141972, 0.000214706, 0.00149831, 0.98987)
+bones/16/rotation = Quaternion(0.141972, -0.00016037, -0.00111841, 0.98987)
+bones/17/rotation = Quaternion(0.193843, 0.665502, -0.238979, 0.680016)
+bones/18/rotation = Quaternion(0.306223, -0.000255722, -0.000793849, 0.951959)
+bones/19/rotation = Quaternion(0.306223, 0.000186535, 0.000579767, 0.951959)
+bones/20/rotation = Quaternion(0.160012, 0.682634, -0.184433, 0.688761)
+bones/21/rotation = Quaternion(0.243597, 2.7956e-06, 1.20001e-05, 0.969877)
+bones/22/rotation = Quaternion(0.243598, -0.000259933, -0.00103497, 0.969876)
 bones/23/rotation = Quaternion(0.247413, 0.945795, 0.203441, 0.0535841)
-bones/24/rotation = Quaternion(0.0436905, -7.19724e-05, 5.09816e-05, 0.999045)
-bones/25/rotation = Quaternion(0.0440741, 5.74451e-05, -0.000538323, 0.999028)
+bones/24/rotation = Quaternion(0.0381991, -7.21866e-05, 5.07002e-05, 0.99927)
+bones/25/rotation = Quaternion(0.038582, 6.037e-05, -0.000538002, 0.999255)
 bones/26/rotation = Quaternion(-0.635615, 0.31049, 0.329592, 0.625267)
 bones/27/rotation = Quaternion(0.191132, 0.675857, -0.517095, -0.489182)
-bones/28/rotation = Quaternion(0.344599, 0.138695, -0.0515569, 0.927015)
-bones/29/rotation = Quaternion(-0.0269134, 0.124216, -0.0164872, 0.991753)
+bones/28/rotation = Quaternion(0.357603, 0.137955, -0.0535024, 0.922077)
+bones/29/rotation = Quaternion(-0.00297702, 0.123782, -0.0194794, 0.992114)
 bones/30/rotation = Quaternion(0.44519, -0.549369, 0.445194, 0.549365)
 bones/31/rotation = Quaternion(0.623341, -5.28451e-08, -6.41027e-08, 0.78195)
 bones/32/rotation = Quaternion(0.623342, 6.07422e-08, -9.52821e-08, 0.78195)
@@ -162,20 +163,20 @@ bones/41/rotation = Quaternion(0.623341, 0.000665151, 0.000834412, 0.781949)
 bones/42/rotation = Quaternion(-0.290838, 0.949649, 0.114583, -0.0212171)
 bones/43/rotation = Quaternion(0.21939, -0.0238026, 0.00530508, 0.975332)
 bones/44/rotation = Quaternion(0.687388, 0.000308989, 0.000444505, 0.72629)
-bones/45/rotation = Quaternion(0.920963, 0.184993, -0.0228091, 0.342176)
-bones/46/rotation = Quaternion(0.554495, -0.0627083, 0.041944, 0.82876)
-bones/47/rotation = Quaternion(-0.636073, -0.0472139, 0.103579, 0.763186)
+bones/45/rotation = Quaternion(0.925429, 0.178237, -0.0219762, 0.333661)
+bones/46/rotation = Quaternion(0.538819, -0.0665912, 0.0427692, 0.838696)
+bones/47/rotation = Quaternion(-0.630383, -0.0473927, 0.0966081, 0.76879)
 bones/48/rotation = Quaternion(-0.00013718, 0.964307, -0.264787, -0.000499427)
-bones/49/rotation = Quaternion(0.942302, -0.301341, 0.0371545, 0.140996)
-bones/50/rotation = Quaternion(0.552352, 0.242794, -0.172243, 0.778647)
-bones/51/rotation = Quaternion(-0.722126, -0.187515, -0.170113, 0.643765)
+bones/49/rotation = Quaternion(0.944247, -0.298082, 0.0367526, 0.134887)
+bones/50/rotation = Quaternion(0.534219, 0.248821, -0.16823, 0.790188)
+bones/51/rotation = Quaternion(-0.711716, -0.185909, -0.173138, 0.654921)
 bones/52/rotation = Quaternion(-0.000137131, 0.964307, -0.264787, -0.000499424)
 
 [node name="Mannequin" parent="placeholder_model/Rig/Skeleton3D" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
 
 [node name="BoneAttachment3D" parent="placeholder_model/Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.329322, -0.584016, -0.741939, 0.589227, -0.741108, 0.321823, -0.737807, -0.331187, 0.588181, -0.302014, 0.890787, -0.512112)
+transform = Transform3D(-0.345271, -0.615994, -0.708053, 0.597358, -0.726133, 0.340432, -0.723845, -0.30542, 0.618682, -0.292427, 0.906056, -0.513662)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -238,6 +239,7 @@ texture = SubResource("ViewportTexture_5sssr")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("14_i6hqh")
+volume_db = -10.0
 max_db = 0.0
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
@@ -259,6 +261,9 @@ max_db = -4.0
 [node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
 stream = ExtResource("19_e60tt")
 max_db = -4.0
+
+[node name="damaged" parent="Sounds" index="6"]
+stream = ExtResource("20_fl2vc")
 
 [editable path="placeholder_model"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

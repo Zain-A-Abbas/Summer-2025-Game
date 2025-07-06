@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq65eqmwbah6q"
+path="res://.godot/imported/Stone Chain Run 5.wav-fddcb44d9f8f50744c7849c647e327ca.sample"
+
+[deps]
+
+source_file="res://audio/entities/Stone Chain Run 5.wav"
+dest_files=["res://.godot/imported/Stone Chain Run 5.wav-fddcb44d9f8f50744c7849c647e327ca.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

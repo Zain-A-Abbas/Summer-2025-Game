@@ -77,6 +77,7 @@ func parry_received(attack_object: AttackObject):
 	if can_get_parry_point:
 		parry_counter = mini(parry_counter + 1, 3)
 		can_get_parry_point = false
+		play_sound_fx(sounds, &"parried")
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass
@@ -84,11 +85,14 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 func heal(heal_amount: int):
 	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
 	player_hp_recovered.emit(self)
+	play_sound_fx(sounds, &"heal")
 
 func gain_money(amount: int):
 	obtained_money.emit(amount)
+	play_sound_fx(sounds, &"gain_money")
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
 		#print("player hit")
+		play_sound_fx(sounds, &"damaged")
 		resolve_hit(attack_object)
