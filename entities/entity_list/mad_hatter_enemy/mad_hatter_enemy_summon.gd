@@ -31,8 +31,8 @@ func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	
 	if enemy.health_component.current_health <= summon_cancel_threshold:
-		state_machine.change_state(&"Idle")
-		return
+		enemy.attack_indicator_animator.play("hide_indicator")
+		return state_machine.change_state(&"Idle")
 	
 	if delta_count > SUMMON_TIME - 1.2 && !warning_shown:
 		enemy.attack_indicator_animator.play("show_indicator")

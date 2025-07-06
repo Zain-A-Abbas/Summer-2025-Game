@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://krqa0edksq88"]
+[gd_scene load_steps=6 format=3 uid="uid://krqa0edksq88"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_vng3c"]
 [ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="2_8pan4"]
@@ -7,14 +7,6 @@
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bcpq6"]
 data = PackedVector3Array(-10, -10, 10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, 10, -10, -10, -10, -10, -10, -10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, 10, 10, 10, -10, 10, -10, -10, 10, 10, -10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_td3eg"]
-resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p54ty"]
-resource_local_to_scene = true
-albedo_color = Color(1, 0, 0, 1)
 
 [node name="LevelBase" instance=ExtResource("1_vng3c")]
 
@@ -40,11 +32,9 @@ shape = SubResource("ConcavePolygonShape3D_bcpq6")
 
 [node name="LevelExit" parent="StaticGeometry" index="2" instance=ExtResource("4_rvc3f")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 2.5, 0.5)
-material = SubResource("StandardMaterial3D_td3eg")
 
 [node name="LevelExit2" parent="StaticGeometry" index="3" instance=ExtResource("4_rvc3f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 20)
-material = SubResource("StandardMaterial3D_p54ty")
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)

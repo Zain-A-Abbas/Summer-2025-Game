@@ -9,7 +9,7 @@ func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", MadHatterEnemyIdle.new(self)),
 		StateInitializer.new(&"Wander", MadHatterEnemyWander.new(self, ray_cast)),
-		StateInitializer.new(&"Su	mmon", MadHatterEnemySummon.new(self))
+		StateInitializer.new(&"Summon", MadHatterEnemySummon.new(self))
 	]
 	
 	state_machine.assign_states(enemy_states)

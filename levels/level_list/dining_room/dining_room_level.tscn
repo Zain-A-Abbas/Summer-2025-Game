@@ -335,6 +335,14 @@ fog_light_energy = 0.02
 
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
 enemy_limit = 5
+enemy_spawn_limits = Dictionary[String, int]({
+"BASIC": 1,
+"CATERPILLAR": 1,
+"FLOWER": 1,
+"MAD_HATTER": 1,
+"MOUSE": 1,
+"RED_KNIGHT": 1
+})
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
@@ -529,18 +537,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 36)
 [node name="Marker3D4" type="Marker3D" parent="EnemyData/DigPositions" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 36)
 
-[node name="Marker3D" type="Marker3D" parent="EnemyData/HatterPath" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/HatterPath" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-
-[node name="Marker3D3" type="Marker3D" parent="EnemyData/HatterPath" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 32)
-
-[node name="Marker3D4" type="Marker3D" parent="EnemyData/HatterPath" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 32)
-
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)
 
@@ -599,5 +595,5 @@ omni_range = 16.0
 [node name="LevelCamera" parent="." index="7"]
 transform = Transform3D(-0.707106, 0.336317, -0.622006, 0, 0.879648, 0.475624, 0.707106, 0.336317, -0.622006, -12.865, 14.791, 4.66)
 
-[node name="Player" parent="." index="9"]
+[node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
