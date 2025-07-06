@@ -58,6 +58,7 @@ attack={
 
 [layer_names]
 
+3d_render/layer_6="level_geometry"
 3d_physics/layer_1="Character Entities"
 3d_physics/layer_2="Player Attacks / Enemy Hurtboxes"
 3d_physics/layer_3="Enemy Attacks / Player Hurtboxes"

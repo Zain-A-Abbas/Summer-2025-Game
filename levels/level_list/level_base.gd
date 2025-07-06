@@ -32,6 +32,7 @@ const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jab
 @onready var projectiles: Node3D = %Projectiles
 
 @export var has_enemies: bool = true
+@export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
 @export var enemy_spawn_limits: Dictionary[String, int] = {
 	"BASIC": 0,

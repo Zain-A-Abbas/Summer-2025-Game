@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dlxxmdgi86uky"]
+
+[ext_resource type="Texture2D" uid="uid://c4bmkx3tk0853" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Fabric-Pattern-2.png" id="1_4op1c"]
+
+[resource]
+albedo_texture = ExtResource("1_4op1c")
+metallic_specular = 0.0
+texture_filter = 0

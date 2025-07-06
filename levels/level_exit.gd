@@ -1,9 +1,9 @@
 class_name LevelExit
-extends CSGBox3D
+extends Node3D
 
 signal exit_chosen(next_level: LevelBase.LevelType)
 
-@onready var open_indicator: CSGBox3D = %OpenIndicator
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var exit_type: LevelBase.LevelType
 
@@ -12,7 +12,7 @@ var active: bool = false
 
 
 func _ready() -> void:
-	open_indicator.visible = false
+	
 	if always_active:
 		activate()
 
@@ -37,20 +37,10 @@ func initialize(current_level: LevelBase):
 				return initialize(current_level)
 			exit_type = LevelBase.LevelType.SHOP
 	
-	if material is StandardMaterial3D:
-		if exit_type == LevelBase.LevelType.HEALING:
-			material.albedo_color = Color.GREEN
-		elif exit_type == LevelBase.LevelType.SHOP:
-			material.albedo_color = Color.YELLOW
-		elif exit_type == LevelBase.LevelType.ELITE:
-			material.albedo_color = Color.ORANGE
-		elif exit_type == LevelBase.LevelType.BOSS:
-			material.albedo_color = Color.BLACK
 
 func activate():
 	active = true
-	
-	open_indicator.visible = true
+	animation_player.play("open")
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

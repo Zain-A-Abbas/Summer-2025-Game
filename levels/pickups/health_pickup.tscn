@@ -1,12 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://gmsq1y4yy4qy"]
+[gd_scene load_steps=4 format=3 uid="uid://gmsq1y4yy4qy"]
 
 [ext_resource type="PackedScene" uid="uid://onushv8dgjk8" path="res://levels/pickups/pickup_base.tscn" id="1_kvn7r"]
 [ext_resource type="Script" uid="uid://djp1cl83hy7nw" path="res://levels/pickups/health_pickup.gd" id="2_38l73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvn7r"]
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_38l73"]
+shading_mode = 0
 albedo_color = Color(0, 1, 0, 1)
 
 [node name="Pickup" instance=ExtResource("1_kvn7r")]
@@ -23,4 +21,4 @@ material = SubResource("StandardMaterial3D_kvn7r")
 [node name="CSGBox3D4" type="CSGBox3D" parent="PickupModel" index="1"]
 transform = Transform3D(1, 0, -2.23517e-07, 0, 1, 0, 2.23517e-07, 0, 1, 0, 1.875, 0)
 size = Vector3(0.4, 1.8, 0.25)
-material = SubResource("StandardMaterial3D_38l73")
+material = SubResource("StandardMaterial3D_kvn7r")

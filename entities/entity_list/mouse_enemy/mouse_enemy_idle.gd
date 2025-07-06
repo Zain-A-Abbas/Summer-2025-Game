@@ -13,6 +13,7 @@ func _init(new_enemy: Enemy) -> void:
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	from_thrust = args.has("from_thrust")
+	enemy.action_animator.play("mouse/idle") 
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

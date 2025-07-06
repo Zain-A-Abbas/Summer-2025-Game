@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://blm1udfwrgvie"]
+
+[ext_resource type="PackedScene" uid="uid://bm86c8o7j5wvh" path="res://models/fantasy_decorations.glb" id="1_bo4js"]
+
+[node name="fantasy_decorations" instance=ExtResource("1_bo4js")]

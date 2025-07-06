@@ -11,6 +11,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	step_index = 2
 	
 	player.play_sound_fx(player.sounds, "run_step_1")
+	player.action_animator.play("walk")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -30,7 +31,8 @@ func st_physics_process(delta: float) -> void:
 
 	var movement_vector: Vector3 = Vector3(-movement_input.x, 0.0, movement_input.y)
 
-	player.velocity = movement_vector * player.movement_component.move_speed * delta
+	player.velocity = player.gravity_velocity() + movement_vector * player.movement_component.move_speed
+	player.velocity *= delta
 	player.rotation.y = Vector2(-movement_vector.x, movement_vector.z).angle() + deg_to_rad(90)
 	player.move_and_slide()
 	

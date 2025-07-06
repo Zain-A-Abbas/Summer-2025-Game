@@ -22,8 +22,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if args.has("DISTANCE_TO_RUN"):
 		distance_to_run = args["DISTANCE_TO_RUN"]
 	move_speed = enemy.movement_component.move_speed
-	enemy.action_animator.play("basic_enemy_animation_library/walk")
-	enemy.animation_tree["parameters/WalkRun/blend_position"] = 100.0
+	enemy.action_animator.play("mouse/run") 
 	
 	enemy.play_sound_fx(enemy.sounds, "crawl_1")
 
@@ -32,7 +31,7 @@ func st_physics_process(delta: float) -> void:
 	step_timer += delta
 
 	if delta_count >= TIME_TO_JUMP:
-		enemy.action_animator.play("basic_enemy_animation_library/RESET")
+		#enemy.action_animator.play("basic_enemy_animation_library/RESET")
 		state_machine.change_state(&"Jump")
 		return
 

@@ -30,23 +30,21 @@ enemy_spawn_limits = Dictionary[String, int]({
 })
 
 [node name="LevelExit" parent="StaticGeometry" index="0" instance=ExtResource("2_u0w40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 2.5, 10)
-material = SubResource("StandardMaterial3D_ey1mq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 9.5)
 
 [node name="LevelExit2" parent="StaticGeometry" index="1" instance=ExtResource("2_u0w40")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.5, 10)
-material = SubResource("StandardMaterial3D_u0w40")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 9.5)
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 size = Vector3(32, 0.001, 20)
-material = ExtResource("3_nwbf8")
+material = ExtResource("3_ey1mq")
 
 [node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9, 10, 0)
 flip_faces = true
 size = Vector3(32, 20, 20)
-material = ExtResource("4_ey1mq")
+material = ExtResource("4_q5buu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/RoomBorders" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
@@ -63,62 +61,62 @@ visible = false
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry/Walls" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="StaticGeometry/Walls" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="StaticGeometry/Walls" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, -5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="StaticGeometry/Walls" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1, 5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="StaticGeometry/Walls" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1, 0)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="StaticGeometry/Walls" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="StaticGeometry/Walls" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="StaticGeometry/Walls" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 0)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="StaticGeometry/Walls" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="StaticGeometry/Walls" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="StaticGeometry/Walls" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
 size = Vector3(0.5, 2, 6)
-material = ExtResource("5_ey1mq")
+material = ExtResource("5_pu0g3")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.90559, 0, 8.39041)

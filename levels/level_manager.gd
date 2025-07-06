@@ -22,7 +22,8 @@ var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
 
 func _ready() -> void:
-	pass
+	if get_tree().root.get_children().has(self):
+		begin_run()
 
 func begin_run():
 	player_upgrades = PlayerUpgrades.new()
@@ -30,7 +31,7 @@ func begin_run():
 	current_level = 1
 	player_ui.visible = true
 	await fade_transition(true)
-	create_level(LevelBase.LevelType.NORMAL)
+	create_level()
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase
@@ -49,7 +50,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		new_level = boss_level.instantiate()
 	
 	level_holder.add_child(new_level)
-	var enemy_count: int = randi_range(1, new_level.enemy_limit)
+	var enemy_count: int = randi_range(new_level.enemy_minimum, new_level.enemy_limit)
 	if !new_level.has_enemies:
 		enemy_count = 0
 	new_level.setup_level(self, new_level_type, enemy_count)

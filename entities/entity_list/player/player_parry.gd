@@ -13,6 +13,8 @@ var parry_over: bool = false
 var parry_succeeded: bool = false
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
+	
+	
 	delta_count = 0
 	invincibility_period = BASE_INVINCIBILITY_PERIOD + player.upgrades.extra_parry_time * player.upgrades.PARRY_BONUS_AMOUNT
 	parry_over = false
@@ -25,6 +27,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.hurtbox.parry_frames = true
 	player.consume_stamina(player.PARRY_REQUIREMENT, 0.2)
 	
+	player.animation_tree["parameters/ParryTimeSeek/seek_request"] = 0.23
+	player.action_animator.play("parry")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.can_get_parry_point = false
@@ -42,5 +46,5 @@ func st_physics_process(delta: float) -> void:
 		parry_over = true
 	
 	
-	player.velocity = Vector3.ZERO
+	player.velocity = player.gravity_velocity() * delta
 	player.move_and_slide()

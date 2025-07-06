@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bqwo4ximny2u3"]
+
+[ext_resource type="Texture2D" uid="uid://ccn40fsa2ts0u" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Brick-Tan-2.png" id="1_0nv7n"]
+
+[resource]
+albedo_texture = ExtResource("1_0nv7n")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+uv1_triplanar = true
+texture_filter = 0

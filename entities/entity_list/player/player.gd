@@ -8,8 +8,13 @@ signal obtained_money(amount: int)
 const DODGE_REQUIREMENT: float = 50
 const PARRY_REQUIREMENT: float = 20
 
+@onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
+
+@onready var camera: LevelCamera
+
 @export var hurtbox: HurtboxComponent
+@export var animation_tree: AnimationTree
 
 # Required for parrying/dodging
 var stamina: float = 100.0

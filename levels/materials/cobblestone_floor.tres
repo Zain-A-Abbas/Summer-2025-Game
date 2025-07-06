@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cibvmstybnpug"]
+
+[ext_resource type="Texture2D" uid="uid://gdorxwnersvw" path="res://levels/materials/Cobble.png" id="1_ouc1a"]
+
+[resource]
+albedo_texture = ExtResource("1_ouc1a")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+uv1_triplanar = true
+texture_filter = 0

@@ -30,5 +30,6 @@ func st_physics_process(delta: float) -> void:
 		state_machine.change_state(&"Idle")
 		return
 	
-	player.velocity = movement_vector * DODGE_SPEED * delta
+	player.velocity = player.gravity_velocity() + movement_vector * DODGE_SPEED
+	player.velocity *= delta
 	player.move_and_slide()
