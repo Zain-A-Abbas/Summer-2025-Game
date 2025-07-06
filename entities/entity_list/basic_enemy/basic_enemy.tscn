@@ -120,24 +120,30 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.0432043, 3.21175, -0.184778)
-bones/1/rotation = Quaternion(-0.000346457, 0.0170029, -0.0203686, 0.999648)
-bones/3/rotation = Quaternion(0.168682, -0.0413818, 0.0003337, 0.984801)
-bones/4/rotation = Quaternion(0.288266, -0.114876, -0.0264538, 0.950266)
-bones/6/rotation = Quaternion(0.0237045, 0.942049, -0.334587, 0.00573095)
-bones/7/rotation = Quaternion(0.205319, -0.769084, 0.334452, 0.504476)
-bones/8/rotation = Quaternion(0.0422036, 0.660702, 0.0680006, 0.746369)
-bones/10/rotation = Quaternion(0.0323878, 0.0148452, 0.0105328, 0.99931)
-bones/13/rotation = Quaternion(-0.176079, 0.0776668, 0.0181036, 0.98114)
-bones/14/rotation = Quaternion(0.130555, 0.166037, -0.0295498, 0.976992)
-bones/18/rotation = Quaternion(0.200767, 0.755301, -0.275349, 0.559817)
-bones/19/rotation = Quaternion(-0.00732505, -0.613904, -0.0192132, 0.789113)
-bones/25/rotation = Quaternion(-0.000140322, 0.265656, 0.963859, -0.0200621)
-bones/26/rotation = Quaternion(-0.000595494, 0.977709, -0.209941, -0.00312237)
-bones/27/rotation = Quaternion(-0.0168199, 0.616254, -0.787309, -0.00959177)
-bones/28/rotation = Quaternion(-0.000209689, -0.211981, 0.976814, -0.0299792)
-bones/29/rotation = Quaternion(-0.000102611, 0.998073, -0.0620103, -0.00212218)
-bones/30/rotation = Quaternion(0.00644788, 0.714985, -0.698766, -0.021934)
+bones/0/position = Vector3(0, 0, 1.96669)
+bones/1/position = Vector3(-0.203597, 2.51716, -0.371908)
+bones/1/rotation = Quaternion(-0.00721191, 0.133192, -0.0507713, 0.989763)
+bones/3/rotation = Quaternion(0.138742, -0.0516131, 0.0260925, 0.988638)
+bones/4/rotation = Quaternion(0.212885, 0.0294076, 0.0113292, 0.976569)
+bones/5/rotation = Quaternion(0.540586, 0.467811, 0.475157, -0.512977)
+bones/6/rotation = Quaternion(-0.176668, 0.97765, -0.113953, 0.00195193)
+bones/7/rotation = Quaternion(0.299116, -0.687898, 0.415271, 0.514661)
+bones/8/rotation = Quaternion(0.0547147, 0.647796, 0.0695279, 0.756659)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(2.98023e-08, 4.47035e-08, 8.9407e-08, 1)
+bones/13/rotation = Quaternion(-0.125945, -0.033708, 0.00153966, 0.991463)
+bones/14/rotation = Quaternion(-0.106784, -0.0353158, -0.0328765, 0.993111)
+bones/16/rotation = Quaternion(0.530498, -0.489984, -0.488602, -0.489649)
+bones/17/rotation = Quaternion(0.12394, 0.992284, 0.00331034, 5.68214e-05)
+bones/18/rotation = Quaternion(-0.0576382, 0.760115, -0.204795, -0.613972)
+bones/19/rotation = Quaternion(-0.159302, -0.560699, 0.0684418, 0.809664)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201836, 0.652853)
+bones/25/rotation = Quaternion(-0.0016429, 0.133306, 0.962837, -0.234889)
+bones/26/rotation = Quaternion(-0.0248796, 0.829955, -0.555959, -0.0382723)
+bones/27/rotation = Quaternion(-0.195483, 0.35846, -0.912847, 0.00173287)
+bones/28/rotation = Quaternion(0.00115713, 0.489095, 0.856398, 0.165429)
+bones/29/rotation = Quaternion(-0.114581, 0.818111, -0.534967, -0.177134)
+bones/30/rotation = Quaternion(0.114599, 0.686181, -0.709799, 0.11049)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -212,34 +218,6 @@ move_speed = 350.0
 
 [node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_5sssr")
-
-[node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_i6hqh")
-volume_db = -10.0
-max_db = 0.0
-
-[node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_bfcs5")
-max_db = -4.0
-
-[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_fl2vc")
-max_db = -4.0
-
-[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_wxn5g")
-max_db = -4.0
-
-[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_16uoj")
-max_db = -4.0
-
-[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
-stream = ExtResource("19_e60tt")
-max_db = -4.0
-
-[node name="damaged" parent="Sounds" index="6"]
-stream = ExtResource("20_fl2vc")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("14_i6hqh")
