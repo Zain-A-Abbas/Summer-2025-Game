@@ -18,7 +18,7 @@ const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.
 const CATERPILLAR_ENEMY = preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn")
 const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn")
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
-const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY, FLOWER_ENEMY, MOUSE_ENEMY, CATERPILLAR_ENEMY, MAD_HATTER_ENEMY, RED_KNIGHT_ENEMY]
+const ENEMY_TYPE_LIST: Array[Resource] = [BASIC_ENEMY]
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
