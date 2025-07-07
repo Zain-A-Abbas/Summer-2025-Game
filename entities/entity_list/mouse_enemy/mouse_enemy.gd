@@ -1,21 +1,21 @@
 class_name MouseEnemy
 extends Enemy
 
-@export var hurtbox: HurtboxComponent
+const DEAGGRO_DISTANCE: float = 6.5
 
 @onready var thrust: AttackObject = %basic_attack
+@onready var ray_cast: RayCast3D = %ray_cast
 
-var jump_positions: Node3D
+@export var hurtbox: HurtboxComponent
+
 
 func prepare_states():
-	jump_positions = enemy_data.get_node("JumpPositions")
-	
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", MouseEnemyIdle.new(self)),
-		StateInitializer.new(&"Run", MouseEnemyRun.new(self)),
+		StateInitializer.new(&"Run", MouseEnemyRun.new(self, ray_cast)),
 		StateInitializer.new(&"Charge", MouseEnemyCharge.new(self)),
-		StateInitializer.new(&"Jump", MouseEnemyJump.new(self, jump_positions)),
-		StateInitializer.new(&"Thrust", MouseEnemyThrust.new(self, thrust))
+		StateInitializer.new(&"Dig", MouseEnemyDig.new(self, ray_cast)),
+		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, thrust))
 	]
 	
 	state_machine.assign_states(enemy_states)

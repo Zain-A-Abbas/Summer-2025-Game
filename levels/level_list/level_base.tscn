@@ -24,8 +24,6 @@ unique_name_in_owner = true
 [node name="EnemyData" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="JumpPositions" type="Node3D" parent="EnemyData"]
-
 [node name="DigPositions" type="Node3D" parent="EnemyData"]
 
 [node name="EnemyPositions" type="Node3D" parent="."]

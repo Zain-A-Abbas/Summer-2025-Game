@@ -336,9 +336,9 @@ fog_light_energy = 0.02
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
 enemy_limit = 5
 enemy_spawn_limits = Dictionary[String, int]({
-"BASIC": 1,
+"BASIC": 0,
 "CATERPILLAR": 0,
-"FLOWER": 0,
+"FLOWER": 1,
 "MAD_HATTER": 0,
 "MOUSE": 0,
 "RED_KNIGHT": 0
@@ -513,29 +513,17 @@ collision_mask = 0
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/CSGBox3D2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_aql06")
 
-[node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/JumpPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
-
-[node name="Marker3D3" type="Marker3D" parent="EnemyData/JumpPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 28)
-
-[node name="Marker3D4" type="Marker3D" parent="EnemyData/JumpPositions" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 28)
-
 [node name="Marker3D" type="Marker3D" parent="EnemyData/DigPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75807, 0, 10.759)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyData/DigPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.68084, 0, 10.759)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyData/DigPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.68084, 0, 20.8058)
 
 [node name="Marker3D4" type="Marker3D" parent="EnemyData/DigPositions" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 36)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4349, 0, 20.8058)
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)

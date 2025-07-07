@@ -1,12 +1,10 @@
-class_name MouseEnemyThrust
+class_name MouseEnemyPounce
 extends EnemyState
 
-const LENGTH: float = 0.5
-const THRUST_SPEED: float = 1400.0
-const HIDE_TIME: float = 0.5
+const LENGTH: float = 0.4
+const POUNCE_SPEED: float = 1700.0
 
 var delta_count: float = 0.0
-var animation_time: float = 0.0
 var attack_object: AttackObject
 var direction: Vector3 = Vector3.ZERO
 
@@ -15,21 +13,21 @@ func _init(new_enemy: Enemy, object: AttackObject) -> void:
 	attack_object = object
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	direction = face_player()
-	
 	delta_count = 0.0
+	
+	direction = face_player()
 	
 	attack_object.hitbox.monitorable = true
 	enemy.action_animator.play("mouse/thrust")
-	enemy.play_sound_fx(enemy.sounds, &"thrust_whoosh")
+	enemy.play_sound_fx(enemy.sounds, &"pounce_whoosh")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	
 	if delta_count > LENGTH:
-		return state_machine.change_state(&"Idle", {"from_thrust" = true})
+		return state_machine.change_state(&"Idle", {"from_pounce" = true})
 	
-	enemy.velocity = direction * THRUST_SPEED * delta
+	enemy.velocity = direction * POUNCE_SPEED * delta
 	enemy.move_and_slide()
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):

@@ -501,14 +501,6 @@ transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, -4
 [node name="Window9" parent="StaticGeometry" index="16" instance=ExtResource("6_27bmw")]
 transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, -34, 4, -6.2)
 
-[node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -4)
-gizmo_extents = 2.0
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/JumpPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, 4)
-gizmo_extents = 2.0
-
 [node name="Marker3D" type="Marker3D" parent="EnemyData/DigPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 4)
 gizmo_extents = 2.0
