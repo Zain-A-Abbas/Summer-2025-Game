@@ -7,7 +7,6 @@ const IDLE_TIME: float = 1.2
 var projectiles: Node3D
 var starting_dir: Vector3
 var seed_direction: Vector3
-
 var delta_count: float = 0.0
 var exploded: bool = false
 
@@ -33,21 +32,12 @@ func st_physics_process(delta: float) -> void:
 				projectiles.add_child(seed)
 				seed.initialize_seed(true, seed_direction, projectiles)
 				seed.global_position = proj.global_position
-				
-				if n == 3:
-					proj.play_sound_fx(proj.sounds, &"explode")
-					proj.atk_obj.hitbox.monitorable = false
-					proj.hide()
-					exploded = true
-		
-		if delta_count >= IDLE_TIME:
-			proj.char_entity_die()
-	else:
-		if !exploded:
-			proj.play_sound_fx(proj.sounds, &"explode")
-			proj.atk_obj.hitbox.monitorable = false
-			proj.hide()
-			exploded = true
 	
-		if delta_count >= IDLE_TIME:
-			proj.char_entity_die()
+	if !exploded:		
+		proj.play_sound_fx(proj.sounds, &"explode")
+		proj.atk_obj.hitbox.monitorable = false
+		proj.hide()
+		exploded = true
+	
+	if delta_count >= IDLE_TIME:
+		proj.char_entity_die()

@@ -1,9 +1,18 @@
 class_name MadHatterEnemy
 extends Enemy
 
-@onready var ray_cast: RayCast3D = %ray_cast
+@export var spawn_type_list: Array[Resource] = []
+@export var summon_cancel_hp_amount: float = 30
+@export var summon_timestamp: float = 4.0
+@export var summon_cooldown: float = 3.0
+@export var wander_duration: float = 4.0
+@export var change_direction_time: float = 0.9
+@export var max_speed: float = 600
 
 var summoned_list: Array[Enemy] = []
+
+@onready var ray_cast: RayCast3D = %ray_cast
+
 
 func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
@@ -22,7 +31,10 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
-	queue_free()
 	
 	for summoned in summoned_list:
-		summoned.char_entity_die()
+		if summoned:
+			summoned.char_entity_die()
+	
+	queue_free()
+	

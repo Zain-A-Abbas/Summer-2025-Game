@@ -1,9 +1,6 @@
 class_name CaterpillarEnemyCrawl
 extends EnemyState
 
-const CRAWL_TIME: float = 2.0
-const DIRECTION_CHANGE_TIME: float = 1.2
-
 var direction: Vector3
 var delta_count: float = 0.0
 var direction_timer: float = 0.0
@@ -26,12 +23,12 @@ func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	direction_timer += delta
 	
-	if delta_count >= CRAWL_TIME:
+	if delta_count >= enemy.crawl_duration:
 		if ray_cast.is_colliding():
 			return state_machine.change_state(&"Crawl", {"no_shot" = true})
 		return state_machine.change_state(&"Shoot")
 	
-	if direction_timer > DIRECTION_CHANGE_TIME:
+	if direction_timer > enemy.change_direction_timestamp:
 		direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
 		direction_timer = 0.0
 	

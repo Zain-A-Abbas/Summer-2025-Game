@@ -1,12 +1,15 @@
 class_name CaterpillarEnemySeed
 extends CharacterEntity
 
-@onready var atk_obj: AttackObject = %Hitbox
-@onready var ray_cast: RayCast3D = %ray_cast
+@export var time_to_live: float = 1.1
 
 var is_child: bool = false
 var direction: Vector3 = Vector3.ZERO
 var projectiles: Node3D
+
+@onready var atk_obj: AttackObject = %Hitbox
+@onready var ray_cast: RayCast3D = %ray_cast
+
 
 func initialize_seed(child: bool, dir: Vector3, projs: Node3D) -> void:
 	is_child = child

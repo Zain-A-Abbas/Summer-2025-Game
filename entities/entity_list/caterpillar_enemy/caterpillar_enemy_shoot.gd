@@ -1,10 +1,6 @@
 class_name CaterpillarEnemyShoot
 extends EnemyState
 
-const SEED = preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy_seed/caterpillar_enemy_seed.tscn")
-const SHOOT_TIMES: Array[float] = [0.7, 1.6]
-const WARNING_TIMES: Array[float] = [0.1, 0.9]
-
 var seed_shot: bool= false
 var warning_trackers: Array[float] = [0.0, 0.0]
 var warning_shown: bool = false
@@ -36,24 +32,24 @@ func st_physics_process(delta: float) -> void:
 	for n in warning_trackers.size():
 		warning_trackers[n] += delta
 	
-	if warning_trackers[0] > WARNING_TIMES[0] && !warning_shown:
+	if warning_trackers[0] > enemy.warning_times[0] && !warning_shown:
 		enemy.show_attack_indicator()
 		warning_shown = true
 	
-	if warning_trackers[1] > WARNING_TIMES[1] && !warning_hidden:
+	if warning_trackers[1] > enemy.warning_times[1] && !warning_hidden:
 		enemy.hide_attack_indicator()
 		warning_hidden = true
 
-	if delta_count >= SHOOT_TIMES[0] && !seed_shot:
+	if delta_count >= enemy.shoot_times[0] && !seed_shot:
 		seed_shot = true
 		enemy.play_sound_fx(enemy.sounds, &"seed_shoot")
 	
-		var seed = SEED.instantiate()
+		var seed = enemy.seed.instantiate()
 		enemy.projectiles.add_child(seed)
 		seed.initialize_seed(false, face_player(), enemy.projectiles)
 		seed.global_position = enemy.global_position
 		
-	if delta_count > SHOOT_TIMES[1]:
+	if delta_count > enemy.shoot_times[1]:
 		return state_machine.change_state(&"Idle")
 	
 	enemy.face_direction(face_player())

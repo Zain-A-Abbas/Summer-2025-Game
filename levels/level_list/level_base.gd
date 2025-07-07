@@ -105,8 +105,8 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			var new_enemy: Enemy = spawn_enemy(new_enemy_type)
 			
 			enemies.add_child(new_enemy)
-			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 			new_enemy.position = enemy_positions.get_child(n).position
+			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 			new_enemy.enemy_killed.connect(enemy_kill)
 			
 			enemy_count += 1

@@ -25,8 +25,12 @@ radius = 3.25586
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ap08c"]
 albedo_color = Color(0.494752, 0.825707, 3.85046e-07, 1)
 
-[node name="FlowerEnemyBomb" instance=ExtResource("1_w4grh")]
+[node name="FlowerEnemyBomb" node_paths=PackedStringArray("health_component", "movement_component") instance=ExtResource("1_w4grh")]
 script = ExtResource("2_xeb4n")
+time_to_live = 1.1
+explosion_duration = 0.85
+health_component = NodePath("Components/HealthComponent")
+movement_component = NodePath("Components/MovementComponent")
 
 [node name="placeholder_model" type="CSGSphere3D" parent="." index="0"]
 unique_name_in_owner = true

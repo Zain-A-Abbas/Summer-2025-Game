@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://to64uq7wbubj"
+path="res://.godot/imported/Card Step 4.wav-adebf17bf134b8a29a6b6830d61620f0.sample"
+
+[deps]
+
+source_file="res://audio/entities/Card Step 4.wav"
+dest_files=["res://.godot/imported/Card Step 4.wav-adebf17bf134b8a29a6b6830d61620f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

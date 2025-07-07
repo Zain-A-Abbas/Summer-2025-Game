@@ -1,6 +1,12 @@
 class_name CaterpillarEnemy
 extends Enemy
 
+@export var seed: Resource
+@export var crawl_duration: float = 2.0
+@export var change_direction_timestamp: float = 1.2
+@export var shoot_times: Array[float] = [0.7, 1.6]
+@export var warning_times: Array[float] = [0.1, 0.9]
+
 @onready var ray_cast: RayCast3D = %ray_cast
 
 func prepare_states():

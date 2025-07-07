@@ -4,7 +4,7 @@ extends PlayerState
 # Used to access the AnimationEffects node for visuals.
 const ACTION_NAME: String = "basic_attack"
 const LENGTH: float = 0.2
-const CANCEL_THRESHOLD: float = 0.1
+const CANCEL_THRESHOLD: float = 0.09
 const COMBO_TIME: float = 0.4
 const MOVE_SPEED: float = 400.0
 const ACTIVE_FRAMES: Array[float] = [0.06, 0.12]
@@ -34,16 +34,14 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	# Flip second attack
 	if combo == 2:
 		attack_object.scale.x = -1
-		player.action_animator.play("attack_2")
 	else:
 		attack_object.scale.x = 1 
 		player.animation_tree["parameters/Attack1TimeSeek/seek_request"] = 0.3
-		player.action_animator.play("attack_1")
 	
 	movement_vector = Vector3(0, 0, -MOVE_SPEED).rotated(Vector3.UP, player.rotation.y).normalized()
 	
-	#print("sword_whoosh_%d" % ((combo % 3) + 1))
 	player.play_sound_fx(player.sounds, "sword_whoosh_%d" % ((combo % 3) + 1))
+	player.action_animator.play("attack_%d" % ((combo % 2) + 1))
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -54,7 +52,6 @@ func st_physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("dodge") && player.can_dodge():
 			state_machine.change_state(&"Dodge")
 			return
-		
 		
 		if Input.is_action_just_pressed("attack") && combo < 3:
 			state_machine.change_state(&"Attack", {"combo": combo})

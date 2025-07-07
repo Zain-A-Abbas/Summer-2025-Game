@@ -1,8 +1,6 @@
 class_name EnemyBasicAttack
 extends EnemyState
 
-# Used to access the AnimationEffects node for visuals.
-const ACTION_NAME: String = "basic_attack"
 const LENGTH: float = 1.5333
 const ACTIVE_FRAMES: Array[float] = [0.4, 0.65]
 const WARNING_TIMES: Array[float] = [0.1, 0.3]
@@ -18,6 +16,7 @@ var attack_object: AttackObject
 var movement_vector: Vector3
 
 var combo: int = 1
+
 
 func _init(new_enemy: Enemy, object: AttackObject) -> void:
 	enemy = new_enemy
@@ -54,9 +53,9 @@ func st_physics_process(delta: float) -> void:
 		enemy.hide_attack_indicator()
 		warning_hidden = true
 	
-	enemy.velocity = 2.0 * enemy.animation_tree.get_root_motion_position().rotated(Vector3.UP, enemy.rotation.y) / delta
-	enemy.move_and_slide()
-
+	if delta_count < ACTIVE_FRAMES[0]:
+		enemy.velocity = 2.0 * enemy.animation_tree.get_root_motion_position().rotated(Vector3.UP, enemy.rotation.y) / delta
+		enemy.move_and_slide()
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !warning_hidden:

@@ -132,11 +132,6 @@ viewport_path = NodePath("SubViewport")
 
 [node name="BasicEnemy" node_paths=PackedStringArray("mesh", "animation_tree") instance=ExtResource("1_5mhhj")]
 script = ExtResource("2_f51gl")
-close_to_player_distance = 7.0
-chase_stop_distance = 2.0
-attack_cooldown = 1.0
-wander_duration = 6.0
-change_direction_timestamp = 1.5
 mesh = NodePath("card/Armature/GeneralSkeleton/cardDiamonds2")
 animation_tree = NodePath("card/AnimationTree")
 
@@ -144,29 +139,29 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.0708702, 3.23209, -0.184718)
-bones/1/rotation = Quaternion(-0.000366418, 0.017402, -0.0210476, 0.999627)
-bones/3/rotation = Quaternion(0.16379, -0.0411104, -0.000415638, 0.985638)
-bones/4/rotation = Quaternion(0.267726, -0.113876, -0.0297058, 0.956281)
+bones/1/position = Vector3(-0.0152195, 3.21373, -0.18493)
+bones/1/rotation = Quaternion(-0.00029536, 0.0158946, -0.0185916, 0.999701)
+bones/3/rotation = Quaternion(0.16444, -0.041147, -0.000316587, 0.985528)
+bones/4/rotation = Quaternion(0.272436, -0.114112, -0.0289647, 0.954944)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0221956, 0.942397, -0.333711, 0.00571603)
-bones/7/rotation = Quaternion(0.205594, -0.768684, 0.334277, 0.505089)
-bones/8/rotation = Quaternion(0.0448277, 0.658071, 0.068316, 0.74851)
+bones/6/rotation = Quaternion(0.0198918, 0.942924, -0.332364, 0.00569285)
+bones/7/rotation = Quaternion(0.206002, -0.768091, 0.334016, 0.505997)
+bones/8/rotation = Quaternion(0.0524883, 0.650162, 0.0692515, 0.754811)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0345901, 0.0158545, 0.0112493, 0.999213)
-bones/13/rotation = Quaternion(-0.162717, 0.0769601, 0.0201757, 0.98346)
-bones/14/rotation = Quaternion(0.108878, 0.173376, -0.0117565, 0.978748)
+bones/10/rotation = Quaternion(0.0378532, 0.0173502, 0.0123102, 0.999057)
+bones/13/rotation = Quaternion(-0.165184, 0.0770934, 0.0197951, 0.983046)
+bones/14/rotation = Quaternion(0.0975802, 0.174862, -0.00933656, 0.979701)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.175381, 0.766923, -0.241095, 0.568282)
-bones/19/rotation = Quaternion(-0.0183024, -0.613675, -0.00509831, 0.78933)
+bones/18/rotation = Quaternion(0.193002, 0.759039, -0.264873, 0.562542)
+bones/19/rotation = Quaternion(-0.0236748, -0.613491, 0.0018131, 0.789345)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.000170015, 0.232479, 0.972298, -0.0243075)
-bones/26/rotation = Quaternion(-0.000157367, 0.995992, -0.089415, -0.0021478)
-bones/27/rotation = Quaternion(-0.0206327, 0.647133, -0.76208, -0.00516532)
-bones/28/rotation = Quaternion(-0.000235779, -0.162434, 0.986144, -0.033709)
-bones/29/rotation = Quaternion(-0.000429296, 0.991179, -0.132481, -0.00357471)
-bones/30/rotation = Quaternion(0.010511, 0.719176, -0.694357, -0.0233203)
+bones/25/rotation = Quaternion(-0.000106789, 0.261854, 0.964987, -0.015268)
+bones/26/rotation = Quaternion(-0.000675537, 0.965205, -0.261477, -0.0028218)
+bones/27/rotation = Quaternion(-0.0116222, 0.644088, -0.764754, -0.012944)
+bones/28/rotation = Quaternion(-0.000177659, -0.201111, 0.979239, -0.0253998)
+bones/29/rotation = Quaternion(-0.000142196, 0.996361, -0.0852024, -0.00208682)
+bones/30/rotation = Quaternion(-0.00131357, 0.682333, -0.730866, -0.0159976)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -189,8 +184,8 @@ shape = SubResource("CapsuleShape3D_inrej")
 
 [node name="ray_cast" type="RayCast3D" parent="." index="2"]
 unique_name_in_owner = true
-transform = Transform3D(-9.48, -1.49863e-06, 6.60024e-15, 0, -4.33836e-07, -1, 1.43144e-06, -9.925, 4.37114e-08, 0, 1.06897, 0)
-collision_mask = 48
+transform = Transform3D(-8.8, -5.45095e-07, 6.60024e-15, 0, -1.57798e-07, -1, 1.32876e-06, -3.61, 4.37114e-08, 0, 1.06897, 0)
+collision_mask = 32
 
 [node name="AnimationEffects" parent="." index="4"]
 unique_name_in_owner = true

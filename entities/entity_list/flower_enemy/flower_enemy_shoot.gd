@@ -1,10 +1,6 @@
 class_name FlowerEnemyShoot
 extends EnemyState
 
-const BOMB = preload("res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.tscn")
-const WARNING_DURATION: float = 0.8
-const SHOT_COOLDOWN: float = 1.1
-
 var bomb_shot: bool= false
 var warning_trackers: Array[float] = [0.0, 0.0]
 var warning_shown: bool = false
@@ -13,7 +9,8 @@ var warning_hidden: bool = false
 var delta_count: float = 0.0
 var shoot_times: Array[float] = [0.0, 0.0]
 var warning_times: Array[float] = [0.0, 0.0]
-	
+
+
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	bomb_shot = false
 	warning_trackers.fill(0.0)
@@ -23,10 +20,10 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	# initialize shoot and warning times
 	shoot_times[0] = randf_range(0.7, 1.2)
-	shoot_times[1] = shoot_times[0] + SHOT_COOLDOWN
+	shoot_times[1] = shoot_times[0] + enemy.shoot_cooldown
 	
 	warning_times[0] = shoot_times[0] - 0.6
-	warning_times[1] = warning_times[0] + WARNING_DURATION
+	warning_times[1] = warning_times[0] + enemy.warning_duration
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -46,7 +43,7 @@ func st_physics_process(delta: float) -> void:
 	
 	if delta_count >= shoot_times[0] && !bomb_shot:
 		bomb_shot = true
-		var bomb = BOMB.instantiate()
+		var bomb = enemy.bomb.instantiate()
 		enemy.projectiles.add_child(bomb)
 		bomb.initialize_bomb()
 		bomb.global_position = enemy.player.global_position
@@ -55,7 +52,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
 		
 	if delta_count > shoot_times[1]:
-		return state_machine.change_state(&"Idle")
+		return state_machine.change_state(&"Idle", {"from_shoot": true})
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !warning_hidden:

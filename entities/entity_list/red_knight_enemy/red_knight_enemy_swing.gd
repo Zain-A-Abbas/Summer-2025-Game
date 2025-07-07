@@ -1,8 +1,6 @@
 class_name RedKnightEnemySwing
 extends EnemyState
 
-const MOVE_SPEED: float = 3000.0
-
 var warning_shown: bool = false
 var attack_activated: bool= false
 var attack_object: AttackObject
@@ -12,6 +10,7 @@ var delta_count: float = 0.0
 var time_to_swing: float = 0.0
 var swing_duration: float = 0.0
 var warning_time: float = 0.0
+
 
 func _init(new_enemy: Enemy, atk: AttackObject) -> void:
 	enemy = new_enemy
@@ -47,7 +46,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.play_sound_fx(enemy.sounds, &"big_sword")
 	
 	if attack_activated:
-		enemy.velocity = direction * MOVE_SPEED * delta
+		enemy.velocity = direction * enemy.swing_move_speed * delta
 		enemy.move_and_slide()
 	
 	if delta_count >= swing_duration:

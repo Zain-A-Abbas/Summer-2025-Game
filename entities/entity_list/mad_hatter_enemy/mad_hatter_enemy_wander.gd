@@ -1,20 +1,16 @@
 class_name MadHatterEnemyWander
 extends EnemyState
 
-const WANDER_TIME: float = 4.0
-const MAX_SPEED: float = 600
-const CHANGE_DIRECTION_TIME: float = 0.9
 const HOP_TIME: float = 0.1
 const TIME_TO_LAND: float = 0.4
 
+var direction: Vector3 = Vector3.ZERO
+var ray_cast: RayCast3D
 var move_speed: float = 0.0
 var delta_count: float = 0.0
 var hop_timer: float = 0.0
 var random_direction_timer: float = 0.0
 var is_hopping: bool = false
-
-var direction: Vector3 = Vector3.ZERO
-var ray_cast: RayCast3D
 
 
 func _init(new_enemy: Enemy, ray: RayCast3D) -> void:
@@ -49,17 +45,17 @@ func st_physics_process(delta: float) -> void:
 		hop_timer = 0.0
 	
 	# increase movement speed overtime
-	if move_speed < MAX_SPEED:
+	if move_speed < enemy.max_speed:
 		move_speed += 1.5
 		enemy.animation_tree["parameters/WalkRun/blend_position"] = move_toward(enemy.animation_tree["parameters/WalkRun/blend_position"], 1.0, delta * 4.0)
 	
 	# transition to summon state
-	if delta_count >= WANDER_TIME:
+	if delta_count >= enemy.wander_duration:
 		enemy.animation_tree["parameters/WalkRun/blend_position"] = 0.0
 		return state_machine.change_state(&"Summon")
 	
 	# changing directions for movement
-	if random_direction_timer >= CHANGE_DIRECTION_TIME:
+	if random_direction_timer >= enemy.change_direction_time:
 		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
 		random_direction_timer = 0.0
 	

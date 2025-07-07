@@ -17,6 +17,7 @@ var enemy_positions: Node3D
 var enemy_list: Node3D
 var projectiles: Node3D
 
+
 func _ready() -> void:
 	set_process(false)
 

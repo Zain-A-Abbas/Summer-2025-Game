@@ -1,11 +1,10 @@
 class_name MouseEnemyIdle
 extends EnemyState
 
-const POUNCE_COOLDOWN: float = 1.0
-
 var from_pounce: bool = false
 var delta_count: float = 0.0
-	
+
+
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	from_pounce = args.has("from_pounce")
@@ -16,7 +15,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# pounce cooldown
 	if from_pounce:
-		if delta_count <= POUNCE_COOLDOWN:
+		if delta_count <= enemy.pounce_cooldown:
 			return
 		else:
 			from_pounce = false

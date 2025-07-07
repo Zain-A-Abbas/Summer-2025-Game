@@ -284,7 +284,7 @@ damage = 10
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqsy2"]
-radius = 0.75
+radius = 0.769593
 height = 2.5
 
 [sub_resource type="Gradient" id="Gradient_nda3u"]
@@ -336,23 +336,29 @@ movement_component = NodePath("Components/MovementComponent")
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.126328, 2.79291, -0.403611)
-bones/3/rotation = Quaternion(0.167219, -0.0413015, 0.000108774, 0.985054)
-bones/4/rotation = Quaternion(0.282729, -0.114613, -0.0273356, 0.951935)
-bones/6/rotation = Quaternion(0.0357545, 0.939207, -0.341436, 0.00584821)
-bones/7/rotation = Quaternion(0.203115, -0.772267, 0.335846, 0.499556)
-bones/8/rotation = Quaternion(0.031587, 0.670961, 0.0667497, 0.737807)
-bones/10/rotation = Quaternion(0.014826, 0.00679567, 0.00482138, 0.999855)
-bones/13/rotation = Quaternion(-0.172235, 0.0774675, 0.0187023, 0.981827)
-bones/14/rotation = Quaternion(0.145794, 0.163654, -0.0329442, 0.975129)
-bones/18/rotation = Quaternion(0.175485, 0.766879, -0.241234, 0.56825)
-bones/19/rotation = Quaternion(0.000293726, -0.613947, -0.0290042, 0.788814)
-bones/25/rotation = Quaternion(-0.00112358, 0.212725, 0.963817, -0.160637)
-bones/26/rotation = Quaternion(0.0425685, 0.866142, -0.49216, 0.075928)
-bones/27/rotation = Quaternion(-0.0578009, 0.613914, -0.784486, 0.0659564)
-bones/28/rotation = Quaternion(0.00213373, 0.0134065, 0.952238, 0.305055)
-bones/29/rotation = Quaternion(-0.148986, 0.826135, -0.475295, -0.263435)
-bones/30/rotation = Quaternion(0.232449, 0.504931, -0.822949, 0.11734)
+bones/1/position = Vector3(0.0459432, 2.77635, -0.404846)
+bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
+bones/3/rotation = Quaternion(0.163162, -0.041075, -0.000511388, 0.985744)
+bones/4/rotation = Quaternion(0.268657, -0.113923, -0.0295597, 0.956019)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0256883, 0.941589, -0.335734, 0.00575049)
+bones/7/rotation = Quaternion(0.204961, -0.769605, 0.33468, 0.503675)
+bones/8/rotation = Quaternion(0.0358633, 0.666904, 0.0672485, 0.741236)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.0294922, 0.013518, 0.00959115, 0.999428)
+bones/13/rotation = Quaternion(-0.16261, 0.0769543, 0.0201924, 0.983478)
+bones/14/rotation = Quaternion(0.124597, 0.170245, -0.018491, 0.977318)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.161983, 0.772375, -0.223011, 0.572245)
+bones/19/rotation = Quaternion(-0.0103786, -0.61386, -0.0152877, 0.789199)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.00121514, 0.209443, 0.962263, -0.173732)
+bones/26/rotation = Quaternion(0.0402621, 0.865547, -0.494063, 0.0714738)
+bones/27/rotation = Quaternion(-0.0719902, 0.611468, -0.78465, 0.0724541)
+bones/28/rotation = Quaternion(0.00207911, 0.0117983, 0.954724, 0.297251)
+bones/29/rotation = Quaternion(-0.153085, 0.818554, -0.488283, -0.260988)
+bones/30/rotation = Quaternion(0.224266, 0.488069, -0.83467, 0.121741)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -361,11 +367,10 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.628678, -0.715888, 0.303756, 0.581738, -0.692143, -0.427223, 0.516086, -0.0918788, 0.851595, -1.45067, 2.56462, -2.13877)
+transform = Transform3D(-0.672906, -0.680361, 0.290357, 0.547736, -0.722082, -0.42259, 0.497175, -0.125324, 0.858552, -1.5368, 2.52918, -2.13308)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
-parameters/ParryTimeSeek/seek_request = 0.23
 
 [node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -405,7 +410,7 @@ collision_mask = 0
 monitorable = false
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.345586)
 shape = SubResource("CapsuleShape3D_bqsy2")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
@@ -430,8 +435,8 @@ shape = SubResource("CapsuleShape3D_y07nu")
 unique_name_in_owner = true
 script = ExtResource("12_037cv")
 entity = NodePath("../..")
-current_health = 100
-max_health = 100
+current_health = 300
+max_health = 300
 
 [node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true

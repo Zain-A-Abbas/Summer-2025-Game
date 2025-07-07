@@ -3,5 +3,4 @@ extends EnemyState
 
 
 func st_physics_process(delta: float) -> void:
-	if enemy.player:
-		state_machine.change_state(&"Chase")
+	state_machine.change_state(&"Wander")

@@ -1,13 +1,13 @@
 class_name FlowerEnemyBombWait
 extends ProjectileState
 
-const TTL: float = 1.1
-
 var delta_count: float = 0.0
-var bomb: CSGSphere3D
+var bomb: CSGSphere3D # temporary
 
-func _init(new: CSGSphere3D) -> void:
-	bomb = new
+
+func _init(new: FlowerEnemyBomb, model: CSGSphere3D) -> void:
+	proj = new
+	bomb = model
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
@@ -16,8 +16,5 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 
-	if delta_count >= TTL:
+	if delta_count >= proj.time_to_live:
 		return state_machine.change_state(&"Explode")
-
-func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-	pass
