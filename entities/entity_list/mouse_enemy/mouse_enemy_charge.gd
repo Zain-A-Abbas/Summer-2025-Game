@@ -21,7 +21,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.attack_indicator_animator.play("show_indicator")
 		indicator_shown = true
 
-	if delta_count > enemy.minimum_charge_time && distance_to_player() < enemy.DEAGGRO_DISTANCE:
+	if delta_count > enemy.minimum_charge_time && (distance_to_player() < enemy.active_range[0] || distance_to_player() >= enemy.active_range[1]):
 		return state_machine.change_state(&"Run")
  
 	if delta_count >= enemy.charge_duration:

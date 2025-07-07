@@ -53,13 +53,14 @@ func st_physics_process(delta: float) -> void:
 	
 	# change direction
 	if direction_timer >= 0.05:
-		if ray_cast.is_colliding() && distance_to_player() > enemy.close_to_player_distance:
+		# if enemy can see player but is too far away
+		if ray_cast.is_colliding() && distance_to_player() > enemy.active_radius:
 			var collider: Object = ray_cast.get_collider()
 			if collider.get_collision_layer_value(5):
 				direction = face_player()
 			else:
 				return state_machine.change_state(&"Wander")
-		elif distance_to_player() <= enemy.close_to_player_distance:
+		elif distance_to_player() <= enemy.active_radius: # player is close enough, no ray cast checks
 			direction = face_player()
 		else:
 			return state_machine.change_state(&"Wander")

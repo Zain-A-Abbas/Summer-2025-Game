@@ -1,9 +1,8 @@
 class_name MouseEnemy
 extends Enemy
 
-const DEAGGRO_DISTANCE: float = 6.5
-
 @export var hurtbox: HurtboxComponent
+@export var active_range: Array[float] = [2.5, 10.0]
 @export var run_duration: float = 2.0
 @export var minimum_speed: float = 100
 @export var minimum_charge_time: float = 0.3

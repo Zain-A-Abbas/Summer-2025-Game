@@ -22,6 +22,7 @@ var delta_count: float = 0.0
 var cooldown: float = 0.0
 var from_sweep: bool = false
 
+
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent, atk: AttackObject) -> void:
 	enemy = new_enemy
 	rage_component = rage

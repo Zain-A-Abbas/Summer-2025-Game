@@ -11,6 +11,7 @@ var next_action_time: float = 0.0
 var direction_to_player: Vector3
 var forward_direction: Vector3
 
+
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent) -> void:
 	enemy = new_enemy
 	rage_component = rage

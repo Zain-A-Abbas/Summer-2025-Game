@@ -36,10 +36,12 @@ func st_physics_process(delta: float) -> void:
 	random_direction_timer += delta
 
 	if delta_count >= enemy.run_duration:
-		if distance_to_player() < enemy.DEAGGRO_DISTANCE:
-			return state_machine.change_state(&"Dig")
+		if distance_to_player() >= enemy.active_range[1]:
+			return state_machine.change_state(&"Run")
+		elif distance_to_player() < enemy.active_range[0]:
+			return state_machine.change_state(&"Dig")	
 		else:
-			return state_machine.change_state(&"Charge")
+			return state_machine.change_state(&"Charge")	
 
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:

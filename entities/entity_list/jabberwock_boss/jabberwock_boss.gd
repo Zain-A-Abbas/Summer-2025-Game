@@ -6,6 +6,7 @@ extends Enemy
 @onready var breath: AttackObject = %LightningBreath
 @onready var rage_component: JabberwockBossRageComponent = %RageComponent
 
+
 func prepare_states():
 	var boss_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", JabberwockBossIdle.new(self, rage_component)),

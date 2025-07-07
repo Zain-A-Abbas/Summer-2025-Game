@@ -22,6 +22,7 @@ var sweep_direction: float = 0.0
 var sweep_rotation_start: float = 0.0
 var from_swipe: bool = false
 
+
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent, atk: AttackObject) -> void:
 	enemy = new_enemy
 	rage_component = rage

@@ -132,7 +132,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="BasicEnemy" node_paths=PackedStringArray("mesh", "animation_tree") instance=ExtResource("1_5mhhj")]
 script = ExtResource("2_f51gl")
-close_to_player_distance = 7.0
+active_radius = 7.0
 chase_stop_distance = 2.0
 attack_cooldown = 1.0
 wander_duration = 6.0
@@ -144,29 +144,29 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.0708702, 3.23209, -0.184718)
-bones/1/rotation = Quaternion(-0.000366418, 0.017402, -0.0210476, 0.999627)
-bones/3/rotation = Quaternion(0.16379, -0.0411104, -0.000415638, 0.985638)
-bones/4/rotation = Quaternion(0.267726, -0.113876, -0.0297058, 0.956281)
+bones/1/position = Vector3(-0.0727241, 3.23488, -0.184723)
+bones/1/rotation = Quaternion(-0.000364798, 0.0173577, -0.0210079, 0.999629)
+bones/3/rotation = Quaternion(0.16767, -0.0413264, 0.000177989, 0.984977)
+bones/4/rotation = Quaternion(0.284415, -0.114694, -0.0270674, 0.951431)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0221956, 0.942397, -0.333711, 0.00571603)
-bones/7/rotation = Quaternion(0.205594, -0.768684, 0.334277, 0.505089)
-bones/8/rotation = Quaternion(0.0448277, 0.658071, 0.068316, 0.74851)
+bones/6/rotation = Quaternion(0.0369841, 0.93891, -0.342119, 0.00585992)
+bones/7/rotation = Quaternion(0.202884, -0.772597, 0.335991, 0.499041)
+bones/8/rotation = Quaternion(0.0332555, 0.669388, 0.0669437, 0.739143)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0345901, 0.0158545, 0.0112493, 0.999213)
-bones/13/rotation = Quaternion(-0.162717, 0.0769601, 0.0201757, 0.98346)
-bones/14/rotation = Quaternion(0.108878, 0.173376, -0.0117565, 0.978748)
+bones/10/rotation = Quaternion(0.013019, 0.00596739, 0.00423383, 0.999888)
+bones/13/rotation = Quaternion(-0.173392, 0.0775279, 0.0185223, 0.981622)
+bones/14/rotation = Quaternion(0.144791, 0.163592, -0.0332868, 0.975277)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.175381, 0.766923, -0.241095, 0.568282)
-bones/19/rotation = Quaternion(-0.0183024, -0.613675, -0.00509831, 0.78933)
+bones/18/rotation = Quaternion(0.180559, 0.764691, -0.248082, 0.566658)
+bones/19/rotation = Quaternion(-0.000133416, -0.613947, -0.0284555, 0.788834)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.000170015, 0.232479, 0.972298, -0.0243075)
-bones/26/rotation = Quaternion(-0.000157367, 0.995992, -0.089415, -0.0021478)
-bones/27/rotation = Quaternion(-0.0206327, 0.647133, -0.76208, -0.00516532)
-bones/28/rotation = Quaternion(-0.000235779, -0.162434, 0.986144, -0.033709)
-bones/29/rotation = Quaternion(-0.000429296, 0.991179, -0.132481, -0.00357471)
-bones/30/rotation = Quaternion(0.010511, 0.719176, -0.694357, -0.0233203)
+bones/25/rotation = Quaternion(-0.000171989, 0.234335, 0.971845, -0.0245897)
+bones/26/rotation = Quaternion(-0.000175696, 0.995583, -0.09386, -0.00223796)
+bones/27/rotation = Quaternion(-0.0207493, 0.646566, -0.76256, -0.00493251)
+bones/28/rotation = Quaternion(-0.000237344, -0.155278, 0.987288, -0.0339327)
+bones/29/rotation = Quaternion(-0.000489624, 0.989987, -0.141111, -0.0037471)
+bones/30/rotation = Quaternion(0.01018, 0.717606, -0.695988, -0.0232017)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -246,9 +246,6 @@ move_speed = 350.0
 
 [node name="EnemyHP" parent="." index="12"]
 texture = SubResource("ViewportTexture_5sssr")
-
-[node name="Sounds" parent="." index="13"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("14_i6hqh")

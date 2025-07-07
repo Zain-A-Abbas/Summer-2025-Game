@@ -29,5 +29,4 @@ func st_physics_process(delta: float) -> void:
 	enemy.move_and_slide()
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-	enemy.attack_indicator_animator.play("hide_indicator")
 	attack_object.hitbox.monitorable = false

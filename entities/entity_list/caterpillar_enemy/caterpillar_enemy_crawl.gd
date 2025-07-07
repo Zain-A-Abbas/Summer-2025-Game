@@ -26,10 +26,14 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= enemy.crawl_duration:
 		if ray_cast.is_colliding():
 			return state_machine.change_state(&"Crawl", {"no_shot" = true})
-		return state_machine.change_state(&"Shoot")
+		elif distance_to_player() < enemy.shooting_range:
+			return state_machine.change_state(&"Shoot")
+		else:
+			delta_count = 0.0
 	
 	if direction_timer > enemy.change_direction_timestamp:
-		direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
+		if !ray_cast.is_colliding():
+			direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-90, 90)))
 		direction_timer = 0.0
 	
 	if ray_cast.is_colliding():

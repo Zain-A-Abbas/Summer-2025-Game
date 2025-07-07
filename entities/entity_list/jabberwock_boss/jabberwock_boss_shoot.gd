@@ -28,6 +28,7 @@ var delta_count: float = 0.0
 var shoot_times: Array[float] = [0.0, 0.0]
 var breath_toggle_count: float = 0.0
 
+
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent, atk: AttackObject) -> void:
 	enemy = new_enemy
 	rage_component = rage

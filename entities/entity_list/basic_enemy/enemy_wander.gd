@@ -31,24 +31,25 @@ func st_physics_process(delta: float) -> void:
 	direction_timer += delta
 	step_timer += delta
 	
+	if distance_to_player() <= enemy.active_radius:
+		return state_machine.change_state(&"Chase")
+
+	if wander_timer > enemy.wander_duration:
+		return state_machine.change_state(&"Wander")
+	
 	if direction_timer >= enemy.change_direction_timestamp:
 		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(90, 135)))
 		direction_timer = 0.0
 	
-	if ray_cast.is_colliding() && distance_to_player() > enemy.close_to_player_distance:
+	# if enemy is too far away but can see player
+	if ray_cast.is_colliding() && distance_to_player() > enemy.active_radius:
 		var collider: Object = ray_cast.get_collider()
 		if collider.get_collision_layer_value(5):
 			return state_machine.change_state(&"Chase")
-			
-	if distance_to_player() <= enemy.close_to_player_distance:
-		return state_machine.change_state(&"Chase")
 	
 	enemy.velocity = direction * wander_speed * delta
 	enemy.face_direction(direction)
 	enemy.move_and_slide()
-	
-	if wander_timer > enemy.wander_duration:
-		return state_machine.change_state(&"Wander")
 
 	# play footstep sound fx
 	if step_timer > WALK_TIME:

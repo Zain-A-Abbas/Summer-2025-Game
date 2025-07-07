@@ -1,7 +1,7 @@
 class_name BasicEnemy
 extends Enemy
 
-@export var close_to_player_distance: float = 7.0
+@export var active_radius: float = 7.0
 @export var chase_stop_distance: float = 2.0
 @export var attack_cooldown: float = 1.0
 @export var wander_duration: float = 6.0

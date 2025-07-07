@@ -67,3 +67,4 @@ func st_physics_process(delta: float) -> void:
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.hurtbox.invincibility_frames = false
 	enemy.prev_dig_spot_index = new_dig_spot_index
+	enemy.dig_timer = 0.0

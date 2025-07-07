@@ -20,25 +20,14 @@ const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/ma
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
 const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
 
-@onready var static_geometry: Node3D = %StaticGeometry
-@onready var dynamic_geometry: Node3D = %DynamicGeometry
-@onready var enemies: Node3D = %Enemies
-@onready var lighting: Node3D = %Lighting
-@onready var world_environment: WorldEnvironment = %WorldEnvironment
-@onready var level_camera: Camera3D = %LevelCamera
-@onready var enemy_positions: Node3D = %EnemyPositions
-@onready var player: Player = %Player
-@onready var enemy_data: Node3D = %EnemyData
-@onready var projectiles: Node3D = %Projectiles
-
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
 @export var enemy_spawn_limits: Dictionary[String, int] = {
 	"BASIC": 0,
 	"CATERPILLAR": 0,
-	"MAD_HATTER": 0,
 	"FLOWER": 0,
+	"MAD_HATTER": 0,
 	"MOUSE": 0,
 	"RED_KNIGHT": 0
 }
@@ -50,21 +39,25 @@ var type: LevelType
 var enemy_spawn_count: Dictionary[String, int] = {
 	"BASIC": 0,
 	"CATERPILLAR": 0,
-	"MAD_HATTER": 0,
 	"FLOWER": 0,
+	"MAD_HATTER": 0,
 	"MOUSE": 0,
 	"RED_KNIGHT": 0
 }
 
 var enemy_spawn_list: Array[StringName]
-"""
-	BASIC_ENEMY,
-	FLOWER_ENEMY, 
-	MOUSE_ENEMY, 
-	CATERPILLAR_ENEMY, 
-	MAD_HATTER_ENEMY, 
-	RED_KNIGHT_ENEMY
-"""
+
+@onready var static_geometry: Node3D = %StaticGeometry
+@onready var dynamic_geometry: Node3D = %DynamicGeometry
+@onready var enemies: Node3D = %Enemies
+@onready var lighting: Node3D = %Lighting
+@onready var world_environment: WorldEnvironment = %WorldEnvironment
+@onready var level_camera: Camera3D = %LevelCamera
+@onready var enemy_positions: Node3D = %EnemyPositions
+@onready var player: Player = %Player
+@onready var enemy_data: Node3D = %EnemyData
+@onready var projectiles: Node3D = %Projectiles
+
 
 func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_count: int):
 	level_manager = _level_manager 

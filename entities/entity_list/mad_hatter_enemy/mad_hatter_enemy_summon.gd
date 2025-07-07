@@ -4,7 +4,7 @@ extends EnemyState
 var delta_count: float = 0.0
 var just_summoned: bool = false
 var warning_shown: bool = false
-var spawn_index: int = 0
+var spawn_position: Vector3
 var summon_cancel_threshold: float = 0.0
 
 
@@ -14,7 +14,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	warning_shown = false
 	
 	enemy.action_animator.play("basic_enemy_animation_library/RESET")
-	spawn_index = randi_range(0, enemy.enemy_positions.get_child_count() - 1)
+	spawn_position = get_closest_spawn_position()
 	summon_cancel_threshold = enemy.health_component.current_health - enemy.summon_cancel_hp_amount
 
 func st_physics_process(delta: float) -> void:
@@ -33,8 +33,8 @@ func st_physics_process(delta: float) -> void:
 		
 		var new_enemy: Enemy = enemy.spawn_type_list.pick_random().instantiate()
 		enemy.enemy_list.add_child(new_enemy)
+		new_enemy.position = spawn_position
 		new_enemy.initialize_enemy(enemy.player, enemy.enemy_data, enemy.enemy_positions, enemy.enemy_list, enemy.projectiles)
-		new_enemy.position = enemy.enemy_positions.get_child(spawn_index).position
 		enemy.summoned_list.append(new_enemy)
 		
 		just_summoned = true
@@ -45,3 +45,12 @@ func st_physics_process(delta: float) -> void:
 	
 	if just_summoned && delta_count >= enemy.summon_cooldown:
 		return state_machine.change_state(&"Idle")
+
+func get_closest_spawn_position() -> Vector3:
+	var distances: Array[float] = []
+	
+	for spot in enemy.enemy_positions.get_children():
+		distances.append(spot.position.distance_to(enemy.position))
+	
+	var index: int = distances.find(distances.min())
+	return enemy.enemy_positions.get_child(index).position
