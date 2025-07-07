@@ -9,5 +9,5 @@ func _init(new_enemy: Enemy) -> void:
 func distance_to_player() -> float:
 	return enemy.position.distance_to(enemy.player.position)
 
-func face_player():
+func face_player() -> Vector3:
 	return enemy.position.direction_to(enemy.player.position)
