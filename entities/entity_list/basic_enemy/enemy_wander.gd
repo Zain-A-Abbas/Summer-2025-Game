@@ -38,7 +38,7 @@ func st_physics_process(delta: float) -> void:
 		return state_machine.change_state(&"Wander")
 	
 	if direction_timer >= enemy.change_direction_timestamp:
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(90, 135)))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(randf_range(90, 135)))
 		direction_timer = 0.0
 	
 	# if enemy is too far away but can see player

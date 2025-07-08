@@ -32,10 +32,14 @@ var upgrades: PlayerUpgrades
 
 
 func _ready() -> void:
+	
 	prepare_states()
 	hurtbox.hit_parried.connect(parry_received)
 
 func _physics_process(delta: float) -> void:
+	update_listener_direction()
+	update_applied_attack_effects(delta)
+
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
 

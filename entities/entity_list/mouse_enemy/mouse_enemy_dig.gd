@@ -26,7 +26,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	is_underground = false
 	
 	speed_type = &"digging_down"
-	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
+	direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 	
 	# play dig animation here
 	enemy.play_sound_fx(&"digging_1")
@@ -49,11 +49,11 @@ func st_physics_process(delta: float) -> void:
 	
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-90, 90)))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(randf_range(-90, 90)))
 		random_direction_timer = 0.0
 
 	if ray_cast.is_colliding():
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(40))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(40))
 
 	enemy.velocity = direction * enemy.dig_speeds[speed_type] * delta
 	enemy.face_direction(direction)

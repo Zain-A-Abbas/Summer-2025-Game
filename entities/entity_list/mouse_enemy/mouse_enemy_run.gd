@@ -23,7 +23,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	random_direction_timer = 0.0
 	step_index = 2
 	
-	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
+	direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 	
 	move_speed = enemy.movement_component.move_speed
 	enemy.action_animator.play("mouse/run") 
@@ -45,11 +45,11 @@ func st_physics_process(delta: float) -> void:
 
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-45, 45)))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(randf_range(-45, 45)))
 		random_direction_timer = 0.0
 
 	if ray_cast.is_colliding():
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(40))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(40))
 
 	# enemy slows downs over time
 	if move_speed >= enemy.minimum_speed:

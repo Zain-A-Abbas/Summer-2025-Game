@@ -339,29 +339,29 @@ parry_duration = 0.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.19432, 2.72152, -0.406164)
+bones/1/position = Vector3(0.137025, 2.78579, -0.403842)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.168558, -0.0413751, 0.000314501, 0.984823)
-bones/4/rotation = Quaternion(0.286636, -0.114799, -0.0267138, 0.950762)
+bones/3/rotation = Quaternion(0.167684, -0.0413272, 0.000180087, 0.984974)
+bones/4/rotation = Quaternion(0.284558, -0.114701, -0.0270448, 0.951388)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0442795, 0.937128, -0.346115, 0.0059283)
-bones/7/rotation = Quaternion(0.201501, -0.774569, 0.336855, 0.495953)
-bones/8/rotation = Quaternion(0.049636, 0.653149, 0.0689005, 0.752453)
+bones/6/rotation = Quaternion(0.0370952, 0.938883, -0.342181, 0.00586098)
+bones/7/rotation = Quaternion(0.202864, -0.772627, 0.336004, 0.498995)
+bones/8/rotation = Quaternion(0.0334322, 0.669221, 0.0669643, 0.739285)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00239031, 0.00109558, 0.00077727, 0.999996)
-bones/13/rotation = Quaternion(-0.174916, 0.0776069, 0.018285, 0.98135)
-bones/14/rotation = Quaternion(0.114034, 0.169785, -0.0222761, 0.978608)
+bones/10/rotation = Quaternion(0.012857, 0.00589315, 0.00418118, 0.999891)
+bones/13/rotation = Quaternion(-0.17349, 0.0775329, 0.0185071, 0.981605)
+bones/14/rotation = Quaternion(0.144614, 0.163608, -0.0332801, 0.975301)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.210621, 0.750322, -0.288643, 0.556185)
-bones/19/rotation = Quaternion(-0.015605, -0.613749, -0.00856749, 0.7893)
+bones/18/rotation = Quaternion(0.181043, 0.764479, -0.248735, 0.566503)
+bones/19/rotation = Quaternion(-0.000234118, -0.613947, -0.0283261, 0.788839)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00109251, 0.243142, 0.957331, -0.156197)
-bones/26/rotation = Quaternion(0.0462657, 0.842536, -0.531484, 0.0742782)
-bones/27/rotation = Quaternion(-0.0494565, 0.601215, -0.795278, 0.0602205)
-bones/28/rotation = Quaternion(0.00229792, 0.0357179, 0.943817, 0.328524)
-bones/29/rotation = Quaternion(-0.154237, 0.810913, -0.505269, -0.251664)
-bones/30/rotation = Quaternion(0.240096, 0.500156, -0.823681, 0.117248)
+bones/25/rotation = Quaternion(-0.00111666, 0.216265, 0.963193, -0.159646)
+bones/26/rotation = Quaternion(0.0430615, 0.863591, -0.496585, 0.0758921)
+bones/27/rotation = Quaternion(-0.0563553, 0.612556, -0.785727, 0.0650552)
+bones/28/rotation = Quaternion(0.00215413, 0.0159239, 0.951261, 0.307969)
+bones/29/rotation = Quaternion(-0.149463, 0.824772, -0.478162, -0.262245)
+bones/30/rotation = Quaternion(0.233584, 0.505015, -0.822601, 0.117159)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -370,7 +370,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.583042, -0.744607, 0.324996, 0.624347, -0.666611, -0.407212, 0.519859, -0.0345113, 0.853555, -1.4442, 2.55704, -2.05541)
+transform = Transform3D(-0.618082, -0.723472, 0.307512, 0.590932, -0.685576, -0.425188, 0.518434, -0.0810817, 0.851265, -1.44732, 2.56649, -2.12936)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
@@ -451,6 +451,12 @@ metadata/_custom_type_script = "uid://cytojthox684"
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5242, 0)
 current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="listener" index="0"]
+transform = Transform3D(10, 0, 0, 0, -3.93403e-07, -1, 0, 9, -4.37114e-08, 0, 0, 0)
+
+[node name="AttackEffectManager" parent="." index="10" node_paths=PackedStringArray("recipient")]
+recipient = NodePath("..")
 
 [node name="dodge_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("15_p772y")

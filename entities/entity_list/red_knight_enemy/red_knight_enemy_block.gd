@@ -53,7 +53,7 @@ func st_physics_process(delta: float) -> void:
 	enemy.direction = face_player()
 	direction_to_player = face_player()
 	forward_direction = enemy.global_transform.basis.z
-	side_vector = forward_direction.rotated(Vector3(0, 1, 0), deg_to_rad(90))
+	side_vector = forward_direction.rotated(Vector3.UP, deg_to_rad(90))
 	
 	if delta_count >= block_time && distance_to_player() < enemy.distance_to_swing:
 		return state_machine.change_state(&"Swing")
@@ -89,7 +89,7 @@ func st_physics_process(delta: float) -> void:
 		move_direction = face_player()
 		reset_played = false
 	else:
-		move_direction = face_player().rotated(Vector3(0,1,0), deg_to_rad(180))
+		move_direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 		reset_played = false
 
 	if !walk_played:

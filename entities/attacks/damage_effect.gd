@@ -3,6 +3,7 @@ extends AttackEffect
 
 @export var damage: int = 1
 
+
 func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
 	var final_damage: int = damage
 	if delivering_object.entity is Player:

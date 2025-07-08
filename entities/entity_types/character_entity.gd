@@ -9,12 +9,25 @@ const GRAVITY_ACCELERATION: float = 98
 @export var death_state_duration: float
 
 var gravity_vel: float = 0
+var attack_effects_applied: Dictionary[String, Variant] = {
+	"Paralysis": {
+		"active": 0,
+		"duration_per_stun": 0.0,
+		"number_of_stuns": 0
+	},
+	"Burning": {
+		"active": 0,
+		"duration": 0,
+		"dmg_over_time": 0
+	}
+}
 
 @onready var state_machine: StateMachine = %StateMachine
 @onready var animation_effects: AnimationPlayer = $AnimationEffects
 @onready var sounds: Node3D = %Sounds
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var movement_component: MovementComponent = %MovementComponent
+@onready var atk_effect_manager: AttackEffectManager = %AttackEffectManager
 
 
 func char_entity_die(args: Dictionary[String, Variant] = {}):
@@ -37,3 +50,9 @@ func resolve_hit(attack_object: AttackObject):
 
 func face_direction(dir: Vector3):
 	rotation.y = Vector2(dir.x, -dir.z).angle() + deg_to_rad(90)
+
+func update_applied_attack_effects(delta: float):
+	if attack_effects_applied["Paralysis"]["active"]:
+		pass
+	if attack_effects_applied["Burning"]["active"]:
+		print("burning")

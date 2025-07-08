@@ -16,7 +16,6 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
-	player.update_listener_direction()
 	
 	if Input.is_action_just_pressed("attack"):
 		return state_machine.change_state(&"Attack")
@@ -32,7 +31,7 @@ func st_physics_process(delta: float) -> void:
 
 	player.velocity = player.gravity_velocity() + movement_vector * player.movement_component.move_speed
 	player.velocity *= delta
-	player.rotation.y = Vector2(-movement_vector.x, movement_vector.z).angle() + deg_to_rad(90)
+	player.face_direction(movement_vector.rotated(Vector3.UP, deg_to_rad(180)))
 	player.move_and_slide()
 	
 	# play footstep sound fx

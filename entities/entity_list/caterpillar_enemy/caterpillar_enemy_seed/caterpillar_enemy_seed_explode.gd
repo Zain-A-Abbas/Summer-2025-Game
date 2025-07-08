@@ -24,9 +24,9 @@ func st_physics_process(delta: float) -> void:
 			for n in 4: # create 4 new seeds
 				# initialize directions
 				if n == 0:
-					seed_direction = starting_dir.rotated(Vector3(0, 1, 0), deg_to_rad(45))
+					seed_direction = starting_dir.rotated(Vector3.UP, deg_to_rad(45))
 				else:
-					seed_direction = seed_direction.rotated(Vector3(0, 1, 0), deg_to_rad(90 * n))
+					seed_direction = seed_direction.rotated(Vector3.UP, deg_to_rad(90 * n))
 				
 				var seed = SEED.instantiate()
 				projectiles.add_child(seed)

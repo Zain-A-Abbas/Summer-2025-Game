@@ -22,7 +22,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	random_direction_timer = 0.0
 	
 	move_speed = enemy.movement_component.move_speed
-	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
+	direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
 	enemy.play_sound_fx(&"jump")
@@ -57,11 +57,11 @@ func st_physics_process(delta: float) -> void:
 	# changing directions for movement
 	if random_direction_timer >= enemy.change_direction_time:
 		if !ray_cast.is_colliding():
-			direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
+			direction = direction.rotated(Vector3.UP, deg_to_rad(randf_range(-180, 180)))
 		random_direction_timer = 0.0
 	
 	if ray_cast.is_colliding():
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(40))
+		direction = direction.rotated(Vector3.UP, deg_to_rad(40))
 
 	enemy.velocity = direction * move_speed * delta
 	enemy.face_direction(direction)
