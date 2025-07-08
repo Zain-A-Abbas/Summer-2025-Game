@@ -7,9 +7,10 @@ var attack_object: AttackObject
 var direction: Vector3
 
 var delta_count: float = 0.0
-var time_to_swing: float = 0.0
-var swing_duration: float = 0.0
-var warning_time: float = 0.0
+var time_to_swing: float = 0.4
+var swing_duration: float = 1.0
+var move_duration: float = 0.5
+var warning_time: float = 0.3
 
 
 func _init(new_enemy: Enemy, atk: AttackObject) -> void:
@@ -22,13 +23,14 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	attack_activated = false
 	warning_shown = false
 	
-	time_to_swing = randf_range(0.5, 1.2)
-	swing_duration = time_to_swing + 0.1
-	warning_time = time_to_swing - 0.5
+	#time_to_swing = randf_range(0.5, 1.2)
+	
+	#warning_time = time_to_swing - 0.5
 	
 	enemy.face_direction(direction)
 	
-	enemy.action_animator.play("basic_enemy_animation_library/RESET")
+	#enemy.action_animator.play("basic_enemy_animation_library/RESET")
+	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -42,10 +44,10 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= time_to_swing && !attack_activated:
 		attack_object.hitbox.monitorable = true
 		attack_activated = true
-		enemy.action_animator.play("basic_enemy_animation_library/attack")
+		#enemy.action_animator.play("basic_enemy_animation_library/attack")
 		enemy.play_sound_fx(enemy.sounds, &"big_sword")
 	
-	if attack_activated:
+	if attack_activated && delta_count <= move_duration:
 		enemy.velocity = direction * enemy.swing_move_speed * delta
 		enemy.move_and_slide()
 	

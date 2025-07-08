@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="8_mypw1"]
 [ext_resource type="Texture2D" uid="uid://06356fxw8bit" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Fabric-Cotton.png" id="8_ry1pd"]
 [ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="9_ry1pd"]
-[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="10_aql06"]
+[ext_resource type="Script" path="res://levels/dig_spot.gd" id="10_aql06"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1n4xr"]
 albedo_texture = ExtResource("2_8nfce")
@@ -503,6 +503,7 @@ cast_shadow = 0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry" index="9"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.95, -10.9928)
+visible = false
 layers = 33
 size = Vector3(2, 0.1, 7.6)
 material = ExtResource("9_ry1pd")
@@ -517,22 +518,18 @@ shape = SubResource("ConcavePolygonShape3D_aql06")
 [node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09474, 0, 10.4186)
 script = ExtResource("10_aql06")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09474, 0, 20.8975)
 script = ExtResource("10_aql06")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="DigSpot3" type="Marker3D" parent="EnemyData/DigSpots" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.98581, 0, 20.3414)
 script = ExtResource("10_aql06")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="DigSpot4" type="Marker3D" parent="EnemyData/DigSpots" index="3"]
 transform = Transform3D(-0.916809, 0, 0.399325, 0, 1, 0, -0.399325, 0, -0.916809, -8.8889, 0, 7.54151)
 script = ExtResource("10_aql06")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21)

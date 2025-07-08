@@ -80,8 +80,9 @@ bg_color = Color(0.62, 0.1426, 0.1426, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mppf5"]
 viewport_path = NodePath("SubViewport")
 
-[node name="EnemyBase" node_paths=PackedStringArray("health_component", "movement_component") instance=ExtResource("1_6myxx")]
+[node name="EnemyBase" node_paths=PackedStringArray("meshes", "health_component", "movement_component") instance=ExtResource("1_6myxx")]
 script = ExtResource("2_xtrms")
+meshes = []
 health_component = NodePath("Components/HealthComponent")
 movement_component = NodePath("Components/MovementComponent")
 

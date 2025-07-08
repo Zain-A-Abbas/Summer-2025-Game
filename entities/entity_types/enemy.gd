@@ -8,7 +8,7 @@ signal enemy_damage_taken(enemy: Enemy, damage: int)
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
 
-@export var mesh: MeshInstance3D
+@export var meshes: Array[MeshInstance3D] = []
 @export var animation_tree: AnimationTree
 
 var player: Player
@@ -52,9 +52,11 @@ func damage_taken(enemy: Enemy, damage: int):
 	enemy_hp_bar.value = health_component.current_health
 
 func hurt_effect():
-	mesh.set_instance_shader_parameter("hit_effect", true)
+	for mesh in meshes:
+		mesh.set_instance_shader_parameter("hit_effect", true)
 	await get_tree().create_timer(0.1).timeout
-	mesh.set_instance_shader_parameter("hit_effect", false)
+	for mesh in meshes:
+		mesh.set_instance_shader_parameter("hit_effect", false)
 
 func show_attack_indicator():
 	attack_indicator_animator.play("show_indicator")
