@@ -22,7 +22,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	spawn_position = get_closest_spawn_position()
 	summon_cancel_threshold = enemy.health_component.current_health - enemy.summon_cancel_hp_amount
 	
-	enemy.play_sound_fx(enemy.sounds, &"magic_whoosh_1")
+	enemy.play_sound_fx(&"magic_whoosh_1")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -38,7 +38,7 @@ func st_physics_process(delta: float) -> void:
 		
 	# summoning attempt sfx
 	if summon_sound_timer >= SUMMONING_WHOOSH_TIME:
-		enemy.play_sound_fx(enemy.sounds, "magic_whoosh_%d" % summon_sound_index)
+		enemy.play_sound_fx("magic_whoosh_%d" % summon_sound_index)
 		summon_sound_index += 1
 		
 		summon_sound_timer = 0.0
@@ -46,7 +46,7 @@ func st_physics_process(delta: float) -> void:
 			summon_sound_index = 1
 	
 	if !just_summoned && delta_count >= enemy.summon_timestamp:
-		enemy.play_sound_fx(enemy.sounds, &"summon")
+		enemy.play_sound_fx(&"summon")
 		
 		var new_enemy: Enemy = enemy.spawn_type_list.pick_random().instantiate()
 		enemy.enemy_list.add_child(new_enemy)

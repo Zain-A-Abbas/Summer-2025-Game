@@ -35,7 +35,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		step_time = WALK_TIME
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
-	enemy.play_sound_fx(enemy.sounds, &"run_step_1")
+	enemy.play_sound_fx(&"run_step_1")
 
 func st_physics_process(delta: float) -> void:
 	attack_cooldown_timer += delta
@@ -76,7 +76,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# play footstep sound fx
 	if step_timer > step_time:
-		enemy.play_sound_fx(enemy.sounds, "run_step_%d" % step_index)
+		enemy.play_sound_fx("run_step_%d" % step_index)
 		step_index += 1
 		
 		step_timer = 0.0

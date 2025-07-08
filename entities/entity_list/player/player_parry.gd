@@ -35,13 +35,11 @@ func st_physics_process(delta: float) -> void:
 	player.update_listener_direction()
 	
 	if delta_count >= player.parry_duration:
-		state_machine.change_state(&"Idle")
-		return
+		return state_machine.change_state(&"Idle")
 	
 	if delta_count >= invincibility_period && !parry_over:
 		player.hurtbox.parry_frames = false
 		parry_over = true
-	
 	
 	player.velocity = player.gravity_velocity() * delta
 	player.move_and_slide()

@@ -34,7 +34,7 @@ func st_physics_process(delta: float) -> void:
 				seed.global_position = proj.global_position
 	
 	if !exploded:		
-		proj.play_sound_fx(proj.sounds, &"death")
+		proj.play_sound_fx(&"death")
 		proj.atk_obj.hitbox.monitorable = false
 		proj.hide()
 		exploded = true

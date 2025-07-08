@@ -25,7 +25,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
-	enemy.play_sound_fx(enemy.sounds, &"jump")
+	enemy.play_sound_fx(&"jump")
 	is_hopping = true
 
 func st_physics_process(delta: float) -> void:
@@ -35,12 +35,12 @@ func st_physics_process(delta: float) -> void:
 	
 	# play movement sfx
 	if hop_timer > HOP_TIME && !is_hopping:
-		enemy.play_sound_fx(enemy.sounds, &"jump")
+		enemy.play_sound_fx(&"jump")
 		is_hopping = true
 		hop_timer = 0.0
 	
 	if hop_timer > HOP_TIME && is_hopping:
-		enemy.play_sound_fx(enemy.sounds, &"land")
+		enemy.play_sound_fx(&"land")
 		is_hopping = false
 		hop_timer = 0.0
 	

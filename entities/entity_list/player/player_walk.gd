@@ -11,7 +11,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	step_index = 2
 	
-	player.play_sound_fx(player.sounds, &"run_step_1")
+	player.play_sound_fx(&"run_step_1")
 	player.action_animator.play("walk")
 
 func st_physics_process(delta: float) -> void:
@@ -37,7 +37,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# play footstep sound fx
 	if delta_count > STEP_TIME:
-		player.play_sound_fx(player.sounds, "run_step_%d" % step_index)
+		player.play_sound_fx("run_step_%d" % step_index)
 		step_index += 1
 		
 		delta_count = 0.0

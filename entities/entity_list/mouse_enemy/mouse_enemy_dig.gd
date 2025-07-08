@@ -29,7 +29,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
 	
 	# play dig animation here
-	enemy.play_sound_fx(enemy.sounds, &"digging_1")
+	enemy.play_sound_fx(&"digging_1")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -37,7 +37,7 @@ func st_physics_process(delta: float) -> void:
 	dig_sound_timer += delta
 
 	if delta_count >= enemy.dig_duration:
-		enemy.play_sound_fx(enemy.sounds, &"resurface")
+		enemy.play_sound_fx(&"resurface")
 		return state_machine.change_state(&"Idle")
 	
 	enemy.hurtbox.invincibility_frames = delta_count > enemy.underground_timestamp
@@ -61,7 +61,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# play digging sfx
 	if dig_sound_timer > DIG_SOUND_TIME:
-		enemy.play_sound_fx(enemy.sounds, "digging_%d" % dig_sound_index)
+		enemy.play_sound_fx("digging_%d" % dig_sound_index)
 		dig_sound_index += 1
 		
 		dig_sound_timer = 0.0

@@ -19,21 +19,26 @@ func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", RedKnightEnemyIdle.new(self)),
 		StateInitializer.new(&"Block", RedKnightEnemyBlock.new(self, hurtbox, ray_cast)),
-		StateInitializer.new(&"Swing", RedKnightEnemySwing.new(self, thrust))
+		StateInitializer.new(&"Swing", RedKnightEnemySwing.new(self, thrust)),
+		StateInitializer.new(&"Death", DeathState.new(
+			self, 
+			"basic_enemy_animation_library/attack", # change later
+			death_state_duration
+			))
 	]
 	
 	state_machine.assign_states(enemy_states)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
-		play_sound_fx(sounds, &"damaged")
+		play_sound_fx( &"damaged")
 		hurt_effect()
 		resolve_hit(attack_object)
 	else:
-		play_sound_fx(sounds, &"shield_block")
+		play_sound_fx(&"shield_block")
 		player.velocity = direction * player_pushback
 		player.move_and_slide()
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
-	queue_free()
+	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

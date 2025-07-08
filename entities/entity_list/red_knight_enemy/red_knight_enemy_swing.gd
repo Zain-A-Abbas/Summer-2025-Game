@@ -25,7 +25,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	enemy.face_direction(direction)
 
-	enemy.play_sound_fx(enemy.sounds, &"lift_sword")
+	enemy.play_sound_fx(&"lift_sword")
 	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
@@ -38,7 +38,7 @@ func st_physics_process(delta: float) -> void:
 
 	# startup time
 	if delta_count >= TIME_TO_SWING && !attack_activated:
-		enemy.play_sound_fx(enemy.sounds, &"big_sword")
+		enemy.play_sound_fx(&"big_sword")
 		attack_object.hitbox.monitorable = true
 		attack_activated = true
 	

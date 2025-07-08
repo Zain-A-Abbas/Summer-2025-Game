@@ -47,7 +47,7 @@ func prepare_states():
 		StateInitializer.new(&"Walk", PlayerWalk.new(self)),
 		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
 		StateInitializer.new(&"Parry", PlayerParry.new(self)),
-		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack))
+		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack)),
 	]
 	
 	state_machine.assign_states(player_states)
@@ -88,7 +88,7 @@ func parry_received(attack_object: AttackObject):
 	if can_get_parry_point:
 		parry_counter = mini(parry_counter + 1, 3)
 		can_get_parry_point = false
-		play_sound_fx(sounds, &"parried")
+		play_sound_fx(&"parried")
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass
@@ -96,15 +96,15 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 func heal(heal_amount: int):
 	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
 	player_hp_recovered.emit(self)
-	play_sound_fx(sounds, &"heal")
+	play_sound_fx(&"heal")
 
 func gain_money(amount: int):
 	obtained_money.emit(amount)
-	play_sound_fx(sounds, &"gain_money")
+	play_sound_fx(&"gain_money")
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
-		play_sound_fx(sounds, &"damaged")
+		play_sound_fx(&"damaged")
 		resolve_hit(attack_object)
 
 func update_listener_direction():

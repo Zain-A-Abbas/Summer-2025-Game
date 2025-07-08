@@ -34,7 +34,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	dig_duration = UNDERGROUND_TIMESTAMP + randf_range(1.0, 2.0)
 	
-	enemy.play_sound_fx(enemy.sounds, &"dig_start")
+	enemy.play_sound_fx(&"dig_start")
 	# play initial dig animation here
 
 func st_physics_process(delta: float) -> void:
@@ -45,19 +45,21 @@ func st_physics_process(delta: float) -> void:
 		enemy.hurtbox.invincibility_frames = true
 		enemy.hide()
 		is_underground = true
+		enemy.set_collision_layer_value(1, 0)
 	
 	if dig_sound_timer > DIG_SOUND_TIME:
 		dig_sound_timer = 0.0
 		if !is_underground: # play digging fx
-			enemy.play_sound_fx(enemy.sounds, &"dig_start")
+			enemy.play_sound_fx(&"dig_start")
 		else:
-			enemy.play_sound_fx(enemy.sounds, "digging_%d" % dig_sound_index)
+			enemy.play_sound_fx("digging_%d" % dig_sound_index)
 			dig_sound_index += 1
 			
 			if dig_sound_index > 4:
 				dig_sound_index = 1
 	
 	if delta_count >= dig_duration:
+		enemy.set_collision_layer_value(1, 1)
 		enemy.show()
 		enemy.position = new_dig_spot.position
 		return state_machine.change_state(&"Idle", {"from_dig": true})

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=43 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://bqwou5lviuh0p" path="res://audio/entities/card/Card Step 3.wav" id="16_wxn5g"]
 [ext_resource type="AudioStream" uid="uid://pipcct866yyn" path="res://audio/entities/card/Card Step 4.wav" id="17_16uoj"]
 [ext_resource type="AudioStream" uid="uid://d14phyco0gwft" path="res://audio/entities/card/Card Damaged 2.wav" id="18_e60tt"]
+[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="19_bfcs5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
 render_priority = 0
@@ -181,34 +182,35 @@ wander_duration = 6.0
 change_direction_timestamp = 1.5
 meshes = [NodePath("card/Armature/GeneralSkeleton/cardDiamonds2"), NodePath("card/Armature/GeneralSkeleton/Cube"), NodePath("card/Armature/GeneralSkeleton/Cube_001"), NodePath("card/Armature/GeneralSkeleton/Cube_002")]
 animation_tree = NodePath("card/AnimationTree")
+death_state_duration = 1.0
 
 [node name="card" parent="." index="0" instance=ExtResource("3_5sssr")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.0250515, 3.29082, -0.185344)
-bones/1/rotation = Quaternion(-0.000155466, -0.013635, 0.0113088, 0.999843)
-bones/3/rotation = Quaternion(0.163041, -0.0410682, -0.000529883, 0.985764)
-bones/4/rotation = Quaternion(0.269489, -0.113965, -0.0294287, 0.955783)
+bones/1/position = Vector3(0.0647549, 3.30806, -0.185562)
+bones/1/rotation = Quaternion(-8.4392e-05, 0.00959194, -0.00877895, 0.999916)
+bones/3/rotation = Quaternion(0.168158, -0.0413532, 0.000252987, 0.984892)
+bones/4/rotation = Quaternion(0.288221, -0.114874, -0.0264611, 0.95028)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0264751, 0.941406, -0.336186, 0.00575816)
-bones/7/rotation = Quaternion(0.204823, -0.769805, 0.334768, 0.503367)
-bones/8/rotation = Quaternion(0.034362, 0.668337, 0.067073, 0.740031)
+bones/6/rotation = Quaternion(0.0407333, 0.937999, -0.344185, 0.00589544)
+bones/7/rotation = Quaternion(0.202179, -0.773604, 0.336432, 0.497467)
+bones/8/rotation = Quaternion(0.0404122, 0.662479, 0.0677864, 0.744911)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0283443, 0.0129918, 0.00921795, 0.999471)
-bones/13/rotation = Quaternion(-0.163167, 0.0769845, 0.0201063, 0.983385)
-bones/14/rotation = Quaternion(0.127569, 0.169538, -0.0200377, 0.977027)
+bones/10/rotation = Quaternion(0.00755559, 0.00346311, 0.00245716, 0.999963)
+bones/13/rotation = Quaternion(-0.175798, 0.0776523, 0.0181475, 0.981191)
+bones/14/rotation = Quaternion(0.134125, 0.165306, -0.0308222, 0.976593)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.16058, 0.77292, -0.221117, 0.57264)
-bones/19/rotation = Quaternion(-0.0088254, -0.613884, -0.0172845, 0.789158)
+bones/18/rotation = Quaternion(0.197457, 0.756914, -0.270884, 0.560993)
+bones/19/rotation = Quaternion(-0.00557483, -0.613922, -0.0214627, 0.789055)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(7.12412e-05, 0.0287383, 0.999535, 0.010185)
-bones/26/rotation = Quaternion(0.0015529, 0.875551, -0.483115, 0.00272826)
-bones/27/rotation = Quaternion(-0.00379713, 0.783227, -0.621647, 0.00980372)
-bones/28/rotation = Quaternion(3.62238e-05, 0.166544, 0.98602, 0.00517912)
-bones/29/rotation = Quaternion(0.000282958, 0.970983, -0.239145, 0.00089714)
-bones/30/rotation = Quaternion(0.00449175, 0.652756, -0.757423, 0.0141373)
+bones/25/rotation = Quaternion(2.07826e-05, 0.147948, 0.988991, 0.00297145)
+bones/26/rotation = Quaternion(0.000154613, 0.97584, -0.218486, 0.000462171)
+bones/27/rotation = Quaternion(0.00269635, 0.654589, -0.755829, -0.0150799)
+bones/28/rotation = Quaternion(9.70891e-06, 0.0881478, 0.996107, 0.00138802)
+bones/29/rotation = Quaternion(0.000424962, 0.847866, -0.53021, 0.000449998)
+bones/30/rotation = Quaternion(0.0121862, 0.738964, -0.67359, -0.00771113)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -321,6 +323,10 @@ stream = ExtResource("18_e60tt")
 volume_db = 5.0
 max_db = 1.5
 pitch_scale = 0.75
+
+[node name="death" parent="Sounds" index="6"]
+stream = ExtResource("19_bfcs5")
+pitch_scale = 0.7
 
 [editable path="card"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

@@ -36,7 +36,7 @@ func st_physics_process(delta: float) -> void:
 	
 	if warning_trackers[0] > warning_times[0] && !warning_shown:
 		enemy.attack_indicator_animator.play("show_indicator")
-		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
+		enemy.play_sound_fx(&"shoot_bomb")
 		warning_shown = true
 	
 	if warning_trackers[1] > warning_times[1] && !warning_hidden:

@@ -39,7 +39,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	is_aggro = true
 	reset_played = false
 	
-	enemy.play_sound_fx(enemy.sounds, &"run_step_1")
+	enemy.play_sound_fx(&"run_step_1")
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
 	walk_played = true
 
@@ -101,7 +101,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# play footstep sound fx
 	if step_timer > NEXT_STEP && move_direction != Vector3.ZERO:
-		enemy.play_sound_fx(enemy.sounds, "run_step_%d" % step_index)
+		enemy.play_sound_fx("run_step_%d" % step_index)
 		step_index += 1
 		
 		step_timer = 0.0

@@ -16,7 +16,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	attack_object.show()
 	attack_object.hitbox.monitorable = true
 
-	proj.play_sound_fx(proj.sounds, &"death")
+	proj.play_sound_fx(&"death")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

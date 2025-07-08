@@ -23,7 +23,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
-	enemy.play_sound_fx(enemy.sounds, &"crawl_1")
+	enemy.play_sound_fx(&"crawl_1")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -52,7 +52,7 @@ func st_physics_process(delta: float) -> void:
 
 	# play sfx
 	if crawl_sound_timer > CRAWL_SOUND_TIME:
-		enemy.play_sound_fx(enemy.sounds, "crawl_%d" % crawl_sound_index)
+		enemy.play_sound_fx("crawl_%d" % crawl_sound_index)
 		crawl_sound_index += 1
 		
 		crawl_sound_timer = 0.0
