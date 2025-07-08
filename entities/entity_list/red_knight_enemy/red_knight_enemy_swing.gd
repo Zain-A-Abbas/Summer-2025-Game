@@ -3,8 +3,8 @@ extends EnemyState
 
 const WARNING_TIME: float = 0.1
 const TIME_TO_SWING: float = 0.4
-const MOVEMENT_DURATION: float = TIME_TO_SWING + 0.3
-const STATE_DURATION: float = 1.2
+const MOVEMENT_DURATION: float = TIME_TO_SWING + 0.15
+const STATE_DURATION: float = 1.5
 
 var warning_shown: bool = false
 var attack_activated: bool= false
@@ -24,7 +24,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	warning_shown = false
 	
 	enemy.face_direction(direction)
-	
+
+	enemy.play_sound_fx(enemy.sounds, &"lift_sword")
 	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
 func st_physics_process(delta: float) -> void:
@@ -41,7 +42,7 @@ func st_physics_process(delta: float) -> void:
 		attack_object.hitbox.monitorable = true
 		attack_activated = true
 	
-	# moving
+	# movement
 	if attack_activated && delta_count <= MOVEMENT_DURATION:
 		enemy.velocity = direction * enemy.swing_move_speed * delta
 		enemy.move_and_slide()

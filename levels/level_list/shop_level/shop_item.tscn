@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://c8o7bbwbne1r" path="res://levels/level_list/shop_level/shop_item.gd" id="1_08rys"]
 [ext_resource type="Texture2D" uid="uid://b7q61alf85a1m" path="res://ui/gameplay/upgrade_icons.png" id="1_y37k2"]
 [ext_resource type="FontFile" uid="uid://ctndt3nkkcfpe" path="res://ui/fonts/EBGaramond-Bold.ttf" id="3_08rys"]
-[ext_resource type="AudioStream" uid="uid://cv8chloe83idq" path="res://audio/entities/SFX_Equip_01.wav" id="4_inclg"]
-[ext_resource type="AudioStream" uid="uid://d3uvxvbtfbqot" path="res://audio/entities/SFX_Equip_02.wav" id="5_k4j8f"]
-[ext_resource type="AudioStream" uid="uid://uybxjhmaebws" path="res://audio/entities/SFX_Equip_03.wav" id="6_157ih"]
+[ext_resource type="AudioStream" uid="uid://qks0hdi85diw" path="res://audio/items/SFX_Equip_01.wav" id="4_inclg"]
+[ext_resource type="AudioStream" uid="uid://dkao7wybmiy0q" path="res://audio/items/SFX_Equip_02.wav" id="5_k4j8f"]
+[ext_resource type="AudioStream" uid="uid://civlaamepmuv5" path="res://audio/items/SFX_Equip_03.wav" id="6_157ih"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nt1ym"]
 resource_local_to_scene = true

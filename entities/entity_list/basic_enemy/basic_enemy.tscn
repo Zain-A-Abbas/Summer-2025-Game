@@ -12,12 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="8_68gr5"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="9_k5gch"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="10_5sssr"]
-[ext_resource type="AudioStream" uid="uid://38w54su7hfex" path="res://audio/entities/Sword_Whoosh_No_Shing_04.wav" id="14_i6hqh"]
-[ext_resource type="AudioStream" uid="uid://cies7cq8nelo" path="res://audio/entities/Card Step 1.wav" id="15_bfcs5"]
-[ext_resource type="AudioStream" uid="uid://bebwia0o06val" path="res://audio/entities/Card Step 2.wav" id="16_wd8hw"]
-[ext_resource type="AudioStream" uid="uid://b3eug3bdjpi3f" path="res://audio/entities/Card Step 3.wav" id="17_bfcs5"]
-[ext_resource type="AudioStream" uid="uid://to64uq7wbubj" path="res://audio/entities/Card Step 4.wav" id="18_fl2vc"]
-[ext_resource type="AudioStream" uid="uid://dloqrq1bsjshk" path="res://audio/entities/Card Damaged 2.wav" id="19_bfcs5"]
+[ext_resource type="AudioStream" uid="uid://ctlcgwhqva3jy" path="res://audio/entities/general/Sword_Whoosh_No_Shing_04.wav" id="13_wd8hw"]
+[ext_resource type="AudioStream" uid="uid://u6wcfdwn2moh" path="res://audio/entities/card/Card Step 1.wav" id="14_bfcs5"]
+[ext_resource type="AudioStream" uid="uid://d3lvk8o0puhn7" path="res://audio/entities/card/Card Step 2.wav" id="15_fl2vc"]
+[ext_resource type="AudioStream" uid="uid://bqwou5lviuh0p" path="res://audio/entities/card/Card Step 3.wav" id="16_wxn5g"]
+[ext_resource type="AudioStream" uid="uid://pipcct866yyn" path="res://audio/entities/card/Card Step 4.wav" id="17_16uoj"]
+[ext_resource type="AudioStream" uid="uid://d14phyco0gwft" path="res://audio/entities/card/Card Damaged 2.wav" id="18_e60tt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
 render_priority = 0
@@ -186,29 +186,29 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.128554, 3.29055, -0.185071)
-bones/1/rotation = Quaternion(-0.00025116, -0.0124806, 0.0200869, 0.99972)
-bones/3/rotation = Quaternion(0.167763, -0.0413315, 0.000192406, 0.984961)
-bones/4/rotation = Quaternion(0.284336, -0.11469, -0.02708, 0.951455)
+bones/1/position = Vector3(-0.0250515, 3.29082, -0.185344)
+bones/1/rotation = Quaternion(-0.000155466, -0.013635, 0.0113088, 0.999843)
+bones/3/rotation = Quaternion(0.163041, -0.0410682, -0.000529883, 0.985764)
+bones/4/rotation = Quaternion(0.269489, -0.113965, -0.0294287, 0.955783)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0207823, 0.942721, -0.332886, 0.00570175)
-bones/7/rotation = Quaternion(0.205764, -0.768437, 0.334169, 0.505467)
-bones/8/rotation = Quaternion(0.0521497, 0.650519, 0.0692098, 0.75453)
+bones/6/rotation = Quaternion(0.0264751, 0.941406, -0.336186, 0.00575816)
+bones/7/rotation = Quaternion(0.204823, -0.769805, 0.334768, 0.503367)
+bones/8/rotation = Quaternion(0.034362, 0.668337, 0.067073, 0.740031)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.037454, 0.0171672, 0.0121804, 0.999077)
-bones/13/rotation = Quaternion(-0.173338, 0.077525, 0.0185307, 0.981632)
-bones/14/rotation = Quaternion(0.107452, 0.171434, -0.0186447, 0.979141)
+bones/10/rotation = Quaternion(0.0283443, 0.0129918, 0.00921795, 0.999471)
+bones/13/rotation = Quaternion(-0.163167, 0.0769845, 0.0201063, 0.983385)
+bones/14/rotation = Quaternion(0.127569, 0.169538, -0.0200377, 0.977027)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.211001, 0.750124, -0.289157, 0.55604)
-bones/19/rotation = Quaternion(-0.0189736, -0.613654, -0.00423502, 0.789336)
+bones/18/rotation = Quaternion(0.16058, 0.77292, -0.221117, 0.57264)
+bones/19/rotation = Quaternion(-0.0088254, -0.613884, -0.0172845, 0.789158)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000279471, -0.0137243, 0.999107, 0.0399564)
-bones/26/rotation = Quaternion(0.00210507, 0.960135, -0.279435, 0.00717374)
-bones/27/rotation = Quaternion(0.000293215, 0.69453, -0.719289, 0.0158373)
-bones/28/rotation = Quaternion(0.000237457, 0.307387, 0.950979, 0.0339493)
-bones/29/rotation = Quaternion(0.00198775, 0.966228, -0.257599, 0.00648528)
-bones/30/rotation = Quaternion(0.0235323, 0.644246, -0.764448, -0.00367509)
+bones/25/rotation = Quaternion(7.12412e-05, 0.0287383, 0.999535, 0.010185)
+bones/26/rotation = Quaternion(0.0015529, 0.875551, -0.483115, 0.00272826)
+bones/27/rotation = Quaternion(-0.00379713, 0.783227, -0.621647, 0.00980372)
+bones/28/rotation = Quaternion(3.62238e-05, 0.166544, 0.98602, 0.00517912)
+bones/29/rotation = Quaternion(0.000282958, 0.970983, -0.239145, 0.00089714)
+bones/30/rotation = Quaternion(0.00449175, 0.652756, -0.757423, 0.0141373)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -288,29 +288,38 @@ move_speed = 350.0
 texture = SubResource("ViewportTexture_5sssr")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_i6hqh")
+stream = ExtResource("13_wd8hw")
 volume_db = -10.0
 max_db = 0.0
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_bfcs5")
+stream = ExtResource("14_bfcs5")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_wd8hw")
+stream = ExtResource("15_fl2vc")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_bfcs5")
+stream = ExtResource("16_wxn5g")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_fl2vc")
+stream = ExtResource("17_16uoj")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="damaged" parent="Sounds" index="5"]
-stream = ExtResource("19_bfcs5")
-max_db = 0.0
+stream = ExtResource("18_e60tt")
+volume_db = 5.0
+max_db = 1.5
 pitch_scale = 0.75
 
 [editable path="card"]

@@ -46,22 +46,20 @@ func st_physics_process(delta: float) -> void:
 		enemy.hide()
 		is_underground = true
 	
-	if is_underground && delta_count < dig_duration:
-		# play digging fx
-		if dig_sound_timer > DIG_SOUND_TIME:
+	if dig_sound_timer > DIG_SOUND_TIME:
+		dig_sound_timer = 0.0
+		if !is_underground: # play digging fx
+			enemy.play_sound_fx(enemy.sounds, &"dig_start")
+		else:
 			enemy.play_sound_fx(enemy.sounds, "digging_%d" % dig_sound_index)
 			dig_sound_index += 1
 			
-			dig_sound_timer = 0.0
-			if dig_sound_index > 5:
+			if dig_sound_index > 4:
 				dig_sound_index = 1
 	
 	if delta_count >= dig_duration:
 		enemy.show()
-	
 		enemy.position = new_dig_spot.position
-		#print(enemy.name, enemy.position)
-		enemy.play_sound_fx(enemy.sounds, &"dig_stop")
 		return state_machine.change_state(&"Idle", {"from_dig": true})
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):

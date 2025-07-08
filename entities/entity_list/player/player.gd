@@ -28,6 +28,7 @@ var upgrades: PlayerUpgrades
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
 @onready var camera: LevelCamera
+@onready var listener: AudioListener3D = %listener
 
 
 func _ready() -> void:
@@ -105,3 +106,6 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
 		play_sound_fx(sounds, &"damaged")
 		resolve_hit(attack_object)
+
+func update_listener_direction():
+	listener.global_rotation.y = Vector2(-0.707107, 0.707107).angle() + deg_to_rad(90)

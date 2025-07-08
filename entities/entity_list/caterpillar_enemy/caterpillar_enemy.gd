@@ -10,6 +10,7 @@ extends Enemy
 
 @onready var ray_cast: RayCast3D = %ray_cast
 
+
 func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", CaterpillarEnemyIdle.new(self)),

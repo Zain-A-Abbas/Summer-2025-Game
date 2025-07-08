@@ -1,11 +1,14 @@
 class_name CaterpillarEnemyCrawl
 extends EnemyState
 
+const CRAWL_SOUND_TIME: float = 0.6
+
 var direction: Vector3
 var delta_count: float = 0.0
 var direction_timer: float = 0.0
 var ray_cast: RayCast3D
-
+var crawl_sound_index: int = 1
+var crawl_sound_timer: float = 0.0
 
 func _init(new_enemy: Enemy, ray: RayCast3D) -> void:
 	enemy = new_enemy
@@ -14,14 +17,18 @@ func _init(new_enemy: Enemy, ray: RayCast3D) -> void:
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count *= 0.5 * float(args.has("no_shot"))
 	direction_timer = 0.0
+	crawl_sound_timer = 0.0
+	crawl_sound_index = 2
 	
 	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
+	enemy.play_sound_fx(enemy.sounds, &"crawl_1")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	direction_timer += delta
+	crawl_sound_timer += delta
 	
 	if delta_count >= enemy.crawl_duration:
 		if ray_cast.is_colliding():
@@ -42,3 +49,12 @@ func st_physics_process(delta: float) -> void:
 	enemy.velocity = direction * enemy.movement_component.move_speed * delta
 	enemy.face_direction(direction)
 	enemy.move_and_slide()
+
+	# play sfx
+	if crawl_sound_timer > CRAWL_SOUND_TIME:
+		enemy.play_sound_fx(enemy.sounds, "crawl_%d" % crawl_sound_index)
+		crawl_sound_index += 1
+		
+		crawl_sound_timer = 0.0
+		if crawl_sound_index > 4:
+			crawl_sound_index = 1

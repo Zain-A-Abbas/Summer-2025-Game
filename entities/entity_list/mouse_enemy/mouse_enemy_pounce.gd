@@ -18,6 +18,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	attack_object.hitbox.monitorable = true
 	enemy.action_animator.play("mouse/thrust")
 	enemy.play_sound_fx(enemy.sounds, &"pounce_whoosh")
+	enemy.play_sound_fx(enemy.sounds, &"pounce_squeal")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

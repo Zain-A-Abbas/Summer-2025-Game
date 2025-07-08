@@ -66,5 +66,5 @@ func st_physics_process(delta: float) -> void:
 		step_index += 1
 		
 		step_timer = 0.0
-		if step_index > 3:
+		if step_index > 5:
 			step_index = 1

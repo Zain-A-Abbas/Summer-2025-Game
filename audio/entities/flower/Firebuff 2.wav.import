@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cgu7n7rjlykrh"
+path="res://.godot/imported/Firebuff 2.wav-911bb5e7e4da076f05e8221dea7a590b.sample"
+
+[deps]
+
+source_file="res://audio/entities/flower/Firebuff 2.wav"
+dest_files=["res://.godot/imported/Firebuff 2.wav-911bb5e7e4da076f05e8221dea7a590b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

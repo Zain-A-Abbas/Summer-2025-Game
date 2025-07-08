@@ -32,6 +32,7 @@ func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	player.update_listener_direction()
 	
 	if delta_count >= player.parry_duration:
 		state_machine.change_state(&"Idle")

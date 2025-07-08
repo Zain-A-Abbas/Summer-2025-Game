@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b8tkb5tr2t8vj"]
+[gd_scene load_steps=41 format=3 uid="uid://b8tkb5tr2t8vj"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_1anpf"]
 [ext_resource type="Script" uid="uid://b4ymyhvxbw3fo" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.gd" id="2_gs4ux"]
@@ -10,15 +10,16 @@
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="9_hwwh2"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="10_k2gn7"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="11_0bqms"]
+[ext_resource type="AudioStream" uid="uid://dpu77sbmryeo0" path="res://audio/entities/red_knight/Big_Sword_Whoosh_05.wav" id="12_p6bwr"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="12_xnuhp"]
-[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/entities/Sword_Whoosh_01.wav" id="14_oyvt8"]
-[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/entities/Stone Chain Run 1.wav" id="15_p6bwr"]
-[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/entities/Stone Chain Run 2.wav" id="16_kt7bg"]
-[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/entities/Stone Chain Run 3.wav" id="17_4h5qo"]
-[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/entities/Stone Chain Run 4.wav" id="18_pdgy0"]
-[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/entities/Stone Chain Run 5.wav" id="19_657e3"]
-[ext_resource type="AudioStream" uid="uid://crneb1n60pwnk" path="res://audio/entities/SFX_Bash_Shield_01.wav" id="20_kt7bg"]
-[ext_resource type="AudioStream" uid="uid://cnyp5tebhwpek" path="res://audio/entities/Sword Blocked 1.wav" id="21_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://dl6asahtmoiy2" path="res://audio/entities/general/Stone Chain Run 1.wav" id="14_kt7bg"]
+[ext_resource type="AudioStream" uid="uid://d18ohe1khso8l" path="res://audio/entities/general/Stone Chain Run 2.wav" id="15_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://fy1tdvy6686s" path="res://audio/entities/general/Stone Chain Run 3.wav" id="16_pdgy0"]
+[ext_resource type="AudioStream" uid="uid://d6lx6q5het0w" path="res://audio/entities/general/Stone Chain Run 4.wav" id="17_657e3"]
+[ext_resource type="AudioStream" uid="uid://ciaol78jcb2vb" path="res://audio/entities/general/Stone Chain Run 5.wav" id="18_ifxeg"]
+[ext_resource type="AudioStream" uid="uid://cf3xbw36dmhm1" path="res://audio/entities/red_knight/SFX_Bash_Shield_01.wav" id="19_kt7bg"]
+[ext_resource type="AudioStream" uid="uid://cu7hnap3kgm3g" path="res://audio/entities/red_knight/SFX_UnEquip_02.wav" id="20_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://cn86wnr1a62ee" path="res://audio/entities/red_knight/SFX_Take_Ojbect_02.wav" id="20_kt7bg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 radius = 1.0
@@ -161,8 +162,7 @@ instant_turn_hp_amount = 40
 player_pushback = 200.0
 aggro_range = Array[float]([3.0, 9.0])
 active_radius = 15.0
-swing_cooldown = 1.0
-swing_move_speed = 1850.0
+swing_move_speed = 2800.0
 distance_to_swing = 7.0
 meshes = [NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_003"), NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_004")]
 animation_tree = NodePath("red_knight/AnimationTree")
@@ -171,32 +171,27 @@ animation_tree = NodePath("red_knight/AnimationTree")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.14555, 3.38436, -0.185614)
-bones/1/rotation = Quaternion(-6.91335e-05, -0.00551426, 0.0125188, 0.999906)
-bones/3/rotation = Quaternion(0.163552, -0.041097, -0.000451914, 0.985678)
-bones/4/rotation = Quaternion(0.267693, -0.113874, -0.029711, 0.95629)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0417836, 0.937742, -0.344759, 0.00590506)
-bones/7/rotation = Quaternion(0.201978, -0.773891, 0.336558, 0.497017)
-bones/8/rotation = Quaternion(0.0413818, 0.661504, 0.0679044, 0.745714)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00602565, 0.00276196, 0.00195945, 0.999976)
-bones/13/rotation = Quaternion(-0.162676, 0.0769579, 0.020182, 0.983467)
-bones/14/rotation = Quaternion(0.114702, 0.172321, -0.0139707, 0.97824)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.169545, 0.769355, -0.233217, 0.57005)
-bones/19/rotation = Quaternion(-0.0154365, -0.613754, -0.00878417, 0.789298)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000248396, 0.0049177, 0.999357, 0.0355129)
-bones/26/rotation = Quaternion(0.000987708, 0.980907, -0.194413, 0.00490128)
-bones/27/rotation = Quaternion(0.0123492, 0.681809, -0.731424, 0.00171743)
-bones/28/rotation = Quaternion(0.00022261, 0.398632, 0.916559, 0.0318266)
-bones/29/rotation = Quaternion(0.0086065, 0.825113, -0.564762, 0.012554)
-bones/30/rotation = Quaternion(0.0288861, 0.764275, -0.644241, -0.0015198)
+bones/1/position = Vector3(-0.0214093, 3.2854, -0.185309)
+bones/1/rotation = Quaternion(-0.000166928, -0.0140121, 0.0118395, 0.999832)
+bones/3/rotation = Quaternion(0.166722, -0.0412741, 3.26881e-05, 0.98514)
+bones/4/rotation = Quaternion(0.281277, -0.114544, -0.027566, 0.952367)
+bones/6/rotation = Quaternion(0.0204931, 0.942787, -0.332716, 0.00569886)
+bones/7/rotation = Quaternion(0.205839, -0.768328, 0.334121, 0.505634)
+bones/8/rotation = Quaternion(0.0539971, 0.648562, 0.0694387, 0.756063)
+bones/10/rotation = Quaternion(0.0378943, 0.017369, 0.0123236, 0.999055)
+bones/13/rotation = Quaternion(-0.171241, 0.0774153, 0.0188569, 0.982002)
+bones/14/rotation = Quaternion(0.101644, 0.172981, -0.0149575, 0.979552)
+bones/18/rotation = Quaternion(0.208705, 0.75131, -0.28606, 0.556906)
+bones/19/rotation = Quaternion(-0.0219292, -0.613555, -0.0004328, 0.789347)
+bones/25/rotation = Quaternion(8.13866e-05, 0.0158606, 0.999807, 0.0116354)
+bones/26/rotation = Quaternion(0.00166378, 0.88403, -0.467418, 0.00305012)
+bones/27/rotation = Quaternion(-0.00276473, 0.777252, -0.629103, 0.0100674)
+bones/28/rotation = Quaternion(4.26187e-05, 0.173909, 0.984743, 0.0060934)
+bones/29/rotation = Quaternion(0.000329899, 0.969604, -0.244679, 0.00106667)
+bones/30/rotation = Quaternion(0.00510675, 0.654091, -0.756267, 0.0141465)
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.478988, -0.646064, 0.594282, 0.0228176, -0.685931, -0.727309, 0.877525, -0.334812, 0.343294, -1.91859, 3.78185, -1.58209)
+transform = Transform3D(-0.428117, -0.664689, 0.612294, 0.0713469, -0.700268, -0.710306, 0.900903, -0.260409, 0.34722, -2.0847, 3.70008, -1.51943)
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
@@ -264,51 +259,58 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 texture = SubResource("ViewportTexture_5sssr")
 
-[node name="big_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_oyvt8")
+[node name="lift_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("20_4h5qo")
+volume_db = -5.0
+unit_size = 7.0
+max_db = 0.0
+
+[node name="big_sword" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+stream = ExtResource("12_p6bwr")
 volume_db = -5.0
 max_db = 0.0
-pitch_scale = 0.6
+pitch_scale = 0.75
 
-[node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_p6bwr")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.48
+[node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+stream = ExtResource("14_kt7bg")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_kt7bg")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
+stream = ExtResource("15_4h5qo")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_4h5qo")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
+stream = ExtResource("16_pdgy0")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_pdgy0")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
+stream = ExtResource("17_657e3")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
-stream = ExtResource("19_657e3")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
+stream = ExtResource("18_ifxeg")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="shield_block" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
-stream = ExtResource("20_kt7bg")
-volume_db = -15.0
+[node name="shield_block" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
+stream = ExtResource("19_kt7bg")
+volume_db = -12.0
 max_db = -1.0
-pitch_scale = 0.95
+pitch_scale = 1.5
 
-[node name="damaged" parent="Sounds" index="7"]
-stream = ExtResource("21_4h5qo")
-pitch_scale = 0.5
+[node name="damaged" parent="Sounds" index="8"]
+stream = ExtResource("20_kt7bg")
+volume_db = 1.0
+pitch_scale = 0.85
 
 [node name="Decal" parent="." index="13"]
 size = Vector3(2, 2, 2)

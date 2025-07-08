@@ -46,11 +46,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	movement_vector = Vector3(0, 0, -move_speed).rotated(Vector3.UP, player.rotation.y).normalized()
 	
-	player.play_sound_fx(player.sounds, "sword_whoosh_%d" % ((combo % 3) + 1))
+	#player.play_sound_fx(player.sounds, "sword_whoosh_%d" % ((combo % 3) + 1))
 	player.action_animator.play("attack_%d" % ((combo % 2) + 1))
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	player.update_listener_direction()
 	
 	attack_object.hitbox.monitorable = delta_count >= ACTIVE_FRAMES[0] && delta_count <= ACTIVE_FRAMES[1]
 	

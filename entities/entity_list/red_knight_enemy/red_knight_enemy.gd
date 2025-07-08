@@ -6,7 +6,6 @@ extends Enemy
 @export var player_pushback: float = 200.0
 @export var aggro_range: Array[float] = [3.0, 9.0]
 @export var active_radius: float = 15.0
-@export var swing_cooldown: float = 1.0
 @export var swing_move_speed: float = 3000.0
 @export var distance_to_swing: float = 7.0
 

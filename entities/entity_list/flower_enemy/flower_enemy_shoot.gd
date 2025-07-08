@@ -36,6 +36,7 @@ func st_physics_process(delta: float) -> void:
 	
 	if warning_trackers[0] > warning_times[0] && !warning_shown:
 		enemy.attack_indicator_animator.play("show_indicator")
+		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
 		warning_shown = true
 	
 	if warning_trackers[1] > warning_times[1] && !warning_hidden:
@@ -53,7 +54,6 @@ func st_physics_process(delta: float) -> void:
 		bomb.global_position = enemy.player.global_position
 		
 		enemy.action_animator.play("basic_enemy_animation_library/attack")
-		enemy.play_sound_fx(enemy.sounds, &"shoot_bomb")
 		
 	if delta_count > shoot_times[1]:
 		return state_machine.change_state(&"Idle", {"dig_on_cooldown": dig_on_cooldown})

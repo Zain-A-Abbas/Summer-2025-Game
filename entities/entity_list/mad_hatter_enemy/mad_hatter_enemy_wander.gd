@@ -1,8 +1,7 @@
 class_name MadHatterEnemyWander
 extends EnemyState
 
-const HOP_TIME: float = 0.1
-const TIME_TO_LAND: float = 0.4
+const HOP_TIME: float = 0.35
 
 var direction: Vector3 = Vector3.ZERO
 var ray_cast: RayCast3D
@@ -22,11 +21,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	hop_timer = 0.0
 	random_direction_timer = 0.0
 	
-	is_hopping = false
 	move_speed = enemy.movement_component.move_speed
 	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
 	
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
+	enemy.play_sound_fx(enemy.sounds, &"jump")
+	is_hopping = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -39,7 +39,7 @@ func st_physics_process(delta: float) -> void:
 		is_hopping = true
 		hop_timer = 0.0
 	
-	if hop_timer > TIME_TO_LAND && is_hopping:
+	if hop_timer > HOP_TIME && is_hopping:
 		enemy.play_sound_fx(enemy.sounds, &"land")
 		is_hopping = false
 		hop_timer = 0.0

@@ -16,6 +16,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	player.update_listener_direction()
 	
 	if Input.is_action_just_pressed("attack"):
 		return state_machine.change_state(&"Attack")
