@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://pxuki86hpwiu"
-valid=false
+path="res://.godot/imported/3D Retro Medieval Fantasy Kit.blend-28c29558a5b62d666a4d1efdce54a095.scn"
 
 [deps]
 
 source_file="res://blender/3D Retro Medieval Fantasy Kit.blend"
+dest_files=["res://.godot/imported/3D Retro Medieval Fantasy Kit.blend-28c29558a5b62d666a4d1efdce54a095.scn"]
 
 [params]
 

@@ -186,29 +186,29 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.144086, 3.39233, -0.185674)
-bones/1/rotation = Quaternion(-4.89588e-05, -0.00432644, 0.010996, 0.99993)
-bones/3/rotation = Quaternion(0.164848, -0.0411699, -0.000254195, 0.985459)
-bones/4/rotation = Quaternion(0.275776, -0.114276, -0.0284373, 0.953981)
+bones/1/position = Vector3(0.128554, 3.29055, -0.185071)
+bones/1/rotation = Quaternion(-0.00025116, -0.0124806, 0.0200869, 0.99972)
+bones/3/rotation = Quaternion(0.167763, -0.0413315, 0.000192406, 0.984961)
+bones/4/rotation = Quaternion(0.284336, -0.11469, -0.02708, 0.951455)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0311252, 0.940312, -0.338837, 0.00580376)
-bones/7/rotation = Quaternion(0.203975, -0.77103, 0.335304, 0.501476)
-bones/8/rotation = Quaternion(0.029435, 0.672969, 0.0665006, 0.736087)
+bones/6/rotation = Quaternion(0.0207823, 0.942721, -0.332886, 0.00570175)
+bones/7/rotation = Quaternion(0.205764, -0.768437, 0.334169, 0.505467)
+bones/8/rotation = Quaternion(0.0521497, 0.650519, 0.0692098, 0.75453)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0215398, 0.00987289, 0.00700474, 0.999695)
-bones/13/rotation = Quaternion(-0.167459, 0.0772153, 0.0194432, 0.982658)
-bones/14/rotation = Quaternion(0.141339, 0.165758, -0.0281978, 0.975578)
+bones/10/rotation = Quaternion(0.037454, 0.0171672, 0.0121804, 0.999077)
+bones/13/rotation = Quaternion(-0.173338, 0.077525, 0.0185307, 0.981632)
+bones/14/rotation = Quaternion(0.107452, 0.171434, -0.0186447, 0.979141)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.161256, 0.772657, -0.222031, 0.57245)
-bones/19/rotation = Quaternion(-0.00158025, -0.613945, -0.0265962, 0.788899)
+bones/18/rotation = Quaternion(0.211001, 0.750124, -0.289157, 0.55604)
+bones/19/rotation = Quaternion(-0.0189736, -0.613654, -0.00423502, 0.789336)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000236572, 0.0028171, 0.999424, 0.0338224)
-bones/26/rotation = Quaternion(0.000782291, 0.98492, -0.172953, 0.00431229)
-bones/27/rotation = Quaternion(0.0129906, 0.68092, -0.732243, -0.000824811)
-bones/28/rotation = Quaternion(0.000216288, 0.393328, 0.918878, 0.0309224)
-bones/29/rotation = Quaternion(0.00928525, 0.805995, -0.591716, 0.0126128)
-bones/30/rotation = Quaternion(0.0294323, 0.787412, -0.615724, -0.000461042)
+bones/25/rotation = Quaternion(0.000279471, -0.0137243, 0.999107, 0.0399564)
+bones/26/rotation = Quaternion(0.00210507, 0.960135, -0.279435, 0.00717374)
+bones/27/rotation = Quaternion(0.000293215, 0.69453, -0.719289, 0.0158373)
+bones/28/rotation = Quaternion(0.000237457, 0.307387, 0.950979, 0.0339493)
+bones/29/rotation = Quaternion(0.00198775, 0.966228, -0.257599, 0.00648528)
+bones/30/rotation = Quaternion(0.0235323, 0.644246, -0.764448, -0.00367509)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -284,9 +284,7 @@ max_health = 50
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 350.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="10"]
-
-[node name="EnemyHP" parent="." index="12"]
+[node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_5sssr")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]

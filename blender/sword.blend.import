@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c75bu4x6ijyyr"
-valid=false
+path="res://.godot/imported/sword.blend-9777aa9de4d1cdd001749af7dcb7d7b9.scn"
 
 [deps]
 
 source_file="res://blender/sword.blend"
+dest_files=["res://.godot/imported/sword.blend-9777aa9de4d1cdd001749af7dcb7d7b9.scn"]
 
 [params]
 
