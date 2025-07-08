@@ -8,13 +8,13 @@ signal obtained_money(amount: int)
 const DODGE_REQUIREMENT: float = 50
 const PARRY_REQUIREMENT: float = 20
 
-@onready var action_animator: AnimationPlayer = %ActionAnimator
-@onready var basic_attack: AttackObject = %basic_attack
-
-@onready var camera: LevelCamera
-
 @export var hurtbox: HurtboxComponent
 @export var animation_tree: AnimationTree
+@export var dodge_duration: float
+@export var dodge_speed: float
+@export var attack_move_speed: float
+@export var base_parry_invincibility_period: float
+@export var parry_duration: float
 
 # Required for parrying/dodging
 var stamina: float = 100.0
@@ -24,6 +24,11 @@ var stamina_regeneration_cooldown: SceneTreeTimer = null
 var parry_counter: int = 0
 var can_get_parry_point: bool = false
 var upgrades: PlayerUpgrades
+
+@onready var action_animator: AnimationPlayer = %ActionAnimator
+@onready var basic_attack: AttackObject = %basic_attack
+@onready var camera: LevelCamera
+
 
 func _ready() -> void:
 	prepare_states()
@@ -50,8 +55,8 @@ func prepare_states():
 # involving upgrades
 func initialize_upgrades(_upgrades: PlayerUpgrades):
 	upgrades = _upgrades
-	health_component.max_health = 100 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
-	max_stamina = 100 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
+	health_component.max_health = 100.0 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
+	max_stamina = 100.0 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
 
 # regeneration_cooldown is the amount of time before stamina starts regenerating again
 # is overwritten whenever another stamina action is taken
@@ -98,6 +103,5 @@ func gain_money(amount: int):
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
-		#print("player hit")
 		play_sound_fx(sounds, &"damaged")
 		resolve_hit(attack_object)

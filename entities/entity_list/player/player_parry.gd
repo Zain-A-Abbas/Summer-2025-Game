@@ -1,10 +1,7 @@
 class_name PlayerParry
 extends PlayerState
 
-const BASE_INVINCIBILITY_PERIOD: float = 0.15
-const STATE_TIME: float = 0.2
-
-var invincibility_period: float = BASE_INVINCIBILITY_PERIOD
+var invincibility_period: float
 var dodge_speed: float = 2000.0
 var delta_count: float = 0
 var direction: Vector2 = Vector2.ZERO
@@ -12,11 +9,10 @@ var movement_vector: Vector3 = Vector3.ZERO
 var parry_over: bool = false
 var parry_succeeded: bool = false
 
+
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	
-	
 	delta_count = 0
-	invincibility_period = BASE_INVINCIBILITY_PERIOD + player.upgrades.extra_parry_time * player.upgrades.PARRY_BONUS_AMOUNT
+	invincibility_period = player.base_parry_invincibility_period + player.upgrades.extra_parry_time * player.upgrades.PARRY_BONUS_AMOUNT
 	parry_over = false
 	direction = get_player_movement()
 	if direction == Vector2.ZERO:
@@ -37,7 +33,7 @@ func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	
-	if delta_count >= STATE_TIME:
+	if delta_count >= player.parry_duration:
 		state_machine.change_state(&"Idle")
 		return
 	

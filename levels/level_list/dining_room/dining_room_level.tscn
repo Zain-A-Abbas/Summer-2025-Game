@@ -339,9 +339,9 @@ enemy_limit = 5
 enemy_spawn_limits = Dictionary[String, int]({
 "BASIC": 0,
 "CATERPILLAR": 0,
-"FLOWER": 1,
+"FLOWER": 0,
 "MAD_HATTER": 0,
-"MOUSE": 0,
+"MOUSE": 1,
 "RED_KNIGHT": 0
 })
 

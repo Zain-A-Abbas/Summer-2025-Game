@@ -9,9 +9,9 @@ const GRAVITY_ACCELERATION: float = 98
 @onready var state_machine: StateMachine = %StateMachine
 @onready var animation_effects: AnimationPlayer = $AnimationEffects
 @onready var sounds: Node3D = %Sounds
+@onready var health_component: HealthComponent = %HealthComponent
+@onready var movement_component: MovementComponent = %MovementComponent
 
-@export var health_component: HealthComponent
-@export var movement_component: MovementComponent
 
 var gravity_vel: float = 0
 

@@ -2,13 +2,9 @@ class_name HealthComponent
 extends Node
 
 ## Contains data for health properties
-
-@export var entity: CharacterEntity
 @export var current_health: int
 @export var max_health: int
 
-func _ready() -> void:
-	assert(entity)
 
 func initialize_health_component(max_amount: int) -> void:
 	max_health = max_amount

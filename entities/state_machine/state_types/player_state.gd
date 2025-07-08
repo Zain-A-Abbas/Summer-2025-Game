@@ -3,6 +3,7 @@ extends State
 
 var player: Player
 
+
 func _init(new_player: Player) -> void:
 	player = new_player
 
