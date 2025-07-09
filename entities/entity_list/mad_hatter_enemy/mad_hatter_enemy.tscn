@@ -1,28 +1,23 @@
-[gd_scene load_steps=25 format=3 uid="uid://dw7hd5c8gm2mv"]
+[gd_scene load_steps=21 format=3 uid="uid://dw7hd5c8gm2mv"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_wksuw"]
 [ext_resource type="Script" uid="uid://b6tl1se2dbigb" path="res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.gd" id="2_7asxt"]
-[ext_resource type="PackedScene" uid="uid://bttsg4yw6pn3t" path="res://entities/entity_list/basic_enemy/basic_enemy_animator.tscn" id="3_mxn1f"]
 [ext_resource type="PackedScene" uid="uid://d26y43ovn1t2h" path="res://entities/entity_list/basic_enemy/basic_enemy.tscn" id="3_rt3wv"]
 [ext_resource type="PackedScene" uid="uid://btrw8qo37fxot" path="res://entities/entity_list/mouse_enemy/mouse_enemy.tscn" id="4_7tx5y"]
-[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="4_vq36q"]
 [ext_resource type="PackedScene" uid="uid://b8tkb5tr2t8vj" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn" id="5_ac3cl"]
+[ext_resource type="PackedScene" uid="uid://dd1hxfc67ays8" path="res://entities/entity_list/mad_hatter_enemy/mad_hatter_animator.tscn" id="6_rt3wv"]
 [ext_resource type="AudioStream" uid="uid://bhvbtecvwg5a0" path="res://audio/entities/general/FootstepsStoneDirt1.wav" id="9_rt3wv"]
 [ext_resource type="AudioStream" uid="uid://ofnc0eqho0gj" path="res://audio/entities/mad_hatter/Dirt Land.wav" id="10_rt3wv"]
 [ext_resource type="AudioStream" uid="uid://drgfkxistladw" path="res://audio/entities/mad_hatter/Slow_Magic_Whoosh_09.wav" id="11_rt3wv"]
 [ext_resource type="AudioStream" uid="uid://biw8j7lwi7nmi" path="res://audio/entities/mad_hatter/Fast_Magic_Whoosh_01.wav" id="12_1n4y7"]
 [ext_resource type="AudioStream" uid="uid://b728hl7brj8ph" path="res://audio/entities/general/Torch Impact 2.wav" id="12_rt3wv"]
 [ext_resource type="AudioStream" uid="uid://cmh877kmt4c36" path="res://audio/entities/mad_hatter/Fast_Magic_Whoosh_05.wav" id="13_hqo0i"]
-[ext_resource type="AnimationLibrary" uid="uid://c6ddaqnbh0i5m" path="res://entities/entity_list/basic_enemy/basic_enemy_animation_library.res" id="13_srd0i"]
 [ext_resource type="AudioStream" uid="uid://c1sl8noppdq2j" path="res://audio/entities/mad_hatter/Fast_Magic_Whoosh_10.wav" id="14_ohgob"]
 [ext_resource type="AudioStream" uid="uid://cqkh0vjtoyqdn" path="res://audio/entities/mad_hatter/Fae_Giggle3.wav" id="15_hqo0i"]
 [ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="17_ohgob"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
-render_priority = 0
-shader = ExtResource("4_vq36q")
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ybbv"]
+height = 1.0
 
 [sub_resource type="Animation" id="Animation_68gr5"]
 length = 0.001
@@ -37,12 +32,64 @@ _data = {
 &"basic_attack": SubResource("Animation_kh8l7")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cwsr8"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g3vau"]
+height = 1.0
+
+[sub_resource type="Animation" id="Animation_g3vau"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MadHatterAnimator/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rt3wv"]
+resource_name = "summon"
+length = 4.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MadHatterAnimator/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Summoning"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8ybbv"]
+resource_name = "walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MadHatterAnimator/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Walk"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tx5y"]
+_data = {
+&"idle": SubResource("Animation_g3vau"),
+&"summon": SubResource("Animation_rt3wv"),
+&"walk": SubResource("Animation_8ybbv")
+}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_v1tun"]
 viewport_path = NodePath("SubViewport")
 
-[node name="MadHatterEnemy" node_paths=PackedStringArray("hurtbox", "animation_tree") instance=ExtResource("1_wksuw")]
+[node name="MadHatterEnemy" node_paths=PackedStringArray("meshes") instance=ExtResource("1_wksuw")]
 script = ExtResource("2_7asxt")
 spawn_type_list = Array[Resource]([ExtResource("3_rt3wv"), ExtResource("4_7tx5y"), ExtResource("5_ac3cl")])
 summon_cancel_hp_amount = 30.0
@@ -51,79 +98,37 @@ summon_cooldown = 3.0
 wander_duration = 4.0
 change_direction_time = 1.2
 max_speed = 600.0
+meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
 hurtbox = NodePath("Hurtbox")
 animation_tree = NodePath("placeholder_model/AnimationTree")
 death_state_duration = 1.0
 
-[node name="placeholder_model" parent="." index="0" instance=ExtResource("3_mxn1f")]
+[node name="MadHatterAnimator" parent="." index="0" instance=ExtResource("6_rt3wv")]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 
-[node name="Skeleton3D" parent="placeholder_model/Rig" index="0"]
-bones/1/position = Vector3(0.0384778, 0.110216, 0.7518)
-bones/1/rotation = Quaternion(0.67421, -0.14968, -0.147378, 0.708038)
-bones/3/rotation = Quaternion(0.0863797, -0.0410501, 0.00133955, 0.995415)
-bones/4/rotation = Quaternion(0.270241, -0.113016, -0.0329174, 0.95557)
-bones/5/rotation = Quaternion(-0.0537161, 0.0783575, 0.0138733, 0.99538)
-bones/6/rotation = Quaternion(0.0535958, 0.165275, -0.0403819, 0.983962)
-bones/7/rotation = Quaternion(-0.599503, -0.37346, -0.394205, 0.587985)
-bones/8/rotation = Quaternion(-0.0392218, 0.696901, -0.428948, 0.573407)
-bones/9/rotation = Quaternion(0.396391, -0.193852, 0.09432, 0.892412)
-bones/10/rotation = Quaternion(0.0618728, -0.0485021, 0.024549, 0.996603)
-bones/11/rotation = Quaternion(0.0113701, 0.707018, -0.01137, 0.707013)
-bones/12/rotation = Quaternion(0.106542, -1.46218e-07, 8.41101e-08, 0.994308)
-bones/13/rotation = Quaternion(0.106542, -2.9426e-08, -1.78937e-07, 0.994308)
-bones/14/rotation = Quaternion(0.0631521, 0.700515, -0.0963441, 0.704278)
-bones/15/rotation = Quaternion(0.112812, 0.000170578, 0.00150375, 0.993615)
-bones/16/rotation = Quaternion(0.112812, -0.000127416, -0.00112242, 0.993616)
-bones/17/rotation = Quaternion(0.173769, 0.67224, -0.219313, 0.68542)
-bones/18/rotation = Quaternion(0.278107, -0.000232104, -0.000801394, 0.96055)
-bones/19/rotation = Quaternion(0.278107, 0.000169574, 0.000585392, 0.96055)
-bones/20/rotation = Quaternion(0.139696, 0.68776, -0.164286, 0.693167)
-bones/21/rotation = Quaternion(0.214982, 2.51271e-06, 1.19063e-05, 0.976618)
-bones/22/rotation = Quaternion(0.214981, -0.000229379, -0.00104212, 0.976618)
-bones/23/rotation = Quaternion(0.247413, 0.945795, 0.203441, 0.0535841)
-bones/24/rotation = Quaternion(0.0134205, -7.34352e-05, 4.87827e-05, 0.99991)
-bones/25/rotation = Quaternion(0.0138043, 7.36635e-05, -0.000536362, 0.999905)
-bones/26/rotation = Quaternion(-0.635615, 0.31049, 0.329592, 0.625267)
-bones/27/rotation = Quaternion(0.191132, 0.675857, -0.517095, -0.489182)
-bones/28/rotation = Quaternion(0.284043, 0.141733, -0.042497, 0.947325)
-bones/29/rotation = Quaternion(0.000200688, 0.123719, -0.0198758, 0.992118)
-bones/30/rotation = Quaternion(0.44519, -0.549369, 0.445194, 0.549365)
-bones/31/rotation = Quaternion(0.623341, -5.28451e-08, -6.41027e-08, 0.78195)
-bones/32/rotation = Quaternion(0.623342, 6.07422e-08, -9.52821e-08, 0.78195)
-bones/33/rotation = Quaternion(0.43209, -0.5387, 0.458046, 0.559727)
-bones/34/rotation = Quaternion(0.623341, -0.000943434, -0.00118332, 0.781949)
-bones/35/rotation = Quaternion(0.623342, 0.000704118, 0.000883103, 0.781949)
-bones/36/rotation = Quaternion(0.504057, -0.511541, 0.435152, 0.543042)
-bones/37/rotation = Quaternion(0.623163, 0.0200614, -0.0149256, 0.781692)
-bones/38/rotation = Quaternion(0.623341, -0.000379787, -0.000476429, 0.78195)
-bones/39/rotation = Quaternion(0.435339, -0.541356, 0.454904, 0.557203)
-bones/40/rotation = Quaternion(0.623341, -7.94368e-06, -9.59731e-06, 0.78195)
-bones/41/rotation = Quaternion(0.623341, 0.000665151, 0.000834412, 0.781949)
-bones/42/rotation = Quaternion(-0.290838, 0.949649, 0.114583, -0.0212171)
-bones/43/rotation = Quaternion(0.21939, -0.0238026, 0.00530508, 0.975332)
-bones/44/rotation = Quaternion(0.687388, 0.000308989, 0.000444505, 0.72629)
-bones/45/rotation = Quaternion(0.929529, 0.15766, -0.0194391, 0.332778)
-bones/46/rotation = Quaternion(0.526397, -0.0744871, 0.0463525, 0.845701)
-bones/47/rotation = Quaternion(-0.625652, -0.0451017, 0.0727583, 0.775391)
-bones/48/rotation = Quaternion(-0.00013718, 0.964307, -0.264787, -0.000499427)
-bones/49/rotation = Quaternion(0.942039, -0.305709, 0.0376931, 0.132976)
-bones/50/rotation = Quaternion(0.506876, 0.25586, -0.160648, 0.807344)
-bones/51/rotation = Quaternion(-0.685925, -0.182772, -0.186445, 0.67922)
-bones/52/rotation = Quaternion(-0.000137131, 0.964307, -0.264787, -0.000499424)
+[node name="Skeleton3D" parent="MadHatterAnimator/Armature" index="0"]
+bones/0/position = Vector3(2.2023e-13, 1.04251, -1.35736)
+bones/1/rotation = Quaternion(-0.200136, 5.72266e-07, 2.5824e-07, 0.979768)
+bones/2/rotation = Quaternion(-0.153973, 3.5337e-07, 1.28487e-07, 0.988075)
+bones/3/rotation = Quaternion(-0.461959, 0.248017, -0.13631, 0.840536)
+bones/5/rotation = Quaternion(-0.461959, -0.248017, 0.13631, 0.840536)
+bones/9/position = Vector3(0.402232, 1.97862, 0.512074)
+bones/9/rotation = Quaternion(0.584777, -0.193634, -0.312756, 0.722998)
+bones/11/position = Vector3(-0.40223, 1.97862, 0.512075)
+bones/11/rotation = Quaternion(0.584777, 0.193636, 0.312755, 0.722997)
+bones/13/position = Vector3(0.663489, 0.610285, -0.674417)
+bones/13/rotation = Quaternion(0.378216, 0.248185, 0.891019, -0.0379878)
+bones/14/rotation = Quaternion(0.195104, 0.0555083, -0.112967, 0.972672)
+bones/15/position = Vector3(-0.663489, 0.610285, -0.674417)
+bones/15/rotation = Quaternion(-0.378216, 0.248185, 0.891019, 0.0379878)
+bones/16/rotation = Quaternion(0.195104, -0.0555083, 0.112967, 0.972672)
 
-[node name="Mannequin" parent="placeholder_model/Rig/Skeleton3D" index="0"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
-
-[node name="BoneAttachment3D" parent="placeholder_model/Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.311756, -0.545249, -0.778146, 0.61098, -0.742234, 0.275303, -0.727676, -0.389604, 0.564532, -0.241914, 0.906168, -0.536812)
-
-[node name="AnimationTree" parent="placeholder_model" index="2"]
-parameters/WalkRun/blend_position = -0.160588
+[node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, -2.36213e-08, 1.99264e-07, -7.80156e-08, 0.869019, 0.494785, -1.84856e-07, -0.494777, 0.869016, 2.03028e-07, 2.22432, 0.831885)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-shape = SubResource("CapsuleShape3D_inrej")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_8ybbv")
 
 [node name="ray_cast" type="RayCast3D" parent="." index="2"]
 unique_name_in_owner = true
@@ -139,12 +144,12 @@ libraries = {
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_cwsr8")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_g3vau")
 
 [node name="ActionAnimator" parent="." index="7"]
 libraries = {
-&"basic_enemy_animation_library": ExtResource("13_srd0i")
+&"mad_hatter_animations": SubResource("AnimationLibrary_7tx5y")
 }
 
 [node name="HealthComponent" parent="Components" index="0"]
@@ -152,7 +157,7 @@ current_health = 80
 max_health = 80
 
 [node name="MovementComponent" parent="Components" index="1"]
-move_speed = 300.0
+move_speed = 150.0
 
 [node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_v1tun")
@@ -210,4 +215,4 @@ pitch_scale = 1.1
 stream = ExtResource("17_ohgob")
 pitch_scale = 0.7
 
-[editable path="placeholder_model"]
+[editable path="MadHatterAnimator"]

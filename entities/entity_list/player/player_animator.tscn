@@ -58,7 +58,7 @@ animation = &"placeholder_animations/Jog_Fwd"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lor2s"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lor2s"]
-graph_offset = Vector2(1141.42, 507.485)
+graph_offset = Vector2(1141.42, 425.952)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lor2s")
 nodes/Animation/position = Vector2(-540, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lfi0l")
@@ -99,35 +99,11 @@ node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeSca
 [node name="player" instance=ExtResource("1_te7vp")]
 
 [node name="GeneralSkeleton" parent="Armature" index="0"]
-bones/0/position = Vector3(0, 0, 0)
-bones/1/position = Vector3(0.0326742, 2.76041, -0.405775)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
 bones/2/enabled = false
 bones/3/enabled = false
-bones/3/rotation = Quaternion(0.163447, -0.0410911, -0.000467929, 0.985696)
-bones/4/rotation = Quaternion(0.267679, -0.113874, -0.0297133, 0.956294)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0239903, 0.941983, -0.334753, 0.00573373)
-bones/7/rotation = Quaternion(0.205271, -0.769154, 0.334483, 0.504368)
-bones/8/rotation = Quaternion(0.0398598, 0.663013, 0.0677219, 0.744472)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0319705, 0.014654, 0.0103972, 0.999327)
-bones/13/rotation = Quaternion(-0.162658, 0.0769569, 0.0201848, 0.98347)
-bones/14/rotation = Quaternion(0.117361, 0.171794, -0.0151134, 0.978)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.167241, 0.770291, -0.230108, 0.570731)
-bones/19/rotation = Quaternion(-0.0140928, -0.613786, -0.0105121, 0.789277)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00123786, 0.213205, 0.960845, -0.176973)
-bones/26/rotation = Quaternion(0.0400217, 0.861813, -0.500806, 0.0697818)
-bones/27/rotation = Quaternion(-0.0750853, 0.608738, -0.786388, 0.0734498)
-bones/28/rotation = Quaternion(0.00208718, 0.0145862, 0.954327, 0.2984)
-bones/29/rotation = Quaternion(-0.155128, 0.813933, -0.496596, -0.258535)
-bones/30/rotation = Quaternion(0.222917, 0.482213, -0.838241, 0.123008)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.668414, -0.683835, 0.292562, 0.5538, -0.720136, -0.417985, 0.496517, -0.117366, 0.860056, -1.56419, 2.52228, -2.11696)
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -3.5, 5.4, 0)
 bone_name = "RightHand"
 bone_idx = 19
 

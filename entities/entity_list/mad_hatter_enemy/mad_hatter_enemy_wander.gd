@@ -24,7 +24,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	move_speed = enemy.movement_component.move_speed
 	direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 	
-	enemy.action_animator.play("basic_enemy_animation_library/walk")
+	enemy.action_animator.play("mad_hatter_animations/walk")
 	enemy.play_sound_fx(&"jump")
 	is_hopping = true
 
@@ -47,11 +47,11 @@ func st_physics_process(delta: float) -> void:
 	# increase movement speed overtime
 	if move_speed < enemy.max_speed:
 		move_speed += 1.5
-		enemy.animation_tree["parameters/WalkRun/blend_position"] = move_toward(enemy.animation_tree["parameters/WalkRun/blend_position"], 1.0, delta * 4.0)
+		#enemy.animation_tree["parameters/WalkRun/blend_position"] = move_toward(enemy.animation_tree["parameters/WalkRun/blend_position"], 1.0, delta * 4.0)
 	
 	# transition to summon state
 	if delta_count >= enemy.wander_duration:
-		enemy.animation_tree["parameters/WalkRun/blend_position"] = 0.0
+		#enemy.animation_tree["parameters/WalkRun/blend_position"] = 0.0
 		return state_machine.change_state(&"Summon")
 	
 	# changing directions for movement

@@ -18,7 +18,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	just_summoned = false
 	warning_shown = false
 	
-	enemy.action_animator.play("basic_enemy_animation_library/RESET")
+	enemy.action_animator.play("mad_hatter_animations/summon")
 	spawn_position = get_closest_spawn_position()
 	summon_cancel_threshold = enemy.health_component.current_health - enemy.summon_cancel_hp_amount
 	
@@ -57,7 +57,7 @@ func st_physics_process(delta: float) -> void:
 		just_summoned = true
 		delta_count = 0.0
 		
-		enemy.action_animator.play("basic_enemy_animation_library/attack")
+		#enemy.action_animator.play("basic_enemy_animation_library/attack")
 		enemy.attack_indicator_animator.play("hide_indicator")
 	
 	if just_summoned && delta_count >= enemy.summon_cooldown:
