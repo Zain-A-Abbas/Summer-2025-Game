@@ -3,6 +3,8 @@ extends AttackEffect
 
 @export var damage: int = 1
 
+func _init():
+	effect_type = AttackEffectType.DAMAGE
 
 func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
 	var final_damage: int = damage

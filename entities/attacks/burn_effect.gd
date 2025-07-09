@@ -9,8 +9,12 @@ const BURN_DAMAGE: int = 2
 var burn_duration_timer: float = 0.0
 var burn_timer: float = 0.0
 
-func _init(burn_duration: float):
-	duration = burn_duration
+func _init():
+	effect_type = AttackEffectType.BURN
+
+func initialize_effect(args: Dictionary[String, Variant]):
+	if args.has("duration"):
+		duration = args["duration"]
 
 func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
 	burn_timer += delta

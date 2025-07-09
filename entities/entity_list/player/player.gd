@@ -34,6 +34,7 @@ var upgrades: PlayerUpgrades
 func _ready() -> void:
 	prepare_states()
 	hurtbox.hit_parried.connect(parry_received)
+	#basic_attack.add_attack_effect(&"PARALYSIS", {"duration": 2.0, "chance": 100.0})
 
 func _physics_process(delta: float) -> void:
 	update_listener_direction()

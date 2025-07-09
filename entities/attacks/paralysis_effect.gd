@@ -4,9 +4,14 @@ extends AttackEffect
 @export var stun_duration: float
 @export var stun_chance: float ## Chance to trigger effect
 
-func _init(duration: float, chance: float):
-	stun_duration = duration
-	stun_chance = chance
+func _init():
+	effect_type = AttackEffectType.PARALYSIS
+
+func initialize_effect(args: Dictionary[String, Variant]):
+	if args.has("duration"):
+		stun_duration = args["duration"]
+	if args.has("chance"):
+		stun_chance = args["chance"]
 
 func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
 	var roll: float = randf_range(0, 100.0)
