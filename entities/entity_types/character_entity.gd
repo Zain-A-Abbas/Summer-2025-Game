@@ -11,14 +11,13 @@ const GRAVITY_ACCELERATION: float = 98
 var gravity_vel: float = 0
 var attack_effects_applied: Dictionary[String, Variant] = {
 	"Paralysis": {
-		"active": 0,
+		"active": false,
 		"duration_per_stun": 0.0,
 		"number_of_stuns": 0
 	},
 	"Burning": {
-		"active": 0,
-		"duration": 0,
-		"dmg_over_time": 0
+		"active": false,
+		"duration": 0.0
 	}
 }
 
@@ -55,4 +54,4 @@ func update_applied_attack_effects(delta: float):
 	if attack_effects_applied["Paralysis"]["active"]:
 		pass
 	if attack_effects_applied["Burning"]["active"]:
-		print("burning")
+		atk_effect_manager.burn_effect(delta)

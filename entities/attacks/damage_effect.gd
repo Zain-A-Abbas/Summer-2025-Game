@@ -17,7 +17,6 @@ func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
 	if target.health_component.current_health == 0:
 		target.char_entity_die()
 	
-	
 	if target is Player:
 		target.player_damage_taken.emit(target, final_damage)
 	if target is Enemy:

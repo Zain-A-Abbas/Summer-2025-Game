@@ -32,7 +32,6 @@ var upgrades: PlayerUpgrades
 
 
 func _ready() -> void:
-	
 	prepare_states()
 	hurtbox.hit_parried.connect(parry_received)
 

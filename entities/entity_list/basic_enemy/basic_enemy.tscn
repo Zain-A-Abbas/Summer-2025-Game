@@ -71,8 +71,7 @@ metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="Resource" id="Resource_wxn5g"]
 script = ExtResource("8_fl2vc")
-duration = 1.0
-dmg_over_time = 1
+duration = 3.0
 metadata/_custom_type_script = "uid://oekub3q8jt0t"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di55d"]
@@ -195,29 +194,29 @@ death_state_duration = 1.0
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.0885792, 3.38716, -0.185816)
-bones/1/rotation = Quaternion(-2.25604e-07, -0.00384346, -0.000357927, 0.999993)
-bones/3/rotation = Quaternion(0.163872, -0.0411151, -0.000403126, 0.985624)
-bones/4/rotation = Quaternion(0.268005, -0.11389, -0.029662, 0.956202)
+bones/1/position = Vector3(0.124452, 3.27836, -0.185006)
+bones/1/rotation = Quaternion(-0.00027245, -0.0131792, 0.0206813, 0.999699)
+bones/3/rotation = Quaternion(0.164378, -0.0411435, -0.000326053, 0.985539)
+bones/4/rotation = Quaternion(0.271816, -0.114081, -0.0290624, 0.955122)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0218244, 0.942482, -0.333494, 0.0057123)
-bones/7/rotation = Quaternion(0.205654, -0.768597, 0.334239, 0.505223)
-bones/8/rotation = Quaternion(0.0459635, 0.656921, 0.0684531, 0.749437)
+bones/6/rotation = Quaternion(0.0451191, 0.93692, -0.346568, 0.00593615)
+bones/7/rotation = Quaternion(0.201331, -0.77481, 0.336961, 0.495573)
+bones/8/rotation = Quaternion(0.0519102, 0.65077, 0.0691803, 0.754333)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0351319, 0.0161028, 0.0114255, 0.999188)
-bones/13/rotation = Quaternion(-0.162731, 0.0769609, 0.0201736, 0.983458)
-bones/14/rotation = Quaternion(0.10702, 0.173678, -0.0111564, 0.978907)
+bones/10/rotation = Quaternion(0.00118385, 0.000542672, 0.000384803, 0.999999)
+bones/13/rotation = Quaternion(-0.16476, 0.0770705, 0.0198606, 0.983118)
+bones/14/rotation = Quaternion(0.0982657, 0.174812, -0.00933398, 0.979642)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.177547, 0.765998, -0.244017, 0.567609)
-bones/19/rotation = Quaternion(-0.0191946, -0.613647, -0.00395068, 0.789337)
+bones/18/rotation = Quaternion(0.191333, 0.759821, -0.262621, 0.563111)
+bones/19/rotation = Quaternion(-0.0233436, -0.613504, 0.00138701, 0.789346)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.000110038, 0.287293, 0.957713, -0.0157319)
-bones/26/rotation = Quaternion(-0.0053562, 0.747748, -0.663932, -0.00629685)
-bones/27/rotation = Quaternion(-0.0202172, 0.878157, -0.477944, -0.00100727)
-bones/28/rotation = Quaternion(-0.000101161, 0.00160301, 0.999894, -0.0144632)
-bones/29/rotation = Quaternion(-6.93688e-05, 0.996353, -0.0853188, -0.001176)
-bones/30/rotation = Quaternion(-0.0066862, 0.667701, -0.744328, 0.0103285)
+bones/25/rotation = Quaternion(0.000279178, -0.0205271, 0.998992, 0.0399152)
+bones/26/rotation = Quaternion(0.00213142, 0.959482, -0.281671, 0.0072011)
+bones/27/rotation = Quaternion(-0.0014356, 0.695789, -0.718043, 0.017011)
+bones/28/rotation = Quaternion(0.000236099, 0.288237, 0.956964, 0.0337553)
+bones/29/rotation = Quaternion(0.00149793, 0.977413, -0.211264, 0.00548623)
+bones/30/rotation = Quaternion(0.0231, 0.640622, -0.767501, -0.00344652)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
