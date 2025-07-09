@@ -10,11 +10,14 @@ var seed_direction: Vector3
 var delta_count: float = 0.0
 var exploded: bool = false
 
-
 func _init(new_seed: CaterpillarEnemySeed, projs: Node3D, dir: Vector3) -> void:
 	proj = new_seed
 	projectiles = projs
 	starting_dir = dir
+
+func enter_state(previous_state: State, args: Dictionary[String, Variant]):
+	if args.has("hit_player") && !proj.is_child:
+		proj.is_child = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

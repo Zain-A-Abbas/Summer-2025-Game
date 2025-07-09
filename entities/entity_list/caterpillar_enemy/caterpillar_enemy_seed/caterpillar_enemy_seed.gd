@@ -5,16 +5,24 @@ extends CharacterEntity
 
 var is_child: bool = false
 var direction: Vector3 = Vector3.ZERO
+var atk_obj: AttackObject
 var projectiles: Node3D
 
-@onready var atk_obj: AttackObject = %Hitbox
+@onready var parent: AttackObject = %parent
+@onready var child: AttackObject = %child
 @onready var ray_cast: RayCast3D = %ray_cast
 
 
-func initialize_seed(child: bool, dir: Vector3, projs: Node3D) -> void:
-	is_child = child
+func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D) -> void:
+	is_child = spawn_as_child
 	direction = dir
 	projectiles = projs
+	
+	if is_child:
+		atk_obj = child
+	else:
+		atk_obj = parent
+
 	atk_obj.hitbox.monitorable = true
 	
 	prepare_states()

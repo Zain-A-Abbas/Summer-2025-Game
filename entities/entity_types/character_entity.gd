@@ -7,26 +7,30 @@ const GRAVITY_ACCELERATION: float = 98
 ## and stats
 
 @export var death_state_duration: float
+@export var inflicted_attack_effect_limits: Dictionary[StringName, int] = {
+	&"Burn": 1,
+	&"Paralysis": 1
+}
+
+# attack effect vars
+var inflicted_attack_effects: Array[AttackEffect] = []
+var inflicted_attack_objects: Array[AttackObject] = []
+var inflicted_attack_effect_count: Dictionary[StringName, int] = {
+	&"Burn": 0,
+	&"Paralysis": 0
+}
+
+var paralysis_duration: float = 0.0
+var paralysis_timer: float = 0.0
+var paralyzed: bool = false
 
 var gravity_vel: float = 0
-var attack_effects_applied: Dictionary[String, Variant] = {
-	"Paralysis": {
-		"active": false,
-		"duration_per_stun": 0.0,
-		"number_of_stuns": 0
-	},
-	"Burning": {
-		"active": false,
-		"duration": 0.0
-	}
-}
 
 @onready var state_machine: StateMachine = %StateMachine
 @onready var animation_effects: AnimationPlayer = $AnimationEffects
 @onready var sounds: Node3D = %Sounds
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var movement_component: MovementComponent = %MovementComponent
-@onready var atk_effect_manager: AttackEffectManager = %AttackEffectManager
 
 
 func char_entity_die(args: Dictionary[String, Variant] = {}):
@@ -42,16 +46,61 @@ func gravity_velocity() -> Vector3:
 		gravity_vel -= GRAVITY_ACCELERATION
 	return Vector3(0, gravity_vel, 0)
 
-func resolve_hit(attack_object: AttackObject):
-	var attack_effects: Array[AttackEffect] = attack_object.attack_effects
+func resolve_hit(object: AttackObject):
+	var attack_effects: Array[AttackEffect] = object.attack_effects
 	for effect in attack_effects:
-		effect.apply_effect(self, attack_object)
+		if check_inflicted_attack_effect_counts(effect):
+			update_inflicted_attack_effect_counts(effect, 1)
+			inflicted_attack_effects.append(effect)
+			inflicted_attack_objects.append(object.duplicate())
 
 func face_direction(dir: Vector3):
 	rotation.y = Vector2(dir.x, -dir.z).angle() + deg_to_rad(90)
 
-func update_applied_attack_effects(delta: float):
-	if attack_effects_applied["Paralysis"]["active"]:
-		pass
-	if attack_effects_applied["Burning"]["active"]:
-		atk_effect_manager.burn_effect(delta)
+func paralysis_effect(delta: float) -> bool:
+	if !paralyzed:
+		return false
+	
+	paralysis_timer += delta
+	if paralysis_timer > paralysis_duration:
+		paralyzed = false
+		return true
+		
+	return true
+
+func update_inflicted_attack_effects(delta: float):
+	var n: int = 0
+	
+	#print(inflicted_attack_effects)
+	for effect in inflicted_attack_effects:
+		if effect.apply_effect(self, delta, inflicted_attack_objects[n]):
+			update_inflicted_attack_effect_counts(effect, -1)
+			inflicted_attack_effects.remove_at(n)
+			
+			inflicted_attack_objects[n].queue_free()
+			inflicted_attack_objects.remove_at(n)
+		else:
+			n += 1
+
+func get_attack_effect_type_name(effect: AttackEffect) -> StringName:
+	if effect is BurnEffect:
+		return &"Burn"
+	elif effect is ParalysisEffect:
+		return &"Paralysis"
+	else:
+		return &"Damage"
+
+func update_inflicted_attack_effect_counts(effect: AttackEffect, change: int):
+	var effect_name: StringName = get_attack_effect_type_name(effect)
+	if effect_name != &"Damage":
+		inflicted_attack_effect_count[effect_name] += change
+		if inflicted_attack_effect_count[effect_name] < 0: # underflow check
+			inflicted_attack_effect_count[effect_name] = 0
+
+func check_inflicted_attack_effect_counts(effect: AttackEffect) -> bool:
+	var effect_name: StringName = get_attack_effect_type_name(effect)
+	if effect_name == &"Damage": # ignore damage effect
+		return true
+
+	#print(effect_name, ": ", inflicted_attack_effect_count[effect_name])
+	return inflicted_attack_effect_count[effect_name] < inflicted_attack_effect_limits[effect_name]

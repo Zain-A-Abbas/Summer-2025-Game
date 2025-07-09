@@ -1,7 +1,6 @@
 class_name RedKnightEnemy
 extends Enemy
 
-@export var hurtbox: HurtboxComponent
 @export var instant_turn_hp_amount: int = 40
 @export var player_pushback: float = 200.0
 @export var aggro_range: Array[float] = [3.0, 9.0]
@@ -41,4 +40,5 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
+	hurtbox.set_collision_mask_value(2, 0)
 	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

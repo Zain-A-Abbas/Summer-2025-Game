@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqvq5fv3lodkg"]
+[gd_scene load_steps=18 format=3 uid="uid://bqvq5fv3lodkg"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_asst4"]
 [ext_resource type="Script" uid="uid://b82iv3b6y5uo" path="res://entities/entity_list/caterpillar_enemy/caterpillar_enemy_seed/caterpillar_enemy_seed.gd" id="2_ph4oc"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_41urh"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_p3l6e"]
 [ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_0qy1d"]
+[ext_resource type="Script" uid="uid://oekub3q8jt0t" path="res://entities/attacks/burn_effect.gd" id="6_uq3an"]
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="7_cdm54"]
+[ext_resource type="Script" uid="uid://4rhq8c58a3im" path="res://entities/attacks/paralysis_effect.gd" id="8_1sbvb"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="8_y08bq"]
 [ext_resource type="AudioStream" uid="uid://blmu6rna47ucy" path="res://audio/entities/caterpillar/Fast_Magic_Whoosh_10.wav" id="9_sofxr"]
 
@@ -15,10 +17,25 @@ albedo_color = Color(0, 0.579476, 0.348665, 1)
 
 [sub_resource type="Resource" id="Resource_t2ogd"]
 script = ExtResource("5_p3l6e")
-damage = 10
+damage = 3
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
+[sub_resource type="Resource" id="Resource_hwe2s"]
+script = ExtResource("6_uq3an")
+duration = 1.2
+metadata/_custom_type_script = "uid://oekub3q8jt0t"
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_ph4oc"]
+
+[sub_resource type="Resource" id="Resource_1sbvb"]
+script = ExtResource("5_p3l6e")
+damage = 3
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="Resource" id="Resource_yjuat"]
+script = ExtResource("8_1sbvb")
+stun_duration = 1.0
+metadata/_custom_type_script = "uid://4rhq8c58a3im"
 
 [node name="CaterpillarEnemySeed" instance=ExtResource("1_asst4")]
 script = ExtResource("2_ph4oc")
@@ -26,14 +43,14 @@ time_to_live = 1.1
 
 [node name="placeholder_model" type="CSGSphere3D" parent="." index="0"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223961, 0)
+transform = Transform3D(0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 0, 0.223961, 0)
 collision_layer = 0
 collision_mask = 0
 material = SubResource("StandardMaterial3D_d4bo7")
 
 [node name="ray_cast" type="RayCast3D" parent="." index="1"]
 unique_name_in_owner = true
-transform = Transform3D(-23.68, -1.29101e-07, 6.60024e-15, 0, -3.73732e-08, -1, 3.57558e-06, -0.855, 4.37114e-08, 0, 0.251135, 0)
+transform = Transform3D(-35, -6.79481e-08, 6.60024e-15, 0, -1.96701e-08, -1, 5.28485e-06, -0.45, 4.37114e-08, 0, 0.251135, 0.0608152)
 collision_mask = 48
 
 [node name="AnimationEffects" parent="." index="3"]
@@ -41,15 +58,15 @@ unique_name_in_owner = true
 
 [node name="Attacks" type="Node3D" parent="." index="4"]
 
-[node name="Hitbox" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+[node name="parent" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
 script = ExtResource("3_5bm58")
 entity = NodePath("../..")
-attack_effects = Array[ExtResource("4_41urh")]([SubResource("Resource_t2ogd")])
+attack_effects = Array[ExtResource("4_41urh")]([SubResource("Resource_t2ogd"), SubResource("Resource_hwe2s")])
 hitbox = NodePath("AttackHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 
-[node name="AttackHitbox" type="Area3D" parent="Attacks/Hitbox" index="0"]
+[node name="AttackHitbox" type="Area3D" parent="Attacks/parent" index="0"]
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -57,7 +74,27 @@ monitorable = false
 script = ExtResource("6_0qy1d")
 metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/Hitbox/AttackHitbox" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/parent/AttackHitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
+shape = SubResource("SphereShape3D_ph4oc")
+
+[node name="child" type="Node3D" parent="Attacks" index="1" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("3_5bm58")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("4_41urh")]([SubResource("Resource_1sbvb"), SubResource("Resource_yjuat")])
+hitbox = NodePath("AttackHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="AttackHitbox" type="Area3D" parent="Attacks/child" index="0"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("6_0qy1d")
+metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/child/AttackHitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
 shape = SubResource("SphereShape3D_ph4oc")
 

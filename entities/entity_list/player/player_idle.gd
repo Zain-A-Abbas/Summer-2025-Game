@@ -5,8 +5,9 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	player.action_animator.play("idle")
 
 func st_physics_process(delta: float):
-	player.update_listener_direction()
-	
+	if player.paralysis_effect(delta):
+		return
+
 	if Input.is_action_just_pressed("attack"):
 		return state_machine.change_state(&"Attack")
 	

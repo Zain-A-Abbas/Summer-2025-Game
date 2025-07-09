@@ -10,6 +10,7 @@ extends Enemy
 @onready var basic_attack: Node3D = %basic_attack
 @onready var ray_cast: Node3D = %ray_cast
 
+
 func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", EnemyIdle.new(self)),
@@ -33,4 +34,5 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
+	hurtbox.set_collision_mask_value(2, 0)
 	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

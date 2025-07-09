@@ -75,7 +75,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.action_animator.play("basic_enemy_animation_library/attack")
 		
 		if action == &"Bomb":
-			var bomb = BOMB.instantiate()
+			var bomb: FlowerEnemyBomb = BOMB.instantiate()
 			enemy.projectiles.add_child(bomb)
 			bomb.initialize_bomb()
 			bomb.global_position = enemy.player.global_position

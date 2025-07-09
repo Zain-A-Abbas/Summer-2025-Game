@@ -15,9 +15,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if !from_dig:
 		enemy.dig_timer = 0.0
 
-func st_physics_process(delta: float) -> void:
+func st_physics_process(delta: float) -> void:	
 	distance = distance_to_player()
 	enemy.dig_timer += delta
+	
+	if enemy.paralysis_effect(delta):
+		return
 	
 	dig_on_cooldown = from_dig && enemy.dig_timer < enemy.dig_cooldown
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkarhrwy2lhiu"]
+[gd_scene load_steps=16 format=3 uid="uid://dkarhrwy2lhiu"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_w4grh"]
 [ext_resource type="Script" uid="uid://cwcebqxt4o7w6" path="res://entities/entity_list/flower_enemy/flower_enemy_bomb/flower_enemy_bomb.gd" id="2_xeb4n"]
@@ -8,15 +8,21 @@
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="5_ap08c"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_qjyki"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="6_o43dr"]
+[ext_resource type="Script" uid="uid://oekub3q8jt0t" path="res://entities/attacks/burn_effect.gd" id="6_t2ogd"]
 [ext_resource type="AudioStream" uid="uid://cgu7n7rjlykrh" path="res://audio/entities/flower/Firebuff 2.wav" id="9_ap08c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bo7"]
 albedo_color = Color(0, 0.579476, 0.348665, 1)
 
-[sub_resource type="Resource" id="Resource_t2ogd"]
+[sub_resource type="Resource" id="Resource_opbc3"]
 script = ExtResource("6_o43dr")
-damage = 15
+damage = 5
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="Resource" id="Resource_1duh7"]
+script = ExtResource("6_t2ogd")
+duration = 2.0
+metadata/_custom_type_script = "uid://oekub3q8jt0t"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_d4bo7"]
 height = 0.379822
@@ -46,7 +52,7 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 script = ExtResource("4_ci5yc")
 entity = NodePath("../..")
-attack_effects = Array[ExtResource("5_ap08c")]([SubResource("Resource_t2ogd")])
+attack_effects = Array[ExtResource("5_ap08c")]([SubResource("Resource_opbc3"), SubResource("Resource_1duh7")])
 hitbox = NodePath("AttackHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 

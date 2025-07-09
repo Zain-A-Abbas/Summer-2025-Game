@@ -4,9 +4,9 @@ extends AttackEffect
 @export var damage: int = 1
 
 
-func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
+func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
 	var final_damage: int = damage
-	if delivering_object.entity is Player:
+	if delivering_object && delivering_object.entity is Player:
 		var player: Player = delivering_object.entity
 		final_damage = (damage + player.upgrades.extra_damage * player.upgrades.EXTRA_DAMAGE_AMOUNT)
 		final_damage *= (1 + (0.5 + player.upgrades.extra_parry_damage * player.upgrades.EXTRA_PARRY_DAMAGE_AMOUNT) * player.parry_counter)
@@ -21,3 +21,5 @@ func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
 		target.player_damage_taken.emit(target, final_damage)
 	if target is Enemy:
 		target.enemy_damage_taken.emit(target, final_damage)
+		
+	return true

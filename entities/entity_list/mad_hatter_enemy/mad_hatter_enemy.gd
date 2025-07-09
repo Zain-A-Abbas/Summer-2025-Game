@@ -42,5 +42,6 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 		if summoned:
 			summoned.char_entity_die({"summoned": true})
 	
+	hurtbox.set_collision_mask_value(2, 0)
 	state_machine.change_state(&"Death")
 	

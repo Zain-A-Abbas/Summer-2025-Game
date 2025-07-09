@@ -19,6 +19,9 @@ func st_physics_process(delta: float) -> void:
 		else:
 			from_pounce = false
 	
+	if enemy.paralysis_effect(delta):
+		return
+	
 	if distance_to_player() < enemy.active_range[0]:
 		return state_machine.change_state(&"Run")
 	elif distance_to_player() < enemy.active_range[1]:

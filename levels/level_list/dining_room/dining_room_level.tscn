@@ -337,8 +337,8 @@ fog_light_energy = 0.02
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
 enemy_limit = 5
 enemy_spawn_limits = Dictionary[String, int]({
-"BASIC": 1,
-"CATERPILLAR": 0,
+"BASIC": 0,
+"CATERPILLAR": 2,
 "FLOWER": 0,
 "MAD_HATTER": 0,
 "MOUSE": 0,

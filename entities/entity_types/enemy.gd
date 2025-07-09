@@ -8,6 +8,7 @@ signal enemy_damage_taken(enemy: Enemy, damage: int)
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
 
+@export var hurtbox: HurtboxComponent
 @export var meshes: Array[MeshInstance3D] = []
 @export var animation_tree: AnimationTree
 
@@ -44,6 +45,9 @@ func activate_enemy():
 # Virtual function
 func prepare_states():
 	pass
+
+func _physics_process(delta: float) -> void:
+	update_inflicted_attack_effects(delta)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	pass

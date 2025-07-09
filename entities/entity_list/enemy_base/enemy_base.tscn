@@ -148,7 +148,7 @@ no_depth_test = true
 fixed_size = true
 texture = SubResource("ViewportTexture_mppf5")
 
-[node name="Sounds" parent="." index="10"]
+[node name="Sounds" parent="." index="9"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]

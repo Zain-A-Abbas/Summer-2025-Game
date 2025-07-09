@@ -1,11 +1,16 @@
 class_name ParalysisEffect
 extends AttackEffect
 
-@export var duration_per_stun: float = 0.0
-@export var number_of_stuns: int = 1
+@export var stun_duration: float
 
-func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
-	if !target.attack_effects_applied["Paralysis"]["active"]:
-		target.attack_effects_applied["Paralysis"]["active"] = 1
-		target.attack_effects_applied["Paralysis"]["duration_per_stun"] = duration_per_stun
-		target.attack_effects_applied["Paralysis"]["number_of_stuns"] = number_of_stuns
+func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
+	if !target.paralyzed:
+		print("here")
+		target.paralysis_timer = 0.0
+		target.paralysis_duration = stun_duration
+		target.paralyzed = true
+		target.state_machine.change_state(&"Idle")
+	else:
+		print("already paralyzed")
+	
+	return true

@@ -3,5 +3,5 @@ extends Resource
 
 var user: CharacterEntity
 
-func apply_effect(target: CharacterEntity, delivering_object: AttackObject):
-	pass
+func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
+	return true

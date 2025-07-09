@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=43 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_fdidt"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="7_kh8l7"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="8_68gr5"]
-[ext_resource type="Script" uid="uid://oekub3q8jt0t" path="res://entities/attacks/burn_effect.gd" id="8_fl2vc"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="9_k5gch"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="10_5sssr"]
 [ext_resource type="AudioStream" uid="uid://ctlcgwhqva3jy" path="res://audio/entities/general/Sword_Whoosh_No_Shing_04.wav" id="13_wd8hw"]
@@ -66,13 +65,8 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_p3v48"]
 script = ExtResource("5_fdidt")
-damage = 8
+damage = 5
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
-
-[sub_resource type="Resource" id="Resource_wxn5g"]
-script = ExtResource("8_fl2vc")
-duration = 3.0
-metadata/_custom_type_script = "uid://oekub3q8jt0t"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_di55d"]
 radius = 0.49218
@@ -179,13 +173,14 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="BasicEnemy" node_paths=PackedStringArray("meshes", "animation_tree") instance=ExtResource("1_5mhhj")]
+[node name="BasicEnemy" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_5mhhj")]
 script = ExtResource("2_f51gl")
 active_radius = 7.0
 chase_stop_distance = 2.0
 attack_cooldown = 1.0
 wander_duration = 6.0
 change_direction_timestamp = 1.5
+hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("card/Armature/GeneralSkeleton/cardDiamonds2"), NodePath("card/Armature/GeneralSkeleton/Cube"), NodePath("card/Armature/GeneralSkeleton/Cube_001"), NodePath("card/Armature/GeneralSkeleton/Cube_002")]
 animation_tree = NodePath("card/AnimationTree")
 death_state_duration = 1.0
@@ -194,29 +189,29 @@ death_state_duration = 1.0
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.124452, 3.27836, -0.185006)
-bones/1/rotation = Quaternion(-0.00027245, -0.0131792, 0.0206813, 0.999699)
-bones/3/rotation = Quaternion(0.164378, -0.0411435, -0.000326053, 0.985539)
-bones/4/rotation = Quaternion(0.271816, -0.114081, -0.0290624, 0.955122)
+bones/1/position = Vector3(-0.0356148, 3.20951, -0.18481)
+bones/1/rotation = Quaternion(-0.000335661, 0.0167787, -0.0200071, 0.999659)
+bones/3/rotation = Quaternion(0.164191, -0.041133, -0.000354516, 0.985571)
+bones/4/rotation = Quaternion(0.270093, -0.113995, -0.0293336, 0.955612)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0451191, 0.93692, -0.346568, 0.00593615)
-bones/7/rotation = Quaternion(0.201331, -0.77481, 0.336961, 0.495573)
-bones/8/rotation = Quaternion(0.0519102, 0.65077, 0.0691803, 0.754333)
+bones/6/rotation = Quaternion(0.0206482, 0.942752, -0.332807, 0.00570039)
+bones/7/rotation = Quaternion(0.205849, -0.768312, 0.334114, 0.505658)
+bones/8/rotation = Quaternion(0.0500011, 0.652768, 0.0689454, 0.752755)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00118385, 0.000542672, 0.000384803, 0.999999)
-bones/13/rotation = Quaternion(-0.16476, 0.0770705, 0.0198606, 0.983118)
-bones/14/rotation = Quaternion(0.0982657, 0.174812, -0.00933398, 0.979642)
+bones/10/rotation = Quaternion(0.0369454, 0.0169342, 0.0120151, 0.999102)
+bones/13/rotation = Quaternion(-0.163581, 0.0770068, 0.0200426, 0.983316)
+bones/14/rotation = Quaternion(0.100764, 0.174567, -0.0095676, 0.979429)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.191333, 0.759821, -0.262621, 0.563111)
-bones/19/rotation = Quaternion(-0.0233436, -0.613504, 0.00138701, 0.789346)
+bones/18/rotation = Quaternion(0.186263, 0.762151, -0.255779, 0.564809)
+bones/19/rotation = Quaternion(-0.0221525, -0.613548, -0.000145449, 0.789347)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000279178, -0.0205271, 0.998992, 0.0399152)
-bones/26/rotation = Quaternion(0.00213142, 0.959482, -0.281671, 0.0072011)
-bones/27/rotation = Quaternion(-0.0014356, 0.695789, -0.718043, 0.017011)
-bones/28/rotation = Quaternion(0.000236099, 0.288237, 0.956964, 0.0337553)
-bones/29/rotation = Quaternion(0.00149793, 0.977413, -0.211264, 0.00548623)
-bones/30/rotation = Quaternion(0.0231, 0.640622, -0.767501, -0.00344652)
+bones/25/rotation = Quaternion(-0.000131748, 0.268092, 0.963209, -0.0188363)
+bones/26/rotation = Quaternion(-0.000668181, 0.973032, -0.230647, -0.00316347)
+bones/27/rotation = Quaternion(-0.0155396, 0.619604, -0.784688, -0.0106851)
+bones/28/rotation = Quaternion(-0.000202466, -0.216209, 0.975918, -0.0289467)
+bones/29/rotation = Quaternion(-8.0619e-05, 0.998469, -0.0552767, -0.00194764)
+bones/30/rotation = Quaternion(0.0040723, 0.708657, -0.705235, -0.0208219)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = SubResource("ShaderMaterial_i6hqh")
@@ -253,7 +248,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_cwsr8")
 entity = NodePath("../..")
-attack_effects = Array[ExtResource("4_qlgqh")]([SubResource("Resource_p3v48"), SubResource("Resource_wxn5g")])
+attack_effects = Array[ExtResource("4_qlgqh")]([SubResource("Resource_p3v48")])
 hitbox = NodePath("AttackHitbox")
 
 [node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("3_u4wqx")]
@@ -286,17 +281,14 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="Components" index="0"]
-current_health = 50
-max_health = 50
+current_health = 80
+max_health = 80
 
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 350.0
 
 [node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_5sssr")
-
-[node name="AttackEffectManager" parent="." index="12" node_paths=PackedStringArray("recipient")]
-recipient = NodePath("..")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("13_wd8hw")

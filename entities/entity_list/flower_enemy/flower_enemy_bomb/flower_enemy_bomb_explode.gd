@@ -1,9 +1,9 @@
 class_name FlowerEnemyBombExplode
 extends ProjectileState
 
-var delta_count: float = 0
 var attack_object: AttackObject
 var bomb: CSGSphere3D
+var delta_count: float = 0.0
 
 
 func _init(new: CharacterEntity, model: CSGSphere3D, object: AttackObject) -> void:
@@ -22,4 +22,5 @@ func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	
 	if delta_count >= proj.explosion_duration:
+		attack_object.hitbox.monitorable = false
 		proj.char_entity_die()

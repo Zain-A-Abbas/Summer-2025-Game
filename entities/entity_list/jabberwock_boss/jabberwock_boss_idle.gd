@@ -31,6 +31,9 @@ func st_physics_process(delta: float) -> void:
 	delta_count += delta
 	rage_component.decay_rage(delta)
 	
+	if enemy.paralysis_effect(delta):
+		return
+	
 	direction_to_player = face_player()
 	forward_direction = enemy.global_transform.basis.z
 	

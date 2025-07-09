@@ -7,7 +7,6 @@ extends CharacterEntity
 @onready var atk_obj: AttackObject = %Explosion
 @onready var model: CSGSphere3D = %placeholder_model # NOTE: temporary visual effect
 
-
 func initialize_bomb() -> void:
 	prepare_states()
 
