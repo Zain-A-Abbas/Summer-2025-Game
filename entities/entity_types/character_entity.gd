@@ -49,8 +49,8 @@ func gravity_velocity() -> Vector3:
 func resolve_hit(object: AttackObject):
 	var attack_effects: Array[AttackEffect] = object.attack_effects
 	for effect in attack_effects:
-		if check_inflicted_attack_effect_counts(effect):
-			update_inflicted_attack_effect_counts(effect, 1)
+		if check_inflicted_attack_effect_counts(effect.effect_type):
+			update_inflicted_attack_effect_counts(effect.effect_type, 1)
 			inflicted_attack_effects.append(effect)
 			inflicted_attack_objects.append(object.duplicate())
 
@@ -71,10 +71,12 @@ func paralysis_effect(delta: float) -> bool:
 func update_inflicted_attack_effects(delta: float):
 	var n: int = 0
 	
-	#print(inflicted_attack_effects)
+	#if self is Player:
+	#	print("count: ", inflicted_attack_effect_count)
+	#	print("limit: ", inflicted_attack_effect_limits)
 	for effect in inflicted_attack_effects:
 		if effect.apply_effect(self, delta, inflicted_attack_objects[n]):
-			update_inflicted_attack_effect_counts(effect, -1)
+			update_inflicted_attack_effect_counts(effect.effect_type, -1)
 			inflicted_attack_effects.remove_at(n)
 			
 			inflicted_attack_objects[n].queue_free()
@@ -82,24 +84,14 @@ func update_inflicted_attack_effects(delta: float):
 		else:
 			n += 1
 
-func get_attack_effect_type(effect: AttackEffect) -> AttackEffect.AttackEffectType:
-	if effect is BurnEffect:
-		return AttackEffect.AttackEffectType.BURN
-	elif effect is ParalysisEffect:
-		return AttackEffect.AttackEffectType.PARALYSIS
-	else:
-		return AttackEffect.AttackEffectType.DAMAGE
-
-func update_inflicted_attack_effect_counts(effect: AttackEffect, change: int):
-	var effect_type: AttackEffect.AttackEffectType = get_attack_effect_type(effect)
+func update_inflicted_attack_effect_counts(effect_type: AttackEffect.AttackEffectType, change: int):
 	if effect_type != AttackEffect.AttackEffectType.DAMAGE:
 		inflicted_attack_effect_count[effect_type] += change
 		if inflicted_attack_effect_count[effect_type] < 0: # underflow check
 			inflicted_attack_effect_count[effect_type] = 0
 
-func check_inflicted_attack_effect_counts(effect: AttackEffect) -> bool:
-	var effect_type: AttackEffect.AttackEffectType = get_attack_effect_type(effect)
+func check_inflicted_attack_effect_counts(effect_type: AttackEffect.AttackEffectType) -> bool:
 	if effect_type == AttackEffect.AttackEffectType.DAMAGE: # ignore damage effect
 		return true
-
+	
 	return inflicted_attack_effect_count[effect_type] < inflicted_attack_effect_limits[effect_type]

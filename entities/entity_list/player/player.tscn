@@ -334,38 +334,35 @@ dodge_speed = 1750.0
 attack_move_speed = 375.0
 base_parry_invincibility_period = 0.1
 parry_duration = 0.2
-inflicted_attack_effect_limits = Dictionary[StringName, int]({
-&"Burn": 2,
-&"Paralysis": 1
-})
+death_state_duration = 1.2
 
 [node name="PlayerAnimator" parent="." index="0" instance=ExtResource("3_w7qv5")]
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0751923, 2.79257, -0.40912)
+bones/1/position = Vector3(0.12185, 2.80031, -0.408922)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.167256, -0.0413036, 0.000114537, 0.985048)
-bones/4/rotation = Quaternion(0.282834, -0.114619, -0.0273189, 0.951904)
+bones/3/rotation = Quaternion(0.164264, -0.0411372, -0.000343452, 0.985558)
+bones/4/rotation = Quaternion(0.274051, -0.114192, -0.0287098, 0.95448)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.029364, 0.940729, -0.337837, 0.00578654)
-bones/7/rotation = Quaternion(0.204301, -0.77056, 0.335098, 0.502203)
-bones/8/rotation = Quaternion(0.0316772, 0.670876, 0.0667602, 0.737879)
+bones/6/rotation = Quaternion(0.0351936, 0.939341, -0.341123, 0.00584289)
+bones/7/rotation = Quaternion(0.20322, -0.772116, 0.33578, 0.49979)
+bones/8/rotation = Quaternion(0.0296613, 0.672758, 0.0665268, 0.736268)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0241368, 0.0110632, 0.00784956, 0.999617)
-bones/13/rotation = Quaternion(-0.172308, 0.0774713, 0.018691, 0.981814)
-bones/14/rotation = Quaternion(0.145767, 0.163642, -0.0329793, 0.975134)
+bones/10/rotation = Quaternion(0.0156543, 0.00717528, 0.0050909, 0.999839)
+bones/13/rotation = Quaternion(-0.16629, 0.0771527, 0.0196242, 0.982858)
+bones/14/rotation = Quaternion(0.138745, 0.166575, -0.0264422, 0.97586)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.17578, 0.766754, -0.241632, 0.568159)
-bones/19/rotation = Quaternion(0.000292057, -0.613947, -0.0290021, 0.788814)
+bones/18/rotation = Quaternion(0.159413, 0.773368, -0.219543, 0.572966)
+bones/19/rotation = Quaternion(-0.00294167, -0.61394, -0.0248465, 0.788956)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00117778, 0.207805, 0.963567, -0.168387)
-bones/26/rotation = Quaternion(0.0408852, 0.868931, -0.487684, 0.0738352)
-bones/27/rotation = Quaternion(-0.0663678, 0.615202, -0.78243, 0.0701717)
-bones/28/rotation = Quaternion(0.00208473, 0.0111549, 0.954484, 0.298045)
-bones/29/rotation = Quaternion(-0.150769, 0.82351, -0.479214, -0.263542)
-bones/30/rotation = Quaternion(0.226502, 0.496824, -0.829106, 0.120196)
+bones/25/rotation = Quaternion(-0.00112579, 0.210309, 0.964293, -0.160956)
+bones/26/rotation = Quaternion(0.0422088, 0.868847, -0.487345, 0.0762768)
+bones/27/rotation = Quaternion(-0.0582715, 0.616405, -0.782459, 0.0663872)
+bones/28/rotation = Quaternion(0.0021174, 0.0123919, 0.952996, 0.302722)
+bones/29/rotation = Quaternion(-0.148576, 0.827426, -0.47246, -0.264714)
+bones/30/rotation = Quaternion(0.231172, 0.506196, -0.822474, 0.117734)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -374,7 +371,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.628065, -0.716341, 0.303958, 0.582273, -0.691755, -0.427123, 0.516229, -0.0912743, 0.851573, -1.50218, 2.56474, -2.1438)
+transform = Transform3D(-0.666473, -0.686134, 0.291607, 0.549545, -0.71645, -0.429768, 0.5038, -0.126177, 0.854556, -1.44141, 2.59782, -2.16072)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2

@@ -73,3 +73,7 @@ autowrap_mode = 2
 
 [node name="Player" parent="." instance=ExtResource("3_6i55e")]
 unique_name_in_owner = true
+inflicted_attack_effect_limits = Dictionary[int, int]({
+1: 2,
+2: 1
+})
