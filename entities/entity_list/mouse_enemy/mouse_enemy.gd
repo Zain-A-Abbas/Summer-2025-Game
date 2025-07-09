@@ -17,7 +17,7 @@ extends Enemy
 @export var pounce_speed: float = 1700.0
 @export var pounce_cooldown: float = 1.0
 
-@onready var thrust: AttackObject = %basic_attack
+@onready var pounce: AttackObject = %basic_attack
 @onready var ray_cast: RayCast3D = %ray_cast
 
 
@@ -27,7 +27,7 @@ func prepare_states():
 		StateInitializer.new(&"Run", MouseEnemyRun.new(self, ray_cast)),
 		StateInitializer.new(&"Charge", MouseEnemyCharge.new(self)),
 		StateInitializer.new(&"Dig", MouseEnemyDig.new(self, ray_cast)),
-		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, thrust)),
+		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, pounce)),
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
 			"mouse/charge", # change later

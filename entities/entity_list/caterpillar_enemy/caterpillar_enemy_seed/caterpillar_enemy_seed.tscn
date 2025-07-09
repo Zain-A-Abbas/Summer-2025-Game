@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 [sub_resource type="Resource" id="Resource_yjuat"]
 script = ExtResource("8_1sbvb")
 stun_duration = 1.0
+stun_chance = 100.0
 metadata/_custom_type_script = "uid://4rhq8c58a3im"
 
 [node name="CaterpillarEnemySeed" instance=ExtResource("1_asst4")]

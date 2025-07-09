@@ -338,9 +338,9 @@ fog_light_energy = 0.02
 enemy_limit = 5
 enemy_spawn_limits = Dictionary[String, int]({
 "BASIC": 0,
-"CATERPILLAR": 2,
+"CATERPILLAR": 0,
 "FLOWER": 0,
-"MAD_HATTER": 2,
+"MAD_HATTER": 1,
 "MOUSE": 0,
 "RED_KNIGHT": 0
 })

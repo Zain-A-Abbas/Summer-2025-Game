@@ -156,7 +156,7 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="RedKnightEnemy" node_paths=PackedStringArray("meshes", "animation_tree") instance=ExtResource("1_1anpf")]
+[node name="RedKnightEnemy" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_1anpf")]
 script = ExtResource("2_gs4ux")
 instant_turn_hp_amount = 40
 player_pushback = 200.0
@@ -164,6 +164,7 @@ aggro_range = Array[float]([3.0, 9.0])
 active_radius = 15.0
 swing_move_speed = 2800.0
 distance_to_swing = 7.0
+hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_003"), NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_004")]
 animation_tree = NodePath("red_knight/AnimationTree")
 death_state_duration = 1.0
@@ -172,32 +173,32 @@ death_state_duration = 1.0
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.145272, 3.37268, -0.185539)
-bones/1/rotation = Quaternion(-9.43189e-05, -0.00667949, 0.0139376, 0.999881)
-bones/3/rotation = Quaternion(0.16371, -0.0411059, -0.000427893, 0.985652)
-bones/4/rotation = Quaternion(0.267715, -0.113875, -0.0297076, 0.956284)
+bones/1/position = Vector3(0.0627318, 3.30485, -0.185547)
+bones/1/rotation = Quaternion(-8.93718e-05, 0.00980716, -0.00910615, 0.999911)
+bones/3/rotation = Quaternion(0.168178, -0.0413543, 0.000256127, 0.984889)
+bones/4/rotation = Quaternion(0.288282, -0.114877, -0.0264514, 0.950262)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0425583, 0.937552, -0.345181, 0.00591231)
-bones/7/rotation = Quaternion(0.201818, -0.774119, 0.336657, 0.49666)
-bones/8/rotation = Quaternion(0.0436637, 0.659233, 0.0681773, 0.747568)
+bones/6/rotation = Quaternion(0.0408762, 0.937964, -0.344263, 0.00589677)
+bones/7/rotation = Quaternion(0.202152, -0.773643, 0.336449, 0.497406)
+bones/8/rotation = Quaternion(0.0407374, 0.662159, 0.067825, 0.745175)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00484161, 0.00221925, 0.00157434, 0.999985)
-bones/13/rotation = Quaternion(-0.162703, 0.0769594, 0.0201778, 0.983462)
-bones/14/rotation = Quaternion(0.110829, 0.173032, -0.0124731, 0.978581)
+bones/10/rotation = Quaternion(0.00734733, 0.00336765, 0.00238944, 0.999964)
+bones/13/rotation = Quaternion(-0.175849, 0.077655, 0.0181395, 0.981182)
+bones/14/rotation = Quaternion(0.13351, 0.165426, -0.0306187, 0.976664)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.173358, 0.767776, -0.238365, 0.568902)
-bones/19/rotation = Quaternion(-0.0173491, -0.613702, -0.00632438, 0.789321)
+bones/18/rotation = Quaternion(0.1981, 0.756603, -0.271751, 0.560766)
+bones/19/rotation = Quaternion(-0.00587696, -0.613919, -0.0210744, 0.789065)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000257394, 0.00588397, 0.999305, 0.0367996)
-bones/26/rotation = Quaternion(0.00121889, 0.976815, -0.214015, 0.00544952)
-bones/27/rotation = Quaternion(0.0110817, 0.683457, -0.729895, 0.00426191)
-bones/28/rotation = Quaternion(0.00022744, 0.395251, 0.917998, 0.0325168)
-bones/29/rotation = Quaternion(0.00758682, 0.8483, -0.529324, 0.0120676)
-bones/30/rotation = Quaternion(0.0280353, 0.739342, -0.672742, -0.00239481)
+bones/25/rotation = Quaternion(1.68097e-05, 0.15249, 0.988302, 0.00240343)
+bones/26/rotation = Quaternion(0.000140784, 0.974935, -0.222492, 0.000383616)
+bones/27/rotation = Quaternion(0.00236497, 0.654959, -0.75551, -0.0150657)
+bones/28/rotation = Quaternion(4.08057e-06, 0.0805867, 0.996747, 0.000583358)
+bones/29/rotation = Quaternion(0.000263786, 0.852857, -0.522145, 0.00020366)
+bones/30/rotation = Quaternion(0.0115793, 0.734247, -0.678737, -0.00794734)
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.477036, -0.644533, 0.597506, 0.0260906, -0.689933, -0.723404, 0.878496, -0.329501, 0.345939, -1.92115, 3.7625, -1.57331)
+transform = Transform3D(-0.373512, -0.713025, 0.593367, 0.0805064, -0.662166, -0.74502, 0.924125, -0.230504, 0.30473, -2.02424, 3.82654, -1.48565)
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")

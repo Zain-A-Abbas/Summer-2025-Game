@@ -59,10 +59,10 @@ radius = 3.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="JabberwockBoss" node_paths=PackedStringArray("meshes", "animation_tree") instance=ExtResource("1_2w3it")]
+[node name="JabberwockBoss" node_paths=PackedStringArray("hurtbox", "meshes") instance=ExtResource("1_2w3it")]
 script = ExtResource("2_2w3it")
+hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("jabberwock/Armature/Skeleton3D/Cube")]
-animation_tree = NodePath("")
 
 [node name="jabberwock" parent="." index="0" instance=ExtResource("3_5rjs7")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -82,9 +82,7 @@ bones/13/rotation = Quaternion(-0.272004, 5.97196e-10, -0.272004, 0.923054)
 bones/14/rotation = Quaternion(-0.289084, -3.63066e-09, -0.289084, 0.912612)
 bones/15/rotation = Quaternion(-0.238657, 3.93497e-08, -0.238657, 0.941321)
 bones/16/rotation = Quaternion(2.52435e-29, 1.19209e-07, 2.11758e-22, 1)
-bones/16/scale = Vector3(1, 1, 1)
 bones/17/rotation = Quaternion(-0.225413, 4.55821e-15, -5.37426e-08, 0.974263)
-bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.102566, -2.90188e-15, -2.44536e-08, 0.994726)
 bones/19/rotation = Quaternion(-0.145587, 1.2344e-14, -3.47106e-08, 0.989345)
 bones/20/rotation = Quaternion(0.0944644, 1.69512e-14, 2.25221e-08, 0.995528)
@@ -196,10 +194,10 @@ metadata/_custom_type_script = "uid://cjv5ddiivejgd"
 [node name="EnemyHP" parent="." index="10"]
 texture = SubResource("ViewportTexture_5sssr")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [editable path="jabberwock"]

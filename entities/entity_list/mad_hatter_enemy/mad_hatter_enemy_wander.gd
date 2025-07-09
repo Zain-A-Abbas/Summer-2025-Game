@@ -2,6 +2,7 @@ class_name MadHatterEnemyWander
 extends EnemyState
 
 const HOP_TIME: float = 0.35
+const MOVE_SPEED_INCREASE: float = 2.0
 
 var direction: Vector3 = Vector3.ZERO
 var ray_cast: RayCast3D
@@ -46,7 +47,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# increase movement speed overtime
 	if move_speed < enemy.max_speed:
-		move_speed += 1.5
+		move_speed += MOVE_SPEED_INCREASE
 		#enemy.animation_tree["parameters/WalkRun/blend_position"] = move_toward(enemy.animation_tree["parameters/WalkRun/blend_position"], 1.0, delta * 4.0)
 	
 	# transition to summon state

@@ -37,7 +37,7 @@ func st_physics_process(delta: float) -> void:
 		warning_shown = true
 		
 	# summoning attempt sfx
-	if summon_sound_timer >= SUMMONING_WHOOSH_TIME:
+	if !just_summoned && summon_sound_timer >= SUMMONING_WHOOSH_TIME:
 		enemy.play_sound_fx("magic_whoosh_%d" % summon_sound_index)
 		summon_sound_index += 1
 		

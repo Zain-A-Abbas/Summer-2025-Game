@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dw7hd5c8gm2mv"]
+[gd_scene load_steps=26 format=3 uid="uid://dw7hd5c8gm2mv"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_wksuw"]
 [ext_resource type="Script" uid="uid://b6tl1se2dbigb" path="res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.gd" id="2_7asxt"]
@@ -89,7 +89,7 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_v1tun"]
 viewport_path = NodePath("SubViewport")
 
-[node name="MadHatterEnemy" node_paths=PackedStringArray("meshes") instance=ExtResource("1_wksuw")]
+[node name="MadHatterEnemy" node_paths=PackedStringArray("hurtbox", "meshes") instance=ExtResource("1_wksuw")]
 script = ExtResource("2_7asxt")
 spawn_type_list = Array[Resource]([ExtResource("3_rt3wv"), ExtResource("4_7tx5y"), ExtResource("5_ac3cl")])
 summon_cancel_hp_amount = 30.0
@@ -97,9 +97,9 @@ summon_timestamp = 4.0
 summon_cooldown = 3.0
 wander_duration = 4.0
 change_direction_time = 1.2
-max_speed = 600.0
-meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
+max_speed = 650.0
 hurtbox = NodePath("Hurtbox")
+meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
 animation_tree = NodePath("placeholder_model/AnimationTree")
 death_state_duration = 1.0
 
@@ -107,15 +107,7 @@ death_state_duration = 1.0
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MadHatterAnimator/Armature" index="0"]
-bones/0/position = Vector3(2.2023e-13, 1.04251, -1.35736)
 bones/1/rotation = Quaternion(-0.200136, 5.72266e-07, 2.5824e-07, 0.979768)
-bones/2/rotation = Quaternion(-0.153973, 3.5337e-07, 1.28487e-07, 0.988075)
-bones/3/rotation = Quaternion(-0.461959, 0.248017, -0.13631, 0.840536)
-bones/5/rotation = Quaternion(-0.461959, -0.248017, 0.13631, 0.840536)
-bones/9/position = Vector3(0.402232, 1.97862, 0.512074)
-bones/9/rotation = Quaternion(0.584777, -0.193634, -0.312756, 0.722998)
-bones/11/position = Vector3(-0.40223, 1.97862, 0.512075)
-bones/11/rotation = Quaternion(0.584777, 0.193636, 0.312755, 0.722997)
 bones/13/position = Vector3(0.663489, 0.610285, -0.674417)
 bones/13/rotation = Quaternion(0.378216, 0.248185, 0.891019, -0.0379878)
 bones/14/rotation = Quaternion(0.195104, 0.0555083, -0.112967, 0.972672)
@@ -124,7 +116,7 @@ bones/15/rotation = Quaternion(-0.378216, 0.248185, 0.891019, 0.0379878)
 bones/16/rotation = Quaternion(0.195104, -0.0555083, 0.112967, 0.972672)
 
 [node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -2.36213e-08, 1.99264e-07, -7.80156e-08, 0.869019, 0.494785, -1.84856e-07, -0.494777, 0.869016, 2.03028e-07, 2.22432, 0.831885)
+transform = Transform3D(1, -2.36225e-08, 1.99264e-07, -7.80145e-08, 0.869018, 0.494786, -1.84856e-07, -0.494778, 0.869016, 2.03027e-07, 2.22432, 0.83188)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -157,7 +149,7 @@ current_health = 80
 max_health = 80
 
 [node name="MovementComponent" parent="Components" index="1"]
-move_speed = 150.0
+move_speed = 250.0
 
 [node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_v1tun")
@@ -166,14 +158,14 @@ texture = SubResource("ViewportTexture_v1tun")
 stream = ExtResource("9_rt3wv")
 volume_db = -5.0
 max_db = 0.0
-pitch_scale = 2.5
+pitch_scale = 3.0
 max_distance = 20.0
 
 [node name="land" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
 stream = ExtResource("10_rt3wv")
 volume_db = 5.0
 max_db = 1.0
-pitch_scale = 2.5
+pitch_scale = 3.0
 max_distance = 20.0
 
 [node name="summon" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
