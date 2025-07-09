@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjthyhjlp1tw1"]
+
+[ext_resource type="PackedScene" uid="uid://b8sdjwe6fxk2a" path="res://models/enemies/jabberwock.glb" id="1_4wuxb"]
+
+[node name="jabberwock" instance=ExtResource("1_4wuxb")]

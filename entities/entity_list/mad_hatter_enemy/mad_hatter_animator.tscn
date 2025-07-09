@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd1hxfc67ays8"]
+
+[ext_resource type="PackedScene" uid="uid://dk0iv1fn1s4nd" path="res://models/enemies/rabbit.glb" id="1_qj2j7"]
+[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="2_i445q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0la"]
+render_priority = 0
+shader = ExtResource("2_i445q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4scf"]
+render_priority = 0
+shader = ExtResource("2_i445q")
+
+[node name="MadHatterAnimator" instance=ExtResource("1_qj2j7")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(2.2023e-13, 1.04251, -1.35736)
+bones/1/rotation = Quaternion(-0.11697, 5.91969e-07, 2.09162e-07, 0.993136)
+bones/2/rotation = Quaternion(-0.153973, 3.5337e-07, 1.28487e-07, 0.988075)
+bones/3/rotation = Quaternion(-0.461959, 0.248017, -0.13631, 0.840536)
+bones/5/rotation = Quaternion(-0.461959, -0.248017, 0.13631, 0.840536)
+bones/7/rotation = Quaternion(-0.747306, 6.64423e-12, 8.90867e-07, 0.66448)
+bones/9/position = Vector3(0.402232, 1.97862, 0.512074)
+bones/9/rotation = Quaternion(0.584777, -0.193634, -0.312756, 0.722998)
+bones/11/position = Vector3(-0.40223, 1.97862, 0.512075)
+bones/11/rotation = Quaternion(0.584777, 0.193636, 0.312755, 0.722997)
+bones/13/position = Vector3(0.663489, 0.706835, -0.577867)
+bones/13/rotation = Quaternion(0.373677, 0.172317, 0.908744, -0.0696832)
+bones/14/rotation = Quaternion(0.258104, 0.0304047, -0.15868, 0.952512)
+bones/15/position = Vector3(-0.663489, 0.706835, -0.577867)
+bones/15/rotation = Quaternion(-0.373677, 0.172317, 0.908744, 0.0696832)
+bones/16/rotation = Quaternion(0.258104, -0.0304047, 0.15868, 0.952512)
+
+[node name="Cylinder" parent="Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 2.26379e-11, 7.38964e-12, 2.62617e-11, 0.939694, 0.342022, -3.52429e-12, -0.342017, 0.939691, -1.82084e-12, 2.1, 1)
+
+[node name="Cylinder" parent="Armature/Skeleton3D/Cylinder" index="0"]
+material_overlay = SubResource("ShaderMaterial_7r0la")
+
+[node name="Cube" parent="Armature/Skeleton3D" index="1"]
+material_overlay = SubResource("ShaderMaterial_g4scf")

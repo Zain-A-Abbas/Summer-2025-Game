@@ -53,9 +53,15 @@ func damage_taken(enemy: Enemy, damage: int):
 
 func hurt_effect():
 	for mesh in meshes:
+		if !mesh:
+			push_error("Empty mesh in mesh array on " + name + " enemy.")
+			continue
 		mesh.set_instance_shader_parameter("hit_effect", true)
 	await get_tree().create_timer(0.1).timeout
 	for mesh in meshes:
+		if !mesh:
+			push_error("Empty mesh in mesh array on " + name + " enemy.")
+			continue
 		mesh.set_instance_shader_parameter("hit_effect", false)
 
 func show_attack_indicator():
