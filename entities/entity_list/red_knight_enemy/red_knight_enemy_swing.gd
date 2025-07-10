@@ -48,9 +48,10 @@ func st_physics_process(delta: float) -> void:
 		enemy.velocity *= delta
 		enemy.move_and_slide()
 	
+	attack_object.hitbox.monitorable = attack_activated && delta_count <= MOVEMENT_DURATION
+	
 	if delta_count >= STATE_DURATION:
 		return state_machine.change_state(&"Idle")
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-	attack_object.hitbox.monitorable = false
 	enemy.attack_indicator_animator.play("hide_indicator")

@@ -2,18 +2,25 @@ extends Node
 
 # If one is played right before a battle begins then place it in Battle
 
-# Battle
-var battle_music: String = "res://sound/music/Torch Impact 2.wav"
-var boss_music: String = "res://sound/music/Water Jump.wav"
+enum BGM_TYPE{
+	NONE,
+	TITLE,
+	BATTLE,
+	BOSS,
+	HEALING,
+	SHOP
+}
 
-# Non-battle
-var title_music: String = "res://sound/music/04 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav"
-var healing_room: String = "res://sound/music/Forest Night.wav"
-var shop_room: String = "res://sound/music/Wood Chain Run 1.wav"
+const BGMS: Dictionary[BGM_TYPE, Resource] = {
+	BGM_TYPE.NONE: null,
+	BGM_TYPE.TITLE: preload("res://sound/music/04 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav"),
+	BGM_TYPE.BATTLE: preload("res://sound/music/Torch Impact 2.wav"),
+	BGM_TYPE.BOSS: preload("res://sound/music/Water Jump.wav"),
+	BGM_TYPE.HEALING: preload("res://sound/music/Forest Night.ogg"),
+	BGM_TYPE.SHOP: preload("res://sound/music/Wood Chain Run 1.wav")
+}
 
 # Functionality
-
-
 const MIN_DB := -80.0
 const MAX_DB := -8.0
 
@@ -38,10 +45,11 @@ class BackgroundMusic extends Node:
 		bgm_player.play()
 	
 	func play(audio_stream: AudioStream, bgm_db: float):
-		bgm_player.stream = audio_stream
-		bgm_player.volume_db = bgm_db
-		bgm_player.play()
-		is_playing = true
+		if audio_stream:
+			bgm_player.stream = audio_stream
+			bgm_player.volume_db = bgm_db
+			bgm_player.play()
+			is_playing = true
 	
 	func stop():
 		is_playing = false
@@ -55,10 +63,8 @@ class BackgroundMusic extends Node:
 		is_playing = true
 		bgm_player.stream_paused = false
 	
-	
 
-var loaded_bgm := []
-var current_bgm = null
+var current_bgm: BGM_TYPE
 var bgm_player: BackgroundMusic
 
 
@@ -66,13 +72,9 @@ func _ready() -> void:
 	bgm_player = BackgroundMusic.new()
 	add_child(bgm_player)
 
-func load_bgm(track: String):
-	var queue_bgm = load(track)
-	loaded_bgm.push_front(queue_bgm)
-	current_bgm = loaded_bgm[0]
-
-func play_bgm(volume: float = 1.0):
-	bgm_player.play(current_bgm, get_audio_db(volume))
+func play_bgm(bgm: BGM_TYPE, volume: float = 1.0):
+	current_bgm = bgm
+	bgm_player.play(BGMS[current_bgm], get_audio_db(volume))
  
 func pause_bgm():
 	bgm_player.pause()
@@ -97,9 +99,8 @@ func fadeout_bgm(fadeout_time: float = 0.5):
 	await fade_tween.finished
 
 func unload_bgm():
-	loaded_bgm = []
 	bgm_player = null
-	current_bgm = null
+	current_bgm = BGM_TYPE.NONE
 
 # Called when the bgm sound is changed by the player in settings 
 func bgm_setting_changed():

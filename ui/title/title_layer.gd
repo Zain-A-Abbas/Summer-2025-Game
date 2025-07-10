@@ -21,8 +21,7 @@ func _ready() -> void:
 	title_select.visible = false
 	title_label.modulate.a = 0.0
 	title_options_container.modulate.a = 0.0
-	Bgm.load_bgm(Bgm.title_music)
-	Bgm.play_bgm(1.0)
+	Bgm.play_bgm(Bgm.BGM_TYPE.TITLE, 1.0)
 
 func _input(event: InputEvent) -> void:
 	if state == TitleState.NONE:
