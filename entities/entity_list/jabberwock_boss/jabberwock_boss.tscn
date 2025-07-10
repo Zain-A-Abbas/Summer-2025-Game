@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvjhtjofnv4w8"]
+[gd_scene load_steps=30 format=3 uid="uid://bvjhtjofnv4w8"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_2w3it"]
 [ext_resource type="Script" uid="uid://b238pddj1h8rc" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss.gd" id="2_2w3it"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="6_6exr4"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="7_nfnqn"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="8_sxrk1"]
-[ext_resource type="AnimationLibrary" uid="uid://c6ddaqnbh0i5m" path="res://entities/entity_list/basic_enemy/basic_enemy_animation_library.res" id="13_chfad"]
 [ext_resource type="Script" uid="uid://cjv5ddiivejgd" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss_rage_component.gd" id="14_xf2qo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5rjs7"]
@@ -56,17 +55,69 @@ radius = 2.12207
 height = 3.26123
 radius = 4.0
 
+[sub_resource type="Animation" id="Animation_keqxu"]
+resource_name = "claw"
+
+[sub_resource type="Animation" id="Animation_ukm8e"]
+resource_name = "claw_mirrored"
+
+[sub_resource type="Animation" id="Animation_ncpcy"]
+resource_name = "sweep"
+
+[sub_resource type="Animation" id="Animation_5rjs7"]
+resource_name = "breath"
+
+[sub_resource type="Animation" id="Animation_hpkgp"]
+resource_name = "shoot"
+
+[sub_resource type="Animation" id="Animation_2w3it"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_xf2qo"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4epg7"]
+_data = {
+&"breath": SubResource("Animation_5rjs7"),
+&"claw": SubResource("Animation_keqxu"),
+&"claw_mirrored": SubResource("Animation_ukm8e"),
+&"death": SubResource("Animation_2w3it"),
+&"idle": SubResource("Animation_xf2qo"),
+&"shoot": SubResource("Animation_hpkgp"),
+&"sweep": SubResource("Animation_ncpcy")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_keqxu"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="JabberwockBoss" instance=ExtResource("1_2w3it")]
+[node name="JabberwockBoss" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_2w3it")]
 script = ExtResource("2_2w3it")
-hurtbox = null
-meshes = Array[MeshInstance3D]([null])
-animation_tree = null
+hurtbox = NodePath("Hurtbox")
+meshes = [NodePath("jabberwock/Armature/Skeleton3D/Cube")]
+animation_tree = NodePath("jabberwock/AnimationTree")
+death_state_duration = 2.667
 
 [node name="jabberwock" parent="." index="0" instance=ExtResource("3_5rjs7")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.300716, 1.65779e-15, -2.67997e-15, 0.953714)
+bones/5/rotation = Quaternion(-0.334557, 0.153494, -0.36914, 0.853374)
+bones/6/rotation = Quaternion(-0.291812, -0.0321043, 0.242715, 0.92461)
+bones/8/rotation = Quaternion(0.109538, 0.221134, 0.333395, 0.909917)
+bones/12/rotation = Quaternion(0.0271663, -0.0877673, -0.0921649, 0.991496)
+bones/14/rotation = Quaternion(-0.284693, 0.0501927, -0.126239, 0.948944)
+bones/15/rotation = Quaternion(-0.235032, 0.0414374, -0.0715937, 0.968461)
+bones/17/rotation = Quaternion(-0.0528308, 5.39639e-15, -1.32597e-08, 0.998603)
+bones/20/rotation = Quaternion(-0.166385, 1.29948e-14, -3.86657e-08, 0.986061)
+bones/24/rotation = Quaternion(-0.334557, -0.153494, 0.369139, 0.853374)
+bones/25/rotation = Quaternion(-0.291812, 0.0321044, -0.242715, 0.92461)
+bones/27/rotation = Quaternion(0.109538, -0.221134, -0.333395, 0.909917)
+bones/31/rotation = Quaternion(0.0271663, 0.0877673, 0.0921649, 0.991496)
+bones/33/rotation = Quaternion(-0.284693, -0.0501928, 0.126239, 0.948944)
+bones/34/rotation = Quaternion(-0.235032, -0.0414382, 0.0715939, 0.968461)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(-5.92289e-08, 0, -1.355, 0, 1.355, 0, 1.355, 0, -5.92289e-08, 0, 2.24852, 0)
@@ -136,7 +187,8 @@ shape = SubResource("CylinderShape3D_5rjs7")
 
 [node name="ActionAnimator" parent="." index="6"]
 libraries = {
-&"basic_enemy_animation_library": ExtResource("13_chfad")
+&"": SubResource("AnimationLibrary_4epg7"),
+&"jabberwock": SubResource("AnimationLibrary_keqxu")
 }
 
 [node name="HealthComponent" parent="Components" index="0"]
