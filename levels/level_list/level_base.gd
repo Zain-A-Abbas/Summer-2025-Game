@@ -63,6 +63,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	level_manager = _level_manager 
 	type = _type
 	level_camera.initialize(player)
+	player.player_died.connect(gameover)
 	enemy_spawn_list = initialize_enemy_list()
 	
 	if _type == LevelType.BOSS:
@@ -115,6 +116,27 @@ func start_level():
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
+
+func gameover(player: Player):
+	for enemy in enemies.get_children():
+		enemy.queue_free()
+	for light in lighting.get_children():
+		if light is Node3D:
+			light.visible = false
+	
+	for sound in sounds.get_children():
+		if sound is AudioStreamPlayer3D:
+			sound.playing = false
+	
+	static_geometry.visible = false
+	dynamic_geometry.visible = false
+	
+	var death_environment: Environment = Environment.new()
+	death_environment.background_mode = Environment.BG_COLOR
+	death_environment.background_color = Color.BLACK
+	death_environment.ambient_light_source = Environment.AMBIENT_SOURCE_COLOR
+	death_environment.ambient_light_color = Color.WHITE
+	world_environment.environment = death_environment
 
 func enemy_kill(enemy: Enemy):
 	enemies_killed += 1

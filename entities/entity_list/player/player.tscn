@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=55 format=3 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -167,6 +167,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathOneshot/request")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PlayerAnimator/AnimationTree:process_mode")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_vvnrl"]
 resource_name = "attack_1"
@@ -218,6 +242,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_p772y"]
+resource_name = "death"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathOneshot/request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/AnimationTree:process_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_w7qv5"]
@@ -273,6 +325,7 @@ _data = {
 &"RESET": SubResource("Animation_nda3u"),
 &"attack_1": SubResource("Animation_vvnrl"),
 &"attack_2": SubResource("Animation_0y12j"),
+&"death": SubResource("Animation_p772y"),
 &"idle": SubResource("Animation_w7qv5"),
 &"parry": SubResource("Animation_l2wyb"),
 &"walk": SubResource("Animation_7byxq")
@@ -340,29 +393,23 @@ death_state_duration = 1.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0549625, 2.77738, -0.409175)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.167987, -0.0413438, 0.000226687, 0.984922)
-bones/4/rotation = Quaternion(0.286121, -0.114775, -0.0267958, 0.950917)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.026807, 0.941328, -0.336376, 0.00576158)
-bones/7/rotation = Quaternion(0.204751, -0.769909, 0.334813, 0.503206)
-bones/8/rotation = Quaternion(0.0355729, 0.66718, 0.0672147, 0.741004)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0278599, 0.0127697, 0.00906037, 0.999489)
-bones/13/rotation = Quaternion(-0.174562, 0.0775885, 0.01834, 0.981413)
-bones/14/rotation = Quaternion(0.142161, 0.163889, -0.0330116, 0.975623)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.186684, 0.76196, -0.256348, 0.564669)
-bones/19/rotation = Quaternion(-0.00157167, -0.613945, -0.0266074, 0.788898)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00120691, 0.210549, 0.962234, -0.172551)
-bones/26/rotation = Quaternion(0.0404882, 0.865667, -0.493768, 0.0719322)
-bones/27/rotation = Quaternion(-0.070509, 0.612449, -0.784084, 0.0717464)
-bones/28/rotation = Quaternion(0.0020854, 0.0131161, 0.954428, 0.298145)
-bones/29/rotation = Quaternion(-0.152962, 0.818841, -0.487748, -0.261161)
-bones/30/rotation = Quaternion(0.224572, 0.489962, -0.833483, 0.121701)
+bones/1/position = Vector3(0.0288008, 2.75576, -0.406046)
+bones/3/rotation = Quaternion(0.16353, -0.0410958, -0.000455243, 0.985682)
+bones/4/rotation = Quaternion(0.26769, -0.113874, -0.0297115, 0.956291)
+bones/6/rotation = Quaternion(0.0235272, 0.94209, -0.334484, 0.00572911)
+bones/7/rotation = Quaternion(0.20535, -0.76904, 0.334433, 0.504543)
+bones/8/rotation = Quaternion(0.0410653, 0.661818, 0.0678665, 0.745456)
+bones/10/rotation = Quaternion(0.0326465, 0.0149638, 0.0106171, 0.999299)
+bones/13/rotation = Quaternion(-0.162673, 0.0769577, 0.0201826, 0.983467)
+bones/14/rotation = Quaternion(0.115255, 0.172212, -0.0142082, 0.978191)
+bones/18/rotation = Quaternion(0.169066, 0.76955, -0.232572, 0.570192)
+bones/19/rotation = Quaternion(-0.0151572, -0.61376, -0.00914331, 0.789294)
+bones/25/rotation = Quaternion(-0.00124413, 0.214387, 0.960416, -0.177871)
+bones/26/rotation = Quaternion(0.0399543, 0.860665, -0.502851, 0.0692902)
+bones/27/rotation = Quaternion(-0.0759886, 0.607938, -0.786892, 0.0737401)
+bones/28/rotation = Quaternion(0.00208994, 0.0154539, 0.954189, 0.298798)
+bones/29/rotation = Quaternion(-0.155728, 0.812538, -0.499075, -0.25779)
+bones/30/rotation = Quaternion(0.222522, 0.480499, -0.839275, 0.123377)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -371,7 +418,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.608831, -0.729693, 0.311245, 0.598915, -0.680076, -0.422845, 0.520217, -0.0710316, 0.851075, -1.53736, 2.61752, -2.12388)
+transform = Transform3D(-0.666617, -0.685184, 0.293503, 0.555834, -0.719287, -0.416742, 0.496658, -0.114668, 0.860338, -1.57203, 2.57074, -2.11238)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2

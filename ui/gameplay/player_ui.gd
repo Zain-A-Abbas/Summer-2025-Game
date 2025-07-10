@@ -1,6 +1,7 @@
 class_name PlayerUI
 extends CanvasLayer
 
+@onready var gameplay_container: MarginContainer = %GameplayContainer
 @onready var hp_under_bar: ProgressBar = %HPUnderBar
 @onready var hp_bar: ProgressBar = %HPBar
 @onready var stamina_under_bar: ProgressBar = %StaminaUnderBar
@@ -10,12 +11,30 @@ extends CanvasLayer
 @onready var money_label: Label = %MoneyLabel
 @onready var upgrade_icons_container: VBoxContainer = %UpgradeIconsContainer
 @onready var upgrade_icons: Array[UpgradeIcon] = []
+@onready var results_vbox: VBoxContainer = %ResultsVbox
+
+# Run end controls
+@onready var dead_text: Label = %DeadText
+@onready var return_to_title_button: Button = %ReturnToTitleButton
+@onready var upgrade_icons_gameover_container: HBoxContainer = %UpgradeIconsGameoverContainer
+
+enum State {
+	NONE,
+	GAMEOVER,
+	VICTORY
+}
 
 var player: Player = null
+
+var state: State
 
 func _ready() -> void:
 	for icon in parry_icons:
 		icon.visible = false
+	
+	return_to_title_button.pressed.connect(return_to_title_button_pressed)
+	dead_text.visible = false
+	results_vbox.visible = false
 	
 	for child in upgrade_icons_container.get_children():
 		if child is UpgradeIcon:
@@ -37,7 +56,49 @@ func refresh_player(current_player: Player):
 	player = current_player
 	set_hp_immediate(player)
 	player.player_damage_taken.connect(player_damage_taken)
+	player.player_died.connect(gameover)
 	stamina_bar.max_value = current_player.max_stamina
+	visible = true
+
+func gameover(player: Player):
+	gameplay_container.visible = false
+	dead_text.modulate.a = 0.0
+	dead_text.visible = true
+	dead_text.pivot_offset = dead_text.size / 2
+	results_vbox.modulate.a = 0.0
+	results_vbox.visible = true
+	
+	for child in upgrade_icons_gameover_container.get_children():
+		child.queue_free()
+	await get_tree().process_frame
+	for child in upgrade_icons_container.get_children():
+		upgrade_icons_gameover_container.add_child(child.duplicate())
+	
+	await get_tree().create_timer(2.5).timeout
+	
+	var tween: Tween
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(dead_text, "scale", Vector2.ONE, 2.0).from(Vector2(0.75, 0.75))
+	tween.tween_property(dead_text, "modulate:a", 1.0, 2.0).from(0.0)
+	await tween.finished
+	await get_tree().create_timer(0.5).timeout
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(dead_text, "scale", Vector2(1.25, 1.25), 2.0)
+	tween.tween_property(dead_text, "modulate:a", 0.0, 1.0).from(1.0)
+	await tween.finished
+	await get_tree().create_timer(0.2).timeout
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(results_vbox, "modulate:a", 1.0, 1.0).from(0.0)
+
+func return_to_title_button_pressed():
+	return_to_title_button.disabled = true
+	
+	var tween: Tween
+	tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	tween.tween_property(results_vbox, "modulate:a", 0.0, 1.0).from(1.0)
+	await tween.finished
+	Bgm.stop_bgm()
+	get_tree().reload_current_scene()
 
 func update_upgrades(current_player: Player):
 	upgrade_icons[0].set_upgrade_amount(current_player.upgrades.extra_parry_time)
