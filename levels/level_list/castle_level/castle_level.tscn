@@ -107,8 +107,18 @@ fog_light_energy = 0.02
 
 [node name="CastleRoom" instance=ExtResource("1_jhykl")]
 script = ExtResource("2_n23wo")
-y_rotation = 45.0
-enemy_limit = 4
+y_rotation = null
+has_enemies = null
+enemy_minimum = 4
+enemy_limit = 7
+enemy_spawn_limits = Dictionary[StringName, int]({
+&"BASIC": 4,
+&"CATERPILLAR": 0,
+&"FLOWER": 2,
+&"MAD_HATTER": 1,
+&"MOUSE": 4,
+&"RED_KNIGHT": 2
+})
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 0, 0)
@@ -307,34 +317,35 @@ size = Vector3(8, 0.025, 12)
 material = ExtResource("5_n23wo")
 
 [node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3458, 0, -9.69964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8687, 1.50541, -9.69964)
 script = ExtResource("6_ii6r2")
 metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4532, 0, 0)
-script = ExtResource("6_ii6r2")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
-
-[node name="DigSpot3" type="Marker3D" parent="EnemyData/DigSpots" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67927, 0, -18.1356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.935, 0, -18.1356)
 script = ExtResource("6_ii6r2")
 metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -21)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1692, 0, -21.4718)
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9513, -1.55404, -12.15)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9013, 0, -0.444558)
 
 [node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6716, 0, 17)
 
 [node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9178, 0, 8.44594)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.746, 0, 8.44594)
+
+[node name="Marker3D6" type="Marker3D" parent="EnemyPositions" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 3.50824)
+
+[node name="Marker3D7" type="Marker3D" parent="EnemyPositions" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 12.7621)
 
 [node name="WorldEnvironment" parent="Lighting" index="0"]
 environment = SubResource("Environment_r6poa")

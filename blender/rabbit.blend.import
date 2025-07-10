@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b210mpbfkhcp"
-valid=false
+path="res://.godot/imported/rabbit.blend-1098f825d5d5a47973e8cb68a0929c09.scn"
 
 [deps]
 
 source_file="res://blender/rabbit.blend"
+dest_files=["res://.godot/imported/rabbit.blend-1098f825d5d5a47973e8cb68a0929c09.scn"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cnjmyiuqw1wh2"]
+[gd_scene load_steps=44 format=3 uid="uid://cnjmyiuqw1wh2"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_pn1ho"]
 [ext_resource type="Material" uid="uid://cibvmstybnpug" path="res://levels/materials/cobblestone_floor.tres" id="2_eq2dq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="6_kxl8o"]
 [ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="8_edlmi"]
 [ext_resource type="AudioStream" uid="uid://dxnnb672uxbkr" path="res://audio/levels/water/Sea.wav" id="9_cjt4s"]
+[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="9_hotfv"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="10_hainp"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kxl8o"]
@@ -218,42 +219,6 @@ enemy_spawn_limits = Dictionary[StringName, int]({
 &"MOUSE": 0,
 &"RED_KNIGHT": 0
 })
-
-[node name="EnemyData_HatterPath#Marker3D" type="Marker3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
-
-[node name="EnemyData_HatterPath#Marker3D2" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 14)
-
-[node name="EnemyData_HatterPath#Marker3D4" type="Marker3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
-
-[node name="EnemyData_HatterPath#Marker3D3" type="Marker3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
-
-[node name="EnemyData_DigPositions#Marker3D" type="Marker3D" parent="." index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
-
-[node name="EnemyData_DigPositions#Marker3D4" type="Marker3D" parent="." index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
-
-[node name="EnemyData_DigPositions#Marker3D2" type="Marker3D" parent="." index="6"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 0, 0)
-
-[node name="EnemyData_DigPositions#Marker3D5" type="Marker3D" parent="." index="7"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, 0, 0)
-
-[node name="EnemyData_JumpPositions#Marker3D" type="Marker3D" parent="." index="8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="EnemyData_JumpPositions#Marker3D3" type="Marker3D" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-
-[node name="EnemyData_JumpPositions#Marker3D2" type="Marker3D" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="EnemyData_JumpPositions#Marker3D4" type="Marker3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
 [node name="Dirt" type="Node3D" parent="StaticGeometry" index="1"]
 metadata/_edit_group_ = true
@@ -509,6 +474,26 @@ shape = SubResource("ConcavePolygonShape3D_b41wv")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2, -14)
 shape = SubResource("ConcavePolygonShape3D_088y8")
 
+[node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.063, 0, 0)
+script = ExtResource("9_hotfv")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
+[node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.480832, 0, 14.0665)
+script = ExtResource("9_hotfv")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
+[node name="DigSpot3" type="Marker3D" parent="EnemyData/DigSpots" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.480832, 0, -14.4264)
+script = ExtResource("9_hotfv")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
+[node name="DigSpot4" type="Marker3D" parent="EnemyData/DigSpots" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8588, 0, 0.1986)
+script = ExtResource("9_hotfv")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
 
@@ -551,5 +536,5 @@ stream = ExtResource("10_hainp")
 unit_size = 20.0
 max_db = 1.0
 
-[node name="Player" parent="." index="22"]
+[node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)

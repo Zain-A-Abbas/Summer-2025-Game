@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bul1qv25y7gbq"]
+[gd_scene load_steps=22 format=3 uid="uid://bul1qv25y7gbq"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_116be"]
 [ext_resource type="Material" uid="uid://uhccc1d63o67" path="res://levels/materials/stone_brick.tres" id="2_cmt2u"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://eve3jdi3iq6x" path="res://levels/skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="4_bc2ch"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="5_27bmw"]
 [ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="6_27bmw"]
-[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="7_wglwd"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="8_tvmtm"]
 [ext_resource type="AudioStream" uid="uid://djgssdgihirmj" path="res://audio/levels/bridge/Inside Day.wav" id="8_x5k0k"]
 

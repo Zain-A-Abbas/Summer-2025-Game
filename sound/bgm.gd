@@ -5,7 +5,7 @@ extends Node
 # Battle
 
 # Non-battle
-var title_music: String = "res://sound/music/Torch Impact 2.wav"
+var title_music: String = "res://sound/music/04 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav"
 
 # Functionality
 
