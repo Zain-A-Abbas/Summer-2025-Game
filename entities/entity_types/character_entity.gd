@@ -6,20 +6,23 @@ const GRAVITY_ACCELERATION: float = 98
 ## A class used for characters. Holds an animator, collision, a state machine, 
 ## and stats
 
+@export var death_state_duration: float
+
+var gravity_vel: float = 0
+
 @onready var state_machine: StateMachine = %StateMachine
 @onready var animation_effects: AnimationPlayer = $AnimationEffects
 @onready var sounds: Node3D = %Sounds
+@onready var health_component: HealthComponent = %HealthComponent
+@onready var movement_component: MovementComponent = %MovementComponent
+@onready var decal: Decal = %Decal
 
-@export var health_component: HealthComponent
-@export var movement_component: MovementComponent
-
-var gravity_vel: float = 0
 
 func char_entity_die(args: Dictionary[String, Variant] = {}):
 	pass
 	
-func play_sound_fx(sound: Node3D, name: String):
-	sound.get_node(name).play()
+func play_sound_fx(name: String):
+	sounds.get_node(name).play()
 
 func gravity_velocity() -> Vector3:
 	if is_on_floor():

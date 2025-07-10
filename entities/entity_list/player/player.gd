@@ -8,13 +8,13 @@ signal obtained_money(amount: int)
 const DODGE_REQUIREMENT: float = 50
 const PARRY_REQUIREMENT: float = 20
 
-@onready var action_animator: AnimationPlayer = %ActionAnimator
-@onready var basic_attack: AttackObject = %basic_attack
-
-@onready var camera: LevelCamera
-
 @export var hurtbox: HurtboxComponent
 @export var animation_tree: AnimationTree
+@export var dodge_duration: float
+@export var dodge_speed: float
+@export var attack_move_speed: float
+@export var base_parry_invincibility_period: float
+@export var parry_duration: float
 
 # Required for parrying/dodging
 var stamina: float = 100.0
@@ -24,6 +24,12 @@ var stamina_regeneration_cooldown: SceneTreeTimer = null
 var parry_counter: int = 0
 var can_get_parry_point: bool = false
 var upgrades: PlayerUpgrades
+
+@onready var action_animator: AnimationPlayer = %ActionAnimator
+@onready var basic_attack: AttackObject = %basic_attack
+@onready var camera: LevelCamera
+@onready var listener: AudioListener3D = %listener
+
 
 func _ready() -> void:
 	prepare_states()
@@ -41,7 +47,7 @@ func prepare_states():
 		StateInitializer.new(&"Walk", PlayerWalk.new(self)),
 		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
 		StateInitializer.new(&"Parry", PlayerParry.new(self)),
-		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack))
+		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack)),
 	]
 	
 	state_machine.assign_states(player_states)
@@ -50,8 +56,8 @@ func prepare_states():
 # involving upgrades
 func initialize_upgrades(_upgrades: PlayerUpgrades):
 	upgrades = _upgrades
-	health_component.max_health = 100 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
-	max_stamina = 100 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
+	health_component.max_health = 100.0 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
+	max_stamina = 100.0 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
 
 # regeneration_cooldown is the amount of time before stamina starts regenerating again
 # is overwritten whenever another stamina action is taken
@@ -82,7 +88,7 @@ func parry_received(attack_object: AttackObject):
 	if can_get_parry_point:
 		parry_counter = mini(parry_counter + 1, 3)
 		can_get_parry_point = false
-		play_sound_fx(sounds, &"parried")
+		play_sound_fx(&"parried")
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	pass
@@ -90,14 +96,16 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 func heal(heal_amount: int):
 	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
 	player_hp_recovered.emit(self)
-	play_sound_fx(sounds, &"heal")
+	play_sound_fx(&"heal")
 
 func gain_money(amount: int):
 	obtained_money.emit(amount)
-	play_sound_fx(sounds, &"gain_money")
+	play_sound_fx(&"gain_money")
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
-		#print("player hit")
-		play_sound_fx(sounds, &"damaged")
+		play_sound_fx(&"damaged")
 		resolve_hit(attack_object)
+
+func update_listener_direction():
+	listener.global_rotation.y = Vector2(-0.707107, 0.707107).angle() + deg_to_rad(90)

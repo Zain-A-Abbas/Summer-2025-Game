@@ -11,16 +11,15 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.action_animator.play("mouse/idle") 
 
 func st_physics_process(delta: float) -> void:
-	delta_count += delta
-	
 	# pounce cooldown
 	if from_pounce:
+		delta_count += delta
 		if delta_count <= enemy.pounce_cooldown:
 			return
 		else:
 			from_pounce = false
-		
-	if distance_to_player() < enemy.DEAGGRO_DISTANCE:
+	
+	if distance_to_player() < enemy.active_range[0]:
 		return state_machine.change_state(&"Run")
-	else:
+	elif distance_to_player() < enemy.active_range[1]:
 		return state_machine.change_state(&"Charge")

@@ -1,49 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://krqa0edksq88"]
+[gd_scene load_steps=8 format=3 uid="uid://krqa0edksq88"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_vng3c"]
-[ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="2_8pan4"]
-[ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="3_gyrkg"]
-[ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="4_rvc3f"]
+[ext_resource type="Texture2D" uid="uid://bew5madpf6tql" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Adobe.png" id="2_rk4b3"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bcpq6"]
-data = PackedVector3Array(-10, -10, 10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, -10, -10, -10, 10, -10, 10, -10, -10, -10, -10, -10, -10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, 10, 10, 10, -10, 10, -10, -10, 10, 10, -10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10, 10, 10, -10, -10, 10, 10, 10, 10, -10, 10, 10, -10, -10, -10, 10, -10, 10, 10, -10, -10, 10, -10, 10, 10, 10, 10, 10, -10, 10, 10, 10, 10, -10, -10, 10, 10, -10)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4x476"]
+albedo_texture = ExtResource("2_rk4b3")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.125, 0.125, 0.125)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rk4b3"]
+size = Vector3(48, 9, 48)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h5i5d"]
+
+[sub_resource type="Sky" id="Sky_is05w"]
+sky_material = SubResource("ProceduralSkyMaterial_h5i5d")
+
+[sub_resource type="Environment" id="Environment_tngkq"]
+background_mode = 2
+sky = SubResource("Sky_is05w")
+ambient_light_source = 2
+ambient_light_color = Color(0.51, 0.6, 0.5955, 1)
+ambient_light_energy = 1.65
+fog_light_color = Color(0.85, 0.9075, 1, 1)
+fog_light_energy = 0.02
 
 [node name="LevelBase" instance=ExtResource("1_vng3c")]
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-size = Vector3(20, 0.001, 20)
-material = ExtResource("2_8pan4")
+layers = 33
+size = Vector3(48, 0.001, 48)
+material = SubResource("StandardMaterial3D_4x476")
 
-[node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="1"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 20, 0)
-flip_faces = true
-size = Vector3(20, 20, 20)
-material = ExtResource("3_gyrkg")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/RoomBorders" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry" index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 32
 collision_mask = 0
 
-[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/RoomBorders/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
-shape = SubResource("ConcavePolygonShape3D_bcpq6")
-
-[node name="LevelExit" parent="StaticGeometry" index="2" instance=ExtResource("4_rvc3f")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 20, 2.5, 0.5)
-
-[node name="LevelExit2" parent="StaticGeometry" index="3" instance=ExtResource("4_rvc3f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 20)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+shape = SubResource("BoxShape3D_rk4b3")
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
 
+[node name="WorldEnvironment" parent="Lighting" index="0"]
+environment = SubResource("Environment_tngkq")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
-transform = Transform3D(-0.965926, 0.12941, -0.224144, 0, 0.866026, 0.5, 0.258819, 0.482963, -0.836516, 2.23887, 5, 3.72436)
+transform = Transform3D(0.635646, 0.0444998, -0.770697, 0.683013, -0.497703, 0.534589, -0.359789, -0.866205, -0.346757, -2.97007, 23.0382, 0)
+light_color = Color(1, 0.922, 0.87, 1)
+shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
-transform = Transform3D(-0.965925, -0.12941, 0.224144, 0, -0.866025, -0.5, 0.258819, -0.482963, 0.836516, 4.54384, 5, -0.331621)
+transform = Transform3D(-0.152284, -0.618384, 0.77098, -0.682963, -0.498025, -0.534352, 0.714403, -0.607924, -0.346492, -2.97007, 23.0382, 0)
+light_color = Color(0.87, 1, 0.945833, 1)
+light_energy = 0.7
+shadow_enabled = true
+
+[node name="LevelCamera" parent="." index="7"]
+size = 14.0
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)

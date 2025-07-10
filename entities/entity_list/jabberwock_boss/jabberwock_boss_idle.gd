@@ -11,6 +11,7 @@ var next_action_time: float = 0.0
 var direction_to_player: Vector3
 var forward_direction: Vector3
 
+
 func _init(new_enemy: Enemy, rage: JabberwockBossRageComponent) -> void:
 	enemy = new_enemy
 	rage_component = rage
@@ -25,6 +26,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		cooldown = args['cooldown']
 		
 	next_action_time = randf_range(0.8, 2.0) + cooldown 
+	enemy.action_animator.play("jabberwock/idle")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

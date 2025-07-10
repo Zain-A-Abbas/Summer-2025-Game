@@ -80,11 +80,9 @@ bg_color = Color(0.62, 0.1426, 0.1426, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mppf5"]
 viewport_path = NodePath("SubViewport")
 
-[node name="EnemyBase" node_paths=PackedStringArray("meshes", "health_component", "movement_component") instance=ExtResource("1_6myxx")]
+[node name="EnemyBase" node_paths=PackedStringArray("meshes") instance=ExtResource("1_6myxx")]
 script = ExtResource("2_xtrms")
 meshes = []
-health_component = NodePath("Components/HealthComponent")
-movement_component = NodePath("Components/MovementComponent")
 
 [node name="Attacks" type="Node3D" parent="." index="2"]
 unique_name_in_owner = true
@@ -100,17 +98,15 @@ unique_name_in_owner = true
 
 [node name="Components" type="Node" parent="." index="5"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+[node name="HealthComponent" type="Node" parent="Components" index="0"]
 unique_name_in_owner = true
 script = ExtResource("4_thtn2")
-entity = NodePath("../..")
 current_health = 3
 max_health = 3
 
-[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+[node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true
 script = ExtResource("5_1uwf7")
-entity = NodePath("../..")
 move_speed = 550.0
 
 [node name="AttackIndicator" type="Sprite3D" parent="." index="6"]
@@ -143,6 +139,7 @@ show_percentage = false
 script = ExtResource("7_6omki")
 
 [node name="EnemyHP" type="Sprite3D" parent="." index="8"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 cast_shadow = 0
 extra_cull_margin = 128.0

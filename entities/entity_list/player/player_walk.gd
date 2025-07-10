@@ -5,29 +5,28 @@ const STEP_TIME: float = 0.3
 
 var delta_count: float = 0.0
 var step_index: int = 1
-	
+
+
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	step_index = 2
 	
-	player.play_sound_fx(player.sounds, &"run_step_1")
+	player.play_sound_fx(&"run_step_1")
 	player.action_animator.play("walk")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
+	player.update_listener_direction()
 	
 	if Input.is_action_just_pressed("attack"):
-		state_machine.change_state(&"Attack", {"attack_name": &"basic_attack"})
-		return
+		return state_machine.change_state(&"Attack")
 	
 	var movement_input: Vector2 = get_player_movement()
 	if movement_input == Vector2.ZERO: # if no movement register, go back to idle state
-		state_machine.change_state(&"Idle")
-		return
+		return state_machine.change_state(&"Idle")
 
 	if Input.is_action_just_pressed("dodge") && player.can_dodge():
-		state_machine.change_state(&"Dodge")
-		return
+		return state_machine.change_state(&"Dodge")
 
 	var movement_vector: Vector3 = Vector3(-movement_input.x, 0.0, movement_input.y)
 
@@ -38,7 +37,7 @@ func st_physics_process(delta: float) -> void:
 	
 	# play footstep sound fx
 	if delta_count > STEP_TIME:
-		player.play_sound_fx(player.sounds, "run_step_%d" % step_index)
+		player.play_sound_fx("run_step_%d" % step_index)
 		step_index += 1
 		
 		delta_count = 0.0

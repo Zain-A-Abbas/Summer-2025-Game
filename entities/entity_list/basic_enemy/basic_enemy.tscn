@@ -1,27 +1,23 @@
-[gd_scene load_steps=42 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=41 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
 [ext_resource type="PackedScene" uid="uid://f1ej6s44jql2" path="res://entities/entity_list/basic_enemy/card_animator.tscn" id="3_5sssr"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_cwsr8"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="3_u4wqx"]
-[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="4_5sssr"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_qlgqh"]
+[ext_resource type="Material" uid="uid://cbvpk3c6dtf8x" path="res://models/enemies/enemy_material_overlay.tres" id="4_wd8hw"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_fdidt"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="7_kh8l7"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="8_68gr5"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="9_k5gch"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="10_5sssr"]
-[ext_resource type="AudioStream" uid="uid://38w54su7hfex" path="res://audio/entities/Sword_Whoosh_No_Shing_04.wav" id="14_i6hqh"]
-[ext_resource type="AudioStream" uid="uid://cies7cq8nelo" path="res://audio/entities/Card Step 1.wav" id="15_bfcs5"]
-[ext_resource type="AudioStream" uid="uid://bebwia0o06val" path="res://audio/entities/Card Step 2.wav" id="16_wd8hw"]
-[ext_resource type="AudioStream" uid="uid://b3eug3bdjpi3f" path="res://audio/entities/Card Step 3.wav" id="17_bfcs5"]
-[ext_resource type="AudioStream" uid="uid://to64uq7wbubj" path="res://audio/entities/Card Step 4.wav" id="18_fl2vc"]
-[ext_resource type="AudioStream" uid="uid://dloqrq1bsjshk" path="res://audio/entities/Card Damaged 2.wav" id="19_bfcs5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
-render_priority = 0
-shader = ExtResource("4_5sssr")
+[ext_resource type="AudioStream" uid="uid://ctlcgwhqva3jy" path="res://audio/entities/general/Sword_Whoosh_No_Shing_04.wav" id="13_wd8hw"]
+[ext_resource type="AudioStream" uid="uid://u6wcfdwn2moh" path="res://audio/entities/card/Card Step 1.wav" id="14_bfcs5"]
+[ext_resource type="AudioStream" uid="uid://d3lvk8o0puhn7" path="res://audio/entities/card/Card Step 2.wav" id="15_fl2vc"]
+[ext_resource type="AudioStream" uid="uid://bqwou5lviuh0p" path="res://audio/entities/card/Card Step 3.wav" id="16_wxn5g"]
+[ext_resource type="AudioStream" uid="uid://pipcct866yyn" path="res://audio/entities/card/Card Step 4.wav" id="17_16uoj"]
+[ext_resource type="AudioStream" uid="uid://d14phyco0gwft" path="res://audio/entities/card/Card Damaged 2.wav" id="18_e60tt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 
@@ -174,7 +170,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="BasicEnemy" node_paths=PackedStringArray("meshes", "animation_tree") instance=ExtResource("1_5mhhj")]
 script = ExtResource("2_f51gl")
-close_to_player_distance = 7.0
+active_radius = 7.0
 chase_stop_distance = 2.0
 attack_cooldown = 1.0
 wander_duration = 6.0
@@ -186,41 +182,43 @@ animation_tree = NodePath("card/AnimationTree")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(-0.116731, 3.38548, -0.185572)
-bones/1/rotation = Quaternion(-8.2572e-05, 0.0071396, -0.011473, 0.999909)
-bones/3/rotation = Quaternion(0.168642, -0.0413797, 0.000327451, 0.984808)
-bones/4/rotation = Quaternion(0.286853, -0.11481, -0.0266792, 0.950696)
-bones/6/rotation = Quaternion(0.0441837, 0.937151, -0.346063, 0.0059274)
-bones/7/rotation = Quaternion(0.201512, -0.774553, 0.336848, 0.495977)
-bones/8/rotation = Quaternion(0.049353, 0.653443, 0.0688656, 0.752219)
-bones/10/rotation = Quaternion(0.00252978, 0.0011595, 0.000822617, 0.999996)
-bones/13/rotation = Quaternion(-0.175065, 0.0776146, 0.0182617, 0.981323)
-bones/14/rotation = Quaternion(0.114747, 0.169609, -0.0226544, 0.978546)
+bones/1/position = Vector3(0.0833191, 3.21631, -0.184743)
+bones/1/rotation = Quaternion(-0.000359067, -0.0165856, 0.0216474, 0.999628)
+bones/3/rotation = Quaternion(0.163034, -0.0410678, -0.000530922, 0.985765)
+bones/4/rotation = Quaternion(0.270461, -0.114014, -0.0292757, 0.955507)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0378364, 0.938704, -0.342591, 0.00586789)
+bones/7/rotation = Quaternion(0.202722, -0.772829, 0.336093, 0.498679)
+bones/8/rotation = Quaternion(0.0328018, 0.669818, 0.0668906, 0.738778)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.0117766, 0.0053979, 0.00382971, 0.999909)
+bones/13/rotation = Quaternion(-0.163832, 0.0770205, 0.0200038, 0.983274)
+bones/14/rotation = Quaternion(0.130749, 0.168762, -0.0217259, 0.976705)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.210493, 0.750388, -0.288472, 0.556233)
-bones/19/rotation = Quaternion(-0.0152401, -0.613758, -0.00903669, 0.789295)
+bones/18/rotation = Quaternion(0.159287, 0.773417, -0.219373, 0.573001)
+bones/19/rotation = Quaternion(-0.00715983, -0.613905, -0.0194255, 0.789108)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.000182039, 0.398958, 0.9166, -0.0260258)
-bones/26/rotation = Quaternion(-0.00724523, 0.815644, -0.578412, -0.010568)
-bones/27/rotation = Quaternion(-0.0236488, 0.777263, -0.628727, -0.00242932)
-bones/28/rotation = Quaternion(-0.000212356, -0.033808, 0.998967, -0.0303605)
-bones/29/rotation = Quaternion(-0.000479432, 0.988411, -0.151759, -0.0035177)
-bones/30/rotation = Quaternion(-0.00927313, 0.683011, -0.730332, -0.00508167)
+bones/25/rotation = Quaternion(0.000252919, -0.089005, 0.995375, 0.0361596)
+bones/26/rotation = Quaternion(0.00141471, 0.971322, -0.237696, 0.00570372)
+bones/27/rotation = Quaternion(-0.0062209, 0.694574, -0.719079, 0.0212921)
+bones/28/rotation = Quaternion(0.000191584, 0.256395, 0.966184, 0.0273904)
+bones/29/rotation = Quaternion(0.000625775, 0.986715, -0.16242, 0.00355232)
+bones/30/rotation = Quaternion(0.0210768, 0.618729, -0.785315, 0.0033289)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 instance_shader_parameters/hit_effect = false
 
 [node name="Cube" parent="card/Armature/GeneralSkeleton" index="1"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 instance_shader_parameters/hit_effect = false
 
 [node name="Cube_001" parent="card/Armature/GeneralSkeleton" index="2"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 
 [node name="Cube_002" parent="card/Armature/GeneralSkeleton" index="3"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -282,35 +280,42 @@ max_health = 50
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 350.0
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="10"]
-
-[node name="EnemyHP" parent="." index="12"]
+[node name="EnemyHP" parent="." index="11"]
 texture = SubResource("ViewportTexture_5sssr")
 
 [node name="attack_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_i6hqh")
+stream = ExtResource("13_wd8hw")
 volume_db = -10.0
 max_db = 0.0
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_bfcs5")
+stream = ExtResource("14_bfcs5")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_wd8hw")
+stream = ExtResource("15_fl2vc")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_bfcs5")
+stream = ExtResource("16_wxn5g")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_fl2vc")
+stream = ExtResource("17_16uoj")
+volume_db = 10.0
 max_db = 2.0
+max_distance = 20.0
 
 [node name="damaged" parent="Sounds" index="5"]
-stream = ExtResource("19_bfcs5")
-max_db = 0.0
+stream = ExtResource("18_e60tt")
+volume_db = 5.0
+max_db = 1.5
 pitch_scale = 0.75
 
 [editable path="card"]

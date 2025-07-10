@@ -14,19 +14,19 @@
 [ext_resource type="Script" uid="uid://f25cvuecvk54" path="res://entities/stats/health_component.gd" id="12_037cv"]
 [ext_resource type="Script" uid="uid://davokld74qf01" path="res://entities/stats/hurtbox_component.gd" id="12_w7qv5"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="13_y07nu"]
-[ext_resource type="AudioStream" uid="uid://fiuv1qcohimj" path="res://audio/entities/Arrow_Whoosh_01.wav" id="14_lyphk"]
-[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/entities/Sword_Whoosh_01.wav" id="15_en3iv"]
-[ext_resource type="AudioStream" uid="uid://byxxr2fujg0n8" path="res://audio/entities/Sword_Whoosh_No_Shing_02.wav" id="16_ejd1t"]
-[ext_resource type="AudioStream" uid="uid://v4fec0kuo08c" path="res://audio/entities/Sword_Whoosh_03.wav" id="17_arapp"]
-[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/entities/Stone Chain Run 1.wav" id="18_rwmd0"]
-[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/entities/Stone Chain Run 2.wav" id="19_p772y"]
-[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/entities/Stone Chain Run 3.wav" id="20_wlnxk"]
-[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/entities/Stone Chain Run 4.wav" id="21_apdix"]
-[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/entities/Stone Chain Run 5.wav" id="22_5635v"]
-[ext_resource type="AudioStream" uid="uid://cckd6y0i2jc6" path="res://audio/entities/SFX_Sword_Sheathe_01.wav" id="23_ejd1t"]
-[ext_resource type="AudioStream" uid="uid://8ff0m2uifoof" path="res://audio/entities/SFX_Potion_01.wav" id="25_arapp"]
-[ext_resource type="AudioStream" uid="uid://c7dkpunjqyefl" path="res://audio/entities/SFX_Key_Take_08.wav" id="26_rwmd0"]
-[ext_resource type="AudioStream" uid="uid://k6oqv6j7txg5" path="res://audio/entities/Sword Impact Hit 2.wav" id="27_p772y"]
+[ext_resource type="AudioStream" uid="uid://d3sebjuxy6q" path="res://audio/entities/player/Arrow_Whoosh_01.wav" id="15_p772y"]
+[ext_resource type="AudioStream" uid="uid://bcv0dm6k4yrx8" path="res://audio/entities/player/Sword_Whoosh_01.wav" id="16_wlnxk"]
+[ext_resource type="AudioStream" uid="uid://6d7n8wydbwsl" path="res://audio/entities/player/Sword_Whoosh_No_Shing_02.wav" id="17_apdix"]
+[ext_resource type="AudioStream" uid="uid://7kqta0n1f3e1" path="res://audio/entities/player/Sword_Whoosh_03.wav" id="18_5635v"]
+[ext_resource type="AudioStream" uid="uid://dl6asahtmoiy2" path="res://audio/entities/general/Stone Chain Run 1.wav" id="19_p772y"]
+[ext_resource type="AudioStream" uid="uid://d18ohe1khso8l" path="res://audio/entities/general/Stone Chain Run 2.wav" id="20_wlnxk"]
+[ext_resource type="AudioStream" uid="uid://fy1tdvy6686s" path="res://audio/entities/general/Stone Chain Run 3.wav" id="21_apdix"]
+[ext_resource type="AudioStream" uid="uid://d6lx6q5het0w" path="res://audio/entities/general/Stone Chain Run 4.wav" id="22_5635v"]
+[ext_resource type="AudioStream" uid="uid://ciaol78jcb2vb" path="res://audio/entities/general/Stone Chain Run 5.wav" id="23_m15bl"]
+[ext_resource type="AudioStream" uid="uid://x5223upjee7y" path="res://audio/entities/player/SFX_Sword_Draw_01.wav" id="24_cyyb8"]
+[ext_resource type="AudioStream" uid="uid://bm3sqbyquj2bx" path="res://audio/entities/player/SFX_Potion_01.wav" id="25_uxlxn"]
+[ext_resource type="AudioStream" uid="uid://bwuttidh15agr" path="res://audio/entities/player/SFX_Key_Take_08.wav" id="26_p772y"]
+[ext_resource type="AudioStream" uid="uid://bbcwfj2p5d33o" path="res://audio/entities/player/Sword Impact Hit 2.wav" id="27_p772y"]
 
 [sub_resource type="Gradient" id="Gradient_w7qv5"]
 interpolation_mode = 1
@@ -324,41 +324,44 @@ shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
 
-[node name="Player" node_paths=PackedStringArray("hurtbox", "animation_tree", "health_component", "movement_component") groups=["player"] instance=ExtResource("1_0kr36")]
+[node name="Player" node_paths=PackedStringArray("hurtbox", "animation_tree") groups=["player"] instance=ExtResource("1_0kr36")]
 collision_layer = 17
 script = ExtResource("1_xb04b")
 hurtbox = NodePath("Hurtbox")
 animation_tree = NodePath("PlayerAnimator/AnimationTree")
-health_component = NodePath("Components/HealthComponent")
-movement_component = NodePath("Components/MovementComponent")
+dodge_duration = 0.12
+dodge_speed = 1750.0
+attack_move_speed = 375.0
+base_parry_invincibility_period = 0.1
+parry_duration = 0.2
 
 [node name="PlayerAnimator" parent="." index="0" instance=ExtResource("3_w7qv5")]
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0459432, 2.77635, -0.404846)
+bones/1/position = Vector3(0.0549625, 2.77738, -0.409175)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.163162, -0.041075, -0.000511388, 0.985744)
-bones/4/rotation = Quaternion(0.268657, -0.113923, -0.0295597, 0.956019)
+bones/3/rotation = Quaternion(0.167987, -0.0413438, 0.000226687, 0.984922)
+bones/4/rotation = Quaternion(0.286121, -0.114775, -0.0267958, 0.950917)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0256883, 0.941589, -0.335734, 0.00575049)
-bones/7/rotation = Quaternion(0.204961, -0.769605, 0.33468, 0.503675)
-bones/8/rotation = Quaternion(0.0358633, 0.666904, 0.0672485, 0.741236)
+bones/6/rotation = Quaternion(0.026807, 0.941328, -0.336376, 0.00576158)
+bones/7/rotation = Quaternion(0.204751, -0.769909, 0.334813, 0.503206)
+bones/8/rotation = Quaternion(0.0355729, 0.66718, 0.0672147, 0.741004)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0294922, 0.013518, 0.00959115, 0.999428)
-bones/13/rotation = Quaternion(-0.16261, 0.0769543, 0.0201924, 0.983478)
-bones/14/rotation = Quaternion(0.124597, 0.170245, -0.018491, 0.977318)
+bones/10/rotation = Quaternion(0.0278599, 0.0127697, 0.00906037, 0.999489)
+bones/13/rotation = Quaternion(-0.174562, 0.0775885, 0.01834, 0.981413)
+bones/14/rotation = Quaternion(0.142161, 0.163889, -0.0330116, 0.975623)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.161983, 0.772375, -0.223011, 0.572245)
-bones/19/rotation = Quaternion(-0.0103786, -0.61386, -0.0152877, 0.789199)
+bones/18/rotation = Quaternion(0.186684, 0.76196, -0.256348, 0.564669)
+bones/19/rotation = Quaternion(-0.00157167, -0.613945, -0.0266074, 0.788898)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00121514, 0.209443, 0.962263, -0.173732)
-bones/26/rotation = Quaternion(0.0402621, 0.865547, -0.494063, 0.0714738)
-bones/27/rotation = Quaternion(-0.0719902, 0.611468, -0.78465, 0.0724541)
-bones/28/rotation = Quaternion(0.00207911, 0.0117983, 0.954724, 0.297251)
-bones/29/rotation = Quaternion(-0.153085, 0.818554, -0.488283, -0.260988)
-bones/30/rotation = Quaternion(0.224266, 0.488069, -0.83467, 0.121741)
+bones/25/rotation = Quaternion(-0.00120691, 0.210549, 0.962234, -0.172551)
+bones/26/rotation = Quaternion(0.0404882, 0.865667, -0.493768, 0.0719322)
+bones/27/rotation = Quaternion(-0.070509, 0.612449, -0.784084, 0.0717464)
+bones/28/rotation = Quaternion(0.0020854, 0.0131161, 0.954428, 0.298145)
+bones/29/rotation = Quaternion(-0.152962, 0.818841, -0.487748, -0.261161)
+bones/30/rotation = Quaternion(0.224572, 0.489962, -0.833483, 0.121701)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -367,7 +370,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.672906, -0.680361, 0.290357, 0.547736, -0.722082, -0.42259, 0.497175, -0.125324, 0.858552, -1.5368, 2.52918, -2.13308)
+transform = Transform3D(-0.608831, -0.729693, 0.311245, 0.598915, -0.680076, -0.422845, 0.520217, -0.0710316, 0.851075, -1.53736, 2.61752, -2.12388)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
@@ -431,93 +434,95 @@ shape = SubResource("CapsuleShape3D_y07nu")
 
 [node name="Components" type="Node" parent="." index="8"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+[node name="HealthComponent" type="Node" parent="Components" index="0"]
 unique_name_in_owner = true
 script = ExtResource("12_037cv")
-entity = NodePath("../..")
-current_health = 300
-max_health = 300
+current_health = 100
+max_health = 100
+metadata/_custom_type_script = "uid://f25cvuecvk54"
 
-[node name="MovementComponent" type="Node" parent="Components" index="1" node_paths=PackedStringArray("entity")]
+[node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true
 script = ExtResource("13_y07nu")
-entity = NodePath("../..")
 move_speed = 550.0
+metadata/_custom_type_script = "uid://cytojthox684"
 
-[node name="AudioListener3D" type="AudioListener3D" parent="." index="9"]
-visible = false
+[node name="listener" type="AudioListener3D" parent="." index="9"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5242, 0)
 current = true
 
 [node name="dodge_whoosh" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_lyphk")
+stream = ExtResource("15_p772y")
 max_db = -1.165
 pitch_scale = 0.65
 
 [node name="sword_whoosh_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_en3iv")
+stream = ExtResource("16_wlnxk")
 volume_db = -5.0
 max_db = 0.0
 
 [node name="sword_whoosh_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_ejd1t")
+stream = ExtResource("17_apdix")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.82
 
 [node name="sword_whoosh_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_arapp")
+stream = ExtResource("18_5635v")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 1.21
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_rwmd0")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.8
-
-[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
 stream = ExtResource("19_p772y")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.8
 
-[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
+[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
 stream = ExtResource("20_wlnxk")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.8
 
-[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
+[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
 stream = ExtResource("21_apdix")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.8
 
-[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="8"]
+[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
 stream = ExtResource("22_5635v")
 volume_db = -5.0
 max_db = 0.0
 pitch_scale = 0.8
 
+[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="8"]
+stream = ExtResource("23_m15bl")
+volume_db = -5.0
+max_db = 0.0
+pitch_scale = 0.8
+
 [node name="parried" type="AudioStreamPlayer3D" parent="Sounds" index="9"]
-stream = ExtResource("23_ejd1t")
+stream = ExtResource("24_cyyb8")
 max_db = 0.0
 pitch_scale = 0.85
 
 [node name="heal" type="AudioStreamPlayer3D" parent="Sounds" index="10"]
-stream = ExtResource("25_arapp")
+stream = ExtResource("25_uxlxn")
 volume_db = -5.0
 max_db = 0.0
 
 [node name="gain_money" type="AudioStreamPlayer3D" parent="Sounds" index="11"]
-stream = ExtResource("26_rwmd0")
+stream = ExtResource("26_p772y")
 volume_db = -5.0
 max_db = 0.0
 
 [node name="damaged" parent="Sounds" index="12"]
 stream = ExtResource("27_p772y")
-pitch_scale = 0.5
+max_db = 2.0
+pitch_scale = 0.45
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

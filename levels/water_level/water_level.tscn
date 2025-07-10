@@ -208,6 +208,42 @@ fog_light_energy = 0.02
 [node name="WaterLevel" instance=ExtResource("1_pn1ho")]
 enemy_limit = 4
 
+[node name="EnemyData_HatterPath#Marker3D" type="Marker3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
+
+[node name="EnemyData_HatterPath#Marker3D2" type="Marker3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 14)
+
+[node name="EnemyData_HatterPath#Marker3D4" type="Marker3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
+
+[node name="EnemyData_HatterPath#Marker3D3" type="Marker3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
+
+[node name="EnemyData_DigPositions#Marker3D" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="EnemyData_DigPositions#Marker3D4" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="EnemyData_DigPositions#Marker3D2" type="Marker3D" parent="." index="6"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 0, 0)
+
+[node name="EnemyData_DigPositions#Marker3D5" type="Marker3D" parent="." index="7"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, 0, 0)
+
+[node name="EnemyData_JumpPositions#Marker3D" type="Marker3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="EnemyData_JumpPositions#Marker3D3" type="Marker3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="EnemyData_JumpPositions#Marker3D2" type="Marker3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="EnemyData_JumpPositions#Marker3D4" type="Marker3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
 [node name="Dirt" type="Node3D" parent="StaticGeometry" index="1"]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -462,42 +498,6 @@ shape = SubResource("ConcavePolygonShape3D_b41wv")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -2, -14)
 shape = SubResource("ConcavePolygonShape3D_088y8")
 
-[node name="Marker3D" type="Marker3D" parent="EnemyData/JumpPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Marker3D3" type="Marker3D" parent="EnemyData/JumpPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/JumpPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
-
-[node name="Marker3D4" type="Marker3D" parent="EnemyData/JumpPositions" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
-
-[node name="Marker3D" type="Marker3D" parent="EnemyData/DigPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
-
-[node name="Marker3D4" type="Marker3D" parent="EnemyData/DigPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/DigPositions" index="2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 14, 0, 0)
-
-[node name="Marker3D5" type="Marker3D" parent="EnemyData/DigPositions" index="3"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -14, 0, 0)
-
-[node name="Marker3D" type="Marker3D" parent="EnemyData/HatterPath" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyData/HatterPath" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 14)
-
-[node name="Marker3D4" type="Marker3D" parent="EnemyData/HatterPath" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
-
-[node name="Marker3D3" type="Marker3D" parent="EnemyData/HatterPath" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
-
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 14)
 
@@ -524,5 +524,5 @@ light_color = Color(0.87, 1, 0.945833, 1)
 light_energy = 0.7
 shadow_enabled = true
 
-[node name="Player" parent="." index="9"]
+[node name="Player" parent="." index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)

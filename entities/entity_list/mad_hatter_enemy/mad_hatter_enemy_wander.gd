@@ -1,8 +1,7 @@
 class_name MadHatterEnemyWander
 extends EnemyState
 
-const HOP_TIME: float = 0.1
-const TIME_TO_LAND: float = 0.4
+const HOP_TIME: float = 0.35
 
 var direction: Vector3 = Vector3.ZERO
 var ray_cast: RayCast3D
@@ -22,11 +21,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	hop_timer = 0.0
 	random_direction_timer = 0.0
 	
-	is_hopping = false
 	move_speed = enemy.movement_component.move_speed
-	direction = face_player()
+	direction = face_player().rotated(Vector3(0, 1, 0), deg_to_rad(180))
 	
 	enemy.action_animator.play("mad_hatter_animations/walk")
+	enemy.play_sound_fx(&"jump")
+	is_hopping = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -35,12 +35,12 @@ func st_physics_process(delta: float) -> void:
 	
 	# play movement sfx
 	if hop_timer > HOP_TIME && !is_hopping:
-		enemy.play_sound_fx(enemy.sounds, &"jump")
+		enemy.play_sound_fx(&"jump")
 		is_hopping = true
 		hop_timer = 0.0
 	
-	if hop_timer > TIME_TO_LAND && is_hopping:
-		enemy.play_sound_fx(enemy.sounds, &"land")
+	if hop_timer > HOP_TIME && is_hopping:
+		enemy.play_sound_fx(&"land")
 		is_hopping = false
 		hop_timer = 0.0
 	
@@ -56,7 +56,8 @@ func st_physics_process(delta: float) -> void:
 	
 	# changing directions for movement
 	if random_direction_timer >= enemy.change_direction_time:
-		direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
+		if !ray_cast.is_colliding():
+			direction = direction.rotated(Vector3(0, 1, 0), deg_to_rad(randf_range(-180, 180)))
 		random_direction_timer = 0.0
 	
 	if ray_cast.is_colliding():

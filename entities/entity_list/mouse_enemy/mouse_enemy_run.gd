@@ -28,7 +28,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	move_speed = enemy.movement_component.move_speed
 	enemy.action_animator.play("mouse/run") 
 	
-	enemy.play_sound_fx(enemy.sounds, "crawl_1")
+	enemy.play_sound_fx(&"crawl_1")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -36,10 +36,12 @@ func st_physics_process(delta: float) -> void:
 	random_direction_timer += delta
 
 	if delta_count >= enemy.run_duration:
-		if distance_to_player() < enemy.DEAGGRO_DISTANCE:
-			return state_machine.change_state(&"Dig")
+		if distance_to_player() >= enemy.active_range[1]:
+			return state_machine.change_state(&"Run")
+		elif distance_to_player() < enemy.active_range[0]:
+			return state_machine.change_state(&"Dig")	
 		else:
-			return state_machine.change_state(&"Charge")
+			return state_machine.change_state(&"Charge")	
 
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:
@@ -60,9 +62,9 @@ func st_physics_process(delta: float) -> void:
 
 	# play footstep sound fx
 	if step_timer > STEP_TIME:
-		enemy.play_sound_fx(enemy.sounds, "crawl_%d" % step_index)
+		enemy.play_sound_fx(&"crawl_%d" % step_index)
 		step_index += 1
 		
 		step_timer = 0.0
-		if step_index > 3:
+		if step_index > 5:
 			step_index = 1

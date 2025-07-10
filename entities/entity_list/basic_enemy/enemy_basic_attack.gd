@@ -39,7 +39,7 @@ func st_physics_process(delta: float) -> void:
 	attack_object.hitbox.monitorable = delta_count >= ACTIVE_FRAMES[0] && delta_count <= ACTIVE_FRAMES[1]
 	if delta_count >= ACTIVE_FRAMES[0] && !attack_activated:
 		attack_activated = true
-		enemy.play_sound_fx(enemy.sounds, "attack_whoosh")
+		enemy.play_sound_fx(&"attack_whoosh")
 		enemy.animation_effects.play("basic_attack")
 	
 	if delta_count > LENGTH:

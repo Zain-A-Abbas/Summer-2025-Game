@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cbvpk3c6dtf8x"]
+
+[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="1_5fdu0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5fdu0")

@@ -1,9 +1,8 @@
 class_name MouseEnemy
 extends Enemy
 
-const DEAGGRO_DISTANCE: float = 6.5
-
 @export var hurtbox: HurtboxComponent
+@export var active_range: Array[float] = [2.5, 10.0]
 @export var run_duration: float = 2.0
 @export var minimum_speed: float = 100
 @export var minimum_charge_time: float = 0.3
@@ -29,17 +28,23 @@ func prepare_states():
 		StateInitializer.new(&"Run", MouseEnemyRun.new(self, ray_cast)),
 		StateInitializer.new(&"Charge", MouseEnemyCharge.new(self)),
 		StateInitializer.new(&"Dig", MouseEnemyDig.new(self, ray_cast)),
-		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, thrust))
+		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, thrust)),
+		StateInitializer.new(&"Death", DeathState.new(
+			self, 
+			"mouse/charge", # change later
+			death_state_duration
+			))
 	]
 	
 	state_machine.assign_states(enemy_states)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
-		play_sound_fx(sounds, &"damaged")
+		play_sound_fx(&"damaged")
+		play_sound_fx(&"damaged_squeal")
 		hurt_effect()
 		resolve_hit(attack_object)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
-	queue_free()
+	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

@@ -1,7 +1,7 @@
 class_name FlowerEnemyDig
 extends EnemyState
 
-const UNDERGROUND_TIMESTAMP: float = 0.8
+const UNDERGROUND_TIMESTAMP: float = 0.7
 const DIG_SOUND_TIME: float = 0.3
 
 var delta_count: float = 0.0
@@ -34,8 +34,9 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	dig_duration = UNDERGROUND_TIMESTAMP + randf_range(1.0, 2.0)
 	
-	enemy.play_sound_fx(enemy.sounds, &"dig_start")
+	enemy.play_sound_fx(&"dig_start")
 	# play initial dig animation here
+	enemy.action_animator.play("flower/dig")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -45,25 +46,26 @@ func st_physics_process(delta: float) -> void:
 		enemy.hurtbox.invincibility_frames = true
 		enemy.hide()
 		is_underground = true
+		enemy.set_collision_layer_value(1, 0)
 	
-	if is_underground && delta_count < dig_duration:
-		# play digging fx
-		if dig_sound_timer > DIG_SOUND_TIME:
-			enemy.play_sound_fx(enemy.sounds, "digging_%d" % dig_sound_index)
+	if dig_sound_timer > DIG_SOUND_TIME:
+		dig_sound_timer = 0.0
+		if !is_underground: # play digging fx
+			enemy.play_sound_fx(&"dig_start")
+		else:
+			enemy.play_sound_fx("digging_%d" % dig_sound_index)
 			dig_sound_index += 1
 			
-			dig_sound_timer = 0.0
-			if dig_sound_index > 5:
+			if dig_sound_index > 4:
 				dig_sound_index = 1
 	
 	if delta_count >= dig_duration:
+		enemy.set_collision_layer_value(1, 1)
 		enemy.show()
-	
 		enemy.position = new_dig_spot.position
-		#print(enemy.name, enemy.position)
-		enemy.play_sound_fx(enemy.sounds, &"dig_stop")
 		return state_machine.change_state(&"Idle", {"from_dig": true})
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.hurtbox.invincibility_frames = false
 	enemy.prev_dig_spot_index = new_dig_spot_index
+	enemy.dig_timer = 0.0

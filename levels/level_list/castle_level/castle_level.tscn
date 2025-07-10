@@ -326,3 +326,6 @@ transform = Transform3D(-0.965926, -0.0977925, 0.239633, 0.0669876, 0.799862, 0.
 light_color = Color(0.4488, 0.6248, 0.66, 1)
 light_energy = 0.5
 shadow_enabled = true
+
+[node name="Player" parent="." index="12"]
+dodge_duration = 0.0

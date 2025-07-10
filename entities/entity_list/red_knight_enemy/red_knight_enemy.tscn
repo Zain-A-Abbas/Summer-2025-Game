@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b8tkb5tr2t8vj"]
+[gd_scene load_steps=42 format=3 uid="uid://b8tkb5tr2t8vj"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_1anpf"]
 [ext_resource type="Script" uid="uid://b4ymyhvxbw3fo" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.gd" id="2_gs4ux"]
@@ -10,15 +10,17 @@
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="9_hwwh2"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="10_k2gn7"]
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="11_0bqms"]
+[ext_resource type="AudioStream" uid="uid://dpu77sbmryeo0" path="res://audio/entities/red_knight/Big_Sword_Whoosh_05.wav" id="12_p6bwr"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="12_xnuhp"]
-[ext_resource type="AudioStream" uid="uid://dupl7xxpo68pa" path="res://audio/entities/Sword_Whoosh_01.wav" id="14_oyvt8"]
-[ext_resource type="AudioStream" uid="uid://ckrxbu6uxv2n5" path="res://audio/entities/Stone Chain Run 1.wav" id="15_p6bwr"]
-[ext_resource type="AudioStream" uid="uid://bvod65ra5kngl" path="res://audio/entities/Stone Chain Run 2.wav" id="16_kt7bg"]
-[ext_resource type="AudioStream" uid="uid://cu0qoq4i6bokc" path="res://audio/entities/Stone Chain Run 3.wav" id="17_4h5qo"]
-[ext_resource type="AudioStream" uid="uid://cuuud0q78ewpq" path="res://audio/entities/Stone Chain Run 4.wav" id="18_pdgy0"]
-[ext_resource type="AudioStream" uid="uid://bq65eqmwbah6q" path="res://audio/entities/Stone Chain Run 5.wav" id="19_657e3"]
-[ext_resource type="AudioStream" uid="uid://crneb1n60pwnk" path="res://audio/entities/SFX_Bash_Shield_01.wav" id="20_kt7bg"]
-[ext_resource type="AudioStream" uid="uid://cnyp5tebhwpek" path="res://audio/entities/Sword Blocked 1.wav" id="21_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://dl6asahtmoiy2" path="res://audio/entities/general/Stone Chain Run 1.wav" id="14_kt7bg"]
+[ext_resource type="AudioStream" uid="uid://d18ohe1khso8l" path="res://audio/entities/general/Stone Chain Run 2.wav" id="15_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://fy1tdvy6686s" path="res://audio/entities/general/Stone Chain Run 3.wav" id="16_pdgy0"]
+[ext_resource type="AudioStream" uid="uid://d6lx6q5het0w" path="res://audio/entities/general/Stone Chain Run 4.wav" id="17_657e3"]
+[ext_resource type="AudioStream" uid="uid://ciaol78jcb2vb" path="res://audio/entities/general/Stone Chain Run 5.wav" id="18_ifxeg"]
+[ext_resource type="AudioStream" uid="uid://cf3xbw36dmhm1" path="res://audio/entities/red_knight/SFX_Bash_Shield_01.wav" id="19_kt7bg"]
+[ext_resource type="AudioStream" uid="uid://cu7hnap3kgm3g" path="res://audio/entities/red_knight/SFX_UnEquip_02.wav" id="20_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://cn86wnr1a62ee" path="res://audio/entities/red_knight/SFX_Take_Ojbect_02.wav" id="20_kt7bg"]
+[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="21_4h5qo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 radius = 1.0
@@ -68,7 +70,7 @@ metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gs4ux"]
 height = 0.191895
-radius = 0.74707
+radius = 0.665039
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i6hqh"]
 seed = 640
@@ -157,43 +159,46 @@ viewport_path = NodePath("SubViewport")
 [node name="RedKnightEnemy" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_1anpf")]
 script = ExtResource("2_gs4ux")
 hurtbox = NodePath("Hurtbox")
-instant_turn_hp_amount = 40
-player_pushback = 200.0
-aggro_range = Array[float]([3.0, 9.0])
-active_radius = 15.0
-swing_cooldown = 1.0
-swing_move_speed = 3000.0
-distance_to_swing = 7.0
+instant_turn_hp_amount = null
+player_pushback = null
+aggro_range = null
+active_radius = null
+swing_move_speed = 2800.0
+distance_to_swing = null
 meshes = [NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_003"), NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_004")]
 animation_tree = NodePath("red_knight/AnimationTree")
+death_state_duration = 1.0
 
 [node name="red_knight" parent="." index="0" instance=ExtResource("3_pdgy0")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.14409, 3.39231, -0.185674)
-bones/1/rotation = Quaternion(-4.90158e-05, -0.00432979, 0.0110003, 0.99993)
-bones/3/rotation = Quaternion(0.164876, -0.0411714, -0.000249968, 0.985455)
-bones/4/rotation = Quaternion(0.275857, -0.11428, -0.0284245, 0.953958)
+bones/1/position = Vector3(-0.102732, 3.29837, -0.184968)
+bones/1/rotation = Quaternion(-0.000283675, 0.0150078, -0.0188751, 0.999709)
+bones/3/rotation = Quaternion(0.168121, -0.0413512, 0.000247289, 0.984899)
+bones/4/rotation = Quaternion(0.288021, -0.114865, -0.026493, 0.950341)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0311779, 0.9403, -0.338867, 0.00580427)
-bones/7/rotation = Quaternion(0.203965, -0.771044, 0.33531, 0.501454)
-bones/8/rotation = Quaternion(0.0294338, 0.67297, 0.0665005, 0.736086)
+bones/6/rotation = Quaternion(0.0404641, 0.938065, -0.344037, 0.00589289)
+bones/7/rotation = Quaternion(0.202228, -0.773534, 0.336402, 0.497577)
+bones/8/rotation = Quaternion(0.0398259, 0.663054, 0.0677169, 0.744438)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0214635, 0.00983789, 0.0069799, 0.999697)
-bones/13/rotation = Quaternion(-0.167514, 0.0772182, 0.0194348, 0.982649)
-bones/14/rotation = Quaternion(0.141453, 0.165721, -0.0282768, 0.975566)
+bones/10/rotation = Quaternion(0.00794782, 0.00364291, 0.00258469, 0.999958)
+bones/13/rotation = Quaternion(-0.175705, 0.0776475, 0.018162, 0.981208)
+bones/14/rotation = Quaternion(0.135178, 0.165108, -0.0311421, 0.976471)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.161353, 0.77262, -0.222161, 0.572423)
-bones/19/rotation = Quaternion(-0.0015207, -0.613945, -0.0266728, 0.788896)
+bones/18/rotation = Quaternion(0.196226, 0.757507, -0.269223, 0.561425)
+bones/19/rotation = Quaternion(-0.00505677, -0.613927, -0.0221285, 0.789037)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000236606, 0.00282303, 0.999424, 0.0338271)
-bones/26/rotation = Quaternion(0.000782872, 0.98491, -0.173014, 0.00431396)
-bones/27/rotation = Quaternion(0.0129888, 0.680922, -0.73224, -0.000817633)
-bones/28/rotation = Quaternion(0.000216306, 0.393343, 0.918872, 0.0309249)
-bones/29/rotation = Quaternion(0.00928335, 0.80605, -0.591641, 0.0126127)
-bones/30/rotation = Quaternion(0.0294308, 0.787348, -0.615806, -0.000464034)
+bones/25/rotation = Quaternion(-0.000195384, 0.324804, 0.945369, -0.0279338)
+bones/26/rotation = Quaternion(-0.00183892, 0.953458, -0.30146, -0.00603895)
+bones/27/rotation = Quaternion(-0.0220099, 0.636423, -0.771023, -0.00216332)
+bones/28/rotation = Quaternion(-0.000251644, -0.0625461, 0.997393, -0.0359772)
+bones/29/rotation = Quaternion(-0.00112489, 0.975264, -0.220973, -0.00538959)
+bones/30/rotation = Quaternion(0.00161651, 0.697753, -0.716084, -0.0190102)
+
+[node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
+transform = Transform3D(-0.364674, -0.727882, 0.58069, 0.0861173, -0.647329, -0.75733, 0.927144, -0.226172, 0.298748, -2.19126, 3.86048, -1.46979)
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
@@ -257,59 +262,69 @@ move_speed = 75.0
 [node name="AttackIndicator" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="10"]
-
-[node name="EnemyHP" parent="." index="12"]
+[node name="EnemyHP" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 texture = SubResource("ViewportTexture_5sssr")
 
-[node name="big_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
-stream = ExtResource("14_oyvt8")
+[node name="lift_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
+stream = ExtResource("20_4h5qo")
+volume_db = -5.0
+unit_size = 7.0
+max_db = 0.0
+
+[node name="big_sword" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+stream = ExtResource("12_p6bwr")
 volume_db = -5.0
 max_db = 0.0
-pitch_scale = 0.6
+pitch_scale = 0.75
 
-[node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
-stream = ExtResource("15_p6bwr")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.48
+[node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+stream = ExtResource("14_kt7bg")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
-stream = ExtResource("16_kt7bg")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
+stream = ExtResource("15_4h5qo")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
-stream = ExtResource("17_4h5qo")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
+stream = ExtResource("16_pdgy0")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
-stream = ExtResource("18_pdgy0")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
+stream = ExtResource("17_657e3")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
-stream = ExtResource("19_657e3")
-volume_db = -5.0
-max_db = 0.0
-pitch_scale = 0.5
+[node name="run_step_5" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
+stream = ExtResource("18_ifxeg")
+unit_size = 20.0
+max_db = 2.0
+pitch_scale = 0.35
 
-[node name="shield_block" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
-stream = ExtResource("20_kt7bg")
-volume_db = -15.0
+[node name="shield_block" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
+stream = ExtResource("19_kt7bg")
+volume_db = -12.0
 max_db = -1.0
-pitch_scale = 0.95
+pitch_scale = 1.5
 
-[node name="damaged" parent="Sounds" index="7"]
+[node name="damaged" parent="Sounds" index="8"]
+stream = ExtResource("20_kt7bg")
+volume_db = 1.0
+pitch_scale = 0.85
+
+[node name="death" parent="Sounds" index="9"]
 stream = ExtResource("21_4h5qo")
-pitch_scale = 0.5
+volume_db = 5.0
+pitch_scale = 0.7
 
-[node name="Decal" parent="." index="14"]
+[node name="Decal" parent="." index="13"]
 size = Vector3(2, 2, 2)
 
 [editable path="red_knight"]

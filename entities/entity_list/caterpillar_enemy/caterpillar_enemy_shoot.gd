@@ -42,7 +42,7 @@ func st_physics_process(delta: float) -> void:
 
 	if delta_count >= enemy.shoot_times[0] && !seed_shot:
 		seed_shot = true
-		enemy.play_sound_fx(enemy.sounds, &"seed_shoot")
+		enemy.play_sound_fx(&"seed_shoot")
 	
 		var seed = enemy.seed.instantiate()
 		enemy.projectiles.add_child(seed)
