@@ -69,7 +69,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		var boss: Enemy = JABBERWOCK_ENEMY.instantiate()
 		enemies.add_child(boss)
 		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
-		boss.position = enemy_positions.get_child(0).position
+		boss.position = enemy_positions.get_child(0).global_position
 		boss.enemy_killed.connect(enemy_kill)
 		
 		enemy_count += 1
@@ -98,7 +98,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			var new_enemy: Enemy = spawn_enemy(new_enemy_type)
 			
 			enemies.add_child(new_enemy)
-			new_enemy.position = enemy_positions.get_child(n).position
+			new_enemy.position = enemy_positions.get_child(n).global_position
 			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 			new_enemy.enemy_killed.connect(enemy_kill)
 			
@@ -119,7 +119,7 @@ func start_level():
 func enemy_kill(enemy: Enemy):
 	enemies_killed += 1
 	
-	var enemy_position: Vector3 = enemy.position
+	var enemy_position: Vector3 = enemy.global_position
 	var money_pickup: MoneyPickup = MONEY_PICKUP.instantiate()
 	add_child(money_pickup)
 	money_pickup.position = enemy_position + Vector3(0.0, 1.0 * randf(), 0.0)

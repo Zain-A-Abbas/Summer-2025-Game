@@ -62,7 +62,7 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= dig_duration:
 		enemy.set_collision_layer_value(1, 1)
 		enemy.show()
-		enemy.position = new_dig_spot.position
+		enemy.position = new_dig_spot.global_position
 		return state_machine.change_state(&"Idle", {"from_dig": true})
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):

@@ -67,7 +67,7 @@ func get_closest_spawn_position() -> Vector3:
 	var distances: Array[float] = []
 	
 	for spot in enemy.enemy_positions.get_children():
-		distances.append(spot.position.distance_to(enemy.position))
+		distances.append(spot.global_position.distance_to(enemy.global_position))
 	
 	var index: int = distances.find(distances.min())
-	return enemy.enemy_positions.get_child(index).position
+	return enemy.enemy_positions.get_child(index).global_position
