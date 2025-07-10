@@ -20,6 +20,7 @@ var inflicted_attack_effect_count: Dictionary[AttackEffect.AttackEffectType, int
 	AttackEffect.AttackEffectType.PARALYSIS: 0
 }
 
+# vars for paralysis effect
 var paralysis_duration: float = 0.0
 var paralysis_timer: float = 0.0
 var paralyzed: bool = false

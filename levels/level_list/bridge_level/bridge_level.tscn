@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bul1qv25y7gbq"]
+[gd_scene load_steps=22 format=3 uid="uid://bul1qv25y7gbq"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_116be"]
 [ext_resource type="Material" uid="uid://uhccc1d63o67" path="res://levels/materials/stone_brick.tres" id="2_cmt2u"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://eve3jdi3iq6x" path="res://levels/skyboxes/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="4_bc2ch"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="5_27bmw"]
 [ext_resource type="PackedScene" uid="uid://7eupaa75kpyg" path="res://levels/decorations/window.res" id="6_27bmw"]
+[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="7_wglwd"]
+[ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="8_tvmtm"]
+[ext_resource type="AudioStream" uid="uid://djgssdgihirmj" path="res://audio/levels/bridge/Inside Day.wav" id="8_x5k0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tvmtm"]
+size = Vector3(67.294, 15.5308, 16.8419)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_tvmtm"]
 top_radius = 2.0
@@ -31,7 +37,10 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ywebd"]
-size = Vector3(64, 1, 2)
+size = Vector3(64, 15.6646, 10.2727)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5k0k"]
+size = Vector3(12.0694, 13.3608, 18.8955)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_27bmw"]
 data = PackedVector3Array(-50, -16, 7, -50, -16, -7, -50, 16, -7, 50, -16, -7, -50, -16, -7, -50, -16, 7, -50, 16, -7, -50, -16, -7, 50, -16, -7, -50, 16, -7, -50, 16, 7, -50, -16, 7, -50, -16, 7, -50, 16, 7, 50, 16, 7, 50, 16, 7, -50, 16, 7, -50, 16, -7, -50, -16, 7, 50, -16, 7, 50, -16, -7, 50, 16, 7, 50, -16, 7, -50, -16, 7, 50, -16, -7, 50, -16, 7, 50, 16, 7, 50, -16, -7, 50, 16, -7, -50, 16, -7, -50, 16, -7, 50, 16, -7, 50, 16, 7, 50, 16, 7, 50, 16, -7, 50, -16, -7)
@@ -51,21 +60,29 @@ ambient_light_energy = 0.1
 fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
 
-[node name="LevelBase" instance=ExtResource("1_116be")]
-
-[node name="EnemyData_DigPositions#Marker3D" type="Marker3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 4)
-gizmo_extents = 2.0
-
-[node name="EnemyData_DigPositions#Marker3D2" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -4)
-gizmo_extents = 2.0
+[node name="Bridge" instance=ExtResource("1_116be")]
+enemy_minimum = 4
+enemy_limit = 7
+enemy_spawn_limits = Dictionary[StringName, int]({
+&"BASIC": 6,
+&"CATERPILLAR": 0,
+&"FLOWER": 0,
+&"MAD_HATTER": 1,
+&"MOUSE": 0,
+&"RED_KNIGHT": 2
+})
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 layers = 33
 size = Vector3(64, 30, 14)
 material = ExtResource("2_cmt2u")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/CSGBox3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/CSGBox3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70205, 7.26538, 1.40717)
+shape = SubResource("BoxShape3D_tvmtm")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticGeometry" index="2"]
 transform = Transform3D(0.923876, 0, 0.382682, 0, 1, 0, -0.382682, 0, 0.923876, 41.25, -13, 0)
@@ -458,11 +475,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0.475, 0)
 layers = 33
 material = SubResource("StandardMaterial3D_bc2ch")
 
+[node name="CSGBox3D66" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D" index="63"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.5726, 0.489, 4.0525)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02107, -0.000151366, 0)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D65" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05322, 0, 0)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D66" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D66" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02107, -0.000151366, 0)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D66/CSGBox3D65" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D67" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09175, 0, 0)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D67" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D67" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02107, -0.000151366, 0)
+layers = 33
+material = SubResource("StandardMaterial3D_bc2ch")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="StaticGeometry/Node3D/Node3D/CSGBox3D66/CSGBox3D67/CSGBox3D65" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02682, -0.130849, 0)
+layers = 33
+size = Vector3(1, 0.75, 0.5)
+material = SubResource("StandardMaterial3D_bc2ch")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Node3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.7)
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Node3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.42102)
 shape = SubResource("BoxShape3D_ywebd")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticGeometry/Node3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5951, 0, 0)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Node3D/StaticBody3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23123, 1.82925, 3.6792)
+shape = SubResource("BoxShape3D_x5k0k")
 
 [node name="BackWall" type="CSGBox3D" parent="StaticGeometry" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 14)
@@ -477,19 +572,19 @@ collision_mask = 0
 shape = SubResource("ConcavePolygonShape3D_27bmw")
 
 [node name="LevelExit" parent="StaticGeometry" index="6" instance=ExtResource("5_27bmw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2433, 0, 7)
 
 [node name="LevelExit2" parent="StaticGeometry" index="7" instance=ExtResource("5_27bmw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.20986, 0, 7)
 
 [node name="Window" parent="StaticGeometry" index="8" instance=ExtResource("6_27bmw")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 29, 4, 7)
 
 [node name="Window2" parent="StaticGeometry" index="9" instance=ExtResource("6_27bmw")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 15, 4, 7)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 16.2668, 4, 7)
 
 [node name="Window3" parent="StaticGeometry" index="10" instance=ExtResource("6_27bmw")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -10, 4, 7)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.22404, 4, 7)
 
 [node name="Window4" parent="StaticGeometry" index="11" instance=ExtResource("6_27bmw")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 41, 4, -9.2)
@@ -509,15 +604,40 @@ transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, -4
 [node name="Window9" parent="StaticGeometry" index="16" instance=ExtResource("6_27bmw")]
 transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, -34, 4, -6.2)
 
+[node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79667, 0, -3.39996)
+script = ExtResource("7_wglwd")
+
+[node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27385, 0, 3.97938)
+script = ExtResource("7_wglwd")
+
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3.39293)
 gizmo_extents = 2.0
 
-[node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+[node name="Marker3D7" type="Marker3D" parent="EnemyPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4182, 0, 2.44082)
 gizmo_extents = 2.0
 
-[node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+[node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -1.97888)
+gizmo_extents = 2.0
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5711, 0, -2.70516)
+gizmo_extents = 2.0
+
+[node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.25596, 0, 1.59645)
+gizmo_extents = 2.0
+
+[node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45925, 0, 0.647316)
+gizmo_extents = 2.0
+
+[node name="Marker3D6" type="Marker3D" parent="EnemyPositions" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9663, 0, 2.72729)
 gizmo_extents = 2.0
 
 [node name="WorldEnvironment" parent="Lighting" index="0"]
@@ -535,5 +655,18 @@ light_color = Color(0.49, 0.20972, 0.1078, 1)
 light_energy = 0.2
 shadow_enabled = true
 
-[node name="Player" parent="." index="12"]
+[node name="ambience" parent="Sounds" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+stream = ExtResource("8_x5k0k")
+
+[node name="door_open_1" parent="Sounds" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06601, 1.86585, 6.42021)
+
+[node name="door_open_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9073, 1.86585, 6.42021)
+stream = ExtResource("8_tvmtm")
+unit_size = 20.0
+max_db = 1.0
+
+[node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 1)

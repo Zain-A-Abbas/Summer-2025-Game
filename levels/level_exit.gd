@@ -28,7 +28,7 @@ func initialize(current_level: LevelBase):
 			exit_type = LevelBase.LevelType.NORMAL
 		elif level_roll < 0.65:
 			exit_type = LevelBase.LevelType.ELITE
-		elif level_roll < 0.90:
+		elif level_roll < 0.80:
 			if current_level.type == LevelBase.LevelType.HEALING:
 				return initialize(current_level)
 			exit_type = LevelBase.LevelType.HEALING

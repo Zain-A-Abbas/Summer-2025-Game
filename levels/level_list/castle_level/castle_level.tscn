@@ -1,10 +1,13 @@
-[gd_scene load_steps=24 format=4 uid="uid://ck150mu7ims48"]
+[gd_scene load_steps=27 format=4 uid="uid://ck150mu7ims48"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_jhykl"]
 [ext_resource type="Texture2D" uid="uid://ci7yh5msj7itg" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Brick-White-2.png" id="2_ii6r2"]
 [ext_resource type="Material" uid="uid://coqwdtg7dxp1j" path="res://levels/materials/lime.tres" id="3_56ogd"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="4_em20i"]
 [ext_resource type="Material" uid="uid://dlxxmdgi86uky" path="res://levels/materials/carpet.tres" id="5_n23wo"]
+[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="6_ii6r2"]
+[ext_resource type="AudioStream" uid="uid://cdmd5wgac2ajd" path="res://audio/levels/castle/01 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="7_56ogd"]
+[ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="8_em20i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u5tb"]
 albedo_texture = ExtResource("2_ii6r2")
@@ -103,12 +106,6 @@ fog_light_energy = 0.02
 
 [node name="CastleRoom" instance=ExtResource("1_jhykl")]
 enemy_limit = 4
-
-[node name="EnemyData_DigPositions#Marker3D" type="Marker3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
-
-[node name="EnemyData_DigPositions#Marker3D2" type="Marker3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 0, 0)
@@ -306,6 +303,21 @@ layers = 33
 size = Vector3(8, 0.025, 12)
 material = ExtResource("5_n23wo")
 
+[node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3458, 0, -9.69964)
+script = ExtResource("6_ii6r2")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
+[node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4532, 0, 0)
+script = ExtResource("6_ii6r2")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
+[node name="DigSpot3" type="Marker3D" parent="EnemyData/DigSpots" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.67927, 0, -18.1356)
+script = ExtResource("6_ii6r2")
+metadata/_custom_type_script = "uid://c23fdc58df3f4"
+
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -21)
 
@@ -318,6 +330,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
 [node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 17)
 
+[node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9178, 0, 8.44594)
+
 [node name="WorldEnvironment" parent="Lighting" index="0"]
 environment = SubResource("Environment_r6poa")
 
@@ -326,3 +341,16 @@ transform = Transform3D(-0.965926, -0.0977925, 0.239633, 0.0669876, 0.799862, 0.
 light_color = Color(0.4488, 0.6248, 0.66, 1)
 light_energy = 0.5
 shadow_enabled = true
+
+[node name="ambience" parent="Sounds" index="0"]
+stream = ExtResource("7_56ogd")
+pitch_scale = 1.4
+
+[node name="door_open_1" parent="Sounds" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0856, 3.3781, 5.07203)
+
+[node name="door_open_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7675, 3.3781, 24.8988)
+stream = ExtResource("8_em20i")
+unit_size = 20.0
+max_db = 1.0

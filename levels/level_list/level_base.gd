@@ -23,26 +23,26 @@ const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jab
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
-@export var enemy_spawn_limits: Dictionary[String, int] = {
-	"BASIC": 0,
-	"CATERPILLAR": 0,
-	"FLOWER": 0,
-	"MAD_HATTER": 0,
-	"MOUSE": 0,
-	"RED_KNIGHT": 0
+@export var enemy_spawn_limits: Dictionary[StringName, int] = {
+	&"BASIC": 0,
+	&"CATERPILLAR": 0,
+	&"FLOWER": 0,
+	&"MAD_HATTER": 0,
+	&"MOUSE": 0,
+	&"RED_KNIGHT": 0
 }
 
 var enemy_count: int = 0
 var enemies_killed: int = 0
 var level_manager: LevelManager
 var type: LevelType
-var enemy_spawn_count: Dictionary[String, int] = {
-	"BASIC": 0,
-	"CATERPILLAR": 0,
-	"FLOWER": 0,
-	"MAD_HATTER": 0,
-	"MOUSE": 0,
-	"RED_KNIGHT": 0
+var enemy_spawn_count: Dictionary[StringName, int] = {
+	&"BASIC": 0,
+	&"CATERPILLAR": 0,
+	&"FLOWER": 0,
+	&"MAD_HATTER": 0,
+	&"MOUSE": 0,
+	&"RED_KNIGHT": 0
 }
 
 var enemy_spawn_list: Array[StringName]
@@ -57,7 +57,7 @@ var enemy_spawn_list: Array[StringName]
 @onready var player: Player = %Player
 @onready var enemy_data: Node3D = %EnemyData
 @onready var projectiles: Node3D = %Projectiles
-
+@onready var sounds: Node3D = %Sounds
 
 func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_count: int):
 	level_manager = _level_manager 
@@ -125,8 +125,12 @@ func enemy_kill(enemy: Enemy):
 	money_pickup.position = enemy_position + Vector3(0.0, 1.0 * randf(), 0.0)
 	
 	if enemies_killed == enemy_count:
+		var index: int = 1
+		
 		for exit in get_level_exits():
 			exit.activate()
+			sounds.get_node("door_open_%d" % index).play()
+			index += 1
 
 func exit_choose(exit_type: LevelType):
 	level_completed.emit(self, exit_type)
@@ -145,17 +149,17 @@ func get_level_exits() -> Array[LevelExit]:
 func initialize_enemy_list() -> Array[StringName]:
 	var list: Array[StringName] = []
 
-	if enemy_spawn_limits["BASIC"] > 0:
+	if enemy_spawn_limits[&"BASIC"] > 0:
 		list.append(&"BASIC")
-	if enemy_spawn_limits["CATERPILLAR"] > 0:
+	if enemy_spawn_limits[&"CATERPILLAR"] > 0:
 		list.append(&"CATERPILLAR")
-	if enemy_spawn_limits["MAD_HATTER"] > 0:
+	if enemy_spawn_limits[&"MAD_HATTER"] > 0:
 		list.append(&"MAD_HATTER")
-	if enemy_spawn_limits["FLOWER"] > 0:
+	if enemy_spawn_limits[&"FLOWER"] > 0:
 		list.append(&"FLOWER")
-	if enemy_spawn_limits["MOUSE"] > 0:
+	if enemy_spawn_limits[&"MOUSE"] > 0:
 		list.append(&"MOUSE")
-	if enemy_spawn_limits["RED_KNIGHT"] > 0:
+	if enemy_spawn_limits[&"RED_KNIGHT"] > 0:
 		list.append(&"RED_KNIGHT")
 	
 	return list
@@ -175,29 +179,7 @@ func spawn_enemy(type: StringName) -> Enemy:
 		return RED_KNIGHT_ENEMY.instantiate()
 
 func can_enemy_spawn_type(type: StringName) -> bool:
-	if type == &"BASIC":
-		return enemy_spawn_count["BASIC"] <= enemy_spawn_limits["BASIC"]
-	elif type == &"CATERPILLAR":
-		return enemy_spawn_count["CATERPILLAR"] <= enemy_spawn_limits["CATERPILLAR"]
-	elif type == &"MAD_HATTER":
-		return enemy_spawn_count["MAD_HATTER"] <= enemy_spawn_limits["MAD_HATTER"]
-	elif type == &"FLOWER":
-		return enemy_spawn_count["FLOWER"] <= enemy_spawn_limits["FLOWER"]
-	elif type == &"MOUSE":
-		return enemy_spawn_count["MOUSE"] <= enemy_spawn_limits["MOUSE"]
-	else:
-		return enemy_spawn_count["RED_KNIGHT"] <= enemy_spawn_limits["RED_KNIGHT"]
+	return enemy_spawn_count[type] <= enemy_spawn_limits[type]
 
 func update_enemy_spawn_counts(type: StringName, change: int):
-	if type == &"BASIC":
-		enemy_spawn_count["BASIC"] += 1 * change
-	elif type == &"CATERPILLAR":
-		enemy_spawn_count["CATERPILLAR"] += 1 * change
-	elif type == &"MAD_HATTER":
-		enemy_spawn_count["MAD_HATTER"] += 1 * change
-	elif type == &"FLOWER":
-		enemy_spawn_count["FLOWER"] += 1 * change
-	elif type == &"MOUSE":
-		enemy_spawn_count["MOUSE"] += 1 * change
-	else:
-		enemy_spawn_count["RED_KNIGHT"] += 1 * change
+	enemy_spawn_count[type] += change

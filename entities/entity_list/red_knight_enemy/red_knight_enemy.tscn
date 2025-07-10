@@ -65,12 +65,12 @@ _data = {
 
 [sub_resource type="Resource" id="Resource_p3v48"]
 script = ExtResource("7_a1e7x")
-damage = 15
+damage = 10
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_gs4ux"]
-height = 0.191895
-radius = 0.665039
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4h5qo"]
+radius = 0.339316
+height = 1.04917
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i6hqh"]
 seed = 640
@@ -173,32 +173,32 @@ death_state_duration = 1.0
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.0627318, 3.30485, -0.185547)
-bones/1/rotation = Quaternion(-8.93718e-05, 0.00980716, -0.00910615, 0.999911)
-bones/3/rotation = Quaternion(0.168178, -0.0413543, 0.000256127, 0.984889)
-bones/4/rotation = Quaternion(0.288282, -0.114877, -0.0264514, 0.950262)
+bones/1/position = Vector3(0.110403, 3.37977, -0.185813)
+bones/1/rotation = Quaternion(-1.37369e-06, 0.00377945, -0.000145477, 0.999993)
+bones/3/rotation = Quaternion(0.163782, -0.04111, -0.000416947, 0.98564)
+bones/4/rotation = Quaternion(0.267725, -0.113876, -0.029706, 0.956281)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0408762, 0.937964, -0.344263, 0.00589677)
-bones/7/rotation = Quaternion(0.202152, -0.773643, 0.336449, 0.497406)
-bones/8/rotation = Quaternion(0.0407374, 0.662159, 0.067825, 0.745175)
+bones/6/rotation = Quaternion(0.0222383, 0.942387, -0.333735, 0.00571645)
+bones/7/rotation = Quaternion(0.205586, -0.768696, 0.334282, 0.505071)
+bones/8/rotation = Quaternion(0.0447033, 0.658195, 0.0683012, 0.748409)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00734733, 0.00336765, 0.00238944, 0.999964)
-bones/13/rotation = Quaternion(-0.175849, 0.077655, 0.0181395, 0.981182)
-bones/14/rotation = Quaternion(0.13351, 0.165426, -0.0306187, 0.976664)
+bones/10/rotation = Quaternion(0.0345279, 0.015826, 0.011229, 0.999215)
+bones/13/rotation = Quaternion(-0.162716, 0.07696, 0.020176, 0.98346)
+bones/14/rotation = Quaternion(0.109086, 0.173339, -0.0118331, 0.978731)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.1981, 0.756603, -0.271751, 0.560766)
-bones/19/rotation = Quaternion(-0.00587696, -0.613919, -0.0210744, 0.789065)
+bones/18/rotation = Quaternion(0.175165, 0.767015, -0.240803, 0.568348)
+bones/19/rotation = Quaternion(-0.0182006, -0.613678, -0.00522925, 0.789329)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(1.68097e-05, 0.15249, 0.988302, 0.00240343)
-bones/26/rotation = Quaternion(0.000140784, 0.974935, -0.222492, 0.000383616)
-bones/27/rotation = Quaternion(0.00236497, 0.654959, -0.75551, -0.0150657)
-bones/28/rotation = Quaternion(4.08057e-06, 0.0805867, 0.996747, 0.000583358)
-bones/29/rotation = Quaternion(0.000263786, 0.852857, -0.522145, 0.00020366)
-bones/30/rotation = Quaternion(0.0115793, 0.734247, -0.678737, -0.00794734)
+bones/25/rotation = Quaternion(0.000123636, 0.0337808, 0.999273, 0.017676)
+bones/26/rotation = Quaternion(0.000199752, 0.993959, -0.109742, 0.00166924)
+bones/27/rotation = Quaternion(0.00992132, 0.666496, -0.745319, -0.0135769)
+bones/28/rotation = Quaternion(0.000133909, 0.259766, 0.965482, 0.019145)
+bones/29/rotation = Quaternion(0.00650102, 0.758787, -0.651263, 0.00747049)
+bones/30/rotation = Quaternion(0.0248422, 0.83509, -0.549553, 0.000213026)
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.373512, -0.713025, 0.593367, 0.0805064, -0.662166, -0.74502, 0.924125, -0.230504, 0.30473, -2.02424, 3.82654, -1.48565)
+transform = Transform3D(-0.455501, -0.671059, 0.584978, 0.0414401, -0.672375, -0.73905, 0.889271, -0.312396, 0.334076, -1.97473, 3.82742, -1.52365)
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
@@ -234,8 +234,8 @@ collision_mask = 0
 monitorable = false
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
-transform = Transform3D(6.69, 0, 0, 0, 6.69, 0, 0, 0, 6.69, 0, 0, -1)
-shape = SubResource("CylinderShape3D_gs4ux")
+transform = Transform3D(-2.92429e-07, -6.69, 0, 6.69, -2.92429e-07, 0, 0, 0, 6.69, 0, 1.32706, 2.29556)
+shape = SubResource("CapsuleShape3D_4h5qo")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
 transform = Transform3D(3.621, 5.00551e-07, -7.31877e-07, -5.46756e-07, 3.315, 2.85194e-19, -5.46756e-07, -7.55809e-14, -4.847, 0, 0, 0)
