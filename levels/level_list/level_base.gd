@@ -109,13 +109,27 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
 
-func start_level():
+func start_level(_type: LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
-
+	
+	Bgm.stop_bgm()
+	if _type == LevelType.NORMAL:
+		Bgm.load_bgm(Bgm.battle_music)
+		Bgm.play_bgm(1.0)
+	elif _type == LevelType.SHOP:
+		Bgm.load_bgm(Bgm.shop_room)
+		Bgm.play_bgm(1.0)
+	elif _type == LevelType.HEALING:
+		Bgm.load_bgm(Bgm.healing_room)
+		Bgm.play_bgm(1.0)
+	elif _type == LevelType.BOSS:
+		Bgm.load_bgm(Bgm.boss_music)
+		Bgm.play_bgm(1.0)
+	
 func enemy_kill(enemy: Enemy):
 	enemies_killed += 1
 	

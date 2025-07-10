@@ -23,11 +23,6 @@ func _ready() -> void:
 	title_options_container.modulate.a = 0.0
 	Bgm.load_bgm(Bgm.title_music)
 	Bgm.play_bgm(1.0)
-	await get_tree().create_timer(1.0).timeout
-	Bgm.fadeout_bgm(1.0)
-	await get_tree().create_timer(1.0).timeout
-	Bgm.load_bgm(Bgm.title_music)
-	Bgm.play_bgm(1.0)
 
 func _input(event: InputEvent) -> void:
 	if state == TitleState.NONE:

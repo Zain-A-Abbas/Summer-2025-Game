@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://krqa0edksq88"]
+[gd_scene load_steps=9 format=3 uid="uid://krqa0edksq88"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_vng3c"]
 [ext_resource type="Texture2D" uid="uid://bew5madpf6tql" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Adobe.png" id="2_rk4b3"]
+[ext_resource type="AudioStream" uid="uid://b15fufikynb7s" path="res://audio/levels/spire/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="3_rk4b3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4x476"]
 albedo_texture = ExtResource("2_rk4b3")
@@ -27,7 +28,7 @@ ambient_light_energy = 1.65
 fog_light_color = Color(0.85, 0.9075, 1, 1)
 fog_light_energy = 0.02
 
-[node name="LevelBase" instance=ExtResource("1_vng3c")]
+[node name="BossLevel" instance=ExtResource("1_vng3c")]
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -63,6 +64,10 @@ shadow_enabled = true
 
 [node name="LevelCamera" parent="." index="7"]
 size = 14.0
+
+[node name="ambience" parent="Sounds" index="0"]
+stream = ExtResource("3_rk4b3")
+pitch_scale = 2.7
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)

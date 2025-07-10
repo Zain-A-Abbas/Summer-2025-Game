@@ -3,11 +3,16 @@ extends Node
 # If one is played right before a battle begins then place it in Battle
 
 # Battle
+var battle_music: String = "res://sound/music/Torch Impact 2.wav"
+var boss_music: String = "res://sound/music/Water Jump.wav"
 
 # Non-battle
 var title_music: String = "res://sound/music/04 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav"
+var healing_room: String = "res://sound/music/Forest Night.wav"
+var shop_room: String = "res://sound/music/Wood Chain Run 1.wav"
 
 # Functionality
+
 
 const MIN_DB := -80.0
 const MAX_DB := -8.0

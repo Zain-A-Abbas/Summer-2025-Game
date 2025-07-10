@@ -71,7 +71,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	player_ui.refresh_player(current_player)
 	
 	await fade_transition(false)
-	new_level.start_level()
+	new_level.start_level(new_level_type)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	await fade_transition(true)

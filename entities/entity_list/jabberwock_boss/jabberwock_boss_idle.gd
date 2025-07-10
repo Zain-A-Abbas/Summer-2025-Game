@@ -29,6 +29,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.action_animator.play("jabberwock/idle")
 
 func st_physics_process(delta: float) -> void:
+	return
 	delta_count += delta
 	rage_component.decay_rage(delta)
 	

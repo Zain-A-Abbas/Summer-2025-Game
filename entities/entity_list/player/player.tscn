@@ -329,8 +329,8 @@ collision_layer = 17
 script = ExtResource("1_xb04b")
 hurtbox = NodePath("Hurtbox")
 animation_tree = NodePath("PlayerAnimator/AnimationTree")
-dodge_duration = 0.12
-dodge_speed = 1750.0
+dodge_duration = 0.15
+dodge_speed = 1500.0
 attack_move_speed = 375.0
 base_parry_invincibility_period = 0.1
 parry_duration = 0.2
@@ -340,29 +340,29 @@ death_state_duration = 1.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0549625, 2.77738, -0.409175)
+bones/1/position = Vector3(0.133136, 2.7951, -0.408854)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.167987, -0.0413438, 0.000226687, 0.984922)
-bones/4/rotation = Quaternion(0.286121, -0.114775, -0.0267958, 0.950917)
+bones/3/rotation = Quaternion(0.163615, -0.0411006, -0.000442307, 0.985668)
+bones/4/rotation = Quaternion(0.27204, -0.114092, -0.0290271, 0.955057)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.026807, 0.941328, -0.336376, 0.00576158)
-bones/7/rotation = Quaternion(0.204751, -0.769909, 0.334813, 0.503206)
-bones/8/rotation = Quaternion(0.0355729, 0.66718, 0.0672147, 0.741004)
+bones/6/rotation = Quaternion(0.0366076, 0.939001, -0.341911, 0.00585634)
+bones/7/rotation = Quaternion(0.202958, -0.772492, 0.335945, 0.499204)
+bones/8/rotation = Quaternion(0.0310202, 0.671493, 0.0666839, 0.737352)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0278599, 0.0127697, 0.00906037, 0.999489)
-bones/13/rotation = Quaternion(-0.174562, 0.0775885, 0.01834, 0.981413)
-bones/14/rotation = Quaternion(0.142161, 0.163889, -0.0330116, 0.975623)
+bones/10/rotation = Quaternion(0.0135672, 0.00621864, 0.00441212, 0.999879)
+bones/13/rotation = Quaternion(-0.164913, 0.0770788, 0.019837, 0.983092)
+bones/14/rotation = Quaternion(0.134796, 0.167704, -0.0240149, 0.976283)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.186684, 0.76196, -0.256348, 0.564669)
-bones/19/rotation = Quaternion(-0.00157167, -0.613945, -0.0266074, 0.788898)
+bones/18/rotation = Quaternion(0.15855, 0.773698, -0.218379, 0.573205)
+bones/19/rotation = Quaternion(-0.00502668, -0.613927, -0.0221671, 0.789036)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00120691, 0.210549, 0.962234, -0.172551)
-bones/26/rotation = Quaternion(0.0404882, 0.865667, -0.493768, 0.0719322)
-bones/27/rotation = Quaternion(-0.070509, 0.612449, -0.784084, 0.0717464)
-bones/28/rotation = Quaternion(0.0020854, 0.0131161, 0.954428, 0.298145)
-bones/29/rotation = Quaternion(-0.152962, 0.818841, -0.487748, -0.261161)
-bones/30/rotation = Quaternion(0.224572, 0.489962, -0.833483, 0.121701)
+bones/25/rotation = Quaternion(-0.00111715, 0.213258, 0.963851, -0.15972)
+bones/26/rotation = Quaternion(0.0426804, 0.86681, -0.490901, 0.0763858)
+bones/27/rotation = Quaternion(-0.0566457, 0.615342, -0.783494, 0.0654416)
+bones/28/rotation = Quaternion(0.00213569, 0.0144237, 0.952134, 0.305334)
+bones/29/rotation = Quaternion(-0.148825, 0.826593, -0.474326, -0.263838)
+bones/30/rotation = Quaternion(0.232377, 0.506797, -0.821809, 0.117421)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -371,7 +371,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.608831, -0.729693, 0.311245, 0.598915, -0.680076, -0.422845, 0.520217, -0.0710316, 0.851075, -1.53736, 2.61752, -2.12388)
+transform = Transform3D(-0.67148, -0.681818, 0.29024, 0.545959, -0.720026, -0.428359, 0.501043, -0.129175, 0.855727, -1.43328, 2.59165, -2.15672)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2

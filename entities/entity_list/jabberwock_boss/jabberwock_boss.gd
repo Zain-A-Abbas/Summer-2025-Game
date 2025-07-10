@@ -24,12 +24,15 @@ func prepare_states():
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
 		rage_component.increase_rage()
+		play_sound_fx(&"damaged")
+		#play_sound_fx(&"damaged_roar")
 		hurt_effect()
 		resolve_hit(attack_object)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
-	queue_free()
+	hurtbox.set_collision_mask_value(2, 0)
+	state_machine.change_state(&"Death")
 
 func can_combo() -> bool:
 	if rage_component.current_rage < rage_component.RAGE_COST_TO_COMBO:
