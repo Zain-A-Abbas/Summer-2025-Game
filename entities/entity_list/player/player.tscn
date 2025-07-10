@@ -340,29 +340,29 @@ death_state_duration = 1.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0342873, 2.76235, -0.405662)
+bones/1/position = Vector3(0.206155, 2.70318, -0.407648)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.163412, -0.0410891, -0.000473212, 0.985702)
-bones/4/rotation = Quaternion(0.267674, -0.113874, -0.029714, 0.956295)
+bones/3/rotation = Quaternion(0.164682, -0.0411607, -0.000279599, 0.985488)
+bones/4/rotation = Quaternion(0.275127, -0.114245, -0.02854, 0.954169)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0241832, 0.941938, -0.334865, 0.00573566)
-bones/7/rotation = Quaternion(0.205239, -0.769202, 0.334503, 0.504295)
-bones/8/rotation = Quaternion(0.0393577, 0.66351, 0.0676617, 0.744061)
+bones/6/rotation = Quaternion(0.045657, 0.936787, -0.346857, 0.00594103)
+bones/7/rotation = Quaternion(0.201218, -0.77497, 0.337031, 0.495321)
+bones/8/rotation = Quaternion(0.0541074, 0.648444, 0.0694523, 0.756154)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0316889, 0.0145249, 0.0103057, 0.999339)
-bones/13/rotation = Quaternion(-0.162653, 0.0769566, 0.0201857, 0.983471)
-bones/14/rotation = Quaternion(0.118238, 0.171619, -0.0154904, 0.97792)
+bones/10/rotation = Quaternion(0.000242235, 0.000111023, 7.88533e-05, 1)
+bones/13/rotation = Quaternion(-0.167026, 0.0771922, 0.0195102, 0.982732)
+bones/14/rotation = Quaternion(0.0965821, 0.174715, -0.0101491, 0.979818)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.16648, 0.770597, -0.229081, 0.570953)
-bones/19/rotation = Quaternion(-0.0136495, -0.613796, -0.0110821, 0.789269)
+bones/18/rotation = Quaternion(0.199111, 0.756112, -0.273116, 0.560408)
+bones/19/rotation = Quaternion(-0.0238651, -0.613483, 0.00205788, 0.789344)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00123524, 0.212713, 0.961023, -0.176599)
-bones/26/rotation = Quaternion(0.0400498, 0.86229, -0.499954, 0.0699865)
-bones/27/rotation = Quaternion(-0.0747092, 0.60907, -0.786177, 0.0733288)
-bones/28/rotation = Quaternion(0.00208603, 0.0142248, 0.954385, 0.298234)
-bones/29/rotation = Quaternion(-0.154878, 0.814512, -0.495562, -0.258845)
-bones/30/rotation = Quaternion(0.223082, 0.482926, -0.837809, 0.122855)
+bones/25/rotation = Quaternion(-0.00109008, 0.250205, 0.955567, -0.155848)
+bones/26/rotation = Quaternion(0.0470135, 0.836803, -0.540479, 0.0737062)
+bones/27/rotation = Quaternion(-0.0481706, 0.598351, -0.797589, 0.0592319)
+bones/28/rotation = Quaternion(0.00233355, 0.0411445, 0.941804, 0.333628)
+bones/29/rotation = Quaternion(-0.15557, 0.806715, -0.512993, -0.248689)
+bones/30/rotation = Quaternion(0.241336, 0.498482, -0.824297, 0.117502)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -371,7 +371,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.669161, -0.683271, 0.292172, 0.552951, -0.720487, -0.418503, 0.496457, -0.118489, 0.859937, -1.56092, 2.57293, -2.11886)
+transform = Transform3D(-0.62142, -0.718152, 0.313201, 0.597319, -0.692953, -0.403765, 0.506998, -0.0638267, 0.859581, -1.43833, 2.57093, -2.0547)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2

@@ -502,6 +502,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
 
+[node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0111885, 0, -0.0368252)
+
 [node name="WorldEnvironment" parent="Lighting" index="0"]
 environment = SubResource("Environment_28bi3")
 
