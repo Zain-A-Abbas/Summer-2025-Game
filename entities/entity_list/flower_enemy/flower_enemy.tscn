@@ -156,7 +156,6 @@ max_health = 70
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="EnemyHP" parent="." index="10"]
-unique_name_in_owner = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 texture = SubResource("ViewportTexture_a3b3d")
 

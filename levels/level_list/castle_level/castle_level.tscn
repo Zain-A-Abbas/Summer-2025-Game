@@ -107,17 +107,15 @@ fog_light_energy = 0.02
 
 [node name="CastleRoom" instance=ExtResource("1_jhykl")]
 script = ExtResource("2_n23wo")
-y_rotation = null
-has_enemies = null
-enemy_minimum = 4
-enemy_limit = 7
+y_rotation = 45.0
+enemy_limit = 4
 enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 4,
+&"BASIC": 0,
 &"CATERPILLAR": 0,
-&"FLOWER": 2,
-&"MAD_HATTER": 1,
-&"MOUSE": 4,
-&"RED_KNIGHT": 2
+&"FLOWER": 4,
+&"MAD_HATTER": 0,
+&"MOUSE": 0,
+&"RED_KNIGHT": 0
 })
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="1"]

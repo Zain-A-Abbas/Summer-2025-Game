@@ -18,7 +18,7 @@ func prepare_states():
 	var i: int = 0
 	for spot in dig_spots.get_children():
 		if !spot.in_use:
-			position = spot.position
+			position = spot.global_position
 			spot.in_use = true
 			prev_dig_spot_index = i
 			break
@@ -56,7 +56,7 @@ func get_random_dig_spot_to_player() -> int:
 	var player_position: Vector3 = player.position
 	
 	for spot in dig_spots.get_children():
-		distance = spot.position.distance_to(player_position)
+		distance = spot.global_position.distance_to(player_position)
 		if !spot.in_use:
 			valid_distances.append(distance)
 		all_distances.append(distance)
