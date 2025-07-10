@@ -26,6 +26,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		cooldown = args['cooldown']
 		
 	next_action_time = randf_range(0.8, 2.0) + cooldown 
+	enemy.action_animator.play("jabberwock/idle")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

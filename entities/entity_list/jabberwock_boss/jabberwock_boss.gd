@@ -3,8 +3,11 @@ extends Enemy
 
 @onready var sweep: AttackObject = %Sweep
 @onready var swipe: AttackObject = %Swipe
+@onready var swipe_mirrored: AttackObject = %SwipeMirrored
 @onready var breath: AttackObject = %LightningBreath
 @onready var rage_component: JabberwockBossRageComponent = %RageComponent
+@onready var projectile_spawnpoint: Marker3D = %ProjectileSpawnpoint
+@onready var lightning_breath_particles: GPUParticles3D = %LightningBreathParticles
 
 
 func prepare_states():
@@ -13,7 +16,7 @@ func prepare_states():
 		StateInitializer.new(&"Move", JabberwockBossMove.new(self, rage_component)),
 		StateInitializer.new(&"Shoot", JabberwockBossShoot.new(self, rage_component, breath)),
 		StateInitializer.new(&"Sweep", JabberwockBossSweep.new(self, rage_component, sweep)),
-		StateInitializer.new(&"Swipe", JabberwockBossSwipe.new(self, rage_component, swipe))
+		StateInitializer.new(&"Swipe", JabberwockBossSwipe.new(self, rage_component, swipe, swipe_mirrored))
 	]
 	
 	state_machine.assign_states(boss_states)

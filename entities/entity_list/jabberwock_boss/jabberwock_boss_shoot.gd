@@ -11,6 +11,11 @@ const ACTION_DURATIONS: Array[float] = [0.5, 0.3, BREATH_TOGGLE_ON_TIME * 8]
 const ACTION_COOLDOWNS: Array[float] = [0.3, 0.2, 1.3]
 #const ACTION_RAGE_THRESHOLD: Array[int] = [0, 100, 200]
 
+const BREATH_WARNING_TRACKERS: Array[float] = [1.5, 2.0]
+const SHOOT_WARNING_TRACKERS: Array[float] = [0.25, 0.5]
+const BREATH_TIMES: Array[float] = [2.35, 3.0]
+const SEED_BOMB_TIMES: Array[float] = [0.5, 0.85]
+
 var rage_component: JabberwockBossRageComponent
 var breath: AttackObject
 
@@ -44,16 +49,23 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	warning_shown = false
 	breath.hitbox.monitorable = false
 	
-	action_index = randi_range(0, 2)
+	action_index = randi_range(2, 2)
 	action = ACTION_LIST[action_index]
 	
+	print("Action is")
+	print(action)
+	if action == &"Breath":
+		warning_times = BREATH_WARNING_TRACKERS
+		shoot_times = BREATH_TIMES
+		enemy.animation_tree["parameters/breath_oneshot/request"] = 1
+	elif action == &"Seed" || action == &"Bomb":
+		warning_times = SHOOT_WARNING_TRACKERS
+		shoot_times = SEED_BOMB_TIMES
+		enemy.animation_tree["parameters/shoot_oneshot/request"] = 1
+	else:
+		push_error("Jabberwock using invalid action on shoot state")
+	
 	enemy.face_direction(face_player())
-	
-	shoot_times[0] = randf_range(0.7, 1.2)
-	shoot_times[1] = shoot_times[0] + ACTION_DURATIONS[action_index]
-	
-	warning_times[0] = shoot_times[0] - 0.5
-	warning_times[1] = shoot_times[0] - 0.1
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -70,22 +82,22 @@ func st_physics_process(delta: float) -> void:
 		enemy.attack_indicator_animator.play("hide_indicator")
 		warning_hidden = true
 	
-	if action != &"Breath" && delta_count >= shoot_times[0] && !attack_activated:
+	if delta_count >= shoot_times[0] && !attack_activated:
 		attack_activated = true
-		enemy.action_animator.play("basic_enemy_animation_library/attack")
 		
 		if action == &"Bomb":
 			var bomb: FlowerEnemyBomb = BOMB.instantiate()
 			enemy.projectiles.add_child(bomb)
-			bomb.initialize_bomb()
-			bomb.global_position = enemy.player.global_position
+			bomb.initialize_bomb(enemy.projectile_spawnpoint.global_position, enemy.player.global_position)
 		elif action == &"Seed":
-			var seed = SEED.instantiate()
+			var seed: CaterpillarEnemySeed = SEED.instantiate()
 			enemy.projectiles.add_child(seed)
-			seed.initialize_seed(false, face_player(), enemy.projectiles)
-			seed.global_position = enemy.global_position
+			seed.global_position = enemy.projectile_spawnpoint.global_position
+			seed.initialize_seed(false, enemy.projectile_spawnpoint.global_position.direction_to(enemy.player.position), enemy.projectiles)
+		elif action == &"Breath":
+			enemy.lightning_breath_particles.emitting = true
 	
-	if action == &"Breath" && delta_count >= shoot_times[0]:		
+	if action == &"Breath" && delta_count >= shoot_times[0]:
 		lightning_breath(delta)
 	
 	if delta_count >= shoot_times[1]:
@@ -97,10 +109,10 @@ func st_physics_process(delta: float) -> void:
 func lightning_breath(delta: float) -> void:
 	# toggle hitbox on and off in intervals
 	breath_toggle_count += delta
-	breath.hitbox.monitorable = breath_toggle_count < BREATH_TOGGLE_OFF_TIME
+	breath.hitbox.monitorable = delta_count < shoot_times[1]
 	
-	if breath_toggle_count > BREATH_TOGGLE_ON_TIME:
-		breath_toggle_count = 0.0
+	#if breath_toggle_count > BREATH_TOGGLE_ON_TIME:
+	#	breath_toggle_count = 0.0
 
 	# rotate to player slowly
 	direction = face_player()

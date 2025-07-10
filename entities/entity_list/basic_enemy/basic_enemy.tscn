@@ -1,12 +1,12 @@
-[gd_scene load_steps=43 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=41 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
 [ext_resource type="PackedScene" uid="uid://f1ej6s44jql2" path="res://entities/entity_list/basic_enemy/card_animator.tscn" id="3_5sssr"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_cwsr8"]
 [ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="3_u4wqx"]
-[ext_resource type="Shader" uid="uid://bu0j1r4mhmlam" path="res://entities/entity_types/enemy_shader.gdshader" id="4_5sssr"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_qlgqh"]
+[ext_resource type="Material" uid="uid://cbvpk3c6dtf8x" path="res://models/enemies/enemy_material_overlay.tres" id="4_wd8hw"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_fdidt"]
 [ext_resource type="Shader" uid="uid://cu176yl57kqtc" path="res://effects/attack_slash.gdshader" id="7_kh8l7"]
 [ext_resource type="Texture2D" uid="uid://b5lqjov4o53a3" path="res://effects/slash_alpha.png" id="8_68gr5"]
@@ -18,11 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://bqwou5lviuh0p" path="res://audio/entities/card/Card Step 3.wav" id="16_wxn5g"]
 [ext_resource type="AudioStream" uid="uid://pipcct866yyn" path="res://audio/entities/card/Card Step 4.wav" id="17_16uoj"]
 [ext_resource type="AudioStream" uid="uid://d14phyco0gwft" path="res://audio/entities/card/Card Damaged 2.wav" id="18_e60tt"]
-[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="19_bfcs5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6hqh"]
-render_priority = 0
-shader = ExtResource("4_5sssr")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 
@@ -183,7 +178,6 @@ change_direction_timestamp = 1.5
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("card/Armature/GeneralSkeleton/cardDiamonds2"), NodePath("card/Armature/GeneralSkeleton/Cube"), NodePath("card/Armature/GeneralSkeleton/Cube_001"), NodePath("card/Armature/GeneralSkeleton/Cube_002")]
 animation_tree = NodePath("card/AnimationTree")
-death_state_duration = 1.0
 
 [node name="card" parent="." index="0" instance=ExtResource("3_5sssr")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -214,18 +208,18 @@ bones/29/rotation = Quaternion(-0.00029892, 0.992427, -0.122807, -0.00280471)
 bones/30/rotation = Quaternion(-0.0100517, 0.681953, -0.731326, -0.00122061)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 instance_shader_parameters/hit_effect = false
 
 [node name="Cube" parent="card/Armature/GeneralSkeleton" index="1"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 instance_shader_parameters/hit_effect = false
 
 [node name="Cube_001" parent="card/Armature/GeneralSkeleton" index="2"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 
 [node name="Cube_002" parent="card/Armature/GeneralSkeleton" index="3"]
-material_overlay = SubResource("ShaderMaterial_i6hqh")
+material_overlay = ExtResource("4_wd8hw")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -324,10 +318,6 @@ stream = ExtResource("18_e60tt")
 volume_db = 5.0
 max_db = 1.5
 pitch_scale = 0.75
-
-[node name="death" parent="Sounds" index="6"]
-stream = ExtResource("19_bfcs5")
-pitch_scale = 0.7
 
 [editable path="card"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

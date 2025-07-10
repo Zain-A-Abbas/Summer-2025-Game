@@ -25,7 +25,7 @@ func decay_rage(delta: float) -> void:
 			current_rage -= RAGE_DECAY
 		
 		delta_count = 0.0
-		print("Rage: ", current_rage)
+		#print("Rage: ", current_rage)
 	
 func consume_rage() -> void:
 	current_rage -= RAGE_COST_TO_COMBO

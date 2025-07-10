@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqvq5fv3lodkg"]
+[gd_scene load_steps=20 format=3 uid="uid://bqvq5fv3lodkg"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_asst4"]
 [ext_resource type="Script" uid="uid://b82iv3b6y5uo" path="res://entities/entity_list/caterpillar_enemy/caterpillar_enemy_seed/caterpillar_enemy_seed.gd" id="2_ph4oc"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="3_5bm58"]
+[ext_resource type="Texture2D" uid="uid://bl5del0nmclih" path="res://effects/particle-textures/smoke_08.png" id="3_uq3an"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="4_41urh"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="5_p3l6e"]
 [ext_resource type="Script" uid="uid://b4hwv8s2ulb1w" path="res://entities/attacks/attack_hitbox.gd" id="6_0qy1d"]
@@ -12,8 +13,10 @@
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="8_y08bq"]
 [ext_resource type="AudioStream" uid="uid://blmu6rna47ucy" path="res://audio/entities/caterpillar/Fast_Magic_Whoosh_10.wav" id="9_sofxr"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4bo7"]
-albedo_color = Color(0, 0.579476, 0.348665, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sbvb"]
+albedo_color = Color(0.58, 0.444667, 0, 1)
+albedo_texture = ExtResource("3_uq3an")
+uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="Resource" id="Resource_t2ogd"]
 script = ExtResource("5_p3l6e")
@@ -38,16 +41,19 @@ stun_duration = 1.0
 stun_chance = 100.0
 metadata/_custom_type_script = "uid://4rhq8c58a3im"
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sofxr"]
+radius = 0.4
+
 [node name="CaterpillarEnemySeed" instance=ExtResource("1_asst4")]
 script = ExtResource("2_ph4oc")
 time_to_live = 1.1
 
 [node name="placeholder_model" type="CSGSphere3D" parent="." index="0"]
 unique_name_in_owner = true
-transform = Transform3D(0.855, 0, 0, 0, 0.855, 0, 0, 0, 0.855, 0, 0.223961, 0)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 1.5, 0, 0.223961, 0)
 collision_layer = 0
 collision_mask = 0
-material = SubResource("StandardMaterial3D_d4bo7")
+material = SubResource("StandardMaterial3D_1sbvb")
 
 [node name="ray_cast" type="RayCast3D" parent="." index="1"]
 unique_name_in_owner = true
@@ -97,7 +103,7 @@ metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/child/AttackHitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
-shape = SubResource("SphereShape3D_ph4oc")
+shape = SubResource("SphereShape3D_sofxr")
 
 [node name="Components" type="Node" parent="." index="5"]
 

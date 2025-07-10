@@ -329,7 +329,7 @@ collision_layer = 17
 script = ExtResource("1_xb04b")
 hurtbox = NodePath("Hurtbox")
 animation_tree = NodePath("PlayerAnimator/AnimationTree")
-dodge_duration = 0.11
+dodge_duration = 0.12
 dodge_speed = 1750.0
 attack_move_speed = 375.0
 base_parry_invincibility_period = 0.1
@@ -340,29 +340,29 @@ death_state_duration = 1.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.206155, 2.70318, -0.407648)
+bones/1/position = Vector3(0.0549625, 2.77738, -0.409175)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.164682, -0.0411607, -0.000279599, 0.985488)
-bones/4/rotation = Quaternion(0.275127, -0.114245, -0.02854, 0.954169)
+bones/3/rotation = Quaternion(0.167987, -0.0413438, 0.000226687, 0.984922)
+bones/4/rotation = Quaternion(0.286121, -0.114775, -0.0267958, 0.950917)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.045657, 0.936787, -0.346857, 0.00594103)
-bones/7/rotation = Quaternion(0.201218, -0.77497, 0.337031, 0.495321)
-bones/8/rotation = Quaternion(0.0541074, 0.648444, 0.0694523, 0.756154)
+bones/6/rotation = Quaternion(0.026807, 0.941328, -0.336376, 0.00576158)
+bones/7/rotation = Quaternion(0.204751, -0.769909, 0.334813, 0.503206)
+bones/8/rotation = Quaternion(0.0355729, 0.66718, 0.0672147, 0.741004)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.000242235, 0.000111023, 7.88533e-05, 1)
-bones/13/rotation = Quaternion(-0.167026, 0.0771922, 0.0195102, 0.982732)
-bones/14/rotation = Quaternion(0.0965821, 0.174715, -0.0101491, 0.979818)
+bones/10/rotation = Quaternion(0.0278599, 0.0127697, 0.00906037, 0.999489)
+bones/13/rotation = Quaternion(-0.174562, 0.0775885, 0.01834, 0.981413)
+bones/14/rotation = Quaternion(0.142161, 0.163889, -0.0330116, 0.975623)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.199111, 0.756112, -0.273116, 0.560408)
-bones/19/rotation = Quaternion(-0.0238651, -0.613483, 0.00205788, 0.789344)
+bones/18/rotation = Quaternion(0.186684, 0.76196, -0.256348, 0.564669)
+bones/19/rotation = Quaternion(-0.00157167, -0.613945, -0.0266074, 0.788898)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00109008, 0.250205, 0.955567, -0.155848)
-bones/26/rotation = Quaternion(0.0470135, 0.836803, -0.540479, 0.0737062)
-bones/27/rotation = Quaternion(-0.0481706, 0.598351, -0.797589, 0.0592319)
-bones/28/rotation = Quaternion(0.00233355, 0.0411445, 0.941804, 0.333628)
-bones/29/rotation = Quaternion(-0.15557, 0.806715, -0.512993, -0.248689)
-bones/30/rotation = Quaternion(0.241336, 0.498482, -0.824297, 0.117502)
+bones/25/rotation = Quaternion(-0.00120691, 0.210549, 0.962234, -0.172551)
+bones/26/rotation = Quaternion(0.0404882, 0.865667, -0.493768, 0.0719322)
+bones/27/rotation = Quaternion(-0.070509, 0.612449, -0.784084, 0.0717464)
+bones/28/rotation = Quaternion(0.0020854, 0.0131161, 0.954428, 0.298145)
+bones/29/rotation = Quaternion(-0.152962, 0.818841, -0.487748, -0.261161)
+bones/30/rotation = Quaternion(0.224572, 0.489962, -0.833483, 0.121701)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -371,7 +371,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.62142, -0.718152, 0.313201, 0.597319, -0.692953, -0.403765, 0.506998, -0.0638267, 0.859581, -1.43833, 2.57093, -2.0547)
+transform = Transform3D(-0.608831, -0.729693, 0.311245, 0.598915, -0.680076, -0.422845, 0.520217, -0.0710316, 0.851075, -1.53736, 2.61752, -2.12388)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2

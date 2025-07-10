@@ -25,6 +25,7 @@ max_db = 1.0
 max_db = 1.0
 
 [node name="Decal" type="Decal" parent="."]
+unique_name_in_owner = true
 layers = 32
 size = Vector3(1.5, 1.5, 1.5)
 texture_albedo = ExtResource("3_oq72m")

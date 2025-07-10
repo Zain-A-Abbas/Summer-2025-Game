@@ -14,6 +14,9 @@ func _init(new: CharacterEntity, model: CSGSphere3D, object: AttackObject) -> vo
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0
 	attack_object.show()
+	proj.explosion_particles.emitting = true
+	proj.model.visible = false
+	proj.decal.visible = false
 	attack_object.hitbox.monitorable = true
 
 	proj.play_sound_fx(&"death")

@@ -14,6 +14,8 @@ func _init(new_char: CharacterEntity, anim_name: String, time: float):
 	
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
+	if char is Enemy:
+		char.enemy_hp_sprite.visible = false
 	
 	# only play death sound for enemies spawned naturally
 	if !args.has("summoned") || (args.has("summoned") && !args["summoned"]):

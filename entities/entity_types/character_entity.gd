@@ -32,6 +32,7 @@ var gravity_vel: float = 0
 @onready var sounds: Node3D = %Sounds
 @onready var health_component: HealthComponent = %HealthComponent
 @onready var movement_component: MovementComponent = %MovementComponent
+@onready var decal: Decal = %Decal
 
 
 func char_entity_die(args: Dictionary[String, Variant] = {}):

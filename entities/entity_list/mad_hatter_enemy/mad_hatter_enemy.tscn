@@ -97,11 +97,9 @@ summon_timestamp = 4.0
 summon_cooldown = 3.0
 wander_duration = 4.0
 change_direction_time = 1.2
-max_speed = 650.0
+max_speed = 600.0
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
-animation_tree = NodePath("placeholder_model/AnimationTree")
-death_state_duration = 1.0
 
 [node name="MadHatterAnimator" parent="." index="0" instance=ExtResource("6_rt3wv")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)

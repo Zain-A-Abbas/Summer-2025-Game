@@ -11,6 +11,7 @@ signal enemy_damage_taken(enemy: Enemy, damage: int)
 @export var hurtbox: HurtboxComponent
 @export var meshes: Array[MeshInstance3D] = []
 @export var animation_tree: AnimationTree
+@onready var enemy_hp_sprite: Sprite3D = %EnemyHP
 
 var player: Player
 var enemy_data: Node3D

@@ -1,7 +1,7 @@
 class_name FlowerEnemyDig
 extends EnemyState
 
-const UNDERGROUND_TIMESTAMP: float = 0.8
+const UNDERGROUND_TIMESTAMP: float = 0.7
 const DIG_SOUND_TIME: float = 0.3
 
 var delta_count: float = 0.0
@@ -36,6 +36,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	enemy.play_sound_fx(&"dig_start")
 	# play initial dig animation here
+	enemy.action_animator.play("flower/dig")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

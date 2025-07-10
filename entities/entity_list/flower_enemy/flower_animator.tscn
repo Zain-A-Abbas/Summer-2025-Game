@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnthpw6dduda"]
+
+[ext_resource type="PackedScene" uid="uid://cwju3klyemsaj" path="res://entities/entity_list/flower_enemy/flower.glb" id="1_gtcag"]
+
+[node name="flower" instance=ExtResource("1_gtcag")]

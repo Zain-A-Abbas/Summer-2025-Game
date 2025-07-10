@@ -54,61 +54,19 @@ radius = 2.12207
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5rjs7"]
 height = 3.26123
-radius = 3.0
+radius = 4.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
 viewport_path = NodePath("SubViewport")
 
 [node name="JabberwockBoss" instance=ExtResource("1_2w3it")]
 script = ExtResource("2_2w3it")
-hurtbox = Object(Area3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":0,"collision_mask":2,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"monitoring":true,"monitorable":false,"priority":0,"gravity_space_override":0,"gravity_point":false,"gravity_point_unit_distance":0.0,"gravity_point_center":Vector3(0, -1, 0),"gravity_direction":Vector3(0, -1, 0),"gravity":9.8,"linear_damp_space_override":0,"linear_damp":0.1,"angular_damp_space_override":0,"angular_damp":0.1,"wind_force_magnitude":0.0,"wind_attenuation_factor":0.0,"wind_source_path":NodePath(""),"audio_bus_override":false,"audio_bus_name":&"Master","reverb_bus_enabled":false,"reverb_bus_name":&"Master","reverb_bus_amount":0.0,"reverb_bus_uniformity":0.0,"script":Resource("res://entities/stats/hurtbox_component.gd"))
-
-meshes = Array[MeshInstance3D]([Object(MeshInstance3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_texel_scale":1.0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"mesh":null,"skin":null,"skeleton":NodePath(".."),"surface_material_override/0":null,"script":null)
-])
+hurtbox = null
+meshes = Array[MeshInstance3D]([null])
 animation_tree = null
 
 [node name="jabberwock" parent="." index="0" instance=ExtResource("3_5rjs7")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
-bones/1/position = Vector3(0, 4.22855, 3.83333)
-bones/1/rotation = Quaternion(-0.258819, 0, 0, 0.965926)
-bones/2/rotation = Quaternion(-0.34202, -1.83336e-15, -2.51227e-15, 0.939693)
-bones/3/rotation = Quaternion(0, 9.41742e-16, 3.03775e-16, 1)
-bones/5/rotation = Quaternion(-0.32699, 0.193242, -0.352936, 0.855086)
-bones/6/rotation = Quaternion(-0.29244, -0.00936386, 0.278603, 0.914752)
-bones/8/rotation = Quaternion(0.114981, 0.194499, 0.256763, 0.939693)
-bones/10/rotation = Quaternion(0.133719, 4.3628e-08, 0.133719, 0.981956)
-bones/11/rotation = Quaternion(-0.0951169, -1.40403e-08, -0.0951169, 0.990911)
-bones/12/rotation = Quaternion(-0.0642454, 1.2653e-08, -0.0642454, 0.995864)
-bones/13/rotation = Quaternion(-0.272004, 5.97196e-10, -0.272004, 0.923054)
-bones/14/rotation = Quaternion(-0.289084, -3.63066e-09, -0.289084, 0.912612)
-bones/15/rotation = Quaternion(-0.238657, 3.93497e-08, -0.238657, 0.941321)
-bones/16/rotation = Quaternion(2.52435e-29, 1.19209e-07, 2.11758e-22, 1)
-bones/17/rotation = Quaternion(-0.225413, 4.55821e-15, -5.37426e-08, 0.974263)
-bones/18/rotation = Quaternion(-0.102566, -2.90188e-15, -2.44536e-08, 0.994726)
-bones/19/rotation = Quaternion(-0.145587, 1.2344e-14, -3.47106e-08, 0.989345)
-bones/20/rotation = Quaternion(0.0944644, 1.69512e-14, 2.25221e-08, 0.995528)
-bones/21/rotation = Quaternion(0.359966, -3.42718e-14, 8.58225e-08, 0.932966)
-bones/22/rotation = Quaternion(0.30883, -7.47061e-15, 7.36308e-08, 0.951117)
-bones/24/rotation = Quaternion(-0.32699, -0.193242, 0.352936, 0.855086)
-bones/25/rotation = Quaternion(-0.29244, 0.00936383, -0.278603, 0.914752)
-bones/25/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(0.114981, -0.194499, -0.256763, 0.939693)
-bones/29/rotation = Quaternion(0.133719, -1.79585e-08, -0.133719, 0.981956)
-bones/30/rotation = Quaternion(-0.0951168, -1.21167e-09, 0.095117, 0.990911)
-bones/31/rotation = Quaternion(-0.0642454, 4.70967e-09, 0.0642455, 0.995864)
-bones/32/rotation = Quaternion(-0.272004, -6.24542e-09, 0.272004, 0.923054)
-bones/33/rotation = Quaternion(-0.289084, 3.60558e-08, 0.289084, 0.912612)
-bones/34/rotation = Quaternion(-0.238657, 4.95775e-11, 0.238657, 0.941321)
-bones/35/position = Vector3(0.9, 2.73573, 2.96013)
-bones/35/rotation = Quaternion(0.00922589, 0.258655, 0.965312, -0.0344315)
-bones/36/rotation = Quaternion(-0.241768, 0.00862366, -0.0345872, 0.969679)
-bones/37/rotation = Quaternion(-0.687215, -3.3669e-08, 3.15438e-08, 0.726454)
-bones/38/position = Vector3(-0.9, 2.73573, 2.96013)
-bones/38/rotation = Quaternion(-0.00922589, 0.258655, 0.965312, 0.0344315)
-bones/39/rotation = Quaternion(-0.241768, -0.00862366, 0.0345872, 0.969679)
-bones/40/rotation = Quaternion(-0.687215, 9.33491e-08, 3.1544e-08, 0.726454)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(-5.92289e-08, 0, -1.355, 0, 1.355, 0, 1.355, 0, -5.92289e-08, 0, 2.24852, 0)

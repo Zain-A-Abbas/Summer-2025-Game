@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bul1qv25y7gbq"]
+[gd_scene load_steps=18 format=3 uid="uid://bul1qv25y7gbq"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_116be"]
 [ext_resource type="Material" uid="uid://uhccc1d63o67" path="res://levels/materials/stone_brick.tres" id="2_cmt2u"]
@@ -44,6 +44,9 @@ size = Vector3(12.0694, 13.3608, 18.8955)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_27bmw"]
 data = PackedVector3Array(-50, -16, 7, -50, -16, -7, -50, 16, -7, 50, -16, -7, -50, -16, -7, -50, -16, 7, -50, 16, -7, -50, -16, -7, 50, -16, -7, -50, 16, -7, -50, 16, 7, -50, -16, 7, -50, -16, 7, -50, 16, 7, 50, 16, 7, 50, 16, 7, -50, 16, 7, -50, 16, -7, -50, -16, 7, 50, -16, 7, 50, -16, -7, 50, 16, 7, 50, -16, 7, -50, -16, 7, 50, -16, -7, 50, -16, 7, 50, 16, 7, 50, -16, -7, 50, 16, -7, -50, 16, -7, -50, 16, -7, 50, 16, -7, 50, 16, 7, 50, 16, 7, 50, 16, -7, 50, -16, -7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27bmw"]
+size = Vector3(64, 2.5, 14)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_eibgx"]
 panorama = ExtResource("4_bc2ch")
@@ -604,13 +607,13 @@ transform = Transform3D(1.06066, 0, 1.06066, 0, 1.5, 0, -1.06066, 0, 1.06066, -4
 [node name="Window9" parent="StaticGeometry" index="16" instance=ExtResource("6_27bmw")]
 transform = Transform3D(1.06066, 0, -1.06066, 0, 1.5, 0, 1.06066, 0, 1.06066, -34, 4, -6.2)
 
-[node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.79667, 0, -3.39996)
-script = ExtResource("7_wglwd")
+[node name="Floor" type="StaticBody3D" parent="StaticGeometry" index="17"]
+collision_layer = 32
+collision_mask = 0
 
-[node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27385, 0, 3.97938)
-script = ExtResource("7_wglwd")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+shape = SubResource("BoxShape3D_27bmw")
 
 [node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3.39293)

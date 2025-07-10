@@ -14,6 +14,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	if !from_dig:
 		enemy.dig_timer = 0.0
+	enemy.action_animator.play("flower/idle")
 
 func st_physics_process(delta: float) -> void:	
 	distance = distance_to_player()

@@ -7,7 +7,7 @@ var movement_vector: Vector3 = Vector3.ZERO
 
 
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
-	delta_count = 0
+	delta_count = 0.0
 	direction = get_player_movement()
 	if direction == Vector2.ZERO:
 		direction = Vector2(0, player.rotation.y)
@@ -19,7 +19,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
-
+	
 	if delta_count >= player.dodge_duration:
 		return state_machine.change_state(&"Idle")
 	

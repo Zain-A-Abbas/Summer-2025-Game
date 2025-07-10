@@ -7,7 +7,7 @@ var warning_shown: bool = false
 var warning_hidden: bool = false
 
 var delta_count: float = 0.0
-var shoot_times: Array[float] = [0.0, 0.0]
+var shoot_times: Array[float] = [1.1, 1.35]
 var warning_times: Array[float] = [0.0, 0.0]
 var dig_on_cooldown: bool = false
 
@@ -20,13 +20,12 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	
 	# initialize shoot and warning times
-	shoot_times[0] = randf_range(0.7, 1.2)
-	shoot_times[1] = shoot_times[0] + enemy.shoot_cooldown
 	
 	warning_times[0] = shoot_times[0] - 0.6
 	warning_times[1] = warning_times[0] + enemy.warning_duration
 	
 	dig_on_cooldown = args["dig_on_cooldown"]
+	enemy.action_animator.play("flower/shoot")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -36,7 +35,6 @@ func st_physics_process(delta: float) -> void:
 	
 	if warning_trackers[0] > warning_times[0] && !warning_shown:
 		enemy.attack_indicator_animator.play("show_indicator")
-		enemy.play_sound_fx(&"shoot_bomb")
 		warning_shown = true
 	
 	if warning_trackers[1] > warning_times[1] && !warning_hidden:
@@ -47,14 +45,13 @@ func st_physics_process(delta: float) -> void:
 	enemy.face_direction(face_player())
 	
 	if delta_count >= shoot_times[0] && !bomb_shot:
+		enemy.play_sound_fx(&"shoot_bomb")
 		bomb_shot = true
 		var bomb: FlowerEnemyBomb = enemy.bomb.instantiate()
 		enemy.projectiles.add_child(bomb)
-		bomb.initialize_bomb()
-		bomb.global_position = enemy.player.global_position
-		
-		enemy.action_animator.play("basic_enemy_animation_library/attack")
-		
+		bomb.initialize_bomb(enemy.bomb_spawn_position.global_position, enemy.player.global_position)
+	
+	
 	if delta_count > shoot_times[1]:
 		return state_machine.change_state(&"Idle", {"dig_on_cooldown": dig_on_cooldown})
 
