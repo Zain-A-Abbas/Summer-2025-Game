@@ -3,23 +3,23 @@ extends Node
 
 # Manages switching betweens levels and also contains run-specific data
 
-const LEVEL_AMOUNT: int = 10
-
 @onready var level_holder: Node3D = %LevelHolder
 @onready var fade: ColorRect = %Fade
 @onready var player_ui: PlayerUI = %PlayerUI
-
-@export var normal_levels: Array[PackedScene] = []
-@export var elite_levels: Array[PackedScene] = []
-@export var healing_level: PackedScene
-@export var shop_level: PackedScene
-@export var boss_level: PackedScene
 
 var current_level: int = 0
 var money: int = 1000
 var current_player: Player
 var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
+
+@export var endless: bool = false
+@export var max_levels: int = 10
+@export var normal_levels: Array[PackedScene] = []
+@export var elite_levels: Array[PackedScene] = []
+@export var healing_level: PackedScene
+@export var shop_level: PackedScene
+@export var boss_level: PackedScene
 
 func _ready() -> void:
 	if get_tree().root.get_children().has(self):
@@ -83,7 +83,7 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	
 	await get_tree().process_frame
 	
-	if current_level == LEVEL_AMOUNT:
+	if !endless && current_level == max_levels:
 		return
 	
 	create_level(exit_type)

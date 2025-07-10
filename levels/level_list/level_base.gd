@@ -20,6 +20,9 @@ const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/ma
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
 const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
 
+const CREATE_SHOP_LEVEL_MODULO: int = 5
+const CREATE_BOSS_LEVEL_MODULO: int = 10
+
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
