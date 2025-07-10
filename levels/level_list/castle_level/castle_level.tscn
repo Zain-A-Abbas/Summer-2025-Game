@@ -111,9 +111,9 @@ y_rotation = 45.0
 enemy_minimum = 4
 enemy_limit = 6
 enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 4,
+&"BASIC": 3,
 &"CATERPILLAR": 2,
-&"FLOWER": 2,
+&"FLOWER": 1,
 &"MAD_HATTER": 0,
 &"MOUSE": 2,
 &"RED_KNIGHT": 2
@@ -325,26 +325,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.935, 0, -18.1356)
 script = ExtResource("6_ii6r2")
 metadata/_custom_type_script = "uid://c23fdc58df3f4"
 
-[node name="Marker3D" type="Marker3D" parent="EnemyPositions" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1692, 0, -21.4718)
-
-[node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="1"]
+[node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.951, 0, -12.15)
 gizmo_extents = 2.0
 
-[node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="2"]
+[node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9013, 0, -0.444558)
 
-[node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="3"]
+[node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6716, 0, 17)
 
-[node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="4"]
+[node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.746, 0, 8.44594)
 
-[node name="Marker3D6" type="Marker3D" parent="EnemyPositions" index="5"]
+[node name="Marker3D6" type="Marker3D" parent="EnemyPositions" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 3.50824)
 
-[node name="Marker3D7" type="Marker3D" parent="EnemyPositions" index="6"]
+[node name="Marker3D7" type="Marker3D" parent="EnemyPositions" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 12.7621)
 
 [node name="WorldEnvironment" parent="Lighting" index="0"]
