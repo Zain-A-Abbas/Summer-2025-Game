@@ -47,7 +47,8 @@ func st_physics_process(delta: float) -> void:
 		if collider.get_collision_layer_value(5):
 			return state_machine.change_state(&"Chase")
 	
-	enemy.velocity = direction * wander_speed * delta
+	enemy.velocity = enemy.gravity_velocity() + direction * wander_speed
+	enemy.velocity *= delta
 	enemy.face_direction(direction)
 	enemy.move_and_slide()
 

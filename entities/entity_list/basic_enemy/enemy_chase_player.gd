@@ -66,7 +66,8 @@ func st_physics_process(delta: float) -> void:
 			return state_machine.change_state(&"Wander")
 		direction_timer = 0.0
 	
-	enemy.velocity = direction * enemy.movement_component.move_speed * delta * (1.0 - 0.5 * float(is_attack_cooldown)) # Half speed on cooldown
+	enemy.velocity = enemy.gravity_velocity() + direction * enemy.movement_component.move_speed * (1.0 - 0.5 * float(is_attack_cooldown)) # Half speed on cooldown
+	enemy.velocity *= delta
 	enemy.face_direction(direction)
 	enemy.move_and_slide()
 	

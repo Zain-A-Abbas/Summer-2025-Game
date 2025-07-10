@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0uvklbxie6x6"]
+
+[ext_resource type="PackedScene" uid="uid://c5m3aviaga1v8" path="res://models/enemies/caterpillar.glb" id="1_leqna"]
+
+[node name="caterpillar" instance=ExtResource("1_leqna")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(1.42109e-14, 1.5, 2.5)
+bones/1/rotation = Quaternion(-0.707107, 1.0677e-07, -1.0677e-07, 0.707107)

@@ -22,7 +22,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	
 	direction = face_player().rotated(Vector3.UP, deg_to_rad(randf_range(-180, 180)))
 	
-	enemy.action_animator.play("basic_enemy_animation_library/walk")
+	enemy.action_animator.play("caterpillar/move")
 	enemy.play_sound_fx(&"crawl_1")
 
 func st_physics_process(delta: float) -> void:

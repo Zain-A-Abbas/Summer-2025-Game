@@ -18,7 +18,7 @@ func prepare_states():
 		StateInitializer.new(&"Shoot", CaterpillarEnemyShoot.new(self, ray_cast)),
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
-			"basic_enemy_animation_library/attack", # change later
+			"caterpillar/death", # change later
 			death_state_duration
 			))
 	]

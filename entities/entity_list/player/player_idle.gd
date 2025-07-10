@@ -16,5 +16,6 @@ func st_physics_process(delta: float):
 	if get_player_movement():
 		return state_machine.change_state(&"Walk")
 	
-	player.velocity = player.gravity_velocity() * delta
+	player.velocity = player.gravity_velocity() + player.deflect_velocity
+	player.velocity *= delta
 	player.move_and_slide()

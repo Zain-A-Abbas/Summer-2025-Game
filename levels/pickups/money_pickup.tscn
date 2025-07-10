@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk5efgf5j4is0"]
+[gd_scene load_steps=5 format=3 uid="uid://bk5efgf5j4is0"]
 
 [ext_resource type="PackedScene" uid="uid://onushv8dgjk8" path="res://levels/pickups/pickup_base.tscn" id="1_unk1o"]
 [ext_resource type="Script" uid="uid://lgkjamj5x6gv" path="res://levels/pickups/money_pickup.gd" id="2_jvq0j"]
@@ -7,11 +7,15 @@
 shading_mode = 0
 albedo_color = Color(0.69, 0.46, 0, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jvq0j"]
+radius = 0.75
+height = 3.0
+
 [node name="MoneyPickup" instance=ExtResource("1_unk1o")]
 script = ExtResource("2_jvq0j")
 
 [node name="PickupModel" parent="." index="0"]
-transform = Transform3D(0.999708, 0, -0.024184, 0, 1, 0, 0.024184, 0, 0.999708, 0, 0, 0)
+transform = Transform3D(0.27444, 0, 0.961605, 0, 1, 0, -0.961605, 0, 0.27444, 0, 0, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="PickupModel" index="0"]
 transform = Transform3D(0.999944, -2.50526e-07, 0, 0, -4.37114e-08, -1, 2.50526e-07, 0.999944, -4.37114e-08, 0, 1, 0)
@@ -19,3 +23,7 @@ radius = 0.4
 height = 0.125
 sides = 16
 material = SubResource("StandardMaterial3D_unk1o")
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975, 0)
+shape = SubResource("CapsuleShape3D_jvq0j")

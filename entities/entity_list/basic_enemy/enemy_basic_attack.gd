@@ -53,8 +53,9 @@ func st_physics_process(delta: float) -> void:
 		enemy.hide_attack_indicator()
 		warning_hidden = true
 	
+	enemy.velocity = enemy.gravity_velocity() * delta
 	if delta_count < ACTIVE_FRAMES[0]:
-		enemy.velocity = 2.0 * enemy.animation_tree.get_root_motion_position().rotated(Vector3.UP, enemy.rotation.y) / delta
+		enemy.velocity += 2.0 * enemy.animation_tree.get_root_motion_position().rotated(Vector3.UP, enemy.rotation.y) / delta
 		enemy.move_and_slide()
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):

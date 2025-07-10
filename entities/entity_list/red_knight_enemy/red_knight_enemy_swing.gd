@@ -44,7 +44,8 @@ func st_physics_process(delta: float) -> void:
 	
 	# movement
 	if attack_activated && delta_count <= MOVEMENT_DURATION:
-		enemy.velocity = direction * enemy.swing_move_speed * delta
+		enemy.velocity = enemy.gravity_velocity() + direction * enemy.swing_move_speed 
+		enemy.velocity *= delta
 		enemy.move_and_slide()
 	
 	if delta_count >= STATE_DURATION:

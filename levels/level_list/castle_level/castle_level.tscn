@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=4 uid="uid://ck150mu7ims48"]
+[gd_scene load_steps=28 format=4 uid="uid://ck150mu7ims48"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_jhykl"]
 [ext_resource type="Texture2D" uid="uid://ci7yh5msj7itg" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Brick-White-2.png" id="2_ii6r2"]
+[ext_resource type="Script" uid="uid://cj84blihdrd6u" path="res://levels/level_list/castle_level/castle_level.gd" id="2_n23wo"]
 [ext_resource type="Material" uid="uid://coqwdtg7dxp1j" path="res://levels/materials/lime.tres" id="3_56ogd"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="4_em20i"]
 [ext_resource type="Material" uid="uid://dlxxmdgi86uky" path="res://levels/materials/carpet.tres" id="5_n23wo"]
@@ -105,6 +106,8 @@ fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
 
 [node name="CastleRoom" instance=ExtResource("1_jhykl")]
+script = ExtResource("2_n23wo")
+y_rotation = 45.0
 enemy_limit = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="1"]
@@ -337,6 +340,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9178, 0, 8.44594)
 environment = SubResource("Environment_r6poa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
+unique_name_in_owner = true
 transform = Transform3D(-0.965926, -0.0977925, 0.239633, 0.0669876, 0.799862, 0.596434, -0.25, 0.592164, -0.766056, 0, 9.76641, 0)
 light_color = Color(0.4488, 0.6248, 0.66, 1)
 light_energy = 0.5

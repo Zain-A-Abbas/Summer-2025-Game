@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dw7hd5c8gm2mv"]
+[gd_scene load_steps=27 format=3 uid="uid://dw7hd5c8gm2mv"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_wksuw"]
 [ext_resource type="Script" uid="uid://b6tl1se2dbigb" path="res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.gd" id="2_7asxt"]
@@ -34,6 +34,20 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g3vau"]
 height = 1.0
+
+[sub_resource type="Animation" id="Animation_1n4y7"]
+resource_name = "death"
+length = 0.333
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MadHatterAnimator/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Death"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_g3vau"]
 resource_name = "idle"
@@ -81,6 +95,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7tx5y"]
 _data = {
+&"death": SubResource("Animation_1n4y7"),
 &"idle": SubResource("Animation_g3vau"),
 &"summon": SubResource("Animation_rt3wv"),
 &"walk": SubResource("Animation_8ybbv")
@@ -100,21 +115,22 @@ change_direction_time = 1.2
 max_speed = 600.0
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
+death_state_duration = 0.333
 
 [node name="MadHatterAnimator" parent="." index="0" instance=ExtResource("6_rt3wv")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MadHatterAnimator/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.200136, 5.72266e-07, 2.5824e-07, 0.979768)
-bones/13/position = Vector3(0.663489, 0.610285, -0.674417)
-bones/13/rotation = Quaternion(0.378216, 0.248185, 0.891019, -0.0379878)
-bones/14/rotation = Quaternion(0.195104, 0.0555083, -0.112967, 0.972672)
-bones/15/position = Vector3(-0.663489, 0.610285, -0.674417)
-bones/15/rotation = Quaternion(-0.378216, 0.248185, 0.891019, 0.0379878)
-bones/16/rotation = Quaternion(0.195104, -0.0555083, 0.112967, 0.972672)
+bones/0/position = Vector3(-0.223784, 0.818727, -1.39711)
+bones/0/rotation = Quaternion(0.479415, 0.479414, 0.519771, 0.519771)
+bones/7/rotation = Quaternion(-0.747306, 6.71534e-12, 8.90867e-07, 0.66448)
+bones/13/position = Vector3(0.111892, 1.48222, -0.617619)
+bones/13/rotation = Quaternion(0.142383, 0.386076, 0.593306, -0.691853)
+bones/15/position = Vector3(0.111892, 0.155238, -0.617619)
+bones/15/rotation = Quaternion(-0.386076, -0.142383, 0.691853, -0.593306)
 
 [node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -2.36225e-08, 1.99264e-07, -7.80145e-08, 0.869018, 0.494786, -1.84856e-07, -0.494778, 0.869016, 2.03027e-07, 2.22432, 0.83188)
+transform = Transform3D(-5.28727e-07, -0.939694, -0.342022, 1, -3.04622e-07, -5.78291e-07, 3.73958e-07, -0.342017, 0.939691, -1.28127, 0.818725, 0.960248)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

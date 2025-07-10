@@ -24,8 +24,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction = face_player()
 	enemy.face_direction(face_player())
 	
-	enemy.action_animator.play("basic_enemy_animation_library/RESET")
-	enemy.action_animator.play("basic_enemy_animation_library/attack")
+	#enemy.action_animator.play("basic_enemy_animation_library/RESET")
+	#enemy.action_animator.play("basic_enemy_animation_library/attack")
 	
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

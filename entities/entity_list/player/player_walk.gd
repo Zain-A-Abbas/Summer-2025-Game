@@ -29,7 +29,7 @@ func st_physics_process(delta: float) -> void:
 
 	var movement_vector: Vector3 = Vector3(-movement_input.x, 0.0, movement_input.y)
 
-	player.velocity = player.gravity_velocity() + movement_vector * player.movement_component.move_speed
+	player.velocity = player.gravity_velocity() + movement_vector * player.movement_component.move_speed + player.deflect_velocity
 	player.velocity *= delta
 	player.face_direction(movement_vector.rotated(Vector3.UP, deg_to_rad(180)))
 	player.move_and_slide()

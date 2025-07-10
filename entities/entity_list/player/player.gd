@@ -16,6 +16,10 @@ const PARRY_REQUIREMENT: float = 20
 @export var base_parry_invincibility_period: float
 @export var parry_duration: float
 
+# Mainly used when hitting the red knight during its block period
+var deflect_velocity: Vector3 = Vector3.ZERO
+var deflect_decay: float = 0.0 # How much deflect reduces by absolutely every second
+
 # Required for parrying/dodging
 var stamina: float = 100.0
 var max_stamina: float = 100.0
@@ -24,6 +28,7 @@ var stamina_regeneration_cooldown: SceneTreeTimer = null
 var parry_counter: int = 0
 var can_get_parry_point: bool = false
 var upgrades: PlayerUpgrades
+
 
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
@@ -39,6 +44,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	update_listener_direction()
 	update_inflicted_attack_effects(delta)
+	deflect_velocity = deflect_velocity.move_toward(Vector3.ZERO, deflect_decay * delta)
 
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)

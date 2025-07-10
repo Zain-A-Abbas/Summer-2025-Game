@@ -34,7 +34,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction_to_player = face_player()
 	enemy.face_direction(direction_to_player)
 
-	block_time = randf_range(4.0, 5.5)
+	block_time = randf_range(1.0, 2.0)
 	instant_turn_hp_threshold = enemy.health_component.current_health - enemy.instant_turn_hp_amount
 	is_aggro = true
 	reset_played = false
@@ -96,7 +96,8 @@ func st_physics_process(delta: float) -> void:
 		enemy.action_animator.play("basic_enemy_animation_library/walk")
 		walk_played = true
 
-	enemy.velocity = move_direction * enemy.movement_component.move_speed * delta
+	enemy.velocity = enemy.gravity_velocity() + move_direction * enemy.movement_component.move_speed 
+	enemy.velocity *= delta
 	enemy.move_and_slide()
 	
 	# play footstep sound fx

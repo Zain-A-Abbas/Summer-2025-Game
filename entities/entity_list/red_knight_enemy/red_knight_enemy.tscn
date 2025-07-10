@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://b8tkb5tr2t8vj"]
+[gd_scene load_steps=46 format=3 uid="uid://b8tkb5tr2t8vj"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_1anpf"]
 [ext_resource type="Script" uid="uid://b4ymyhvxbw3fo" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.gd" id="2_gs4ux"]
 [ext_resource type="PackedScene" uid="uid://do0wpbursm6rx" path="res://entities/entity_list/red_knight_enemy/red_knight_animator.tscn" id="3_pdgy0"]
+[ext_resource type="Material" uid="uid://cbvpk3c6dtf8x" path="res://models/enemies/enemy_material_overlay.tres" id="4_pdgy0"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="5_upjdm"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="6_6o61m"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="7_a1e7x"]
@@ -110,6 +111,26 @@ shader_parameter/dissolve_curve = SubResource("CurveTexture_i6hqh")
 radius = 1.0
 height = 4.0
 
+[sub_resource type="Animation" id="Animation_4h5qo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("red_knight/AnimationTree:parameters/death_oneshot/request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgy0"]
+_data = {
+&"RESET": SubResource("Animation_4h5qo")
+}
+
 [sub_resource type="Animation" id="Animation_k5gch"]
 length = 0.001
 
@@ -138,6 +159,21 @@ tracks/1/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_657e3"]
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("red_knight/AnimationTree:parameters/death_oneshot/request")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
 [sub_resource type="Animation" id="Animation_1tj3l"]
 resource_name = "idle"
 
@@ -149,6 +185,7 @@ length = 0.2
 _data = {
 &"RESET": SubResource("Animation_k5gch"),
 &"attack": SubResource("Animation_i6hqh"),
+&"death": SubResource("Animation_657e3"),
 &"idle": SubResource("Animation_1tj3l"),
 &"walk": SubResource("Animation_5sssr")
 }
@@ -159,46 +196,57 @@ viewport_path = NodePath("SubViewport")
 [node name="RedKnightEnemy" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_1anpf")]
 script = ExtResource("2_gs4ux")
 instant_turn_hp_amount = 40
-player_pushback = 200.0
+player_pushback = 1600.0
 aggro_range = Array[float]([3.0, 9.0])
 active_radius = 15.0
 swing_move_speed = 2800.0
 distance_to_swing = 7.0
 hurtbox = NodePath("Hurtbox")
-meshes = [NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_003"), NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_004")]
+meshes = [NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_003"), NodePath("red_knight/Armature_001/GeneralSkeleton/Cube_004"), NodePath("red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D/SwordMesh")]
 animation_tree = NodePath("red_knight/AnimationTree")
-death_state_duration = 1.0
+death_state_duration = 2.4
 
 [node name="red_knight" parent="." index="0" instance=ExtResource("3_pdgy0")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.110403, 3.37977, -0.185813)
-bones/1/rotation = Quaternion(-1.37369e-06, 0.00377945, -0.000145477, 0.999993)
-bones/3/rotation = Quaternion(0.163782, -0.04111, -0.000416947, 0.98564)
-bones/4/rotation = Quaternion(0.267725, -0.113876, -0.029706, 0.956281)
+bones/1/position = Vector3(-0.0338365, 3.20899, -0.184817)
+bones/1/rotation = Quaternion(-0.000333132, 0.0167262, -0.0199224, 0.999662)
+bones/3/rotation = Quaternion(0.163145, -0.0410741, -0.000513919, 0.985747)
+bones/4/rotation = Quaternion(0.268763, -0.113929, -0.0295429, 0.955989)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0222383, 0.942387, -0.333735, 0.00571645)
-bones/7/rotation = Quaternion(0.205586, -0.768696, 0.334282, 0.505071)
-bones/8/rotation = Quaternion(0.0447033, 0.658195, 0.0683012, 0.748409)
+bones/6/rotation = Quaternion(0.0393889, 0.938327, -0.343448, 0.00588252)
+bones/7/rotation = Quaternion(0.202434, -0.773241, 0.336273, 0.498036)
+bones/8/rotation = Quaternion(0.0356534, 0.667105, 0.0672239, 0.741067)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0345279, 0.015826, 0.011229, 0.999215)
-bones/13/rotation = Quaternion(-0.162716, 0.07696, 0.020176, 0.98346)
-bones/14/rotation = Quaternion(0.109086, 0.173339, -0.0118331, 0.978731)
+bones/10/rotation = Quaternion(0.00951426, 0.00436093, 0.00309388, 0.999941)
+bones/13/rotation = Quaternion(-0.162671, 0.0769576, 0.0201828, 0.983468)
+bones/14/rotation = Quaternion(0.125006, 0.17015, -0.0187007, 0.977278)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.175165, 0.767015, -0.240803, 0.568348)
-bones/19/rotation = Quaternion(-0.0182006, -0.613678, -0.00522925, 0.789329)
+bones/18/rotation = Quaternion(0.161773, 0.772457, -0.222728, 0.572304)
+bones/19/rotation = Quaternion(-0.0101653, -0.613863, -0.0155619, 0.789194)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000123636, 0.0337808, 0.999273, 0.017676)
-bones/26/rotation = Quaternion(0.000199752, 0.993959, -0.109742, 0.00166924)
-bones/27/rotation = Quaternion(0.00992132, 0.666496, -0.745319, -0.0135769)
-bones/28/rotation = Quaternion(0.000133909, 0.259766, 0.965482, 0.019145)
-bones/29/rotation = Quaternion(0.00650102, 0.758787, -0.651263, 0.00747049)
-bones/30/rotation = Quaternion(0.0248422, 0.83509, -0.549553, 0.000213026)
+bones/25/rotation = Quaternion(-0.000129739, 0.268662, 0.963056, -0.018549)
+bones/26/rotation = Quaternion(-0.00068517, 0.971873, -0.235484, -0.00317289)
+bones/27/rotation = Quaternion(-0.0152395, 0.620387, -0.784071, -0.0109412)
+bones/28/rotation = Quaternion(-0.000200773, -0.217199, 0.975705, -0.0287046)
+bones/29/rotation = Quaternion(-7.54657e-05, 0.998555, -0.0536985, -0.00190673)
+bones/30/rotation = Quaternion(0.00351562, 0.707165, -0.706741, -0.020561)
+
+[node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
+material_overlay = ExtResource("4_pdgy0")
+
+[node name="Cube_004" parent="red_knight/Armature_001/GeneralSkeleton" index="1"]
+material_overlay = ExtResource("4_pdgy0")
+instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.455501, -0.671059, 0.584978, 0.0414401, -0.672375, -0.73905, 0.889271, -0.312396, 0.334076, -1.97473, 3.82742, -1.52365)
+transform = Transform3D(-0.443401, -0.702717, 0.556403, 0.0452719, -0.637528, -0.769096, 0.895179, -0.315829, 0.314494, -2.11818, 3.74586, -1.52029)
+
+[node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
+material_overlay = ExtResource("4_pdgy0")
+instance_shader_parameters/hit_effect = false
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
@@ -249,6 +297,7 @@ shape = SubResource("CapsuleShape3D_cwsr8")
 
 [node name="ActionAnimator" parent="." index="7"]
 libraries = {
+&"": SubResource("AnimationLibrary_pdgy0"),
 &"basic_enemy_animation_library": SubResource("AnimationLibrary_p6bwr")
 }
 

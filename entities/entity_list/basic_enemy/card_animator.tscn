@@ -17334,8 +17334,6 @@ fadeout_time = 0.2
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jd708"]
 animation = &"Death01"
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2ke5v"]
-
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_17y6b"]
 filter_enabled = true
 filters = ["%GeneralSkeleton:Hips", "%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%GeneralSkeleton:LeftUpperLeg", "%GeneralSkeleton:RightFoot", "%GeneralSkeleton:RightLowerLeg", "%GeneralSkeleton:RightUpperLeg", "Rig/Skeleton3D:DEF-foot.L", "Rig/Skeleton3D:DEF-foot.R", "Rig/Skeleton3D:DEF-hips", "Rig/Skeleton3D:DEF-shin.L", "Rig/Skeleton3D:DEF-shin.R", "Rig/Skeleton3D:DEF-thigh.L", "Rig/Skeleton3D:DEF-thigh.R", "Rig/Skeleton3D:DEF-toe.L", "Rig/Skeleton3D:DEF-toe.R"]
@@ -17353,6 +17351,8 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_0tphe")
 blend_point_1/pos = 1.0
 min_space = 0.0
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2ke5v"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4i802"]
 nodes/Animation/node = SubResource("AnimationNodeAnimation_le4mh")
 nodes/Animation/position = Vector2(-120, -160)
@@ -17362,42 +17362,42 @@ nodes/Attack/node = SubResource("AnimationNodeOneShot_itfwf")
 nodes/Attack/position = Vector2(440, -20)
 nodes/Death/node = SubResource("AnimationNodeAnimation_jd708")
 nodes/Death/position = Vector2(400, 300)
-"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_2ke5v")
-"nodes/OneShot 2/position" = Vector2(740, 20)
 nodes/Walk/node = SubResource("AnimationNodeBlend2_17y6b")
 nodes/Walk/position = Vector2(240, -160)
 nodes/WalkRun/node = SubResource("AnimationNodeBlendSpace1D_jd708")
 nodes/WalkRun/position = Vector2(-480, 80)
+nodes/death_oneshot/node = SubResource("AnimationNodeOneShot_2ke5v")
+nodes/death_oneshot/position = Vector2(740, 20)
 nodes/output/position = Vector2(960, -40)
-node_connections = [&"Attack", 0, &"Walk", &"Attack", 1, &"Animation 3", &"OneShot 2", 0, &"Attack", &"OneShot 2", 1, &"Death", &"Walk", 0, &"Animation", &"Walk", 1, &"WalkRun", &"output", 0, &"OneShot 2"]
+node_connections = [&"Attack", 0, &"Walk", &"Attack", 1, &"Animation 3", &"Walk", 0, &"Animation", &"Walk", 1, &"WalkRun", &"death_oneshot", 0, &"Attack", &"death_oneshot", 1, &"Death", &"output", 0, &"death_oneshot"]
 
 [node name="card" instance=ExtResource("1_1omio")]
 
 [node name="GeneralSkeleton" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/1/position = Vector3(0.1417, 2.75543, -0.405919)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.169266, -0.0414136, 0.000423578, 0.9847)
-bones/4/rotation = Quaternion(0.288641, -0.114894, -0.0263941, 0.950152)
+bones/1/position = Vector3(-0.116602, 3.36926, -0.18544)
+bones/1/rotation = Quaternion(-0.000126503, 0.00926419, -0.0135073, 0.999866)
+bones/3/rotation = Quaternion(0.165303, -0.0411952, -0.000184695, 0.985382)
+bones/4/rotation = Quaternion(0.277101, -0.114342, -0.0282277, 0.953595)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0459212, 0.936721, -0.347, 0.00594339)
-bones/7/rotation = Quaternion(0.201167, -0.775043, 0.337063, 0.495206)
-bones/8/rotation = Quaternion(0.0547146, 0.647796, 0.069528, 0.756659)
+bones/6/rotation = Quaternion(0.0201364, 0.942868, -0.332508, 0.0056953)
+bones/7/rotation = Quaternion(0.205931, -0.768194, 0.334062, 0.50584)
+bones/8/rotation = Quaternion(0.054251, 0.648291, 0.0694701, 0.756273)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(2.98023e-08, 4.47035e-08, 8.9407e-08, 1)
-bones/13/rotation = Quaternion(-0.176292, 0.0776778, 0.0180705, 0.981102)
-bones/14/rotation = Quaternion(0.0863961, 0.174905, -0.0121552, 0.980712)
-bones/16/rotation = Quaternion(0.539721, -0.474489, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131806, 0.855199, -0.518056, -0.00887332)
-bones/18/rotation = Quaternion(0.211393, 0.74992, -0.289686, 0.555892)
-bones/19/rotation = Quaternion(0.000769829, -0.613947, -0.0296158, 0.788791)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201836, 0.652853)
-bones/25/rotation = Quaternion(-0.00112908, 0.226959, 0.960432, -0.161427)
-bones/26/rotation = Quaternion(0.0437829, 0.854671, -0.511995, 0.0740419)
-bones/27/rotation = Quaternion(-0.0570216, 0.607239, -0.789836, 0.0645602)
-bones/28/rotation = Quaternion(0.00220157, 0.0240141, 0.948866, 0.314757)
-bones/29/rotation = Quaternion(-0.15261, 0.817037, -0.492951, -0.257216)
-bones/30/rotation = Quaternion(0.234188, 0.498842, -0.826017, 0.118356)
+bones/10/rotation = Quaternion(0.0384374, 0.0176179, 0.0125002, 0.999028)
+bones/13/rotation = Quaternion(-0.168379, 0.077264, 0.0193008, 0.9825)
+bones/14/rotation = Quaternion(0.0973601, 0.174326, -0.0113549, 0.979797)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.202744, 0.754324, -0.278017, 0.559104)
+bones/19/rotation = Quaternion(-0.0238384, -0.613485, 0.00202347, 0.789344)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.000189142, 0.398887, 0.916601, -0.0270415)
+bones/26/rotation = Quaternion(-0.00608229, 0.848113, -0.529686, -0.0100562)
+bones/27/rotation = Quaternion(-0.0232566, 0.732793, -0.680052, -0.00189084)
+bones/28/rotation = Quaternion(-0.000227175, -0.0349063, 0.998863, -0.0324781)
+bones/29/rotation = Quaternion(-0.000685916, 0.984099, -0.177569, -0.00418642)
+bones/30/rotation = Quaternion(-0.00762819, 0.685228, -0.728235, -0.00887336)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
@@ -17415,9 +17415,9 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/active = false
 parameters/Attack/internal_active = false
 parameters/Attack/request = 0
-"parameters/OneShot 2/active" = false
-"parameters/OneShot 2/internal_active" = false
-"parameters/OneShot 2/request" = 0
 parameters/Walk/blend_amount = 1.0
 parameters/WalkRun/blend_position = 0.0
+parameters/death_oneshot/active = false
+parameters/death_oneshot/internal_active = false
+parameters/death_oneshot/request = 0
 script = ExtResource("3_we3sl")

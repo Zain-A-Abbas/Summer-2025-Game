@@ -4,6 +4,9 @@ extends EnemyState
 func st_physics_process(delta: float) -> void:
 	if enemy.paralysis_effect(delta):
 		return
-
+	
+	enemy.velocity = enemy.gravity_velocity() * delta
+	enemy.move_and_slide()
+	
 	if distance_to_player() <= enemy.active_radius:
 		return state_machine.change_state(&"Block")

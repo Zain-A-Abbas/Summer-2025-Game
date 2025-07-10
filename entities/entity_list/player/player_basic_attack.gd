@@ -64,7 +64,7 @@ func st_physics_process(delta: float) -> void:
 	if delta_count > LENGTH:
 		return state_machine.change_state(&"Idle")
 	
-	player.velocity = player.gravity_velocity() + movement_vector * move_speed
+	player.velocity = player.gravity_velocity() + movement_vector * move_speed + player.deflect_velocity
 	player.velocity *= delta
 	player.move_and_slide()
 

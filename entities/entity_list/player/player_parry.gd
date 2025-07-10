@@ -40,5 +40,6 @@ func st_physics_process(delta: float) -> void:
 		player.hurtbox.parry_frames = false
 		parry_over = true
 	
-	player.velocity = player.gravity_velocity() * delta
+	player.velocity = player.gravity_velocity() + player.deflect_velocity
+	player.velocity *= delta
 	player.move_and_slide()

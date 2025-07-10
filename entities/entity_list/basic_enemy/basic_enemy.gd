@@ -19,7 +19,7 @@ func prepare_states():
 		StateInitializer.new(&"Wander", EnemyWander.new(self, ray_cast)),
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
-			"basic_enemy_animation_library/attack", # change later
+			"basic_enemy_animation_library/death", # change later
 			death_state_duration
 			))
 	]

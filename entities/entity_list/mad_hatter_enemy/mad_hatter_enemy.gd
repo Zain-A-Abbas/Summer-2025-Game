@@ -21,7 +21,7 @@ func prepare_states():
 		StateInitializer.new(&"Summon", MadHatterEnemySummon.new(self)),
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
-			"basic_enemy_animation_library/attack", # change later
+			"mad_hatter_animations/death", # change later
 			death_state_duration
 		))
 	]

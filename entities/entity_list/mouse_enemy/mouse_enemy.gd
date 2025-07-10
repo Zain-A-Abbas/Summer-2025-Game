@@ -30,7 +30,7 @@ func prepare_states():
 		StateInitializer.new(&"Pounce", MouseEnemyPounce.new(self, pounce)),
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
-			"mouse/charge", # change later
+			"mouse/death", # change later
 			death_state_duration
 			))
 	]
