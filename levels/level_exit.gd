@@ -20,7 +20,7 @@ func initialize(current_level: LevelBase):
 	if level_number % (LevelBase.CREATE_BOSS_LEVEL_MODULO - 1) == 0 || level_number % LevelBase.CREATE_SHOP_LEVEL_MODULO == 0:
 		exit_type = LevelBase.LevelType.SHOP
 	elif level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0:
-		exit_type = LevelBase.LevelType.BOSS
+		exit_type = LevelBase.LevelType.NORMAL # CHANGE LATER
 	else:
 		var level_roll: float = randf()
 		if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:

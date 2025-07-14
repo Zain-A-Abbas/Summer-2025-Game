@@ -73,14 +73,16 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
+	print(current_level_count)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	await fade_transition(true)
 	
 	prev_hp = current_player.health_component.current_health
 	
+	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
+		current_level_count += 1
 	level.queue_free()
-	current_level_count += 1
 	
 	await get_tree().process_frame
 	
