@@ -338,8 +338,8 @@ fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
 
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
-enemy_minimum = 3
-enemy_limit = 6
+enemy_minimum = 1
+enemy_limit = 2
 enemy_spawn_limits = Dictionary[StringName, int]({
 &"BASIC": 3,
 &"CATERPILLAR": 2,
@@ -363,7 +363,6 @@ size = Vector3(24, 43, 64)
 material = SubResource("StandardMaterial3D_faqyf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/CSGBox3D" index="0"]
-visible = false
 collision_layer = 32
 collision_mask = 0
 

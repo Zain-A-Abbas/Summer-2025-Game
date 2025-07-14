@@ -20,8 +20,8 @@ const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/ma
 const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
 const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
 
-const CREATE_SHOP_LEVEL_MODULO: int = 5
-const CREATE_BOSS_LEVEL_MODULO: int = 10
+const CREATE_SHOP_LEVEL_MODULO: int = 2
+const CREATE_BOSS_LEVEL_MODULO: int = 5
 
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
@@ -47,8 +47,8 @@ var enemy_spawn_count: Dictionary[StringName, int] = {
 	&"MOUSE": 0,
 	&"RED_KNIGHT": 0
 }
-
 var enemy_spawn_list: Array[StringName]
+var shop_exit_made: bool = false
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -67,6 +67,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	type = _type
 	level_camera.initialize(player)
 	enemy_spawn_list = initialize_enemy_list()
+	shop_exit_made = false
 	
 	if _type == LevelType.BOSS:
 		var boss: Enemy = JABBERWOCK_ENEMY.instantiate()

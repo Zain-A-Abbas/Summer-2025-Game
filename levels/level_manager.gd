@@ -54,6 +54,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	var enemy_count: int = randi_range(new_level.enemy_minimum, new_level.enemy_limit)
 	if !new_level.has_enemies:
 		enemy_count = 0
+	#print("Level: ", current_level_count, " ", new_level_type)
 	new_level.setup_level(self, new_level_type, enemy_count)
 	new_level.level_completed.connect(level_complete)
 	
@@ -73,7 +74,6 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
-	print(current_level_count)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	await fade_transition(true)
@@ -82,12 +82,13 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	
 	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
 		current_level_count += 1
+	
 	level.queue_free()
 	
 	await get_tree().process_frame
 	
 	if !endless && current_level_count == max_levels:
-		return
+		return # game complete here
 	
 	create_level(exit_type)
 
