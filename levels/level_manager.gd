@@ -7,7 +7,8 @@ extends Node
 @onready var fade: ColorRect = %Fade
 @onready var player_ui: PlayerUI = %PlayerUI
 
-var current_level: int = 0
+var current_level: PackedScene = null
+var current_level_count: int = 0
 var money: int = 1000
 var current_player: Player
 var player_upgrades: PlayerUpgrades
@@ -28,7 +29,7 @@ func _ready() -> void:
 func begin_run():
 	player_upgrades = PlayerUpgrades.new()
 	player_upgrades.upgrades_updated.connect(update_upgrade_ui)
-	current_level = 1
+	current_level_count = 1
 	player_ui.visible = true
 	await fade_transition(true)
 	create_level()
@@ -36,10 +37,10 @@ func begin_run():
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase
 	if new_level_type == LevelBase.LevelType.NORMAL:
-		new_level = normal_levels.pick_random().instantiate()
+		new_level = choose_normal_level()
 	elif new_level_type == LevelBase.LevelType.ELITE:
 		if elite_levels.is_empty():
-			new_level = normal_levels.pick_random().instantiate()
+			new_level = choose_normal_level()
 		else:
 			new_level = elite_levels.pick_random().instantiate()
 	elif new_level_type == LevelBase.LevelType.HEALING:
@@ -79,11 +80,11 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	prev_hp = current_player.health_component.current_health
 	
 	level.queue_free()
-	current_level += 1
+	current_level_count += 1
 	
 	await get_tree().process_frame
 	
-	if !endless && current_level == max_levels:
+	if !endless && current_level_count == max_levels:
 		return
 	
 	create_level(exit_type)
@@ -108,3 +109,17 @@ func fade_transition(out: bool):
 		tween.tween_property(fade, "modulate:a", 0.0, 0.3)
 		await tween.finished
 		fade.visible = false
+
+func choose_normal_level() -> LevelBase:
+	if normal_levels.size() > 1 || (normal_levels.size() == 1 && current_level != null):
+		# choose from filtered pool
+		var new_level: PackedScene = normal_levels.pop_at(randi_range(0, normal_levels.size() - 1))
+		
+		# reinsert old level
+		if current_level_count > 1:
+			normal_levels.append(current_level)
+			
+		current_level = new_level
+		return current_level.instantiate()
+	else:
+		return normal_levels[0].instantiate()

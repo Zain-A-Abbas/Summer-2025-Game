@@ -162,19 +162,10 @@ func get_level_exits() -> Array[LevelExit]:
 
 func initialize_enemy_list() -> Array[StringName]:
 	var list: Array[StringName] = []
-
-	if enemy_spawn_limits[&"BASIC"] > 0:
-		list.append(&"BASIC")
-	if enemy_spawn_limits[&"CATERPILLAR"] > 0:
-		list.append(&"CATERPILLAR")
-	if enemy_spawn_limits[&"MAD_HATTER"] > 0:
-		list.append(&"MAD_HATTER")
-	if enemy_spawn_limits[&"FLOWER"] > 0:
-		list.append(&"FLOWER")
-	if enemy_spawn_limits[&"MOUSE"] > 0:
-		list.append(&"MOUSE")
-	if enemy_spawn_limits[&"RED_KNIGHT"] > 0:
-		list.append(&"RED_KNIGHT")
+	
+	for type in enemy_spawn_limits.keys():
+		if enemy_spawn_limits[type] > 0:
+			list.append(type)
 	
 	return list
 	

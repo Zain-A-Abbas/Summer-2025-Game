@@ -56,7 +56,10 @@ func st_physics_process(delta: float) -> void:
 	
 	if delta_count > CANCEL_THRESHOLD:
 		if Input.is_action_just_pressed("dodge") && player.can_dodge():
-			return state_machine.change_state(&"Dodge")
+			if get_player_movement() == Vector2.ZERO:
+				return state_machine.change_state(&"Parry")
+			else:
+				return state_machine.change_state(&"Dodge")
 
 		if Input.is_action_just_pressed("attack") && combo < 3:
 			return state_machine.change_state(&"Attack", {"combo": combo})

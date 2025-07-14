@@ -16,25 +16,21 @@ func _ready() -> void:
 		activate()
 
 func initialize(current_level: LevelBase):
-	var level_number: int = current_level.level_manager.current_level
+	var level_number: int = current_level.level_manager.current_level_count
 	if level_number % (LevelBase.CREATE_BOSS_LEVEL_MODULO - 1) == 0 || level_number % LevelBase.CREATE_SHOP_LEVEL_MODULO == 0:
 		exit_type = LevelBase.LevelType.SHOP
 	elif level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0:
 		exit_type = LevelBase.LevelType.BOSS
 	else:
 		var level_roll: float = randf()
-		if level_roll < 0.5:
-			exit_type = LevelBase.LevelType.NORMAL
-		elif level_roll < 0.65:
-			exit_type = LevelBase.LevelType.ELITE
-		elif level_roll < 0.85:
-			if current_level.type == LevelBase.LevelType.HEALING:
-				return initialize(current_level)
-			exit_type = LevelBase.LevelType.HEALING
-		else:
-			if current_level.type == LevelBase.LevelType.SHOP:
-				return initialize(current_level)
+		if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:
 			exit_type = LevelBase.LevelType.SHOP
+		elif level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING:
+			exit_type = LevelBase.LevelType.HEALING
+		elif level_roll > 0.65:
+			exit_type = LevelBase.LevelType.ELITE
+		else:
+			exit_type = LevelBase.LevelType.NORMAL
 	
 
 func activate():
