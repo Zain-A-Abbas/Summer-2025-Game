@@ -110,8 +110,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			new_enemy.enemy_killed.connect(enemy_kill)
 			
 			enemy_count += 1
-			
-	#print(enemy_count)
+	
 	for exit in get_level_exits():
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
