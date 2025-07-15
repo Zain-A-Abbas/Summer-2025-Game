@@ -338,15 +338,15 @@ fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
 
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
-enemy_minimum = 1
-enemy_limit = 2
-enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 3,
-&"CATERPILLAR": 2,
-&"FLOWER": 0,
-&"MAD_HATTER": 1,
-&"MOUSE": 3,
-&"RED_KNIGHT": 0
+enemy_minimum = 3
+enemy_limit = 6
+enemy_spawn_limits = Dictionary[int, int]({
+0: 1,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0
 })
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]

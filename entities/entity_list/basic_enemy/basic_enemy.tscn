@@ -162,13 +162,6 @@ tracks/1/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_fl2vc"]
-resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_wxn5g"]
-resource_name = "walk"
-length = 0.2
-
 [sub_resource type="Animation" id="Animation_16uoj"]
 resource_name = "death"
 length = 2.4
@@ -184,6 +177,13 @@ tracks/0/keys = {
 "update": 1,
 "values": [1]
 }
+
+[sub_resource type="Animation" id="Animation_fl2vc"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_wxn5g"]
+resource_name = "walk"
+length = 0.2
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_16uoj"]
 _data = {
@@ -213,29 +213,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.120686, 3.26998, -0.184965)
-bones/1/rotation = Quaternion(-0.000286076, -0.0136329, 0.0209731, 0.999687)
-bones/3/rotation = Quaternion(0.164958, -0.041176, -0.00023737, 0.985441)
-bones/4/rotation = Quaternion(0.276097, -0.114292, -0.0283865, 0.953888)
+bones/1/position = Vector3(0.13498, 3.31088, -0.185179)
+bones/1/rotation = Quaternion(-0.000215166, -0.0112879, 0.0190285, 0.999755)
+bones/3/rotation = Quaternion(0.16823, -0.0413572, 0.00026414, 0.98488)
+bones/4/rotation = Quaternion(0.288273, -0.114877, -0.0264528, 0.950264)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.033842, 0.939666, -0.340367, 0.00582991)
-bones/7/rotation = Quaternion(0.203473, -0.771754, 0.335622, 0.500353)
-bones/8/rotation = Quaternion(0.0294301, 0.672973, 0.0665001, 0.736083)
+bones/6/rotation = Quaternion(0.0412231, 0.93788, -0.344453, 0.00589996)
+bones/7/rotation = Quaternion(0.202082, -0.773742, 0.336493, 0.497251)
+bones/8/rotation = Quaternion(0.0415744, 0.661328, 0.0679253, 0.745857)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0176181, 0.00807537, 0.00572955, 0.999796)
-bones/13/rotation = Quaternion(-0.167676, 0.0772269, 0.0194096, 0.982621)
-bones/14/rotation = Quaternion(0.141792, 0.165611, -0.0285124, 0.975528)
+bones/10/rotation = Quaternion(0.00684205, 0.00313605, 0.00222516, 0.999969)
+bones/13/rotation = Quaternion(-0.17598, 0.0776617, 0.018119, 0.981158)
+bones/14/rotation = Quaternion(0.131823, 0.165775, -0.0300086, 0.976853)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.161642, 0.772508, -0.222551, 0.572342)
-bones/19/rotation = Quaternion(-0.00134299, -0.613946, -0.026901, 0.788888)
+bones/18/rotation = Quaternion(0.199623, 0.755862, -0.273806, 0.560226)
+bones/19/rotation = Quaternion(-0.00670364, -0.613911, -0.0200119, 0.789093)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.00027763, -0.0282849, 0.998811, 0.0396936)
-bones/26/rotation = Quaternion(0.00207973, 0.96031, -0.278836, 0.00709881)
-bones/27/rotation = Quaternion(-0.00260108, 0.696331, -0.717499, 0.017664)
-bones/28/rotation = Quaternion(0.000233478, 0.272857, 0.961475, 0.0333804)
-bones/29/rotation = Quaternion(0.00113211, 0.984279, -0.176556, 0.00473651)
-bones/30/rotation = Quaternion(0.0228842, 0.643505, -0.765094, -0.00312266)
+bones/25/rotation = Quaternion(0.000279165, -0.00349362, 0.999197, 0.0399117)
+bones/26/rotation = Quaternion(0.00203178, 0.961736, -0.27388, 0.00707188)
+bones/27/rotation = Quaternion(0.00311139, 0.692284, -0.721488, 0.0137165)
+bones/28/rotation = Quaternion(0.000238847, 0.337726, 0.940625, 0.0341477)
+bones/29/rotation = Quaternion(0.00291168, 0.943175, -0.332184, 0.00810113)
+bones/30/rotation = Quaternion(0.0243137, 0.653046, -0.756918, -0.00396939)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_wd8hw")
@@ -250,11 +250,6 @@ material_overlay = ExtResource("4_wd8hw")
 
 [node name="Cube_002" parent="card/Armature/GeneralSkeleton" index="3"]
 material_overlay = ExtResource("4_wd8hw")
-
-[node name="AnimationTree" parent="card" index="2"]
-parameters/death_oneshot/active = false
-parameters/death_oneshot/internal_active = false
-parameters/death_oneshot/request = 0
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -110,14 +110,6 @@ script = ExtResource("2_n23wo")
 y_rotation = 45.0
 enemy_minimum = 4
 enemy_limit = 6
-enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 3,
-&"CATERPILLAR": 2,
-&"FLOWER": 1,
-&"MAD_HATTER": 0,
-&"MOUSE": 2,
-&"RED_KNIGHT": 2
-})
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 0, 0)

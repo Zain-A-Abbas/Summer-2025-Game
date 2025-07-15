@@ -9,10 +9,12 @@ extends Node
 
 var current_level: PackedScene = null
 var current_level_count: int = 0
-var money: int = 1000
+var money: int = 300
 var current_player: Player
 var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
+var enemy_scaler: EnemyScaler
+var enemy_stat_multiplier: float = 1.0
 
 @export var endless: bool = false
 @export var max_levels: int = 10
@@ -31,6 +33,7 @@ func begin_run():
 	player_upgrades.upgrades_updated.connect(update_upgrade_ui)
 	current_level_count = 1
 	player_ui.visible = true
+	enemy_scaler = EnemyScaler.new()
 	await fade_transition(true)
 	create_level()
 
@@ -82,6 +85,9 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	
 	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
 		current_level_count += 1
+		
+		#if level.type == LevelBase.LevelType.BOSS && endless:
+		enemy_stat_multiplier += 0.1
 	
 	level.queue_free()
 	

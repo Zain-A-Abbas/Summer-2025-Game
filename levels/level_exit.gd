@@ -40,7 +40,7 @@ func initialize(current_level: LevelBase):
 			exit_type = LevelBase.LevelType.ELITE
 		else:
 			exit_type = LevelBase.LevelType.NORMAL
-	print("Exit: ", exit_type)	
+	#print("Exit: ", exit_type)	
 
 func activate():
 	active = true

@@ -7,7 +7,7 @@ extends Enemy
 @export var wander_duration: float = 6.0
 @export var change_direction_timestamp: float = 1.5
 
-@onready var basic_attack: Node3D = %basic_attack
+@onready var basic_attack: AttackObject = %basic_attack
 @onready var ray_cast: Node3D = %ray_cast
 
 

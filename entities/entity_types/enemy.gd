@@ -4,20 +4,31 @@ extends CharacterEntity
 signal enemy_killed(enemy: Enemy)
 signal enemy_damage_taken(enemy: Enemy, damage: int)
 
-@onready var attack_indicator_animator: AnimationPlayer = %AttackIndicatorAnimator
-@onready var action_animator: AnimationPlayer = %ActionAnimator
-@onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
+enum EnemyType {
+	CARD,
+	CATERPILLAR,
+	FLOWER,
+	MAD_HATTER,
+	MOUSE,
+	RED_KNIGHT,
+	JABBERWOCK
+}
 
 @export var hurtbox: HurtboxComponent
 @export var meshes: Array[MeshInstance3D] = []
 @export var animation_tree: AnimationTree
-@onready var enemy_hp_sprite: Sprite3D = %EnemyHP
 
+var type: EnemyType
 var player: Player
 var enemy_data: Node3D
 var enemy_positions: Node3D
 var enemy_list: Node3D
 var projectiles: Node3D
+
+@onready var attack_indicator_animator: AnimationPlayer = %AttackIndicatorAnimator
+@onready var action_animator: AnimationPlayer = %ActionAnimator
+@onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
+@onready var enemy_hp_sprite: Sprite3D = %EnemyHP
 
 
 func _ready() -> void:

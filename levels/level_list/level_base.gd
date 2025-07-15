@@ -12,42 +12,43 @@ enum LevelType {
 }
 
 const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
-const BASIC_ENEMY = preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn")
-const FLOWER_ENEMY = preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn")
-const MOUSE_ENEMY = preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn")
-const CATERPILLAR_ENEMY = preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn")
-const MAD_HATTER_ENEMY = preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn")
-const RED_KNIGHT_ENEMY = preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn")
-const JABBERWOCK_ENEMY = preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
-
-const CREATE_SHOP_LEVEL_MODULO: int = 2
-const CREATE_BOSS_LEVEL_MODULO: int = 5
+const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
+	Enemy.EnemyType.CARD: preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn"),
+	Enemy.EnemyType.FLOWER: preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn"),
+	Enemy.EnemyType.CATERPILLAR: preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn"),
+	Enemy.EnemyType.MAD_HATTER: preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn"),
+	Enemy.EnemyType.MOUSE: preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn"),
+	Enemy.EnemyType.RED_KNIGHT: preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn"),
+	Enemy.EnemyType.JABBERWOCK: preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
+}
+const CREATE_SHOP_LEVEL_MODULO: int = 5
+const CREATE_BOSS_LEVEL_MODULO: int = 10
 
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
 @export var enemy_limit: int = 3
-@export var enemy_spawn_limits: Dictionary[StringName, int] = {
-	&"BASIC": 0,
-	&"CATERPILLAR": 0,
-	&"FLOWER": 0,
-	&"MAD_HATTER": 0,
-	&"MOUSE": 0,
-	&"RED_KNIGHT": 0
+@export var enemy_spawn_limits: Dictionary[Enemy.EnemyType, int] = {
+	Enemy.EnemyType.CARD: 0,
+	Enemy.EnemyType.CATERPILLAR: 0,
+	Enemy.EnemyType.FLOWER: 0,
+	Enemy.EnemyType.MAD_HATTER: 0,
+	Enemy.EnemyType.MOUSE: 0,
+	Enemy.EnemyType.RED_KNIGHT: 0
 }
 
 var enemy_count: int = 0
 var enemies_killed: int = 0
 var level_manager: LevelManager
 var type: LevelType
-var enemy_spawn_count: Dictionary[StringName, int] = {
-	&"BASIC": 0,
-	&"CATERPILLAR": 0,
-	&"FLOWER": 0,
-	&"MAD_HATTER": 0,
-	&"MOUSE": 0,
-	&"RED_KNIGHT": 0
+var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
+	Enemy.EnemyType.CARD: 0,
+	Enemy.EnemyType.CATERPILLAR: 0,
+	Enemy.EnemyType.FLOWER: 0,
+	Enemy.EnemyType.MAD_HATTER: 0,
+	Enemy.EnemyType.MOUSE: 0,
+	Enemy.EnemyType.RED_KNIGHT: 0
 }
-var enemy_spawn_list: Array[StringName]
+var enemy_spawn_list: Array[Enemy.EnemyType]
 var shop_exit_made: bool = false
 
 @onready var static_geometry: Node3D = %StaticGeometry
@@ -70,10 +71,11 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	shop_exit_made = false
 	
 	if _type == LevelType.BOSS:
-		var boss: Enemy = JABBERWOCK_ENEMY.instantiate()
+		var boss: Enemy = ENEMIES[Enemy.EnemyType.JABBERWOCK].instantiate()
 		enemies.add_child(boss)
-		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 		boss.position = enemy_positions.get_child(0).global_position
+		boss.type = Enemy.EnemyType.JABBERWOCK
+		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 		boss.enemy_killed.connect(enemy_kill)
 		
 		enemy_count += 1
@@ -88,7 +90,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 				break
 			
 			var new_enemy_index = randi_range(0, enemy_spawn_list.size() - 1)
-			var new_enemy_type: StringName = enemy_spawn_list[new_enemy_index]
+			var new_enemy_type: Enemy.EnemyType = enemy_spawn_list[new_enemy_index]
 			update_enemy_spawn_counts(new_enemy_type, 1)
 			
 			if !can_enemy_spawn_type(new_enemy_type):
@@ -103,6 +105,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			
 			enemies.add_child(new_enemy)
 			new_enemy.position = enemy_positions.get_child(n).global_position
+			new_enemy.type = new_enemy_type
 			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 			new_enemy.enemy_killed.connect(enemy_kill)
 			
@@ -116,6 +119,8 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 func start_level(_type: LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
+			if level_manager.enemy_stat_multiplier > 1.0:
+				level_manager.enemy_scaler.scale_enemy(enemy, level_manager.enemy_stat_multiplier)
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
@@ -161,8 +166,8 @@ func get_level_exits() -> Array[LevelExit]:
 	
 	return exits
 
-func initialize_enemy_list() -> Array[StringName]:
-	var list: Array[StringName] = []
+func initialize_enemy_list() -> Array[Enemy.EnemyType]:
+	var list: Array[Enemy.EnemyType] = []
 	
 	for type in enemy_spawn_limits.keys():
 		if enemy_spawn_limits[type] > 0:
@@ -170,22 +175,14 @@ func initialize_enemy_list() -> Array[StringName]:
 	
 	return list
 	
-func spawn_enemy(type: StringName) -> Enemy:
-	if type == &"BASIC":
-		return BASIC_ENEMY.instantiate()
-	elif type == &"CATERPILLAR":
-		return CATERPILLAR_ENEMY.instantiate()
-	elif type == &"MAD_HATTER":
-		return MAD_HATTER_ENEMY.instantiate()
-	elif type == &"FLOWER":
-		return FLOWER_ENEMY.instantiate()
-	elif type == &"MOUSE":
-		return MOUSE_ENEMY.instantiate()
-	else:
-		return RED_KNIGHT_ENEMY.instantiate()
+func spawn_enemy(type: Enemy.EnemyType) -> Enemy:
+	return ENEMIES[type].instantiate()
 
-func can_enemy_spawn_type(type: StringName) -> bool:
+func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 	return enemy_spawn_count[type] <= enemy_spawn_limits[type]
 
-func update_enemy_spawn_counts(type: StringName, change: int):
+func update_enemy_spawn_counts(type: Enemy.EnemyType, change: int):
 	enemy_spawn_count[type] += change
+
+func scale_enemy(enemy: Enemy):
+	pass
