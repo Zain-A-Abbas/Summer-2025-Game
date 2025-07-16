@@ -3,18 +3,8 @@ extends Node
 
 # Manages switching betweens levels and also contains run-specific data
 
-@onready var level_holder: Node3D = %LevelHolder
-@onready var fade: ColorRect = %Fade
-@onready var player_ui: PlayerUI = %PlayerUI
-
-var current_level: PackedScene = null
-var current_level_count: int = 0
-var money: int = 300
-var current_player: Player
-var player_upgrades: PlayerUpgrades
-var prev_hp: int = -1
-var enemy_scaler: EnemyScaler
-var enemy_stat_multiplier: float = 1.0
+const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
+const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 
 @export var endless: bool = false
 @export var max_levels: int = 10
@@ -23,6 +13,22 @@ var enemy_stat_multiplier: float = 1.0
 @export var healing_level: PackedScene
 @export var shop_level: PackedScene
 @export var boss_level: PackedScene
+
+var current_level: PackedScene = null
+var current_level_count: int = 0
+var money: int = 300
+var current_player: Player
+var player_upgrades: PlayerUpgrades
+var prev_hp: int = -1
+var enemy_scaler: EnemyScaler
+var scale_enemies: bool = false
+var enemy_dmg_multiplier: float = 1.0
+var enemy_hp_multiplier: float = 1.0
+
+@onready var level_holder: Node3D = %LevelHolder
+@onready var fade: ColorRect = %Fade
+@onready var player_ui: PlayerUI = %PlayerUI
+
 
 func _ready() -> void:
 	if get_tree().root.get_children().has(self):
@@ -87,7 +93,9 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 		current_level_count += 1
 		
 		#if level.type == LevelBase.LevelType.BOSS && endless:
-		enemy_stat_multiplier += 0.1
+		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
+		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
+		scale_enemies = true
 	
 	level.queue_free()
 	

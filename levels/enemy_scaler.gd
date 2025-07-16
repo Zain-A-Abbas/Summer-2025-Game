@@ -2,59 +2,102 @@ class_name EnemyScaler
 extends Node
 
 # Scale enemy components, attack damage, and add extra effects
+const ADD_EFFECT_CHANCE: float = 1.0
+const ATK_EFFECTS: Array[AttackEffect.AttackEffectType] = [
+	AttackEffect.AttackEffectType.BURN,
+	AttackEffect.AttackEffectType.PARALYSIS
+]
 
-func scale_enemy(enemy: Enemy, multipier: float, args: Dictionary[String, Variant] = {}):
-	if enemy.type == Enemy.EnemyType.CARD:
-		scale_card(enemy, multipier, args)
-	elif enemy.type == Enemy.EnemyType.CATERPILLAR:
-		pass
-	elif enemy.type == Enemy.EnemyType.FLOWER:
-		pass
-	elif enemy.type == Enemy.EnemyType.MAD_HATTER:
-		pass
-	elif enemy.type == Enemy.EnemyType.MOUSE:
-		pass
-	elif enemy.type == Enemy.EnemyType.RED_KNIGHT:
-		pass
-	else: #JABBERWOCK
-		pass
+var effect: AttackEffect.AttackEffectType
 
 ## by default, scale health and damage
-func scale_card(card: BasicEnemy, multipier: float, args: Dictionary[String, Variant] = {}):
-	card.basic_attack.attack_effects[0].damage = roundf(float(card.basic_attack.attack_effects[0].damage) *  multipier)
+func scale_enemy(enemy: Enemy, args: Dictionary[String, Variant]):
+	# scale health
+	enemy.health_component.max_health = ceilf(float(enemy.health_component.max_health) * args["hp_multiplier"])
+	enemy.health_component.set_current_health(enemy.health_component.max_health)
+	
+	enemy.enemy_hp_bar.max_value = enemy.health_component.max_health
+	enemy.enemy_hp_bar.value = enemy.health_component.current_health
+	
+	#print(enemy.health_component.max_health)
+	
+	# scale everything else
+	if enemy.type == Enemy.EnemyType.CARD:
+		scale_card(enemy, args)
+	elif enemy.type == Enemy.EnemyType.CATERPILLAR:
+		scale_caterpillar(enemy, args)
+	elif enemy.type == Enemy.EnemyType.FLOWER:
+		scale_flower(enemy, args)
+	elif enemy.type == Enemy.EnemyType.MAD_HATTER:
+		scale_mad_hatter(enemy, args)
+	elif enemy.type == Enemy.EnemyType.MOUSE:
+		scale_mouse(enemy, args)
+	elif enemy.type == Enemy.EnemyType.RED_KNIGHT:
+		scale_red_knight(enemy, args)
+	else: #JABBERWOCK
+		scale_jabberwock(enemy, args)
+
+func scale_card(card: BasicEnemy, args: Dictionary[String, Variant]):
+	card.basic_attack.attack_effects[0].damage = ceilf(float(card.basic_attack.attack_effects[0].damage) * args["dmg_multiplier"])
 	
 	# add attack effects: burn, para, slow
+	if randf() <= ADD_EFFECT_CHANCE:
+		effect = ATK_EFFECTS.pick_random()
+		create_effect_parameters(effect, args)
+		card.basic_attack.add_attack_effect(effect, args)
 
-func scale_caterpillar(caterpillar: CaterpillarEnemy, multipier: float, args: Dictionary[String, Variant] = {}):
-	pass
+func scale_caterpillar(caterpillar: CaterpillarEnemy, args: Dictionary[String, Variant]):
+	caterpillar.seed_damage = ceilf(float(caterpillar.seed_damage) * args["dmg_multiplier"])
 
-	# do not add attack effects
-	# add a chance to increase speed
+	# increase speed
+	caterpillar.movement_component.set_move_speed(caterpillar.movement_component.move_speed * 1.10)
 
-func scale_flower(flower: FlowerEnemy, multipier: float, args: Dictionary[String, Variant] = {}):
-	pass
+func scale_flower(flower: FlowerEnemy, args: Dictionary[String, Variant]):
+	flower.bomb_damage = ceilf(float(flower.bomb_damage) * args["dmg_multiplier"])
 	
 	# chance to add slow effect
+	#if randf() <= ADD_EFFECT_CHANCE:
+		#effect = AttackEffect.AttackEffectType.SLOW
+		#create_effect_parameters(AttackEffect.AttackEffectType.SLOW, args)
+		#card.basic_attack.add_attack_effect(effect, args)
 
-func scale_mad_hatter(hatter: MadHatterEnemy, multiplier: float, args: Dictionary[String, Variant] = {}):
-	pass
-	
+func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant]):
 	# decrease summon time
+	hatter.summon_timestamp *= 0.75
+	
 	# increase summon hp cancel threshold
+	hatter.summon_cancel_hp_amount *= args["hp_multiplier"]
 
-func scale_mouse(mouse: MouseEnemy, multiplier: float, args: Dictionary[String, Variant] = {}):
-	pass
+func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
+	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
+	
+	if randf() <= ADD_EFFECT_CHANCE:
+		effect = ATK_EFFECTS.pick_random()
+		create_effect_parameters(effect, args)
+		mouse.pounce.add_attack_effect(effect, args)
+
+func scale_red_knight(knight: RedKnightEnemy, args: Dictionary[String, Variant]):
+	knight.thrust.attack_effects[0].damage = ceilf(float(knight.thrust.attack_effects[0].damage) * args["dmg_multiplier"])
 	
 	# add attack effects: burn, slow
-	# increase chance paralysis chance
-
-func scale_red_knight(knight: RedKnightEnemy, multiplier: float, args: Dictionary[String, Variant] = {}):
-	pass
+	if randf() <= ADD_EFFECT_CHANCE:
+		var atk_effects_temp: Array[AttackEffect.AttackEffectType] = ATK_EFFECTS.duplicate()
+		atk_effects_temp.remove_at(atk_effects_temp.find(AttackEffect.AttackEffectType.PARALYSIS))
+		effect = atk_effects_temp.pick_random()
+		
+		create_effect_parameters(effect, args)
+		knight.thrust.add_attack_effect(effect, args)
 	
-	# add attack effects: burn, slow, para
 	# slightly increase move_speed
+	knight.movement_component.set_move_speed(knight.movement_component.move_speed * 1.15)
 	
-func scale_jabberwock(jabberwock: JabberwockBoss, multiplier: float, args: Dictionary[String, Variant] = {}):
-	pass
-	
+func scale_jabberwock(jabberwock: JabberwockBoss, args: Dictionary[String, Variant]):
 	# pending
+	pass
+
+func create_effect_parameters(effect_type: AttackEffect.AttackEffectType, args: Dictionary[String, Variant]):
+	if effect_type == AttackEffect.AttackEffectType.BURN:
+		args["duration"] = randf_range(1.0, 3.2)
+	elif effect_type == AttackEffect.AttackEffectType.PARALYSIS:
+		args["duration"] = randf_range(0.6, 1.7)
+		args["chance"] = randf_range(0.20, 1.0)

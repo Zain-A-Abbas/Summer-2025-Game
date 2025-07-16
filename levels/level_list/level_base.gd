@@ -75,6 +75,13 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		enemies.add_child(boss)
 		boss.position = enemy_positions.get_child(0).global_position
 		boss.type = Enemy.EnemyType.JABBERWOCK
+		if level_manager.scale_enemies:
+			level_manager.enemy_scaler.scale_enemy(boss, 
+				{
+					"hp_multiplier": level_manager.enemy_hp_multiplier,
+					"dmg_multiplier": level_manager.enemy_dmg_multiplier
+				}
+			)
 		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 		boss.enemy_killed.connect(enemy_kill)
 		
@@ -106,6 +113,13 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			enemies.add_child(new_enemy)
 			new_enemy.position = enemy_positions.get_child(n).global_position
 			new_enemy.type = new_enemy_type
+			if level_manager.scale_enemies:
+				level_manager.enemy_scaler.scale_enemy(new_enemy, 
+					{
+						"hp_multiplier": level_manager.enemy_hp_multiplier,
+						"dmg_multiplier": level_manager.enemy_dmg_multiplier
+					}
+				)
 			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
 			new_enemy.enemy_killed.connect(enemy_kill)
 			
@@ -118,8 +132,6 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 func start_level(_type: LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
-			if level_manager.enemy_stat_multiplier > 1.0:
-				level_manager.enemy_scaler.scale_enemy(enemy, level_manager.enemy_stat_multiplier)
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
