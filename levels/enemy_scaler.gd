@@ -43,6 +43,7 @@ func scale_card(card: BasicEnemy, args: Dictionary[String, Variant]):
 	# add attack effects: burn, para, slow
 	if randf() <= ADD_EFFECT_CHANCE:
 		effect = ATK_EFFECTS.pick_random()
+		#print(effect)
 		create_effect_parameters(effect, args)
 		card.basic_attack.add_attack_effect(effect, args)
 
@@ -100,4 +101,4 @@ func create_effect_parameters(effect_type: AttackEffect.AttackEffectType, args: 
 		args["duration"] = randf_range(1.0, 3.2)
 	elif effect_type == AttackEffect.AttackEffectType.PARALYSIS:
 		args["duration"] = randf_range(0.6, 1.7)
-		args["chance"] = randf_range(0.20, 1.0)
+		args["chance"] = 1.0 #randf_range(0.20, 1.0)
