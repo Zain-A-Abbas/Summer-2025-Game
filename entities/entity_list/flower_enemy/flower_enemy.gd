@@ -2,11 +2,12 @@ class_name FlowerEnemy
 extends Enemy
 
 @export var bomb: PackedScene
+@export var bomb_damage: int = 5
+@export var bomb_spawn_position: Marker3D
 @export var attack_range: Array[float] = [4.0, 16.0]
 @export var shoot_cooldown: float = 1.1
 @export var warning_duration: float = 0.7
 @export var dig_cooldown: float = 5.5
-@export var bomb_spawn_position: Marker3D
 
 var dig_spots: Node3D
 var prev_dig_spot_index: int = -1

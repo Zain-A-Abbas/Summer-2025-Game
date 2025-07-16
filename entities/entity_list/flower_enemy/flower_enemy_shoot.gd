@@ -49,7 +49,7 @@ func st_physics_process(delta: float) -> void:
 		bomb_shot = true
 		var bomb: FlowerEnemyBomb = enemy.bomb.instantiate()
 		enemy.projectiles.add_child(bomb)
-		bomb.initialize_bomb(enemy.bomb_spawn_position.global_position, enemy.player.global_position)
+		bomb.initialize_bomb(enemy.bomb_spawn_position.global_position, enemy.player.global_position, enemy.bomb_damage)
 	
 	
 	if delta_count > shoot_times[1]:

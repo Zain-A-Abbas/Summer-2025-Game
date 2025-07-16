@@ -88,12 +88,12 @@ func st_physics_process(delta: float) -> void:
 		if action == &"Bomb":
 			var bomb: FlowerEnemyBomb = BOMB.instantiate()
 			enemy.projectiles.add_child(bomb)
-			bomb.initialize_bomb(enemy.projectile_spawnpoint.global_position, enemy.player.global_position)
+			bomb.initialize_bomb(enemy.projectile_spawnpoint.global_position, enemy.player.global_position, enemy.bomb_damage)
 		elif action == &"Seed":
 			var seed: CaterpillarEnemySeed = SEED.instantiate()
 			enemy.projectiles.add_child(seed)
 			seed.global_position = enemy.projectile_spawnpoint.global_position
-			seed.initialize_seed(false, enemy.projectile_spawnpoint.global_position.direction_to(enemy.player.position), enemy.projectiles)
+			seed.initialize_seed(false, enemy.projectile_spawnpoint.global_position.direction_to(enemy.player.position), enemy.projectiles, enemy.seed_damage)
 		elif action == &"Breath":
 			enemy.lightning_breath_particles.emitting = true
 	

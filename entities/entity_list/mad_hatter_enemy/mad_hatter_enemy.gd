@@ -2,7 +2,7 @@ class_name MadHatterEnemy
 extends Enemy
 
 @export var spawn_type_list: Array[Resource] = []
-@export var summon_cancel_hp_amount: float = 30
+@export var summon_cancel_hp_amount: int = 30
 @export var summon_timestamp: float = 4.0
 @export var summon_cooldown: float = 3.0
 @export var wander_duration: float = 4.0
