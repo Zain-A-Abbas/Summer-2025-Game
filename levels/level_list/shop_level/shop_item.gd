@@ -56,19 +56,21 @@ func resolve_buy():
 	if bought:
 		return
 	
-	if level_manager.money < price:
-		price_label.modulate = Color.RED
-		var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-		price_tween.tween_property(price_label, "modulate", Color.WHITE, 0.2)
-		await price_tween.finished
-		return
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		if level_manager.money < price:
+			price_label.modulate = Color.RED
+			var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+			price_tween.tween_property(price_label, "modulate", Color.WHITE, 0.2)
+			await price_tween.finished
+			return
 	
 	var upgrade_suceeded: bool = level_manager.current_player.upgrades.obtain_upgrade(type, 1)
 	if !upgrade_suceeded:
 		return
 	
 	bought = true
-	level_manager.money_gain(-price)
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		level_manager.money_gain(-price)
 	
 	var buy_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
 	buy_tween.tween_property(self, "scale", Vector3(0.001, 0.001, 0.001), 0.5)
@@ -76,22 +78,26 @@ func resolve_buy():
 	queue_free()
 
 func show_price_label():
-	var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	price_tween.tween_property(price_label, "position:y", 0.0, 0.2).from(-0.5)
-	price_tween.tween_property(price_label, "modulate:a", 1.0, 0.2).from(0.0)
-	price_tween.tween_property(price_label, "outline_modulate:a", 1.0, 0.2).from(0.0)
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+		price_tween.tween_property(price_label, "position:y", 0.0, 0.2).from(-0.5)
+		price_tween.tween_property(price_label, "modulate:a", 1.0, 0.2).from(0.0)
+		price_tween.tween_property(price_label, "outline_modulate:a", 1.0, 0.2).from(0.0)
 
 func hide_price_label():
-	var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-	price_tween.tween_property(price_label, "position:y", 0.5, 0.2).from(0.0)
-	price_tween.tween_property(price_label, "modulate:a", 0.0, 0.2)
-	price_tween.tween_property(price_label, "outline_modulate:a", 0.0, 0.2).from(1.0)
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+		price_tween.tween_property(price_label, "position:y", 0.5, 0.2).from(0.0)
+		price_tween.tween_property(price_label, "modulate:a", 0.0, 0.2)
+		price_tween.tween_property(price_label, "outline_modulate:a", 0.0, 0.2).from(1.0)
 
 func _on_player_detection_area_body_entered(body: Node3D) -> void:
-	show_price_label()
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		show_price_label()
 
 func _on_player_detection_area_body_exited(body: Node3D) -> void:
-	hide_price_label()
+	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+		hide_price_label()
 
 func _on_player_hit_area_area_entered(area: Area3D) -> void:
 	var name: String = "get_item_%d" % randi_range(1, 3)

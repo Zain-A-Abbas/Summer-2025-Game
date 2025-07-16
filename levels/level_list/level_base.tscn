@@ -88,3 +88,6 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 1: 2,
 2: 1
 })
+
+[node name="RewardPosition" type="Marker3D" parent="."]
+unique_name_in_owner = true

@@ -15,6 +15,7 @@ const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 @export var boss_level: PackedScene
 
 var current_level: PackedScene = null
+var current_level_type: LevelBase.LevelType
 var current_level_count: int = 0
 var money: int = 300
 var current_player: Player
@@ -44,7 +45,7 @@ func begin_run():
 	create_level()
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
-	var new_level: LevelBase
+	var new_level: LevelBase	
 	if new_level_type == LevelBase.LevelType.NORMAL:
 		new_level = choose_normal_level()
 	elif new_level_type == LevelBase.LevelType.ELITE:
@@ -81,6 +82,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	current_player.obtained_money.connect(money_gain)
 	player_ui.refresh_player(current_player)
 	
+	current_level_type = new_level_type
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
 
@@ -135,7 +137,7 @@ func choose_normal_level() -> LevelBase:
 		# reinsert old level
 		if current_level_count > 1:
 			normal_levels.append(current_level)
-			
+	
 		current_level = new_level
 		return current_level.instantiate()
 	else:

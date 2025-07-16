@@ -12,6 +12,7 @@ enum LevelType {
 }
 
 const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
+const LEVEL_REWARD = preload("res://levels/level_list/shop_level/shop_item.tscn")
 const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
 	Enemy.EnemyType.CARD: preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn"),
 	Enemy.EnemyType.FLOWER: preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn"),
@@ -50,6 +51,7 @@ var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
 }
 var enemy_spawn_list: Array[Enemy.EnemyType]
 var shop_exit_made: bool = false
+var reward: ShopItem
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -62,6 +64,7 @@ var shop_exit_made: bool = false
 @onready var enemy_data: Node3D = %EnemyData
 @onready var projectiles: Node3D = %Projectiles
 @onready var sounds: Node3D = %Sounds
+@onready var reward_position: Marker3D = %RewardPosition
 
 func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_count: int):
 	level_manager = _level_manager 
@@ -125,6 +128,11 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			
 			enemy_count += 1
 	
+	# initialize reward
+	if _type != LevelType.SHOP && _type != LevelType.HEALING:
+		reward = LEVEL_REWARD.instantiate().duplicate()
+		dynamic_geometry.add_child(reward)
+	
 	for exit in get_level_exits():
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
@@ -162,6 +170,10 @@ func enemy_kill(enemy: Enemy):
 			exit.activate()
 			sounds.get_node("door_open_%d" % index).play()
 			index += 1
+		
+		# spawn upgrade
+		if type != LevelType.SHOP && type != LevelType.HEALING:
+			spawn_level_reward(reward)
 
 func exit_choose(exit_type: LevelType):
 	level_completed.emit(self, exit_type)
@@ -195,5 +207,6 @@ func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 func update_enemy_spawn_counts(type: Enemy.EnemyType, change: int):
 	enemy_spawn_count[type] += change
 
-func scale_enemy(enemy: Enemy):
-	pass
+func spawn_level_reward(reward: ShopItem):
+	reward.initialize(level_manager)
+	reward.position = reward_position.position

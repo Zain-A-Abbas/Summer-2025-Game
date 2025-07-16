@@ -506,7 +506,6 @@ cast_shadow = 0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry" index="9"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.95, -10.9928)
-visible = false
 layers = 33
 size = Vector3(2, 0.1, 7.6)
 material = ExtResource("9_ry1pd")
@@ -624,3 +623,6 @@ max_distance = 10.0
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="RewardPosition" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.2103)
