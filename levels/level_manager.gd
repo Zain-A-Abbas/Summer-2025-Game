@@ -93,12 +93,13 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	
 	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
 		current_level_count += 1
-		
-		#if level.type == LevelBase.LevelType.BOSS && endless:
-		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
-		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
-		scale_enemies = true
-	
+
+	#if current_level_type == LevelBase.LevelType.BOSS && endless:
+	player_upgrades.increase_upgrade_limits()
+	enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
+	enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
+	scale_enemies = true
+
 	level.queue_free()
 	
 	await get_tree().process_frame

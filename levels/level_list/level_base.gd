@@ -12,7 +12,7 @@ enum LevelType {
 }
 
 const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
-const LEVEL_REWARD = preload("res://levels/level_list/shop_level/shop_item.tscn")
+const LEVEL_REWARD: Resource = preload("res://levels/level_list/shop_level/shop_item.tscn")
 const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
 	Enemy.EnemyType.CARD: preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn"),
 	Enemy.EnemyType.FLOWER: preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn"),
@@ -130,7 +130,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	
 	# initialize reward
 	if _type != LevelType.SHOP && _type != LevelType.HEALING:
-		reward = LEVEL_REWARD.instantiate().duplicate()
+		reward = LEVEL_REWARD.duplicate(true).instantiate()
 		dynamic_geometry.add_child(reward)
 	
 	for exit in get_level_exits():
