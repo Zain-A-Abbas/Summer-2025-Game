@@ -624,5 +624,8 @@ max_distance = 10.0
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 
-[node name="RewardPosition" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.2103)
+[node name="Marker3D" type="Marker3D" parent="RewardPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07518, 4.40412, 16.7141)
+
+[node name="Marker3D2" type="Marker3D" parent="RewardPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14734, 4.40412, 13.1466)

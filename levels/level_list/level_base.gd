@@ -51,7 +51,6 @@ var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
 }
 var enemy_spawn_list: Array[Enemy.EnemyType]
 var shop_exit_made: bool = false
-var reward: ShopItem
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -64,7 +63,7 @@ var reward: ShopItem
 @onready var enemy_data: Node3D = %EnemyData
 @onready var projectiles: Node3D = %Projectiles
 @onready var sounds: Node3D = %Sounds
-@onready var reward_position: Marker3D = %RewardPosition
+@onready var reward_positions: Node3D = %RewardPositions
 
 func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_count: int):
 	level_manager = _level_manager 
@@ -128,10 +127,17 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			
 			enemy_count += 1
 	
-	# initialize reward
-	if _type != LevelType.SHOP && _type != LevelType.HEALING:
-		reward = LEVEL_REWARD.duplicate(true).instantiate()
-		dynamic_geometry.add_child(reward)
+	# initialize reward(s)
+	var amount: int = 1
+	match _type:
+		LevelType.NORMAL:
+			amount = 1
+		LevelType.ELITE:
+			amount = 2
+		LevelType.BOSS:
+			amount = 3
+	
+	initialize_rewards(amount)
 	
 	for exit in get_level_exits():
 		exit.initialize(self)
@@ -171,9 +177,9 @@ func enemy_kill(enemy: Enemy):
 			sounds.get_node("door_open_%d" % index).play()
 			index += 1
 		
-		# spawn upgrade
+		# spawn upgrade(s)
 		if type != LevelType.SHOP && type != LevelType.HEALING:
-			spawn_level_reward(reward)
+			spawn_level_rewards()
 
 func exit_choose(exit_type: LevelType):
 	level_completed.emit(self, exit_type)
@@ -207,6 +213,13 @@ func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 func update_enemy_spawn_counts(type: Enemy.EnemyType, change: int):
 	enemy_spawn_count[type] += change
 
-func spawn_level_reward(reward: ShopItem):
-	reward.initialize(level_manager)
-	reward.position = reward_position.position
+func initialize_rewards(amount: int):
+	for n in amount:
+		var reward: ShopItem = LEVEL_REWARD.duplicate(true).instantiate()
+		dynamic_geometry.add_child(reward)
+		reward.position = reward_positions.get_child(n).position
+
+func spawn_level_rewards():
+	for reward in dynamic_geometry.get_children():
+		if reward is ShopItem:
+			reward.initialize(level_manager)

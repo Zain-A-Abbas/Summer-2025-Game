@@ -1,13 +1,6 @@
 extends Node3D
 class_name ShopItem
 
-@onready var item_sprite: Sprite3D = %ItemSprite
-@onready var player_detection_area: Area3D = %PlayerDetectionArea
-@onready var player_hit_area: Area3D = %PlayerHitArea
-@onready var price_label: Label3D = %PriceLabel
-@onready var name_label: Label3D = %NameLabel
-@onready var sounds: Node3D = %Sounds
-
 const UPGRADE_NAMES: Dictionary[PlayerUpgrades.UpgradeTypes, String] = {
 	PlayerUpgrades.UpgradeTypes.PARRY_FRAME_BONUS: "Increase Parry Time",
 	PlayerUpgrades.UpgradeTypes.DAMAGE_BONUS: "Extra Damage",
@@ -30,6 +23,13 @@ const UPGRADE_PRICES: Dictionary[PlayerUpgrades.UpgradeTypes, int] = {
 var bought: bool = false
 var time: float = 0.0
 var level_manager: LevelManager
+
+@onready var item_sprite: Sprite3D = %ItemSprite
+@onready var player_detection_area: Area3D = %PlayerDetectionArea
+@onready var player_hit_area: Area3D = %PlayerHitArea
+@onready var price_label: Label3D = %PriceLabel
+@onready var name_label: Label3D = %NameLabel
+@onready var sounds: Node3D = %Sounds
 
 func _ready() -> void:
 	price_label.modulate.a = 0.0
@@ -54,6 +54,8 @@ func _ready() -> void:
 			texture_region = Vector2(0, 64)
 	
 	item_sprite.texture.region.position = texture_region
+	scale = Vector3(0.1, 0.1, 0.1)
+	hide()
 
 func _physics_process(delta: float) -> void:
 	time += delta
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 func initialize(_manager: LevelManager):
 	level_manager = _manager
 	
-	scale = Vector3(0.1, 0.1, 0.1)
+	show()
 	var spawn_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
 	spawn_tween.tween_property(self, "scale", Vector3(1.0, 1.0, 1.0), 0.5)
 	await spawn_tween.finished

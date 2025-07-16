@@ -67,7 +67,7 @@ func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant])
 	hatter.summon_timestamp *= 0.75
 	
 	# increase summon hp cancel threshold
-	hatter.summon_cancel_hp_amount *= args["hp_multiplier"]
+	hatter.summon_cancel_hp_amount *= ceilf(float(hatter.summon_cancel_hp_amount) * args["hp_multiplier"])
 
 func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
