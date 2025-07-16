@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbqo8sih7vhnd"]
+[gd_scene load_steps=8 format=3 uid="uid://cbqo8sih7vhnd"]
 
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="1_banr2"]
 [ext_resource type="Script" uid="uid://c3h7kc3phhyww" path="res://levels/level_list/level_base.gd" id="1_y4roy"]
 [ext_resource type="Script" uid="uid://ov64hjfwby7d" path="res://levels/level_camera.gd" id="2_wo181"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="3_2ct8q"]
 [ext_resource type="PackedScene" uid="uid://dqt7pplnjhp3d" path="res://entities/entity_list/player/player.tscn" id="3_6i55e"]
+[ext_resource type="AudioStream" uid="uid://48i03uy3yrdn" path="res://audio/levels/general/09 DSGNTonl, Tonal, Mystic, UI, Notification.wav" id="4_x5c6y"]
 
 [sub_resource type="Environment" id="Environment_y4roy"]
 
@@ -60,6 +61,12 @@ panning_strength = 0.0
 stream = ExtResource("3_2ct8q")
 unit_size = 20.0
 max_db = 1.0
+
+[node name="level_complete" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_x5c6y")
+volume_db = 15.0
+pitch_scale = 0.75
+panning_strength = 0.0
 
 [node name="SceneDocumentation" parent="." instance=ExtResource("1_banr2")]
 

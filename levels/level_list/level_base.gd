@@ -24,6 +24,8 @@ const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
 }
 const CREATE_SHOP_LEVEL_MODULO: int = 5
 const CREATE_BOSS_LEVEL_MODULO: int = 10
+const ELITE_DMG_MULTIPLIER: float = 1.2
+const ELITE_HP_MULTIPLIER: float = 1.25
 
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
@@ -76,17 +78,8 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		var boss: Enemy = ENEMIES[Enemy.EnemyType.JABBERWOCK].instantiate()
 		enemies.add_child(boss)
 		boss.position = enemy_positions.get_child(0).global_position
-		boss.type = Enemy.EnemyType.JABBERWOCK
-		if level_manager.scale_enemies:
-			level_manager.enemy_scaler.scale_enemy(boss, 
-				{
-					"hp_multiplier": level_manager.enemy_hp_multiplier,
-					"dmg_multiplier": level_manager.enemy_dmg_multiplier
-				}
-			)
-		boss.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
-		boss.enemy_killed.connect(enemy_kill)
-		
+		boss.type = Enemy.EnemyType.JABBERWOCK		
+
 		enemy_count += 1
 		
 	else:
@@ -115,20 +108,33 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			enemies.add_child(new_enemy)
 			new_enemy.position = enemy_positions.get_child(n).global_position
 			new_enemy.type = new_enemy_type
-			if level_manager.scale_enemies:
-				level_manager.enemy_scaler.scale_enemy(new_enemy, 
-					{
-						"hp_multiplier": level_manager.enemy_hp_multiplier,
-						"dmg_multiplier": level_manager.enemy_dmg_multiplier
-					}
-				)
-			new_enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
-			new_enemy.enemy_killed.connect(enemy_kill)
 			
 			enemy_count += 1
-	
+
+	# initialize enemies
+	for enemy in enemies.get_children():
+		if _type == LevelBase.LevelType.ELITE:
+			level_manager.enemy_scaler.scale_enemy(enemy, 
+				{
+					"hp_multiplier": ELITE_HP_MULTIPLIER,
+					"dmg_multiplier": ELITE_DMG_MULTIPLIER,
+				}
+			)
+		
+		if level_manager.run_scale_enemies:
+			level_manager.enemy_scaler.scale_enemy(enemy, 
+				{
+					"hp_multiplier": level_manager.enemy_hp_multiplier,
+					"dmg_multiplier": level_manager.enemy_dmg_multiplier,
+					"run": true
+				}
+			)
+
+		enemy.initialize_enemy(player, enemy_data, enemy_positions, enemies, projectiles)
+		enemy.enemy_killed.connect(enemy_kill)
+
 	# initialize reward(s)
-	var amount: int = 1
+	var amount: int = 0
 	match _type:
 		LevelType.NORMAL:
 			amount = 1
@@ -137,7 +143,8 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		LevelType.BOSS:
 			amount = 3
 	
-	initialize_rewards(amount)
+	if amount:
+		initialize_rewards(amount)
 	
 	for exit in get_level_exits():
 		exit.initialize(self)
@@ -172,6 +179,7 @@ func enemy_kill(enemy: Enemy):
 	if enemies_killed == enemy_count:
 		var index: int = 1
 		
+		# open doors
 		for exit in get_level_exits():
 			exit.activate()
 			sounds.get_node("door_open_%d" % index).play()
@@ -180,6 +188,9 @@ func enemy_kill(enemy: Enemy):
 		# spawn upgrade(s)
 		if type != LevelType.SHOP && type != LevelType.HEALING:
 			spawn_level_rewards()
+		
+		# play level complete sound
+		sounds.get_node("level_complete").play()
 
 func exit_choose(exit_type: LevelType):
 	level_completed.emit(self, exit_type)

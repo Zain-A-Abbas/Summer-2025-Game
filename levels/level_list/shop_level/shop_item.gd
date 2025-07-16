@@ -54,7 +54,7 @@ func _ready() -> void:
 			texture_region = Vector2(0, 64)
 	
 	item_sprite.texture.region.position = texture_region
-	scale = Vector3(0.1, 0.1, 0.1)
+	scale = Vector3(0.001, 0.001, 0.001)
 	hide()
 
 func _physics_process(delta: float) -> void:
@@ -95,25 +95,23 @@ func resolve_buy():
 	queue_free()
 
 func show_price_label():
-	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
-		var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-		price_tween.tween_property(price_label, "position:y", 0.0, 0.2).from(-0.5)
-		price_tween.tween_property(price_label, "modulate:a", 1.0, 0.2).from(0.0)
-		price_tween.tween_property(price_label, "outline_modulate:a", 1.0, 0.2).from(0.0)
+	var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	price_tween.tween_property(price_label, "position:y", 0.0, 0.2).from(-0.5)
+	price_tween.tween_property(price_label, "modulate:a", 1.0, 0.2).from(0.0)
+	price_tween.tween_property(price_label, "outline_modulate:a", 1.0, 0.2).from(0.0)
 
 func hide_price_label():
-	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
-		var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
-		price_tween.tween_property(price_label, "position:y", 0.5, 0.2).from(0.0)
-		price_tween.tween_property(price_label, "modulate:a", 0.0, 0.2)
-		price_tween.tween_property(price_label, "outline_modulate:a", 0.0, 0.2).from(1.0)
+	var price_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)
+	price_tween.tween_property(price_label, "position:y", 0.5, 0.2).from(0.0)
+	price_tween.tween_property(price_label, "modulate:a", 0.0, 0.2)
+	price_tween.tween_property(price_label, "outline_modulate:a", 0.0, 0.2).from(1.0)
 
 func _on_player_detection_area_body_entered(body: Node3D) -> void:
-	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+	if level_manager && level_manager.current_level_type == LevelBase.LevelType.SHOP:
 		show_price_label()
 
 func _on_player_detection_area_body_exited(body: Node3D) -> void:
-	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
+	if level_manager && level_manager.current_level_type == LevelBase.LevelType.SHOP:
 		hide_price_label()
 
 func _on_player_hit_area_area_entered(area: Area3D) -> void:

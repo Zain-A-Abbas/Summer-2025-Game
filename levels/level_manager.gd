@@ -22,7 +22,7 @@ var current_player: Player
 var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
 var enemy_scaler: EnemyScaler
-var scale_enemies: bool = false
+var run_scale_enemies: bool = false
 var enemy_dmg_multiplier: float = 1.0
 var enemy_hp_multiplier: float = 1.0
 
@@ -82,8 +82,8 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	current_player.obtained_money.connect(money_gain)
 	player_ui.refresh_player(current_player)
 	
-	current_level_type = new_level_type
 	await fade_transition(false)
+	current_level_type = new_level_type
 	new_level.start_level(new_level_type)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
@@ -98,7 +98,7 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	player_upgrades.increase_upgrade_limits()
 	enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
 	enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
-	scale_enemies = true
+	run_scale_enemies = true
 
 	level.queue_free()
 	

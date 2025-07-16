@@ -11,19 +11,20 @@ func _ready() -> void:
 
 func add_attack_effect(effect_type: AttackEffect.AttackEffectType, args: Dictionary[String, Variant]):
 	var duration: float = 0.0
-	if effect_type == AttackEffect.AttackEffectType.BURN:
-		if args.has("duration"):
-			duration = args["duration"]
-		
-		var burn: BurnEffect = BurnEffect.new()
-		burn.initialize_effect({"duration": duration})
-		attack_effects.append(burn)
-	elif effect_type == AttackEffect.AttackEffectType.PARALYSIS:
-		if args.has("duration"):
-			duration = args["duration"]
-		
-		var para: ParalysisEffect = ParalysisEffect.new()
-		para.initialize_effect({"duration": duration, "chance": args["chance"]})
-		attack_effects.append(para)
-	else:
-		print(effect_type, ": invalid effect type")
+	match effect_type:
+		AttackEffect.AttackEffectType.BURN:
+			if args.has("duration"):
+				duration = args["duration"]
+			
+			var burn: BurnEffect = BurnEffect.new()
+			burn.initialize_effect({"duration": duration})
+			attack_effects.append(burn)
+		AttackEffect.AttackEffectType.PARALYSIS:
+			if args.has("duration"):
+				duration = args["duration"]
+			
+			var para: ParalysisEffect = ParalysisEffect.new()
+			para.initialize_effect({"duration": duration, "chance": args["chance"]})
+			attack_effects.append(para)
+		_:
+			print(effect_type, ": invalid effect type")

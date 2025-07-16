@@ -41,7 +41,7 @@ func scale_card(card: BasicEnemy, args: Dictionary[String, Variant]):
 	card.basic_attack.attack_effects[0].damage = ceilf(float(card.basic_attack.attack_effects[0].damage) * args["dmg_multiplier"])
 	
 	# add attack effects: burn, para, slow
-	if randf() <= ADD_EFFECT_CHANCE:
+	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		effect = ATK_EFFECTS.pick_random()
 		#print(effect)
 		create_effect_parameters(effect, args)
@@ -51,28 +51,30 @@ func scale_caterpillar(caterpillar: CaterpillarEnemy, args: Dictionary[String, V
 	caterpillar.seed_damage = ceilf(float(caterpillar.seed_damage) * args["dmg_multiplier"])
 
 	# increase speed
-	caterpillar.movement_component.set_move_speed(caterpillar.movement_component.move_speed * 1.10)
+	if args.has("run"):
+		caterpillar.movement_component.set_move_speed(caterpillar.movement_component.move_speed * 1.10)
 
 func scale_flower(flower: FlowerEnemy, args: Dictionary[String, Variant]):
 	flower.bomb_damage = ceilf(float(flower.bomb_damage) * args["dmg_multiplier"])
 	
 	# chance to add slow effect
-	#if randf() <= ADD_EFFECT_CHANCE:
+	#if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		#effect = AttackEffect.AttackEffectType.SLOW
 		#create_effect_parameters(AttackEffect.AttackEffectType.SLOW, args)
 		#card.basic_attack.add_attack_effect(effect, args)
 
-func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant]):
-	# decrease summon time
-	hatter.summon_timestamp *= 0.75
-	
+func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant]):	
 	# increase summon hp cancel threshold
 	hatter.summon_cancel_hp_amount *= ceilf(float(hatter.summon_cancel_hp_amount) * args["hp_multiplier"])
+
+	# decrease summon time
+	if args.has("run"):
+		hatter.summon_timestamp *= 0.75
 
 func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
 	
-	if randf() <= ADD_EFFECT_CHANCE:
+	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		effect = ATK_EFFECTS.pick_random()
 		create_effect_parameters(effect, args)
 		mouse.pounce.add_attack_effect(effect, args)
@@ -81,7 +83,7 @@ func scale_red_knight(knight: RedKnightEnemy, args: Dictionary[String, Variant])
 	knight.thrust.attack_effects[0].damage = ceilf(float(knight.thrust.attack_effects[0].damage) * args["dmg_multiplier"])
 	
 	# add attack effects: burn, slow
-	if randf() <= ADD_EFFECT_CHANCE:
+	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		var atk_effects_temp: Array[AttackEffect.AttackEffectType] = ATK_EFFECTS.duplicate()
 		atk_effects_temp.remove_at(atk_effects_temp.find(AttackEffect.AttackEffectType.PARALYSIS))
 		effect = atk_effects_temp.pick_random()
