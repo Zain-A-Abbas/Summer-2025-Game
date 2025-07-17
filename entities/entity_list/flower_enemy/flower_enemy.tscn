@@ -104,11 +104,12 @@ viewport_path = NodePath("SubViewport")
 [node name="FlowerEnemy" node_paths=PackedStringArray("bomb_spawn_position", "hurtbox", "meshes") instance=ExtResource("1_rvb6p")]
 script = ExtResource("2_efnkb")
 bomb = ExtResource("3_bkhxi")
+bomb_damage = 5
+bomb_spawn_position = NodePath("flower/Armature/Skeleton3D/BoneAttachment3D/BombSpawnPosition")
 attack_range = Array[float]([4.0, 16.0])
 shoot_cooldown = 1.5
 warning_duration = 0.7
 dig_cooldown = 3.0
-bomb_spawn_position = NodePath("flower/Armature/Skeleton3D/BoneAttachment3D/BombSpawnPosition")
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("flower/Armature/Skeleton3D/Cylinder")]
 death_state_duration = 1.34

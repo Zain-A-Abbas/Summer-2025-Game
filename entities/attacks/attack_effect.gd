@@ -4,7 +4,8 @@ extends Resource
 enum AttackEffectType {
 	DAMAGE,
 	BURN,
-	PARALYSIS
+	PARALYSIS,
+	BLEED
 }
 
 var effect_type: AttackEffectType

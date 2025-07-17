@@ -101,11 +101,11 @@ func return_to_title_button_pressed():
 	get_tree().reload_current_scene()
 
 func update_upgrades(current_player: Player):
-	upgrade_icons[0].set_upgrade_amount(current_player.upgrades.extra_parry_time)
-	upgrade_icons[1].set_upgrade_amount(current_player.upgrades.extra_damage)
-	upgrade_icons[2].set_upgrade_amount(current_player.upgrades.extra_parry_damage)
-	upgrade_icons[3].set_upgrade_amount(current_player.upgrades.extra_hp)
-	upgrade_icons[4].set_upgrade_amount(current_player.upgrades.extra_stamina)
+	upgrade_icons[0].set_upgrade_amount(current_player.upgrades.extra_parry_time, current_player.upgrades.extra_parry_limit)
+	upgrade_icons[1].set_upgrade_amount(current_player.upgrades.extra_damage, current_player.upgrades.extra_damage_limit)
+	upgrade_icons[2].set_upgrade_amount(current_player.upgrades.extra_parry_damage, current_player.upgrades.extra_parry_damage_limit)
+	upgrade_icons[3].set_upgrade_amount(current_player.upgrades.extra_hp, current_player.upgrades.extra_hp_limit)
+	upgrade_icons[4].set_upgrade_amount(current_player.upgrades.extra_stamina, current_player.upgrades.extra_stamina_limit)
 	set_hp_immediate(player)
 	stamina_bar.max_value = current_player.max_stamina
 	stamina_bar.custom_minimum_size.x = 100 * (current_player.max_stamina / 100.0)

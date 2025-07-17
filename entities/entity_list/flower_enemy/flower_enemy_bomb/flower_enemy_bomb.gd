@@ -17,11 +17,13 @@ var start_position: Vector3
 var goal_position: Vector3
 
 
-func initialize_bomb(_start_position: Vector3, _goal_position: Vector3) -> void:
+func initialize_bomb(_start_position: Vector3, _goal_position: Vector3, damage: int) -> void:
 	start_position = _start_position
 	goal_position = _goal_position
 	bomb_velocity = Vector3(0, BOMB_STARTING_VERTICAL_VELOCITY, 0)
 	global_position = start_position
+	atk_obj.attack_effects[0].damage = damage
+	
 	prepare_states()
 
 func prepare_states():

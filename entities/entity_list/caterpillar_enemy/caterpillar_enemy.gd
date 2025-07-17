@@ -2,6 +2,7 @@ class_name CaterpillarEnemy
 extends Enemy
 
 @export var seed: Resource
+@export var seed_damage: int = 3
 @export var crawl_duration: float = 2.0
 @export var change_direction_timestamp: float = 1.2
 @export var shooting_range: float = 17.0

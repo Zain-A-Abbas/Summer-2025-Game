@@ -1,6 +1,9 @@
 class_name JabberwockBoss
 extends Enemy
 
+@export var seed_damage: int = 3
+@export var bomb_damage: int = 5
+
 @onready var sweep: AttackObject = %Sweep
 @onready var swipe: AttackObject = %Swipe
 @onready var swipe_mirrored: AttackObject = %SwipeMirrored

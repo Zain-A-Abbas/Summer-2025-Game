@@ -13,7 +13,7 @@ var projectiles: Node3D
 @onready var ray_cast: RayCast3D = %ray_cast
 
 
-func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D) -> void:
+func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D, damage: int) -> void:
 	is_child = spawn_as_child
 	direction = dir
 	projectiles = projs
@@ -24,6 +24,7 @@ func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D) -> void:
 		atk_obj = parent
 
 	atk_obj.hitbox.monitorable = true
+	atk_obj.attack_effects[0].damage = damage
 	
 	prepare_states()
 

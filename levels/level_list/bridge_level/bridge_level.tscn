@@ -65,14 +65,6 @@ fog_light_energy = 0.02
 [node name="Bridge" instance=ExtResource("1_116be")]
 enemy_minimum = 4
 enemy_limit = 7
-enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 6,
-&"CATERPILLAR": 0,
-&"FLOWER": 0,
-&"MAD_HATTER": 1,
-&"MOUSE": 0,
-&"RED_KNIGHT": 2
-})
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)

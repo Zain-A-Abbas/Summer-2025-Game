@@ -12,9 +12,10 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if direction == Vector2.ZERO:
 		direction = Vector2(0, player.rotation.y)
 	movement_vector = Vector3(-direction.x, 0, direction.y)
-	
+
+	player.face_direction(movement_vector.rotated(Vector3.UP, deg_to_rad(180)))
 	player.hurtbox.invincibility_frames = true
-	player.consume_stamina(player.DODGE_REQUIREMENT, 0.4)
+	player.consume_stamina(player.DODGE_REQUIREMENT, 0.4)	
 	player.play_sound_fx(&"dodge_whoosh")
 
 func st_physics_process(delta: float) -> void:

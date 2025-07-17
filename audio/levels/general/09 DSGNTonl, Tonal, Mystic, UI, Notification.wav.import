@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://48i03uy3yrdn"
+path="res://.godot/imported/09 DSGNTonl, Tonal, Mystic, UI, Notification.wav-999b5f107e31ef3a56224f53084d1f09.sample"
+
+[deps]
+
+source_file="res://audio/levels/general/09 DSGNTonl, Tonal, Mystic, UI, Notification.wav"
+dest_files=["res://.godot/imported/09 DSGNTonl, Tonal, Mystic, UI, Notification.wav-999b5f107e31ef3a56224f53084d1f09.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

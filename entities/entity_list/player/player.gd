@@ -43,8 +43,8 @@ func _ready() -> void:
 	#basic_attack.add_attack_effect(&"PARALYSIS", {"duration": 2.0, "chance": 100.0})
 
 func _physics_process(delta: float) -> void:
+	super(delta)
 	update_listener_direction()
-	update_inflicted_attack_effects(delta)
 	deflect_velocity = deflect_velocity.move_toward(Vector3.ZERO, deflect_decay * delta)
 
 	if regenerating_stamina:

@@ -339,14 +339,14 @@ fog_light_energy = 0.02
 
 [node name="DiningRoom" instance=ExtResource("1_bkt50")]
 enemy_minimum = 3
-enemy_limit = 6
-enemy_spawn_limits = Dictionary[StringName, int]({
-&"BASIC": 3,
-&"CATERPILLAR": 2,
-&"FLOWER": 0,
-&"MAD_HATTER": 1,
-&"MOUSE": 3,
-&"RED_KNIGHT": 0
+enemy_limit = 4
+enemy_spawn_limits = Dictionary[int, int]({
+0: 1,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0
 })
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]
@@ -507,12 +507,12 @@ cast_shadow = 0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry" index="9"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.95, -10.9928)
-visible = false
 layers = 33
 size = Vector3(2, 0.1, 7.6)
 material = ExtResource("9_ry1pd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/CSGBox3D2" index="0"]
+visible = false
 collision_layer = 0
 collision_mask = 0
 
@@ -623,5 +623,14 @@ max_db = 1.5
 autoplay = true
 max_distance = 10.0
 
+[node name="level_complete" parent="Sounds" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.12035, 12.3113, 15.2167)
+
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="Marker3D" type="Marker3D" parent="RewardPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.07518, 4.40412, 16.7141)
+
+[node name="Marker3D2" type="Marker3D" parent="RewardPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.14734, 4.40412, 13.1466)

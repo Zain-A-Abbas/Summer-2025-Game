@@ -14,9 +14,7 @@ func initialize_effect(args: Dictionary[String, Variant]):
 		stun_chance = args["chance"]
 
 func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
-	var roll: float = randf_range(0, 100.0)
-	
-	if roll <= stun_chance && !target.paralyzed:
+	if randf() <= stun_chance && !target.paralyzed:
 		target.paralysis_timer = 0.0
 		target.paralysis_duration = stun_duration
 		target.paralyzed = true

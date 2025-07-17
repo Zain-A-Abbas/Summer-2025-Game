@@ -2,6 +2,7 @@ class_name CharacterEntity
 extends CharacterBody3D
 
 const GRAVITY_ACCELERATION: float = 98
+const DECAY_BLEED_TIME: float = 4.0
 
 ## A class used for characters. Holds an animator, collision, a state machine, 
 ## and stats
@@ -9,7 +10,8 @@ const GRAVITY_ACCELERATION: float = 98
 @export var death_state_duration: float
 @export var inflicted_attack_effect_limits: Dictionary[AttackEffect.AttackEffectType, int] = {
 	AttackEffect.AttackEffectType.BURN: 1,
-	AttackEffect.AttackEffectType.PARALYSIS: 1
+	AttackEffect.AttackEffectType.PARALYSIS: 1,
+	AttackEffect.AttackEffectType.BLEED: 4
 }
 
 # attack effect vars
@@ -17,13 +19,17 @@ var inflicted_attack_effects: Array[AttackEffect] = []
 var inflicted_attack_objects: Array[AttackObject] = []
 var inflicted_attack_effect_count: Dictionary[AttackEffect.AttackEffectType, int] = {
 	AttackEffect.AttackEffectType.BURN: 0,
-	AttackEffect.AttackEffectType.PARALYSIS: 0
+	AttackEffect.AttackEffectType.PARALYSIS: 0,
+	AttackEffect.AttackEffectType.BLEED: 0
 }
 
 # vars for paralysis effect
 var paralysis_duration: float = 0.0
 var paralysis_timer: float = 0.0
 var paralyzed: bool = false
+
+# vars for bleed effect
+var bleed_decay_timer: float = 0.0
 
 var gravity_vel: float = 0
 
@@ -34,6 +40,13 @@ var gravity_vel: float = 0
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var decal: Decal = %Decal
 
+func _physics_process(delta: float) -> void:
+	update_inflicted_attack_effects(delta)
+	
+	if inflicted_attack_effect_count[AttackEffect.AttackEffectType.BLEED] > 0:
+		decay_bleed_counts(delta)
+	#if self is Player:
+	#	print(inflicted_attack_effect_count[AttackEffect.AttackEffectType.BLEED])
 
 func char_entity_die(args: Dictionary[String, Variant] = {}):
 	pass
@@ -70,6 +83,12 @@ func paralysis_effect(delta: float) -> bool:
 		
 	return true
 
+func decay_bleed_counts(delta: float):
+	bleed_decay_timer += delta
+	if bleed_decay_timer >= DECAY_BLEED_TIME:
+		update_inflicted_attack_effect_counts(AttackEffect.AttackEffectType.BLEED, -1)
+		bleed_decay_timer = 0.0
+
 func update_inflicted_attack_effects(delta: float):
 	var n: int = 0
 	
@@ -78,7 +97,8 @@ func update_inflicted_attack_effects(delta: float):
 	#	print("limit: ", inflicted_attack_effect_limits)
 	for effect in inflicted_attack_effects:
 		if effect.apply_effect(self, delta, inflicted_attack_objects[n]):
-			update_inflicted_attack_effect_counts(effect.effect_type, -1)
+			if effect.effect_type != AttackEffect.AttackEffectType.BLEED:
+				update_inflicted_attack_effect_counts(effect.effect_type, -1)
 			inflicted_attack_effects.remove_at(n)
 			
 			inflicted_attack_objects[n].queue_free()
