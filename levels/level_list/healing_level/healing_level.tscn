@@ -28,6 +28,7 @@ material = ExtResource("3_34f4p")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/RoomBorders" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+visible = false
 collision_layer = 32
 collision_mask = 0
 

@@ -23,6 +23,9 @@ const UPGRADE_PRICES: Dictionary[PlayerUpgrades.UpgradeTypes, int] = {
 var bought: bool = false
 var time: float = 0.0
 var level_manager: LevelManager
+var base_y: float = 0.0
+var y_oscillate: float = 0.0
+var initialized: bool = false
 
 @onready var item_sprite: Sprite3D = %ItemSprite
 @onready var player_detection_area: Area3D = %PlayerDetectionArea
@@ -58,11 +61,15 @@ func _ready() -> void:
 	hide()
 
 func _physics_process(delta: float) -> void:
-	time += delta
-	position.y = sin(time * 0.5) * 0.25
+	if initialized:
+		time += delta
+		y_oscillate = sin(time * 0.5) * 0.25
+		position.y = base_y + y_oscillate
 
 func initialize(_manager: LevelManager):
 	level_manager = _manager
+	base_y = position.y
+	initialized = true
 	
 	show()
 	var spawn_tween: Tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_parallel(true)

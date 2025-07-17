@@ -21,7 +21,7 @@ func startGame():
 	tween.tween_property(simple_transitions, "modulate:a", 0.0, 1.0)
 	await tween.finished
 	simple_transitions.visible = false
-	title_layer.titleInitialize()
+	title_layer.title_initialize()
 
 func startRun():
 	simple_transitions.modulate.a = 0.0

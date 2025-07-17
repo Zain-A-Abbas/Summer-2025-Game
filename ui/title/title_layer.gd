@@ -6,8 +6,11 @@ signal run_start_selected
 @onready var title_label: Label = %TitleLabel
 @onready var title_options_container: MarginContainer = %TitleOptionsContainer
 @onready var title_select: NinePatchRect = %TitleSelect
-@onready var new_run_label: Label = %NewRunLabel
-@onready var exit_label: Label = %ExitLabel
+@onready var new_game_button: Button = %NewGameButton
+@onready var exit_game_button: Button = %ExitGameButton
+@onready var credits_button: Button = %CreditsButton
+@onready var exit_credits_button: Button = %ExitCredits
+@onready var credits_panel: PanelContainer = %CreditsPanel
 
 enum TitleState {
 	NONE,
@@ -22,31 +25,31 @@ func _ready() -> void:
 	title_label.modulate.a = 0.0
 	title_options_container.modulate.a = 0.0
 	Bgm.play_bgm(Bgm.BGM_TYPE.TITLE, 1.0)
+	credits_panel.visible = false
+	new_game_button.pressed.connect(new_game)
+	exit_game_button.pressed.connect(exit_game)
+	credits_button.pressed.connect(credits)
+	exit_credits_button.pressed.connect(exit_credits)
 
 func _input(event: InputEvent) -> void:
 	if state == TitleState.NONE:
 		return
-	
-	if event.is_action_pressed("ui_accept"):
-		selectOption()
-		return
-	
-	if event.is_action_pressed("ui_up"):
-		moveHighlight(-1)
-		return
-	
-	if event.is_action_pressed("ui_down"):
-		moveHighlight(1)
-		return
 
-func selectOption():
-	state = TitleState.NONE
-	if currentOption == 0:
-		run_start_selected.emit()
-	elif currentOption == 1:
-		get_tree().quit()
+func new_game():
+	run_start_selected.emit()
 
-func titleInitialize():
+func exit_game():
+	get_tree().quit()
+
+func credits():
+	credits_panel.visible = true
+	exit_credits_button.grab_focus()
+
+func exit_credits():
+	credits_panel.visible = false
+	credits_button.grab_focus()
+
+func title_initialize():
 	title_select.visible = false
 	title_label.modulate.a = 0.0
 	title_options_container.modulate.a = 0.0
@@ -59,21 +62,4 @@ func titleInitialize():
 	await titleTween.finished
 	
 	state = TitleState.SELECTING
-	highlight(0)
-
-func moveHighlight(dir: int):
-	highlight(currentOption + dir)
-
-func highlight(newOption: int):
-	newOption = wrapi(newOption, 0, 2)
-	currentOption = newOption
-	var matchOption: Control = new_run_label
-	if currentOption == 0:
-		matchOption = new_run_label
-	elif currentOption == 1:
-		matchOption = exit_label
-	title_select.position = matchOption.global_position
-	title_select.size = matchOption.size
-	title_select.size.y /= 2
-	title_select.position.y += title_select.size.y / 2.0
-	title_select.visible = true
+	new_game_button.grab_focus()

@@ -28,7 +28,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.play_sound_fx(&"lift_sword")
 	enemy.action_animator.play("basic_enemy_animation_library/attack")
 
-func st_physics_process(delta: float) -> void:
+func st_physics_process(delta: float):
 	delta_count += delta
 
 	# show indicator

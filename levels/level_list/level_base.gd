@@ -252,7 +252,7 @@ func initialize_rewards(amount: int):
 	for n in amount:
 		var reward: ShopItem = LEVEL_REWARD.duplicate(true).instantiate()
 		dynamic_geometry.add_child(reward)
-		reward.position = reward_positions.get_child(n).position
+		reward.position = reward_positions.get_child(n).global_position
 
 func spawn_level_rewards():
 	for reward in dynamic_geometry.get_children():

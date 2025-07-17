@@ -12,5 +12,5 @@ func exit_state(next_state: State, args: Dictionary[String, Variant]):
 func st_process(delta: float) -> void:
 	pass
 
-func st_physics_process(delta: float) -> void:
+func st_physics_process(delta: float):
 	pass

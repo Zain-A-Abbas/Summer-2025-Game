@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfqtt0b8q08g3"]
+[gd_scene load_steps=5 format=3 uid="uid://bfqtt0b8q08g3"]
 
 [ext_resource type="Script" uid="uid://dajulrlvbxgmp" path="res://ui/title/title_layer.gd" id="1_far4t"]
 [ext_resource type="FontFile" uid="uid://e84kp61k30ob" path="res://ui/fonts/EBGaramond-SemiBold.ttf" id="2_wnhvv"]
 [ext_resource type="Texture2D" uid="uid://oiehet7yotl7" path="res://ui/selection_texture.png" id="3_rbomr"]
-[ext_resource type="FontFile" uid="uid://bi76bi57kft3d" path="res://ui/fonts/EBGaramond-Regular.ttf" id="4_k2mw8"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_l1npr"]
-font = ExtResource("4_k2mw8")
-font_size = 32
+[ext_resource type="Theme" uid="uid://cg2o4sx4tin0j" path="res://ui/themes/main_theme.tres" id="5_wnhvv"]
 
 [node name="TitleLayer" type="CanvasLayer"]
 script = ExtResource("1_far4t")
@@ -19,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_wnhvv")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
@@ -51,6 +48,7 @@ horizontal_alignment = 1
 
 [node name="TitleSelect" type="NinePatchRect" parent="Control"]
 unique_name_in_owner = true
+visible = false
 self_modulate = Color(0.929412, 0.658824, 0.443137, 1)
 layout_mode = 0
 offset_left = 114.0
@@ -77,18 +75,110 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="NewRunLabel" type="Label" parent="Control/TitleOptionsContainer/VBoxContainer"]
+[node name="NewGameButton" type="Button" parent="Control/TitleOptionsContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+theme = ExtResource("5_wnhvv")
 text = "BEGIN NEW RUN"
-label_settings = SubResource("LabelSettings_l1npr")
+
+[node name="ExitGameButton" type="Button" parent="Control/TitleOptionsContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_wnhvv")
+text = "EXIT GAME"
+
+[node name="CreditsButton" type="Button" parent="Control/TitleOptionsContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("5_wnhvv")
+text = "CREDITS"
+
+[node name="CreditsPanel" type="PanelContainer" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CreditsPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CreditsPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_wnhvv")
+theme_override_font_sizes/font_size = 20
+text = "CREDITS"
 horizontal_alignment = 1
 
-[node name="ExitLabel" type="Label" parent="Control/TitleOptionsContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/CreditsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CreditsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CreditsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "PROGRAMMING
+Zain Abbas
+Viel Kevin Carbonel
+
+GAME DESIGN
+Viel Kevin Carbonel
+Zain Abbas
+
+MODELING/ANIMATION
+Zain Abbas
+
+PRODUCER
+Donald Kehoe"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/CreditsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "TEXTURES
+chilly_durango
+Kenney
+Zain Abbas
+
+SFX
+TomMusic
+Makoto Hirramatsu
+Aurelien Montero
+Darkworld Audio
+Atelier Magicae"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/CreditsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "SPONSORED BY
+New Jersey Institute of
+Technology
+
+ENGINE
+Godot
+
+MUSIC
+Dark Fantasy Studio"
+horizontal_alignment = 1
+
+[node name="ExitCredits" type="Button" parent="Control/CreditsPanel"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "EXIT GAME"
-label_settings = SubResource("LabelSettings_l1npr")
-horizontal_alignment = 1
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "X"
