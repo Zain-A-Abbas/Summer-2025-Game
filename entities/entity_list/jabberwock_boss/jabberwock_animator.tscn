@@ -1,5 +1,124 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjthyhjlp1tw1"]
+[gd_scene load_steps=14 format=3 uid="uid://bjthyhjlp1tw1"]
 
 [ext_resource type="PackedScene" uid="uid://b8sdjwe6fxk2a" path="res://models/enemies/jabberwock.glb" id="1_4wuxb"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f37on"]
+animation = &"Claw"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bu4ws"]
+animation = &"Claw_Mirrored"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_000e8"]
+animation = &"Sweep_left_to_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2wsqd"]
+animation = &"Breath"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v2akp"]
+animation = &"Shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4wuxb"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_4wuxb"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f37on"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_n2yjd"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_bu4ws"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_000e8"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f37on"]
+graph_offset = Vector2(-673.623, 5.91289)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_4wuxb")
+nodes/Animation/position = Vector2(-1120, 160)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_f37on")
+"nodes/Animation 2/position" = Vector2(-880, 360)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_bu4ws")
+"nodes/Animation 3/position" = Vector2(-640, 360)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_000e8")
+"nodes/Animation 4/position" = Vector2(-420, 360)
+"nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_2wsqd")
+"nodes/Animation 5/position" = Vector2(-160, 360)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_v2akp")
+"nodes/Animation 6/position" = Vector2(80, 360)
+nodes/breath_oneshot/node = SubResource("AnimationNodeOneShot_4wuxb")
+nodes/breath_oneshot/position = Vector2(-160, 80)
+nodes/claw_mirrored_oneshot/node = SubResource("AnimationNodeOneShot_f37on")
+nodes/claw_mirrored_oneshot/position = Vector2(-640, 80)
+nodes/claw_oneshot/node = SubResource("AnimationNodeOneShot_n2yjd")
+nodes/claw_oneshot/position = Vector2(-880, 80)
+nodes/output/position = Vector2(520, 80)
+nodes/shoot_oneshot/node = SubResource("AnimationNodeOneShot_bu4ws")
+nodes/shoot_oneshot/position = Vector2(80, 80)
+nodes/sweep_oneshot/node = SubResource("AnimationNodeOneShot_000e8")
+nodes/sweep_oneshot/position = Vector2(-400, 80)
+node_connections = [&"breath_oneshot", 0, &"sweep_oneshot", &"breath_oneshot", 1, &"Animation 5", &"claw_mirrored_oneshot", 0, &"claw_oneshot", &"claw_mirrored_oneshot", 1, &"Animation 3", &"claw_oneshot", 0, &"Animation", &"claw_oneshot", 1, &"Animation 2", &"output", 0, &"shoot_oneshot", &"shoot_oneshot", 0, &"breath_oneshot", &"shoot_oneshot", 1, &"Animation 6", &"sweep_oneshot", 0, &"claw_mirrored_oneshot", &"sweep_oneshot", 1, &"Animation 4"]
+
 [node name="jabberwock" instance=ExtResource("1_4wuxb")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/position = Vector3(0, 4.22855, 3.83333)
+bones/1/rotation = Quaternion(-0.258819, 0, 0, 0.965926)
+bones/2/rotation = Quaternion(-0.335735, 1.10922e-15, -2.55442e-15, 0.941957)
+bones/3/rotation = Quaternion(0, -8.88178e-16, -3.55271e-15, 1)
+bones/5/rotation = Quaternion(-0.328189, 0.187176, -0.355462, 0.854929)
+bones/6/rotation = Quaternion(-0.29238, -0.0128488, 0.273139, 0.916375)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.114197, 0.198706, 0.268718, 0.935556)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.133719, -4.97241e-09, 0.133719, 0.981956)
+bones/11/rotation = Quaternion(-0.0951169, 3.26149e-08, -0.0951169, 0.990911)
+bones/12/rotation = Quaternion(-0.0501969, -0.0135564, -0.0686287, 0.996286)
+bones/13/rotation = Quaternion(-0.272004, 6.94549e-08, -0.272004, 0.923054)
+bones/14/rotation = Quaternion(-0.288982, 0.00770315, -0.264663, 0.919991)
+bones/15/rotation = Quaternion(-0.238572, 0.00635961, -0.213489, 0.947346)
+bones/16/rotation = Quaternion(1.00974e-28, 1.19209e-07, 8.47033e-22, 1)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.199371, -9.11059e-15, -5.38488e-08, 0.979924)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.102566, 1.78577e-15, -2.44536e-08, 0.994726)
+bones/19/rotation = Quaternion(-0.145587, 1.07729e-14, -3.47106e-08, 0.989345)
+bones/20/rotation = Quaternion(0.0547498, 1.76901e-14, 2.26222e-08, 0.9985)
+bones/21/rotation = Quaternion(0.359966, -3.23678e-14, 8.58225e-08, 0.932966)
+bones/22/rotation = Quaternion(0.30883, -1.86765e-15, 7.36308e-08, 0.951117)
+bones/24/rotation = Quaternion(-0.328189, -0.187176, 0.355462, 0.854929)
+bones/25/rotation = Quaternion(-0.29238, 0.012849, -0.273139, 0.916375)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(0.114197, -0.198706, -0.268718, 0.935556)
+bones/29/rotation = Quaternion(0.133719, -2.57095e-08, -0.133719, 0.981956)
+bones/30/rotation = Quaternion(-0.0951169, -1.01243e-08, 0.0951169, 0.990911)
+bones/31/rotation = Quaternion(-0.0501968, 0.0135564, 0.0686286, 0.996286)
+bones/32/rotation = Quaternion(-0.272004, -5.08881e-08, 0.272004, 0.923054)
+bones/33/rotation = Quaternion(-0.288982, -0.00770323, 0.264663, 0.919991)
+bones/34/rotation = Quaternion(-0.238572, -0.00636047, 0.213489, 0.947347)
+bones/35/position = Vector3(0.9, 2.73573, 2.96013)
+bones/35/rotation = Quaternion(0.00922585, 0.258655, 0.965312, -0.0344315)
+bones/36/rotation = Quaternion(-0.241768, 0.00862365, -0.0345872, 0.969679)
+bones/37/rotation = Quaternion(-0.687215, -1.16082e-07, 1.09506e-07, 0.726454)
+bones/38/position = Vector3(-0.9, 2.73573, 2.96013)
+bones/38/rotation = Quaternion(-0.00922591, 0.258655, 0.965312, 0.0344315)
+bones/39/rotation = Quaternion(-0.241768, -0.00862365, 0.0345872, 0.969679)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+root_motion_track = NodePath("Armature/Skeleton3D:Bone")
+root_motion_local = false
+tree_root = SubResource("AnimationNodeBlendTree_f37on")
+anim_player = NodePath("../AnimationPlayer")
+parameters/breath_oneshot/active = false
+parameters/breath_oneshot/internal_active = false
+parameters/breath_oneshot/request = 0
+parameters/claw_mirrored_oneshot/active = false
+parameters/claw_mirrored_oneshot/internal_active = false
+parameters/claw_mirrored_oneshot/request = 0
+parameters/claw_oneshot/active = false
+parameters/claw_oneshot/internal_active = false
+parameters/claw_oneshot/request = 0
+parameters/shoot_oneshot/active = false
+parameters/shoot_oneshot/internal_active = false
+parameters/shoot_oneshot/request = 0
+parameters/sweep_oneshot/active = false
+parameters/sweep_oneshot/internal_active = false
+parameters/sweep_oneshot/request = 0

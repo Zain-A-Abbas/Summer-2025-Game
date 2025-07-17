@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dvsveq3dqlk7m"
-path="res://.godot/imported/flower.blend-3ba34020078c57f7b67c5aa63a76e165.scn"
+valid=false
 
 [deps]
 
 source_file="res://blender/flower.blend"
-dest_files=["res://.godot/imported/flower.blend-3ba34020078c57f7b67c5aa63a76e165.scn"]
 
 [params]
 

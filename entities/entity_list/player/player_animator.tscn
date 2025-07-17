@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dt20yjd5m0pa8"]
+[gd_scene load_steps=26 format=3 uid="uid://dt20yjd5m0pa8"]
 
 [ext_resource type="PackedScene" uid="uid://byprheqo1vg6r" path="res://entities/entity_list/player/player.glb" id="1_te7vp"]
 [ext_resource type="AnimationLibrary" uid="uid://8gnocfl1x27j" path="res://entities/entity_list/player/player_animations.glb" id="2_lor2s"]
@@ -17,6 +17,9 @@ animation = &"player_animations/Attack2"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eae7m"]
 animation = &"placeholder_animations/Spell_Simple_Enter"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sb4bn"]
+animation = &"placeholder_animations/Death01"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lor2s"]
 animation = &"placeholder_animations/Sword_Idle"
 
@@ -34,6 +37,8 @@ fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0d2h6"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_uqve2"]
+
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_sb4bn"]
 filter_enabled = true
 filters = ["%GeneralSkeleton:Chest", "%GeneralSkeleton:Head", "%GeneralSkeleton:Hips", "%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%GeneralSkeleton:LeftShoulder", "%GeneralSkeleton:LeftUpperLeg", "%GeneralSkeleton:Neck", "%GeneralSkeleton:RightFoot", "%GeneralSkeleton:RightLowerLeg", "%GeneralSkeleton:RightShoulder", "%GeneralSkeleton:RightUpperLeg", "%GeneralSkeleton:Spine", "%GeneralSkeleton:UpperChest"]
@@ -50,6 +55,8 @@ fadein_time = 0.1
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_f1027"]
 
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_f1027"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_te7vp"]
 animation = &"placeholder_animations/Jog_Fwd"
 
@@ -58,7 +65,7 @@ animation = &"placeholder_animations/Jog_Fwd"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lor2s"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_lor2s"]
-graph_offset = Vector2(1141.42, 425.952)
+graph_offset = Vector2(163.265, 17.2551)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lor2s")
 nodes/Animation/position = Vector2(-540, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lfi0l")
@@ -69,6 +76,8 @@ nodes/Animation/position = Vector2(-540, 140)
 "nodes/Animation 4/position" = Vector2(160, 580)
 "nodes/Animation 5/node" = SubResource("AnimationNodeAnimation_eae7m")
 "nodes/Animation 5/position" = Vector2(960, 620)
+"nodes/Animation 6/node" = SubResource("AnimationNodeAnimation_sb4bn")
+"nodes/Animation 6/position" = Vector2(1920, 600)
 nodes/Attack1/node = SubResource("AnimationNodeOneShot_eae7m")
 nodes/Attack1/position = Vector2(140, 260)
 nodes/Attack1TimeScale/node = SubResource("AnimationNodeTimeScale_rr0l5")
@@ -79,6 +88,8 @@ nodes/Attack2/node = SubResource("AnimationNodeOneShot_lfi0l")
 nodes/Attack2/position = Vector2(620, 200)
 nodes/Attack2TimeScale/node = SubResource("AnimationNodeTimeScale_0d2h6")
 nodes/Attack2TimeScale/position = Vector2(420, 400)
+nodes/DeathOneshot/node = SubResource("AnimationNodeOneShot_uqve2")
+nodes/DeathOneshot/position = Vector2(2460, 280)
 nodes/HurtOneShot/node = SubResource("AnimationNodeOneShot_sb4bn")
 nodes/HurtOneShot/position = Vector2(960, 300)
 nodes/ParryOneShot/node = SubResource("AnimationNodeOneShot_k8ssj")
@@ -87,23 +98,48 @@ nodes/ParryTimeScale/node = SubResource("AnimationNodeTimeScale_uqve2")
 nodes/ParryTimeScale/position = Vector2(1540, 520)
 nodes/ParryTimeSeek/node = SubResource("AnimationNodeTimeSeek_f1027")
 nodes/ParryTimeSeek/position = Vector2(1360, 580)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_f1027")
+nodes/TimeScale/position = Vector2(2240, 440)
 nodes/Walk/node = SubResource("AnimationNodeAnimation_te7vp")
 nodes/Walk/position = Vector2(-820, 380)
 nodes/WalkBlend/node = SubResource("AnimationNodeBlend2_rr0l5")
 nodes/WalkBlend/position = Vector2(-80, 160)
 nodes/WalkTimeScale/node = SubResource("AnimationNodeTimeScale_lor2s")
 nodes/WalkTimeScale/position = Vector2(-360, 360)
-nodes/output/position = Vector2(1960, 180)
-node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeScale", &"Attack1TimeScale", 0, &"Attack1TimeSeek", &"Attack1TimeSeek", 0, &"Animation 3", &"Attack2", 0, &"Attack1", &"Attack2", 1, &"Attack2TimeScale", &"Attack2TimeScale", 0, &"Animation 4", &"HurtOneShot", 0, &"Attack2", &"HurtOneShot", 1, &"Animation 2", &"ParryOneShot", 0, &"HurtOneShot", &"ParryOneShot", 1, &"ParryTimeScale", &"ParryTimeScale", 0, &"ParryTimeSeek", &"ParryTimeSeek", 0, &"Animation 5", &"WalkBlend", 0, &"Animation", &"WalkBlend", 1, &"WalkTimeScale", &"WalkTimeScale", 0, &"Walk", &"output", 0, &"ParryOneShot"]
+nodes/output/position = Vector2(2660, 180)
+node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeScale", &"Attack1TimeScale", 0, &"Attack1TimeSeek", &"Attack1TimeSeek", 0, &"Animation 3", &"Attack2", 0, &"Attack1", &"Attack2", 1, &"Attack2TimeScale", &"Attack2TimeScale", 0, &"Animation 4", &"DeathOneshot", 0, &"ParryOneShot", &"DeathOneshot", 1, &"TimeScale", &"HurtOneShot", 0, &"Attack2", &"HurtOneShot", 1, &"Animation 2", &"ParryOneShot", 0, &"HurtOneShot", &"ParryOneShot", 1, &"ParryTimeScale", &"ParryTimeScale", 0, &"ParryTimeSeek", &"ParryTimeSeek", 0, &"Animation 5", &"TimeScale", 0, &"Animation 6", &"WalkBlend", 0, &"Animation", &"WalkBlend", 1, &"WalkTimeScale", &"WalkTimeScale", 0, &"Walk", &"output", 0, &"DeathOneshot"]
 
 [node name="player" instance=ExtResource("1_te7vp")]
 
 [node name="GeneralSkeleton" parent="Armature" index="0"]
+bones/1/position = Vector3(0.130234, 2.79061, -0.403685)
+bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
 bones/2/enabled = false
 bones/3/enabled = false
+bones/3/rotation = Quaternion(0.167468, -0.0413153, 0.000146974, 0.985011)
+bones/4/rotation = Quaternion(0.283426, -0.114647, -0.0272247, 0.951727)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.036244, 0.939089, -0.341708, 0.00585288)
+bones/7/rotation = Quaternion(0.203023, -0.772399, 0.335904, 0.499349)
+bones/8/rotation = Quaternion(0.0321849, 0.6704, 0.066819, 0.738284)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.014103, 0.0064643, 0.00458627, 0.999869)
+bones/13/rotation = Quaternion(-0.172714, 0.0774925, 0.0186279, 0.981742)
+bones/14/rotation = Quaternion(0.145616, 0.163576, -0.033177, 0.97516)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.177438, 0.766045, -0.243871, 0.567643)
+bones/19/rotation = Quaternion(0.000282545, -0.613947, -0.0289899, 0.788814)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.00112089, 0.213912, 0.963618, -0.160251)
+bones/26/rotation = Quaternion(0.0427409, 0.865302, -0.49362, 0.0759344)
+bones/27/rotation = Quaternion(-0.0572611, 0.613475, -0.784897, 0.0656282)
+bones/28/rotation = Quaternion(0.00214078, 0.0142521, 0.951903, 0.30606)
+bones/29/rotation = Quaternion(-0.14913, 0.825712, -0.476199, -0.263049)
+bones/30/rotation = Quaternion(0.23286, 0.505027, -0.822784, 0.117261)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -3.5, 5.4, 0)
+transform = Transform3D(-0.624609, -0.718875, 0.305095, 0.585276, -0.689564, -0.42656, 0.517026, -0.0878679, 0.851448, -1.44923, 2.61544, -2.13564)
 bone_name = "RightHand"
 bone_idx = 19
 
@@ -135,6 +171,9 @@ parameters/Attack2/active = false
 parameters/Attack2/internal_active = false
 parameters/Attack2/request = 0
 parameters/Attack2TimeScale/scale = 1.5
+parameters/DeathOneshot/active = false
+parameters/DeathOneshot/internal_active = false
+parameters/DeathOneshot/request = 0
 parameters/HurtOneShot/active = false
 parameters/HurtOneShot/internal_active = false
 parameters/HurtOneShot/request = 0
@@ -143,5 +182,6 @@ parameters/ParryOneShot/internal_active = false
 parameters/ParryOneShot/request = 0
 parameters/ParryTimeScale/scale = 2.0
 parameters/ParryTimeSeek/seek_request = -1.0
+parameters/TimeScale/scale = 0.5
 parameters/WalkBlend/blend_amount = 0.0
 parameters/WalkTimeScale/scale = 1.5

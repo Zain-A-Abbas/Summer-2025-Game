@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dfgk513pg652w"
-path="res://.godot/imported/flower_TEST.blend-8ebe9f5a7c076bec2d15088f49f01937.scn"
+valid=false
 
 [deps]
 
 source_file="res://blender/flower_TEST.blend"
-dest_files=["res://.godot/imported/flower_TEST.blend-8ebe9f5a7c076bec2d15088f49f01937.scn"]
 
 [params]
 

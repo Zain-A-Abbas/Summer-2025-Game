@@ -72,7 +72,6 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 		warning_trackers = CLAW_WARNING_TIMES
 		current_active_frames = CLAW_ACTIVE_FRAMES
 		enemy.animation_tree["parameters/claw_oneshot/request"] = 1
-		enemy.action_animator.play("jabberwock/claw")
 	
 	swipe_count += 1
 	

@@ -331,7 +331,7 @@ data = PackedVector3Array(-1, -0.05, 3.8, -1, -0.05, -3.8, -1, 0.05, -3.8, 1, -0
 
 [sub_resource type="Environment" id="Environment_1n4xr"]
 ambient_light_source = 2
-ambient_light_color = Color(0.278835, 0.29, 0.2697, 1)
+ambient_light_color = Color(0.373718, 0.387393, 0.362541, 1)
 ambient_light_energy = 1.5
 fog_enabled = true
 fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)

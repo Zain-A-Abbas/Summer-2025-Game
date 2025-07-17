@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterEntity
 
+signal player_died(player: Player)
 signal player_damage_taken(player: Player, damage: int)
 signal player_hp_recovered(player: Player)
 signal obtained_money(amount: int)
@@ -58,6 +59,7 @@ func prepare_states():
 		StateInitializer.new(&"Dodge", PlayerDodge.new(self)),
 		StateInitializer.new(&"Parry", PlayerParry.new(self)),
 		StateInitializer.new(&"Attack", PlayerBasicAttack.new(self, basic_attack)),
+		StateInitializer.new(&"Death", PlayerDeath.new(self))
 	]
 	
 	state_machine.assign_states(player_states)
@@ -101,7 +103,8 @@ func parry_received(attack_object: AttackObject):
 		play_sound_fx(&"parried")
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
-	pass
+	player_died.emit(self)
+	state_machine.change_state(&"Death")
 
 func heal(heal_amount: int):
 	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)

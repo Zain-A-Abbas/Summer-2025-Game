@@ -16,7 +16,12 @@ func prepare_states():
 		StateInitializer.new(&"Move", JabberwockBossMove.new(self, rage_component)),
 		StateInitializer.new(&"Shoot", JabberwockBossShoot.new(self, rage_component, breath)),
 		StateInitializer.new(&"Sweep", JabberwockBossSweep.new(self, rage_component, sweep)),
-		StateInitializer.new(&"Swipe", JabberwockBossSwipe.new(self, rage_component, swipe, swipe_mirrored))
+		StateInitializer.new(&"Swipe", JabberwockBossSwipe.new(self, rage_component, swipe, swipe_mirrored)),
+		StateInitializer.new(&"Death", DeathState.new(
+			self, 
+			"jabberwock/death", # change later
+			death_state_duration
+			))
 	]
 	
 	state_machine.assign_states(boss_states)
