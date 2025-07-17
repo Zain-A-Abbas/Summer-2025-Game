@@ -58,9 +58,6 @@ func activate_enemy():
 func prepare_states():
 	pass
 
-func _physics_process(delta: float) -> void:
-	update_inflicted_attack_effects(delta)
-
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	pass
 

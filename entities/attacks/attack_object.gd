@@ -26,5 +26,8 @@ func add_attack_effect(effect_type: AttackEffect.AttackEffectType, args: Diction
 			var para: ParalysisEffect = ParalysisEffect.new()
 			para.initialize_effect({"duration": duration, "chance": args["chance"]})
 			attack_effects.append(para)
+		AttackEffect.AttackEffectType.BLEED:
+			var bleed: BleedEffect = BleedEffect.new()
+			attack_effects.append(bleed)
 		_:
 			print(effect_type, ": invalid effect type")

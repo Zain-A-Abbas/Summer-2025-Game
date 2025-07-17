@@ -5,7 +5,8 @@ extends Node
 const ADD_EFFECT_CHANCE: float = 1.0
 const ATK_EFFECTS: Array[AttackEffect.AttackEffectType] = [
 	AttackEffect.AttackEffectType.BURN,
-	AttackEffect.AttackEffectType.PARALYSIS
+	AttackEffect.AttackEffectType.PARALYSIS,
+	AttackEffect.AttackEffectType.BLEED
 ]
 
 var effect: AttackEffect.AttackEffectType
@@ -40,7 +41,7 @@ func scale_enemy(enemy: Enemy, args: Dictionary[String, Variant]):
 func scale_card(card: BasicEnemy, args: Dictionary[String, Variant]):
 	card.basic_attack.attack_effects[0].damage = ceilf(float(card.basic_attack.attack_effects[0].damage) * args["dmg_multiplier"])
 	
-	# add attack effects: burn, para, slow
+	# add attack effects: burn, para, bleed
 	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		effect = ATK_EFFECTS.pick_random()
 		#print(effect)
@@ -82,7 +83,7 @@ func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 func scale_red_knight(knight: RedKnightEnemy, args: Dictionary[String, Variant]):
 	knight.thrust.attack_effects[0].damage = ceilf(float(knight.thrust.attack_effects[0].damage) * args["dmg_multiplier"])
 	
-	# add attack effects: burn, slow
+	# add attack effects: burn, bleed
 	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		var atk_effects_temp: Array[AttackEffect.AttackEffectType] = ATK_EFFECTS.duplicate()
 		atk_effects_temp.remove_at(atk_effects_temp.find(AttackEffect.AttackEffectType.PARALYSIS))
