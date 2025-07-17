@@ -166,3 +166,12 @@ pitch_scale = 2.7
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+
+[node name="Marker3D3" type="Marker3D" parent="RewardPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0165, 0, 5)
+
+[node name="Marker3D4" type="Marker3D" parent="RewardPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0165, 0, -4.68921)
+
+[node name="Marker3D5" type="Marker3D" parent="RewardPositions" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8727, 0, -0.095845)

@@ -107,12 +107,12 @@ fog_light_energy = 0.02
 enemy_minimum = 8
 enemy_limit = 8
 enemy_spawn_limits = Dictionary[int, int]({
-0: 1,
+0: 5,
 1: 0,
 2: 0,
 3: 0,
 4: 0,
-5: 0
+5: 4
 })
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="StaticGeometry" index="1"]
