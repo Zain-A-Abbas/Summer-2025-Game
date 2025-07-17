@@ -65,6 +65,14 @@ fog_light_energy = 0.02
 [node name="Bridge" instance=ExtResource("1_116be")]
 enemy_minimum = 4
 enemy_limit = 7
+enemy_spawn_limits = Dictionary[int, int]({
+0: 5,
+1: 0,
+2: 0,
+3: 1,
+4: 0,
+5: 3
+})
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
@@ -664,3 +672,11 @@ max_db = 1.0
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 0, 1)
+
+[node name="Marker3D" type="Marker3D" parent="RewardPositions" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.11211, 0, 4.28809)
+gizmo_extents = 2.0
+
+[node name="Marker3D2" type="Marker3D" parent="RewardPositions" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.445677, 0, 4.16711)
+gizmo_extents = 2.0

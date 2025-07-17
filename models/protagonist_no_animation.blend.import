@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bwrqlgy45dko2"
-valid=false
+path="res://.godot/imported/protagonist_no_animation.blend-dc4ed2020f6f9ff32c140ed6ac446ced.scn"
 
 [deps]
 
 source_file="res://models/protagonist_no_animation.blend"
+dest_files=["res://.godot/imported/protagonist_no_animation.blend-dc4ed2020f6f9ff32c140ed6ac446ced.scn"]
 
 [params]
 

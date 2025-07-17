@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://pxuki86hpwiu"
-path="res://.godot/imported/3D Retro Medieval Fantasy Kit.blend-28c29558a5b62d666a4d1efdce54a095.scn"
+uid="uid://cp2ar4adtpx38"
+path="res://.godot/imported/chair.blend-65c146ad6d6ac2e7b8dd5626e17b27e3.scn"
 
 [deps]
 
-source_file="res://blender/3D Retro Medieval Fantasy Kit.blend"
-dest_files=["res://.godot/imported/3D Retro Medieval Fantasy Kit.blend-28c29558a5b62d666a4d1efdce54a095.scn"]
+source_file="res://blender/chair.blend"
+dest_files=["res://.godot/imported/chair.blend-65c146ad6d6ac2e7b8dd5626e17b27e3.scn"]
 
 [params]
 

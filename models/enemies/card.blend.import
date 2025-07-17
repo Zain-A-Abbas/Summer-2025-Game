@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bqlrm1lba8yg2"
-valid=false
+path="res://.godot/imported/card.blend-cb245840cb4dc2f43e66524c1180aa41.scn"
 
 [deps]
 
 source_file="res://models/enemies/card.blend"
+dest_files=["res://.godot/imported/card.blend-cb245840cb4dc2f43e66524c1180aa41.scn"]
 
 [params]
 
