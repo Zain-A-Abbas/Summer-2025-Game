@@ -47,6 +47,7 @@ func _physics_process(delta: float) -> void:
 	update_listener_direction()
 	deflect_velocity = deflect_velocity.move_toward(Vector3.ZERO, deflect_decay * delta)
 
+	print(health_component.current_health)
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
 

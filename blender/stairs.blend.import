@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://yiento380emf"
-valid=false
+path="res://.godot/imported/stairs.blend-bb7b56be14cd8ee3eb0e490058394a8a.scn"
 
 [deps]
 
 source_file="res://blender/stairs.blend"
+dest_files=["res://.godot/imported/stairs.blend-bb7b56be14cd8ee3eb0e490058394a8a.scn"]
 
 [params]
 

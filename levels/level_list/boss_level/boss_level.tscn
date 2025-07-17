@@ -54,10 +54,13 @@ shape = SubResource("BoxShape3D_rk4b3")
 
 [node name="Tree" type="MeshInstance3D" parent="StaticGeometry/Trees" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -65,10 +68,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree2" type="MeshInstance3D" parent="StaticGeometry/Trees" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 16)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree2" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree2/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -76,10 +82,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree3" type="MeshInstance3D" parent="StaticGeometry/Trees" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9519, 0, 22.5615)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree3" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree3/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -87,10 +96,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree4" type="MeshInstance3D" parent="StaticGeometry/Trees" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0419, 0, -38.3387)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree4" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree4/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -98,10 +110,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree5" type="MeshInstance3D" parent="StaticGeometry/Trees" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80117, 0, 39.9393)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree5" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree5/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -109,10 +124,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree6" type="MeshInstance3D" parent="StaticGeometry/Trees" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.287, 0, -39.2781)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree6" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree6/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -120,10 +138,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree7" type="MeshInstance3D" parent="StaticGeometry/Trees" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5746, 0, -9.68899)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree7" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree7/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -131,10 +152,13 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree8" type="MeshInstance3D" parent="StaticGeometry/Trees" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1677, 0, -19.0607)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree8" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree8/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -162,10 +186,8 @@ size = 14.0
 
 [node name="ambience" parent="Sounds" index="0"]
 stream = ExtResource("3_rk4b3")
+volume_db = -15.0
 pitch_scale = 2.7
-
-[node name="Player" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
 
 [node name="Marker3D3" type="Marker3D" parent="RewardPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0165, 0, 5)

@@ -36,6 +36,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 func new_game():
+	new_game_button.disabled = true
 	run_start_selected.emit()
 
 func exit_game():

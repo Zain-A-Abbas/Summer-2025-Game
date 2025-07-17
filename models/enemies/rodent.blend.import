@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cbvskqmnkur46"
-valid=false
+path="res://.godot/imported/rodent.blend-e9a9892be2bda9dda9678183e51f6f48.scn"
 
 [deps]
 
 source_file="res://models/enemies/rodent.blend"
+dest_files=["res://.godot/imported/rodent.blend-e9a9892be2bda9dda9678183e51f6f48.scn"]
 
 [params]
 

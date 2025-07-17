@@ -393,23 +393,29 @@ death_state_duration = 1.2
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0288008, 2.75576, -0.406046)
-bones/3/rotation = Quaternion(0.16353, -0.0410958, -0.000455243, 0.985682)
-bones/4/rotation = Quaternion(0.26769, -0.113874, -0.0297115, 0.956291)
-bones/6/rotation = Quaternion(0.0235272, 0.94209, -0.334484, 0.00572911)
-bones/7/rotation = Quaternion(0.20535, -0.76904, 0.334433, 0.504543)
-bones/8/rotation = Quaternion(0.0410653, 0.661818, 0.0678665, 0.745456)
-bones/10/rotation = Quaternion(0.0326465, 0.0149638, 0.0106171, 0.999299)
-bones/13/rotation = Quaternion(-0.162673, 0.0769577, 0.0201826, 0.983467)
-bones/14/rotation = Quaternion(0.115255, 0.172212, -0.0142082, 0.978191)
-bones/18/rotation = Quaternion(0.169066, 0.76955, -0.232572, 0.570192)
-bones/19/rotation = Quaternion(-0.0151572, -0.61376, -0.00914331, 0.789294)
-bones/25/rotation = Quaternion(-0.00124413, 0.214387, 0.960416, -0.177871)
-bones/26/rotation = Quaternion(0.0399543, 0.860665, -0.502851, 0.0692902)
-bones/27/rotation = Quaternion(-0.0759886, 0.607938, -0.786892, 0.0737401)
-bones/28/rotation = Quaternion(0.00208994, 0.0154539, 0.954189, 0.298798)
-bones/29/rotation = Quaternion(-0.155728, 0.812538, -0.499075, -0.25779)
-bones/30/rotation = Quaternion(0.222522, 0.480499, -0.839275, 0.123377)
+bones/1/position = Vector3(-0.00430205, 2.7025, -0.409214)
+bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
+bones/3/rotation = Quaternion(0.165887, -0.0412278, -9.52085e-05, 0.985283)
+bones/4/rotation = Quaternion(0.278806, -0.114424, -0.0279579, 0.953096)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0202806, 0.942836, -0.332592, 0.00569674)
+bones/7/rotation = Quaternion(0.205894, -0.768248, 0.334086, 0.505757)
+bones/8/rotation = Quaternion(0.0542737, 0.648267, 0.069473, 0.756292)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.0382178, 0.0175173, 0.0124288, 0.999039)
+bones/13/rotation = Quaternion(-0.169546, 0.0773259, 0.0191197, 0.982298)
+bones/14/rotation = Quaternion(0.0986477, 0.17387, -0.0126423, 0.979734)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.205492, 0.752947, -0.281724, 0.5581)
+bones/19/rotation = Quaternion(-0.0234063, -0.613501, 0.0014675, 0.789346)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.00130782, 0.22795, 0.95555, -0.186981)
+bones/26/rotation = Quaternion(0.039174, 0.847183, -0.525991, 0.0638761)
+bones/27/rotation = Quaternion(-0.0846444, 0.599127, -0.792519, 0.0761257)
+bones/28/rotation = Quaternion(0.00212518, 0.0250128, 0.952394, 0.303835)
+bones/29/rotation = Quaternion(-0.161976, 0.796818, -0.525983, -0.249372)
+bones/30/rotation = Quaternion(0.219128, 0.462866, -0.849481, 0.126965)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -418,7 +424,7 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.666617, -0.685184, 0.293503, 0.555834, -0.719287, -0.416742, 0.496658, -0.114668, 0.860338, -1.57203, 2.57074, -2.11238)
+transform = Transform3D(-0.607748, -0.727453, 0.31852, 0.607737, -0.684229, -0.403096, 0.511174, -0.0514043, 0.857939, -1.65211, 2.58132, -2.04953)
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
@@ -446,13 +452,13 @@ libraries = {
 
 [node name="Attacks" type="Node3D" parent="." index="6"]
 
-[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitboxes")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_bqsy2")
 entity = NodePath("../..")
 attack_effects = Array[ExtResource("4_okb7e")]([SubResource("Resource_w7qv5")])
-hitbox = NodePath("AttackHitbox")
+hitboxes = [NodePath("AttackHitbox")]
 
 [node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("6_fvuh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)

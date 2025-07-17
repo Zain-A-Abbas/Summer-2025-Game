@@ -3,7 +3,7 @@ extends Node3D
 
 @export var entity: CharacterEntity
 @export var attack_effects: Array[AttackEffect] = []
-@export var hitbox: Area3D
+@export var hitboxes: Array[Area3D]
 
 
 func _ready() -> void:

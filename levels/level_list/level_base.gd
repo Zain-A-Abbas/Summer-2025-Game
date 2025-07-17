@@ -168,8 +168,6 @@ func start_level(_type: LevelType):
 	elif _type == LevelType.BOSS:
 		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS, 1.0)
 	"""
-	
-
 
 func gameover(player: Player):
 	for enemy in enemies.get_children():
