@@ -88,9 +88,9 @@ func st_physics_process(delta: float) -> void:
 		enemy.attack_indicator_animator.play("hide_indicator")
 		warning_hidden = true
 	
-	current_swipe.hitboxes[0].monitorable = delta_count >= current_active_frames[0] && delta_count <= current_active_frames[1]
+	current_swipe.hitbox.monitorable = delta_count >= current_active_frames[0] && delta_count <= current_active_frames[1]
 	
-	if current_swipe.hitboxes[0].monitorable:
+	if current_swipe.hitbox.monitorable:
 		enemy.velocity = direction * MOVE_SPEED * delta
 		enemy.move_and_slide()
 	

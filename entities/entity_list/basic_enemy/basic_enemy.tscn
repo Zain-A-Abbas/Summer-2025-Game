@@ -218,29 +218,24 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.102959, 3.23739, -0.184816)
-bones/1/rotation = Quaternion(-0.000335435, -0.015384, 0.0218017, 0.999644)
-bones/3/rotation = Quaternion(0.163918, -0.0411177, -0.000396125, 0.985617)
-bones/4/rotation = Quaternion(0.272972, -0.114138, -0.0288801, 0.95479)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0359485, 0.93916, -0.341544, 0.00585008)
-bones/7/rotation = Quaternion(0.20308, -0.772316, 0.335868, 0.499478)
-bones/8/rotation = Quaternion(0.030366, 0.672103, 0.0666083, 0.736831)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0145392, 0.00666416, 0.00472824, 0.999861)
-bones/13/rotation = Quaternion(-0.165551, 0.0771131, 0.0197385, 0.982984)
-bones/14/rotation = Quaternion(0.136658, 0.167175, -0.0251526, 0.976086)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.158901, 0.773564, -0.218852, 0.573108)
-bones/19/rotation = Quaternion(-0.00404371, -0.613934, -0.0234304, 0.788999)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.00026778, -0.0703749, 0.996786, 0.0382844)
-bones/26/rotation = Quaternion(0.00166089, 0.967927, -0.251148, 0.00630395)
-bones/27/rotation = Quaternion(-0.00691876, 0.698184, -0.715606, 0.0199694)
-bones/28/rotation = Quaternion(0.000216238, 0.22699, 0.973406, 0.0309155)
-bones/29/rotation = Quaternion(0.000186736, 0.997407, -0.0719279, 0.00244759)
-bones/30/rotation = Quaternion(0.022129, 0.654068, -0.756111, -0.00091682)
+bones/1/position = Vector3(0.0017439, 3.22574, -0.185054)
+bones/1/rotation = Quaternion(-0.000254095, 0.0149058, -0.0170225, 0.999744)
+bones/3/rotation = Quaternion(0.168577, -0.0413761, 0.000317411, 0.98482)
+bones/4/rotation = Quaternion(0.286685, -0.114802, -0.026706, 0.950747)
+bones/6/rotation = Quaternion(0.044258, 0.937133, -0.346103, 0.0059281)
+bones/7/rotation = Quaternion(0.201504, -0.774566, 0.336853, 0.495958)
+bones/8/rotation = Quaternion(0.0495724, 0.653215, 0.0688926, 0.752401)
+bones/10/rotation = Quaternion(0.00242165, 0.00110994, 0.000787461, 0.999996)
+bones/13/rotation = Quaternion(-0.174949, 0.0776086, 0.0182798, 0.981344)
+bones/14/rotation = Quaternion(0.114195, 0.169745, -0.0223611, 0.978594)
+bones/18/rotation = Quaternion(0.210592, 0.750336, -0.288605, 0.556196)
+bones/19/rotation = Quaternion(-0.015523, -0.613751, -0.00867293, 0.789299)
+bones/25/rotation = Quaternion(-8.38532e-05, 0.247682, 0.968767, -0.011989)
+bones/26/rotation = Quaternion(-0.000546142, 0.96279, -0.270241, -0.00225658)
+bones/27/rotation = Quaternion(-0.0082208, 0.663811, -0.747723, -0.0140495)
+bones/28/rotation = Quaternion(-0.00014856, -0.157911, 0.987225, -0.0212395)
+bones/29/rotation = Quaternion(-0.000380819, 0.986084, -0.166228, -0.00255896)
+bones/30/rotation = Quaternion(-0.00254032, 0.659415, -0.751678, -0.0120305)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_wd8hw")
@@ -272,13 +267,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_68gr5")
 }
 
-[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_cwsr8")
 entity = NodePath("../..")
 attack_effects = Array[ExtResource("4_qlgqh")]([SubResource("Resource_p3v48")])
-hitbox = NodePath("AttackHitbox")
 
 [node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("3_u4wqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

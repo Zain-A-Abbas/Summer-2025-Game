@@ -16,19 +16,22 @@ extends Enemy
 func prepare_states():
 	var boss_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", JabberwockBossIdle.new(self, rage_component)),
-		StateInitializer.new(&"Move", JabberwockBossMove.new(self, rage_component)),
 		StateInitializer.new(&"Shoot", JabberwockBossShoot.new(self, rage_component, breath)),
 		StateInitializer.new(&"Sweep", JabberwockBossSweep.new(self, rage_component, sweep)),
 		StateInitializer.new(&"Swipe", JabberwockBossSwipe.new(self, rage_component, swipe, swipe_mirrored)),
 		#StateInitializer.new(&"BigSwipe"
 		StateInitializer.new(&"Death", DeathState.new(
 			self, 
-			"jabberwock/death", # change later
+			"jabberwock/death",
 			death_state_duration
 			))
 	]
 	
 	state_machine.assign_states(boss_states)
+
+func _physics_process(delta: float) -> void:
+	super(delta)
+	rage_component.decay_rage(delta)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:

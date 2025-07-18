@@ -68,8 +68,6 @@ func resolve_hit(object: AttackObject):
 			update_inflicted_attack_effect_counts(effect.effect_type, 1)
 			inflicted_attack_effects.append(effect)
 			inflicted_attack_objects.append(object.duplicate())
-	for hitbox in object.hitboxes:
-		hitbox.monitorable = false
 
 func face_direction(dir: Vector3):
 	rotation.y = Vector2(dir.x, -dir.z).angle() + deg_to_rad(90)

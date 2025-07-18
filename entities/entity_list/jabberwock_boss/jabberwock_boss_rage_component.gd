@@ -10,7 +10,6 @@ const RAGE_COST_TO_COMBO: int = 100
 
 var delta_count: float = 0.0
 
-
 func increase_rage() -> void:
 	if current_rage < max_rage:
 		current_rage += 10

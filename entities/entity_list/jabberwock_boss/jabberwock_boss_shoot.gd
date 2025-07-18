@@ -47,7 +47,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	attack_activated = false
 	warning_hidden = false
 	warning_shown = false
-	breath.hitboxes[0].monitorable = false
+	breath.hitbox.monitorable = false
 	
 	action_index = randi_range(2, 2)
 	action = ACTION_LIST[action_index]
@@ -109,7 +109,7 @@ func st_physics_process(delta: float) -> void:
 func lightning_breath(delta: float) -> void:
 	# toggle hitbox on and off in intervals
 	breath_toggle_count += delta
-	breath.hitboxes[0].monitorable = delta_count < shoot_times[1]
+	breath.hitbox.monitorable = delta_count < shoot_times[1]
 	
 	#if breath_toggle_count > BREATH_TOGGLE_ON_TIME:
 	#	breath_toggle_count = 0.0

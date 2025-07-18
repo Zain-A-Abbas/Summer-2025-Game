@@ -59,13 +59,13 @@ func st_physics_process(delta: float) -> void:
 		warning_hidden = true
 	
 	if delta_count >= SWEEP_TIME && !attack_activated:
-		for hitbox in sweep.hitboxes:
-			hitbox.monitorable = true
+		sweep.hitbox.monitorable = true
 		attack_activated = true
-		
+		enemy.rotation_degrees.x = -28.0 # workaround
+	
 	if delta_count >= SWEEP_FINISH_TIME:
-		for hitbox in sweep.hitboxes:
-			hitbox.monitorable = false
+		sweep.hitbox.monitorable = false
+		enemy.rotation_degrees.x = 0 # workaround
 		
 		if !from_swipe && enemy.can_combo():
 			rage_component.consume_rage()
@@ -75,7 +75,5 @@ func st_physics_process(delta: float) -> void:
 		return
 
 #func exit_state(previous_state: State, args: Dictionary[String, Variant]):
-
-
 	# face player
-	#enemy.face_direction(face_player())
+	# enemy.face_direction(face_player())

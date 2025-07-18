@@ -30,7 +30,6 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
-	rage_component.decay_rage(delta)
 	
 	if enemy.paralysis_effect(delta):
 		return
@@ -41,10 +40,10 @@ func st_physics_process(delta: float) -> void:
 	#print(distance_to_player())
 	if delta_count >= next_action_time:
 		if distance_to_player() < MELEE_DISTANCE:
-			#if forward_direction.dot(direction_to_player) >= -0.2:
-			#	return state_machine.change_state(&"Swipe")
+			if forward_direction.dot(direction_to_player) >= -0.2:
+				return state_machine.change_state(&"Swipe")
 				#print("in front", forward_direction.dot(direction_to_player))
-			#elif forward_direction.dot(direction_to_player) < -0.2:
-			return state_machine.change_state(&"Sweep")
+			elif forward_direction.dot(direction_to_player) < -0.2:
+				return state_machine.change_state(&"Sweep")
 				#print("behind", forward_direction.dot(direction_to_player))
 		return state_machine.change_state(&"Shoot")

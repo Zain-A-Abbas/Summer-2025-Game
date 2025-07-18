@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	update_listener_direction()
 	deflect_velocity = deflect_velocity.move_toward(Vector3.ZERO, deflect_decay * delta)
 
-	print(health_component.current_health)
+	#print(health_component.current_health)
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
 
@@ -118,8 +118,12 @@ func gain_money(amount: int):
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
+		#print("here")
 		play_sound_fx(&"damaged")
 		resolve_hit(attack_object)
+		
+		#player.deflect_velocity = direction * player_pushback
+		#player.deflect_decay = player_pushback * 4.0
 
 func update_listener_direction():
 	listener.global_rotation.y = Vector2(-0.707107, 0.707107).angle() + deg_to_rad(90)
