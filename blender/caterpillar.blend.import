@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://oax8h4qcd8yu"
-path="res://.godot/imported/caterpillar.blend-0e8279906bbd362073326f1a211828e4.scn"
+valid=false
 
 [deps]
 
 source_file="res://blender/caterpillar.blend"
-dest_files=["res://.godot/imported/caterpillar.blend-0e8279906bbd362073326f1a211828e4.scn"]
 
 [params]
 

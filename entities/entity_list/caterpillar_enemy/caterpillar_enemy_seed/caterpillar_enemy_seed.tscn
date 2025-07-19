@@ -51,9 +51,7 @@ metadata/_custom_type_script = "uid://4rhq8c58a3im"
 collision_layer = 0
 collision_mask = 48
 script = ExtResource("2_ph4oc")
-time_to_live = null
-death_state_duration = null
-inflicted_attack_effect_limits = null
+time_to_live = 1.1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.240998, 0)

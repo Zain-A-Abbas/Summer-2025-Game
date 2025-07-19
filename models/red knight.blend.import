@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c4g1tn0ot3kth"
-path="res://.godot/imported/red knight.blend-1ae03568e3dba0967bf66411c992cd0a.scn"
+valid=false
 
 [deps]
 
 source_file="res://models/red knight.blend"
-dest_files=["res://.godot/imported/red knight.blend-1ae03568e3dba0967bf66411c992cd0a.scn"]
 
 [params]
 

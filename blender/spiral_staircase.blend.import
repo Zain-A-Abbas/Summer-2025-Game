@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ckbqx3cowdesm"
-path="res://.godot/imported/spiral_staircase.blend-cc0284de1429cc0fbc2a3892df9bb325.scn"
+valid=false
 
 [deps]
 
 source_file="res://blender/spiral_staircase.blend"
-dest_files=["res://.godot/imported/spiral_staircase.blend-cc0284de1429cc0fbc2a3892df9bb325.scn"]
 
 [params]
 

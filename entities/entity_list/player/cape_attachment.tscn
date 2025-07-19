@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0i63djv2mem0"]
+
+[ext_resource type="Shader" uid="uid://njxyqr5nppfj" path="res://entities/entity_list/player/cape.gdshader" id="1_g7yt7"]
+
+[sub_resource type="Gradient" id="Gradient_apdix"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5635v"]
+gradient = SubResource("Gradient_apdix")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5635v"]
+render_priority = 0
+shader = ExtResource("1_g7yt7")
+shader_parameter/intensity_vertex = SubResource("GradientTexture2D_5635v")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5635v"]
+material = SubResource("ShaderMaterial_5635v")
+size = Vector2(1.4, 3.5)
+subdivide_width = 4
+subdivide_depth = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_apdix"]
+size = Vector3(1, 1, 0.175)
+
+[node name="CapeAttachment" type="BoneAttachment3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -4.91738e-07, 0, 4.91738e-07, 1, 0, 0, 0)
+bone_name = "Neck"
+bone_idx = 13
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, -2.26266e-08, 2.97887e-09, 2.26267e-08, 0.965926, -0.258819, 2.97884e-09, 0.258819, 0.965926, 1.79605e-08, -1.26402, -1.05544)
+mesh = SubResource("QuadMesh_5635v")
+skeleton = NodePath("../..")
+collision_layer = 0
+collision_mask = 131072
+parent_collision_ignore = NodePath("../../../../..")
+total_mass = 10.01
+damping_coefficient = 0.12
+disable_mode = 1
+pinned_points = [24, 30, 31, 25, 26, 32, 33, 34, 35, 29, 28, 27]
+attachments/0/point_index = 24
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(0.7, -0.249798, -0.78368)
+attachments/1/point_index = 30
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(0.7, 0.426351, -0.602507)
+attachments/2/point_index = 31
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(0.42, 0.426351, -0.602507)
+attachments/3/point_index = 25
+attachments/3/spatial_attachment_path = NodePath("..")
+attachments/3/offset = Vector3(0.42, -0.249798, -0.78368)
+attachments/4/point_index = 26
+attachments/4/spatial_attachment_path = NodePath("..")
+attachments/4/offset = Vector3(0.14, -0.249798, -0.78368)
+attachments/5/point_index = 32
+attachments/5/spatial_attachment_path = NodePath("..")
+attachments/5/offset = Vector3(0.14, 0.426351, -0.602507)
+attachments/6/point_index = 33
+attachments/6/spatial_attachment_path = NodePath("..")
+attachments/6/offset = Vector3(-0.14, 0.426351, -0.602507)
+attachments/7/point_index = 34
+attachments/7/spatial_attachment_path = NodePath("..")
+attachments/7/offset = Vector3(-0.42, 0.426351, -0.602507)
+attachments/8/point_index = 35
+attachments/8/spatial_attachment_path = NodePath("..")
+attachments/8/offset = Vector3(-0.7, 0.426351, -0.602507)
+attachments/9/point_index = 29
+attachments/9/spatial_attachment_path = NodePath("..")
+attachments/9/offset = Vector3(-0.7, -0.249798, -0.78368)
+attachments/10/point_index = 28
+attachments/10/spatial_attachment_path = NodePath("..")
+attachments/10/offset = Vector3(-0.42, -0.249798, -0.78368)
+attachments/11/point_index = 27
+attachments/11/spatial_attachment_path = NodePath("..")
+attachments/11/offset = Vector3(-0.14, -0.249798, -0.78368)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CapeCollision" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(3.90351, 0, -0.375866, 0, 3.92157, 2.98023e-08, 0.375866, 0, 3.90351, 0, 0, 0)
+shape = SubResource("BoxShape3D_apdix")
+
+[node name="SoftBody3D2" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.224, -0.734)
+visible = false
+mesh = SubResource("QuadMesh_5635v")
+collision_layer = 0
+collision_mask = 0
+parent_collision_ignore = NodePath("../../../../..")
+pinned_points = [30, 31, 32, 33, 34, 35, 29, 28, 27, 26, 25, 24]
+attachments/0/point_index = 30
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(0.7, 0.526, -0.734)
+attachments/1/point_index = 31
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(0.42, 0.526, -0.734)
+attachments/2/point_index = 32
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(0.14, 0.526, -0.734)
+attachments/3/point_index = 33
+attachments/3/spatial_attachment_path = NodePath("..")
+attachments/3/offset = Vector3(-0.14, 0.526, -0.734)
+attachments/4/point_index = 34
+attachments/4/spatial_attachment_path = NodePath("..")
+attachments/4/offset = Vector3(-0.42, 0.526, -0.734)
+attachments/5/point_index = 35
+attachments/5/spatial_attachment_path = NodePath("..")
+attachments/5/offset = Vector3(-0.7, 0.526, -0.734)
+attachments/6/point_index = 29
+attachments/6/spatial_attachment_path = NodePath("..")
+attachments/6/offset = Vector3(-0.7, -0.174, -0.734)
+attachments/7/point_index = 28
+attachments/7/spatial_attachment_path = NodePath("..")
+attachments/7/offset = Vector3(-0.42, -0.174, -0.734)
+attachments/8/point_index = 27
+attachments/8/spatial_attachment_path = NodePath("..")
+attachments/8/offset = Vector3(-0.14, -0.174, -0.734)
+attachments/9/point_index = 26
+attachments/9/spatial_attachment_path = NodePath("..")
+attachments/9/offset = Vector3(0.14, -0.174, -0.734)
+attachments/10/point_index = 25
+attachments/10/spatial_attachment_path = NodePath("..")
+attachments/10/offset = Vector3(0.42, -0.174, -0.734)
+attachments/11/point_index = 24
+attachments/11/spatial_attachment_path = NodePath("..")
+attachments/11/offset = Vector3(0.7, -0.174, -0.734)

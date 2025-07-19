@@ -457,6 +457,9 @@ stream = ExtResource("28_itmti")
 volume_db = 5.0
 pitch_scale = 0.7
 
+[node name="Decal" parent="." index="14"]
+size = Vector3(2.5, 1.5, 4)
+
 [editable path="placeholder_model"]
 [editable path="rodent"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

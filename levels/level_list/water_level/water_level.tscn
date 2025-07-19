@@ -47,23 +47,23 @@ uniform sampler2D displacement_b;
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	
+
 	vec2 displace_a_uv = UV + 0.06 * TIME;
 	vec2 displace_b_uv = UV + 0.02 * TIME;
-	
+
 	vec4 displace_a_tex = texture(displacement_a, displace_a_uv);
 	vec4 displace_b_tex = texture(displacement_b, displace_b_uv);
-	
+
 	VERTEX.y += pow((displace_a_tex.r + displace_b_tex.r), 1.0) * 0.4;
-	
-	
+
+
 	//UV += 0.1 * sin(TIME) - 0.2 * sin(TIME * 0.4);
-	
+
 }
 
 void fragment() {
 	vec2 base_uv = UV;
-	
+
 	vec2 displace_a_uv = UV + 0.06 * TIME;
 	vec2 displace_b_uv = UV + 0.02 * TIME;
 
@@ -78,13 +78,14 @@ void fragment() {
 	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
 	ROUGHNESS = roughness_tex * roughness;
 	ALPHA *= albedo.a * albedo_tex.a;
-	
 
-	
+
+
 	vec4 displace_a_tex = texture(displacement_a, displace_a_uv);
 	vec4 displace_b_tex = texture(displacement_b, displace_b_uv);
-	
+
 	ALBEDO.rgb *= vec3(1.0 + 0.5 * pow(albedo_tex.a + displace_a_tex.r + displace_b_tex.r, 2.0));
+	ALBEDO.s /= 2.0 + (1.0 * sin(2.0 * TIME));
 }
 "
 
@@ -275,8 +276,7 @@ sky_material = SubResource("ProceduralSkyMaterial_28bi3")
 background_mode = 2
 sky = SubResource("Sky_kxl8o")
 ambient_light_source = 2
-ambient_light_color = Color(0.51, 0.6, 0.5955, 1)
-ambient_light_energy = 1.65
+ambient_light_color = Color(0.1554, 0.37, 0.35927, 1)
 fog_light_color = Color(0.85, 0.9075, 1, 1)
 fog_light_energy = 0.02
 
@@ -340,10 +340,12 @@ material = ExtResource("2_eq2dq")
 
 [node name="BackWall" type="CSGBox3D" parent="StaticGeometry" index="3"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 42, 10, -30)
+layers = 2049
 size = Vector3(128, 36, 16)
 material = ExtResource("4_28bi3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/BackWall" index="0"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -352,10 +354,12 @@ shape = SubResource("ConcavePolygonShape3D_kxl8o")
 
 [node name="BackWall2" type="CSGBox3D" parent="StaticGeometry" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 10, 42)
+layers = 2049
 size = Vector3(128, 36, 16)
 material = ExtResource("4_28bi3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/BackWall2" index="0"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -366,7 +370,7 @@ shape = SubResource("ConcavePolygonShape3D_kxl8o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticGeometry/Water" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-layers = 33
+layers = 2049
 mesh = SubResource("PlaneMesh_28bi3")
 metadata/_edit_lock_ = true
 
@@ -495,6 +499,7 @@ transform = Transform3D(-1.5, 0, 1.31134e-07, 0, 1.5, 0, -1.31134e-07, 0, -1.5, 
 transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, 34, 4, 3)
 
 [node name="FloorCollision" type="StaticBody3D" parent="StaticGeometry" index="10"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -734,12 +739,14 @@ environment = SubResource("Environment_28bi3")
 transform = Transform3D(0.635646, 0.0444998, -0.770697, 0.683013, -0.497703, 0.534589, -0.359789, -0.866205, -0.346757, -2.97007, 23.0382, 0)
 light_color = Color(1, 0.922, 0.87, 1)
 shadow_enabled = true
+directional_shadow_max_distance = 606.3
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
 transform = Transform3D(-0.152284, -0.618384, 0.77098, -0.682963, -0.498025, -0.534352, 0.714403, -0.607924, -0.346492, -2.97007, 23.0382, 0)
 light_color = Color(0.87, 1, 0.945833, 1)
 light_energy = 0.7
 shadow_enabled = true
+directional_shadow_max_distance = 606.3
 
 [node name="ambience" parent="Sounds" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0342, 0.0342522)

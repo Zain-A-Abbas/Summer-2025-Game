@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://4g1oing6lli3"]
+[gd_scene load_steps=33 format=4 uid="uid://4g1oing6lli3"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_bkt50"]
 [ext_resource type="Texture2D" uid="uid://b2erko5b47jnx" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Floor-Tiles.png" id="2_8nfce"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://06356fxw8bit" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Fabric-Cotton.png" id="8_ry1pd"]
 [ext_resource type="Material" uid="uid://qmfayryor2f4" path="res://levels/materials/placeholder_static_props.tres" id="9_ry1pd"]
 [ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="10_aql06"]
+[ext_resource type="PackedScene" uid="uid://cgasldmtqk8ql" path="res://models/torch.tscn" id="10_cidjn"]
 [ext_resource type="AudioStream" uid="uid://cpp81xsth8ivh" path="res://audio/levels/dining_room/Inside Night Storm.wav" id="11_0kra5"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="12_3dca2"]
 [ext_resource type="AudioStream" uid="uid://cag442nvte4gy" path="res://audio/levels/general/Light Torch with Starting Loop 1.wav" id="13_1mt50"]
@@ -332,7 +333,6 @@ data = PackedVector3Array(-1, -0.05, 3.8, -1, -0.05, -3.8, -1, 0.05, -3.8, 1, -0
 [sub_resource type="Environment" id="Environment_1n4xr"]
 ambient_light_source = 2
 ambient_light_color = Color(0.373718, 0.387393, 0.362541, 1)
-ambient_light_energy = 1.5
 fog_enabled = true
 fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
@@ -506,6 +506,7 @@ cast_shadow = 0
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry" index="9"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.95, -10.9928)
+visible = false
 layers = 33
 size = Vector3(2, 0.1, 7.6)
 material = ExtResource("9_ry1pd")
@@ -517,6 +518,27 @@ collision_mask = 0
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/CSGBox3D2/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_aql06")
+
+[node name="Torch" parent="StaticGeometry" index="10" instance=ExtResource("10_cidjn")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 12, 4, 0)
+
+[node name="OmniLight3D" parent="StaticGeometry/Torch" index="3"]
+omni_range = 10.0
+omni_attenuation = -0.429
+
+[node name="Torch2" parent="StaticGeometry" index="11" instance=ExtResource("10_cidjn")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 12, 4, 25)
+
+[node name="OmniLight3D" parent="StaticGeometry/Torch2" index="3"]
+omni_range = 10.0
+omni_attenuation = -0.429
+
+[node name="Torch3" parent="StaticGeometry" index="12" instance=ExtResource("10_cidjn")]
+transform = Transform3D(-2, 0, 1.74846e-07, 0, 2, 0, -1.74846e-07, 0, -2, 0, 13, 48)
+
+[node name="OmniLight3D" parent="StaticGeometry/Torch3" index="3"]
+omni_range = 10.0
+omni_attenuation = -0.429
 
 [node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.09474, 0, 10.4186)
@@ -557,8 +579,8 @@ environment = SubResource("Environment_1n4xr")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
 transform = Transform3D(0.707107, -0.267174, 0.654689, 0, 0.925871, 0.377841, -0.707107, -0.267174, 0.654689, 0, 9.76641, 0)
-light_color = Color(0.8, 0.966667, 1, 1)
-light_energy = 0.5
+light_color = Color(0.3344, 0.44352, 0.88, 1)
+light_energy = 1.685
 shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
@@ -577,6 +599,7 @@ omni_range = 16.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lighting" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, -8)
+visible = false
 light_color = Color(0.55, 0.260333, 0.1155, 1)
 light_energy = 16.0
 shadow_enabled = true
@@ -584,6 +607,7 @@ omni_range = 16.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lighting" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 40)
+visible = false
 light_color = Color(0.55, 0.260333, 0.1155, 1)
 light_energy = 16.0
 shadow_enabled = true
@@ -633,3 +657,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.075, 0, 16.714)
 
 [node name="Marker3D2" type="Marker3D" parent="RewardPositions" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.147, 0, 13.147)
+
+[editable path="StaticGeometry/Torch"]
+[editable path="StaticGeometry/Torch2"]
+[editable path="StaticGeometry/Torch3"]

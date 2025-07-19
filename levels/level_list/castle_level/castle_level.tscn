@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://ck150mu7ims48"]
+[gd_scene load_steps=29 format=4 uid="uid://ck150mu7ims48"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_jhykl"]
 [ext_resource type="Texture2D" uid="uid://ci7yh5msj7itg" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Brick-White-2.png" id="2_ii6r2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://dlxxmdgi86uky" path="res://levels/materials/carpet.tres" id="5_n23wo"]
 [ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="6_ii6r2"]
 [ext_resource type="AudioStream" uid="uid://cdmd5wgac2ajd" path="res://audio/levels/castle/01 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="7_56ogd"]
+[ext_resource type="PackedScene" uid="uid://cgasldmtqk8ql" path="res://models/torch.tscn" id="7_r2lxl"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="8_em20i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u5tb"]
@@ -144,18 +145,19 @@ size = Vector3(12, 0.01, 32)
 material = ExtResource("3_56ogd")
 
 [node name="Floor3" type="CSGBox3D" parent="StaticGeometry/Floors" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 4.5)
 layers = 33
-size = Vector3(12, 0.01, 27)
+size = Vector3(12, 0.01, 21)
 material = ExtResource("3_56ogd")
 
 [node name="Floor4" type="CSGBox3D" parent="StaticGeometry/Floors" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.15, -0.005, 23.5)
 layers = 33
-size = Vector3(12, 0.01, 5)
+size = Vector3(10.3, 0.01, 5)
 material = ExtResource("3_56ogd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Floors" index="4"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -175,6 +177,12 @@ shape = SubResource("ConcavePolygonShape3D_62yhd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
 shape = SubResource("ConcavePolygonShape3D_f25fd")
 
+[node name="Floor5" type="CSGBox3D" parent="StaticGeometry/Floors" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, -0.005, 18)
+layers = 33
+size = Vector3(11.2, 0.01, 6)
+material = ExtResource("3_56ogd")
+
 [node name="Walls" type="Node3D" parent="StaticGeometry" index="4"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="StaticGeometry/Walls" index="0"]
@@ -184,6 +192,7 @@ size = Vector3(24.5, 12, 1)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Walls/CSGBox3D" index="0"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -197,6 +206,7 @@ size = Vector3(32, 12, 1)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Walls/CSGBox3D2" index="0"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -218,6 +228,7 @@ polygon = PackedVector2Array(-1.25, 0, -1.25, 3, -1, 3.5, 0, 3.75, 1, 3.5, 1.25,
 depth = 1.65
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Walls/CSGCombiner3D" index="2"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -240,6 +251,7 @@ polygon = PackedVector2Array(-1.25, 0, -1.25, 3, -1, 3.5, 0, 3.75, 1, 3.5, 1.25,
 depth = 1.65
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Walls/CSGCombiner3D2" index="2"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -270,6 +282,7 @@ size = Vector3(7, 12, 1)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Walls" index="8"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -298,6 +311,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 26)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry" index="6"]
+visible = false
 collision_layer = 32
 collision_mask = 0
 
@@ -314,6 +328,35 @@ transform = Transform3D(-3.27835e-08, 0, -0.75, 0, 0.75, 0, 0.75, 0, -3.27835e-0
 layers = 33
 size = Vector3(8, 0.025, 12)
 material = ExtResource("5_n23wo")
+
+[node name="Deco" type="Node3D" parent="StaticGeometry" index="8"]
+
+[node name="Torch" parent="StaticGeometry/Deco" index="0" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 3.5, 6.1)
+
+[node name="Torch2" parent="StaticGeometry/Deco" index="1" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, -6, 1.5, -3.9)
+
+[node name="Torch3" parent="StaticGeometry/Deco" index="2" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -18, 1.5, -3.9)
+
+[node name="Torch4" parent="StaticGeometry/Deco" index="3" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-0.129409, 0, -0.482963, 0, 0.5, 0, 0.482963, 0, -0.129409, -6.21468, 1.39267, 9.1)
+
+[node name="Torch5" parent="StaticGeometry/Deco" index="4" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-0.12941, 0, 0.482963, 0, 0.5, 0, -0.482963, 0, -0.12941, -17.7562, 1.40705, 9.1)
+
+[node name="Torch6" parent="StaticGeometry/Deco" index="5" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-0.5, 0, -1.58933e-08, 0, 0.5, 0, 1.58933e-08, 0, -0.5, 16, 2.5, 6.1)
+
+[node name="Torch7" parent="StaticGeometry/Deco" index="6" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-0.5, 0, -1.58933e-08, 0, 0.5, 0, 1.58933e-08, 0, -0.5, 8.4, 2.5, 6.1)
+
+[node name="Torch8" parent="StaticGeometry/Deco" index="7" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, 18, 2.5, -20.9)
+
+[node name="Torch9" parent="StaticGeometry/Deco" index="8" instance=ExtResource("7_r2lxl")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 6.5, 2.5, -20.9)
 
 [node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8687, 1.50541, -9.69964)

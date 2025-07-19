@@ -2,10 +2,16 @@
 
 [ext_resource type="FontFile" uid="uid://bi76bi57kft3d" path="res://ui/fonts/EBGaramond-Regular.ttf" id="1_fq4u8"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb6rs"]
-content_margin_left = 4.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pscce"]
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pb6rs"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.9, 0.48, 0, 0.584314)
 draw_center = false
@@ -22,9 +28,9 @@ corner_radius_bottom_left = 32
 corner_detail = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fq4u8"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.9, 0.48, 0, 0.584314)
 border_width_left = 4
@@ -39,16 +45,10 @@ corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
 corner_detail = 4
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pscce"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pscce"]
-content_margin_left = 4.0
+content_margin_left = 8.0
 content_margin_top = 4.0
-content_margin_right = 4.0
+content_margin_right = 8.0
 content_margin_bottom = 4.0
 bg_color = Color(0.9, 0.18, 0, 0.584314)
 border_width_left = 4
@@ -80,8 +80,10 @@ corner_radius_bottom_left = 8
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 4
 Button/font_sizes/font_size = 28
 Button/fonts/font = ExtResource("1_fq4u8")
+Button/styles/disabled = SubResource("StyleBoxEmpty_pscce")
 Button/styles/focus = SubResource("StyleBoxFlat_pb6rs")
 Button/styles/hover = SubResource("StyleBoxFlat_fq4u8")
 Button/styles/normal = SubResource("StyleBoxEmpty_pscce")
