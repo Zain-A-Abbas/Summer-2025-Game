@@ -13,6 +13,7 @@ signal run_start_selected
 @onready var credits_panel: PanelContainer = %CreditsPanel
 @onready var tutorial_panel: PanelContainer = %TutorialPanel
 @onready var tutorial_button: Button = %TutorialButton
+@onready var fake_title: Node3D = %FakeTitle
 
 enum TitleState {
 	NONE,

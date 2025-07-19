@@ -38,4 +38,7 @@ func startRun():
 	simple_transitions.visible = false
 	simple_transitions.modulate.a = 0.0
 	
+	#RenderingServer.global_shader_parameter_set("wind_intensity", 0.0)
+	title_layer.fake_title.queue_free()
+	
 	level_manager.begin_run()

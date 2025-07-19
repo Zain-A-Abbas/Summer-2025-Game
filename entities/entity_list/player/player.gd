@@ -30,6 +30,8 @@ var parry_counter: int = 0
 var can_get_parry_point: bool = false
 var upgrades: PlayerUpgrades
 
+@export var title: bool = false
+
 @onready var parry_particles: GPUParticles3D = %ParryParticles
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
@@ -51,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
 
 func prepare_states():
+	if title:
+		return
 	# The & before string declarations marks it as a StringName, which is a
 	# separate class that is much faster for string comparisons.
 	var player_states: Array[StateInitializer] = [

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doyy5ai16g58x"
-path.s3tc="res://.godot/imported/flame_01.png-f339cfce737e1fbfd7685ff5438d048c.s3tc.ctex"
+uid="uid://cevdw2p44o3d"
+path.s3tc="res://.godot/imported/grass.png-3004001854ab0750937db68fe036c859.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://effects/particle-textures/flame_01.png"
-dest_files=["res://.godot/imported/flame_01.png-f339cfce737e1fbfd7685ff5438d048c.s3tc.ctex"]
+source_file="res://levels/level_list/boss_level/grass.png"
+dest_files=["res://.godot/imported/grass.png-3004001854ab0750937db68fe036c859.s3tc.ctex"]
 
 [params]
 

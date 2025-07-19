@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=70 format=4 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -55,18 +55,60 @@ albedo_texture = ExtResource("4_wlnxk")
 material = SubResource("StandardMaterial3D_p772y")
 size = Vector2(0.064, 2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_apdix"]
+[sub_resource type="Gradient" id="Gradient_apdix"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5635v"]
+gradient = SubResource("Gradient_apdix")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_5635v"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m15bl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cyyb8"]
+width = 256
+height = 256
+color_ramp = SubResource("Gradient_5635v")
+noise = SubResource("FastNoiseLite_m15bl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5635v"]
 render_priority = 0
 shader = ExtResource("29_apdix")
+shader_parameter/intensity_vertex = SubResource("GradientTexture2D_5635v")
+shader_parameter/wind_noise_texture = SubResource("NoiseTexture2D_cyyb8")
 
-[sub_resource type="QuadMesh" id="QuadMesh_apdix"]
-material = SubResource("ShaderMaterial_apdix")
-size = Vector2(0.4, 1)
-subdivide_width = 4
-subdivide_depth = 4
+[sub_resource type="ArrayMesh" id="ArrayMesh_gdu0u"]
+_surfaces = [{
+"aabb": AABB(-1, -4, -0.030864, 2, 4, 1e-05),
+"format": 34896613377,
+"index_count": 384,
+"index_data": PackedByteArray("AAAgAAQABAAgAAMAAAAhACAABQAhAAAAIAAiAAMAAwAiAAIAIQAjACAAIAAjACIABQAkACEABgAkAAUAIQAlACMAJAAlACEABgAmACQABwAmAAYAJAAnACUAJgAnACQABwAoACYACAAoAAcAJgApACcAKAApACYACAAqACgADgAqAAgAKAArACkAKgArACgADgAsACoAEAAsAA4AEAAPACwAEQAPABAADwAMACwALAAtACoALAAMAC0AKgAtACsADAAKAC0ALQAKAC4ALQAuACsACgAJAC4AKwAuAC8AKwAvACkALgAJADAALgAwAC8ACQALADAAKQAvADEAKQAxACcALwAwADIALwAyADEAMAALADMAMAAzADIACwANADMAJwAxADQAJwA0ACUAMQAyADUAMQA1ADQAMgAzADYAMgA2ADUAMwANADcAMwA3ADYADQASADcAJQA0ADgAJQA4ACMANAA1ADkANAA5ADgANwASADoAEgAXADoAOgAXABYANwA6ADsANgA3ADsAOgAWADwAOwA6ADwAPAAWABkANgA7AD0ANQA2AD0ANQA9ADkAPQA7AD4AOwA8AD4APAAZAD8APgA8AD8APwAZABoAPQA+AEAAOQA9AEAAPgA/AEEAQAA+AEEAPwAaAEIAQQA/AEIAQgAaABsAOQBAAEMAOAA5AEMAQABBAEQAQwBAAEQAQQBCAEUARABBAEUAQgAbAEYARQBCAEYARgAbABwAOABDAEcAIwA4AEcAIwBHACIARwBDAEgAQwBEAEgAIgBHAEkARwBIAEkAIgBJAAIAAgBJAAEASQBKAAEASQBIAEoAAQBKABMASABEAEsASABLAEoARABFAEsASgBMABMASgBLAEwAEwBMABQASwBFAE0ASwBNAEwARQBGAE0ATABOABQATABNAE4AFABOABUATQBGAE8ATQBPAE4ARgAcAE8ATwAcAB0ATgBPAFAATgBQABUATwAdAFAAFQBQABgAUAAdAB4AUAAeABgAGAAeAB8A"),
+"lods": [1e-10, PackedByteArray("AAABAAIAAwAAAAIABAAAAAMABQABAAAABgABAAUABwABAAYABwAIAAEACAAJAAEACAAKAAkACQALAAEADAAKAAgACwANAAEADgAMAAgADwAMAA4AEAAPAA4AEQAPABAAAQANABIAAQASABMAEwASABQAEgAVABQAEgAWABUAEgAXABYAFQAWABgAFgAZABgAGAAZABoAGAAaABsAGAAbABwAGAAcAB0AGAAdAB4AGAAeAB8A")],
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 81,
+"vertex_data": PackedByteArray("/98AAAAAAAD///9fAAAAAP///z8AAAAA////HwAAAAD//wAAAAAAAP+/AAAAAAAA/58AAAAAAAD/fwAAAAAAAP9fAAAAAAAAAAD/fwAAAAAAAP9fAAAAAAAA/58AAAAAAAD/PwAAAAAAAP+/AAAAAP8/AAAAAAAAAAD/HwAAAAD/HwAAAAAAAAAAAAAAAAAAAAD/3wAAAAD///9/AAAAAP///58AAAAA////vwAAAAD/H///AAAAAAAA//8AAAAA////3wAAAAD/P///AAAAAP9f//8AAAAA/3///wAAAAD/n///AAAAAP+///8AAAAA/9///wAAAAD/////AAAAAP/f/x8AAAAA/7//HwAAAAD/3/8/AAAAAP+//z8AAAAA/5//HwAAAAD/n/8/AAAAAP9//x8AAAAA/3//PwAAAAD/X/8fAAAAAP9f/z8AAAAA/z//HwAAAAD/P/8/AAAAAP8f/x8AAAAA/x//PwAAAAD/H/9fAAAAAP8//18AAAAA/x//fwAAAAD/X/9fAAAAAP8//38AAAAA/x//nwAAAAD/f/9fAAAAAP9f/38AAAAA/z//nwAAAAD/H/+/AAAAAP+f/18AAAAA/3//fwAAAAD/H//fAAAAAP8//78AAAAA/z//3wAAAAD/X/+fAAAAAP9f/78AAAAA/1//3wAAAAD/f/+fAAAAAP9//78AAAAA/3//3wAAAAD/n/9/AAAAAP+f/58AAAAA/5//vwAAAAD/n//fAAAAAP+//18AAAAA/7//fwAAAAD/3/9fAAAAAP/f/38AAAAA/7//nwAAAAD/3/+fAAAAAP+//78AAAAA/9//vwAAAAD/v//fAAAAAP/f/98AAAAA")
+}]
+blend_shape_mode = 0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_apdix"]
-size = Vector3(1, 1, 0.175)
+[sub_resource type="ArrayMesh" id="ArrayMesh_apdix"]
+_surfaces = [{
+"aabb": AABB(-1, -4, -0.030864, 2, 4, 1e-05),
+"attribute_data": PackedByteArray("/9///////5////+/////3///////v////5////9/////X///AAD/fwAA/58AAP9fAAD/vwAA/z//P///AAD/3/8f//8AAP//AAD/H////3////9f////P/8fAAAAAAAA////H/8/AAD/XwAA/38AAP+fAAD/vwAA/98AAP//AAD/3//f/7//3//f/7//v/+//5//3/+f/7//f//f/3//v/9f/9//X/+//z//3/8//7//H//f/x//v/8f/5//P/+f/x//f/9f/5//P/9//x//X/9//5//X/9//z//X/8f/z//n/+f/3//f/8f/x//P/8//z//H/9f/1//X/8//1//H/9//1//f/8//3//H/+f/3//n/9f/5//P/+f/x//v/+f/7//f//f/5//3/9//7//X//f/1//v/8//9//P/+//x//3/8f"),
+"format": 34896613399,
+"index_count": 384,
+"index_data": PackedByteArray("AAAgAAQABAAgAAMAAAAhACAABQAhAAAAIAAiAAMAAwAiAAIAIQAjACAAIAAjACIABQAkACEABgAkAAUAIQAlACMAJAAlACEABgAmACQABwAmAAYAJAAnACUAJgAnACQABwAoACYACAAoAAcAJgApACcAKAApACYACAAqACgADgAqAAgAKAArACkAKgArACgADgAsACoAEAAsAA4AEAAPACwAEQAPABAADwAMACwALAAtACoALAAMAC0AKgAtACsADAAKAC0ALQAKAC4ALQAuACsACgAJAC4AKwAuAC8AKwAvACkALgAJADAALgAwAC8ACQALADAAKQAvADEAKQAxACcALwAwADIALwAyADEAMAALADMAMAAzADIACwANADMAJwAxADQAJwA0ACUAMQAyADUAMQA1ADQAMgAzADYAMgA2ADUAMwANADcAMwA3ADYADQASADcAJQA0ADgAJQA4ACMANAA1ADkANAA5ADgANwASADoAEgAXADoAOgAXABYANwA6ADsANgA3ADsAOgAWADwAOwA6ADwAPAAWABkANgA7AD0ANQA2AD0ANQA9ADkAPQA7AD4AOwA8AD4APAAZAD8APgA8AD8APwAZABoAPQA+AEAAOQA9AEAAPgA/AEEAQAA+AEEAPwAaAEIAQQA/AEIAQgAaABsAOQBAAEMAOAA5AEMAQABBAEQAQwBAAEQAQQBCAEUARABBAEUAQgAbAEYARQBCAEYARgAbABwAOABDAEcAIwA4AEcAIwBHACIARwBDAEgAQwBEAEgAIgBHAEkARwBIAEkAIgBJAAIAAgBJAAEASQBKAAEASQBIAEoAAQBKABMASABEAEsASABLAEoARABFAEsASgBMABMASgBLAEwAEwBMABQASwBFAE0ASwBNAEwARQBGAE0ATABOABQATABNAE4AFABOABUATQBGAE8ATQBPAE4ARgAcAE8ATwAcAB0ATgBPAFAATgBQABUATwAdAFAAFQBQABgAUAAdAB4AUAAeABgAGAAeAB8A"),
+"lods": [1e-10, PackedByteArray("AAABAAIAAwAAAAIABAAAAAMABQABAAAABgABAAUABwABAAYABwAIAAEACAAJAAEACAAKAAkACQALAAEADAAKAAgACwANAAEADgAMAAgADwAMAA4AEAAPAA4AEQAPABAAAQANABIAAQASABMAEwASABQAEgAVABQAEgAWABUAEgAXABYAFQAWABgAFgAZABgAGAAZABoAGAAaABsAGAAbABwAGAAcAB0AGAAdAB4AGAAeAB8A")],
+"material": SubResource("ShaderMaterial_5635v"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 81,
+"vertex_data": PackedByteArray("/98AAAAAAID///9fAAAAgP///z8AAACA////HwAAAID//wAAAAAAgP+/AAAAAACA/58AAAAAAID/fwAAAAAAgP9fAAAAAACAAAD/fwAAAIAAAP9fAAAAgAAA/58AAACAAAD/PwAAAIAAAP+/AAAAgP8/AAAAAACAAAD/HwAAAID/HwAAAAAAgAAAAAAAAACAAAD/3wAAAID///9/AAAAgP///58AAACA////vwAAAID/H///AAAAgAAA//8AAACA////3wAAAID/P///AAAAgP9f//8AAACA/3///wAAAID/n///AAAAgP+///8AAACA/9///wAAAID/////AAAAgP/f/x8AAACA/7//HwAAAID/3/8/AAAAgP+//z8AAACA/5//HwAAAID/n/8/AAAAgP9//x8AAACA/3//PwAAAID/X/8fAAAAgP9f/z8AAACA/z//HwAAAID/P/8/AAAAgP8f/x8AAACA/x//PwAAAID/H/9fAAAAgP8//18AAACA/x//fwAAAID/X/9fAAAAgP8//38AAACA/x//nwAAAID/f/9fAAAAgP9f/38AAACA/z//nwAAAID/H/+/AAAAgP+f/18AAACA/3//fwAAAID/H//fAAAAgP8//78AAACA/z//3wAAAID/X/+fAAAAgP9f/78AAACA/1//3wAAAID/f/+fAAAAgP9//78AAACA/3//3wAAAID/n/9/AAAAgP+f/58AAACA/5//vwAAAID/n//fAAAAgP+//18AAACA/7//fwAAAID/3/9fAAAAgP/f/38AAACA/7//nwAAAID/3/+fAAAAgP+//78AAACA/9//vwAAAID/v//fAAAAgP/f/98AAACA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_gdu0u")
 
 [sub_resource type="Gradient" id="Gradient_w7qv5"]
 interpolation_mode = 1
@@ -427,35 +469,36 @@ dodge_speed = 1500.0
 attack_move_speed = 375.0
 base_parry_invincibility_period = 0.1
 parry_duration = 0.2
+title = false
 death_state_duration = 1.2
 
 [node name="PlayerAnimator" parent="." index="0" instance=ExtResource("3_w7qv5")]
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0201444, 2.73884, -0.409236)
+bones/1/position = Vector3(0.161033, 2.77051, -0.408622)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.169008, -0.0413996, 0.00038375, 0.984745)
-bones/4/rotation = Quaternion(0.288234, -0.114874, -0.026459, 0.950276)
+bones/3/rotation = Quaternion(0.163266, -0.0410809, -0.000495449, 0.985726)
+bones/4/rotation = Quaternion(0.268181, -0.113899, -0.0296344, 0.956153)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0224621, 0.942336, -0.333866, 0.00571862)
-bones/7/rotation = Quaternion(0.205544, -0.768758, 0.334309, 0.504976)
-bones/8/rotation = Quaternion(0.0453485, 0.657545, 0.0683789, 0.748934)
+bones/6/rotation = Quaternion(0.0401322, 0.938146, -0.343856, 0.00588957)
+bones/7/rotation = Quaternion(0.202289, -0.773448, 0.336364, 0.497711)
+bones/8/rotation = Quaternion(0.0373138, 0.665502, 0.0674197, 0.742408)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0342011, 0.0156763, 0.0111227, 0.99923)
-bones/13/rotation = Quaternion(-0.175956, 0.0776605, 0.0181227, 0.981163)
-bones/14/rotation = Quaternion(0.123973, 0.167486, -0.0268397, 0.97768)
+bones/10/rotation = Quaternion(0.0084312, 0.0038645, 0.00274168, 0.999953)
+bones/13/rotation = Quaternion(-0.162627, 0.0769553, 0.0201896, 0.983475)
+bones/14/rotation = Quaternion(0.121941, 0.170827, -0.0172205, 0.977575)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.205907, 0.752737, -0.282284, 0.557947)
-bones/19/rotation = Quaternion(-0.0105991, -0.613856, -0.0150044, 0.789204)
+bones/18/rotation = Quaternion(0.163797, 0.771664, -0.22546, 0.571728)
+bones/19/rotation = Quaternion(-0.0117487, -0.613835, -0.0135262, 0.789231)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00126352, 0.219232, 0.958803, -0.180644)
-bones/26/rotation = Quaternion(0.0398093, 0.856487, -0.510159, 0.067695)
-bones/27/rotation = Quaternion(-0.0784257, 0.605496, -0.788476, 0.0743634)
-bones/28/rotation = Quaternion(0.00210385, 0.0192379, 0.953497, 0.300782)
-bones/29/rotation = Quaternion(-0.157816, 0.807555, -0.507789, -0.255147)
-bones/30/rotation = Quaternion(0.221329, 0.475279, -0.842367, 0.124663)
+bones/25/rotation = Quaternion(-0.00110164, 0.224284, 0.961711, -0.157503)
+bones/26/rotation = Quaternion(0.0441241, 0.858433, -0.50535, 0.0759474)
+bones/27/rotation = Quaternion(-0.0530429, 0.6106, -0.787641, 0.0630571)
+bones/28/rotation = Quaternion(0.00219735, 0.0222247, 0.94911, 0.314152)
+bones/29/rotation = Quaternion(-0.150594, 0.821667, -0.484456, -0.259783)
+bones/30/rotation = Quaternion(0.235567, 0.505742, -0.821598, 0.11709)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -464,10 +507,10 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.584351, -0.74447, 0.322954, 0.621441, -0.666458, -0.41188, 0.521867, -0.039985, 0.852089, -1.60553, 2.56422, -2.07656)
+transform = Transform3D(-0.67145, -0.681503, 0.291046, 0.549857, -0.721481, -0.42086, 0.496801, -0.122553, 0.859168, -1.42696, 2.52645, -2.13055)
 
 [node name="HandAttachment2" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(0.697597, -0.0332828, -0.715718, -0.69236, -0.288378, -0.66142, -0.184383, 0.956938, -0.224215, 1.74313, 3.0104, 1.44413)
+transform = Transform3D(0.669368, -0.0466742, -0.741464, -0.725678, -0.254911, -0.639071, -0.159179, 0.965838, -0.204499, 1.77339, 3.04367, 1.49779)
 bone_name = "LeftHand"
 bone_idx = 8
 
@@ -484,65 +527,14 @@ process_material = SubResource("ParticleProcessMaterial_wlnxk")
 draw_pass_1 = SubResource("QuadMesh_wlnxk")
 
 [node name="CapeAttachment" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="4"]
-transform = Transform3D(0.875981, 0.0187872, -0.481979, 0.0146034, 0.99775, 0.0654328, 0.482124, -0.0643565, 0.873736, 0.137666, 4.65126, -0.747406)
+transform = Transform3D(0.876224, 0.0275278, -0.481116, 0.012753, 0.996693, 0.0802535, 0.481734, -0.0764558, 0.872976, 0.289143, 4.68735, -0.759232)
 bone_name = "Neck"
 bone_idx = 13
 
-[node name="SoftBody3D" type="SoftBody3D" parent="PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment" index="0"]
-transform = Transform3D(3.90009, -0.0605894, -0.405413, 0, 3.87849, -0.579645, 0.409916, 0.576469, 3.85725, 0, -1.25, -0.81)
-mesh = SubResource("QuadMesh_apdix")
-skeleton = NodePath("../..")
-collision_layer = 0
-collision_mask = 131072
-parent_collision_ignore = NodePath("../StaticBody3D")
-total_mass = 10.01
-linear_stiffness = 1.0
-damping_coefficient = 0.2
-pinned_points = [34, 33, 32, 31, 30, 35, 24, 26, 25, 27, 28, 29]
-attachments/0/point_index = 34
-attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(-0.498305, 0.689247, -0.570955)
-attachments/1/point_index = 33
-attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(-0.186298, 0.689247, -0.538162)
-attachments/2/point_index = 32
-attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(0.125709, 0.689247, -0.505369)
-attachments/3/point_index = 31
-attachments/3/spatial_attachment_path = NodePath("..")
-attachments/3/offset = Vector3(0.437716, 0.689247, -0.472575)
-attachments/4/point_index = 30
-attachments/4/spatial_attachment_path = NodePath("..")
-attachments/4/offset = Vector3(0.749723, 0.689247, -0.439782)
-attachments/5/point_index = 35
-attachments/5/spatial_attachment_path = NodePath("..")
-attachments/5/offset = Vector3(-0.810312, 0.689247, -0.603748)
-attachments/6/point_index = 24
-attachments/6/spatial_attachment_path = NodePath("..")
-attachments/6/offset = Vector3(0.76184, -0.0864516, -0.555076)
-attachments/7/point_index = 26
-attachments/7/spatial_attachment_path = NodePath("..")
-attachments/7/offset = Vector3(0.137827, -0.0864516, -0.620662)
-attachments/8/point_index = 25
-attachments/8/spatial_attachment_path = NodePath("..")
-attachments/8/offset = Vector3(0.449834, -0.0864516, -0.587869)
-attachments/9/point_index = 27
-attachments/9/spatial_attachment_path = NodePath("..")
-attachments/9/offset = Vector3(-0.17418, -0.0864516, -0.653456)
-attachments/10/point_index = 28
-attachments/10/spatial_attachment_path = NodePath("..")
-attachments/10/offset = Vector3(-0.486187, -0.0864516, -0.686249)
-attachments/11/point_index = 29
-attachments/11/spatial_attachment_path = NodePath("..")
-attachments/11/offset = Vector3(-0.798194, -0.0864516, -0.719042)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment" index="1"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="CapeCollision" type="CollisionShape3D" parent="PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment/StaticBody3D" index="0"]
-transform = Transform3D(3.90351, 0, -0.375866, 0, 3.92157, 2.98023e-08, 0.375866, 0, 3.90351, 0, 0, 0)
-shape = SubResource("BoxShape3D_apdix")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment" index="0"]
+transform = Transform3D(0.599237, -0.0480266, -0.081533, 0, 0.65053, -0.383191, 0.0757013, 0.38017, 0.6454, 0, 0.505, -0.434)
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_apdix")
 
 [node name="AnimationTree" parent="PlayerAnimator" index="2"]
 parameters/Attack1/request = 2
@@ -590,6 +582,7 @@ shape = SubResource("CapsuleShape3D_bqsy2")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_y07nu")
 instance_shader_parameters/lifetime = 0.01
 mesh = ExtResource("9_tvlpa")

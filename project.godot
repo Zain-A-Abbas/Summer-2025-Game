@@ -87,19 +87,15 @@ attack={
 
 [shader_globals]
 
-wind={
-"type": "vec3",
-"value": Vector3(0, 0, -1)
-}
 wind_intensity={
 "type": "float",
-"value": 0.7
-}
-wind_noise={
-"type": "sampler2D",
-"value": ""
+"value": 5.905
 }
 wind_speed={
 "type": "float",
-"value": 1.0
+"value": 1.61
+}
+wind_direction={
+"type": "vec3",
+"value": Vector3(0, 0, 1)
 }
