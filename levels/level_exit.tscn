@@ -233,6 +233,7 @@ omni_attenuation = 0.343
 [node name="Painting" type="Node3D" parent="."]
 
 [node name="PaintingTexture" type="Sprite3D" parent="Painting"]
+unique_name_in_owner = true
 transform = Transform3D(0.458, 0, 0, 0, 0.458, 0, 0, 0, 0.458, 0, 8, -0.720691)
 texture_filter = 4
 texture = ExtResource("5_ws3wu")

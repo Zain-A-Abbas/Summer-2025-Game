@@ -73,9 +73,15 @@ func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant])
 func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
 	
-	# add attack effects: burn, para, bleed
+	# increase paralysis chance
+	mouse.pounce.attack_effects[1].stun_chance = 0.35
+		
+	# add attack effects: burn, bleed
 	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
-		effect = ATK_EFFECTS.pick_random()
+		var atk_effects_temp: Array[AttackEffect.AttackEffectType] = ATK_EFFECTS.duplicate()
+		atk_effects_temp.remove_at(atk_effects_temp.find(AttackEffect.AttackEffectType.PARALYSIS))
+		effect = atk_effects_temp.pick_random()
+		
 		create_effect_parameters(effect, args)
 		mouse.pounce.add_attack_effect(effect, args)
 

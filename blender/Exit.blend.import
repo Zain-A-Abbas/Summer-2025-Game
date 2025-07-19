@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://4g6ske74fb5n"
-valid=false
+path="res://.godot/imported/Exit.blend-1fc2114a0edd841d2e5432a99886c419.scn"
 
 [deps]
 
 source_file="res://blender/Exit.blend"
+dest_files=["res://.godot/imported/Exit.blend-1fc2114a0edd841d2e5432a99886c419.scn"]
 
 [params]
 
