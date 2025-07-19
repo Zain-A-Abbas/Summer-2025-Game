@@ -32,6 +32,9 @@ var enemy_hp_multiplier: float = 1.0
 @onready var fade: ColorRect = %Fade
 @onready var player_ui: PlayerUI = %PlayerUI
 
+@export var normal_level_paintings: Array[Texture] = []
+
+var level_queue: Array[int] = []
 
 func _ready() -> void:
 	if get_tree().root.get_children().has(self):
@@ -139,21 +142,21 @@ func fade_transition(out: bool):
 		fade.visible = false
 
 func choose_normal_level_index(index: int = 0):
-	if normal_levels.size() > 1 || (normal_levels.size() == 1 && current_level != null):
-		new_level_index = randi_range(0, normal_levels.size() - 1)
-	else:
-		new_level_index = 0
+	if level_queue.size() < 2:
+		var new_level_queue: Array[int] = [0, 1, 2, 3, 4]
+		if level_queue.size() == 1:
+			new_level_queue.erase(level_queue[0])
+		new_levels.shuffle()
+		if level_queue.is_empty():
+			level_queue = new_level_queue
+		else:
+			level_queue.append_array(new_level_queue)
+	new_level_index = level_queue.pop_front()
 
 func choose_normal_level() -> LevelBase:
-	if normal_levels.size() > 1 || (normal_levels.size() == 1 && current_level != null):
+	if normal_levels.size() > 1:
 		# choose from filtered pool
-		var new_level: PackedScene = normal_levels.pop_at(new_level_index)
-		
-		# reinsert old level
-		if current_level_count > 1:
-			var other_level_index: int = new_level_index != 0
-			normal_levels.append(new_levels[other_level_index])
-	
+		var new_level: PackedScene = normal_levels[new_level_index]
 		current_level = new_level
 		return current_level.instantiate()
 	else:

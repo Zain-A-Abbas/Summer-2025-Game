@@ -21,6 +21,10 @@ Bgm="*res://sound/bgm.gd"
 PersistentData="*res://persistent_data.gd"
 RunStats="*res://run_stats.gd"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [global_group]
 
 player=""

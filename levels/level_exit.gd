@@ -60,7 +60,7 @@ func initialize(current_level: LevelBase, door_number: int):
 			exit_type = LevelBase.LevelType.NORMAL
 			current_level.level_manager.choose_normal_level_index(door_number)
 			normal_level_index = current_level.level_manager.new_level_index
-	select_painting()
+	select_painting(current_level)
 	print("Exit: ", exit_type, " ", normal_level_index)	
 
 func activate():
@@ -76,6 +76,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	else:
 		push_error("Non-player triggered LevelExit collision")
 
-func select_painting():
+func select_painting(current_level: LevelBase):
 	if exit_type == LevelBase.LevelType.NORMAL || exit_type == LevelBase.LevelType.ELITE:
-		painting.texture = PAINTINGS[normal_level_index]
+		painting.texture = current_level.level_manager.normal_level_paintings[normal_level_index]
+	else:
+		painting.texture = PlaceholderTexture2D.new()
