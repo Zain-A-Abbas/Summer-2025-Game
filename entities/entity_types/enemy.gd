@@ -54,6 +54,7 @@ func initialize_enemy(new_player: Player, data: Node3D, positions: Node3D, list:
 func activate_enemy():
 	set_process(true)
 
+
 # Virtual function
 func prepare_states():
 	pass

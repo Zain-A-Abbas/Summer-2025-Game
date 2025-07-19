@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://krqa0edksq88"]
+[gd_scene load_steps=12 format=3 uid="uid://krqa0edksq88"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_vng3c"]
 [ext_resource type="Texture2D" uid="uid://bew5madpf6tql" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Adobe.png" id="2_rk4b3"]
 [ext_resource type="ArrayMesh" uid="uid://di2en7fyugci5" path="res://models/tree.obj" id="3_4x476"]
 [ext_resource type="AudioStream" uid="uid://b15fufikynb7s" path="res://audio/levels/spire/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="3_rk4b3"]
+[ext_resource type="PackedScene" uid="uid://bvjhtjofnv4w8" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn" id="4_h5i5d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4x476"]
 albedo_texture = ExtResource("2_rk4b3")
@@ -139,6 +140,8 @@ skeleton = NodePath("../../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree8/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
+
+[node name="JabberwockBoss" parent="Enemies" index="0" instance=ExtResource("4_h5i5d")]
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)

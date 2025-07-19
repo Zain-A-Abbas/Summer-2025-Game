@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Bgm="*res://sound/bgm.gd"
+PersistentData="*res://persistent_data.gd"
 
 [global_group]
 
@@ -83,3 +84,22 @@ attack={
 3d_physics/layer_5="Player entity"
 3d_physics/layer_6="Level Geometry"
 3d_physics/layer_7="Pickups"
+
+[shader_globals]
+
+wind={
+"type": "vec3",
+"value": Vector3(0, 0, -1)
+}
+wind_intensity={
+"type": "float",
+"value": 0.7
+}
+wind_noise={
+"type": "sampler2D",
+"value": ""
+}
+wind_speed={
+"type": "float",
+"value": 1.0
+}

@@ -30,7 +30,7 @@ var parry_counter: int = 0
 var can_get_parry_point: bool = false
 var upgrades: PlayerUpgrades
 
-
+@onready var parry_particles: GPUParticles3D = %ParryParticles
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var basic_attack: AttackObject = %basic_attack
 @onready var camera: LevelCamera
@@ -101,6 +101,17 @@ func parry_received(attack_object: AttackObject):
 		parry_counter = mini(parry_counter + 1, 3)
 		can_get_parry_point = false
 		play_sound_fx(&"parried")
+	
+	parry_hitstop()
+
+func parry_hitstop():
+	var timer: SceneTreeTimer = get_tree().create_timer(0.05, true, true, true)
+	timer.timeout.connect(finish_parry_hitstop)
+	Engine.time_scale = 0.01
+
+func finish_parry_hitstop():
+	Engine.time_scale = 1.0
+	parry_particles.emitting = true
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	player_died.emit(self)

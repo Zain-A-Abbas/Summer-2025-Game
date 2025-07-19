@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfqtt0b8q08g3"]
+[gd_scene load_steps=15 format=3 uid="uid://bfqtt0b8q08g3"]
 
 [ext_resource type="Script" uid="uid://dajulrlvbxgmp" path="res://ui/title/title_layer.gd" id="1_far4t"]
 [ext_resource type="FontFile" uid="uid://e84kp61k30ob" path="res://ui/fonts/EBGaramond-SemiBold.ttf" id="2_wnhvv"]
 [ext_resource type="Texture2D" uid="uid://oiehet7yotl7" path="res://ui/selection_texture.png" id="3_rbomr"]
+[ext_resource type="Texture2D" uid="uid://c63j4mjfqqf73" path="res://ui/inputs/keyboard_arrows.png" id="5_rbomr"]
 [ext_resource type="Theme" uid="uid://cg2o4sx4tin0j" path="res://ui/themes/main_theme.tres" id="5_wnhvv"]
+[ext_resource type="FontFile" uid="uid://dkwckfufrho54" path="res://ui/fonts/EBGaramond-ExtraBold.ttf" id="6_k2mw8"]
+[ext_resource type="Texture2D" uid="uid://c2tdmwvufdq05" path="res://ui/inputs/xbox_dpad.png" id="7_a2weq"]
+[ext_resource type="Texture2D" uid="uid://lhc62c1np12v" path="res://ui/inputs/keyboard_z.png" id="7_u6r74"]
+[ext_resource type="Texture2D" uid="uid://dx1omv3o2qa3e" path="res://ui/inputs/xbox_button_color_x.png" id="8_a2weq"]
+[ext_resource type="Texture2D" uid="uid://dygx58kme2jvi" path="res://ui/inputs/keyboard_shift_icon.png" id="9_0vyq6"]
+[ext_resource type="Texture2D" uid="uid://b0bw72utk38bm" path="res://ui/inputs/xbox_button_color_a.png" id="10_cq0nt"]
+[ext_resource type="Texture2D" uid="uid://d1fb1y5jqb5by" path="res://ui/gameplay/parry_icon.png" id="12_cq0nt"]
+[ext_resource type="Texture2D" uid="uid://nsy1umhkkjyg" path="res://ui/tutorial_stamina.png" id="13_ynvoa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_far4t"]
 
 [node name="TitleLayer" type="CanvasLayer"]
 script = ExtResource("1_far4t")
@@ -95,6 +106,7 @@ text = "CREDITS"
 
 [node name="CreditsPanel" type="PanelContainer" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2
@@ -103,6 +115,7 @@ anchor_right = 0.8
 anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/CreditsPanel"]
 layout_mode = 2
@@ -135,7 +148,7 @@ GAME DESIGN
 Viel Kevin Carbonel
 Zain Abbas
 
-MODELING/ANIMATION
+3D ANIMATION
 Zain Abbas
 
 PRODUCER
@@ -182,3 +195,235 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "X"
+
+[node name="TutorialPanel" type="PanelContainer" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TutorialPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_wnhvv")
+theme_override_font_sizes/font_size = 20
+text = "TUTORIAL"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_far4t")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_far4t")
+current_tab = 0
+tabs_visible = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="VBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_rbomr")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_k2mw8")
+theme_override_font_sizes/font_size = 64
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_a2weq")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "MOVE"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_u6r74")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_k2mw8")
+theme_override_font_sizes/font_size = 64
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("8_a2weq")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "ATTACK"
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_0vyq6")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_k2mw8")
+theme_override_font_sizes/font_size = 64
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_cq0nt")
+stretch_mode = 3
+
+[node name="Label2" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "PARRY"
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_0vyq6")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_k2mw8")
+theme_override_font_sizes/font_size = 64
+text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("10_cq0nt")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "(while moving)"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/GridContainer/HBoxContainer5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+text = "DODGE"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "When enemy attacks are parried, a Parry Icon is gained in the upper-left corner. Each Parry Icon increases the power of the next attack."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_cq0nt")
+stretch_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Parrying and Dodging requires stamina, which passive regenerates and can be seen in the upper-left corner."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control/TutorialPanel/VBoxContainer/TabContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ynvoa")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TutorialPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TutorialButton" type="Button" parent="Control/TutorialPanel/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+text = "START RUN"

@@ -151,38 +151,38 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
 bones/1/position = Vector3(0, 4.22855, 3.83333)
 bones/1/rotation = Quaternion(-0.258819, 0, 0, 0.965926)
-bones/2/rotation = Quaternion(-0.315611, -9.88042e-16, 7.36737e-16, 0.948889)
+bones/2/rotation = Quaternion(-0.324517, 6.71451e-16, 6.53763e-16, 0.94588)
 bones/3/rotation = Quaternion(0, -8.88178e-16, -3.55271e-15, 1)
-bones/5/rotation = Quaternion(-0.331913, 0.167798, -0.363403, 0.854176)
-bones/6/rotation = Quaternion(-0.292101, -0.023947, 0.255653, 0.921274)
+bones/5/rotation = Quaternion(-0.330287, 0.176366, -0.359916, 0.854556)
+bones/6/rotation = Quaternion(-0.292241, -0.0190466, 0.263391, 0.919162)
 bones/6/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0.111562, 0.211879, 0.306507, 0.921257)
+bones/8/rotation = Quaternion(0.112751, 0.206106, 0.28988, 0.927781)
 bones/8/scale = Vector3(1, 1, 1)
 bones/10/rotation = Quaternion(0.133719, -4.97241e-09, 0.133719, 0.981956)
 bones/11/rotation = Quaternion(-0.0951169, 3.26149e-08, -0.0951169, 0.990911)
-bones/12/rotation = Quaternion(-0.00523169, -0.0567803, -0.0824319, 0.994964)
+bones/12/rotation = Quaternion(-0.0251117, -0.0377013, -0.0763716, 0.99605)
 bones/13/rotation = Quaternion(-0.272004, 6.94549e-08, -0.272004, 0.923054)
-bones/14/rotation = Quaternion(-0.287276, 0.0322856, -0.185353, 0.939188)
-bones/15/rotation = Quaternion(-0.237164, 0.026654, -0.132035, 0.962086)
+bones/14/rotation = Quaternion(-0.288288, 0.0214393, -0.220606, 0.931538)
+bones/15/rotation = Quaternion(-0.238, 0.0176996, -0.168189, 0.956428)
 bones/16/rotation = Quaternion(1.00974e-28, 1.19209e-07, 8.47033e-22, 1)
 bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.115194, 2.06528e-15, -5.39315e-08, 0.993343)
+bones/17/rotation = Quaternion(-0.152538, 5.45277e-16, -5.39433e-08, 0.988298)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/rotation = Quaternion(-0.102566, 1.78577e-15, -2.44536e-08, 0.994726)
 bones/19/rotation = Quaternion(-0.145587, 1.07729e-14, -3.47106e-08, 0.989345)
-bones/20/rotation = Quaternion(-0.0733112, 1.25861e-14, 2.27008e-08, 0.997309)
+bones/20/rotation = Quaternion(-0.0166811, 1.76626e-14, 2.2712e-08, 0.999861)
 bones/21/rotation = Quaternion(0.359966, -3.23678e-14, 8.58225e-08, 0.932966)
 bones/22/rotation = Quaternion(0.30883, -1.86765e-15, 7.36308e-08, 0.951117)
-bones/24/rotation = Quaternion(-0.331913, -0.167798, 0.363403, 0.854176)
-bones/25/rotation = Quaternion(-0.292101, 0.0239471, -0.255653, 0.921274)
+bones/24/rotation = Quaternion(-0.330287, -0.176366, 0.359916, 0.854556)
+bones/25/rotation = Quaternion(-0.292241, 0.0190467, -0.26339, 0.919162)
 bones/25/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(0.111562, -0.211879, -0.306507, 0.921257)
+bones/27/rotation = Quaternion(0.112751, -0.206106, -0.28988, 0.927781)
 bones/29/rotation = Quaternion(0.133719, -2.57095e-08, -0.133719, 0.981956)
 bones/30/rotation = Quaternion(-0.0951169, -1.01243e-08, 0.0951169, 0.990911)
-bones/31/rotation = Quaternion(-0.00523165, 0.0567803, 0.0824319, 0.994964)
+bones/31/rotation = Quaternion(-0.0251117, 0.0377013, 0.0763716, 0.99605)
 bones/32/rotation = Quaternion(-0.272004, -5.08881e-08, 0.272004, 0.923054)
-bones/33/rotation = Quaternion(-0.287276, -0.0322857, 0.185353, 0.939188)
-bones/34/rotation = Quaternion(-0.237164, -0.0266548, 0.132035, 0.962086)
+bones/33/rotation = Quaternion(-0.288288, -0.0214394, 0.220606, 0.931538)
+bones/34/rotation = Quaternion(-0.238, -0.0177005, 0.168189, 0.956429)
 bones/35/position = Vector3(0.9, 2.73573, 2.96013)
 bones/35/rotation = Quaternion(0.00922585, 0.258655, 0.965312, -0.0344315)
 bones/36/rotation = Quaternion(-0.241768, 0.00862365, -0.0345872, 0.969679)
@@ -195,17 +195,17 @@ bones/39/rotation = Quaternion(-0.241768, -0.00862365, 0.0345872, 0.969679)
 cast_shadow = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-1, 7.32027e-08, -4.03285e-07, -1.955e-07, 0.779598, 0.62628, 3.60245e-07, 0.62628, -0.779598, 9.2897e-07, 6.73809, 6.67089)
+transform = Transform3D(-1, 7.67671e-08, -3.87878e-07, -1.76304e-07, 0.79149, 0.611182, 3.5392e-07, 0.611182, -0.79149, 9.49712e-07, 6.45544, 6.6665)
 bone_name = "head"
 bone_idx = 22
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.112786, 0.474257, 0.873132, 0.992669, -0.0153662, -0.119881, -0.0434377, 0.880252, -0.472513, 5.2191, 0.424014, 2.76214)
+transform = Transform3D(0.112785, 0.474257, 0.873132, 0.993311, -0.0319272, -0.110968, -0.0247509, 0.879807, -0.474685, 5.2191, 0.436134, 2.82636)
 bone_name = "hand.R"
 bone_idx = 27
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.112785, -0.474257, -0.873132, -0.992669, -0.0153656, -0.11988, 0.0434377, 0.880252, -0.472513, -5.2191, 0.42402, 2.76214)
+transform = Transform3D(0.112785, -0.474257, -0.873132, -0.993311, -0.0319266, -0.110968, 0.0247512, 0.879808, -0.474685, -5.2191, 0.436138, 2.82636)
 bone_name = "hand.L"
 bone_idx = 8
 
@@ -304,7 +304,7 @@ process_material = SubResource("ParticleProcessMaterial_mn0pt")
 draw_pass_1 = SubResource("QuadMesh_6exr4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
-transform = Transform3D(-5.92289e-08, 0, -1.355, 0, 1.355, 0, 1.355, 0, -5.92289e-08, 0, 2.24852, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.24852, 0)
 shape = SubResource("CylinderShape3D_5rjs7")
 
 [node name="ActionAnimator" parent="." index="6"]
@@ -347,6 +347,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 
 [node name="swipe3" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Decal" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+size = Vector3(5, 5, 5)
 
 [editable path="jabberwock"]
 [editable path="Attacks/Sweep/AttackHitbox"]

@@ -11,6 +11,8 @@ signal run_start_selected
 @onready var credits_button: Button = %CreditsButton
 @onready var exit_credits_button: Button = %ExitCredits
 @onready var credits_panel: PanelContainer = %CreditsPanel
+@onready var tutorial_panel: PanelContainer = %TutorialPanel
+@onready var tutorial_button: Button = %TutorialButton
 
 enum TitleState {
 	NONE,
@@ -36,6 +38,19 @@ func _input(event: InputEvent) -> void:
 		return
 
 func new_game():
+	new_game_button.disabled = true
+	credits_button.disabled = true
+	exit_game_button.disabled = true
+	
+	tutorial_panel.modulate.a = 0.0
+	tutorial_panel.visible = true
+	var tween: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(tutorial_panel, "modulate:a", 1.0, 0.2)
+	await tween.finished
+	
+	tutorial_button.grab_focus()
+	await tutorial_button.pressed
+	
 	run_start_selected.emit()
 
 func exit_game():
