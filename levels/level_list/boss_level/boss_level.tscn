@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://krqa0edksq88"]
+[gd_scene load_steps=13 format=3 uid="uid://krqa0edksq88"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_vng3c"]
 [ext_resource type="ArrayMesh" uid="uid://di2en7fyugci5" path="res://models/tree.obj" id="3_4x476"]
 [ext_resource type="Texture2D" uid="uid://cevdw2p44o3d" path="res://levels/level_list/boss_level/grass.png" id="3_is05w"]
 [ext_resource type="AudioStream" uid="uid://b15fufikynb7s" path="res://audio/levels/spire/03 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="3_rk4b3"]
-[ext_resource type="PackedScene" uid="uid://bvjhtjofnv4w8" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn" id="4_h5i5d"]
+[ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="4_h5i5d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5i5d"]
 albedo_texture = ExtResource("3_is05w")
@@ -14,7 +14,10 @@ uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rk4b3"]
-size = Vector3(48, 9, 48)
+size = Vector3(36.2165, 9, 35.9133)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h5i5d"]
+size = Vector3(36.0489, 10.786, 2.14368)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h5i5d"]
 height = 12.4866
@@ -338,28 +341,38 @@ collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00489807, -4.5, -0.0877686)
 shape = SubResource("BoxShape3D_rk4b3")
 
-[node name="Trees" type="Node3D" parent="StaticGeometry" index="4"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticGeometry/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.271561, 4.89301, -18.5428)
+shape = SubResource("BoxShape3D_h5i5d")
+
+[node name="Trees" type="Node3D" parent="StaticGeometry" index="3"]
 
 [node name="Tree" type="MeshInstance3D" parent="StaticGeometry/Trees" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37957, 0, -33.2906)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree2" type="MeshInstance3D" parent="StaticGeometry/Trees" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9845, 0, 5.16143)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree2" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree2/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
@@ -367,71 +380,78 @@ shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree3" type="MeshInstance3D" parent="StaticGeometry/Trees" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9519, 0, 22.5615)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree3" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree3/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree4" type="MeshInstance3D" parent="StaticGeometry/Trees" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0419, 0, -38.3387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6082, 0, -19.4094)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree4" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree4/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree5" type="MeshInstance3D" parent="StaticGeometry/Trees" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80117, 0, 39.9393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1591, 0, 21.4679)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree5" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree5/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
 [node name="Tree6" type="MeshInstance3D" parent="StaticGeometry/Trees" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.287, 0, -39.2781)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6851, 0, -21.4174)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree6" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree6/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
-[node name="Tree7" type="MeshInstance3D" parent="StaticGeometry/Trees" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5746, 0, -9.68899)
-mesh = ExtResource("3_4x476")
-skeleton = NodePath("../../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree7" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree7/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
-shape = SubResource("CylinderShape3D_h5i5d")
-
-[node name="Tree8" type="MeshInstance3D" parent="StaticGeometry/Trees" index="7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.1677, 0, -19.0607)
+[node name="Tree8" type="MeshInstance3D" parent="StaticGeometry/Trees" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8866, 0, 6.89082)
+layers = 33
 mesh = ExtResource("3_4x476")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Trees/Tree8" index="0"]
+collision_layer = 32
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticGeometry/Trees/Tree8/StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.21643, 0)
 shape = SubResource("CylinderShape3D_h5i5d")
 
-[node name="JabberwockBoss" parent="Enemies" index="0" instance=ExtResource("4_h5i5d")]
+[node name="Exits" type="Node3D" parent="StaticGeometry" index="4"]
+
+[node name="LevelExit" parent="StaticGeometry/Exits" index="0" instance=ExtResource("4_h5i5d")]
+transform = Transform3D(0.786935, 0, 0.617036, 0, 1, 0, -0.617036, 0, 0.786935, 13.3688, 0, 16.7974)
 
 [node name="Marker3D3" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 5)
@@ -454,11 +474,19 @@ light_energy = 0.7
 size = 14.0
 
 [node name="ambience" parent="Sounds" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.7743, 0)
 stream = ExtResource("3_rk4b3")
+volume_db = -15.0
 pitch_scale = 2.7
 
+[node name="door_open_1" parent="Sounds" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.11, 3.41362, 16.76)
+
+[node name="level_complete" parent="Sounds" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.3666, 0)
+
 [node name="Player" parent="." index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11396, 0, -10.3919)
 
 [node name="Marker3D3" type="Marker3D" parent="RewardPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0165, 0, 5)

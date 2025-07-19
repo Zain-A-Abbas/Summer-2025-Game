@@ -10,4 +10,5 @@ func distance_to_player() -> float:
 	return enemy.position.distance_to(enemy.player.position)
 
 func face_player() -> Vector3:
-	return enemy.position.direction_to(enemy.player.position)
+	var out: Vector3 = enemy.position.direction_to(enemy.player.position)
+	return Vector3(out.x, 0, out.z)

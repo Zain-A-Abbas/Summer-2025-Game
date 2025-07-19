@@ -29,7 +29,9 @@ func initialize(current_level: LevelBase):
 		exit_type = LevelBase.LevelType.SHOP
 		current_level.shop_exit_made = true
 	elif boss_after_shop || boss_after_battle:
-		exit_type = LevelBase.LevelType.BOSS # CHANGE LATER
+		exit_type = LevelBase.LevelType.BOSS
+	elif current_level.type == LevelBase.LevelType.BOSS:
+		exit_type = LevelBase.LevelType.HEALING
 	else:
 		var level_roll: float = randf()
 		#if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:

@@ -1,18 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://brn15rjrgdutk"]
+[gd_scene load_steps=12 format=3 uid="uid://brn15rjrgdutk"]
 
 [ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
-[ext_resource type="PackedScene" uid="uid://cnjmyiuqw1wh2" path="res://levels/level_list/water_level/water_level.tscn" id="2_3uyut"]
+[ext_resource type="PackedScene" uid="uid://bul1qv25y7gbq" path="res://levels/level_list/bridge_level/bridge_level.tscn" id="2_4a1ml"]
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
-[ext_resource type="PackedScene" uid="uid://4g1oing6lli3" path="res://levels/level_list/dining_room/dining_room_level.tscn" id="3_l3tyk"]
+[ext_resource type="PackedScene" uid="uid://ck150mu7ims48" path="res://levels/level_list/castle_level/castle_level.tscn" id="3_t8q1s"]
 [ext_resource type="PackedScene" uid="uid://dcjcmlny666i0" path="res://levels/level_list/shop_level/shop_level.tscn" id="4_3uyut"]
+[ext_resource type="PackedScene" uid="uid://4g1oing6lli3" path="res://levels/level_list/dining_room/dining_room_level.tscn" id="4_4a1ml"]
 [ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/gameplay/player_ui.tscn" id="5_6qk6f"]
 [ext_resource type="PackedScene" uid="uid://c6p3lqty2vji6" path="res://levels/level_list/healing_level/healing_level.tscn" id="5_l3tyk"]
+[ext_resource type="PackedScene" uid="uid://crnikvioiynct" path="res://levels/level_list/spire_level/spire_level.tscn" id="5_ugugx"]
+[ext_resource type="PackedScene" uid="uid://cnjmyiuqw1wh2" path="res://levels/level_list/water_level/water_level.tscn" id="6_5hiki"]
 [ext_resource type="PackedScene" uid="uid://krqa0edksq88" path="res://levels/level_list/boss_level/boss_level.tscn" id="6_l3tyk"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")
-endless = true
-normal_levels = Array[PackedScene]([ExtResource("2_3uyut"), ExtResource("3_l3tyk")])
+normal_levels = Array[PackedScene]([ExtResource("2_4a1ml"), ExtResource("3_t8q1s"), ExtResource("4_4a1ml"), ExtResource("5_ugugx"), ExtResource("6_5hiki")])
 healing_level = ExtResource("5_l3tyk")
 shop_level = ExtResource("4_3uyut")
 boss_level = ExtResource("6_l3tyk")

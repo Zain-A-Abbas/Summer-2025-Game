@@ -7,11 +7,6 @@
 [node name="CharacterEntity" type="CharacterBody3D"]
 collision_mask = 33
 script = ExtResource("1_5bmi2")
-inflicted_attack_effect_limits = Dictionary[int, int]({
-1: 1,
-2: 1,
-3: 4
-})
 
 [node name="StateMachine" type="Node" parent="."]
 unique_name_in_owner = true
@@ -34,5 +29,5 @@ unique_name_in_owner = true
 layers = 32
 size = Vector3(1.5, 1.5, 1.5)
 texture_albedo = ExtResource("3_oq72m")
-modulate = Color(0, 0, 0.172549, 0.819608)
+modulate = Color(0, 0, 0.17, 0.878431)
 cull_mask = 32

@@ -70,8 +70,8 @@ damage = 10
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4h5qo"]
-radius = 0.339316
-height = 1.04917
+radius = 0.222968
+height = 0.943749
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i6hqh"]
 seed = 640
@@ -210,29 +210,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(-0.106825, 3.31212, -0.185046)
-bones/1/rotation = Quaternion(-0.000257515, 0.0141836, -0.0181177, 0.999735)
-bones/3/rotation = Quaternion(0.167146, -0.0412975, 9.7739e-05, 0.985067)
-bones/4/rotation = Quaternion(0.28259, -0.114607, -0.0273576, 0.951977)
+bones/1/position = Vector3(0.0934263, 3.35435, -0.185744)
+bones/1/rotation = Quaternion(-2.38526e-05, 0.00618676, -0.00367093, 0.999974)
+bones/3/rotation = Quaternion(0.16463, -0.0411577, -0.00028762, 0.985496)
+bones/4/rotation = Quaternion(0.274532, -0.114216, -0.028634, 0.954341)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0206109, 0.94276, -0.332785, 0.00570004)
-bones/7/rotation = Quaternion(0.205808, -0.768372, 0.33414, 0.505566)
-bones/8/rotation = Quaternion(0.0533839, 0.649214, 0.0693625, 0.755553)
+bones/6/rotation = Quaternion(0.0455991, 0.936801, -0.346826, 0.00594052)
+bones/7/rotation = Quaternion(0.201229, -0.774954, 0.337024, 0.495346)
+bones/8/rotation = Quaternion(0.0537851, 0.648787, 0.0694123, 0.755887)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.037715, 0.0172868, 0.0122653, 0.999064)
-bones/13/rotation = Quaternion(-0.17214, 0.0774625, 0.018717, 0.981844)
-bones/14/rotation = Quaternion(0.10379, 0.172393, -0.0164053, 0.979408)
+bones/10/rotation = Quaternion(0.000404823, 0.000185556, 0.000131681, 1)
+bones/13/rotation = Quaternion(-0.166619, 0.0771703, 0.0195733, 0.982802)
+bones/14/rotation = Quaternion(0.0967228, 0.174763, -0.00993669, 0.979798)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.209993, 0.750647, -0.287797, 0.556422)
-bones/19/rotation = Quaternion(-0.0208431, -0.613593, -0.00183013, 0.789345)
+bones/18/rotation = Quaternion(0.197806, 0.756746, -0.271355, 0.56087)
+bones/19/rotation = Quaternion(-0.0238736, -0.613483, 0.00206881, 0.789344)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.000196437, 0.34466, 0.938307, -0.0280844)
-bones/26/rotation = Quaternion(-0.00248904, 0.936785, -0.349828, -0.00694652)
-bones/27/rotation = Quaternion(-0.0221681, 0.643764, -0.764901, -0.00190248)
-bones/28/rotation = Quaternion(-0.000250367, -0.0535068, 0.997926, -0.0357946)
-bones/29/rotation = Quaternion(-0.00111299, 0.975446, -0.22017, -0.00535294)
-bones/30/rotation = Quaternion(-0.000313399, 0.69513, -0.718669, -0.0176101)
+bones/25/rotation = Quaternion(8.21755e-05, 0.0752437, 0.997096, 0.0117487)
+bones/26/rotation = Quaternion(0.000223643, 0.989079, -0.14738, 0.0013323)
+bones/27/rotation = Quaternion(0.0073032, 0.657313, -0.753435, -0.0149168)
+bones/28/rotation = Quaternion(8.92484e-05, 0.194708, 0.980778, 0.0127597)
+bones/29/rotation = Quaternion(0.00380168, 0.78439, -0.62024, 0.00462029)
+bones/30/rotation = Quaternion(0.0205059, 0.803507, -0.594935, -0.00303975)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -242,7 +242,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.366794, -0.720645, 0.588331, 0.0972397, -0.658643, -0.746146, 0.925206, -0.216473, 0.311662, -2.21259, 3.85448, -1.40151)
+transform = Transform3D(-0.415188, -0.687785, 0.595458, 0.0708704, -0.677004, -0.73256, 0.906971, -0.26195, 0.329828, -2.00826, 3.82159, -1.45216)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -282,7 +282,7 @@ collision_mask = 0
 monitorable = false
 
 [node name="CollisionShape3D" parent="Attacks/basic_attack/AttackHitbox" index="0"]
-transform = Transform3D(-2.92429e-07, -6.69, 0, 6.69, -2.92429e-07, 0, 0, 0, 6.69, 0, 1.32706, 2.29556)
+transform = Transform3D(-2.92429e-07, -6.69, 0, 6.69, -2.92429e-07, 0, 0, 0, 6.69, 0, 1.32706, 1.953)
 shape = SubResource("CapsuleShape3D_4h5qo")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]

@@ -6,7 +6,6 @@ extends Node
 const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
 const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 
-@export var endless: bool = false
 @export var max_levels: int = 10
 @export var normal_levels: Array[PackedScene] = []
 @export var elite_levels: Array[PackedScene] = []
@@ -17,6 +16,7 @@ const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 var current_level: PackedScene = null
 var current_level_type: LevelBase.LevelType
 var current_level_count: int = 0
+var bosses_killed: int = 0
 var money: int = 300
 var current_player: Player
 var player_upgrades: PlayerUpgrades
@@ -40,9 +40,9 @@ func begin_run():
 	player_upgrades.upgrades_updated.connect(update_upgrade_ui)
 	current_level_count = 1
 	player_ui.visible = true
-	enemy_scaler = EnemyScaler.new()
+	enemy_scaler = EnemyScaler.new(self)
 	await fade_transition(true)
-	create_level(LevelBase.LevelType.NORMAL)
+	create_level(LevelBase.LevelType.BOSS)
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase	
@@ -94,7 +94,8 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
 		current_level_count += 1
 
-	if current_level_type == LevelBase.LevelType.BOSS && endless:
+	if current_level_type == LevelBase.LevelType.BOSS:
+		bosses_killed += 1
 		player_upgrades.increase_upgrade_limits()
 		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
@@ -104,9 +105,6 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	level.queue_free()
 	
 	await get_tree().process_frame
-	
-	if !endless && current_level_count == max_levels:
-		return # game complete here
 	
 	create_level(exit_type)
 

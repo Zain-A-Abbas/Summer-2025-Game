@@ -20,6 +20,7 @@ const PARRY_REQUIREMENT: float = 20
 # Mainly used when hitting the red knight during its block period
 var deflect_velocity: Vector3 = Vector3.ZERO
 var deflect_decay: float = 0.0 # How much deflect reduces by absolutely every second
+var deflect_direction: Vector3 = Vector3.ZERO
 
 # Required for parrying/dodging
 var stamina: float = 100.0
@@ -49,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	update_listener_direction()
 	deflect_velocity = deflect_velocity.move_toward(Vector3.ZERO, deflect_decay * delta)
 
+	#print(health_component.current_health)
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
 
@@ -106,6 +108,10 @@ func parry_received(attack_object: AttackObject):
 		can_get_parry_point = false
 		play_sound_fx(&"parried")
 	
+		if attack_object.entity is JabberwockBoss && attack_object.entity.pushback:
+			deflect_velocity = deflect_direction * attack_object.entity.pushback_speed
+			deflect_decay = attack_object.entity.pushback_speed * 2.75
+	
 	parry_hitstop()
 
 func parry_hitstop():
@@ -132,8 +138,13 @@ func gain_money(amount: int):
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
+		#print("here")
 		play_sound_fx(&"damaged")
 		resolve_hit(attack_object)
+		
+		if attack_object.entity is JabberwockBoss && attack_object.entity.pushback:
+			deflect_velocity = deflect_direction * attack_object.entity.pushback_speed
+			deflect_decay = attack_object.entity.pushback_speed * 2.75
 
 func update_listener_direction():
 	listener.global_rotation.y = Vector2(-0.707107, 0.707107).angle() + deg_to_rad(90)
