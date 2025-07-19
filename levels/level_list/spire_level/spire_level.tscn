@@ -164,10 +164,10 @@ shape = SubResource("BoxShape3D_40bn6")
 [node name="Exits" type="Node3D" parent="StaticGeometry" index="4"]
 
 [node name="LevelExit" parent="StaticGeometry/Exits" index="0" instance=ExtResource("5_itu5n")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8, 67, -8)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 8.2, 67, -8.3)
 
 [node name="LevelExit2" parent="StaticGeometry/Exits" index="1" instance=ExtResource("5_itu5n")]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 11, 66, -3)
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 11.1, 66, -3.7)
 
 [node name="Windows" type="Node3D" parent="StaticGeometry" index="5"]
 

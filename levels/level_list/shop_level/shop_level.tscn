@@ -1,16 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcjcmlny666i0"]
+[gd_scene load_steps=12 format=3 uid="uid://dcjcmlny666i0"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_yglvp"]
 [ext_resource type="Script" uid="uid://rlvxkggkvk65" path="res://levels/level_list/shop_level/shop_level.gd" id="2_441j4"]
-[ext_resource type="Material" uid="uid://bs05ai6gg7xi5" path="res://levels/materials/placeholder_floor.tres" id="3_umxex"]
+[ext_resource type="Texture2D" uid="uid://b2erko5b47jnx" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Floor-Tiles.png" id="3_107gx"]
 [ext_resource type="Material" uid="uid://ddoy4h8kbuwv1" path="res://levels/materials/placeholder_walls.tres" id="4_f35r4"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="5_3jonf"]
 [ext_resource type="PackedScene" uid="uid://cm305f8o7tal4" path="res://levels/level_list/shop_level/shop_item.tscn" id="5_f35r4"]
 [ext_resource type="AudioStream" uid="uid://cibotgltms7sb" path="res://audio/levels/general/Cave.wav" id="7_107gx"]
 [ext_resource type="AudioStream" uid="uid://hefgjleq44k2" path="res://audio/levels/shop_level/01 DSGNTonl, POI, Strings, Bell.wav" id="8_0wk3x"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wk3x"]
+albedo_texture = ExtResource("3_107gx")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+texture_filter = 0
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3jonf"]
 data = PackedVector3Array(-5, -10, 10, -5, 10, -10, -5, -10, -10, 5, -10, -10, -5, -10, 10, -5, -10, -10, -5, 10, -10, 5, -10, -10, -5, -10, -10, -5, 10, -10, -5, -10, 10, -5, 10, 10, -5, -10, 10, 5, 10, 10, -5, 10, 10, 5, 10, 10, -5, 10, -10, -5, 10, 10, -5, -10, 10, 5, -10, -10, 5, -10, 10, 5, 10, 10, -5, -10, 10, 5, -10, 10, 5, -10, -10, 5, 10, 10, 5, -10, 10, 5, -10, -10, -5, 10, -10, 5, 10, -10, -5, 10, -10, 5, 10, 10, 5, 10, -10, 5, 10, 10, 5, -10, -10, 5, 10, -10)
+
+[sub_resource type="Environment" id="Environment_4xwe4"]
+background_mode = 1
+background_color = Color(0.09972, 0.12, 0.0888, 1)
 
 [node name="ShopLevel" instance=ExtResource("1_yglvp")]
 script = ExtResource("2_441j4")
@@ -19,7 +30,7 @@ has_enemies = false
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0)
 size = Vector3(10, 0.001, 20)
-material = ExtResource("3_umxex")
+material = SubResource("StandardMaterial3D_0wk3x")
 
 [node name="RoomBorders" type="CSGBox3D" parent="StaticGeometry" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 10, 0)
@@ -48,6 +59,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 
 [node name="ShopItem3" parent="DynamicGeometry" index="2" instance=ExtResource("5_f35r4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 8)
+
+[node name="WorldEnvironment" parent="Lighting" index="0"]
+environment = SubResource("Environment_4xwe4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
+transform = Transform3D(0.988756, 0.067655, -0.133355, 0, 0.891798, 0.452435, 0.149535, -0.447348, 0.88177, 0, 3.48, 0)
+light_color = Color(0.6468, 0.655013, 0.77, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
+transform = Transform3D(-0.840567, -0.245088, -0.483094, 0, 0.891798, -0.452435, 0.541708, -0.380302, -0.749615, 0, 3.48, 0)
+light_color = Color(1, 0.968, 0.84, 1)
 
 [node name="ambience" parent="Sounds" index="0"]
 stream = ExtResource("7_107gx")

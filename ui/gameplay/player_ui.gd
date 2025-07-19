@@ -17,6 +17,7 @@ extends CanvasLayer
 @onready var dead_text: Label = %DeadText
 @onready var return_to_title_button: Button = %ReturnToTitleButton
 @onready var upgrade_icons_gameover_container: HBoxContainer = %UpgradeIconsGameoverContainer
+@onready var gameover_container: MarginContainer = $GameoverContainer
 @onready var enemies_slain: Label = %EnemiesSlain
 @onready var hits_taken: Label = %HitsTaken
 @onready var parries_performed: Label = %ParriesPerformed

@@ -3,6 +3,10 @@ extends Node3D
 
 signal exit_chosen(next_level: LevelBase.LevelType)
 
+const SHOP = preload("res://levels/paintings/shop.png")
+const HEALING = preload("res://levels/paintings/healing.png")
+const BOSS = preload("res://levels/paintings/boss.png")
+
 const PAINTINGS: Dictionary[LevelBase.NormalLevels, Resource] = {
 	LevelBase.NormalLevels.BRIDGE: preload("res://levels/paintings/bridge.png"),
 	LevelBase.NormalLevels.CASTLE: preload("res://levels/paintings/castle.png"),
@@ -22,6 +26,7 @@ var active: bool = false
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var painting: Sprite3D = %PaintingTexture
+@onready var border: CSGBox3D = %Border
 
 
 func _ready() -> void:
@@ -79,5 +84,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 func select_painting(current_level: LevelBase):
 	if exit_type == LevelBase.LevelType.NORMAL || exit_type == LevelBase.LevelType.ELITE:
 		painting.texture = current_level.level_manager.normal_level_paintings[normal_level_index]
-	else:
-		painting.texture = PlaceholderTexture2D.new()
+		
+		if exit_type == LevelBase.LevelType.ELITE:
+			border.material.albedo_color = Color.RED
+		
+	elif exit_type == LevelBase.LevelType.BOSS:
+		painting.texture = BOSS
+	elif exit_type == LevelBase.LevelType.HEALING:
+		painting.texture = HEALING
+	elif exit_type == LevelBase.LevelType.SHOP:
+		painting.texture = SHOP

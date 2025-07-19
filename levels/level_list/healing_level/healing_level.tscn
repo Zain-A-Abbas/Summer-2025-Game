@@ -41,6 +41,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.5)
 always_active = true
 
 [node name="Pickup" parent="DynamicGeometry" index="0" instance=ExtResource("3_45j1t")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
+transform = Transform3D(-0.894154, -0.31606, 0.317166, 0, 0.70834, 0.705872, -0.447759, 0.631158, -0.633365, 0, 3.48, 0)
+light_color = Color(0.6468, 0.655013, 0.77, 1)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
+transform = Transform3D(-0.149535, -0.447348, -0.88177, 0, 0.891798, -0.452435, 0.988756, -0.067655, -0.133355, 0, 3.48, 0)
+light_color = Color(1, 0.968, 0.84, 1)
 
 [node name="ambience" parent="Sounds" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.60999, 0)

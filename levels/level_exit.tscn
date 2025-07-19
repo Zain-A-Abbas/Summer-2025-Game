@@ -185,6 +185,7 @@ _data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbsan"]
+resource_local_to_scene = true
 albedo_color = Color(0.47, 0.235, 0, 1)
 
 [node name="LevelExit" type="Node3D" groups=["level_exits"]]
@@ -240,7 +241,8 @@ texture = ExtResource("5_ws3wu")
 
 [node name="Node3D" type="Node3D" parent="Painting"]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Painting/Node3D"]
+[node name="Border" type="CSGBox3D" parent="Painting/Node3D"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, -0.5)
 cast_shadow = 0
 size = Vector3(3.7, 0.1, 0.6)

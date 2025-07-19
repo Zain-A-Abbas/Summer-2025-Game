@@ -310,7 +310,6 @@ horizontal_alignment = 2
 script = ExtResource("8_uammv")
 
 [node name="GameoverContainer" type="MarginContainer" parent="."]
-visible = false
 anchors_preset = -1
 anchor_left = 0.4
 anchor_right = 0.6
@@ -341,6 +340,7 @@ vertical_alignment = 1
 
 [node name="ResultsVbox" type="VBoxContainer" parent="GameoverContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="StatsLabel" type="Label" parent="GameoverContainer/ResultsVbox"]

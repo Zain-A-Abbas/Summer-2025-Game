@@ -128,6 +128,7 @@ func finish_parry_hitstop():
 	parry_particles.emitting = true
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	Bgm.fadeout_bgm(0.5)
 	player_died.emit(self)
 	state_machine.change_state(&"Death")
 
