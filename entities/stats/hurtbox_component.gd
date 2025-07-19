@@ -14,6 +14,7 @@ func _on_area_entered(area: Area3D) -> void:
 	if area is AttackHitbox:
 		var attack: AttackObject = area.attack_object
 		if parry_frames:
+			RunStats.parries_performed += 1
 			hit_parried.emit(attack)
 		else:
 			hit_received.emit(area.attack_object, invincibility_frames)

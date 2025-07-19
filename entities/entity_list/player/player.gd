@@ -39,6 +39,10 @@ var upgrades: PlayerUpgrades
 @onready var camera: LevelCamera
 @onready var listener: AudioListener3D = %listener
 
+@onready var bleed_particles: GPUParticles3D = %BleedParticles
+@onready var paralysis_particles: GPUParticles3D = %ParalysisParticles
+@onready var burn_particles: GPUParticles3D = %BurnParticles
+
 
 func _ready() -> void:
 	prepare_states()
@@ -138,6 +142,7 @@ func gain_money(amount: int):
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
+		RunStats.hits_taken += 1
 		#print("here")
 		play_sound_fx(&"damaged")
 		resolve_hit(attack_object)

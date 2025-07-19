@@ -55,4 +55,3 @@ autowrap_mode = 2
 
 [node name="PlayerUI" parent="." instance=ExtResource("5_6qk6f")]
 unique_name_in_owner = true
-visible = false

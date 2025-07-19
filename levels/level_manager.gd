@@ -36,6 +36,7 @@ func _ready() -> void:
 		begin_run()
 
 func begin_run():
+	RunStats.reset()
 	player_upgrades = PlayerUpgrades.new()
 	player_upgrades.upgrades_updated.connect(update_upgrade_ui)
 	current_level_count = 1
@@ -44,7 +45,7 @@ func begin_run():
 	await fade_transition(true)
 	create_level(LevelBase.LevelType.BOSS)
 
-func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
+func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL, old_level_type: LevelBase.LevelType = LevelBase.LevelType.NONE):
 	var new_level: LevelBase	
 	if new_level_type == LevelBase.LevelType.NORMAL:
 		new_level = choose_normal_level()
@@ -84,7 +85,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	
 	await fade_transition(false)
 	current_level_type = new_level_type
-	new_level.start_level(new_level_type)
+	new_level.start_level(new_level_type, old_level_type)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	await fade_transition(true)
@@ -101,18 +102,20 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
 		print("scaling turned on")
-
+	
+	var old_level_type: LevelBase.LevelType = level.type
 	level.queue_free()
 	
 	await get_tree().process_frame
 	
-	create_level(exit_type)
+	create_level(exit_type, old_level_type)
 
 func update_upgrade_ui():
 	current_player.initialize_upgrades(player_upgrades)
 	player_ui.update_upgrades(current_player)
 
 func money_gain(amount: int):
+	RunStats.money_earned += amount
 	money = money + amount
 	player_ui.update_money(money)
 

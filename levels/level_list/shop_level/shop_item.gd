@@ -93,6 +93,7 @@ func resolve_buy():
 		return
 	
 	bought = true
+	RunStats.items_bought += 1
 	if level_manager.current_level_type == LevelBase.LevelType.SHOP:
 		level_manager.money_gain(-price)
 	
