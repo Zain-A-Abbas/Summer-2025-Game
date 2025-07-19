@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=81 format=4 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -29,6 +29,8 @@
 [ext_resource type="AudioStream" uid="uid://bwuttidh15agr" path="res://audio/entities/player/SFX_Key_Take_08.wav" id="26_p772y"]
 [ext_resource type="AudioStream" uid="uid://bbcwfj2p5d33o" path="res://audio/entities/player/Sword Impact Hit 2.wav" id="27_p772y"]
 [ext_resource type="Shader" uid="uid://njxyqr5nppfj" path="res://entities/entity_list/player/cape.gdshader" id="29_apdix"]
+[ext_resource type="Texture2D" uid="uid://doyy5ai16g58x" path="res://effects/particle-textures/flame_01.png" id="30_5635v"]
+[ext_resource type="Texture2D" uid="uid://72hvrvmmqder" path="res://effects/particle-textures/lightning_breath.png" id="30_m15bl"]
 
 [sub_resource type="Curve" id="Curve_wlnxk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251908, 0), 0.0, 0.0, 0, 0]
@@ -459,6 +461,57 @@ shader_parameter/dissolve_curve = SubResource("CurveTexture_nda3u")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y07nu"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m15bl"]
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyyb8"]
+cull_mode = 2
+shading_mode = 2
+albedo_color = Color(1, 0, 0, 1)
+metallic_specular = 0.0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_uxlxn"]
+material = SubResource("StandardMaterial3D_cyyb8")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cyyb8"]
+direction = Vector3(0, -1, 0)
+spread = 90.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxlxn"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.933333, 0, 1)
+albedo_texture = ExtResource("30_m15bl")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ovd2g"]
+material = SubResource("StandardMaterial3D_uxlxn")
+size = Vector2(2, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ovd2g"]
+direction = Vector3(0, -1, 0)
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3toew"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.6, 0, 1)
+albedo_texture = ExtResource("30_5635v")
+billboard_mode = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_6w51l"]
+material = SubResource("StandardMaterial3D_3toew")
+size = Vector2(2, 2)
+
 [node name="Player" node_paths=PackedStringArray("hurtbox", "animation_tree") groups=["player"] instance=ExtResource("1_0kr36")]
 collision_layer = 17
 script = ExtResource("1_xb04b")
@@ -481,29 +534,29 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.161033, 2.77051, -0.408622)
+bones/1/position = Vector3(0.198163, 2.71571, -0.406417)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.163266, -0.0410809, -0.000495449, 0.985726)
-bones/4/rotation = Quaternion(0.268181, -0.113899, -0.0296344, 0.956153)
+bones/3/rotation = Quaternion(0.168134, -0.0413518, 0.000249348, 0.984896)
+bones/4/rotation = Quaternion(0.285542, -0.114747, -0.0268881, 0.951092)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0401322, 0.938146, -0.343856, 0.00588957)
-bones/7/rotation = Quaternion(0.202289, -0.773448, 0.336364, 0.497711)
-bones/8/rotation = Quaternion(0.0373138, 0.665502, 0.0674197, 0.742408)
+bones/6/rotation = Quaternion(0.0447616, 0.937009, -0.346375, 0.00593281)
+bones/7/rotation = Quaternion(0.201445, -0.774648, 0.33689, 0.495828)
+bones/8/rotation = Quaternion(0.0510599, 0.651664, 0.0690753, 0.753628)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0084312, 0.0038645, 0.00274168, 0.999953)
-bones/13/rotation = Quaternion(-0.162627, 0.0769553, 0.0201896, 0.983475)
-bones/14/rotation = Quaternion(0.121941, 0.170827, -0.0172205, 0.977575)
+bones/10/rotation = Quaternion(0.00168856, 0.000773976, 0.000549116, 0.999998)
+bones/13/rotation = Quaternion(-0.174165, 0.077568, 0.0184019, 0.981484)
+bones/14/rotation = Quaternion(0.110446, 0.17067, -0.020372, 0.978907)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.163797, 0.771664, -0.22546, 0.571728)
-bones/19/rotation = Quaternion(-0.0117487, -0.613835, -0.0135262, 0.789231)
+bones/18/rotation = Quaternion(0.211262, 0.749988, -0.289508, 0.555942)
+bones/19/rotation = Quaternion(-0.0174406, -0.6137, -0.00620677, 0.789323)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00110164, 0.224284, 0.961711, -0.157503)
-bones/26/rotation = Quaternion(0.0441241, 0.858433, -0.50535, 0.0759474)
-bones/27/rotation = Quaternion(-0.0530429, 0.6106, -0.787641, 0.0630571)
-bones/28/rotation = Quaternion(0.00219735, 0.0222247, 0.94911, 0.314152)
-bones/29/rotation = Quaternion(-0.150594, 0.821667, -0.484456, -0.259783)
-bones/30/rotation = Quaternion(0.235567, 0.505742, -0.821598, 0.11709)
+bones/25/rotation = Quaternion(-0.0010916, 0.245375, 0.956783, -0.156065)
+bones/26/rotation = Quaternion(0.0465088, 0.8407, -0.534387, 0.0740972)
+bones/27/rotation = Quaternion(-0.0490333, 0.600255, -0.796054, 0.0598979)
+bones/28/rotation = Quaternion(0.00230939, 0.0374021, 0.943178, 0.330167)
+bones/29/rotation = Quaternion(-0.154654, 0.809604, -0.507706, -0.250718)
+bones/30/rotation = Quaternion(0.240564, 0.499556, -0.8239, 0.117313)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -512,10 +565,10 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.67145, -0.681503, 0.291046, 0.549857, -0.721481, -0.42086, 0.496801, -0.122553, 0.859168, -1.42696, 2.52645, -2.13055)
+transform = Transform3D(-0.584868, -0.74322, 0.32489, 0.62366, -0.668148, -0.405742, 0.518631, -0.0346847, 0.854295, -1.44421, 2.55306, -2.05059)
 
 [node name="HandAttachment2" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(0.669368, -0.0466742, -0.741464, -0.725678, -0.254911, -0.639071, -0.159179, 0.965838, -0.204499, 1.77339, 3.04367, 1.49779)
+transform = Transform3D(0.65098, -0.0735042, -0.755528, -0.741066, -0.277174, -0.611553, -0.164461, 0.958004, -0.234906, 1.81362, 2.94842, 1.47093)
 bone_name = "LeftHand"
 bone_idx = 8
 
@@ -532,7 +585,7 @@ process_material = SubResource("ParticleProcessMaterial_wlnxk")
 draw_pass_1 = SubResource("QuadMesh_wlnxk")
 
 [node name="CapeAttachment" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="4"]
-transform = Transform3D(0.876224, 0.0275278, -0.481116, 0.012753, 0.996693, 0.0802535, 0.481734, -0.0764558, 0.872976, 0.289143, 4.68735, -0.759232)
+transform = Transform3D(0.876014, 0.0199671, -0.481872, 0.014353, 0.997621, 0.0674308, 0.482072, -0.0659866, 0.873643, 0.317104, 4.62877, -0.746251)
 bone_name = "Neck"
 bone_idx = 13
 
@@ -693,6 +746,37 @@ max_db = 0.0
 stream = ExtResource("27_p772y")
 max_db = 2.0
 pitch_scale = 0.45
+
+[node name="BleedParticles" type="GPUParticles3D" parent="." index="12"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32595, 0)
+emitting = false
+amount = 64
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_m15bl")
+draw_pass_1 = SubResource("QuadMesh_uxlxn")
+
+[node name="ParalysisParticles" type="GPUParticles3D" parent="." index="13"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825955, 0)
+emitting = false
+amount = 1
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_cyyb8")
+draw_pass_1 = SubResource("QuadMesh_ovd2g")
+
+[node name="BurnParticles" type="GPUParticles3D" parent="." index="14"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825955, 0)
+emitting = false
+amount = 4
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_ovd2g")
+draw_pass_1 = SubResource("QuadMesh_6w51l")
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

@@ -4,6 +4,7 @@ extends Node3D
 signal level_completed(level: LevelBase, next_level: LevelType, normal_level_index: int)
 
 enum LevelType {
+	NONE,
 	NORMAL,
 	ELITE,
 	SHOP,
@@ -162,23 +163,23 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		exit.exit_chosen.connect(exit_choose)
 		door_num += 1
 
-func start_level(_type: LevelType):
+func start_level(_type: LevelType, old_level_type: LevelBase.LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 	
-	"""
-	if _type == LevelType.NORMAL:
-		Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE, 1.0)
-	elif _type == LevelType.SHOP:
-		Bgm.play_bgm(Bgm.BGM_TYPE.SHOP, 1.0)
-	elif _type == LevelType.HEALING:
-		Bgm.play_bgm(Bgm.BGM_TYPE.HEALING, 1.0)
-	elif _type == LevelType.BOSS:
-		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS, 1.0)
-	"""
+	if _type != old_level_type:
+		if _type == LevelType.NORMAL:
+			Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE, 1.0)
+		elif _type == LevelType.SHOP:
+			Bgm.play_bgm(Bgm.BGM_TYPE.SHOP, 1.0)
+		elif _type == LevelType.HEALING:
+			Bgm.play_bgm(Bgm.BGM_TYPE.HEALING, 1.0)
+		elif _type == LevelType.BOSS:
+			Bgm.play_bgm(Bgm.BGM_TYPE.BOSS, 1.0)
+
 
 func gameover(player: Player):
 	for enemy in enemies.get_children():
@@ -214,6 +215,7 @@ func enemy_kill(enemy: Enemy):
 	money_pickup.position = enemy_position + Vector3(0.0, 1.0 * randf(), 0.0)
 	
 	if enemies_killed == enemy_count:
+		RunStats.levels_cleared += 1
 		var index: int = 1
 		
 		# open doors

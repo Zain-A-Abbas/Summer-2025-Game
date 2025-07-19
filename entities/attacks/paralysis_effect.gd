@@ -17,6 +17,9 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 	if randf() <= stun_chance && !target.paralyzed:
 		target.paralysis_timer = 0.0
 		target.paralysis_duration = stun_duration
+		if target is Player:
+			target.paralysis_particles.lifetime = stun_duration
+			target.paralysis_particles.emitting = true
 		target.paralyzed = true
 		target.state_machine.change_state(&"Idle")
 	#else:

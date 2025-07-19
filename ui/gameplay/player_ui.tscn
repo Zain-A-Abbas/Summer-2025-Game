@@ -361,18 +361,10 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="GameoverContainer/ResultsVbox"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="StatsLabel2" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/font = ExtResource("11_px7i6")
-theme_override_font_sizes/font_size = 24
-text = "DIED TO:"
-
-[node name="StatsLabel3" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+[node name="EnemiesSlain" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -381,6 +373,72 @@ theme_override_constants/shadow_outline_size = 8
 theme_override_fonts/font = ExtResource("11_px7i6")
 theme_override_font_sizes/font_size = 24
 text = "ENEMIES SLAIN:"
+
+[node name="HitsTaken" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "HITS TAKEN:"
+
+[node name="ParriesPerformed" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "PARRIES PERFORMED:"
+
+[node name="MoneyEarned" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "MONEY EARNED:"
+
+[node name="ItemsBought" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "ITEMS BOUGHT:"
+
+[node name="JabberwocksDefeated" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "JABBERWOCKS DEFEATED: "
+
+[node name="LevelsCleared" type="Label" parent="GameoverContainer/ResultsVbox/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/font = ExtResource("11_px7i6")
+theme_override_font_sizes/font_size = 24
+text = "LEVELS CLEARED: "
 
 [node name="ReturnToTitleButton" type="Button" parent="GameoverContainer/ResultsVbox"]
 unique_name_in_owner = true

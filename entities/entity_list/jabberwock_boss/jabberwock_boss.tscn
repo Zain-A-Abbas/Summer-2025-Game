@@ -1,9 +1,11 @@
-[gd_scene load_steps=54 format=3 uid="uid://bvjhtjofnv4w8"]
+[gd_scene load_steps=56 format=3 uid="uid://bvjhtjofnv4w8"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_2w3it"]
 [ext_resource type="Script" uid="uid://b238pddj1h8rc" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss.gd" id="2_2w3it"]
 [ext_resource type="PackedScene" uid="uid://bjthyhjlp1tw1" path="res://entities/entity_list/jabberwock_boss/jabberwock_animator.tscn" id="3_5rjs7"]
+[ext_resource type="Material" uid="uid://cbvpk3c6dtf8x" path="res://models/enemies/enemy_material_overlay.tres" id="4_155cq"]
 [ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="5_mn0pt"]
+[ext_resource type="Texture2D" uid="uid://b445i18rqbijx" path="res://models/textures/blob_shadow.png" id="5_yirbk"]
 [ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="6_6exr4"]
 [ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="7_nfnqn"]
 [ext_resource type="Script" uid="uid://b6j3ko8vnxqca" path="res://entities/attacks/bleed_effect.gd" id="8_2w3it"]
@@ -248,7 +250,7 @@ swipe_pushback = 1200.0
 sweep_pushback = 2000.0
 projectile_spawnpoint = NodePath("jabberwock/Armature/Skeleton3D/BoneAttachment3D/BombSpawnPosition")
 hurtbox = NodePath("Hurtbox")
-meshes = [null]
+meshes = [NodePath("jabberwock/Armature/Skeleton3D/Cube")]
 animation_tree = NodePath("jabberwock/AnimationTree")
 death_state_duration = 3.46
 inflicted_attack_effect_limits = Dictionary[int, int]({
@@ -261,17 +263,18 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Cube" parent="jabberwock/Armature/Skeleton3D" index="0"]
+material_overlay = ExtResource("4_155cq")
 cast_shadow = 0
 
 [node name="NeckAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.234542, -0.971578, 0.0320316, -0.211016, -0.0187197, 0.977303, -0.948927, -0.235978, -0.209409, -5.36154, 3.45323, 0.349033)
+transform = Transform3D(0.234543, -0.971578, 0.0320323, -0.211016, -0.0187188, 0.977303, -0.948927, -0.235979, -0.209409, -5.36154, 3.45323, 0.349032)
 bone_name = "neck.005"
 bone_idx = 21
 
 [node name="Marker3D" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/NeckAttachment" index="0"]
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.273501, -0.0457159, 0.960785, 0.798706, -0.567382, 0.200366, 0.535971, 0.822185, 0.191693, 3.84807, 2.85824, -0.452643)
+transform = Transform3D(-0.273501, -0.0457166, 0.960785, 0.798707, -0.567381, 0.200366, 0.53597, 0.822186, 0.191693, 3.84807, 2.85824, -0.452637)
 bone_name = "forearm.R"
 bone_idx = 25
 
@@ -279,7 +282,7 @@ bone_idx = 25
 transform = Transform3D(0.539157, 0.681844, -0.494367, 0.052424, 0.558682, 0.827724, 0.840572, -0.472189, 0.265472, 0.0322673, 1.0732, -0.756739)
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.135001, -0.49347, -0.859222, -0.798706, -0.567381, 0.200367, -0.586381, 0.659216, -0.470735, -4.16961, 2.85824, -3.37084)
+transform = Transform3D(0.135001, -0.49347, -0.859222, -0.798707, -0.56738, 0.200366, -0.58638, 0.659217, -0.470735, -4.16961, 2.85824, -3.37083)
 bone_name = "forearm.L"
 bone_idx = 6
 
@@ -287,11 +290,19 @@ bone_idx = 6
 transform = Transform3D(0.724555, 0.60299, 0.333801, 0.183424, 0.298148, -0.93673, -0.664361, 0.73994, 0.105422, 0.315177, 2.27946, -0.236999)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.0667849, -0.974062, 0.2162, -0.177063, 0.201674, 0.963315, -0.981931, -0.102616, -0.159002, -7.79048, 3.40643, -0.240911)
+transform = Transform3D(0.0667856, -0.974062, 0.2162, -0.177063, 0.201675, 0.963315, -0.981931, -0.102617, -0.159001, -7.79048, 3.40644, -0.240915)
 bone_name = "head"
 bone_idx = 22
 
 [node name="BombSpawnPosition" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+
+[node name="Decal" type="Decal" parent="jabberwock/Armature/Skeleton3D/BoneAttachment3D" index="1"]
+transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, -1.10675)
+layers = 32
+size = Vector3(3.5, 3.5, 3.5)
+texture_albedo = ExtResource("5_yirbk")
+modulate = Color(0, 0, 0.17, 0.878431)
+cull_mask = 32
 
 [node name="AnimationPlayer" parent="jabberwock" index="1"]
 speed_scale = 1.5
@@ -318,7 +329,7 @@ attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_p3v48")])
 hitbox = NodePath("SweepHitbox")
 
 [node name="SweepHitbox" parent="Attacks/Sweep" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68077, 0.726616, 0.174517)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68077, 0.726617, 0.174516)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -338,7 +349,7 @@ hitbox = NodePath("SwipeHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 
 [node name="SwipeHitbox" parent="Attacks/Swipe" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53156, 1.06174, 0.150979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53156, 1.06174, 0.150982)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -358,7 +369,7 @@ hitbox = NodePath("SwipeMirroredHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 
 [node name="SwipeMirroredHitbox" parent="Attacks/SwipeMirrored" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52414, 0.63285, -0.970717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52414, 0.632851, -0.970713)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -523,6 +534,7 @@ max_distance = 30.0
 
 [node name="Decal" parent="." index="12"]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, -1.10675)
+size = Vector3(4, 4, 4)
 
 [editable path="jabberwock"]
 [editable path="Attacks/Sweep/SweepHitbox"]

@@ -14,8 +14,8 @@ enum BGM_TYPE{
 const BGMS: Dictionary[BGM_TYPE, Resource] = {
 	BGM_TYPE.NONE: null,
 	BGM_TYPE.TITLE: preload("res://sound/music/04 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav"),
-	BGM_TYPE.BATTLE: preload("res://sound/music/Torch Impact 2.wav"),
-	BGM_TYPE.BOSS: preload("res://sound/music/Water Jump.wav"),
+	BGM_TYPE.BATTLE: preload("res://sound/music/Dark Fantasy Studio- Chimeria (seamless).wav"),
+	BGM_TYPE.BOSS: preload("res://sound/music/Dark Fantasy Studio- Eternity (seamless).wav"),
 	BGM_TYPE.HEALING: preload("res://sound/music/Forest Night.ogg"),
 	BGM_TYPE.SHOP: preload("res://sound/music/Wood Chain Run 1.wav")
 }

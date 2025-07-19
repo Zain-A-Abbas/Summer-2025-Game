@@ -17,6 +17,13 @@ extends CanvasLayer
 @onready var dead_text: Label = %DeadText
 @onready var return_to_title_button: Button = %ReturnToTitleButton
 @onready var upgrade_icons_gameover_container: HBoxContainer = %UpgradeIconsGameoverContainer
+@onready var enemies_slain: Label = %EnemiesSlain
+@onready var hits_taken: Label = %HitsTaken
+@onready var parries_performed: Label = %ParriesPerformed
+@onready var money_earned: Label = %MoneyEarned
+@onready var items_bought: Label = %ItemsBought
+@onready var jabberwocks_defeated: Label = %JabberwocksDefeated
+@onready var levels_cleared: Label = %LevelsCleared
 
 enum State {
 	NONE,
@@ -67,6 +74,14 @@ func gameover(player: Player):
 	dead_text.pivot_offset = dead_text.size / 2
 	results_vbox.modulate.a = 0.0
 	results_vbox.visible = true
+	
+	enemies_slain.text = "ENEMIES SLAIN: " + str(RunStats.enemies_killed)
+	money_earned.text = "MONEY EARNED: " + str(RunStats.money_earned)
+	parries_performed.text = "PARRIES PERFORMED: " + str(RunStats.parries_performed)
+	hits_taken.text = "HITS TAKEN: " + str(RunStats.hits_taken)
+	items_bought.text = "ITEMS BOUGHT: " + str(RunStats.items_bought)
+	jabberwocks_defeated.text = "JABBERWOCKS DEFEATED: " + str(RunStats.jabberwocks_defeated)
+	levels_cleared.text = "LEVELS CLEARED: " + str(RunStats.levels_cleared)
 	
 	for child in upgrade_icons_gameover_container.get_children():
 		child.queue_free()
