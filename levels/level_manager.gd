@@ -43,7 +43,7 @@ func begin_run():
 	player_ui.visible = true
 	enemy_scaler = EnemyScaler.new(self)
 	await fade_transition(true)
-	create_level(LevelBase.LevelType.BOSS)
+	create_level(LevelBase.LevelType.NORMAL)
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL, old_level_type: LevelBase.LevelType = LevelBase.LevelType.NONE):
 	var new_level: LevelBase	

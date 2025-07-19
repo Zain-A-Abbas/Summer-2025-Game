@@ -100,10 +100,10 @@ size = Vector3(24, 12, 9.5)
 
 [sub_resource type="Environment" id="Environment_r6poa"]
 ambient_light_source = 2
-ambient_light_color = Color(0.278835, 0.29, 0.2697, 1)
-ambient_light_energy = 1.5
+ambient_light_color = Color(0.2516, 0.37, 0.26936, 1)
+ambient_light_energy = 0.29
 fog_enabled = true
-fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
+fog_light_color = Color(0.446562, 0.480852, 0.534743, 1)
 fog_light_energy = 0.02
 
 [node name="CastleLevel" instance=ExtResource("1_jhykl")]
@@ -334,6 +334,11 @@ material = ExtResource("5_n23wo")
 [node name="Torch" parent="StaticGeometry/Deco" index="0" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, 3.5, 6.1)
 
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch" index="3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.03343e-07, 1.58665, 1.5522)
+omni_range = 16.657
+omni_attenuation = 0.745
+
 [node name="Torch2" parent="StaticGeometry/Deco" index="1" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, -6, 1.5, -3.9)
 
@@ -417,3 +422,5 @@ gizmo_extents = 2.0
 [node name="Marker3D3" type="Marker3D" parent="RewardPositions" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09644, 0, -0.607946)
 gizmo_extents = 2.0
+
+[editable path="StaticGeometry/Deco/Torch"]
