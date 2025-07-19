@@ -13,6 +13,10 @@
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="8_y08bq"]
 [ext_resource type="AudioStream" uid="uid://blmu6rna47ucy" path="res://audio/entities/caterpillar/Fast_Magic_Whoosh_10.wav" id="9_sofxr"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjuat"]
+radius = 0.187493
+height = 1.10361
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sbvb"]
 albedo_color = Color(0.58, 0.444667, 0, 1)
 albedo_texture = ExtResource("3_uq3an")
@@ -25,10 +29,12 @@ metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="Resource" id="Resource_hwe2s"]
 script = ExtResource("6_uq3an")
-duration = 1.2
+duration = 2.0
 metadata/_custom_type_script = "uid://oekub3q8jt0t"
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ph4oc"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hwe2s"]
+radius = 0.356947
+height = 1.38866
 
 [sub_resource type="Resource" id="Resource_1sbvb"]
 script = ExtResource("5_p3l6e")
@@ -41,24 +47,24 @@ stun_duration = 1.0
 stun_chance = 100.0
 metadata/_custom_type_script = "uid://4rhq8c58a3im"
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_sofxr"]
-radius = 0.4
-
 [node name="CaterpillarEnemySeed" instance=ExtResource("1_asst4")]
+collision_layer = 0
+collision_mask = 48
 script = ExtResource("2_ph4oc")
-time_to_live = 1.1
+time_to_live = null
+death_state_duration = null
+inflicted_attack_effect_limits = null
 
-[node name="placeholder_model" type="CSGSphere3D" parent="." index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.240998, 0)
+shape = SubResource("CapsuleShape3D_yjuat")
+
+[node name="placeholder_model" type="CSGSphere3D" parent="." index="1"]
 unique_name_in_owner = true
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 1.5, 0, 0.223961, 0)
 collision_layer = 0
 collision_mask = 0
 material = SubResource("StandardMaterial3D_1sbvb")
-
-[node name="ray_cast" type="RayCast3D" parent="." index="1"]
-unique_name_in_owner = true
-transform = Transform3D(-35, -6.79481e-08, 6.60024e-15, 0, -1.96701e-08, -1, 5.28485e-06, -0.45, 4.37114e-08, 0, 0.251135, 0.0608152)
-collision_mask = 48
 
 [node name="AnimationEffects" parent="." index="3"]
 unique_name_in_owner = true
@@ -82,8 +88,8 @@ script = ExtResource("6_0qy1d")
 metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/parent/AttackHitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
-shape = SubResource("SphereShape3D_ph4oc")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.219741, 0)
+shape = SubResource("CapsuleShape3D_hwe2s")
 
 [node name="child" type="Node3D" parent="Attacks" index="1" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
@@ -102,8 +108,8 @@ script = ExtResource("6_0qy1d")
 metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attacks/child/AttackHitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219741, 0)
-shape = SubResource("SphereShape3D_sofxr")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.219741, 0)
+shape = SubResource("CapsuleShape3D_hwe2s")
 
 [node name="Components" type="Node" parent="." index="5"]
 
@@ -114,7 +120,7 @@ script = ExtResource("7_cdm54")
 [node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true
 script = ExtResource("8_y08bq")
-move_speed = 900.0
+move_speed = 16.0
 
 [node name="death" parent="Sounds" index="1"]
 stream = ExtResource("9_sofxr")

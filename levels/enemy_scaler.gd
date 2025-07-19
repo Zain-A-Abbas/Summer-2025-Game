@@ -10,6 +10,10 @@ const ATK_EFFECTS: Array[AttackEffect.AttackEffectType] = [
 ]
 
 var effect: AttackEffect.AttackEffectType
+var level_manager: LevelManager
+
+func _init(manager: LevelManager):
+	level_manager = manager
 
 ## by default, scale health and damage
 func scale_enemy(enemy: Enemy, args: Dictionary[String, Variant]):
@@ -57,12 +61,6 @@ func scale_caterpillar(caterpillar: CaterpillarEnemy, args: Dictionary[String, V
 
 func scale_flower(flower: FlowerEnemy, args: Dictionary[String, Variant]):
 	flower.bomb_damage = ceilf(float(flower.bomb_damage) * args["dmg_multiplier"])
-	
-	# chance to add slow effect
-	#if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
-		#effect = AttackEffect.AttackEffectType.SLOW
-		#create_effect_parameters(AttackEffect.AttackEffectType.SLOW, args)
-		#card.basic_attack.add_attack_effect(effect, args)
 
 func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant]):	
 	# increase summon hp cancel threshold
@@ -75,6 +73,7 @@ func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant])
 func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
 	
+	# add attack effects: burn, para, bleed
 	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
 		effect = ATK_EFFECTS.pick_random()
 		create_effect_parameters(effect, args)
@@ -96,8 +95,36 @@ func scale_red_knight(knight: RedKnightEnemy, args: Dictionary[String, Variant])
 	knight.movement_component.set_move_speed(knight.movement_component.move_speed * 1.15)
 	
 func scale_jabberwock(jabberwock: JabberwockBoss, args: Dictionary[String, Variant]):
-	# pending
-	pass
+	jabberwock.bomb_damage = ceilf(jabberwock.bomb_damage * args["dmg_multiplier"])
+	jabberwock.seed_damage = ceilf(jabberwock.seed_damage * args["dmg_multiplier"])
+	jabberwock.breath.attack_effects[0].damage = ceilf(jabberwock.breath.attack_effects[0].damage * args["dmg_multiplier"])
+	jabberwock.swipe.attack_effects[0].damage = ceilf(jabberwock.swipe.attack_effects[0].damage * args["dmg_multiplier"])
+	jabberwock.swipe_mirrored.attack_effects[0].damage = ceilf(jabberwock.swipe_mirrored.attack_effects[0].damage * args["dmg_multiplier"])
+	jabberwock.sweep.attack_effects[0].damage = ceilf(jabberwock.sweep.attack_effects[0].damage * args["dmg_multiplier"])
+	
+	# add another stack of bleed to swipes
+	jabberwock.swipe.add_attack_effect(AttackEffect.AttackEffectType.BLEED, args)
+	jabberwock.swipe_mirrored.add_attack_effect(AttackEffect.AttackEffectType.BLEED, args)
+
+	var args_dupe: Dictionary[String, Variant] = args.duplicate()
+
+	# add burn effect to breath
+	create_effect_parameters(AttackEffect.AttackEffectType.BURN, args_dupe)
+	jabberwock.breath.add_attack_effect(AttackEffect.AttackEffectType.BURN, args_dupe)
+	
+	# add burn and para to swipes
+	if args.has("run") && randf() <= ADD_EFFECT_CHANCE:
+		args_dupe = args.duplicate()
+		var index: int = randi_range(0, 1)
+		effect = ATK_EFFECTS[index]
+		create_effect_parameters(effect, args_dupe)
+		jabberwock.swipe.add_attack_effect(effect, args_dupe)
+		
+		args_dupe = args.duplicate()
+		index = randi_range(0, 1)
+		effect = ATK_EFFECTS[index]
+		create_effect_parameters(effect, args_dupe)
+		jabberwock.swipe_mirrored.add_attack_effect(effect, args_dupe)
 
 func create_effect_parameters(effect_type: AttackEffect.AttackEffectType, args: Dictionary[String, Variant]):
 	if effect_type == AttackEffect.AttackEffectType.BURN:

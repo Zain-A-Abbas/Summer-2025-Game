@@ -363,7 +363,6 @@ size = Vector3(24, 43, 64)
 material = SubResource("StandardMaterial3D_faqyf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/CSGBox3D" index="0"]
-visible = false
 collision_layer = 32
 collision_mask = 0
 

@@ -1,12 +1,15 @@
 [gd_scene load_steps=9 format=3 uid="uid://brn15rjrgdutk"]
 
 [ext_resource type="Script" uid="uid://333cs3ia0hhm" path="res://levels/level_manager.gd" id="1_6tvrh"]
-[ext_resource type="PackedScene" uid="uid://cnjmyiuqw1wh2" path="res://levels/level_list/water_level/water_level.tscn" id="2_3uyut"]
+[ext_resource type="PackedScene" uid="uid://bul1qv25y7gbq" path="res://levels/level_list/bridge_level/bridge_level.tscn" id="2_4a1ml"]
 [ext_resource type="PackedScene" uid="uid://cguscb1nqrveo" path="res://debug/scene_documentation.tscn" id="2_6tvrh"]
 [ext_resource type="PackedScene" uid="uid://4g1oing6lli3" path="res://levels/level_list/dining_room/dining_room_level.tscn" id="3_l3tyk"]
 [ext_resource type="PackedScene" uid="uid://dcjcmlny666i0" path="res://levels/level_list/shop_level/shop_level.tscn" id="4_3uyut"]
+[ext_resource type="PackedScene" uid="uid://4g1oing6lli3" path="res://levels/level_list/dining_room/dining_room_level.tscn" id="4_4a1ml"]
 [ext_resource type="PackedScene" uid="uid://ckonyraiy8awm" path="res://ui/gameplay/player_ui.tscn" id="5_6qk6f"]
 [ext_resource type="PackedScene" uid="uid://c6p3lqty2vji6" path="res://levels/level_list/healing_level/healing_level.tscn" id="5_l3tyk"]
+[ext_resource type="PackedScene" uid="uid://crnikvioiynct" path="res://levels/level_list/spire_level/spire_level.tscn" id="5_ugugx"]
+[ext_resource type="PackedScene" uid="uid://cnjmyiuqw1wh2" path="res://levels/level_list/water_level/water_level.tscn" id="6_5hiki"]
 [ext_resource type="PackedScene" uid="uid://krqa0edksq88" path="res://levels/level_list/boss_level/boss_level.tscn" id="6_l3tyk"]
 
 [node name="LevelManager" type="Node"]

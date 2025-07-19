@@ -33,7 +33,7 @@ func st_physics_process(delta: float) -> void:
 				
 				var seed = SEED.instantiate()
 				projectiles.add_child(seed)
-				seed.initialize_seed(true, seed_direction, projectiles, proj.atk_obj.attack_effects[0].damage)
+				seed.initialize_seed(true, Vector3(seed_direction.x, 0.0, seed_direction.z), projectiles, proj.atk_obj.attack_effects[0].damage)
 				seed.global_position = proj.global_position
 	
 	if !exploded:		

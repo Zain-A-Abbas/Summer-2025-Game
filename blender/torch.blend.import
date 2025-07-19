@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b735ixkdf3q55"
-valid=false
+path="res://.godot/imported/torch.blend-548d7149deda16651b96ab1f7252cee7.scn"
 
 [deps]
 
 source_file="res://blender/torch.blend"
+dest_files=["res://.godot/imported/torch.blend-548d7149deda16651b96ab1f7252cee7.scn"]
 
 [params]
 
