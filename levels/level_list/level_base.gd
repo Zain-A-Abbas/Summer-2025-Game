@@ -123,7 +123,6 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			)
 		
 		if level_manager.run_scale_enemies:
-			print("here")
 			level_manager.enemy_scaler.scale_enemy(enemy, 
 				{
 					"hp_multiplier": level_manager.enemy_hp_multiplier,

@@ -39,8 +39,7 @@ func prepare_states():
 func _physics_process(delta: float) -> void:
 	super(delta)
 	rage_component.decay_rage(delta)
-	#print(state_machine.current_state.distance_to_player())
-	print(health_component.current_health)
+
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
