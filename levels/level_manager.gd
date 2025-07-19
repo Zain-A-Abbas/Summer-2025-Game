@@ -6,7 +6,6 @@ extends Node
 const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
 const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 
-@export var max_levels: int = 10
 @export var normal_levels: Array[PackedScene] = []
 @export var elite_levels: Array[PackedScene] = []
 @export var healing_level: PackedScene
@@ -16,6 +15,9 @@ const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 var current_level: PackedScene = null
 var current_level_type: LevelBase.LevelType
 var current_level_count: int = 0
+var new_level_index: int = 0
+var new_levels: Array[PackedScene] = [null, null]
+
 var bosses_killed: int = 0
 var money: int = 300
 var current_player: Player
@@ -42,15 +44,18 @@ func begin_run():
 	player_ui.visible = true
 	enemy_scaler = EnemyScaler.new(self)
 	await fade_transition(true)
-	create_level(LevelBase.LevelType.BOSS)
+	choose_normal_level_index()
+	create_level()
 
 func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORMAL):
 	var new_level: LevelBase	
 	if new_level_type == LevelBase.LevelType.NORMAL:
 		new_level = choose_normal_level()
+		new_level.normal_level_type = new_level_index
 	elif new_level_type == LevelBase.LevelType.ELITE:
 		if elite_levels.is_empty():
 			new_level = choose_normal_level()
+			new_level.normal_level_type = new_level_index
 		else:
 			new_level = elite_levels.pick_random().instantiate()
 	elif new_level_type == LevelBase.LevelType.HEALING:
@@ -86,7 +91,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	current_level_type = new_level_type
 	new_level.start_level(new_level_type)
 
-func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
+func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_type: int):
 	await fade_transition(true)
 	
 	prev_hp = current_player.health_component.current_health
@@ -106,6 +111,7 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType):
 	
 	await get_tree().process_frame
 	
+	new_level_index = normal_type
 	create_level(exit_type)
 
 func update_upgrade_ui():
@@ -129,14 +135,21 @@ func fade_transition(out: bool):
 		await tween.finished
 		fade.visible = false
 
+func choose_normal_level_index(index: int = 0):
+	if normal_levels.size() > 1 || (normal_levels.size() == 1 && current_level != null):
+		new_level_index = randi_range(0, normal_levels.size() - 1)
+	else:
+		new_level_index = 0
+
 func choose_normal_level() -> LevelBase:
 	if normal_levels.size() > 1 || (normal_levels.size() == 1 && current_level != null):
 		# choose from filtered pool
-		var new_level: PackedScene = normal_levels.pop_at(randi_range(0, normal_levels.size() - 1))
+		var new_level: PackedScene = normal_levels.pop_at(new_level_index)
 		
 		# reinsert old level
 		if current_level_count > 1:
-			normal_levels.append(current_level)
+			var other_level_index: int = new_level_index != 0
+			normal_levels.append(new_levels[other_level_index])
 	
 		current_level = new_level
 		return current_level.instantiate()

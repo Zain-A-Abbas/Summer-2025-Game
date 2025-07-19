@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b7db4vx5ia7gn"
-valid=false
+path="res://.godot/imported/jabberwock.blend-6aca6f20d0f502810a0489595505b11c.scn"
 
 [deps]
 
 source_file="res://blender/jabberwock.blend"
+dest_files=["res://.godot/imported/jabberwock.blend-6aca6f20d0f502810a0489595505b11c.scn"]
 
 [params]
 

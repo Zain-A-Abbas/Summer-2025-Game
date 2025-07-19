@@ -248,7 +248,7 @@ swipe_pushback = 1200.0
 sweep_pushback = 2000.0
 projectile_spawnpoint = NodePath("jabberwock/Armature/Skeleton3D/BoneAttachment3D/BombSpawnPosition")
 hurtbox = NodePath("Hurtbox")
-meshes = [NodePath("@AnimationPlayer@73802")]
+meshes = [null]
 animation_tree = NodePath("jabberwock/AnimationTree")
 death_state_duration = 3.46
 inflicted_attack_effect_limits = Dictionary[int, int]({
@@ -259,49 +259,6 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 
 [node name="jabberwock" parent="." index="0" instance=ExtResource("3_5rjs7")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
-[node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
-bones/1/position = Vector3(0, 4.22855, 3.83333)
-bones/1/rotation = Quaternion(-0.300706, 0, 0, 0.953717)
-bones/2/rotation = Quaternion(-0.258819, 0, -3.67804e-15, 0.965926)
-bones/3/rotation = Quaternion(-0.0429567, -0.0664523, -0.16043, 0.98387)
-bones/5/rotation = Quaternion(-0.362605, -0.0481559, -0.43907, 0.820619)
-bones/6/rotation = Quaternion(-0.284554, 0.125973, 0.480531, 0.819908)
-bones/6/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(0.114981, 0.194499, 0.256763, 0.939693)
-bones/8/scale = Vector3(1, 1, 1)
-bones/10/rotation = Quaternion(0.133719, -4.97241e-09, 0.133719, 0.981956)
-bones/11/rotation = Quaternion(-0.0951169, 3.26149e-08, -0.0951169, 0.990911)
-bones/12/rotation = Quaternion(-0.0642454, -1.68624e-11, -0.0642455, 0.995864)
-bones/13/rotation = Quaternion(-0.272004, 6.94549e-08, -0.272004, 0.923054)
-bones/14/rotation = Quaternion(-0.289084, -1.19061e-07, -0.289084, 0.912612)
-bones/15/rotation = Quaternion(-0.238657, 3.5843e-08, -0.238657, 0.941321)
-bones/16/rotation = Quaternion(-0.395579, 0.0236206, -0.299777, 0.867809)
-bones/16/scale = Vector3(1, 1, 1)
-bones/17/rotation = Quaternion(-0.00916563, 0.0621928, -0.0610588, 0.996153)
-bones/17/scale = Vector3(1, 1, 1)
-bones/18/rotation = Quaternion(0.0714517, 0.0582521, -0.0648291, 0.993629)
-bones/19/rotation = Quaternion(-0.015148, 0.0544929, -0.0680195, 0.99608)
-bones/20/rotation = Quaternion(0.222748, 0.0390931, -0.0778964, 0.970972)
-bones/21/rotation = Quaternion(0.019091, 0.0190595, -0.0850462, 0.996012)
-bones/22/rotation = Quaternion(0.0952857, -0.00917822, 0.0866712, 0.991627)
-bones/24/rotation = Quaternion(-0.362605, 0.0481557, 0.43907, 0.820619)
-bones/25/rotation = Quaternion(-0.284554, -0.125973, -0.480531, 0.819908)
-bones/25/scale = Vector3(1, 1, 1)
-bones/27/rotation = Quaternion(0.114981, -0.194499, -0.256763, 0.939693)
-bones/29/rotation = Quaternion(0.133719, -2.57095e-08, -0.133719, 0.981956)
-bones/30/rotation = Quaternion(-0.0951169, -1.01243e-08, 0.0951169, 0.990911)
-bones/31/rotation = Quaternion(-0.0642454, 1.02741e-08, 0.0642455, 0.995864)
-bones/32/rotation = Quaternion(-0.272004, -5.08881e-08, 0.272004, 0.923054)
-bones/33/rotation = Quaternion(-0.289084, 1.0205e-07, 0.289084, 0.912612)
-bones/34/rotation = Quaternion(-0.238657, -9.37931e-07, 0.238657, 0.941321)
-bones/35/position = Vector3(0.9, 2.73573, 2.96013)
-bones/35/rotation = Quaternion(0.00922585, 0.258655, 0.965312, -0.0344315)
-bones/36/rotation = Quaternion(-0.241768, 0.00862365, -0.0345872, 0.969679)
-bones/37/rotation = Quaternion(-0.687215, -1.16082e-07, 1.09506e-07, 0.726454)
-bones/38/position = Vector3(-0.9, 2.73573, 2.96013)
-bones/38/rotation = Quaternion(-0.00922591, 0.258655, 0.965312, 0.0344315)
-bones/39/rotation = Quaternion(-0.241768, -0.00862365, 0.0345872, 0.969679)
 
 [node name="Cube" parent="jabberwock/Armature/Skeleton3D" index="0"]
 cast_shadow = 0
