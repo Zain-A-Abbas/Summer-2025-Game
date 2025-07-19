@@ -210,29 +210,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(-0.0226674, 3.28728, -0.185321)
-bones/1/rotation = Quaternion(-0.000162969, -0.0138818, 0.0116562, 0.999836)
-bones/3/rotation = Quaternion(0.166553, -0.0412647, 6.65733e-06, 0.985169)
-bones/4/rotation = Quaternion(0.280803, -0.114521, -0.0276413, 0.952507)
+bones/1/position = Vector3(0.0934263, 3.35435, -0.185744)
+bones/1/rotation = Quaternion(-2.38526e-05, 0.00618676, -0.00367093, 0.999974)
+bones/3/rotation = Quaternion(0.16463, -0.0411577, -0.00028762, 0.985496)
+bones/4/rotation = Quaternion(0.274532, -0.114216, -0.028634, 0.954341)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0307417, 0.940403, -0.33862, 0.00579993)
-bones/7/rotation = Quaternion(0.204045, -0.77093, 0.335261, 0.50163)
-bones/8/rotation = Quaternion(0.0302089, 0.672249, 0.0665901, 0.736705)
+bones/6/rotation = Quaternion(0.0455991, 0.936801, -0.346826, 0.00594052)
+bones/7/rotation = Quaternion(0.201229, -0.774954, 0.337024, 0.495346)
+bones/8/rotation = Quaternion(0.0537851, 0.648787, 0.0694123, 0.755887)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0220956, 0.0101276, 0.00718571, 0.999679)
-bones/13/rotation = Quaternion(-0.170915, 0.0773983, 0.0189074, 0.982059)
-bones/14/rotation = Quaternion(0.145742, 0.163987, -0.0320921, 0.975109)
+bones/10/rotation = Quaternion(0.000404823, 0.000185556, 0.000131681, 1)
+bones/13/rotation = Quaternion(-0.166619, 0.0771703, 0.0195733, 0.982802)
+bones/14/rotation = Quaternion(0.0967228, 0.174763, -0.00993669, 0.979798)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.170503, 0.768962, -0.234512, 0.569764)
-bones/19/rotation = Quaternion(0.000323627, -0.613947, -0.0290426, 0.788813)
+bones/18/rotation = Quaternion(0.197806, 0.756746, -0.271355, 0.56087)
+bones/19/rotation = Quaternion(-0.0238736, -0.613483, 0.00206881, 0.789344)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(7.78837e-05, 0.0203092, 0.999732, 0.0111346)
-bones/26/rotation = Quaternion(0.00162554, 0.881133, -0.472857, 0.00293905)
-bones/27/rotation = Quaternion(-0.00312137, 0.779324, -0.626534, 0.00997641)
-bones/28/rotation = Quaternion(4.041e-05, 0.171366, 0.985191, 0.00577763)
-bones/29/rotation = Quaternion(0.000313686, 0.970084, -0.242768, 0.00100811)
-bones/30/rotation = Quaternion(0.00489432, 0.65363, -0.756666, 0.0141433)
+bones/25/rotation = Quaternion(8.21755e-05, 0.0752437, 0.997096, 0.0117487)
+bones/26/rotation = Quaternion(0.000223643, 0.989079, -0.14738, 0.0013323)
+bones/27/rotation = Quaternion(0.0073032, 0.657313, -0.753435, -0.0149168)
+bones/28/rotation = Quaternion(8.92484e-05, 0.194708, 0.980778, 0.0127597)
+bones/29/rotation = Quaternion(0.00380168, 0.78439, -0.62024, 0.00462029)
+bones/30/rotation = Quaternion(0.0205059, 0.803507, -0.594935, -0.00303975)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -242,7 +242,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.463614, -0.659164, 0.592085, 0.0286479, -0.679042, -0.73354, 0.885574, -0.323118, 0.333697, -2.04443, 3.72081, -1.65867)
+transform = Transform3D(-0.415188, -0.687785, 0.595458, 0.0708704, -0.677004, -0.73256, 0.906971, -0.26195, 0.329828, -2.00826, 3.82159, -1.45216)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -250,7 +250,6 @@ instance_shader_parameters/hit_effect = false
 
 [node name="AnimationTree" parent="red_knight" index="2"]
 root_motion_track = NodePath("%GeneralSkeleton:Root")
-parameters/Attack/request = 1
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
