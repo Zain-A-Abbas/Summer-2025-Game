@@ -51,7 +51,6 @@ func st_physics_process(delta: float) -> void:
 		enemy.projectiles.add_child(bomb)
 		bomb.initialize_bomb(enemy.bomb_spawn_position.global_position, enemy.player.global_position, enemy.bomb_damage)
 	
-	
 	if delta_count > shoot_times[1]:
 		return state_machine.change_state(&"Idle", {"dig_on_cooldown": dig_on_cooldown})
 

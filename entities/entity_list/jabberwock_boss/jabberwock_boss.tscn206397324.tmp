@@ -1,0 +1,370 @@
+[gd_scene load_steps=38 format=3 uid="uid://bvjhtjofnv4w8"]
+
+[ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_2w3it"]
+[ext_resource type="Script" uid="uid://b238pddj1h8rc" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss.gd" id="2_2w3it"]
+[ext_resource type="PackedScene" uid="uid://bjthyhjlp1tw1" path="res://entities/entity_list/jabberwock_boss/jabberwock_animator.tscn" id="3_5rjs7"]
+[ext_resource type="Script" uid="uid://cwil8ikf17ctm" path="res://entities/attacks/attack_object.gd" id="5_mn0pt"]
+[ext_resource type="Script" uid="uid://crcitxpfuhjux" path="res://entities/attacks/attack_effect.gd" id="6_6exr4"]
+[ext_resource type="Script" uid="uid://dyidbo7tcvvbg" path="res://entities/attacks/damage_effect.gd" id="7_nfnqn"]
+[ext_resource type="PackedScene" uid="uid://dpcw6gj5l4iw8" path="res://entities/attacks/attack_object.tscn" id="8_sxrk1"]
+[ext_resource type="Texture2D" uid="uid://72hvrvmmqder" path="res://effects/particle-textures/lightning_breath.png" id="9_hpkgp"]
+[ext_resource type="AudioStream" uid="uid://b728hl7brj8ph" path="res://audio/entities/general/Torch Impact 2.wav" id="10_ncpcy"]
+[ext_resource type="AudioStream" uid="uid://juprc5ifo2do" path="res://audio/entities/jabberwock/Warg_Talk.wav" id="11_5rjs7"]
+[ext_resource type="Script" uid="uid://cjv5ddiivejgd" path="res://entities/entity_list/jabberwock_boss/jabberwock_boss_rage_component.gd" id="14_xf2qo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5rjs7"]
+radius = 1.43658
+height = 5.54976
+
+[sub_resource type="Animation" id="Animation_68gr5"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kh8l7"]
+resource_name = "basic_attack"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_68gr5"]
+_data = {
+&"RESET": SubResource("Animation_68gr5"),
+&"basic_attack": SubResource("Animation_kh8l7")
+}
+
+[sub_resource type="Resource" id="Resource_p3v48"]
+script = ExtResource("7_nfnqn")
+damage = 5
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5rjs7"]
+radius = 0.26825
+
+[sub_resource type="Resource" id="Resource_ncpcy"]
+script = ExtResource("7_nfnqn")
+damage = 5
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xf2qo"]
+radius = 4.48109
+
+[sub_resource type="Resource" id="Resource_5rjs7"]
+script = ExtResource("7_nfnqn")
+damage = 5
+metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4epg7"]
+height = 0.687378
+radius = 2.12207
+
+[sub_resource type="Curve" id="Curve_6fw5c"]
+_data = [Vector2(0.806228, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5rjs7"]
+curve = SubResource("Curve_6fw5c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mn0pt"]
+emission_shape_offset = Vector3(0, -1.25, 0)
+angle_min = -283.9
+angle_max = 283.9
+direction = Vector3(0, -1, 1)
+spread = 30.0
+initial_velocity_min = 20.0
+initial_velocity_max = 28.0
+gravity = Vector3(0, 0, 0)
+damping_min = 30.0
+damping_max = 30.0
+color = Color(0.961333, 1, 0.42, 1)
+alpha_curve = SubResource("CurveTexture_5rjs7")
+anim_speed_min = 2.0
+anim_speed_max = 2.0
+anim_offset_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpkgp"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_hpkgp")
+texture_filter = 0
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_6exr4"]
+material = SubResource("StandardMaterial3D_hpkgp")
+size = Vector2(2, 2)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5rjs7"]
+height = 3.26123
+radius = 2.57275
+
+[sub_resource type="Animation" id="Animation_5rjs7"]
+resource_name = "breath"
+
+[sub_resource type="Animation" id="Animation_keqxu"]
+resource_name = "claw"
+
+[sub_resource type="Animation" id="Animation_ukm8e"]
+resource_name = "claw_mirrored"
+
+[sub_resource type="Animation" id="Animation_2w3it"]
+resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_xf2qo"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_hpkgp"]
+resource_name = "shoot"
+
+[sub_resource type="Animation" id="Animation_ncpcy"]
+resource_name = "sweep"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4epg7"]
+_data = {
+&"breath": SubResource("Animation_5rjs7"),
+&"claw": SubResource("Animation_keqxu"),
+&"claw_mirrored": SubResource("Animation_ukm8e"),
+&"death": SubResource("Animation_2w3it"),
+&"idle": SubResource("Animation_xf2qo"),
+&"shoot": SubResource("Animation_hpkgp"),
+&"sweep": SubResource("Animation_ncpcy")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_keqxu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5sssr"]
+viewport_path = NodePath("SubViewport")
+
+[node name="JabberwockBoss" node_paths=PackedStringArray("hurtbox", "meshes", "animation_tree") instance=ExtResource("1_2w3it")]
+script = ExtResource("2_2w3it")
+seed_damage = 3
+bomb_damage = 5
+hurtbox = NodePath("Hurtbox")
+meshes = [NodePath("jabberwock/Armature/Skeleton3D/Cube")]
+animation_tree = NodePath("jabberwock/AnimationTree")
+death_state_duration = 2.667
+inflicted_attack_effect_limits = Dictionary[int, int]({
+1: 1,
+2: 1,
+3: 10
+})
+
+[node name="jabberwock" parent="." index="0" instance=ExtResource("3_5rjs7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
+bones/1/position = Vector3(0, 4.22855, 3.83333)
+bones/1/rotation = Quaternion(-0.258819, 0, 0, 0.965926)
+bones/2/rotation = Quaternion(-0.317858, -1.48088e-16, 5.36681e-16, 0.948139)
+bones/3/rotation = Quaternion(0, -8.88178e-16, -3.55271e-15, 1)
+bones/5/rotation = Quaternion(-0.331506, 0.169958, -0.362527, 0.854279)
+bones/6/rotation = Quaternion(-0.292139, -0.0227123, 0.257605, 0.920749)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.111866, 0.210431, 0.302327, 0.922932)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.133719, -4.97241e-09, 0.133719, 0.981956)
+bones/11/rotation = Quaternion(-0.0951169, 3.26149e-08, -0.0951169, 0.990911)
+bones/12/rotation = Quaternion(-0.0102418, -0.0519766, -0.0809109, 0.995312)
+bones/13/rotation = Quaternion(-0.272004, 6.94549e-08, -0.272004, 0.923054)
+bones/14/rotation = Quaternion(-0.287569, 0.0295567, -0.194261, 0.937386)
+bones/15/rotation = Quaternion(-0.237407, 0.0244011, -0.141163, 0.960789)
+bones/16/rotation = Quaternion(1.00974e-28, 1.19209e-07, 8.47033e-22, 1)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.12462, -4.57695e-15, -1.26374e-08, 0.992205)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.102566, 1.78577e-15, -2.44536e-08, 0.994726)
+bones/19/rotation = Quaternion(-0.145587, 1.07729e-14, -3.47106e-08, 0.989345)
+bones/20/rotation = Quaternion(-0.0590629, 2.06898e-14, -4.00087e-08, 0.998254)
+bones/21/rotation = Quaternion(0.359966, -3.23678e-14, 8.58225e-08, 0.932966)
+bones/22/rotation = Quaternion(0.30883, -1.86765e-15, 7.36308e-08, 0.951117)
+bones/24/rotation = Quaternion(-0.331506, -0.169958, 0.362527, 0.854279)
+bones/25/rotation = Quaternion(-0.292139, 0.0227124, -0.257605, 0.920749)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(0.111866, -0.210431, -0.302327, 0.922932)
+bones/29/rotation = Quaternion(0.133719, -2.57095e-08, -0.133719, 0.981956)
+bones/30/rotation = Quaternion(-0.0951169, -1.01243e-08, 0.0951169, 0.990911)
+bones/31/rotation = Quaternion(-0.0102418, 0.0519766, 0.0809109, 0.995313)
+bones/32/rotation = Quaternion(-0.272004, -5.08881e-08, 0.272004, 0.923054)
+bones/33/rotation = Quaternion(-0.287569, -0.0295568, 0.194261, 0.937386)
+bones/34/rotation = Quaternion(-0.237406, -0.0244019, 0.141163, 0.960789)
+bones/35/position = Vector3(0.9, 2.73573, 2.96013)
+bones/35/rotation = Quaternion(0.00922585, 0.258655, 0.965312, -0.0344315)
+bones/36/rotation = Quaternion(-0.241768, 0.00862365, -0.0345872, 0.969679)
+bones/37/rotation = Quaternion(-0.687215, -1.16082e-07, 1.09506e-07, 0.726454)
+bones/38/position = Vector3(-0.9, 2.73573, 2.96013)
+bones/38/rotation = Quaternion(-0.00922591, 0.258655, 0.965312, 0.0344315)
+bones/39/rotation = Quaternion(-0.241768, -0.00862365, 0.0345872, 0.969679)
+
+[node name="Cube" parent="jabberwock/Armature/Skeleton3D" index="0"]
+cast_shadow = 0
+
+[node name="NeckAttachment3D" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-1, 1.3923e-07, -2.46181e-07, -1.99939e-07, 0.267629, 0.963522, 2.00037e-07, 0.963522, -0.267629, 7.11154e-07, 5.99759, 4.26366)
+bone_name = "neck.005"
+bone_idx = 21
+
+[node name="Marker3D" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/NeckAttachment3D" index="0"]
+transform = Transform3D(1.34762, 0, 0, 0, 6.7321, 0, 0, 0, 1.34761, 0, 0, 0)
+
+[node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.0736948, 0.238245, 0.968405, 0.767101, -0.606973, 0.207702, 0.637279, 0.758171, -0.138027, 4.26612, 2.85491, -0.254179)
+bone_name = "forearm.R"
+bone_idx = 25
+
+[node name="Marker3D2" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/RightHandBoneAttachment" index="0"]
+transform = Transform3D(0.726577, 4.59024, -0.666214, 0.0706476, 3.7611, 1.11545, 1.13277, -3.17883, 0.357754, 0, 0, 0)
+
+[node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="3"]
+transform = Transform3D(-0.0736946, -0.238245, -0.968405, -0.767101, -0.606973, 0.207702, -0.637279, 0.758171, -0.138027, -4.26612, 2.85492, -0.254179)
+bone_name = "forearm.L"
+bone_idx = 6
+
+[node name="Marker3D" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/LeftHandBoneAttachment" index="0"]
+transform = Transform3D(0.400084, 0.0389016, 0.623748, 0.101283, 0.0829877, -0.0701402, -0.366846, 0.614215, 0.196994, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(-5.92289e-08, 0, -1.355, 0, 1.355, 0, 1.355, 0, -5.92289e-08, 0, 2.70159, 0)
+shape = SubResource("CapsuleShape3D_5rjs7")
+
+[node name="AnimationEffects" parent="." index="3"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_68gr5")
+}
+
+[node name="Sweep" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("5_mn0pt")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_p3v48")])
+hitbox = NodePath("SweepHitbox")
+
+[node name="SweepHitbox" parent="Attacks/Sweep" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51154e-07, 2.03701, 2.12966)
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+follow_marker = NodePath("../../../jabberwock/Armature/Skeleton3D/NeckAttachment3D/Marker3D")
+
+[node name="CollisionShape3D" parent="Attacks/Sweep/SweepHitbox" index="0"]
+transform = Transform3D(8.53, 0, 0, 0, 1.34909, 8.42264, 0, -8.42264, 1.34909, 0, 0, 0)
+shape = SubResource("SphereShape3D_5rjs7")
+
+[node name="Swipe" type="Node3D" parent="Attacks" index="1" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("5_mn0pt")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_ncpcy")])
+hitbox = NodePath("SwipeHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="SwipeHitbox" parent="Attacks/Swipe" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13306, 1.43267, -0.129309)
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+follow_marker = NodePath("../../../jabberwock/Armature/Skeleton3D/RightHandBoneAttachment/Marker3D2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Attacks/Swipe/SwipeHitbox" index="1"]
+shape = SubResource("SphereShape3D_xf2qo")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="SwipeMirrored" type="Node3D" parent="Attacks" index="2" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("5_mn0pt")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_ncpcy")])
+hitbox = NodePath("SwipeMirroredHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="SwipeMirroredHitbox" parent="Attacks/SwipeMirrored" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13306, 1.43267, -0.129309)
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+follow_marker = NodePath("../../../jabberwock/Armature/Skeleton3D/LeftHandBoneAttachment/Marker3D")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Attacks/SwipeMirrored/SwipeMirroredHitbox" index="1"]
+shape = SubResource("SphereShape3D_xf2qo")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="LightningBreath" type="Node3D" parent="Attacks" index="3" node_paths=PackedStringArray("entity", "hitbox")]
+unique_name_in_owner = true
+script = ExtResource("5_mn0pt")
+entity = NodePath("../..")
+attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_5rjs7")])
+hitbox = NodePath("AttackHitbox")
+metadata/_custom_type_script = "uid://cwil8ikf17ctm"
+
+[node name="AttackHitbox" parent="Attacks/LightningBreath" index="0" instance=ExtResource("8_sxrk1")]
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Attacks/LightningBreath/AttackHitbox" index="1"]
+transform = Transform3D(2.21, 0, 0, 0, 2.21, 0, 0, 0, 2.21, 0, 0.386072, 9.35974)
+shape = SubResource("CylinderShape3D_4epg7")
+debug_color = Color(0.992157, 0.0862745, 0, 0.419608)
+
+[node name="LightningBreathParticles" type="GPUParticles3D" parent="Attacks/LightningBreath" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 4)
+emitting = false
+amount = 64
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_mn0pt")
+draw_pass_1 = SubResource("QuadMesh_6exr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2.24852, 0)
+shape = SubResource("CylinderShape3D_5rjs7")
+
+[node name="ActionAnimator" parent="." index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_4epg7"),
+&"jabberwock": SubResource("AnimationLibrary_keqxu")
+}
+
+[node name="HealthComponent" parent="Components" index="0"]
+current_health = 500
+max_health = 500
+
+[node name="MovementComponent" parent="Components" index="1"]
+move_speed = 200.0
+
+[node name="RageComponent" type="Node" parent="Components" index="2"]
+unique_name_in_owner = true
+script = ExtResource("14_xf2qo")
+max_rage = 500
+metadata/_custom_type_script = "uid://cjv5ddiivejgd"
+
+[node name="EnemyHP" parent="." index="10"]
+texture = SubResource("ViewportTexture_5sssr")
+
+[node name="damaged" parent="Sounds" index="0"]
+stream = ExtResource("10_ncpcy")
+volume_db = -15.0
+max_db = 0.0
+pitch_scale = 0.4
+
+[node name="damaged_roar" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
+stream = ExtResource("11_5rjs7")
+volume_db = -15.0
+max_db = 0.0
+
+[node name="swipe1" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="swipe2" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="swipe3" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[editable path="jabberwock"]
+[editable path="Attacks/Sweep/SweepHitbox"]

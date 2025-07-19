@@ -76,10 +76,10 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	shop_exit_made = false
 	
 	if _type == LevelType.BOSS:
-		var boss: Enemy = ENEMIES[Enemy.EnemyType.JABBERWOCK].instantiate()
+		var boss: Enemy = spawn_enemy(Enemy.EnemyType.JABBERWOCK)
 		enemies.add_child(boss)
 		boss.position = enemy_positions.get_child(0).global_position
-		boss.type = Enemy.EnemyType.JABBERWOCK		
+		boss.type = Enemy.EnemyType.JABBERWOCK
 
 		enemy_count += 1
 		
@@ -123,6 +123,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 			)
 		
 		if level_manager.run_scale_enemies:
+			print("here")
 			level_manager.enemy_scaler.scale_enemy(enemy, 
 				{
 					"hp_multiplier": level_manager.enemy_hp_multiplier,
@@ -172,6 +173,7 @@ func start_level(_type: LevelType):
 func gameover(player: Player):
 	for enemy in enemies.get_children():
 		enemy.queue_free()
+
 	for light in lighting.get_children():
 		if light is Node3D:
 			light.visible = false
@@ -179,6 +181,9 @@ func gameover(player: Player):
 	for sound in sounds.get_children():
 		if sound is AudioStreamPlayer3D:
 			sound.playing = false
+
+	for proj in projectiles.get_children():
+		proj.queue_free()
 	
 	static_geometry.visible = false
 	dynamic_geometry.visible = false

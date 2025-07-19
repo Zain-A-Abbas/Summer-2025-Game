@@ -1,13 +1,14 @@
 class_name JabberwockBossIdle
 extends EnemyState
 
-const MELEE_DISTANCE: float = 8.5
+const MELEE_DISTANCE: float = 7.5
+const ACTION_CHANCE_THRESHOLD: float = 0.70
 
 var rage_component: JabberwockBossRageComponent
 var delta_count: float = 0.0
 var cooldown: float = 0.0
 var next_action_time: float = 0.0
-
+var action: StringName
 var direction_to_player: Vector3
 var forward_direction: Vector3
 
@@ -25,8 +26,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if args.has(&"cooldown"):
 		cooldown = args['cooldown']
 		
-	next_action_time = randf_range(0.5, 1.2) + cooldown 
-	#enemy.action_animator.play("jabberwock/idle")
+	next_action_time = randf_range(0.2, 0.7) + cooldown 
+	enemy.action_animator.play("jabberwock/idle")
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -41,9 +42,14 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= next_action_time:
 		if distance_to_player() < MELEE_DISTANCE:
 			if forward_direction.dot(direction_to_player) >= -0.2:
-				return state_machine.change_state(&"Swipe")
-				#print("in front", forward_direction.dot(direction_to_player))
-			elif forward_direction.dot(direction_to_player) < -0.2:
-				return state_machine.change_state(&"Sweep")
-				#print("behind", forward_direction.dot(direction_to_player))
+				if randf() <= ACTION_CHANCE_THRESHOLD:
+					action = &"Swipe"
+				else:
+					action = &"Shoot"
+			else:
+				if randf() <= ACTION_CHANCE_THRESHOLD:
+					action = &"Sweep"
+				else:
+					action = &"Swipe"
+			return state_machine.change_state(action)
 		return state_machine.change_state(&"Shoot")

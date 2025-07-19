@@ -1,15 +1,22 @@
 class_name JabberwockBoss
 extends Enemy
 
+const RAGE_COMBO_BASE_THRESHOLD: float = 0.3
+
 @export var seed_damage: int = 3
 @export var bomb_damage: int = 5
+@export var swipe_pushback: float = 1200.0
+@export var sweep_pushback: float = 2000.0
+@export var projectile_spawnpoint: Marker3D
+
+var pushback: bool = false
+var pushback_speed: float
 
 @onready var sweep: AttackObject = %Sweep
 @onready var swipe: AttackObject = %Swipe
 @onready var swipe_mirrored: AttackObject = %SwipeMirrored
 @onready var breath: AttackObject = %LightningBreath
 @onready var rage_component: JabberwockBossRageComponent = %RageComponent
-@onready var projectile_spawnpoint: Marker3D = %ProjectileSpawnpoint
 @onready var lightning_breath_particles: GPUParticles3D = %LightningBreathParticles
 
 
@@ -32,6 +39,8 @@ func prepare_states():
 func _physics_process(delta: float) -> void:
 	super(delta)
 	rage_component.decay_rage(delta)
+	#print(state_machine.current_state.distance_to_player())
+	print(health_component.current_health)
 
 func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 	if !invin:
@@ -44,14 +53,28 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	enemy_killed.emit(self)
 	hurtbox.set_collision_mask_value(2, 0)
+
+	breath.hitbox.monitorable = false
+	sweep.hitbox.monitorable = false
+	swipe.hitbox.monitorable = false
+	swipe_mirrored.hitbox.monitorable = false
+	
 	state_machine.change_state(&"Death")
 
 func can_combo() -> bool:
 	if rage_component.current_rage < rage_component.RAGE_COST_TO_COMBO:
 		return false
 	
-	var chance: int = randi_range(1, 10)
-	var rage_chance_increase: int = roundf((rage_component.current_rage - rage_component.RAGE_COST_TO_COMBO) / 100.0)
-	var threshold: int = 7 - rage_chance_increase
+	var chance: float = randf()
+	var rage_chance_increase: float = (rage_component.current_rage - rage_component.RAGE_COST_TO_COMBO) / 200.0
+	var threshold: float = RAGE_COMBO_BASE_THRESHOLD + rage_chance_increase
 	
-	return chance > threshold
+	"""
+	print(threshold, " ",chance)
+	if chance <= threshold:
+		print("combo")
+	else:
+		print("no combo")
+	"""
+	
+	return chance <= threshold

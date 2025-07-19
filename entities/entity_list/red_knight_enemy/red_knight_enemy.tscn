@@ -210,24 +210,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(-0.0120815, 3.21535, -0.184951)
-bones/1/rotation = Quaternion(-0.00028826, 0.01573, -0.0183297, 0.999708)
-bones/3/rotation = Quaternion(0.164497, -0.0411503, -0.000307836, 0.985519)
-bones/4/rotation = Quaternion(0.27303, -0.114142, -0.028871, 0.954774)
-bones/6/rotation = Quaternion(0.0197807, 0.942949, -0.332299, 0.00569175)
-bones/7/rotation = Quaternion(0.206023, -0.768059, 0.334003, 0.506045)
-bones/8/rotation = Quaternion(0.0529728, 0.64965, 0.0693113, 0.755212)
-bones/10/rotation = Quaternion(0.0380304, 0.0174314, 0.0123679, 0.999048)
-bones/13/rotation = Quaternion(-0.16559, 0.0771153, 0.0197322, 0.982977)
-bones/14/rotation = Quaternion(0.0970775, 0.174881, -0.00940143, 0.979747)
-bones/18/rotation = Quaternion(0.194512, 0.758325, -0.26691, 0.562022)
-bones/19/rotation = Quaternion(-0.023895, -0.613482, 0.00209632, 0.789344)
-bones/25/rotation = Quaternion(-0.00010271, 0.259857, 0.965536, -0.0146847)
-bones/26/rotation = Quaternion(-0.000661028, 0.964449, -0.264255, -0.00273615)
-bones/27/rotation = Quaternion(-0.0109999, 0.647935, -0.761502, -0.0132061)
-bones/28/rotation = Quaternion(-0.00017294, -0.195425, 0.980407, -0.0247252)
-bones/29/rotation = Quaternion(-0.000171962, 0.995378, -0.0960144, -0.00215103)
-bones/30/rotation = Quaternion(-0.00180205, 0.678077, -0.734831, -0.0152413)
+bones/1/position = Vector3(-0.046876, 3.21283, -0.184762)
+bones/1/rotation = Quaternion(-0.00035168, 0.0171113, -0.0205434, 0.999642)
+bones/3/rotation = Quaternion(0.162994, -0.0410656, -0.000536933, 0.985772)
+bones/4/rotation = Quaternion(0.26981, -0.113981, -0.0293783, 0.955692)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0384064, 0.938566, -0.342906, 0.00587326)
+bones/7/rotation = Quaternion(0.202615, -0.772982, 0.336159, 0.498441)
+bones/8/rotation = Quaternion(0.0337917, 0.66888, 0.0670062, 0.739573)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.010946, 0.00501718, 0.00355955, 0.999921)
+bones/13/rotation = Quaternion(-0.163387, 0.0769964, 0.0200725, 0.983348)
+bones/14/rotation = Quaternion(0.1287, 0.169267, -0.0206279, 0.976913)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.160053, 0.773123, -0.220406, 0.572788)
+bones/19/rotation = Quaternion(-0.00823382, -0.613892, -0.0180449, 0.789141)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-0.00014447, 0.264478, 0.964171, -0.0206551)
+bones/26/rotation = Quaternion(-0.000560232, 0.979814, -0.199888, -0.00310198)
+bones/27/rotation = Quaternion(-0.0174392, 0.614629, -0.788572, -0.00906277)
+bones/28/rotation = Quaternion(-0.000213181, -0.209934, 0.97724, -0.0304786)
+bones/29/rotation = Quaternion(-0.000113248, 0.997865, -0.0652669, -0.00220658)
+bones/30/rotation = Quaternion(0.00759693, 0.718024, -0.695614, -0.0224713)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -237,7 +242,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.402654, -0.710018, 0.577706, 0.0788615, -0.655691, -0.7509, 0.911949, -0.256794, 0.320009, -2.12212, 3.7417, -1.41892)
+transform = Transform3D(-0.442701, -0.704334, 0.554914, 0.0442118, -0.635255, -0.771037, 0.895579, -0.316804, 0.312367, -2.12834, 3.75499, -1.52801)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -262,12 +267,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_68gr5")
 }
 
-[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity")]
+[node name="basic_attack" type="Node3D" parent="Attacks" index="0" node_paths=PackedStringArray("entity", "hitbox")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("5_upjdm")
 entity = NodePath("../..")
 attack_effects = Array[ExtResource("6_6o61m")]([SubResource("Resource_p3v48")])
+hitbox = NodePath("AttackHitbox")
 
 [node name="AttackHitbox" parent="Attacks/basic_attack" index="0" instance=ExtResource("8_5fksu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

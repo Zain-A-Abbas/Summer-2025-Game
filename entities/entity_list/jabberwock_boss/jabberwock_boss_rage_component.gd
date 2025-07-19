@@ -2,8 +2,8 @@ class_name JabberwockBossRageComponent
 extends Node
 
 const RAGE_DECAY: int = 5
-const RAGE_DECAY_TIME: float = 0.8
-const RAGE_COST_TO_COMBO: int = 100
+const RAGE_DECAY_TIME: float = 1.5
+const RAGE_COST_TO_COMBO: int = 50
 
 @export var current_rage: int
 @export var max_rage: int

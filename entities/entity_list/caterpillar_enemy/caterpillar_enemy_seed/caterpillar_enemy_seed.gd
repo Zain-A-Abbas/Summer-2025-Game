@@ -10,7 +10,6 @@ var projectiles: Node3D
 
 @onready var parent: AttackObject = %parent
 @onready var child: AttackObject = %child
-@onready var ray_cast: RayCast3D = %ray_cast
 
 
 func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D, damage: int) -> void:
@@ -26,12 +25,13 @@ func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D, damage: 
 	atk_obj.hitbox.monitorable = true
 	atk_obj.attack_effects[0].damage = damage
 	
+	face_direction(direction)
 	prepare_states()
 
 func prepare_states():
 	var seed_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", CaterpillarEnemySeedIdle.new(self)),
-		StateInitializer.new(&"Travel", CaterpillarEnemySeedTravel.new(self, ray_cast, direction)),
+		StateInitializer.new(&"Travel", CaterpillarEnemySeedTravel.new(self, direction)),
 		StateInitializer.new(&"Explode", CaterpillarEnemySeedExplode.new(self, projectiles, direction))
 	]
 	
