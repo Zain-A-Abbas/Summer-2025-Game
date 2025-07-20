@@ -128,6 +128,8 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		print("scaling turned on")
 	
 	reset_normal_level_queue()
+	if level.type == LevelBase.LevelType.NORMAL:
+		normal_level_queue.erase(new_normal_level_type)
 	
 	var old_level_type: LevelBase.LevelType = level.type
 	level.queue_free()
