@@ -125,6 +125,7 @@ border_width_bottom = 4
 border_color = Color(0.09, 0.09, 0.09, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_iwa1g")
 
 [node name="GameplayContainer" type="MarginContainer" parent="."]

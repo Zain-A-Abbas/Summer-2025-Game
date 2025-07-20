@@ -14,14 +14,14 @@ enum LevelType {
 
 const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
 const LEVEL_REWARD: Resource = preload("res://levels/level_list/shop_level/shop_item.tscn")
-const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
-	Enemy.EnemyType.CARD: preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn"),
-	Enemy.EnemyType.FLOWER: preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn"),
-	Enemy.EnemyType.CATERPILLAR: preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn"),
-	Enemy.EnemyType.MAD_HATTER: preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn"),
-	Enemy.EnemyType.MOUSE: preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn"),
-	Enemy.EnemyType.RED_KNIGHT: preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn"),
-	Enemy.EnemyType.JABBERWOCK: preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
+const ENEMIES: Dictionary[Enemy.EnemyType, String] = {
+	Enemy.EnemyType.CARD: "res://entities/entity_list/basic_enemy/basic_enemy.tscn",
+	Enemy.EnemyType.FLOWER: "res://entities/entity_list/flower_enemy/flower_enemy.tscn",
+	Enemy.EnemyType.CATERPILLAR: "res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn",
+	Enemy.EnemyType.MAD_HATTER: "res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn",
+	Enemy.EnemyType.MOUSE: "res://entities/entity_list/mouse_enemy/mouse_enemy.tscn",
+	Enemy.EnemyType.RED_KNIGHT: "res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn",
+	Enemy.EnemyType.JABBERWOCK: "res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn"
 }
 const CREATE_SHOP_LEVEL_MODULO: int = 5
 const CREATE_BOSS_LEVEL_MODULO: int = 10
@@ -243,7 +243,9 @@ func initialize_enemy_list() -> Array[Enemy.EnemyType]:
 	return list
 	
 func spawn_enemy(type: Enemy.EnemyType) -> Enemy:
-	return ENEMIES[type].duplicate(true).instantiate()
+	var path: String = ENEMIES[type]
+	
+	return load(path).instantiate()
 
 func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 	return enemy_spawn_count[type] <= enemy_spawn_limits[type]

@@ -39,7 +39,6 @@ func _ready() -> void:
 	price_label.outline_modulate.a = 0.0
 	
 	type = randi_range(0, PlayerUpgrades.UpgradeTypes.size() - 1)
-	type = PlayerUpgrades.UpgradeTypes.EXTRA_HEALTH
 	price = UPGRADE_PRICES[type] + randi_range(-20, 20)
 	
 	price_label.text = "%s GOLD" % price
