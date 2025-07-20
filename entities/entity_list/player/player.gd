@@ -47,7 +47,6 @@ var upgrades: PlayerUpgrades
 func _ready() -> void:
 	prepare_states()
 	hurtbox.hit_parried.connect(parry_received)
-	#basic_attack.add_attack_effect(&"PARALYSIS", {"duration": 2.0, "chance": 100.0})
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -134,7 +133,8 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 
 func heal(heal_amount: int):
 	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
-	player_hp_recovered.emit(self)
+	#player_hp_recovered.emit(self)
+	player_damage_taken.emit(self, health_component.current_health)
 	play_sound_fx(&"heal")
 
 func gain_money(amount: int):

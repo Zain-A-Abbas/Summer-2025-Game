@@ -23,11 +23,7 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 	if burn_timer > BURN_TIME:
 		target.health_component.lose_health(target.health_component.current_health - BURN_DAMAGE)
 		if target is Player:
-			target.player_damage_taken.emit(target, BURN_DAMAGE)
-			
 			target.burn_particles.emitting = true
-		elif target is Enemy:
-			target.enemy_damage_taken.emit(target, BURN_DAMAGE)
 		
 		burn_timer = 0.0
 	

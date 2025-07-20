@@ -160,9 +160,10 @@ draw_pass_1 = SubResource("QuadMesh_efqij")
 
 [node name="Components" type="Node" parent="." index="4"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0"]
+[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 script = ExtResource("4_xeb4n")
+entity = NodePath("../..")
 
 [node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true

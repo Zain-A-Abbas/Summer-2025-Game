@@ -210,24 +210,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.0254789, 3.25061, -0.185244)
-bones/1/rotation = Quaternion(-0.000190365, 0.0132314, -0.0143892, 0.999809)
-bones/3/rotation = Quaternion(0.16763, -0.0413242, 0.000171757, 0.984984)
-bones/4/rotation = Quaternion(0.283932, -0.114672, -0.0271443, 0.951576)
-bones/6/rotation = Quaternion(0.0285969, 0.94091, -0.337399, 0.00577906)
-bones/7/rotation = Quaternion(0.204445, -0.770352, 0.335008, 0.502523)
-bones/8/rotation = Quaternion(0.0326555, 0.669957, 0.0668736, 0.738661)
-bones/10/rotation = Quaternion(0.0252847, 0.0115894, 0.00822287, 0.999579)
-bones/13/rotation = Quaternion(-0.173061, 0.0775107, 0.0185739, 0.981681)
-bones/14/rotation = Quaternion(0.145392, 0.16354, -0.0333095, 0.975195)
-bones/18/rotation = Quaternion(0.178913, 0.765408, -0.245861, 0.56718)
-bones/19/rotation = Quaternion(0.000208456, -0.613947, -0.0288946, 0.788818)
-bones/25/rotation = Quaternion(-4.86509e-05, 0.219296, 0.975634, -0.00695548)
-bones/26/rotation = Quaternion(-0.000275672, 0.963698, -0.266992, -0.00127621)
-bones/27/rotation = Quaternion(-0.00380479, 0.671335, -0.740997, -0.0147724)
-bones/28/rotation = Quaternion(-9.62346e-05, -0.0684061, 0.997563, -0.0137584)
-bones/29/rotation = Quaternion(-0.000814319, 0.947129, -0.32084, -0.00270651)
-bones/30/rotation = Quaternion(0.000558248, 0.65663, -0.754153, -0.00947932)
+bones/1/position = Vector3(-0.0548731, 3.33687, -0.185614)
+bones/1/rotation = Quaternion(-6.60282e-05, -0.00999267, 0.00657254, 0.999929)
+bones/3/rotation = Quaternion(0.165208, -0.04119, -0.00019911, 0.985398)
+bones/4/rotation = Quaternion(0.276827, -0.114328, -0.0282711, 0.953675)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0333646, 0.939779, -0.340099, 0.00582531)
+bones/7/rotation = Quaternion(0.203562, -0.771626, 0.335565, 0.500552)
+bones/8/rotation = Quaternion(0.0294187, 0.672984, 0.0664988, 0.736074)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.0183094, 0.00839221, 0.00595436, 0.999779)
+bones/13/rotation = Quaternion(-0.168171, 0.0772533, 0.019333, 0.982536)
+bones/14/rotation = Quaternion(0.142805, 0.165281, -0.0292212, 0.975415)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.162538, 0.772158, -0.223762, 0.572087)
+bones/19/rotation = Quaternion(-0.000812689, -0.613947, -0.0275825, 0.788865)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-1.2602e-05, 0.141061, 0.989999, -0.00180156)
+bones/26/rotation = Quaternion(-0.000370919, 0.804151, -0.594424, -0.000689555)
+bones/27/rotation = Quaternion(-0.0121285, 0.829802, -0.557891, 0.00622437)
+bones/28/rotation = Quaternion(-2.03501e-05, 0.0959844, 0.995379, -0.00290945)
+bones/29/rotation = Quaternion(-1.5827e-05, 0.98432, -0.176393, -0.00036571)
+bones/30/rotation = Quaternion(-0.000675488, 0.647752, -0.761726, 0.0138183)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -237,7 +242,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.395302, -0.715737, 0.575724, 0.0623166, -0.646226, -0.760598, 0.916435, -0.264788, 0.300056, -2.05222, 3.79441, -1.52832)
+transform = Transform3D(-0.474255, -0.660739, 0.581813, 0.0222263, -0.669636, -0.742357, 0.880107, -0.339135, 0.332264, -2.07947, 3.78562, -1.657)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -296,9 +301,10 @@ libraries = {
 &"basic_enemy_animation_library": SubResource("AnimationLibrary_p6bwr")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
-current_health = 120
-max_health = 120
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
+current_health = 100
+max_health = 100
 
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 75.0

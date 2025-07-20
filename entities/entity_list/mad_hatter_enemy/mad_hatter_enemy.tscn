@@ -107,7 +107,7 @@ viewport_path = NodePath("SubViewport")
 [node name="MadHatterEnemy" node_paths=PackedStringArray("hurtbox", "meshes") instance=ExtResource("1_wksuw")]
 script = ExtResource("2_7asxt")
 spawn_type_list = Array[Resource]([ExtResource("3_rt3wv"), ExtResource("4_7tx5y"), ExtResource("5_ac3cl")])
-summon_cancel_hp_amount = 30.0
+summon_cancel_hp_amount = 30
 summon_timestamp = 4.0
 summon_cooldown = 3.0
 wander_duration = 4.0
@@ -130,7 +130,7 @@ bones/15/position = Vector3(0.111892, 0.155238, -0.617619)
 bones/15/rotation = Quaternion(-0.386076, -0.142383, 0.691853, -0.593306)
 
 [node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-5.28727e-07, -0.939694, -0.342022, 1, -3.04622e-07, -5.78291e-07, 3.73958e-07, -0.342017, 0.939691, -1.28127, 0.818725, 0.960248)
+transform = Transform3D(-1.4228e-06, -0.939694, -0.342023, 1, -1.04028e-06, -1.2751e-06, 8.80597e-07, -0.342018, 0.939691, -1.28127, 0.818724, 0.960245)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -158,7 +158,8 @@ libraries = {
 &"mad_hatter_animations": SubResource("AnimationLibrary_7tx5y")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
 current_health = 80
 max_health = 80
 

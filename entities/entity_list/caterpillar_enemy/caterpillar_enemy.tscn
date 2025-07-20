@@ -139,7 +139,8 @@ libraries = {
 &"caterpillar": SubResource("AnimationLibrary_kxd6d")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
 current_health = 70
 max_health = 70
 

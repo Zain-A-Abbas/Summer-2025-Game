@@ -33,7 +33,6 @@ enum State {
 }
 
 var player: Player = null
-
 var state: State
 
 func _ready() -> void:

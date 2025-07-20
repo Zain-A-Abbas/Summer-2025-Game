@@ -14,6 +14,7 @@ enum PaintingType{
 	BOSS
 }
 
+const HEALTH_BONUS: int = 8
 const PAINTINGS: Dictionary[PaintingType, Resource] = {
 	PaintingType.BRIDGE: preload("res://levels/paintings/bridge.png"),
 	PaintingType.CASTLE: preload("res://levels/paintings/castle.png"),
@@ -63,7 +64,7 @@ func initialize(current_level: LevelBase):
 		var level_roll: float = randf()
 		#if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:
 		#	exit_type = LevelBase.LevelType.SHOP
-		if level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
+		if level_roll > 0.0 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
 			exit_type = LevelBase.LevelType.HEALING
 			painting_type = PaintingType.HEALING
 		elif level_roll > 0.65:
@@ -74,7 +75,6 @@ func initialize(current_level: LevelBase):
 			exit_type = LevelBase.LevelType.NORMAL
 			normal_level_type = current_level.level_manager.choose_normal_level_type()
 	select_painting(current_level)
-	print("Exit: ", exit_type)	
 
 func activate():
 	active = true
@@ -86,6 +86,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	
 	if body is Player:
 		exit_chosen.emit(exit_type, normal_level_type)
+		body.health_component.current_health += HEALTH_BONUS
 	else:
 		push_error("Non-player triggered LevelExit collision")
 

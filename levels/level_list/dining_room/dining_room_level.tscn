@@ -341,12 +341,12 @@ fog_light_energy = 0.02
 enemy_minimum = 3
 enemy_limit = 6
 enemy_spawn_limits = Dictionary[int, int]({
-0: 3,
-1: 2,
-2: 1,
-3: 1,
-4: 1,
-5: 1
+0: 1,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0
 })
 
 [node name="RoomFloors" type="CSGBox3D" parent="StaticGeometry" index="1"]

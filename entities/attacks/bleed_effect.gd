@@ -12,10 +12,7 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 		
 		target.health_component.lose_health(target.health_component.current_health - damage)
 		if target is Player:
-			target.player_damage_taken.emit(target, damage)
 			target.bleed_particles.emitting = true
-		elif target is Enemy:
-			target.enemy_damage_taken.emit(target, damage)
 		
 		target.inflicted_attack_effect_count[AttackEffectType.BLEED] = 0
 	

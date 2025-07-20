@@ -111,9 +111,10 @@ shape = SubResource("CapsuleShape3D_hwe2s")
 
 [node name="Components" type="Node" parent="." index="5"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0"]
+[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 script = ExtResource("7_cdm54")
+entity = NodePath("../..")
 
 [node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true

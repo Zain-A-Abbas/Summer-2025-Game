@@ -419,7 +419,8 @@ libraries = {
 &"jabberwock": SubResource("AnimationLibrary_keqxu")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
 current_health = 900
 max_health = 900
 
