@@ -280,7 +280,7 @@ ambient_light_color = Color(0.1554, 0.37, 0.35927, 1)
 fog_light_color = Color(0.85, 0.9075, 1, 1)
 fog_light_energy = 0.02
 
-[node name="WaterLevel" instance=ExtResource("1_pn1ho")]
+[node name="Water" instance=ExtResource("1_pn1ho")]
 enemy_minimum = 3
 enemy_limit = 5
 enemy_spawn_limits = Dictionary[int, int]({

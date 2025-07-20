@@ -106,7 +106,7 @@ fog_enabled = true
 fog_light_color = Color(0.446562, 0.480852, 0.534743, 1)
 fog_light_energy = 0.02
 
-[node name="CastleLevel" instance=ExtResource("1_jhykl")]
+[node name="Castle" instance=ExtResource("1_jhykl")]
 script = ExtResource("2_n23wo")
 y_rotation = 45.0
 enemy_minimum = 4
@@ -364,7 +364,7 @@ transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, 18, 
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 6.5, 2.5, -20.9)
 
 [node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8687, 1.50541, -9.69964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.869, 0, -9.7)
 script = ExtResource("6_ii6r2")
 metadata/_custom_type_script = "uid://c23fdc58df3f4"
 

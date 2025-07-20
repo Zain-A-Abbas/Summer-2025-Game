@@ -1,27 +1,35 @@
 class_name LevelExit
 extends Node3D
 
-signal exit_chosen(next_level: LevelBase.LevelType)
+signal exit_chosen(next_level: LevelBase.LevelType, new_normal_level_type: LevelManager.NormalLevelType)
 
-const SHOP = preload("res://levels/paintings/shop.png")
-const HEALING = preload("res://levels/paintings/healing.png")
-const BOSS = preload("res://levels/paintings/boss.png")
+enum PaintingType{
+	BRIDGE,
+	CASTLE,
+	DINING,
+	SPIRE,
+	WATER,
+	SHOP,
+	HEALING,
+	BOSS
+}
 
-const PAINTINGS: Dictionary[LevelBase.NormalLevels, Resource] = {
-	LevelBase.NormalLevels.BRIDGE: preload("res://levels/paintings/bridge.png"),
-	LevelBase.NormalLevels.CASTLE: preload("res://levels/paintings/castle.png"),
-	LevelBase.NormalLevels.DINING: preload("res://levels/paintings/dining.png"),
-	LevelBase.NormalLevels.SPIRE: preload("res://levels/paintings/spire.png"),
-	LevelBase.NormalLevels.WATER: preload("res://levels/paintings/water.png")
-	#&"Shop": preload("res://levels/paintings/shop.png"),
-	#&"Healing": preload("res://levels/paintings/healing.png"),
-	#&"Boss": preload("res://levels/paintings/boss.png"),
+const PAINTINGS: Dictionary[PaintingType, Resource] = {
+	PaintingType.BRIDGE: preload("res://levels/paintings/bridge.png"),
+	PaintingType.CASTLE: preload("res://levels/paintings/castle.png"),
+	PaintingType.DINING: preload("res://levels/paintings/dining.png"),
+	PaintingType.SPIRE: preload("res://levels/paintings/spire.png"),
+	PaintingType.WATER: preload("res://levels/paintings/water.png"),
+	PaintingType.SHOP: preload("res://levels/paintings/shop.png"),
+	PaintingType.HEALING: preload("res://levels/paintings/healing.png"),
+	PaintingType.BOSS: preload("res://levels/paintings/boss.png"),
 }
 
 @export var always_active: bool = false
 
-var normal_level_index: LevelBase.NormalLevels
+var painting_type: PaintingType
 var exit_type: LevelBase.LevelType
+var normal_level_type: LevelManager.NormalLevelType = LevelManager.NormalLevelType.NONE
 var active: bool = false
 
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
@@ -33,7 +41,7 @@ func _ready() -> void:
 	if always_active:
 		activate()
 
-func initialize(current_level: LevelBase, door_number: int):
+func initialize(current_level: LevelBase):
 	var level_number: int = current_level.level_manager.current_level_count + 1
 	var shop_before_boss: bool = level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
 	var guaranteed_shop: bool = level_number % LevelBase.CREATE_SHOP_LEVEL_MODULO == 0
@@ -41,32 +49,32 @@ func initialize(current_level: LevelBase, door_number: int):
 	var boss_after_shop: bool = current_level.type == LevelBase.LevelType.SHOP && (level_number - 1) % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
 	var boss_after_battle: bool = current_level.type != LevelBase.LevelType.SHOP && level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
 	
-	#print("shop_before_boss:", shop_before_boss)
-	#print("guaranteed_shop:", guaranteed_shop)
 	if current_level.type != LevelBase.LevelType.SHOP && (shop_before_boss || guaranteed_shop) && !current_level.shop_exit_made:
-		#print("here")
 		exit_type = LevelBase.LevelType.SHOP
 		current_level.shop_exit_made = true
+		painting_type = PaintingType.SHOP
 	elif boss_after_shop || boss_after_battle:
 		exit_type = LevelBase.LevelType.BOSS
+		painting_type = PaintingType.BOSS
 	elif current_level.type == LevelBase.LevelType.BOSS:
 		exit_type = LevelBase.LevelType.HEALING
+		painting_type = PaintingType.HEALING
 	else:
 		var level_roll: float = randf()
 		#if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:
 		#	exit_type = LevelBase.LevelType.SHOP
 		if level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
 			exit_type = LevelBase.LevelType.HEALING
+			painting_type = PaintingType.HEALING
 		elif level_roll > 0.65:
 			exit_type = LevelBase.LevelType.ELITE
-			current_level.level_manager.choose_normal_level_index(door_number)
-			normal_level_index = current_level.level_manager.new_level_index
+			border.material.albedo_color = Color.RED
+			normal_level_type = current_level.level_manager.choose_normal_level_type()
 		else:
 			exit_type = LevelBase.LevelType.NORMAL
-			current_level.level_manager.choose_normal_level_index(door_number)
-			normal_level_index = current_level.level_manager.new_level_index
+			normal_level_type = current_level.level_manager.choose_normal_level_type()
 	select_painting(current_level)
-	print("Exit: ", exit_type, " ", normal_level_index)	
+	print("Exit: ", exit_type)	
 
 func activate():
 	active = true
@@ -77,20 +85,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	
 	if body is Player:
-		exit_chosen.emit(exit_type, normal_level_index)
+		exit_chosen.emit(exit_type, normal_level_type)
 	else:
 		push_error("Non-player triggered LevelExit collision")
 
 func select_painting(current_level: LevelBase):
 	if exit_type == LevelBase.LevelType.NORMAL || exit_type == LevelBase.LevelType.ELITE:
-		painting.texture = current_level.level_manager.normal_level_paintings[normal_level_index]
-		
-		if exit_type == LevelBase.LevelType.ELITE:
-			border.material.albedo_color = Color.RED
-		
-	elif exit_type == LevelBase.LevelType.BOSS:
-		painting.texture = BOSS
-	elif exit_type == LevelBase.LevelType.HEALING:
-		painting.texture = HEALING
-	elif exit_type == LevelBase.LevelType.SHOP:
-		painting.texture = SHOP
+		painting.texture = PAINTINGS[normal_level_type]
+	else:
+		painting.texture = PAINTINGS[painting_type]

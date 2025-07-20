@@ -103,7 +103,7 @@ ambient_light_energy = 0.1
 fog_light_color = Color(0.7718, 0.79422, 0.829452, 1)
 fog_light_energy = 0.02
 
-[node name="SpireLevel" instance=ExtResource("1_xrajd")]
+[node name="Spire" instance=ExtResource("1_xrajd")]
 enemy_minimum = 8
 enemy_limit = 8
 enemy_spawn_limits = Dictionary[int, int]({
