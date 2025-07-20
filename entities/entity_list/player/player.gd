@@ -56,8 +56,6 @@ func _physics_process(delta: float) -> void:
 	#print(health_component.current_health)
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
-		
-	print(health_component.current_health, "/", health_component.max_health)
 
 func prepare_states():
 	if title:
