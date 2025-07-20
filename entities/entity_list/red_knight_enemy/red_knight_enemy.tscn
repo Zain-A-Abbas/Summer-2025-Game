@@ -210,24 +210,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.0254789, 3.25061, -0.185244)
-bones/1/rotation = Quaternion(-0.000190365, 0.0132314, -0.0143892, 0.999809)
-bones/3/rotation = Quaternion(0.16763, -0.0413242, 0.000171757, 0.984984)
-bones/4/rotation = Quaternion(0.283932, -0.114672, -0.0271443, 0.951576)
-bones/6/rotation = Quaternion(0.0285969, 0.94091, -0.337399, 0.00577906)
-bones/7/rotation = Quaternion(0.204445, -0.770352, 0.335008, 0.502523)
-bones/8/rotation = Quaternion(0.0326555, 0.669957, 0.0668736, 0.738661)
-bones/10/rotation = Quaternion(0.0252847, 0.0115894, 0.00822287, 0.999579)
-bones/13/rotation = Quaternion(-0.173061, 0.0775107, 0.0185739, 0.981681)
-bones/14/rotation = Quaternion(0.145392, 0.16354, -0.0333095, 0.975195)
-bones/18/rotation = Quaternion(0.178913, 0.765408, -0.245861, 0.56718)
-bones/19/rotation = Quaternion(0.000208456, -0.613947, -0.0288946, 0.788818)
-bones/25/rotation = Quaternion(-4.86509e-05, 0.219296, 0.975634, -0.00695548)
-bones/26/rotation = Quaternion(-0.000275672, 0.963698, -0.266992, -0.00127621)
-bones/27/rotation = Quaternion(-0.00380479, 0.671335, -0.740997, -0.0147724)
-bones/28/rotation = Quaternion(-9.62346e-05, -0.0684061, 0.997563, -0.0137584)
-bones/29/rotation = Quaternion(-0.000814319, 0.947129, -0.32084, -0.00270651)
-bones/30/rotation = Quaternion(0.000558248, 0.65663, -0.754153, -0.00947932)
+bones/1/position = Vector3(0.101413, 3.36665, -0.185781)
+bones/1/rotation = Quaternion(-1.16386e-05, 0.00510097, -0.00207157, 0.999985)
+bones/3/rotation = Quaternion(0.164883, -0.0411719, -0.000248882, 0.985453)
+bones/4/rotation = Quaternion(0.275879, -0.114282, -0.0284211, 0.953951)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0457271, 0.93677, -0.346895, 0.00594166)
+bones/7/rotation = Quaternion(0.201205, -0.774989, 0.337039, 0.49529)
+bones/8/rotation = Quaternion(0.0543253, 0.648212, 0.0694794, 0.756335)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.000145238, 6.65656e-05, 4.73349e-05, 1)
+bones/13/rotation = Quaternion(-0.167541, 0.0772196, 0.0194306, 0.982644)
+bones/14/rotation = Quaternion(0.0967804, 0.174586, -0.0105686, 0.979817)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.20055, 0.755408, -0.275056, 0.559895)
+bones/19/rotation = Quaternion(-0.0238548, -0.613484, 0.00204465, 0.789344)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(0.000101101, 0.0549987, 0.998382, 0.0144545)
+bones/26/rotation = Quaternion(0.00021513, 0.991763, -0.128074, 0.00150286)
+bones/27/rotation = Quaternion(0.00854667, 0.660911, -0.750276, -0.0144695)
+bones/28/rotation = Quaternion(0.00011063, 0.225026, 0.974225, 0.0158167)
+bones/29/rotation = Quaternion(0.00501491, 0.770599, -0.637272, 0.00592983)
+bones/30/rotation = Quaternion(0.0226238, 0.819189, -0.573075, -0.00152145)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -237,7 +242,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.395302, -0.715737, 0.575724, 0.0623166, -0.646226, -0.760598, 0.916435, -0.264788, 0.300056, -2.05222, 3.79441, -1.52832)
+transform = Transform3D(-0.411673, -0.686852, 0.598965, 0.0729647, -0.679973, -0.729598, 0.908406, -0.256653, 0.330043, -1.99965, 3.8292, -1.45106)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -297,8 +302,8 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="Components" index="0"]
-current_health = 120
-max_health = 120
+current_health = 100
+max_health = 100
 
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 75.0

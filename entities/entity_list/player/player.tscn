@@ -534,29 +534,23 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.202319, 2.7105, -0.407873)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.164423, -0.041146, -0.000319158, 0.985531)
-bones/4/rotation = Quaternion(0.272268, -0.114103, -0.0289912, 0.954992)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0452572, 0.936886, -0.346642, 0.00593742)
-bones/7/rotation = Quaternion(0.201301, -0.774853, 0.336979, 0.495505)
-bones/8/rotation = Quaternion(0.0523314, 0.650327, 0.0692323, 0.754681)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00104403, 0.000478576, 0.000339373, 0.999999)
-bones/13/rotation = Quaternion(-0.165069, 0.0770872, 0.0198129, 0.983065)
-bones/14/rotation = Quaternion(0.0977664, 0.174848, -0.00933585, 0.979685)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.192549, 0.759252, -0.264261, 0.562697)
-bones/19/rotation = Quaternion(-0.023585, -0.613494, 0.00169742, 0.789345)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00109045, 0.247572, 0.956244, -0.155899)
-bones/26/rotation = Quaternion(0.046739, 0.839114, -0.536872, 0.0739766)
-bones/27/rotation = Quaternion(-0.0485462, 0.599653, -0.796563, 0.0595593)
-bones/28/rotation = Quaternion(0.00231999, 0.0392125, 0.942573, 0.331684)
-bones/29/rotation = Quaternion(-0.155064, 0.808371, -0.509949, -0.249885)
-bones/30/rotation = Quaternion(0.240883, 0.499212, -0.823995, 0.11745)
+bones/1/position = Vector3(0.0067848, 2.72291, -0.407959)
+bones/3/rotation = Quaternion(0.16413, -0.0411296, -0.000363698, 0.985581)
+bones/4/rotation = Quaternion(0.269613, -0.113971, -0.0294092, 0.955748)
+bones/6/rotation = Quaternion(0.0208312, 0.94271, -0.332914, 0.00570221)
+bones/7/rotation = Quaternion(0.205812, -0.768366, 0.334137, 0.505576)
+bones/8/rotation = Quaternion(0.0492928, 0.653503, 0.0688586, 0.752172)
+bones/10/rotation = Quaternion(0.0366393, 0.0167939, 0.0119156, 0.999116)
+bones/13/rotation = Quaternion(-0.163252, 0.0769891, 0.0200932, 0.983371)
+bones/14/rotation = Quaternion(0.101806, 0.174436, -0.00977268, 0.979343)
+bones/18/rotation = Quaternion(0.184599, 0.762901, -0.253534, 0.565355)
+bones/19/rotation = Quaternion(-0.0216629, -0.613565, -0.000775239, 0.789347)
+bones/25/rotation = Quaternion(-0.00128525, 0.222646, 0.957424, -0.183755)
+bones/26/rotation = Quaternion(0.0394881, 0.852614, -0.516855, 0.0659654)
+bones/27/rotation = Quaternion(-0.081562, 0.602447, -0.790398, 0.0753458)
+bones/28/rotation = Quaternion(0.00211157, 0.0215221, 0.953098, 0.301889)
+bones/29/rotation = Quaternion(-0.159609, 0.80304, -0.51555, -0.252705)
+bones/30/rotation = Quaternion(0.220272, 0.469348, -0.845812, 0.125679)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -565,10 +559,10 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.634293, -0.708999, 0.308209, 0.586677, -0.701071, -0.405351, 0.50347, -0.0762919, 0.860638, -1.43622, 2.51667, -2.06442)
+transform = Transform3D(-0.64666, -0.700179, 0.302622, 0.575974, -0.708325, -0.408081, 0.500084, -0.0895876, 0.86133, -1.62217, 2.51507, -2.07821)
 
 [node name="HandAttachment2" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(0.633656, -0.0794489, -0.769525, -0.759321, -0.254209, -0.599008, -0.148029, 0.963881, -0.221408, 1.79648, 2.96728, 1.49539)
+transform = Transform3D(0.673716, -0.0429114, -0.737744, -0.720967, -0.257309, -0.643428, -0.162218, 0.965376, -0.204291, 1.71165, 3.0293, 1.47804)
 bone_name = "LeftHand"
 bone_idx = 8
 
@@ -585,7 +579,7 @@ process_material = SubResource("ParticleProcessMaterial_wlnxk")
 draw_pass_1 = SubResource("QuadMesh_wlnxk")
 
 [node name="CapeAttachment" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="4"]
-transform = Transform3D(0.876149, 0.0253899, -0.481372, 0.0132499, 0.996966, 0.0767013, 0.481858, -0.0735799, 0.873154, 0.32827, 4.6265, -0.75594)
+transform = Transform3D(0.876176, 0.0264705, -0.481264, 0.0130305, 0.996825, 0.0785505, 0.481815, -0.0750951, 0.873049, 0.134138, 4.63946, -0.757678)
 bone_name = "Neck"
 bone_idx = 13
 

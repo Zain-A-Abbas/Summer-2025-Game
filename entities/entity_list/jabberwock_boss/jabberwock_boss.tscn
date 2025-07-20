@@ -435,6 +435,12 @@ metadata/_custom_type_script = "uid://cjv5ddiivejgd"
 [node name="AttackIndicator" parent="." index="8"]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 7.16821, 0)
 
+[node name="SubViewport" parent="." index="9"]
+size = Vector2i(156, 21)
+
+[node name="EnemyHPBar" parent="SubViewport" index="0"]
+scale = Vector2(1.5, 1.5)
+
 [node name="EnemyHP" parent="." index="10"]
 texture = SubResource("ViewportTexture_5sssr")
 

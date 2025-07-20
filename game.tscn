@@ -7,6 +7,21 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_80nbo")
 
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -128
+
+[node name="ColorRect" type="ColorRect" parent="BG"]
+visible = false
+z_index = -3330
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
 [node name="GameplayLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
