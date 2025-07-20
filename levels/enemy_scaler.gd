@@ -41,7 +41,7 @@ func scale_enemy(enemy: Enemy, args: Dictionary[String, Variant]):
 		scale_red_knight(enemy, args)
 	else: #JABBERWOCK
 		scale_jabberwock(enemy, args)
-
+		
 func scale_card(card: BasicEnemy, args: Dictionary[String, Variant]):
 	card.basic_attack.attack_effects[0].damage = ceilf(float(card.basic_attack.attack_effects[0].damage) * args["dmg_multiplier"])
 	

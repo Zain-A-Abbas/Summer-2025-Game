@@ -56,6 +56,8 @@ func _physics_process(delta: float) -> void:
 	#print(health_component.current_health)
 	if regenerating_stamina:
 		stamina = minf(stamina + delta * 100.0, max_stamina)
+		
+	print(health_component.current_health, "/", health_component.max_health)
 
 func prepare_states():
 	if title:
@@ -132,10 +134,9 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	state_machine.change_state(&"Death")
 
 func heal(heal_amount: int):
-	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
-	#player_hp_recovered.emit(self)
-	player_damage_taken.emit(self, health_component.current_health)
-	play_sound_fx(&"heal")
+	health_component.set_current_health(health_component.current_health + heal_amount)
+	player_hp_recovered.emit(self)
+	#player_damage_taken.emit(self, 0)
 
 func gain_money(amount: int):
 	obtained_money.emit(amount)

@@ -25,7 +25,7 @@ const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
 }
 const CREATE_SHOP_LEVEL_MODULO: int = 5
 const CREATE_BOSS_LEVEL_MODULO: int = 10
-const ELITE_DMG_MULTIPLIER: float = 1.2
+const ELITE_DMG_MULTIPLIER: float = 1.15
 const ELITE_HP_MULTIPLIER: float = 1.25
 
 @export var has_enemies: bool = true
@@ -152,24 +152,23 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
 
-func start_level(_type: LevelType, old_level_type: LevelBase.LevelType):
+func start_level(_type: LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 	
-	if _type != old_level_type:
-		if _type == LevelType.NORMAL:
-			Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE, 1.0)
-		elif _type == LevelType.SHOP:
-			Bgm.play_bgm(Bgm.BGM_TYPE.SHOP, 1.0)
-		elif _type == LevelType.HEALING:
-			Bgm.play_bgm(Bgm.BGM_TYPE.HEALING, 1.0)
-		elif _type == LevelType.BOSS:
-			Bgm.play_bgm(Bgm.BGM_TYPE.BOSS, 1.0)
-
-
+	if _type == LevelType.NORMAL:
+		Bgm.change_volume(1.0)
+		Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE)
+	elif _type == LevelType.SHOP || _type == LevelType.HEALING:
+		Bgm.change_volume(0.35)
+	elif _type == LevelType.BOSS:
+		Bgm.change_volume(1.0)
+		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
+	#print(level_manager.current_level_count)
+	
 func gameover(player: Player):
 	for enemy in enemies.get_children():
 		enemy.queue_free()

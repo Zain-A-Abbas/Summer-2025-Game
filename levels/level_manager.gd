@@ -12,7 +12,7 @@ enum NormalLevelType {
 	NONE
 }
 
-const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
+const ENEMY_DMG_MULTIPLIER_INC: float = 0.12
 const ENEMY_HP_MULTIPLIER_INC: float = 0.2
 const NORMAL_LEVELS: Dictionary[NormalLevelType, PackedScene] = {
 	NormalLevelType.BRIDGE: preload("res://levels/level_list/bridge_level/bridge_level.tscn"),
@@ -30,7 +30,7 @@ const NORMAL_LEVELS: Dictionary[NormalLevelType, PackedScene] = {
 @export var shop_level: PackedScene
 @export var boss_level: PackedScene
 
-var current_level_type: LevelBase.LevelType
+var current_level_type: LevelBase.LevelType = LevelBase.LevelType.NONE
 var current_level_count: int = 0
 var new_normal_level_type: NormalLevelType = NormalLevelType.NONE
 var normal_level_queue: Array[NormalLevelType]
@@ -86,11 +86,15 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	elif new_level_type == LevelBase.LevelType.BOSS:
 		new_level = boss_level.instantiate()
 	
+	current_level_type = new_level_type
+	
 	level_holder.add_child(new_level)
 	var enemy_count: int = randi_range(new_level.enemy_minimum, new_level.enemy_limit)
+	if new_level_type == LevelBase.LevelType.ELITE:
+		enemy_count = new_level.enemy_limit
 	if !new_level.has_enemies:
 		enemy_count = 0
-	#print("Level: ", current_level_count, " ", new_level_type)
+
 	new_level.setup_level(self, new_level_type, enemy_count)
 	new_level.level_completed.connect(level_complete)
 	
@@ -109,7 +113,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	player_ui.refresh_player(current_player)
 	
 	await fade_transition(false)
-	new_level.start_level(new_level_type, old_level_type)
+	new_level.start_level(new_level_type)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_level_type: LevelManager.NormalLevelType):
 	await fade_transition(true)
@@ -125,13 +129,12 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
-		print("scaling turned on")
+		#print("scaling turned on")
 	
 	reset_normal_level_queue()
 	if level.type == LevelBase.LevelType.NORMAL:
-		normal_level_queue.erase(new_normal_level_type)
+		normal_level_queue.erase(normal_level_type)
 	
-	var old_level_type: LevelBase.LevelType = level.type
 	level.queue_free()
 	
 	await get_tree().process_frame

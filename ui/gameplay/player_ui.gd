@@ -62,6 +62,7 @@ func update_money(amount: int):
 func refresh_player(current_player: Player):
 	player = current_player
 	set_hp_immediate(player)
+	player.player_hp_recovered.connect(player_hp_recovered)
 	player.player_damage_taken.connect(player_damage_taken)
 	player.player_died.connect(gameover)
 	stamina_bar.max_value = current_player.max_stamina
@@ -138,8 +139,8 @@ func player_hp_recovered(current_player: Player):
 	hp_under_bar.value = current_player.health_component.current_health
 
 func set_hp_immediate(current_player: Player):
-	var hp_bar_length: float = 200 * (current_player.health_component.max_health / 100.0)
+	var hp_bar_length: float = 200 * (player.health_component.max_health / 100.0)
 	hp_bar.custom_minimum_size.x = hp_bar_length
 	hp_under_bar.custom_minimum_size.x = hp_bar_length
-	hp_bar.value = current_player.health_component.current_health
-	hp_under_bar.value = current_player.health_component.current_health
+	hp_bar.value = player.health_component.current_health
+	hp_under_bar.value = player.health_component.current_health

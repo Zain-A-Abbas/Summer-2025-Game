@@ -30,6 +30,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	
 	enemy.action_animator.play("basic_enemy_animation_library/attack")
+	print(attack_object.attack_effects[0].damage)
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta

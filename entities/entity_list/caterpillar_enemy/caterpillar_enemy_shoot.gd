@@ -46,8 +46,8 @@ func st_physics_process(delta: float) -> void:
 	
 		var seed = enemy.seed.instantiate()
 		enemy.projectiles.add_child(seed)
-		seed.initialize_seed(false, face_player(), enemy.projectiles, enemy.seed_damage)
 		seed.global_position = enemy.global_position
+		seed.initialize_seed(false, face_player(), enemy.projectiles, enemy.seed_damage)
 		
 	if delta_count > enemy.shoot_times[1]:
 		return state_machine.change_state(&"Idle")

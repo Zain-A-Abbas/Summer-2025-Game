@@ -338,7 +338,7 @@ fog_light_color = Color(0.4932, 0.52818, 0.583151, 1)
 fog_light_energy = 0.02
 
 [node name="Dining" instance=ExtResource("1_bkt50")]
-enemy_minimum = 3
+enemy_minimum = 4
 enemy_limit = 6
 enemy_spawn_limits = Dictionary[int, int]({
 0: 1,
