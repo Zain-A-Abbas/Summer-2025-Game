@@ -29,6 +29,7 @@ var projectiles: Node3D
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
 @onready var enemy_hp_sprite: Sprite3D = %EnemyHP
+@onready var damaged_particles: GPUParticles3D = %DamagedParticles
 
 
 func _ready() -> void:

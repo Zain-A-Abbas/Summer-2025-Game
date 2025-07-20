@@ -42,7 +42,7 @@ var upgrades: PlayerUpgrades
 @onready var bleed_particles: GPUParticles3D = %BleedParticles
 @onready var paralysis_particles: GPUParticles3D = %ParalysisParticles
 @onready var burn_particles: GPUParticles3D = %BurnParticles
-
+@onready var damaged_particles: GPUParticles3D = %DamagedParticles
 
 func _ready() -> void:
 	prepare_states()

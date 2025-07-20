@@ -40,6 +40,7 @@ var gravity_vel: float = 0
 @onready var movement_component: MovementComponent = %MovementComponent
 @onready var decal: Decal = %Decal
 
+
 func _physics_process(delta: float) -> void:
 	update_inflicted_attack_effects(delta)
 	

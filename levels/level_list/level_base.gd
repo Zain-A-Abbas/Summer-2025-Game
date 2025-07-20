@@ -243,9 +243,7 @@ func initialize_enemy_list() -> Array[Enemy.EnemyType]:
 	return list
 	
 func spawn_enemy(type: Enemy.EnemyType) -> Enemy:
-	var path: String = ENEMIES[type]
-	
-	return load(path).instantiate()
+	return load(ENEMIES[type]).instantiate()
 
 func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 	return enemy_spawn_count[type] <= enemy_spawn_limits[type]

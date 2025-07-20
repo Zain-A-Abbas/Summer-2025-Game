@@ -19,4 +19,7 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 	if target.health_component.current_health == 0:
 		target.char_entity_die()
 		
+	target.damaged_particles.restart()
+	target.damaged_particles.emitting = true
+	
 	return true

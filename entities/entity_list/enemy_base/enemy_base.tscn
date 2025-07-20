@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvgf8gcq24c8"]
+[gd_scene load_steps=22 format=3 uid="uid://dvgf8gcq24c8"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_6myxx"]
 [ext_resource type="Script" uid="uid://ci26usb7hj062" path="res://entities/entity_types/enemy.gd" id="2_xtrms"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="5_1uwf7"]
 [ext_resource type="Texture2D" uid="uid://b7ys383dwg6t0" path="res://effects/attack_indicator.png" id="6_mppf5"]
 [ext_resource type="Script" uid="uid://d3f44frlk47uw" path="res://ui/gameplay/enemy_hp_bar.gd" id="7_6omki"]
+[ext_resource type="Texture2D" uid="uid://dxv1hlfjxa3pw" path="res://effects/particle-textures/trace_08.png" id="8_48pjb"]
+[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="8_w0vey"]
 
 [sub_resource type="Animation" id="Animation_48pjb"]
 length = 0.001
@@ -80,6 +82,30 @@ bg_color = Color(0.62, 0.1426, 0.1426, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mppf5"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="Curve" id="Curve_w0vey"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251908, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_apdix"]
+curve = SubResource("Curve_w0vey")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qj4n2"]
+particle_flag_align_y = true
+spread = 180.0
+initial_velocity_min = 128.0
+initial_velocity_max = 128.0
+scale_curve = SubResource("CurveTexture_apdix")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p772y"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("8_48pjb")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rg84g"]
+material = SubResource("StandardMaterial3D_p772y")
+size = Vector2(0.064, 2)
+
 [node name="EnemyBase" node_paths=PackedStringArray("meshes") instance=ExtResource("1_6myxx")]
 script = ExtResource("2_xtrms")
 meshes = []
@@ -151,6 +177,27 @@ texture = SubResource("ViewportTexture_mppf5")
 
 [node name="Sounds" parent="." index="9"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="killed" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
+stream = ExtResource("8_w0vey")
+volume_db = -4.0
+max_db = 1.0
+pitch_scale = 0.7
+panning_strength = 0.0
+
+[node name="DamagedParticles" type="GPUParticles3D" parent="." index="10"]
+unique_name_in_owner = true
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 0, 0)
+emitting = false
+amount = 32
+lifetime = 0.1
+one_shot = true
+speed_scale = 0.4
+explosiveness = 0.85
+fixed_fps = 60
+visibility_aabb = AABB(-8, -8, -8, 16, 16, 16)
+process_material = SubResource("ParticleProcessMaterial_qj4n2")
+draw_pass_1 = SubResource("QuadMesh_rg84g")
 
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="hit_received" from="Hurtbox" to="." method="_on_hurtbox_hit_received"]

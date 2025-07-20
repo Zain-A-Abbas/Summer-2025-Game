@@ -12,7 +12,8 @@ extends Enemy
 var summoned_list: Array[Enemy] = []
 
 @onready var ray_cast: RayCast3D = %ray_cast
-
+@onready var summoning_particles: GPUParticles3D = %SummoningParticles
+@onready var summoned_particles: GPUParticles3D = %SummonedParticles
 
 func prepare_states():
 	var enemy_states: Array[StateInitializer] = [
@@ -41,6 +42,7 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	
 	for summoned in summoned_list:
 		if summoned:
+			summoned.get_node("SummonedParticles").emitting = true
 			summoned.char_entity_die({"summoned": true})
 	
 	hurtbox.set_collision_mask_value(2, 0)

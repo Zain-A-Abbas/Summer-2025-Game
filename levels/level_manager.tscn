@@ -10,6 +10,7 @@
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_6tvrh")
+use_test_level = true
 test_level = ExtResource("2_3uyut")
 normal_levels = Array[int]([0, 1, 2, 3, 4])
 healing_level = ExtResource("5_l3tyk")

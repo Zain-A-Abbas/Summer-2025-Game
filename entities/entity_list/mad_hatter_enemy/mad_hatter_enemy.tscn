@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dw7hd5c8gm2mv"]
+[gd_scene load_steps=36 format=3 uid="uid://dw7hd5c8gm2mv"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_wksuw"]
 [ext_resource type="Script" uid="uid://b6tl1se2dbigb" path="res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.gd" id="2_7asxt"]
@@ -14,7 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://cmh877kmt4c36" path="res://audio/entities/mad_hatter/Fast_Magic_Whoosh_05.wav" id="13_hqo0i"]
 [ext_resource type="AudioStream" uid="uid://c1sl8noppdq2j" path="res://audio/entities/mad_hatter/Fast_Magic_Whoosh_10.wav" id="14_ohgob"]
 [ext_resource type="AudioStream" uid="uid://cqkh0vjtoyqdn" path="res://audio/entities/mad_hatter/Fae_Giggle3.wav" id="15_hqo0i"]
-[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="17_ohgob"]
+[ext_resource type="AudioStream" uid="uid://buyde8goqptkn" path="res://audio/entities/mad_hatter/Fae_Sigh.wav" id="15_ohgob"]
+[ext_resource type="Texture2D" uid="uid://cqui5dfy3j1g8" path="res://effects/particle-textures/star_05.png" id="16_hqo0i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8ybbv"]
 height = 1.0
@@ -104,6 +105,59 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_v1tun"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="Gradient" id="Gradient_ohgob"]
+offsets = PackedFloat32Array(0.00398406, 0.474104, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1duh7"]
+gradient = SubResource("Gradient_ohgob")
+use_hdr = true
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dopcp"]
+
+[sub_resource type="Curve" id="Curve_wi2qw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_v6c76"]
+curve = SubResource("Curve_wi2qw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hdcnx"]
+emission_shape_scale = Vector3(3.2, 1, 3.2)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+flatness = 1.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = -1.60933e-05
+directional_velocity_curve = SubResource("CurveXYZTexture_dopcp")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_v6c76")
+color = Color(2, 1.172, 0.58, 1)
+color_ramp = SubResource("GradientTexture1D_1duh7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh0x7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.644144, 0.510432, 1)
+albedo_texture = ExtResource("16_hqo0i")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ka3h4"]
+material = SubResource("StandardMaterial3D_fh0x7")
+
 [node name="MadHatterEnemy" node_paths=PackedStringArray("hurtbox", "meshes") instance=ExtResource("1_wksuw")]
 script = ExtResource("2_7asxt")
 spawn_type_list = Array[Resource]([ExtResource("3_rt3wv"), ExtResource("4_7tx5y"), ExtResource("5_ac3cl")])
@@ -115,22 +169,26 @@ change_direction_time = 1.2
 max_speed = 600.0
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("MadHatterAnimator/Armature/Skeleton3D/Cylinder/Cylinder"), NodePath("MadHatterAnimator/Armature/Skeleton3D/Cube")]
-death_state_duration = 0.333
+death_state_duration = 1.81
 
 [node name="MadHatterAnimator" parent="." index="0" instance=ExtResource("6_rt3wv")]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MadHatterAnimator/Armature" index="0"]
-bones/0/position = Vector3(-0.223784, 0.818727, -1.39711)
-bones/0/rotation = Quaternion(0.479415, 0.479414, 0.519771, 0.519771)
+bones/0/rotation = Quaternion(0.677994, -8.76278e-07, -8.0824e-07, 0.735067)
+bones/1/rotation = Quaternion(-0.188365, 5.75323e-07, 2.51354e-07, 0.982099)
+bones/3/rotation = Quaternion(-0.410559, 0.172726, -0.284649, 0.848871)
+bones/5/rotation = Quaternion(-0.410559, -0.172726, 0.284649, 0.848871)
 bones/7/rotation = Quaternion(-0.747306, 6.71534e-12, 8.90867e-07, 0.66448)
-bones/13/position = Vector3(0.111892, 1.48222, -0.617619)
-bones/13/rotation = Quaternion(0.142383, 0.386076, 0.593306, -0.691853)
-bones/15/position = Vector3(0.111892, 0.155238, -0.617619)
-bones/15/rotation = Quaternion(-0.386076, -0.142383, 0.691853, -0.593306)
+bones/13/position = Vector3(0.663489, 0.624042, -0.66066)
+bones/13/rotation = Quaternion(0.377733, 0.237476, 0.893932, -0.0425232)
+bones/14/rotation = Quaternion(0.204171, 0.0519532, -0.119534, 0.97022)
+bones/15/position = Vector3(-0.663489, 0.624042, -0.66066)
+bones/15/rotation = Quaternion(-0.377733, 0.237476, 0.893932, 0.0425232)
+bones/16/rotation = Quaternion(0.204171, -0.0519532, 0.119534, 0.97022)
 
 [node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-1.4228e-06, -0.939694, -0.342023, 1, -1.04028e-06, -1.2751e-06, 8.80597e-07, -0.342018, 0.939691, -1.28127, 0.818724, 0.960245)
+transform = Transform3D(1, -1.82078e-08, 1.71173e-07, -6.50149e-08, 0.880642, 0.473789, -1.59372e-07, -0.473782, 0.880639, 1.75644e-07, 2.20837, 0.857067)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -191,21 +249,21 @@ max_db = -5.0
 
 [node name="magic_whoosh_1" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
 stream = ExtResource("12_1n4y7")
-volume_db = -3.0
+volume_db = -5.0
 unit_size = 20.0
-max_db = -15.0
+max_db = -5.0
 
 [node name="magic_whoosh_2" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
 stream = ExtResource("13_hqo0i")
-volume_db = -3.0
+volume_db = -5.0
 unit_size = 20.0
-max_db = -15.0
+max_db = -5.0
 
 [node name="magic_whoosh_3" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
 stream = ExtResource("14_ohgob")
-volume_db = -3.0
+volume_db = -5.0
 unit_size = 20.0
-max_db = -15.0
+max_db = -5.0
 
 [node name="damaged_squeal" type="AudioStreamPlayer3D" parent="Sounds" index="6"]
 stream = ExtResource("15_hqo0i")
@@ -219,7 +277,33 @@ volume_db = -2.0
 pitch_scale = 1.1
 
 [node name="death" parent="Sounds" index="8"]
-stream = ExtResource("17_ohgob")
-pitch_scale = 0.7
+stream = ExtResource("15_ohgob")
+volume_db = -10.0
+max_db = 0.0
+pitch_scale = 4.0
+
+[node name="SummoningParticles" type="GPUParticles3D" parent="." index="14"]
+unique_name_in_owner = true
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 0, 0)
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hdcnx")
+draw_pass_1 = SubResource("QuadMesh_ka3h4")
+
+[node name="SummonedParticles" type="GPUParticles3D" parent="." index="15"]
+unique_name_in_owner = true
+transform = Transform3D(0.535, 0, 0, 0, 0.535, 0, 0, 0, 0.535, 0, 0, 0)
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_hdcnx")
+draw_pass_1 = SubResource("QuadMesh_ka3h4")
 
 [editable path="MadHatterAnimator"]
