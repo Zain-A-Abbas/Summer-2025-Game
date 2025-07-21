@@ -126,6 +126,8 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		
 	if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
 		reset_normal_level_queue()
+		if level.type != LevelBase.LevelType.BOSS:
+			normal_level_queue.erase(normal_level_type)
 	
 	if level.type == LevelBase.LevelType.BOSS:
 		bosses_killed += 1
@@ -134,9 +136,6 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
 		#print("scaling turned on")
-
-	if level.type == LevelBase.LevelType.NORMAL || level.type == LevelBase.LevelType.ELITE:
-		normal_level_queue.erase(normal_level_type)
 	
 	level.queue_free()
 	

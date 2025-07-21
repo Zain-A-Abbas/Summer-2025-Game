@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b8tkb5tr2t8vj"]
+[gd_scene load_steps=47 format=3 uid="uid://b8tkb5tr2t8vj"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_1anpf"]
 [ext_resource type="Script" uid="uid://b4ymyhvxbw3fo" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.gd" id="2_gs4ux"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="11_0bqms"]
 [ext_resource type="AudioStream" uid="uid://dpu77sbmryeo0" path="res://audio/entities/red_knight/Big_Sword_Whoosh_05.wav" id="12_p6bwr"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="12_xnuhp"]
+[ext_resource type="Texture2D" uid="uid://d1fb1y5jqb5by" path="res://ui/gameplay/parry_icon.png" id="13_657e3"]
 [ext_resource type="AudioStream" uid="uid://dl6asahtmoiy2" path="res://audio/entities/general/Stone Chain Run 1.wav" id="14_kt7bg"]
 [ext_resource type="AudioStream" uid="uid://d18ohe1khso8l" path="res://audio/entities/general/Stone Chain Run 2.wav" id="15_4h5qo"]
 [ext_resource type="AudioStream" uid="uid://fy1tdvy6686s" path="res://audio/entities/general/Stone Chain Run 3.wav" id="16_pdgy0"]
@@ -210,29 +211,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.0935294, 3.22556, -0.184771)
-bones/1/rotation = Quaternion(-0.000350193, -0.0160382, 0.0218414, 0.999633)
-bones/3/rotation = Quaternion(0.163869, -0.0411149, -0.000403631, 0.985625)
-bones/4/rotation = Quaternion(0.267988, -0.113889, -0.0296647, 0.956207)
+bones/1/position = Vector3(0.143665, 3.39462, -0.185691)
+bones/1/rotation = Quaternion(-4.31467e-05, -0.00398424, 0.0105573, 0.999936)
+bones/3/rotation = Quaternion(0.164484, -0.0411495, -0.000309856, 0.985521)
+bones/4/rotation = Quaternion(0.27288, -0.114134, -0.0288947, 0.954817)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0218386, 0.942479, -0.333503, 0.00571245)
-bones/7/rotation = Quaternion(0.205652, -0.7686, 0.33424, 0.505219)
-bones/8/rotation = Quaternion(0.0459188, 0.656967, 0.0684477, 0.7494)
+bones/6/rotation = Quaternion(0.0197672, 0.942953, -0.332291, 0.00569161)
+bones/7/rotation = Quaternion(0.206026, -0.768054, 0.334001, 0.506053)
+bones/8/rotation = Quaternion(0.0528916, 0.649736, 0.0693012, 0.755144)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0351112, 0.0160934, 0.0114187, 0.999189)
-bones/13/rotation = Quaternion(-0.162731, 0.0769609, 0.0201737, 0.983458)
-bones/14/rotation = Quaternion(0.107092, 0.173667, -0.0111776, 0.9789)
+bones/10/rotation = Quaternion(0.0379895, 0.0174127, 0.0123546, 0.99905)
+bones/13/rotation = Quaternion(-0.165487, 0.0771098, 0.0197481, 0.982994)
+bones/14/rotation = Quaternion(0.0971129, 0.174893, -0.00934794, 0.979742)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.177457, 0.766037, -0.243896, 0.567637)
-bones/19/rotation = Quaternion(-0.0191604, -0.613648, -0.00399465, 0.789337)
+bones/18/rotation = Quaternion(0.194182, 0.758481, -0.266465, 0.562136)
+bones/19/rotation = Quaternion(-0.0238971, -0.613482, 0.00209907, 0.789344)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000260942, -0.0858986, 0.995605, 0.0373069)
-bones/26/rotation = Quaternion(0.00146767, 0.971105, -0.238574, 0.00590228)
-bones/27/rotation = Quaternion(-0.00744704, 0.697465, -0.716281, 0.0207139)
-bones/28/rotation = Quaternion(0.000204667, 0.230825, 0.972555, 0.0292612)
-bones/29/rotation = Quaternion(0.000263614, 0.996217, -0.0868637, 0.00251956)
-bones/30/rotation = Quaternion(0.0217148, 0.645515, -0.763439, 0.000901897)
+bones/25/rotation = Quaternion(0.000233166, 0.00221195, 0.999442, 0.0333353)
+bones/26/rotation = Quaternion(0.00072304, 0.985989, -0.166755, 0.00414222)
+bones/27/rotation = Quaternion(0.0131753, 0.680662, -0.732477, -0.00155719)
+bones/28/rotation = Quaternion(0.000214465, 0.391797, 0.919541, 0.0306617)
+bones/29/rotation = Quaternion(0.00947894, 0.800322, -0.599362, 0.0126272)
+bones/30/rotation = Quaternion(0.0295823, 0.793881, -0.607353, -0.000155854)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -242,7 +243,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.489063, -0.628881, 0.604422, 0.0238376, -0.702325, -0.711458, 0.871923, -0.33354, 0.358472, -1.95699, 3.58102, -1.5974)
+transform = Transform3D(-0.442801, -0.660056, 0.606839, 0.0533468, -0.695003, -0.717025, 0.895031, -0.285127, 0.34296, -1.9429, 3.80037, -1.50285)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -253,7 +254,6 @@ root_motion_track = NodePath("%GeneralSkeleton:Root")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_inrej")
 
 [node name="ray_cast" type="RayCast3D" parent="." index="2"]
@@ -310,11 +310,17 @@ max_health = 100
 move_speed = 75.0
 
 [node name="AttackIndicator" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9604, 0)
 
 [node name="EnemyHP" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 texture = SubResource("ViewportTexture_5sssr")
+
+[node name="ShieldIcon" type="Sprite3D" parent="." index="12"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.65202, 0)
+billboard = 1
+texture = ExtResource("13_657e3")
 
 [node name="lift_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("20_4h5qo")
@@ -373,7 +379,7 @@ pitch_scale = 0.85
 stream = ExtResource("22_pdgy0")
 pitch_scale = 1.2
 
-[node name="Decal" parent="." index="14"]
+[node name="Decal" parent="." index="15"]
 size = Vector3(2, 2, 2)
 
 [editable path="red_knight"]

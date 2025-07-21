@@ -23,8 +23,8 @@ const ENEMIES: Dictionary[Enemy.EnemyType, String] = {
 	Enemy.EnemyType.RED_KNIGHT: "res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn",
 	Enemy.EnemyType.JABBERWOCK: "res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn"
 }
-const CREATE_SHOP_LEVEL_MODULO: int = 5
-const CREATE_BOSS_LEVEL_MODULO: int = 10
+const CREATE_SHOP_LEVEL_MODULO: int = 4
+const CREATE_BOSS_LEVEL_MODULO: int = 7
 const ELITE_DMG_MULTIPLIER: float = 1.15
 const ELITE_HP_MULTIPLIER: float = 1.25
 
@@ -168,7 +168,7 @@ func start_level(_type: LevelType):
 	elif _type == LevelType.BOSS:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
-	print(level_manager.current_level_count)
+	#print(level_manager.current_level_count)
 	
 func gameover(player: Player):
 	for enemy in enemies.get_children():
