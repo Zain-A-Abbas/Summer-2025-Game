@@ -61,6 +61,10 @@ func st_physics_process(delta: float) -> void:
 	if delta_count >= block_time - 0.2 && !warning_shown && distance_to_player() < enemy.distance_to_swing:
 		enemy.attack_indicator_animator.play("show_indicator")
 		warning_shown = true
+
+	if warning_shown && distance_to_player() >= enemy.distance_to_swing:
+		enemy.attack_indicator_animator.play("hide_indicator")
+		warning_shown = false
 	
 	if delta_count >= block_time && distance_to_player() < enemy.distance_to_swing:
 		return state_machine.change_state(&"Swing")

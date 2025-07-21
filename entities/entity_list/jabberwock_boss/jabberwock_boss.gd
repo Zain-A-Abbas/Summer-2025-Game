@@ -50,9 +50,8 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 		resolve_hit(attack_object)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	super(args)
 	RunStats.jabberwocks_defeated += 1
-	enemy_killed.emit(self)
-	hurtbox.set_collision_mask_value(2, 0)
 
 	breath.hitbox.monitorable = false
 	sweep.hitbox.monitorable = false

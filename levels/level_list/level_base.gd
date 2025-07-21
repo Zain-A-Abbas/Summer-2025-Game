@@ -53,7 +53,6 @@ var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
 	Enemy.EnemyType.RED_KNIGHT: 0
 }
 var enemy_spawn_list: Array[Enemy.EnemyType]
-var shop_exit_made: bool = false
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -74,7 +73,6 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	level_camera.initialize(player)
 	player.player_died.connect(gameover)
 	enemy_spawn_list = initialize_enemy_list()
-	shop_exit_made = false
 	
 	if _type == LevelType.BOSS:
 		var boss: Enemy = spawn_enemy(Enemy.EnemyType.JABBERWOCK)
@@ -148,6 +146,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	if amount:
 		initialize_rewards(amount)
 	
+	level_manager.shop_level_made = false
 	level_manager.healing_level_made = false
 	for exit in get_level_exits():
 		exit.initialize(self)
@@ -160,7 +159,7 @@ func start_level(_type: LevelType):
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 	
-	if _type == LevelType.NORMAL:
+	if _type == LevelType.NORMAL || _type == LevelType.ELITE:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE)
 	elif _type == LevelType.SHOP || _type == LevelType.HEALING:
@@ -168,7 +167,6 @@ func start_level(_type: LevelType):
 	elif _type == LevelType.BOSS:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
-	#print(level_manager.current_level_count)
 	
 func gameover(player: Player):
 	for enemy in enemies.get_children():

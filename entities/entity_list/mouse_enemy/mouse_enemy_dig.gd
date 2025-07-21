@@ -38,6 +38,7 @@ func st_physics_process(delta: float) -> void:
 
 	if delta_count >= enemy.dig_duration:
 		enemy.play_sound_fx(&"resurface")
+		enemy.set_collision_layer_value(1, 1)
 		return state_machine.change_state(&"Idle")
 	
 	enemy.hurtbox.invincibility_frames = delta_count > enemy.underground_timestamp
@@ -46,6 +47,7 @@ func st_physics_process(delta: float) -> void:
 		enemy.hide() # TEMPORARY underground animation
 		is_underground = true
 		speed_type = &"underground"
+		enemy.set_collision_layer_value(1, 0)
 	
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:

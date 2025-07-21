@@ -12,8 +12,8 @@ enum NormalLevelType {
 	NONE
 }
 
-const ENEMY_DMG_MULTIPLIER_INC: float = 0.12
-const ENEMY_HP_MULTIPLIER_INC: float = 0.2
+const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
+const ENEMY_HP_MULTIPLIER_INC: float = 0.25
 const NORMAL_LEVELS: Dictionary[NormalLevelType, PackedScene] = {
 	NormalLevelType.BRIDGE: preload("res://levels/level_list/bridge_level/bridge_level.tscn"),
 	NormalLevelType.CASTLE: preload("res://levels/level_list/castle_level/castle_level.tscn"),
@@ -35,8 +35,9 @@ var current_level_count: int = 0
 var new_normal_level_type: NormalLevelType = NormalLevelType.NONE
 var normal_level_queue: Array[NormalLevelType]
 var healing_level_made: bool = false
+var shop_level_made: bool = false
 var bosses_killed: int = 0
-var money: int = 300
+var money: int = 50
 var current_player: Player
 var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
@@ -115,6 +116,7 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
+	print(current_level_count)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_level_type: LevelManager.NormalLevelType):
 	await fade_transition(true)

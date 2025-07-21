@@ -24,8 +24,6 @@ func scale_enemy(enemy: Enemy, args: Dictionary[String, Variant]):
 	enemy.enemy_hp_bar.max_value = enemy.health_component.max_health
 	enemy.enemy_hp_bar.value = enemy.health_component.current_health
 	
-	#print(enemy.health_component.max_health)
-	
 	# scale everything else
 	if enemy.type == Enemy.EnemyType.CARD:
 		scale_card(enemy, args)
@@ -64,11 +62,11 @@ func scale_flower(flower: FlowerEnemy, args: Dictionary[String, Variant]):
 
 func scale_mad_hatter(hatter: MadHatterEnemy, args: Dictionary[String, Variant]):	
 	# increase summon hp cancel threshold
-	hatter.summon_cancel_hp_amount *= ceilf(float(hatter.summon_cancel_hp_amount) * args["hp_multiplier"])
+	hatter.summon_cancel_hp_amount = ceilf(float(hatter.summon_cancel_hp_amount) * args["hp_multiplier"])
 
 	# decrease summon time
 	if args.has("run"):
-		hatter.summon_timestamp *= 0.75
+		hatter.summon_timestamp *= 0.70
 
 func scale_mouse(mouse: MouseEnemy, args: Dictionary[String, Variant]):
 	mouse.pounce.attack_effects[0].damage = ceilf(float(mouse.pounce.attack_effects[0].damage) * args["dmg_multiplier"])
