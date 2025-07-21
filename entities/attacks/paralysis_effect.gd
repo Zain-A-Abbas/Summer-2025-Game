@@ -6,6 +6,7 @@ extends AttackEffect
 
 func _init():
 	effect_type = AttackEffectType.PARALYSIS
+	resource_local_to_scene = true
 
 func initialize_effect(args: Dictionary[String, Variant]):
 	if args.has("duration"):

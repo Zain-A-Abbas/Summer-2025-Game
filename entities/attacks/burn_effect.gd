@@ -11,6 +11,7 @@ var burn_timer: float = 0.0
 
 func _init():
 	effect_type = AttackEffectType.BURN
+	resource_local_to_scene = true
 
 func initialize_effect(args: Dictionary[String, Variant]):
 	if args.has("duration"):

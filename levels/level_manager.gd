@@ -12,7 +12,7 @@ enum NormalLevelType {
 	NONE
 }
 
-const ENEMY_DMG_MULTIPLIER_INC: float = 0.15
+const ENEMY_DMG_MULTIPLIER_INC: float = 0.2
 const ENEMY_HP_MULTIPLIER_INC: float = 0.25
 const NORMAL_LEVELS: Dictionary[NormalLevelType, PackedScene] = {
 	NormalLevelType.BRIDGE: preload("res://levels/level_list/bridge_level/bridge_level.tscn"),
@@ -36,6 +36,7 @@ var new_normal_level_type: NormalLevelType = NormalLevelType.NONE
 var normal_level_queue: Array[NormalLevelType]
 var healing_level_made: bool = false
 var shop_level_made: bool = false
+var boss_just_killed: bool = false
 var bosses_killed: int = 0
 var money: int = 50
 var current_player: Player
@@ -123,13 +124,14 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 	
 	prev_hp = current_player.health_component.current_health
 	
-	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
-		current_level_count += 1
-		
+	#if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
+
 	if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
+		current_level_count += 1
 		reset_normal_level_queue()
 		if level.type != LevelBase.LevelType.BOSS:
 			normal_level_queue.erase(normal_level_type)
+			boss_just_killed = false
 	
 	if level.type == LevelBase.LevelType.BOSS:
 		bosses_killed += 1
@@ -137,6 +139,7 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
+		boss_just_killed = true
 		#print("scaling turned on")
 	
 	level.queue_free()

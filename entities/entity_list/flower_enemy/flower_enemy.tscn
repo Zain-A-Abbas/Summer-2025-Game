@@ -227,4 +227,7 @@ stream = ExtResource("12_xorek")
 volume_db = 5.0
 max_db = 3.0
 
+[node name="DamagedParticles" parent="." index="12"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 2.39554, 0)
+
 [editable path="flower"]

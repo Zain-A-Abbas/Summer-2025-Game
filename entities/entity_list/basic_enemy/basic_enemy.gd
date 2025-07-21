@@ -12,6 +12,7 @@ extends Enemy
 
 
 func prepare_states():
+	basic_attack.hide()
 	var enemy_states: Array[StateInitializer] = [
 		StateInitializer.new(&"Idle", EnemyIdle.new(self)),
 		StateInitializer.new(&"Chase", EnemyChasePlayer.new(self, ray_cast)),

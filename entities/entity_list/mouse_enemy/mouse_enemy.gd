@@ -48,4 +48,5 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	super(args)
 	RunStats.enemies_killed += 1
 	face_direction(position.direction_to(player.position))
+	decal.hide()
 	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

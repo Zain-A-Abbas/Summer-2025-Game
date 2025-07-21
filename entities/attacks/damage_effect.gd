@@ -5,6 +5,7 @@ extends AttackEffect
 
 func _init():
 	effect_type = AttackEffectType.DAMAGE
+	resource_local_to_scene = true
 
 func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object: AttackObject = null) -> bool:
 	var final_damage: int = damage

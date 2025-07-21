@@ -25,8 +25,8 @@ const ENEMIES: Dictionary[Enemy.EnemyType, String] = {
 }
 const CREATE_SHOP_LEVEL_MODULO: int = 4
 const CREATE_BOSS_LEVEL_MODULO: int = 7
-const ELITE_DMG_MULTIPLIER: float = 1.15
-const ELITE_HP_MULTIPLIER: float = 1.25
+const ELITE_DMG_MULTIPLIER: float = 1.25
+const ELITE_HP_MULTIPLIER: float = 1.30
 
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2

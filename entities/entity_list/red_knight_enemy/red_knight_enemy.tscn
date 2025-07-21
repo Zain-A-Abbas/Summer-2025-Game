@@ -211,29 +211,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.144929, 3.36279, -0.185476)
-bones/1/rotation = Quaternion(-0.000115428, -0.00763963, 0.0151017, 0.999857)
-bones/3/rotation = Quaternion(0.16379, -0.0411105, -0.000415602, 0.985638)
-bones/4/rotation = Quaternion(0.267726, -0.113876, -0.0297058, 0.956281)
+bones/1/position = Vector3(-0.019924, 3.28319, -0.185295)
+bones/1/rotation = Quaternion(-0.000171601, -0.0141659, 0.0120559, 0.999827)
+bones/3/rotation = Quaternion(0.166663, -0.0412708, 2.35142e-05, 0.98515)
+bones/4/rotation = Quaternion(0.281135, -0.114537, -0.0275886, 0.952409)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0429316, 0.93746, -0.345384, 0.00591581)
-bones/7/rotation = Quaternion(0.201736, -0.774235, 0.336708, 0.496478)
-bones/8/rotation = Quaternion(0.044831, 0.658067, 0.0683165, 0.748512)
+bones/6/rotation = Quaternion(0.0305216, 0.940455, -0.338495, 0.0057978)
+bones/7/rotation = Quaternion(0.204085, -0.770872, 0.335235, 0.50172)
+bones/8/rotation = Quaternion(0.0303828, 0.672088, 0.0666102, 0.736843)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00425711, 0.00195133, 0.00138421, 0.999988)
-bones/13/rotation = Quaternion(-0.162717, 0.0769602, 0.0201757, 0.98346)
-bones/14/rotation = Quaternion(0.108872, 0.173377, -0.0117544, 0.978749)
+bones/10/rotation = Quaternion(0.0224145, 0.0102738, 0.00728944, 0.999669)
+bones/13/rotation = Quaternion(-0.171143, 0.0774103, 0.018872, 0.982019)
+bones/14/rotation = Quaternion(0.145879, 0.163902, -0.0322887, 0.975096)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.175387, 0.76692, -0.241103, 0.56828)
-bones/19/rotation = Quaternion(-0.0183052, -0.613675, -0.00509472, 0.78933)
+bones/18/rotation = Quaternion(0.171265, 0.768647, -0.235541, 0.569535)
+bones/19/rotation = Quaternion(0.000318693, -0.613947, -0.0290363, 0.788813)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000264638, 0.00660791, 0.999262, 0.0378352)
-bones/26/rotation = Quaternion(0.00141102, 0.973169, -0.230013, 0.00589785)
-bones/27/rotation = Quaternion(0.00999502, 0.684859, -0.72858, 0.0063619)
-bones/28/rotation = Quaternion(0.000231326, 0.391892, 0.919416, 0.0330722)
-bones/29/rotation = Quaternion(0.00671332, 0.866591, -0.498838, 0.0116228)
-bones/30/rotation = Quaternion(0.0272855, 0.717913, -0.695591, -0.00310262)
+bones/25/rotation = Quaternion(8.55203e-05, 0.010608, 0.999869, 0.0122263)
+bones/26/rotation = Quaternion(0.00170885, 0.887407, -0.460973, 0.0031811)
+bones/27/rotation = Quaternion(-0.00234362, 0.774795, -0.632126, 0.0101746)
+bones/28/rotation = Quaternion(4.52259e-05, 0.17691, 0.984206, 0.00646616)
+bones/29/rotation = Quaternion(0.000349039, 0.969032, -0.246933, 0.00113579)
+bones/30/rotation = Quaternion(0.00535755, 0.654635, -0.755794, 0.0141502)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -243,7 +243,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.476488, -0.643018, 0.599572, 0.0276106, -0.692575, -0.720818, 0.878747, -0.326907, 0.347758, -1.92204, 3.74687, -1.56999)
+transform = Transform3D(-0.462661, -0.65903, 0.59298, 0.0292449, -0.679855, -0.732764, 0.886053, -0.32168, 0.333815, -2.04166, 3.71549, -1.65828)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -378,6 +378,9 @@ pitch_scale = 0.85
 [node name="death" parent="Sounds" index="9"]
 stream = ExtResource("22_pdgy0")
 pitch_scale = 1.2
+
+[node name="DamagedParticles" parent="." index="14"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 2.22426, 0)
 
 [node name="Decal" parent="." index="15"]
 size = Vector3(2, 2, 2)

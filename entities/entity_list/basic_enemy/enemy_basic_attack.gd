@@ -41,6 +41,7 @@ func st_physics_process(delta: float) -> void:
 		attack_activated = true
 		enemy.play_sound_fx(&"attack_whoosh")
 		enemy.animation_effects.play("basic_attack")
+		attack_object.show()
 	
 	if delta_count > LENGTH:
 		return state_machine.change_state(&"Chase", {"from_attack": true})
