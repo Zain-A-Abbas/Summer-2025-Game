@@ -21,6 +21,9 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 			target.paralysis_particles.lifetime = stun_duration
 			target.paralysis_particles.emitting = true
 		target.paralyzed = true
+		
+		target.play_sound_fx(&"paralyzed")
+		
 		target.state_machine.change_state(&"Idle")
 	#else:
 	#	print("failed to paralyze"))

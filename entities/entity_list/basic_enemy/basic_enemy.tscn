@@ -219,24 +219,29 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.0428959, 3.27453, -0.185389)
-bones/1/rotation = Quaternion(-0.000142033, 0.0117384, -0.0120709, 0.999858)
-bones/3/rotation = Quaternion(0.168376, -0.0413651, 0.000286518, 0.984855)
-bones/4/rotation = Quaternion(0.288249, -0.114875, -0.0264566, 0.950272)
-bones/6/rotation = Quaternion(0.0421763, 0.937646, -0.344974, 0.00590873)
-bones/7/rotation = Quaternion(0.201894, -0.77401, 0.33661, 0.496831)
-bones/8/rotation = Quaternion(0.0439005, 0.659008, 0.0682039, 0.74775)
-bones/10/rotation = Quaternion(0.00545347, 0.00249961, 0.00177366, 0.999981)
-bones/13/rotation = Quaternion(-0.176229, 0.0776745, 0.0180802, 0.981113)
-bones/14/rotation = Quaternion(0.127089, 0.166769, -0.028234, 0.977364)
-bones/18/rotation = Quaternion(0.203742, 0.753826, -0.279363, 0.558742)
-bones/19/rotation = Quaternion(-0.00903274, -0.613881, -0.0170181, 0.789163)
-bones/25/rotation = Quaternion(-1.95487e-05, 0.191186, 0.98155, -0.00279509)
-bones/26/rotation = Quaternion(-5.88467e-05, 0.967822, -0.251636, -0.00048225)
-bones/27/rotation = Quaternion(-0.000911871, 0.661941, -0.749407, -0.0149313)
-bones/28/rotation = Quaternion(-5.04045e-05, 0.00463254, 0.999963, -0.00720608)
-bones/29/rotation = Quaternion(-0.000690315, 0.903718, -0.428124, -0.00174541)
-bones/30/rotation = Quaternion(0.00561201, 0.68941, -0.724289, -0.00938339)
+bones/1/position = Vector3(0.0230379, 3.2479, -0.185224)
+bones/1/rotation = Quaternion(-0.000197034, 0.0134095, -0.0146688, 0.999802)
+bones/3/rotation = Quaternion(0.163791, -0.0411105, -0.000415531, 0.985638)
+bones/4/rotation = Quaternion(0.267726, -0.113876, -0.0297058, 0.956281)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0429338, 0.93746, -0.345385, 0.00591583)
+bones/7/rotation = Quaternion(0.201736, -0.774236, 0.336709, 0.496476)
+bones/8/rotation = Quaternion(0.0448377, 0.65806, 0.0683173, 0.748518)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.00425376, 0.00194979, 0.00138312, 0.999988)
+bones/13/rotation = Quaternion(-0.162717, 0.0769602, 0.0201757, 0.98346)
+bones/14/rotation = Quaternion(0.108861, 0.173379, -0.0117503, 0.97875)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.175398, 0.766916, -0.241118, 0.568276)
+bones/19/rotation = Quaternion(-0.0183107, -0.613675, -0.00508767, 0.78933)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(-5.2337e-05, 0.222392, 0.974929, -0.00748258)
+bones/26/rotation = Quaternion(-0.000305146, 0.96352, -0.267632, -0.00138059)
+bones/27/rotation = Quaternion(-0.00425081, 0.671001, -0.741298, -0.0147143)
+bones/28/rotation = Quaternion(-0.000101885, -0.078206, 0.996831, -0.0145663)
+bones/29/rotation = Quaternion(-0.000768702, 0.95253, -0.304431, -0.00270634)
+bones/30/rotation = Quaternion(0.000140804, 0.656244, -0.754486, -0.00967448)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_wd8hw")
@@ -323,26 +328,22 @@ max_db = 0.0
 
 [node name="run_step_1" type="AudioStreamPlayer3D" parent="Sounds" index="1"]
 stream = ExtResource("14_bfcs5")
-volume_db = 10.0
-max_db = 2.0
+volume_db = 15.0
 max_distance = 20.0
 
 [node name="run_step_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
 stream = ExtResource("15_fl2vc")
-volume_db = 10.0
-max_db = 2.0
+volume_db = 15.0
 max_distance = 20.0
 
 [node name="run_step_3" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
 stream = ExtResource("16_wxn5g")
-volume_db = 10.0
-max_db = 2.0
+volume_db = 15.0
 max_distance = 20.0
 
 [node name="run_step_4" type="AudioStreamPlayer3D" parent="Sounds" index="4"]
 stream = ExtResource("17_16uoj")
-volume_db = 10.0
-max_db = 2.0
+volume_db = 15.0
 max_distance = 20.0
 
 [node name="damaged" parent="Sounds" index="5"]
@@ -353,8 +354,15 @@ pitch_scale = 0.7
 
 [node name="death" parent="Sounds" index="6"]
 stream = ExtResource("18_bfcs5")
-volume_db = 5.0
+volume_db = 15.0
 max_db = 3.0
+pitch_scale = 0.75
+
+[node name="burning" parent="Sounds" index="7"]
+stream = null
+volume_db = 0.0
+max_db = 1.0
+pitch_scale = 1.0
 
 [node name="DamagedParticles" parent="." index="13"]
 transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 1, 0)

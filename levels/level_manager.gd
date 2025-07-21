@@ -34,6 +34,7 @@ var current_level_type: LevelBase.LevelType = LevelBase.LevelType.NONE
 var current_level_count: int = 0
 var new_normal_level_type: NormalLevelType = NormalLevelType.NONE
 var normal_level_queue: Array[NormalLevelType]
+var healing_level_made: bool = false
 var bosses_killed: int = 0
 var money: int = 300
 var current_player: Player
@@ -122,7 +123,10 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 	
 	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
 		current_level_count += 1
-
+		
+	if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
+		reset_normal_level_queue()
+	
 	if level.type == LevelBase.LevelType.BOSS:
 		bosses_killed += 1
 		player_upgrades.increase_upgrade_limits()
@@ -130,9 +134,8 @@ func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_lev
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
 		#print("scaling turned on")
-	
-	reset_normal_level_queue()
-	if level.type == LevelBase.LevelType.NORMAL:
+
+	if level.type == LevelBase.LevelType.NORMAL || level.type == LevelBase.LevelType.ELITE:
 		normal_level_queue.erase(normal_level_type)
 	
 	level.queue_free()

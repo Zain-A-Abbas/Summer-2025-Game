@@ -148,6 +148,7 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	if amount:
 		initialize_rewards(amount)
 	
+	level_manager.healing_level_made = false
 	for exit in get_level_exits():
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
@@ -167,7 +168,7 @@ func start_level(_type: LevelType):
 	elif _type == LevelType.BOSS:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
-	#print(level_manager.current_level_count)
+	print(level_manager.current_level_count)
 	
 func gameover(player: Player):
 	for enemy in enemies.get_children():
@@ -183,6 +184,8 @@ func gameover(player: Player):
 
 	for proj in projectiles.get_children():
 		proj.queue_free()
+		
+	player.play_sound_fx(&"death")
 	
 	static_geometry.visible = false
 	dynamic_geometry.visible = false

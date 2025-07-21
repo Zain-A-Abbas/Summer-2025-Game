@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqghaf34klbte"]
+[gd_scene load_steps=24 format=3 uid="uid://bqghaf34klbte"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_612v4"]
 [ext_resource type="Script" uid="uid://g84g0q0a2q23" path="res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.gd" id="2_w7ftl"]
@@ -9,9 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://lfk8iwxvssy7" path="res://audio/entities/caterpillar/FootstepsWetGravelStones1.wav" id="8_kxd6d"]
 [ext_resource type="AudioStream" uid="uid://cpsga3ue1qjf0" path="res://audio/entities/caterpillar/FootstepsWetGravelStones2.wav" id="9_blfew"]
 [ext_resource type="AudioStream" uid="uid://c6vdp1g64b73w" path="res://audio/entities/caterpillar/FootstepsWetGravelStones3.wav" id="10_l35qj"]
+[ext_resource type="AudioStream" uid="uid://cuq54rgy7t1k6" path="res://audio/entities/caterpillar/Jellybeast_2.wav" id="11_blfew"]
 [ext_resource type="AudioStream" uid="uid://b5kj3vcj32f5b" path="res://audio/entities/caterpillar/FootstepsWetGravelStones4.wav" id="11_ueoev"]
 [ext_resource type="AudioStream" uid="uid://dwie4wk2nuh15" path="res://audio/entities/caterpillar/Impact 4.wav" id="12_kxd6d"]
-[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="13_blfew"]
+[ext_resource type="AudioStream" uid="uid://dmgvoa3ht3tqc" path="res://audio/entities/caterpillar/Jellybeast_3.wav" id="13_l35qj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kxd6d"]
 size = Vector3(1, 3.3457, 1.66675)
@@ -98,7 +99,7 @@ shoot_times = Array[float]([0.7, 1.6])
 warning_times = Array[float]([0.1, 0.9])
 hurtbox = NodePath("Hurtbox")
 meshes = [NodePath("caterpillar/Armature/Skeleton3D/Cube")]
-death_state_duration = 0.5
+death_state_duration = 0.82
 
 [node name="caterpillar" parent="." index="0" instance=ExtResource("4_kxd6d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -188,17 +189,28 @@ max_db = 0.0
 pitch_scale = 1.5
 max_distance = 20.0
 
-[node name="damaged" parent="Sounds" index="5"]
+[node name="damaged_squeal" type="AudioStreamPlayer3D" parent="Sounds" index="5"]
+stream = ExtResource("11_blfew")
+volume_db = 5.0
+max_db = 0.0
+max_distance = 20.0
+
+[node name="damaged" parent="Sounds" index="6"]
 stream = ExtResource("12_kxd6d")
 volume_db = -1.0
 max_db = 0.0
 pitch_scale = 1.6
 
-[node name="death" parent="Sounds" index="6"]
-stream = ExtResource("13_blfew")
-pitch_scale = 0.7
+[node name="death" parent="Sounds" index="7"]
+stream = ExtResource("13_l35qj")
+volume_db = 7.0
+max_db = 2.0
 
-[node name="Decal" parent="." index="13"]
+[node name="burning" parent="Sounds" index="8"]
+volume_db = 0.0
+max_db = 1.0
+
+[node name="Decal" parent="." index="14"]
 size = Vector3(1.25, 1.75, 5)
 
 [editable path="caterpillar"]

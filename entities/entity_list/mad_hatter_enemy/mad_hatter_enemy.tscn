@@ -278,7 +278,7 @@ pitch_scale = 1.1
 
 [node name="death" parent="Sounds" index="8"]
 stream = ExtResource("15_ohgob")
-volume_db = -10.0
+volume_db = -15.0
 max_db = 0.0
 pitch_scale = 4.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=4 uid="uid://dqt7pplnjhp3d"]
+[gd_scene load_steps=87 format=4 uid="uid://dqt7pplnjhp3d"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_0kr36"]
 [ext_resource type="Script" uid="uid://cteog2tvmwfg1" path="res://entities/entity_list/player/player.gd" id="1_xb04b"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://bbcwfj2p5d33o" path="res://audio/entities/player/Sword Impact Hit 2.wav" id="27_p772y"]
 [ext_resource type="Shader" uid="uid://njxyqr5nppfj" path="res://entities/entity_list/player/cape.gdshader" id="29_apdix"]
 [ext_resource type="Texture2D" uid="uid://doyy5ai16g58x" path="res://effects/particle-textures/flame_01.png" id="30_5635v"]
+[ext_resource type="AudioStream" uid="uid://8ajygaqh6ect" path="res://audio/entities/player/03 DSGNErie, Dark, Synth.wav" id="30_cyyb8"]
 [ext_resource type="Texture2D" uid="uid://72hvrvmmqder" path="res://effects/particle-textures/lightning_breath.png" id="30_m15bl"]
 
 [sub_resource type="Curve" id="Curve_wlnxk"]
@@ -559,29 +560,29 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(-0.255, 0, -2.22928e-08, 0, 0.255, 0, 2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0757512, 2.79829, -0.403568)
+bones/1/position = Vector3(0.0422942, 2.77197, -0.405101)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.164005, -0.0411226, -0.000382867, 0.985602)
-bones/4/rotation = Quaternion(0.273244, -0.114152, -0.0288373, 0.954712)
+bones/3/rotation = Quaternion(0.16324, -0.0410794, -0.000499436, 0.985731)
+bones/4/rotation = Quaternion(0.2683, -0.113905, -0.0296157, 0.956119)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0294329, 0.940713, -0.337876, 0.00578724)
-bones/7/rotation = Quaternion(0.204287, -0.77058, 0.335107, 0.502172)
-bones/8/rotation = Quaternion(0.0301885, 0.672268, 0.0665877, 0.736689)
+bones/6/rotation = Quaternion(0.0252118, 0.9417, -0.335459, 0.0057458)
+bones/7/rotation = Quaternion(0.20505, -0.769476, 0.334624, 0.503873)
+bones/8/rotation = Quaternion(0.036951, 0.665853, 0.0673769, 0.742115)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0240333, 0.0110158, 0.00781563, 0.99962)
-bones/13/rotation = Quaternion(-0.165737, 0.0771231, 0.0197096, 0.982952)
-bones/14/rotation = Quaternion(0.137184, 0.167024, -0.0254774, 0.97603)
+bones/10/rotation = Quaternion(0.0301878, 0.0138368, 0.0098174, 0.9994)
+bones/13/rotation = Quaternion(-0.162623, 0.076955, 0.0201903, 0.983476)
+bones/14/rotation = Quaternion(0.122606, 0.170682, -0.0175384, 0.977511)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.15903, 0.773515, -0.219026, 0.573073)
-bones/19/rotation = Quaternion(-0.00376618, -0.613936, -0.023787, 0.788989)
+bones/18/rotation = Quaternion(0.163343, 0.771843, -0.224848, 0.571858)
+bones/19/rotation = Quaternion(-0.0114059, -0.613841, -0.0139669, 0.789223)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00117213, 0.205386, 0.964226, -0.16758)
-bones/26/rotation = Quaternion(0.0408564, 0.870172, -0.485407, 0.0742395)
-bones/27/rotation = Quaternion(-0.0659003, 0.615215, -0.782464, 0.0701222)
-bones/28/rotation = Quaternion(0.00207745, 0.00852406, 0.954834, 0.297009)
-bones/29/rotation = Quaternion(-0.149816, 0.825426, -0.475708, -0.26444)
-bones/30/rotation = Quaternion(0.22728, 0.498036, -0.828276, 0.119424)
+bones/25/rotation = Quaternion(-0.00122149, 0.210453, 0.961878, -0.174638)
+bones/26/rotation = Quaternion(0.0401953, 0.86454, -0.495897, 0.071008)
+bones/27/rotation = Quaternion(-0.0728416, 0.610718, -0.785129, 0.0727281)
+bones/28/rotation = Quaternion(0.00208121, 0.0125491, 0.954622, 0.297549)
+bones/29/rotation = Quaternion(-0.153647, 0.8173, -0.490556, -0.260323)
+bones/30/rotation = Quaternion(0.223896, 0.486461, -0.835656, 0.12209)
 
 [node name="Cube_001" parent="PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -590,10 +591,10 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.668542, -0.68436, 0.29104, 0.548047, -0.717919, -0.429228, 0.502689, -0.127453, 0.85502, -1.48869, 2.54535, -2.15389)
+transform = Transform3D(-0.671815, -0.681218, 0.290873, 0.549327, -0.721632, -0.421292, 0.496895, -0.123246, 0.859015, -1.54439, 2.52713, -2.12861)
 
 [node name="HandAttachment2" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(0.703053, -0.0185191, -0.710897, -0.688628, -0.267255, -0.674067, -0.177508, 0.963448, -0.200647, 1.74523, 3.08152, 1.4838)
+transform = Transform3D(0.69127, -0.026522, -0.72211, -0.70257, -0.258307, -0.663078, -0.16894, 0.965699, -0.197193, 1.72477, 3.07201, 1.48739)
 bone_name = "LeftHand"
 bone_idx = 8
 
@@ -610,7 +611,7 @@ process_material = SubResource("ParticleProcessMaterial_wlnxk")
 draw_pass_1 = SubResource("QuadMesh_wlnxk")
 
 [node name="CapeAttachment" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="4"]
-transform = Transform3D(0.876139, 0.0249925, -0.481411, 0.0133306, 0.997017, 0.0760213, 0.481875, -0.0730227, 0.873192, 0.201186, 4.71408, -0.751028)
+transform = Transform3D(0.876215, 0.0273645, -0.481143, 0.0128014, 0.996713, 0.0799998, 0.48175, -0.0762563, 0.872984, 0.170341, 4.68879, -0.755638)
 bone_name = "Neck"
 bone_idx = 13
 
@@ -755,7 +756,8 @@ pitch_scale = 0.8
 
 [node name="parried" type="AudioStreamPlayer3D" parent="Sounds" index="9"]
 stream = ExtResource("24_cyyb8")
-max_db = 0.0
+volume_db = -5.0
+max_db = -1.0
 pitch_scale = 0.85
 
 [node name="heal" type="AudioStreamPlayer3D" parent="Sounds" index="10"]
@@ -772,6 +774,9 @@ max_db = 0.0
 stream = ExtResource("27_p772y")
 max_db = 2.0
 pitch_scale = 0.45
+
+[node name="death" parent="Sounds" index="13"]
+stream = ExtResource("30_cyyb8")
 
 [node name="DamagedParticles" type="GPUParticles3D" parent="." index="12"]
 unique_name_in_owner = true

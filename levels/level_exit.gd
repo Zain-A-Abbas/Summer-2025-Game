@@ -64,9 +64,10 @@ func initialize(current_level: LevelBase):
 		var level_roll: float = randf()
 		#if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:
 		#	exit_type = LevelBase.LevelType.SHOP
-		if level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
+		if !current_level.level_manager.healing_level_made && level_roll > 0.0 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
 			exit_type = LevelBase.LevelType.HEALING
 			painting_type = PaintingType.HEALING
+			current_level.level_manager.healing_level_made = true
 		elif level_roll > 0.65:
 			exit_type = LevelBase.LevelType.ELITE
 			border.material.albedo_color = Color.RED

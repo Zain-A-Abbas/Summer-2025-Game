@@ -180,8 +180,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="killed" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
 stream = ExtResource("8_w0vey")
-volume_db = -4.0
-max_db = 1.0
+volume_db = -15.0
+max_db = -3.5
 pitch_scale = 0.7
 panning_strength = 0.0
 

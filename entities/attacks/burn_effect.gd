@@ -25,6 +25,8 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 		if target is Player:
 			target.burn_particles.emitting = true
 		
+		target.play_sound_fx(&"burning")
+		
 		burn_timer = 0.0
 	
 	if burn_duration_timer > duration:
