@@ -42,12 +42,11 @@ var upgrades: PlayerUpgrades
 @onready var bleed_particles: GPUParticles3D = %BleedParticles
 @onready var paralysis_particles: GPUParticles3D = %ParalysisParticles
 @onready var burn_particles: GPUParticles3D = %BurnParticles
-
+@onready var damaged_particles: GPUParticles3D = %DamagedParticles
 
 func _ready() -> void:
 	prepare_states()
 	hurtbox.hit_parried.connect(parry_received)
-	#basic_attack.add_attack_effect(&"PARALYSIS", {"duration": 2.0, "chance": 100.0})
 
 func _physics_process(delta: float) -> void:
 	super(delta)
@@ -133,9 +132,9 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	state_machine.change_state(&"Death")
 
 func heal(heal_amount: int):
-	health_component.current_health = clampi(health_component.current_health + heal_amount, 0, health_component.max_health)
+	health_component.set_current_health(health_component.current_health + heal_amount)
 	player_hp_recovered.emit(self)
-	play_sound_fx(&"heal")
+	#player_damage_taken.emit(self, 0)
 
 func gain_money(amount: int):
 	obtained_money.emit(amount)

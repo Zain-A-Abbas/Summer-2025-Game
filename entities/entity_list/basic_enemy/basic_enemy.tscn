@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d26y43ovn1t2h"]
+[gd_scene load_steps=43 format=3 uid="uid://d26y43ovn1t2h"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_5mhhj"]
 [ext_resource type="Script" uid="uid://dki5gx1nprbot" path="res://entities/entity_list/basic_enemy/basic_enemy.gd" id="2_f51gl"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://d3lvk8o0puhn7" path="res://audio/entities/card/Card Step 2.wav" id="15_fl2vc"]
 [ext_resource type="AudioStream" uid="uid://bqwou5lviuh0p" path="res://audio/entities/card/Card Step 3.wav" id="16_wxn5g"]
 [ext_resource type="AudioStream" uid="uid://pipcct866yyn" path="res://audio/entities/card/Card Step 4.wav" id="17_16uoj"]
+[ext_resource type="AudioStream" uid="uid://dj57cjqwh840q" path="res://audio/entities/card/Card Damaged 1.wav" id="18_bfcs5"]
 [ext_resource type="AudioStream" uid="uid://d14phyco0gwft" path="res://audio/entities/card/Card Damaged 2.wav" id="18_e60tt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
@@ -128,6 +129,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i6hqh"]
 _data = {
@@ -160,6 +173,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attacks/basic_attack/SlashCurve:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_16uoj"]
@@ -218,29 +243,29 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="card/Armature" index="0"]
-bones/1/position = Vector3(0.076504, 3.32714, -0.185644)
-bones/1/rotation = Quaternion(-5.70914e-05, 0.00827259, -0.00678489, 0.999943)
-bones/3/rotation = Quaternion(0.163068, -0.0410697, -0.000525763, 0.98576)
-bones/4/rotation = Quaternion(0.269302, -0.113956, -0.0294582, 0.955836)
+bones/1/position = Vector3(-0.0719066, 3.36356, -0.185739)
+bones/1/rotation = Quaternion(-2.48188e-05, -0.00723003, 0.00335543, 0.999968)
+bones/3/rotation = Quaternion(0.164304, -0.0411394, -0.000337392, 0.985552)
+bones/4/rotation = Quaternion(0.274176, -0.114198, -0.0286902, 0.954444)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0262995, 0.941447, -0.336085, 0.00575645)
-bones/7/rotation = Quaternion(0.204853, -0.769761, 0.334748, 0.503435)
-bones/8/rotation = Quaternion(0.0346951, 0.668019, 0.0671119, 0.740299)
+bones/6/rotation = Quaternion(0.0351068, 0.939362, -0.341074, 0.00584206)
+bones/7/rotation = Quaternion(0.203236, -0.772093, 0.33577, 0.499826)
+bones/8/rotation = Quaternion(0.0295802, 0.672834, 0.0665174, 0.736203)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0286004, 0.0131092, 0.00930122, 0.999462)
-bones/13/rotation = Quaternion(-0.163039, 0.0769776, 0.0201261, 0.983406)
-bones/14/rotation = Quaternion(0.126908, 0.169696, -0.0196927, 0.977093)
+bones/10/rotation = Quaternion(0.0157825, 0.007234, 0.00513256, 0.999836)
+bones/13/rotation = Quaternion(-0.166375, 0.0771573, 0.019611, 0.982844)
+bones/14/rotation = Quaternion(0.138985, 0.166506, -0.0265905, 0.975834)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.160888, 0.772801, -0.221533, 0.572554)
-bones/19/rotation = Quaternion(-0.0091711, -0.613879, -0.0168401, 0.789168)
+bones/18/rotation = Quaternion(0.159472, 0.773346, -0.219622, 0.57295)
+bones/19/rotation = Quaternion(-0.00281495, -0.613941, -0.0250094, 0.788951)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(4.48586e-05, 0.11924, 0.992845, 0.00641358)
-bones/26/rotation = Quaternion(0.000208224, 0.981556, -0.191171, 0.000876716)
-bones/27/rotation = Quaternion(0.00460899, 0.653776, -0.756522, -0.0151671)
-bones/28/rotation = Quaternion(4.25734e-05, 0.131575, 0.991288, 0.00608664)
-bones/29/rotation = Quaternion(0.00160279, 0.820288, -0.571946, 0.00204741)
-bones/30/rotation = Quaternion(0.0156886, 0.766523, -0.641997, -0.00600909)
+bones/25/rotation = Quaternion(-6.42761e-05, 0.212533, 0.977111, -0.00918921)
+bones/26/rotation = Quaternion(-0.00261464, 0.769042, -0.639184, -0.00336663)
+bones/27/rotation = Quaternion(-0.0165414, 0.855692, -0.517213, 0.00280695)
+bones/28/rotation = Quaternion(-5.83121e-05, 0.047119, 0.998855, -0.00833636)
+bones/29/rotation = Quaternion(-6.90591e-05, 0.991973, -0.126446, -0.000852928)
+bones/30/rotation = Quaternion(-0.0037139, 0.65442, -0.756013, 0.012845)
 
 [node name="cardDiamonds2" parent="card/Armature/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_wd8hw")
@@ -292,6 +317,7 @@ shape = SubResource("CapsuleShape3D_di55d")
 
 [node name="SlashCurve" type="MeshInstance3D" parent="Attacks/basic_attack" index="1"]
 transform = Transform3D(1, 0, -2.61978e-07, 0, 1, 0, -1.50996e-07, 0, -1.735, 0, 0, 0)
+visible = false
 material_override = SubResource("ShaderMaterial_jks58")
 instance_shader_parameters/lifetime = 0.01
 mesh = ExtResource("10_5sssr")
@@ -309,7 +335,8 @@ libraries = {
 &"basic_enemy_animation_library": SubResource("AnimationLibrary_16uoj")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
 current_health = 80
 max_health = 80
 
@@ -352,7 +379,15 @@ max_distance = 20.0
 stream = ExtResource("18_e60tt")
 volume_db = 5.0
 max_db = 1.5
-pitch_scale = 0.75
+pitch_scale = 0.7
+
+[node name="death" parent="Sounds" index="6"]
+stream = ExtResource("18_bfcs5")
+volume_db = 5.0
+max_db = 3.0
+
+[node name="DamagedParticles" parent="." index="13"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 1, 0)
 
 [editable path="card"]
 [editable path="Attacks/basic_attack/AttackHitbox"]

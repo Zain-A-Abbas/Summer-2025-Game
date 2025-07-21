@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ck150mu7ims48"]
+[gd_scene load_steps=28 format=4 uid="uid://ck150mu7ims48"]
 
 [ext_resource type="PackedScene" uid="uid://cbqo8sih7vhnd" path="res://levels/level_list/level_base.tscn" id="1_jhykl"]
 [ext_resource type="Texture2D" uid="uid://ci7yh5msj7itg" path="res://levels/materials/3D Retro Medieval Fantasy Kit/Brick-White-2.png" id="2_ii6r2"]
@@ -6,7 +6,6 @@
 [ext_resource type="Material" uid="uid://coqwdtg7dxp1j" path="res://levels/materials/lime.tres" id="3_56ogd"]
 [ext_resource type="PackedScene" uid="uid://du2rjh43hdgwk" path="res://levels/level_exit.tscn" id="4_em20i"]
 [ext_resource type="Material" uid="uid://dlxxmdgi86uky" path="res://levels/materials/carpet.tres" id="5_n23wo"]
-[ext_resource type="Script" uid="uid://c23fdc58df3f4" path="res://levels/dig_spot.gd" id="6_ii6r2"]
 [ext_resource type="AudioStream" uid="uid://cdmd5wgac2ajd" path="res://audio/levels/castle/01 DSGNDron, Dungeon, Ambience, Drone, Dark, Loop.wav" id="7_56ogd"]
 [ext_resource type="PackedScene" uid="uid://cgasldmtqk8ql" path="res://models/torch.tscn" id="7_r2lxl"]
 [ext_resource type="AudioStream" uid="uid://boiter4mnooyk" path="res://audio/levels/general/SFX_Drop_Ojbect_02.wav" id="8_em20i"]
@@ -106,7 +105,7 @@ fog_enabled = true
 fog_light_color = Color(0.446562, 0.480852, 0.534743, 1)
 fog_light_energy = 0.02
 
-[node name="CastleLevel" instance=ExtResource("1_jhykl")]
+[node name="Castle" instance=ExtResource("1_jhykl")]
 script = ExtResource("2_n23wo")
 y_rotation = 45.0
 enemy_minimum = 4
@@ -114,9 +113,9 @@ enemy_limit = 6
 enemy_spawn_limits = Dictionary[int, int]({
 0: 3,
 1: 1,
-2: 1,
+2: 0,
 3: 0,
-4: 2,
+4: 3,
 5: 1
 })
 
@@ -363,16 +362,6 @@ transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, 18, 
 [node name="Torch9" parent="StaticGeometry/Deco" index="8" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 6.5, 2.5, -20.9)
 
-[node name="DigSpot" type="Marker3D" parent="EnemyData/DigSpots" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8687, 1.50541, -9.69964)
-script = ExtResource("6_ii6r2")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
-
-[node name="DigSpot2" type="Marker3D" parent="EnemyData/DigSpots" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.935, 0, -18.1356)
-script = ExtResource("6_ii6r2")
-metadata/_custom_type_script = "uid://c23fdc58df3f4"
-
 [node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.951, 0, -12.15)
 gizmo_extents = 2.0
@@ -381,16 +370,16 @@ gizmo_extents = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9013, 0, -0.444558)
 
 [node name="Marker3D4" type="Marker3D" parent="EnemyPositions" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6716, 0, 17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5289, 0, -2.28453)
 
 [node name="Marker3D5" type="Marker3D" parent="EnemyPositions" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.746, 0, 8.44594)
 
 [node name="Marker3D6" type="Marker3D" parent="EnemyPositions" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 3.50824)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95952, 0, -20.2095)
 
 [node name="Marker3D7" type="Marker3D" parent="EnemyPositions" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0983, 0, 12.7621)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.241, 0, 16.8998)
 
 [node name="WorldEnvironment" parent="Lighting" index="0"]
 environment = SubResource("Environment_r6poa")

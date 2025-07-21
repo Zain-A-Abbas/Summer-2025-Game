@@ -1,7 +1,8 @@
 class_name LevelBase
 extends Node3D
 
-signal level_completed(level: LevelBase, next_level: LevelType, normal_level_index: int)
+signal level_completed(level: LevelBase, next_level: LevelType)
+signal enemy_killed
 
 enum LevelType {
 	NONE,
@@ -12,28 +13,20 @@ enum LevelType {
 	BOSS
 }
 
-enum NormalLevels {
-	BRIDGE,
-	CASTLE,
-	DINING,
-	SPIRE,
-	WATER
-}
-
 const MONEY_PICKUP = preload("res://levels/pickups/money_pickup.tscn")
 const LEVEL_REWARD: Resource = preload("res://levels/level_list/shop_level/shop_item.tscn")
-const ENEMIES: Dictionary[Enemy.EnemyType, Resource] = {
-	Enemy.EnemyType.CARD: preload("res://entities/entity_list/basic_enemy/basic_enemy.tscn"),
-	Enemy.EnemyType.FLOWER: preload("res://entities/entity_list/flower_enemy/flower_enemy.tscn"),
-	Enemy.EnemyType.CATERPILLAR: preload("res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn"),
-	Enemy.EnemyType.MAD_HATTER: preload("res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn"),
-	Enemy.EnemyType.MOUSE: preload("res://entities/entity_list/mouse_enemy/mouse_enemy.tscn"),
-	Enemy.EnemyType.RED_KNIGHT: preload("res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn"),
-	Enemy.EnemyType.JABBERWOCK: preload("res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn")
+const ENEMIES: Dictionary[Enemy.EnemyType, String] = {
+	Enemy.EnemyType.CARD: "res://entities/entity_list/basic_enemy/basic_enemy.tscn",
+	Enemy.EnemyType.FLOWER: "res://entities/entity_list/flower_enemy/flower_enemy.tscn",
+	Enemy.EnemyType.CATERPILLAR: "res://entities/entity_list/caterpillar_enemy/caterpillar_enemy.tscn",
+	Enemy.EnemyType.MAD_HATTER: "res://entities/entity_list/mad_hatter_enemy/mad_hatter_enemy.tscn",
+	Enemy.EnemyType.MOUSE: "res://entities/entity_list/mouse_enemy/mouse_enemy.tscn",
+	Enemy.EnemyType.RED_KNIGHT: "res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn",
+	Enemy.EnemyType.JABBERWOCK: "res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn"
 }
 const CREATE_SHOP_LEVEL_MODULO: int = 5
 const CREATE_BOSS_LEVEL_MODULO: int = 10
-const ELITE_DMG_MULTIPLIER: float = 1.2
+const ELITE_DMG_MULTIPLIER: float = 1.15
 const ELITE_HP_MULTIPLIER: float = 1.25
 
 @export var has_enemies: bool = true
@@ -52,7 +45,6 @@ var enemy_count: int = 0
 var enemies_killed: int = 0
 var level_manager: LevelManager
 var type: LevelType
-var normal_level_type: NormalLevels
 var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
 	Enemy.EnemyType.CARD: 0,
 	Enemy.EnemyType.CATERPILLAR: 0,
@@ -157,30 +149,27 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	if amount:
 		initialize_rewards(amount)
 	
-	var door_num: int = 0
 	for exit in get_level_exits():
-		exit.initialize(self, door_num)
+		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
-		door_num += 1
 
-func start_level(_type: LevelType, old_level_type: LevelBase.LevelType):
+func start_level(_type: LevelType):
 	for enemy in enemies.get_children():
 		if enemy is Enemy:
 			enemy.activate_enemy()
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 	
-	if _type != old_level_type:
-		if _type == LevelType.NORMAL:
-			Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE, 1.0)
-		elif _type == LevelType.SHOP:
-			Bgm.play_bgm(Bgm.BGM_TYPE.SHOP, 1.0)
-		elif _type == LevelType.HEALING:
-			Bgm.play_bgm(Bgm.BGM_TYPE.HEALING, 1.0)
-		elif _type == LevelType.BOSS:
-			Bgm.play_bgm(Bgm.BGM_TYPE.BOSS, 1.0)
-
-
+	if _type == LevelType.NORMAL:
+		Bgm.change_volume(1.0)
+		Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE)
+	elif _type == LevelType.SHOP || _type == LevelType.HEALING:
+		Bgm.change_volume(0.35)
+	elif _type == LevelType.BOSS:
+		Bgm.change_volume(1.0)
+		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
+	#print(level_manager.current_level_count)
+	
 func gameover(player: Player):
 	for enemy in enemies.get_children():
 		enemy.queue_free()
@@ -208,6 +197,7 @@ func gameover(player: Player):
 
 func enemy_kill(enemy: Enemy):
 	enemies_killed += 1
+	enemy_killed.emit()
 	
 	var enemy_position: Vector3 = enemy.global_position
 	var money_pickup: MoneyPickup = MONEY_PICKUP.instantiate()
@@ -231,8 +221,8 @@ func enemy_kill(enemy: Enemy):
 		# play level complete sound
 		sounds.get_node("level_complete").play()
 
-func exit_choose(exit_type: LevelType, normal_type: int):
-	level_completed.emit(self, exit_type, normal_type)
+func exit_choose(exit_type: LevelType, normal_level_type: LevelManager.NormalLevelType):
+	level_completed.emit(self, exit_type, normal_level_type)
 
 func get_level_exits() -> Array[LevelExit]:
 	var exits: Array[LevelExit] = []
@@ -255,7 +245,7 @@ func initialize_enemy_list() -> Array[Enemy.EnemyType]:
 	return list
 	
 func spawn_enemy(type: Enemy.EnemyType) -> Enemy:
-	return ENEMIES[type].duplicate(true).instantiate()
+	return load(ENEMIES[type]).instantiate()
 
 func can_enemy_spawn_type(type: Enemy.EnemyType) -> bool:
 	return enemy_spawn_count[type] <= enemy_spawn_limits[type]

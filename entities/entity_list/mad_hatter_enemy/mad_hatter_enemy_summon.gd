@@ -23,6 +23,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	summon_cancel_threshold = enemy.health_component.current_health - enemy.summon_cancel_hp_amount
 	
 	enemy.play_sound_fx(&"magic_whoosh_1")
+	enemy.summoning_particles.emitting = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -36,8 +37,10 @@ func st_physics_process(delta: float) -> void:
 		enemy.attack_indicator_animator.play("show_indicator")
 		warning_shown = true
 		
-	# summoning attempt sfx
+	# summoning attempt sfx and display particles
 	if !just_summoned && summon_sound_timer >= SUMMONING_WHOOSH_TIME:
+		enemy.summoning_particles.restart()
+		
 		enemy.play_sound_fx("magic_whoosh_%d" % summon_sound_index)
 		summon_sound_index += 1
 		
@@ -52,6 +55,9 @@ func st_physics_process(delta: float) -> void:
 		enemy.enemy_list.add_child(new_enemy)
 		new_enemy.position = spawn_position
 		new_enemy.initialize_enemy(enemy.player, enemy.enemy_data, enemy.enemy_positions, enemy.enemy_list, enemy.projectiles)
+		new_enemy.add_child(enemy.summoned_particles.duplicate())
+		new_enemy.get_node("SummonedParticles").emitting = true
+		
 		enemy.summoned_list.append(new_enemy)
 		
 		just_summoned = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkg1kd5coyvwy"]
+[gd_scene load_steps=27 format=3 uid="uid://dkg1kd5coyvwy"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_rvb6p"]
 [ext_resource type="Script" uid="uid://ceysowvphmxnq" path="res://entities/entity_list/flower_enemy/flower_enemy.gd" id="2_efnkb"]
@@ -11,8 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://csigu1s2mkyqi" path="res://audio/entities/general/FootstepsStoneDirt3.wav" id="10_bkhxi"]
 [ext_resource type="AudioStream" uid="uid://cc2wm1qxny4ka" path="res://audio/entities/general/FootstepsStoneDirt4.wav" id="11_5iyq8"]
 [ext_resource type="AudioStream" uid="uid://dyieoxqo386kt" path="res://audio/entities/flower/Arrow_Whoosh_04.wav" id="12_j57kx"]
+[ext_resource type="AudioStream" uid="uid://5moal7mu85rv" path="res://audio/entities/flower/GrassRip1.wav" id="12_xorek"]
+[ext_resource type="AudioStream" uid="uid://bshf8f2mssurx" path="res://audio/entities/flower/GrassRip2.wav" id="13_j57kx"]
 [ext_resource type="AudioStream" uid="uid://cf4is1siptyqu" path="res://audio/entities/flower/Flower Damaged.wav" id="13_xorek"]
-[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="14_xorek"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 
@@ -118,27 +119,25 @@ death_state_duration = 1.34
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="flower/Armature" index="0"]
-bones/1/rotation = Quaternion(0.489417, 0, 0, 0.87205)
-bones/2/rotation = Quaternion(0.209584, 6.01354e-16, 2.60659e-15, 0.977791)
-bones/3/rotation = Quaternion(0.0225413, 0.0109206, -0.00426372, 0.999677)
-bones/4/rotation = Quaternion(-0.602709, -0.00298924, -0.00992856, 0.797894)
-bones/5/rotation = Quaternion(0.512108, -0.00158113, -0.00143015, 0.858918)
-bones/6/rotation = Quaternion(-0.0402435, 0.47059, 0.575451, 0.667669)
-bones/7/rotation = Quaternion(0.118102, -5.18744e-09, -1.0879e-07, 0.993001)
-bones/8/rotation = Quaternion(0.0286741, 0.495507, 0.566622, -0.657715)
-bones/9/rotation = Quaternion(0.118139, 0.000465312, 0.00391136, 0.992989)
-bones/10/rotation = Quaternion(-0.534941, -0.730865, 0.0909736, 0.414002)
-bones/11/rotation = Quaternion(0.14972, -0.000588797, -0.00388884, 0.988721)
-bones/12/rotation = Quaternion(-0.544922, 0.721391, -0.103321, 0.414705)
-bones/13/rotation = Quaternion(0.179265, -0.000461526, -0.00253271, 0.983798)
-bones/14/rotation = Quaternion(0.00212385, 0.936833, 0.34872, 0.0270896)
-bones/15/rotation = Quaternion(0.266184, 0.00212487, 0.0076942, 0.963889)
+bones/1/rotation = Quaternion(0.0839206, 0.000793384, -0.0766299, 0.993521)
+bones/2/rotation = Quaternion(-0.150831, 0.0268202, 0.138809, 0.978398)
+bones/3/rotation = Quaternion(-0.0574157, 0.027755, 0.0675946, 0.995673)
+bones/4/rotation = Quaternion(-0.722934, -0.00252082, -0.00958703, 0.690845)
+bones/5/rotation = Quaternion(4.75158e-05, -1.16068e-07, -0.00252709, 0.999997)
+bones/7/rotation = Quaternion(2.27256e-08, 3.29455e-08, -1.06023e-07, 1)
+bones/8/rotation = Quaternion(0.352469, 0.634521, 0.600169, -0.336073)
+bones/9/rotation = Quaternion(3.75702e-05, 1.43759e-07, 0.0039389, 0.999992)
+bones/10/rotation = Quaternion(-0.620482, -0.365581, -0.349931, 0.599083)
+bones/11/rotation = Quaternion(3.74626e-05, -1.79646e-07, -0.00393303, 0.999992)
+bones/13/rotation = Quaternion(2.40285e-05, -5.42206e-08, -0.00257448, 0.999997)
+bones/14/rotation = Quaternion(-0.0101209, 0.722732, 0.690849, 0.0168455)
+bones/15/rotation = Quaternion(0.000150068, 1.23844e-06, 0.00798222, 0.999968)
 
 [node name="Cylinder" parent="flower/Armature/Skeleton3D" index="0"]
 material_overlay = ExtResource("5_xorek")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="flower/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.999725, -0.00901711, -0.0216419, 0.020846, 0.0805719, -0.996531, 0.0107296, -0.996708, -0.0803618, -3.22714e-07, 2.29253, -3.69142)
+transform = Transform3D(-0.958959, 0.272965, -0.0767271, 0.245779, 0.935157, 0.255097, 0.141384, 0.22577, -0.963866, -0.0376269, 4.91408, -0.0793068)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -166,7 +165,8 @@ libraries = {
 &"flower": SubResource("AnimationLibrary_bkhxi")
 }
 
-[node name="HealthComponent" parent="Components" index="0"]
+[node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
+entity = NodePath("../..")
 current_health = 70
 max_health = 70
 
@@ -213,12 +213,19 @@ pitch_scale = 0.65
 max_distance = 20.0
 
 [node name="damaged" parent="Sounds" index="6"]
+stream = ExtResource("13_j57kx")
+volume_db = 30.0
+max_db = 3.0
+
+[node name="damaged2" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
 stream = ExtResource("13_xorek")
-max_db = -1.0
+volume_db = -15.0
+max_db = 0.0
 pitch_scale = 0.65
 
-[node name="death" parent="Sounds" index="7"]
-stream = ExtResource("14_xorek")
-pitch_scale = 0.7
+[node name="death" parent="Sounds" index="8"]
+stream = ExtResource("12_xorek")
+volume_db = 5.0
+max_db = 3.0
 
 [editable path="flower"]

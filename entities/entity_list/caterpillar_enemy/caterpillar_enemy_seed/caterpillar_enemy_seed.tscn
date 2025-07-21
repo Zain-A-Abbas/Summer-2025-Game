@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bqvq5fv3lodkg"]
+[gd_scene load_steps=29 format=3 uid="uid://bqvq5fv3lodkg"]
 
 [ext_resource type="PackedScene" uid="uid://3q754psqt24l" path="res://entities/entity_types/character_entity.tscn" id="1_asst4"]
 [ext_resource type="Script" uid="uid://b82iv3b6y5uo" path="res://entities/entity_list/caterpillar_enemy/caterpillar_enemy_seed/caterpillar_enemy_seed.gd" id="2_ph4oc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://4rhq8c58a3im" path="res://entities/attacks/paralysis_effect.gd" id="8_1sbvb"]
 [ext_resource type="Script" uid="uid://cytojthox684" path="res://entities/stats/movement_component.gd" id="8_y08bq"]
 [ext_resource type="AudioStream" uid="uid://blmu6rna47ucy" path="res://audio/entities/caterpillar/Fast_Magic_Whoosh_10.wav" id="9_sofxr"]
+[ext_resource type="Texture2D" uid="uid://cqui5dfy3j1g8" path="res://effects/particle-textures/star_05.png" id="10_yjuat"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yjuat"]
 radius = 0.187493
@@ -46,6 +47,58 @@ script = ExtResource("8_1sbvb")
 stun_duration = 1.0
 stun_chance = 100.0
 metadata/_custom_type_script = "uid://4rhq8c58a3im"
+
+[sub_resource type="Gradient" id="Gradient_nygp8"]
+offsets = PackedFloat32Array(0.00398406, 0.474104, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dopcp"]
+gradient = SubResource("Gradient_nygp8")
+use_hdr = true
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_v6c76"]
+
+[sub_resource type="Curve" id="Curve_gq61n"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5rxdx"]
+curve = SubResource("Curve_gq61n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qviaf"]
+emission_shape_scale = Vector3(3.2, 1, 3.2)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 30.0
+flatness = 1.0
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+directional_velocity_min = -1.60933e-05
+directional_velocity_max = -1.60933e-05
+directional_velocity_curve = SubResource("CurveXYZTexture_v6c76")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5rxdx")
+color = Color(2, 1.172, 0.58, 1)
+color_ramp = SubResource("GradientTexture1D_dopcp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktjip"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("10_yjuat")
+texture_filter = 0
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_1kru6"]
+material = SubResource("StandardMaterial3D_ktjip")
 
 [node name="CaterpillarEnemySeed" instance=ExtResource("1_asst4")]
 collision_layer = 0
@@ -109,11 +162,24 @@ metadata/_custom_type_script = "uid://b4hwv8s2ulb1w"
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.219741, 0)
 shape = SubResource("CapsuleShape3D_hwe2s")
 
+[node name="ExplosionParticles" type="GPUParticles3D" parent="Attacks" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, 0, 0, 0)
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.75
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_qviaf")
+draw_pass_1 = SubResource("QuadMesh_1kru6")
+
 [node name="Components" type="Node" parent="." index="5"]
 
-[node name="HealthComponent" type="Node" parent="Components" index="0"]
+[node name="HealthComponent" type="Node" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 unique_name_in_owner = true
 script = ExtResource("7_cdm54")
+entity = NodePath("../..")
 
 [node name="MovementComponent" type="Node" parent="Components" index="1"]
 unique_name_in_owner = true

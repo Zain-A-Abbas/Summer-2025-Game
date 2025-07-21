@@ -2,6 +2,7 @@ class_name HealthComponent
 extends Node
 
 ## Contains data for health properties
+@export var entity: CharacterEntity
 @export var current_health: int
 @export var max_health: int
 
@@ -19,3 +20,7 @@ func set_current_health(new: int) -> void:
 
 func lose_health(new: int) -> void:
 	set_current_health(new)
+	if entity is Player:
+		entity.player_damage_taken.emit(entity, new)
+	if entity is Enemy:
+		entity.enemy_damage_taken.emit(entity, new)

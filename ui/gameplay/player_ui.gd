@@ -26,6 +26,10 @@ extends CanvasLayer
 @onready var jabberwocks_defeated: Label = %JabberwocksDefeated
 @onready var levels_cleared: Label = %LevelsCleared
 
+@onready var enemies_slain_counter: Label = %EnemiesSlainCounter
+
+@onready var pause_display: ColorRect = %PauseDisplay
+
 enum State {
 	NONE,
 	GAMEOVER,
@@ -33,10 +37,14 @@ enum State {
 }
 
 var player: Player = null
-
 var state: State
 
+var enemies_killed: int = 0
+var total_enemies: int = 0
+
 func _ready() -> void:
+	pause_display.visible = false
+	visible = false
 	for icon in parry_icons:
 		icon.visible = false
 	
@@ -56,6 +64,19 @@ func _physics_process(delta: float) -> void:
 	for n in parry_icons.size():
 		parry_icons[n].visible = player.parry_counter > n
 
+func pause(now_paused: bool):
+	pause_display.visible = now_paused
+
+func setup_level(level: LevelBase):
+	total_enemies = level.enemy_count
+	enemies_killed = 0
+	enemies_slain_counter.text = "0 / " + str(total_enemies)
+	level.enemy_killed.connect(level_enemy_killed)
+
+func level_enemy_killed():
+	enemies_killed += 1
+	enemies_slain_counter.text = str(enemies_killed) + " / " + str(total_enemies)
+
 func update_money(amount: int):
 	money_label.update_money_indicator(amount)
 
@@ -63,6 +84,7 @@ func update_money(amount: int):
 func refresh_player(current_player: Player):
 	player = current_player
 	set_hp_immediate(player)
+	player.player_hp_recovered.connect(player_hp_recovered)
 	player.player_damage_taken.connect(player_damage_taken)
 	player.player_died.connect(gameover)
 	stamina_bar.max_value = current_player.max_stamina
@@ -142,5 +164,9 @@ func set_hp_immediate(current_player: Player):
 	var hp_bar_length: float = 200 * (current_player.health_component.max_health / 100.0)
 	hp_bar.custom_minimum_size.x = hp_bar_length
 	hp_under_bar.custom_minimum_size.x = hp_bar_length
+	
+	hp_bar.max_value = current_player.health_component.max_health
+	hp_under_bar.max_value = current_player.health_component.max_health
+	
 	hp_bar.value = current_player.health_component.current_health
 	hp_under_bar.value = current_player.health_component.current_health

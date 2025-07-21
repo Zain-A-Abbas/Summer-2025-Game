@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://ckonyraiy8awm"]
+[gd_scene load_steps=31 format=3 uid="uid://ckonyraiy8awm"]
 
 [ext_resource type="Script" uid="uid://dxbi8dls51ydl" path="res://ui/gameplay/player_ui.gd" id="1_iwa1g"]
+[ext_resource type="Theme" uid="uid://cg2o4sx4tin0j" path="res://ui/themes/main_theme.tres" id="2_73dah"]
 [ext_resource type="Texture2D" uid="uid://bhcoxvch2vy50" path="res://ui/gameplay/hp_bar.png" id="2_lp0io"]
 [ext_resource type="Shader" uid="uid://crbcrkhxf54dg" path="res://ui/gameplay/player_hp.gdshader" id="3_ykvpg"]
 [ext_resource type="Texture2D" uid="uid://cvp233p0e75s5" path="res://ui/gameplay/stamina_bar.png" id="4_hff70"]
@@ -125,8 +126,33 @@ border_width_bottom = 4
 border_color = Color(0.09, 0.09, 0.09, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_iwa1g")
+
+[node name="PauseDisplay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.592157)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="PauseDisplay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_73dah")
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="GameplayContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
@@ -308,6 +334,29 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_sdglq")
 text = "0"
 horizontal_alignment = 2
 script = ExtResource("8_uammv")
+
+[node name="EnemiesSlainHbox" type="HBoxContainer" parent="GameplayContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("2_73dah")
+
+[node name="Label" type="Label" parent="GameplayContainer/EnemiesSlainHbox"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "ENEMIES SLAIN: "
+horizontal_alignment = 2
+
+[node name="EnemiesSlainCounter" type="Label" parent="GameplayContainer/EnemiesSlainHbox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 20
+text = "0 / 9"
+horizontal_alignment = 2
 
 [node name="GameoverContainer" type="MarginContainer" parent="."]
 anchors_preset = -1

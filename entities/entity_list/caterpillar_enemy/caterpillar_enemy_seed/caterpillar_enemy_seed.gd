@@ -10,7 +10,8 @@ var projectiles: Node3D
 
 @onready var parent: AttackObject = %parent
 @onready var child: AttackObject = %child
-
+@onready var explosion: GPUParticles3D = %ExplosionParticles
+@onready var model: CSGSphere3D = %placeholder_model
 
 func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D, damage: int) -> void:
 	is_child = spawn_as_child
@@ -25,6 +26,7 @@ func initialize_seed(spawn_as_child: bool, dir: Vector3, projs: Node3D, damage: 
 	atk_obj.hitbox.monitorable = true
 	atk_obj.attack_effects[0].damage = damage
 	
+	position.y += 0.5
 	face_direction(direction)
 	prepare_states()
 

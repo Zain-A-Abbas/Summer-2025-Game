@@ -20,6 +20,9 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	# only play death sound for enemies spawned naturally
 	if !args.has("summoned") || (args.has("summoned") && !args["summoned"]):
 		char.play_sound_fx(&"death")
+		
+	if char is Enemy:
+		char.play_sound_fx(&"killed")
 	
 	char.action_animator.play(animation_name)
 	char.set_collision_layer_value(1, 0)

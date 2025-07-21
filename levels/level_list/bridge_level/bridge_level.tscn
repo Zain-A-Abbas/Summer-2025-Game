@@ -70,7 +70,7 @@ fog_light_energy = 0.02
 enemy_minimum = 4
 enemy_limit = 7
 enemy_spawn_limits = Dictionary[int, int]({
-0: 6,
+0: 5,
 1: 0,
 2: 0,
 3: 1,

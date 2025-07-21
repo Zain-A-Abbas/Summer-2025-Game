@@ -29,6 +29,7 @@ var projectiles: Node3D
 @onready var action_animator: AnimationPlayer = %ActionAnimator
 @onready var enemy_hp_bar: ProgressBar = %EnemyHPBar
 @onready var enemy_hp_sprite: Sprite3D = %EnemyHP
+@onready var damaged_particles: GPUParticles3D = %DamagedParticles
 
 
 func _ready() -> void:
@@ -53,7 +54,6 @@ func initialize_enemy(new_player: Player, data: Node3D, positions: Node3D, list:
 
 func activate_enemy():
 	set_process(true)
-
 
 # Virtual function
 func prepare_states():

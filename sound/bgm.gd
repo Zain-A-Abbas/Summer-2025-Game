@@ -72,9 +72,16 @@ func _ready() -> void:
 	bgm_player = BackgroundMusic.new()
 	add_child(bgm_player)
 
+"""
+func _physics_process(delta: float) -> void:
+	if bgm_player && bgm_player.is_playing:
+		print(bgm_player.current_volume)
+"""
+
 func play_bgm(bgm: BGM_TYPE, volume: float = 1.0):
-	current_bgm = bgm
-	bgm_player.play(BGMS[current_bgm], get_audio_db(volume))
+	if bgm != current_bgm:
+		current_bgm = bgm
+		bgm_player.play(BGMS[current_bgm], get_audio_db(volume))
  
 func pause_bgm():
 	bgm_player.pause()
@@ -94,6 +101,19 @@ func fadeout_bgm(fadeout_time: float = 0.5):
 		change_volume,
 		prev_volume,
 		0.0,
+		fadeout_time
+	)
+	await fade_tween.finished
+	
+func fadein_bgm(fadeout_time: float = 0.5):
+	if bgm_player == null:
+		return
+	var fade_tween: Tween = create_tween()
+	var prev_volume: float = bgm_player.current_volume
+	fade_tween.tween_method(
+		change_volume,
+		prev_volume,
+		1.0,
 		fadeout_time
 	)
 	await fade_tween.finished

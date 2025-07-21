@@ -18,6 +18,7 @@ func _init(new_seed: CaterpillarEnemySeed, projs: Node3D, dir: Vector3) -> void:
 func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	if args.has("hit_player") && !proj.is_child:
 		proj.is_child = true
+	proj.explosion.emitting = true
 
 func st_physics_process(delta: float) -> void:
 	delta_count += delta
@@ -39,7 +40,7 @@ func st_physics_process(delta: float) -> void:
 	if !exploded:		
 		proj.play_sound_fx(&"death")
 		proj.atk_obj.hitbox.monitorable = false
-		proj.hide()
+		proj.model.hide()
 		exploded = true
 	
 	if delta_count >= IDLE_TIME:
