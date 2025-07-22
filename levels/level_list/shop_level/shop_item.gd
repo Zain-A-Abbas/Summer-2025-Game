@@ -41,8 +41,6 @@ func _ready() -> void:
 	type = randi_range(0, PlayerUpgrades.UpgradeTypes.size() - 1)
 	price = UPGRADE_PRICES[type] + randi_range(-20, 20)
 	
-	type = PlayerUpgrades.UpgradeTypes.EXTRA_HEALTH
-	
 	price_label.text = "%s GOLD" % price
 	name_label.text = UPGRADE_NAMES[type]
 	var texture_region: Vector2
