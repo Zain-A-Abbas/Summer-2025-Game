@@ -341,32 +341,64 @@ transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 
 
 [node name="OmniLight3D" parent="StaticGeometry/Deco/Torch" index="3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.03343e-07, 1.58665, 1.5522)
-omni_range = 16.657
-omni_attenuation = 0.745
+omni_range = 14.739
+omni_attenuation = 1.039
 
 [node name="Torch2" parent="StaticGeometry/Deco" index="1" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, -6, 1.5, -3.9)
 
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch2" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
+
 [node name="Torch3" parent="StaticGeometry/Deco" index="2" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -18, 1.5, -3.9)
+
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch3" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
 
 [node name="Torch4" parent="StaticGeometry/Deco" index="3" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-0.129409, 0, -0.482963, 0, 0.5, 0, 0.482963, 0, -0.129409, -6.21468, 1.39267, 9.1)
 
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch4" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
+
 [node name="Torch5" parent="StaticGeometry/Deco" index="4" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-0.12941, 0, 0.482963, 0, 0.5, 0, -0.482963, 0, -0.12941, -17.7562, 1.40705, 9.1)
+
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch5" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
 
 [node name="Torch6" parent="StaticGeometry/Deco" index="5" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-0.5, 0, -1.58933e-08, 0, 0.5, 0, 1.58933e-08, 0, -0.5, 16, 2.5, 6.1)
 
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch6" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
+
 [node name="Torch7" parent="StaticGeometry/Deco" index="6" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-0.5, 0, -1.58933e-08, 0, 0.5, 0, 1.58933e-08, 0, -0.5, 8.4, 2.5, 6.1)
+
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch7" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
 
 [node name="Torch8" parent="StaticGeometry/Deco" index="7" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(3.7749e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, 3.7749e-08, 18, 2.5, -20.9)
 
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch8" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
+
 [node name="Torch9" parent="StaticGeometry/Deco" index="8" instance=ExtResource("7_r2lxl")]
 transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 6.5, 2.5, -20.9)
+
+[node name="OmniLight3D" parent="StaticGeometry/Deco/Torch9" index="3"]
+omni_range = 14.739
+omni_attenuation = 1.039
 
 [node name="Marker3D2" type="Marker3D" parent="EnemyPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.951, 0, -12.15)
@@ -392,8 +424,15 @@ environment = SubResource("Environment_r6poa")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lighting" index="1"]
 unique_name_in_owner = true
-transform = Transform3D(-0.965926, -0.0977925, 0.239633, 0.0669876, 0.799862, 0.596434, -0.25, 0.592164, -0.766056, 0, 9.76641, 0)
+transform = Transform3D(-0.898412, -0.211674, 0.384774, 0.0669876, 0.799862, 0.596434, -0.434015, 0.561619, -0.704425, 0, 9.76641, 0)
 light_color = Color(0.4488, 0.6248, 0.66, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lighting" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(-0.519287, 0.538385, -0.663689, 0.0669876, 0.799862, 0.596434, 0.851971, 0.265261, -0.451422, 0, 9.76641, 0)
+light_color = Color(0.199155, 0.355526, 0.433431, 1)
 light_energy = 0.5
 shadow_enabled = true
 
@@ -419,3 +458,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.09644, 0, -0.607946)
 gizmo_extents = 2.0
 
 [editable path="StaticGeometry/Deco/Torch"]
+[editable path="StaticGeometry/Deco/Torch2"]
+[editable path="StaticGeometry/Deco/Torch3"]
+[editable path="StaticGeometry/Deco/Torch4"]
+[editable path="StaticGeometry/Deco/Torch5"]
+[editable path="StaticGeometry/Deco/Torch6"]
+[editable path="StaticGeometry/Deco/Torch7"]
+[editable path="StaticGeometry/Deco/Torch8"]
+[editable path="StaticGeometry/Deco/Torch9"]
