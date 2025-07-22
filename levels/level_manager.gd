@@ -125,15 +125,17 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		push_error("No player found in refresh_player()")
 		return
 	
+	current_player.initialize_upgrades(player_upgrades)
+	player_ui.refresh_player(current_player)
 	player_ui.update_upgrades(current_player)
-	update_upgrade_ui()
+	#update_upgrade_ui()
 	if prev_hp == -1:
 		current_player.health_component.current_health = current_player.health_component.max_health
 	else:
 		current_player.health_component.current_health = prev_hp
+	#player_ui.refresh_player(current_player)
 	
 	current_player.obtained_money.connect(money_gain)
-	player_ui.refresh_player(current_player)
 	
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
