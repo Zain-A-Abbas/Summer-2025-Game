@@ -37,7 +37,7 @@ fadeout_time = 0.2
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_0d2h6"]
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_uqve2"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ub78t"]
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_sb4bn"]
 filter_enabled = true
@@ -65,7 +65,7 @@ animation = &"placeholder_animations/Jog_Fwd"
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_lor2s"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_uqx3w"]
-graph_offset = Vector2(-450.277, 85.3835)
+graph_offset = Vector2(720.176, 98.919)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_lor2s")
 nodes/Animation/position = Vector2(-540, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lfi0l")
@@ -88,8 +88,8 @@ nodes/Attack2/node = SubResource("AnimationNodeOneShot_lfi0l")
 nodes/Attack2/position = Vector2(620, 200)
 nodes/Attack2TimeScale/node = SubResource("AnimationNodeTimeScale_0d2h6")
 nodes/Attack2TimeScale/position = Vector2(420, 400)
-nodes/DeathOneshot/node = SubResource("AnimationNodeOneShot_uqve2")
-nodes/DeathOneshot/position = Vector2(2460, 280)
+nodes/DeathBlend/node = SubResource("AnimationNodeBlend2_ub78t")
+nodes/DeathBlend/position = Vector2(2620, 320)
 nodes/HurtOneShot/node = SubResource("AnimationNodeOneShot_sb4bn")
 nodes/HurtOneShot/position = Vector2(960, 300)
 nodes/ParryOneShot/node = SubResource("AnimationNodeOneShot_k8ssj")
@@ -107,38 +107,38 @@ nodes/WalkBlend/position = Vector2(-80, 160)
 nodes/WalkTimeScale/node = SubResource("AnimationNodeTimeScale_lor2s")
 nodes/WalkTimeScale/position = Vector2(-360, 360)
 nodes/output/position = Vector2(3060, 180)
-node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeScale", &"Attack1TimeScale", 0, &"Attack1TimeSeek", &"Attack1TimeSeek", 0, &"Animation 3", &"Attack2", 0, &"Attack1", &"Attack2", 1, &"Attack2TimeScale", &"Attack2TimeScale", 0, &"Animation 4", &"DeathOneshot", 0, &"ParryOneShot", &"DeathOneshot", 1, &"TimeScale", &"HurtOneShot", 0, &"Attack2", &"HurtOneShot", 1, &"Animation 2", &"ParryOneShot", 0, &"HurtOneShot", &"ParryOneShot", 1, &"ParryTimeScale", &"ParryTimeScale", 0, &"ParryTimeSeek", &"ParryTimeSeek", 0, &"Animation 5", &"TimeScale", 0, &"Animation 6", &"WalkBlend", 0, &"Animation", &"WalkBlend", 1, &"WalkTimeScale", &"WalkTimeScale", 0, &"Walk", &"output", 0, &"DeathOneshot"]
+node_connections = [&"Attack1", 0, &"WalkBlend", &"Attack1", 1, &"Attack1TimeScale", &"Attack1TimeScale", 0, &"Attack1TimeSeek", &"Attack1TimeSeek", 0, &"Animation 3", &"Attack2", 0, &"Attack1", &"Attack2", 1, &"Attack2TimeScale", &"Attack2TimeScale", 0, &"Animation 4", &"DeathBlend", 0, &"ParryOneShot", &"DeathBlend", 1, &"TimeScale", &"HurtOneShot", 0, &"Attack2", &"HurtOneShot", 1, &"Animation 2", &"ParryOneShot", 0, &"HurtOneShot", &"ParryOneShot", 1, &"ParryTimeScale", &"ParryTimeScale", 0, &"ParryTimeSeek", &"ParryTimeSeek", 0, &"Animation 5", &"TimeScale", 0, &"Animation 6", &"WalkBlend", 0, &"Animation", &"WalkBlend", 1, &"WalkTimeScale", &"WalkTimeScale", 0, &"Walk", &"output", 0, &"DeathBlend"]
 
 [node name="player" instance=ExtResource("1_v3w67")]
 
 [node name="GeneralSkeleton" parent="Armature" index="0"]
 bones/0/position = Vector3(0, 0, 0)
-bones/1/position = Vector3(0.19965, 2.71341, -0.406526)
+bones/1/position = Vector3(0.123458, 2.7946, -0.403557)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.167944, -0.0413414, 0.000220135, 0.984929)
-bones/4/rotation = Quaternion(0.284983, -0.114721, -0.026977, 0.95126)
+bones/3/rotation = Quaternion(0.167036, -0.0412914, 8.07133e-05, 0.985086)
+bones/4/rotation = Quaternion(0.282216, -0.114589, -0.0274171, 0.952088)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0449143, 0.936971, -0.346457, 0.00593422)
-bones/7/rotation = Quaternion(0.20142, -0.774684, 0.336905, 0.495772)
-bones/8/rotation = Quaternion(0.0516234, 0.651073, 0.0691447, 0.754094)
+bones/6/rotation = Quaternion(0.0353949, 0.939293, -0.341235, 0.00584478)
+bones/7/rotation = Quaternion(0.203183, -0.772169, 0.335803, 0.499708)
+bones/8/rotation = Quaternion(0.0311477, 0.671372, 0.0666987, 0.737455)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0014662, 0.000672063, 0.00047682, 0.999999)
-bones/13/rotation = Quaternion(-0.173782, 0.0775481, 0.0184616, 0.981553)
-bones/14/rotation = Quaternion(0.108942, 0.17105, -0.0195267, 0.979026)
+bones/10/rotation = Quaternion(0.0153571, 0.00703909, 0.00499409, 0.999845)
+bones/13/rotation = Quaternion(-0.171884, 0.0774491, 0.0187569, 0.981889)
+bones/14/rotation = Quaternion(0.145925, 0.163712, -0.0327732, 0.975105)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.21126, 0.749989, -0.289506, 0.555942)
-bones/19/rotation = Quaternion(-0.0182105, -0.613677, -0.00521645, 0.78933)
+bones/18/rotation = Quaternion(0.174048, 0.767486, -0.239296, 0.568691)
+bones/19/rotation = Quaternion(0.000301943, -0.613947, -0.0290148, 0.788814)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00109127, 0.246256, 0.956564, -0.156018)
-bones/26/rotation = Quaternion(0.0466038, 0.839973, -0.535531, 0.0740245)
-bones/27/rotation = Quaternion(-0.0488711, 0.599878, -0.796358, 0.0597731)
-bones/28/rotation = Quaternion(0.0023139, 0.0380689, 0.942926, 0.330813)
-bones/29/rotation = Quaternion(-0.154819, 0.809081, -0.508672, -0.250342)
-bones/30/rotation = Quaternion(0.240745, 0.499314, -0.823989, 0.117341)
+bones/25/rotation = Quaternion(-0.00112556, 0.211852, 0.963962, -0.16092)
+bones/26/rotation = Quaternion(0.0424419, 0.866757, -0.491087, 0.0759231)
+bones/27/rotation = Quaternion(-0.0581975, 0.614237, -0.784184, 0.0661975)
+bones/28/rotation = Quaternion(0.00212856, 0.0127854, 0.952483, 0.304317)
+bones/29/rotation = Quaternion(-0.14888, 0.826446, -0.474631, -0.263718)
+bones/30/rotation = Quaternion(0.232147, 0.50486, -0.823069, 0.117397)
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.708213, -0.615412, 0.34598, 0.346286, -0.72986, -0.589399, 0.61524, -0.297612, 0.730005, -1.1443, 2.76092, -2.50542)
+transform = Transform3D(-0.745032, -0.58094, 0.327773, 0.300828, -0.731223, -0.612222, 0.59534, -0.357522, 0.719548, -1.13794, 2.8149, -2.60425)
 bone_name = "RightHand"
 bone_idx = 19
 
@@ -170,9 +170,7 @@ parameters/Attack2/active = false
 parameters/Attack2/internal_active = false
 parameters/Attack2/request = 0
 parameters/Attack2TimeScale/scale = 1.5
-parameters/DeathOneshot/active = false
-parameters/DeathOneshot/internal_active = false
-parameters/DeathOneshot/request = 0
+parameters/DeathBlend/blend_amount = 0.0
 parameters/HurtOneShot/active = false
 parameters/HurtOneShot/internal_active = false
 parameters/HurtOneShot/request = 0

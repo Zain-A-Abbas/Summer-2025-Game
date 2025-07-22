@@ -219,7 +219,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathOneshot/request")
+tracks/3/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryOneShot/request")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -231,13 +231,25 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("PlayerAnimator/AnimationTree:parameters/ParryOneShot/request")
+tracks/4/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathBlend/blend_amount")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathBlend/blend_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [0]
 }
 
@@ -299,14 +311,14 @@ length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathOneshot/request")
+tracks/0/path = NodePath("PlayerAnimator/AnimationTree:parameters/DeathBlend/blend_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_w7qv5"]
@@ -512,35 +524,29 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(-0.255, 0, 2.22928e-08, 0, 0.255, 0, -2.22928e-08, 0, -0.255, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0149191, 2.73617, -0.407187)
-bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.163876, -0.0411152, -0.00040256, 0.985624)
-bones/4/rotation = Quaternion(0.268025, -0.113891, -0.0296589, 0.956197)
-bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0218086, 0.942486, -0.333485, 0.00571214)
-bones/7/rotation = Quaternion(0.205657, -0.768593, 0.334237, 0.505228)
-bones/8/rotation = Quaternion(0.0460136, 0.65687, 0.0684592, 0.749478)
-bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.035155, 0.0161135, 0.011433, 0.999187)
-bones/13/rotation = Quaternion(-0.162732, 0.0769609, 0.0201735, 0.983457)
-bones/14/rotation = Quaternion(0.10694, 0.17369, -0.0111326, 0.978914)
-bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
-bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.177648, 0.765955, -0.244153, 0.567577)
-bones/19/rotation = Quaternion(-0.0192328, -0.613646, -0.00390146, 0.789337)
-bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00126959, 0.219266, 0.958631, -0.181514)
-bones/26/rotation = Quaternion(0.0396752, 0.855885, -0.511235, 0.0672745)
-bones/27/rotation = Quaternion(-0.0794234, 0.604641, -0.788994, 0.0747609)
-bones/28/rotation = Quaternion(0.00210245, 0.0190671, 0.953562, 0.300584)
-bones/29/rotation = Quaternion(-0.158097, 0.806841, -0.509039, -0.254742)
-bones/30/rotation = Quaternion(0.221103, 0.473714, -0.843288, 0.124794)
+bones/1/position = Vector3(0.014107, 2.73062, -0.409243)
+bones/3/rotation = Quaternion(0.168942, -0.041396, 0.000373589, 0.984756)
+bones/4/rotation = Quaternion(0.287805, -0.114854, -0.0265274, 0.950407)
+bones/6/rotation = Quaternion(0.0217071, 0.942509, -0.333426, 0.00571111)
+bones/7/rotation = Quaternion(0.205643, -0.768613, 0.334245, 0.505198)
+bones/8/rotation = Quaternion(0.0473908, 0.655464, 0.0686265, 0.750607)
+bones/10/rotation = Quaternion(0.035303, 0.0161814, 0.0114811, 0.99918)
+bones/13/rotation = Quaternion(-0.175556, 0.0776399, 0.0181852, 0.981235)
+bones/14/rotation = Quaternion(0.119395, 0.168535, -0.0247915, 0.978124)
+bones/18/rotation = Quaternion(0.208558, 0.751386, -0.285861, 0.556962)
+bones/19/rotation = Quaternion(-0.0128994, -0.613812, -0.0120467, 0.789255)
+bones/25/rotation = Quaternion(-0.00127411, 0.221174, 0.95807, -0.182158)
+bones/26/rotation = Quaternion(0.039673, 0.85448, -0.513637, 0.0668422)
+bones/27/rotation = Quaternion(-0.0799056, 0.604042, -0.7894, 0.0748051)
+bones/28/rotation = Quaternion(0.00210863, 0.0206178, 0.953253, 0.301463)
+bones/29/rotation = Quaternion(-0.158765, 0.8052, -0.511851, -0.253882)
+bones/30/rotation = Quaternion(0.220778, 0.472386, -0.844055, 0.125215)
 
 [node name="HandAttachment" parent="PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.765107, -0.560023, 0.317783, 0.29699, -0.744817, -0.597533, 0.571322, -0.362798, 0.736185, -1.29761, 2.73991, -2.55261)
+transform = Transform3D(-0.705509, -0.617829, 0.347193, 0.344465, -0.727085, -0.593879, 0.619355, -0.299391, 0.725785, -1.31491, 2.77959, -2.52592)
 
 [node name="HandAttachment2" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(0.793981, -0.0449152, -0.606281, -0.533637, -0.529255, -0.659637, -0.291249, 0.847274, -0.444186, 1.7009, 2.67061, 1.32744)
+transform = Transform3D(0.810811, -0.0334658, -0.584351, -0.498291, -0.563238, -0.659143, -0.307069, 0.825617, -0.473355, 1.74143, 2.6411, 1.27481)
 bone_name = "LeftHand"
 bone_idx = 8
 
@@ -557,7 +563,7 @@ process_material = SubResource("ParticleProcessMaterial_j2bb4")
 draw_pass_1 = SubResource("QuadMesh_eob72")
 
 [node name="CapeAttachment" type="BoneAttachment3D" parent="PlayerAnimator/Armature/GeneralSkeleton" index="4"]
-transform = Transform3D(0.836583, -0.132976, -0.531456, -0.00306957, 0.968942, -0.247271, 0.547831, 0.208494, 0.810192, 0.00280779, 4.6218, -0.512354)
+transform = Transform3D(0.835887, -0.148566, -0.528414, -0.00097204, 0.962273, -0.272085, 0.548901, 0.227946, 0.804207, -0.0132115, 4.60441, -0.497952)
 bone_name = "Neck"
 bone_idx = 13
 
@@ -568,6 +574,9 @@ mesh = SubResource("ArrayMesh_wldvb")
 
 [node name="AnimationPlayer" parent="PlayerAnimator" index="1"]
 root_motion_track = NodePath("../Armature/GeneralSkeleton")
+
+[node name="AnimationTree" parent="PlayerAnimator" index="2"]
+parameters/DeathBlend/blend_amount = 0
 
 [node name="EntityAnimator#CSGMesh3D" type="CSGMesh3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

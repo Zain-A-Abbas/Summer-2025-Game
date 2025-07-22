@@ -77,7 +77,7 @@ func prepare_states():
 # involving upgrades
 func initialize_upgrades(_upgrades: PlayerUpgrades):
 	upgrades = _upgrades
-	health_component.max_health = 100.0 + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
+	health_component.max_health = health_component.max_health + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
 	max_stamina = 100.0 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
 
 # regeneration_cooldown is the amount of time before stamina starts regenerating again

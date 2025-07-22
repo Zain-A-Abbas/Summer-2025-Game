@@ -110,7 +110,8 @@ func gameover(player: Player):
 		child.queue_free()
 	await get_tree().process_frame
 	for child in upgrade_icons_container.get_children():
-		upgrade_icons_gameover_container.add_child(child.duplicate())
+		upgrade_icons_container.remove_child(child)
+		upgrade_icons_gameover_container.add_child(child)
 	
 	await get_tree().create_timer(2.5).timeout
 	

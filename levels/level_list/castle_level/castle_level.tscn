@@ -144,18 +144,24 @@ size = Vector3(12, 0.01, 32)
 material = ExtResource("3_56ogd")
 
 [node name="Floor3" type="CSGBox3D" parent="StaticGeometry/Floors" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 4.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 2)
 layers = 33
-size = Vector3(12, 0.01, 21)
+size = Vector3(12, 0.01, 16)
 material = ExtResource("3_56ogd")
 
 [node name="Floor4" type="CSGBox3D" parent="StaticGeometry/Floors" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
 layers = 33
-size = Vector3(8.7, 0.01, 5)
+size = Vector3(8, 0.01, 5)
 material = ExtResource("3_56ogd")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Floors" index="4"]
+[node name="Floor6" type="CSGBox3D" parent="StaticGeometry/Floors" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8, -0.005, 12.5)
+layers = 33
+size = Vector3(11, 0.01, 5)
+material = ExtResource("3_56ogd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Floors" index="5"]
 visible = false
 collision_layer = 32
 collision_mask = 0
@@ -176,10 +182,10 @@ shape = SubResource("ConcavePolygonShape3D_62yhd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
 shape = SubResource("ConcavePolygonShape3D_f25fd")
 
-[node name="Floor5" type="CSGBox3D" parent="StaticGeometry/Floors" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 18)
+[node name="Floor5" type="CSGBox3D" parent="StaticGeometry/Floors" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.005, 18)
 layers = 33
-size = Vector3(10.065, 0.01, 6)
+size = Vector3(13, 0.01, 6)
 material = ExtResource("3_56ogd")
 
 [node name="Walls" type="Node3D" parent="StaticGeometry" index="4"]
@@ -215,9 +221,9 @@ shape = SubResource("ConcavePolygonShape3D_r6poa")
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticGeometry/Walls" index="2"]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls/CSGCombiner3D" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 2, -10)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 1.5, -10)
 layers = 33
-size = Vector3(32, 4, 0.5)
+size = Vector3(32, 3, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="StaticGeometry/Walls/CSGCombiner3D" index="1"]
@@ -238,9 +244,9 @@ shape = SubResource("ConcavePolygonShape3D_7ljcb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls/CSGCombiner3D2" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 2, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 1.5, 0.5)
 layers = 33
-size = Vector3(13, 4, 0.5)
+size = Vector3(13, 3, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="StaticGeometry/Walls/CSGCombiner3D2" index="1"]
@@ -264,15 +270,15 @@ size = Vector3(20, 12, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="StaticGeometry/Walls" index="5"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.25, 6, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.25, 1.5, 0.5)
 layers = 33
-size = Vector3(13, 12, 0.5)
+size = Vector3(13, 3, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="StaticGeometry/Walls" index="6"]
-transform = Transform3D(0.130526, 0, -0.991445, 0, 1, 0, 0.991445, 0, 0.130526, -17, 6, 16.935)
+transform = Transform3D(0.130526, 0, -0.991445, 0, 1, 0, 0.991445, 0, 0.130526, -17, 1.5, 16.935)
 layers = 33
-size = Vector3(20, 12, 0.5)
+size = Vector3(20, 3, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="StaticGeometry/Walls" index="7"]
