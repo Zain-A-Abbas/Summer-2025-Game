@@ -43,7 +43,7 @@ var extra_hp: int = 0
 var extra_stamina_limit: int = BASE_EXTRA_STAMINA_LIMIT
 var extra_stamina: int = 0
 
-func obtain_upgrade(type: UpgradeTypes, amount: int = 1) -> bool:
+func obtain_upgrade(type: UpgradeTypes, amount: int, player: Player) -> bool:
 	match type:
 		UpgradeTypes.PARRY_FRAME_BONUS:
 			return obtain_parry_time_upgrade(amount)
@@ -52,7 +52,7 @@ func obtain_upgrade(type: UpgradeTypes, amount: int = 1) -> bool:
 		UpgradeTypes.PARRY_DAMAGE_BONUS:
 			return obtain_parry_damage_upgrade(amount)
 		UpgradeTypes.EXTRA_HEALTH:
-			return obtain_hp_upgrade(amount)
+			return obtain_hp_upgrade(amount, player)
 		UpgradeTypes.EXTRA_STAMINA:
 			return obtain_stamina_upgrade(amount)
 	
@@ -79,10 +79,11 @@ func obtain_parry_damage_upgrade(amount: int = 1) -> bool:
 	upgrades_updated.emit()
 	return true
 
-func obtain_hp_upgrade(amount: int = 1) -> bool:
+func obtain_hp_upgrade(amount: int, player: Player) -> bool:
 	if extra_hp >= extra_hp_limit:
 		return false
 	extra_hp = clampi(extra_hp + amount, 0, extra_hp_limit)
+	player.health_component.current_health = clampi(player.health_component.current_health + extra_hp, 0, player.health_component.max_health + extra_hp)
 	upgrades_updated.emit()
 	return true
 

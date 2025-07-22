@@ -77,7 +77,7 @@ func prepare_states():
 # involving upgrades
 func initialize_upgrades(_upgrades: PlayerUpgrades):
 	upgrades = _upgrades
-	health_component.max_health = health_component.max_health + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
+	health_component.max_health = health_component.base_max_health + upgrades.extra_hp * upgrades.EXTRA_HP_AMOUNT
 	max_stamina = 100.0 + upgrades.extra_stamina * upgrades.EXTRA_STAMINA_AMOUNT
 
 # regeneration_cooldown is the amount of time before stamina starts regenerating again
@@ -133,9 +133,10 @@ func char_entity_die(args: Dictionary[String, Variant]  = {}):
 	player_died.emit(self)
 	state_machine.change_state(&"Death")
 
-func heal(heal_amount: int):
+func heal(heal_amount: int, emit: bool = true):
 	health_component.set_current_health(health_component.current_health + heal_amount)
-	player_hp_recovered.emit(self)
+	if emit:
+		player_hp_recovered.emit(self)
 	#player_damage_taken.emit(self, 0)
 
 func gain_money(amount: int):

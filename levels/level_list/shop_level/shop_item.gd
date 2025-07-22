@@ -41,6 +41,8 @@ func _ready() -> void:
 	type = randi_range(0, PlayerUpgrades.UpgradeTypes.size() - 1)
 	price = UPGRADE_PRICES[type] + randi_range(-20, 20)
 	
+	type = PlayerUpgrades.UpgradeTypes.EXTRA_HEALTH
+	
 	price_label.text = "%s GOLD" % price
 	name_label.text = UPGRADE_NAMES[type]
 	var texture_region: Vector2
@@ -88,7 +90,7 @@ func resolve_buy():
 			await price_tween.finished
 			return
 	
-	var upgrade_suceeded: bool = level_manager.current_player.upgrades.obtain_upgrade(type, 1)
+	var upgrade_suceeded: bool = level_manager.current_player.upgrades.obtain_upgrade(type, 1, level_manager.current_player)
 	if !upgrade_suceeded:
 		return
 	

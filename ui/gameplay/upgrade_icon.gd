@@ -9,6 +9,7 @@ var max: int = 0
 var current: int = 0
 
 func _ready() -> void:
+	
 	match type:
 		PlayerUpgrades.UpgradeTypes.PARRY_FRAME_BONUS:
 			max = PlayerUpgrades.BASE_PARRY_BONUS_LIMIT

@@ -89,8 +89,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		return
 	
 	if body is Player:
+		body.heal(HEALTH_BONUS, false)
 		exit_chosen.emit(exit_type, normal_level_type)
-		body.heal(HEALTH_BONUS)
 	else:
 		push_error("Non-player triggered LevelExit collision")
 

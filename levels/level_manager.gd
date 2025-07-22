@@ -115,7 +115,10 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		enemy_count = new_level.enemy_limit
 	if !new_level.has_enemies:
 		enemy_count = 0
-
+	
+	if use_test_level:
+		enemy_count = 1
+	
 	new_level.setup_level(self, new_level_type, enemy_count)
 	player_ui.setup_level(new_level)
 	new_level.level_completed.connect(level_complete)
@@ -126,13 +129,14 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 		return
 	
 	current_player.initialize_upgrades(player_upgrades)
-	player_ui.refresh_player(current_player)
-	player_ui.update_upgrades(current_player)
-	#update_upgrade_ui()
 	if prev_hp == -1:
 		current_player.health_component.current_health = current_player.health_component.max_health
 	else:
 		current_player.health_component.current_health = prev_hp
+	
+	player_ui.refresh_player(current_player)
+	player_ui.update_upgrades(current_player)
+	#update_upgrade_ui()
 	#player_ui.refresh_player(current_player)
 	
 	current_player.obtained_money.connect(money_gain)

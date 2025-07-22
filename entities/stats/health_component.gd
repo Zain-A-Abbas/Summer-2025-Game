@@ -5,6 +5,7 @@ extends Node
 @export var entity: CharacterEntity
 @export var current_health: int
 @export var max_health: int
+@export var base_max_health: int
 
 
 func initialize_health_component(max_amount: int) -> void:
