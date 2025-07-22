@@ -12,8 +12,8 @@ enum NormalLevelType {
 	NONE
 }
 
-const ENEMY_DMG_MULTIPLIER_INC: float = 0.12
-const ENEMY_HP_MULTIPLIER_INC: float = 0.2
+const ENEMY_DMG_MULTIPLIER_INC: float = 0.2
+const ENEMY_HP_MULTIPLIER_INC: float = 0.25
 const NORMAL_LEVELS: Dictionary[NormalLevelType, PackedScene] = {
 	NormalLevelType.BRIDGE: preload("res://levels/level_list/bridge_level/bridge_level.tscn"),
 	NormalLevelType.CASTLE: preload("res://levels/level_list/castle_level/castle_level.tscn"),
@@ -34,8 +34,11 @@ var current_level_type: LevelBase.LevelType = LevelBase.LevelType.NONE
 var current_level_count: int = 0
 var new_normal_level_type: NormalLevelType = NormalLevelType.NONE
 var normal_level_queue: Array[NormalLevelType]
+var healing_level_made: bool = false
+var shop_level_made: bool = false
+var boss_just_killed: bool = false
 var bosses_killed: int = 0
-var money: int = 300
+var money: int = 50
 var current_player: Player
 var player_upgrades: PlayerUpgrades
 var prev_hp: int = -1
@@ -133,26 +136,30 @@ func create_level(new_level_type: LevelBase.LevelType = LevelBase.LevelType.NORM
 	
 	await fade_transition(false)
 	new_level.start_level(new_level_type)
+	print(current_level_count)
 
 func level_complete(level: LevelBase, exit_type: LevelBase.LevelType, normal_level_type: LevelManager.NormalLevelType):
 	await fade_transition(true)
 	
 	prev_hp = current_player.health_component.current_health
 	
-	if level.type != LevelBase.LevelType.SHOP && level.type != LevelBase.LevelType.HEALING:
-		current_level_count += 1
+	#if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
 
+	if exit_type != LevelBase.LevelType.SHOP && exit_type != LevelBase.LevelType.HEALING:
+		current_level_count += 1
+		reset_normal_level_queue()
+		if level.type != LevelBase.LevelType.BOSS:
+			normal_level_queue.erase(normal_level_type)
+			boss_just_killed = false
+	
 	if level.type == LevelBase.LevelType.BOSS:
 		bosses_killed += 1
 		player_upgrades.increase_upgrade_limits()
 		enemy_dmg_multiplier += ENEMY_DMG_MULTIPLIER_INC
 		enemy_hp_multiplier += ENEMY_HP_MULTIPLIER_INC
 		run_scale_enemies = true
+		boss_just_killed = true
 		#print("scaling turned on")
-	
-	reset_normal_level_queue()
-	if level.type == LevelBase.LevelType.NORMAL:
-		normal_level_queue.erase(normal_level_type)
 	
 	level.queue_free()
 	

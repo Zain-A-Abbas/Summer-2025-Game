@@ -51,7 +51,7 @@ damage = 12
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5rjs7"]
-radius = 0.48734
+radius = 0.477397
 
 [sub_resource type="Resource" id="Resource_ncpcy"]
 script = ExtResource("7_nfnqn")
@@ -71,12 +71,12 @@ metadata/_custom_type_script = "uid://b6j3ko8vnxqca"
 
 [sub_resource type="Resource" id="Resource_5rjs7"]
 script = ExtResource("7_nfnqn")
-damage = 3
+damage = 4
 metadata/_custom_type_script = "uid://dyidbo7tcvvbg"
 
 [sub_resource type="Resource" id="Resource_2w3it"]
 script = ExtResource("8_hpkgp")
-stun_duration = 1.3
+stun_duration = 1.5
 stun_chance = 0.25
 metadata/_custom_type_script = "uid://4rhq8c58a3im"
 
@@ -263,43 +263,62 @@ inflicted_attack_effect_limits = Dictionary[int, int]({
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="jabberwock/Armature" index="0"]
-bones/1/rotation = Quaternion(-0.300528, -1.90886e-09, 7.12396e-09, 0.953773)
-bones/2/rotation = Quaternion(-0.258507, -9.88094e-09, 1.07832e-08, 0.966009)
-bones/5/rotation = Quaternion(-0.362588, -0.0479726, -0.439016, 0.820667)
-bones/6/rotation = Quaternion(-0.284573, 0.125832, 0.480332, 0.82004)
-bones/15/rotation = Quaternion(-0.238657, 3.17638e-08, -0.238657, 0.941321)
-bones/16/rotation = Quaternion(-0.343201, 0.063952, -0.317119, 0.881793)
-bones/16/scale = Vector3(1, 2.68325, 1)
-bones/17/rotation = Quaternion(-0.0177655, 0.0628399, -0.0897795, 0.993819)
-bones/17/scale = Vector3(0.993497, 0.390876, 0.999951)
-bones/19/rotation = Quaternion(-0.015205, -0.00668177, 0.00834032, 0.999827)
-bones/20/rotation = Quaternion(0.164447, 0.0509272, 0.0275822, 0.984684)
-bones/21/rotation = Quaternion(-0.0150708, -0.112121, 0.023448, 0.993304)
-bones/22/rotation = Quaternion(0.0502994, -0.0130922, 0.0861668, 0.994924)
-bones/24/rotation = Quaternion(-0.362588, 0.0479725, 0.439016, 0.820667)
-bones/25/rotation = Quaternion(-0.284573, -0.125832, -0.480332, 0.82004)
-bones/34/rotation = Quaternion(-0.238657, -9.3022e-07, 0.238657, 0.941321)
-bones/35/position = Vector3(0.9, 2.7358, 2.96043)
-bones/35/rotation = Quaternion(0.00921785, 0.25843, 0.965372, -0.0344336)
-bones/36/rotation = Quaternion(-0.241587, 0.00861719, -0.0345888, 0.969724)
-bones/38/position = Vector3(-0.9, 2.7358, 2.96043)
-bones/38/rotation = Quaternion(-0.00921791, 0.25843, 0.965372, 0.0344336)
-bones/39/rotation = Quaternion(-0.241587, -0.00861719, 0.0345888, 0.969724)
+bones/1/position = Vector3(0, 4.22855, 3.83333)
+bones/1/rotation = Quaternion(-0.258819, 0, 0, 0.965926)
+bones/2/rotation = Quaternion(-0.329787, 3.80022e-16, -2.57088e-15, 0.944055)
+bones/3/rotation = Quaternion(0, -8.88178e-16, -3.55271e-15, 1)
+bones/5/rotation = Quaternion(-0.329308, 0.181443, -0.357832, 0.854746)
+bones/6/rotation = Quaternion(-0.292311, -0.0161381, 0.267971, 0.91787)
+bones/6/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.113438, 0.202647, 0.279966, 0.931496)
+bones/8/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.133719, -4.97241e-09, 0.133719, 0.981956)
+bones/11/rotation = Quaternion(-0.0951169, 3.26149e-08, -0.0951169, 0.990911)
+bones/12/rotation = Quaternion(-0.0368958, -0.0263687, -0.0727475, 0.996319)
+bones/13/rotation = Quaternion(-0.272004, 6.94549e-08, -0.272004, 0.923054)
+bones/14/rotation = Quaternion(-0.288695, 0.0149914, -0.241368, 0.926376)
+bones/15/rotation = Quaternion(-0.238336, 0.0123765, -0.189521, 0.952431)
+bones/16/rotation = Quaternion(1.00974e-28, 1.19209e-07, 8.47033e-22, 1)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.174586, 1.76564e-15, -5.39141e-08, 0.984642)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.102566, 1.78577e-15, -2.44536e-08, 0.994726)
+bones/19/rotation = Quaternion(-0.145587, 1.07729e-14, -3.47106e-08, 0.989345)
+bones/20/rotation = Quaternion(0.0169206, 1.14993e-14, 2.26842e-08, 0.999857)
+bones/21/rotation = Quaternion(0.359966, -3.23678e-14, 8.58225e-08, 0.932966)
+bones/22/rotation = Quaternion(0.30883, -1.86765e-15, 7.36308e-08, 0.951117)
+bones/24/rotation = Quaternion(-0.329308, -0.181443, 0.357832, 0.854746)
+bones/25/rotation = Quaternion(-0.292311, 0.0161383, -0.267971, 0.91787)
+bones/25/scale = Vector3(1, 1, 1)
+bones/27/rotation = Quaternion(0.113438, -0.202647, -0.279966, 0.931496)
+bones/29/rotation = Quaternion(0.133719, -2.57095e-08, -0.133719, 0.981956)
+bones/30/rotation = Quaternion(-0.0951169, -1.01243e-08, 0.0951169, 0.990911)
+bones/31/rotation = Quaternion(-0.0368958, 0.0263687, 0.0727475, 0.996319)
+bones/32/rotation = Quaternion(-0.272004, -5.08881e-08, 0.272004, 0.923054)
+bones/33/rotation = Quaternion(-0.288695, -0.0149915, 0.241368, 0.926376)
+bones/34/rotation = Quaternion(-0.238336, -0.0123774, 0.189521, 0.952431)
+bones/35/position = Vector3(0.9, 2.73573, 2.96013)
+bones/35/rotation = Quaternion(0.00922585, 0.258655, 0.965312, -0.0344315)
+bones/36/rotation = Quaternion(-0.241768, 0.00862365, -0.0345872, 0.969679)
+bones/37/rotation = Quaternion(-0.687215, -1.16082e-07, 1.09506e-07, 0.726454)
+bones/38/position = Vector3(-0.9, 2.73573, 2.96013)
+bones/38/rotation = Quaternion(-0.00922591, 0.258655, 0.965312, 0.0344315)
+bones/39/rotation = Quaternion(-0.241768, -0.00862365, 0.0345872, 0.969679)
 
 [node name="Cube" parent="jabberwock/Armature/Skeleton3D" index="0"]
 material_overlay = ExtResource("4_155cq")
 cast_shadow = 0
 
 [node name="HeadAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.23386, -0.923521, -0.0492167, 0.0669524, 0.0211667, 0.96454, -1.03054, 0.585891, -0.0910842, -10.3012, 2.14112, 4.06216)
+transform = Transform3D(-1, 7.95519e-08, -3.79302e-07, -1.64887e-07, 0.798377, 0.602157, 3.50729e-07, 0.602157, -0.798377, 9.62391e-07, 6.28906, 6.65053)
 bone_name = "head"
 bone_idx = 22
 
 [node name="Marker3D" type="Marker3D" parent="jabberwock/Armature/Skeleton3D/HeadAttachment" index="0"]
-transform = Transform3D(1, 0, -7.45058e-09, -8.9407e-08, 1, 0, -8.49832e-09, 1.3737e-08, 1, -2.57054, -2.54837, 0.281139)
+transform = Transform3D(1, 2.16017e-08, 2.95954e-08, -1.12757e-07, 0.999184, 0.0403898, -4.10237e-08, -0.0403898, 0.999184, 0.0526834, -0.875767, -0.743539)
 
 [node name="RightHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.273545, -0.0456862, 0.960774, 0.799157, -0.566669, 0.200584, 0.535277, 0.822678, 0.19152, 3.84764, 2.86091, -0.449541)
+transform = Transform3D(-0.0736945, 0.238245, 0.968405, 0.782926, -0.587663, 0.204155, 0.617734, 0.773235, -0.143221, 4.26612, 2.79421, -0.229395)
 bone_name = "forearm.R"
 bone_idx = 25
 
@@ -307,7 +326,7 @@ bone_idx = 25
 transform = Transform3D(0.539157, 0.681844, -0.494367, 0.052424, 0.558682, 0.827724, 0.840572, -0.472189, 0.265472, 0.0322673, 1.0732, -0.756739)
 
 [node name="LeftHandBoneAttachment" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.135045, -0.493438, -0.859233, -0.799208, -0.566835, 0.19991, -0.585687, 0.659709, -0.470908, -4.17003, 2.85793, -3.36773)
+transform = Transform3D(-0.0736946, -0.238245, -0.968405, -0.782926, -0.587662, 0.204155, -0.617734, 0.773235, -0.143221, -4.26612, 2.79422, -0.229394)
 bone_name = "forearm.L"
 bone_idx = 6
 
@@ -315,7 +334,7 @@ bone_idx = 6
 transform = Transform3D(0.724555, 0.60299, 0.333801, 0.183424, 0.298148, -0.93673, -0.664361, 0.73994, 0.105422, 0.315177, 2.27946, -0.236999)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="jabberwock/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.23386, -0.923521, -0.0492167, 0.0669524, 0.0211667, 0.96454, -1.03054, 0.585891, -0.0910842, -10.3012, 2.14112, 4.06216)
+transform = Transform3D(-1, 7.95519e-08, -3.79302e-07, -1.64887e-07, 0.798377, 0.602157, 3.50729e-07, 0.602157, -0.798377, 9.62391e-07, 6.28906, 6.65053)
 bone_name = "head"
 bone_idx = 22
 
@@ -354,7 +373,7 @@ attack_effects = Array[ExtResource("6_6exr4")]([SubResource("Resource_p3v48")])
 hitbox = NodePath("SweepHitbox")
 
 [node name="SweepHitbox" parent="Attacks/Sweep" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68023, 0.0931242, 2.59626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0263411, 1.57107, 3.3584)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -374,7 +393,7 @@ hitbox = NodePath("SwipeHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 
 [node name="SwipeHitbox" parent="Attacks/Swipe" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53136, 1.06338, 0.152849)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8933, 1.01715, 0.364377)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -394,7 +413,7 @@ hitbox = NodePath("SwipeMirroredHitbox")
 metadata/_custom_type_script = "uid://cwil8ikf17ctm"
 
 [node name="SwipeMirroredHitbox" parent="Attacks/SwipeMirrored" index="0" node_paths=PackedStringArray("follow_marker") instance=ExtResource("8_sxrk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5243, 0.633293, -0.968471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30145, 0.579759, 0.686206)
 collision_layer = 4
 collision_mask = 0
 monitorable = false
@@ -446,8 +465,8 @@ libraries = {
 
 [node name="HealthComponent" parent="Components" index="0" node_paths=PackedStringArray("entity")]
 entity = NodePath("../..")
-current_health = 900
-max_health = 900
+current_health = 1000
+max_health = 1000
 
 [node name="MovementComponent" parent="Components" index="1"]
 move_speed = 350.0
@@ -459,7 +478,7 @@ max_rage = 500
 metadata/_custom_type_script = "uid://cjv5ddiivejgd"
 
 [node name="AttackIndicator" parent="." index="8"]
-transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 7.16821, 0)
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 7.29907, 0)
 
 [node name="SubViewport" parent="." index="9"]
 size = Vector2i(156, 21)
@@ -468,6 +487,7 @@ size = Vector2i(156, 21)
 scale = Vector2(1.5, 1.5)
 
 [node name="EnemyHP" parent="." index="10"]
+transform = Transform3D(1.62, 0, 0, 0, 1.62, 0, 0, 0, 1.62, 0, 4.16548, 0)
 texture = SubResource("ViewportTexture_5sssr")
 
 [node name="damaged" parent="Sounds" index="0"]
@@ -563,6 +583,10 @@ max_distance = 25.0
 stream = ExtResource("25_chfad")
 pitch_scale = 0.35
 max_distance = 30.0
+
+[node name="DamagedParticles" parent="." index="12"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 2.65036, -1.14516)
+lifetime = 0.2
 
 [node name="Decal" parent="." index="13"]
 transform = Transform3D(2.475, 0, 0, 0, 2.475, 0, 0, 0, 2.475, 0, 0, -1.10675)

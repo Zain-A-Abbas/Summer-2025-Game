@@ -44,29 +44,33 @@ func _ready() -> void:
 
 func initialize(current_level: LevelBase):
 	var level_number: int = current_level.level_manager.current_level_count + 1
-	var shop_before_boss: bool = level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
 	var guaranteed_shop: bool = level_number % LevelBase.CREATE_SHOP_LEVEL_MODULO == 0
 	
-	var boss_after_shop: bool = current_level.type == LevelBase.LevelType.SHOP && (level_number - 1) % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
-	var boss_after_battle: bool = current_level.type != LevelBase.LevelType.SHOP && level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
+	var boss_after_shop: bool = current_level.type == LevelBase.LevelType.SHOP && (level_number - 1) % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0 && !current_level.level_manager.boss_just_killed
+	var boss_after_battle: bool = current_level.type != LevelBase.LevelType.SHOP &&  current_level.type != LevelBase.LevelType.HEALING && level_number % LevelBase.CREATE_BOSS_LEVEL_MODULO == 0
 	
-	if current_level.type != LevelBase.LevelType.SHOP && (shop_before_boss || guaranteed_shop) && !current_level.shop_exit_made:
+	if current_level.type == LevelBase.LevelType.BOSS: # guaranteed heals after boss
+		exit_type = LevelBase.LevelType.HEALING
+		painting_type = PaintingType.HEALING
+	elif current_level.type == LevelBase.LevelType.HEALING && current_level.level_manager.current_level_count % LevelBase.CREATE_SHOP_LEVEL_MODULO == 0:
 		exit_type = LevelBase.LevelType.SHOP
-		current_level.shop_exit_made = true
+		painting_type = PaintingType.SHOP
+		#current_level.level_manager.current_level_count += 1
+	elif current_level.type != LevelBase.LevelType.SHOP && guaranteed_shop && !current_level.level_manager.shop_level_made:
+		exit_type = LevelBase.LevelType.SHOP
+		current_level.level_manager.shop_level_made = true
 		painting_type = PaintingType.SHOP
 	elif boss_after_shop || boss_after_battle:
 		exit_type = LevelBase.LevelType.BOSS
 		painting_type = PaintingType.BOSS
-	elif current_level.type == LevelBase.LevelType.BOSS:
-		exit_type = LevelBase.LevelType.HEALING
-		painting_type = PaintingType.HEALING
 	else:
 		var level_roll: float = randf()
 		#if level_roll > 0.90 && current_level.type != LevelBase.LevelType.SHOP:
 		#	exit_type = LevelBase.LevelType.SHOP
-		if level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
+		if !current_level.level_manager.healing_level_made && level_roll > 0.85 && current_level.type != LevelBase.LevelType.HEALING && current_level.type != LevelBase.LevelType.SHOP:
 			exit_type = LevelBase.LevelType.HEALING
 			painting_type = PaintingType.HEALING
+			current_level.level_manager.healing_level_made = true
 		elif level_roll > 0.65:
 			exit_type = LevelBase.LevelType.ELITE
 			border.material.albedo_color = Color.RED

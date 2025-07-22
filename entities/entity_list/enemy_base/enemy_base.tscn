@@ -86,7 +86,7 @@ viewport_path = NodePath("SubViewport")
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.251908, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_apdix"]
+[sub_resource type="CurveTexture" id="CurveTexture_w0vey"]
 curve = SubResource("Curve_w0vey")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qj4n2"]
@@ -94,17 +94,19 @@ particle_flag_align_y = true
 spread = 180.0
 initial_velocity_min = 128.0
 initial_velocity_max = 128.0
-scale_curve = SubResource("CurveTexture_apdix")
+scale_curve = SubResource("CurveTexture_w0vey")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p772y"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qj4n2"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("8_48pjb")
+texture_filter = 0
 
 [sub_resource type="QuadMesh" id="QuadMesh_rg84g"]
-material = SubResource("StandardMaterial3D_p772y")
-size = Vector2(0.064, 2)
+material = SubResource("StandardMaterial3D_qj4n2")
+size = Vector2(0.128, 0.5)
 
 [node name="EnemyBase" node_paths=PackedStringArray("meshes") instance=ExtResource("1_6myxx")]
 script = ExtResource("2_xtrms")
@@ -180,8 +182,8 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 
 [node name="killed" type="AudioStreamPlayer3D" parent="Sounds" index="3"]
 stream = ExtResource("8_w0vey")
-volume_db = -4.0
-max_db = 1.0
+volume_db = -15.0
+max_db = -3.5
 pitch_scale = 0.7
 panning_strength = 0.0
 

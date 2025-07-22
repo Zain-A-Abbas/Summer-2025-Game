@@ -24,10 +24,10 @@ const ENEMIES: Dictionary[Enemy.EnemyType, String] = {
 	Enemy.EnemyType.RED_KNIGHT: "res://entities/entity_list/red_knight_enemy/red_knight_enemy.tscn",
 	Enemy.EnemyType.JABBERWOCK: "res://entities/entity_list/jabberwock_boss/jabberwock_boss.tscn"
 }
-const CREATE_SHOP_LEVEL_MODULO: int = 5
-const CREATE_BOSS_LEVEL_MODULO: int = 10
-const ELITE_DMG_MULTIPLIER: float = 1.15
-const ELITE_HP_MULTIPLIER: float = 1.25
+const CREATE_SHOP_LEVEL_MODULO: int = 4
+const CREATE_BOSS_LEVEL_MODULO: int = 7
+const ELITE_DMG_MULTIPLIER: float = 1.25
+const ELITE_HP_MULTIPLIER: float = 1.30
 
 @export var has_enemies: bool = true
 @export var enemy_minimum: int = 2
@@ -54,7 +54,6 @@ var enemy_spawn_count: Dictionary[Enemy.EnemyType, int] = {
 	Enemy.EnemyType.RED_KNIGHT: 0
 }
 var enemy_spawn_list: Array[Enemy.EnemyType]
-var shop_exit_made: bool = false
 
 @onready var static_geometry: Node3D = %StaticGeometry
 @onready var dynamic_geometry: Node3D = %DynamicGeometry
@@ -75,7 +74,6 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	level_camera.initialize(player)
 	player.player_died.connect(gameover)
 	enemy_spawn_list = initialize_enemy_list()
-	shop_exit_made = false
 	
 	if _type == LevelType.BOSS:
 		var boss: Enemy = spawn_enemy(Enemy.EnemyType.JABBERWOCK)
@@ -149,6 +147,8 @@ func setup_level(_level_manager: LevelManager, _type: LevelType, enemy_spawn_cou
 	if amount:
 		initialize_rewards(amount)
 	
+	level_manager.shop_level_made = false
+	level_manager.healing_level_made = false
 	for exit in get_level_exits():
 		exit.initialize(self)
 		exit.exit_chosen.connect(exit_choose)
@@ -160,7 +160,7 @@ func start_level(_type: LevelType):
 		else:
 			push_warning("Non-enemy found as child in Enemies node in level scene")
 	
-	if _type == LevelType.NORMAL:
+	if _type == LevelType.NORMAL || _type == LevelType.ELITE:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BATTLE)
 	elif _type == LevelType.SHOP || _type == LevelType.HEALING:
@@ -168,7 +168,6 @@ func start_level(_type: LevelType):
 	elif _type == LevelType.BOSS:
 		Bgm.change_volume(1.0)
 		Bgm.play_bgm(Bgm.BGM_TYPE.BOSS)
-	#print(level_manager.current_level_count)
 	
 func gameover(player: Player):
 	for enemy in enemies.get_children():
@@ -184,6 +183,8 @@ func gameover(player: Player):
 
 	for proj in projectiles.get_children():
 		proj.queue_free()
+		
+	player.play_sound_fx(&"death")
 	
 	static_geometry.visible = false
 	dynamic_geometry.visible = false

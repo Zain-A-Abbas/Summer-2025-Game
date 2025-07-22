@@ -4,8 +4,11 @@
 [ext_resource type="Script" uid="uid://lgkjamj5x6gv" path="res://levels/pickups/money_pickup.gd" id="2_jvq0j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unk1o"]
-shading_mode = 0
+shading_mode = 2
 albedo_color = Color(0.69, 0.46, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.02
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jvq0j"]
 radius = 0.75
@@ -15,7 +18,7 @@ height = 3.0
 script = ExtResource("2_jvq0j")
 
 [node name="PickupModel" parent="." index="0"]
-transform = Transform3D(0.27444, 0, 0.961605, 0, 1, 0, -0.961605, 0, 0.27444, 0, 0, 0)
+transform = Transform3D(-0.721707, 0, 0.692199, 0, 1, 0, -0.692199, 0, -0.721707, 0, 0, 0)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="PickupModel" index="0"]
 transform = Transform3D(0.999944, -2.50526e-07, 0, 0, -4.37114e-08, -1, 2.50526e-07, 0.999944, -4.37114e-08, 0, 1, 0)

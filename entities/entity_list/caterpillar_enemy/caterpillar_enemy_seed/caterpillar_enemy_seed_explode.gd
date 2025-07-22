@@ -41,7 +41,9 @@ func st_physics_process(delta: float) -> void:
 		proj.play_sound_fx(&"death")
 		proj.atk_obj.hitbox.monitorable = false
 		proj.model.hide()
+		proj.decal.visible = false
 		exploded = true
+		
 	
 	if delta_count >= IDLE_TIME:
 		proj.char_entity_die()

@@ -6,6 +6,7 @@ extends AttackEffect
 
 func _init():
 	effect_type = AttackEffectType.PARALYSIS
+	resource_local_to_scene = true
 
 func initialize_effect(args: Dictionary[String, Variant]):
 	if args.has("duration"):
@@ -21,6 +22,9 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 			target.paralysis_particles.lifetime = stun_duration
 			target.paralysis_particles.emitting = true
 		target.paralyzed = true
+		
+		target.play_sound_fx(&"paralyzed")
+		
 		target.state_machine.change_state(&"Idle")
 	#else:
 	#	print("failed to paralyze"))

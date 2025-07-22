@@ -2,7 +2,7 @@ class_name FlowerEnemy
 extends Enemy
 
 @export var bomb: PackedScene
-@export var bomb_damage: int = 5
+@export var bomb_damage: int = 6
 @export var bomb_spawn_position: Marker3D
 @export var attack_range: Array[float] = [4.0, 16.0]
 @export var shoot_cooldown: float = 1.1
@@ -46,10 +46,9 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 		resolve_hit(attack_object)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	super(args)
 	RunStats.enemies_killed += 1
-	enemy_killed.emit(self)
 	dig_spots.get_child(prev_dig_spot_index).in_use = false
-	hurtbox.set_collision_mask_value(2, 0)
 	state_machine.change_state(&"Death")
 
 func get_random_dig_spot_to_player() -> int:

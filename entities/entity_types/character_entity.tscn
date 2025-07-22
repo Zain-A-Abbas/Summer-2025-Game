@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://3q754psqt24l"]
+[gd_scene load_steps=6 format=3 uid="uid://3q754psqt24l"]
 
 [ext_resource type="Script" uid="uid://drhokcqics5p5" path="res://entities/entity_types/character_entity.gd" id="1_5bmi2"]
 [ext_resource type="Script" uid="uid://3ilqij2x3es4" path="res://entities/state_machine/state_machine.gd" id="3_5dc3o"]
+[ext_resource type="AudioStream" uid="uid://cgu7n7rjlykrh" path="res://audio/entities/flower/Firebuff 2.wav" id="3_ddpvb"]
 [ext_resource type="Texture2D" uid="uid://b445i18rqbijx" path="res://models/textures/blob_shadow.png" id="3_oq72m"]
+[ext_resource type="AudioStream" uid="uid://biik4qw68enmm" path="res://audio/entities/general/Ice Freeze 1.wav" id="4_f22sw"]
 
 [node name="CharacterEntity" type="CharacterBody3D"]
 collision_mask = 33
@@ -25,6 +27,17 @@ max_db = 1.0
 max_db = 1.0
 
 [node name="burning" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("3_ddpvb")
+volume_db = -10.0
+max_db = -3.5
+pitch_scale = 0.8
+
+[node name="paralyzed" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("4_f22sw")
+max_db = 0.0
+pitch_scale = 2.0
+
+[node name="bleed" type="AudioStreamPlayer3D" parent="Sounds"]
 max_db = 1.0
 
 [node name="Decal" type="Decal" parent="."]

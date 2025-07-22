@@ -175,20 +175,26 @@ death_state_duration = 1.81
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 
 [node name="Skeleton3D" parent="MadHatterAnimator/Armature" index="0"]
+bones/0/position = Vector3(2.2023e-13, 1.04251, -1.35736)
 bones/0/rotation = Quaternion(0.677994, -8.76278e-07, -8.0824e-07, 0.735067)
-bones/1/rotation = Quaternion(-0.188365, 5.75323e-07, 2.51354e-07, 0.982099)
+bones/1/rotation = Quaternion(-0.11697, 5.91969e-07, 2.09162e-07, 0.993136)
+bones/2/rotation = Quaternion(-0.153973, 3.5337e-07, 1.28487e-07, 0.988075)
 bones/3/rotation = Quaternion(-0.410559, 0.172726, -0.284649, 0.848871)
 bones/5/rotation = Quaternion(-0.410559, -0.172726, 0.284649, 0.848871)
 bones/7/rotation = Quaternion(-0.747306, 6.71534e-12, 8.90867e-07, 0.66448)
-bones/13/position = Vector3(0.663489, 0.624042, -0.66066)
-bones/13/rotation = Quaternion(0.377733, 0.237476, 0.893932, -0.0425232)
-bones/14/rotation = Quaternion(0.204171, 0.0519532, -0.119534, 0.97022)
-bones/15/position = Vector3(-0.663489, 0.624042, -0.66066)
-bones/15/rotation = Quaternion(-0.377733, 0.237476, 0.893932, 0.0425232)
-bones/16/rotation = Quaternion(0.204171, -0.0519532, 0.119534, 0.97022)
+bones/9/position = Vector3(0.402232, 1.97862, 0.512074)
+bones/9/rotation = Quaternion(0.584777, -0.193634, -0.312756, 0.722998)
+bones/11/position = Vector3(-0.40223, 1.97862, 0.512075)
+bones/11/rotation = Quaternion(0.584777, 0.193636, 0.312755, 0.722997)
+bones/13/position = Vector3(0.663489, 0.706835, -0.577867)
+bones/13/rotation = Quaternion(0.373677, 0.172317, 0.908744, -0.0696832)
+bones/14/rotation = Quaternion(0.258104, 0.0304047, -0.15868, 0.952512)
+bones/15/position = Vector3(-0.663489, 0.706835, -0.577867)
+bones/15/rotation = Quaternion(-0.373677, 0.172317, 0.908744, 0.0696832)
+bones/16/rotation = Quaternion(0.258104, -0.0304047, 0.15868, 0.952512)
 
 [node name="Cylinder" parent="MadHatterAnimator/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -1.82078e-08, 1.71173e-07, -6.50149e-08, 0.880642, 0.473789, -1.59372e-07, -0.473782, 0.880639, 1.75644e-07, 2.20837, 0.857067)
+transform = Transform3D(1, 2.3114e-11, 8.41283e-12, 2.56932e-11, 0.939694, 0.342023, -4.09273e-12, -0.342018, 0.939691, -1.27385e-12, 2.1, 1)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -278,9 +284,12 @@ pitch_scale = 1.1
 
 [node name="death" parent="Sounds" index="8"]
 stream = ExtResource("15_ohgob")
-volume_db = -10.0
+volume_db = -15.0
 max_db = 0.0
 pitch_scale = 4.0
+
+[node name="DamagedParticles" parent="." index="13"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 0.566067, 0)
 
 [node name="SummoningParticles" type="GPUParticles3D" parent="." index="14"]
 unique_name_in_owner = true

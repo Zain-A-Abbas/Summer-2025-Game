@@ -29,6 +29,8 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	direction = face_player().rotated(Vector3.UP, deg_to_rad(180))
 	
 	# play dig animation here
+	enemy.action_animator.play("mouse/dig")
+	enemy.dirt_particles.emitting = true
 	enemy.play_sound_fx(&"digging_1")
 
 func st_physics_process(delta: float) -> void:
@@ -38,14 +40,17 @@ func st_physics_process(delta: float) -> void:
 
 	if delta_count >= enemy.dig_duration:
 		enemy.play_sound_fx(&"resurface")
+		enemy.set_collision_layer_value(1, 1)
 		return state_machine.change_state(&"Idle")
 	
 	enemy.hurtbox.invincibility_frames = delta_count > enemy.underground_timestamp
 	
 	if !is_underground && enemy.hurtbox.invincibility_frames:
-		enemy.hide() # TEMPORARY underground animation
+		#enemy.hide() # TEMPORARY underground animation
+		enemy.decal.visible = false
 		is_underground = true
 		speed_type = &"underground"
+		enemy.set_collision_layer_value(1, 0)
 	
 	# change direction
 	if random_direction_timer >= enemy.change_direction_timestamp:
@@ -71,4 +76,5 @@ func st_physics_process(delta: float) -> void:
 
 func exit_state(previous_state: State, args: Dictionary[String, Variant]):
 	enemy.hurtbox.invincibility_frames = false
-	enemy.show()
+	#enemy.show()
+	enemy.decal.visible = true

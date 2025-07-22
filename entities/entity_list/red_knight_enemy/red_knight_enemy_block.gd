@@ -11,6 +11,7 @@ var forward_direction: Vector3
 var direction_to_player: Vector3
 var move_direction: Vector3
 
+var warning_shown: bool = false
 var block_time: float = 0.0
 var instant_turn_hp_threshold: int = 0
 var delta_count: float = 0.0
@@ -30,6 +31,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	delta_count = 0.0
 	step_timer = 0.0
 	step_index = 2
+	warning_shown = false
 	
 	direction_to_player = face_player()
 	enemy.face_direction(direction_to_player)
@@ -39,6 +41,7 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	is_aggro = true
 	reset_played = false
 	
+	enemy.shield_icon.show()
 	enemy.play_sound_fx(&"run_step_1")
 	enemy.action_animator.play("basic_enemy_animation_library/walk")
 	walk_played = true
@@ -54,6 +57,14 @@ func st_physics_process(delta: float) -> void:
 	direction_to_player = face_player()
 	forward_direction = enemy.global_transform.basis.z
 	side_vector = forward_direction.rotated(Vector3.UP, deg_to_rad(90))
+	
+	if delta_count >= block_time - 0.2 && !warning_shown && distance_to_player() < enemy.distance_to_swing:
+		enemy.attack_indicator_animator.play("show_indicator")
+		warning_shown = true
+
+	if warning_shown && distance_to_player() >= enemy.distance_to_swing:
+		enemy.attack_indicator_animator.play("hide_indicator")
+		warning_shown = false
 	
 	if delta_count >= block_time && distance_to_player() < enemy.distance_to_swing:
 		return state_machine.change_state(&"Swing")

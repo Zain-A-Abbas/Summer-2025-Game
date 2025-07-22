@@ -37,14 +37,15 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 		resolve_hit(attack_object)
 	
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	super(args)
 	RunStats.enemies_killed += 1
-	enemy_killed.emit(self)
+	
+	if summoned_list.size() > 0:
+		play_sound_fx(&"summon")
 	
 	for summoned in summoned_list:
 		if summoned:
-			summoned.get_node("SummonedParticles").emitting = true
 			summoned.char_entity_die({"summoned": true})
 	
-	hurtbox.set_collision_mask_value(2, 0)
 	state_machine.change_state(&"Death")
 	

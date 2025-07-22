@@ -107,7 +107,7 @@ fog_light_energy = 0.02
 
 [node name="Castle" instance=ExtResource("1_jhykl")]
 script = ExtResource("2_n23wo")
-y_rotation = 45.0
+y_rotation = 0.0
 enemy_minimum = 4
 enemy_limit = 6
 enemy_spawn_limits = Dictionary[int, int]({
@@ -150,9 +150,9 @@ size = Vector3(12, 0.01, 21)
 material = ExtResource("3_56ogd")
 
 [node name="Floor4" type="CSGBox3D" parent="StaticGeometry/Floors" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.15, -0.005, 23.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
 layers = 33
-size = Vector3(10.3, 0.01, 5)
+size = Vector3(8.7, 0.01, 5)
 material = ExtResource("3_56ogd")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StaticGeometry/Floors" index="4"]
@@ -177,9 +177,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 23.5)
 shape = SubResource("ConcavePolygonShape3D_f25fd")
 
 [node name="Floor5" type="CSGBox3D" parent="StaticGeometry/Floors" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6, -0.005, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.005, 18)
 layers = 33
-size = Vector3(11.2, 0.01, 6)
+size = Vector3(10.065, 0.01, 6)
 material = ExtResource("3_56ogd")
 
 [node name="Walls" type="Node3D" parent="StaticGeometry" index="4"]
@@ -215,9 +215,9 @@ shape = SubResource("ConcavePolygonShape3D_r6poa")
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="StaticGeometry/Walls" index="2"]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls/CSGCombiner3D" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 6, -10)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 2, -10)
 layers = 33
-size = Vector3(32, 12, 0.5)
+size = Vector3(32, 4, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="StaticGeometry/Walls/CSGCombiner3D" index="1"]
@@ -238,9 +238,9 @@ shape = SubResource("ConcavePolygonShape3D_7ljcb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="StaticGeometry/Walls/CSGCombiner3D2" index="0"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 6, 0.5)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.25, 2, 0.5)
 layers = 33
-size = Vector3(13, 12, 0.5)
+size = Vector3(13, 4, 0.5)
 material = SubResource("StandardMaterial3D_7ljcb")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="StaticGeometry/Walls/CSGCombiner3D2" index="1"]
@@ -401,8 +401,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0856, 3.3781, 5.07203)
 [node name="door_open_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.7675, 3.3781, 24.8988)
 stream = ExtResource("8_em20i")
+volume_db = 5.0
 unit_size = 20.0
-max_db = 1.0
 
 [node name="Marker3D2" type="Marker3D" parent="RewardPositions" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5251, 0, -0.13769)

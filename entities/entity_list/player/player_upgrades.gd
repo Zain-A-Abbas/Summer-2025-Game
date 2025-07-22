@@ -14,13 +14,13 @@ enum UpgradeTypes {
 const BASE_PARRY_BONUS_LIMIT: int = 5
 const PARRY_BONUS_AMOUNT: float = 0.02
 
-const BASE_EXTRA_DAMAGE_LIMIT: int = 8
+const BASE_EXTRA_DAMAGE_LIMIT: int = 6
 const EXTRA_DAMAGE_AMOUNT: int = 1
 
 const BASE_EXTRA_PARRY_DAMAGE_LIMIT: int = 5
 const EXTRA_PARRY_DAMAGE_AMOUNT: float = 0.2
 
-const BASE_EXTRA_HP_LIMIT: int = 10
+const BASE_EXTRA_HP_LIMIT: int = 6
 const EXTRA_HP_AMOUNT: int = 10
 
 const BASE_EXTRA_STAMINA_LIMIT: int = 4
@@ -97,7 +97,7 @@ func increase_upgrade_limits():
 	extra_parry_limit += 2
 	extra_damage_limit += 3
 	extra_parry_damage_limit += 3
-	extra_hp_limit += 5
+	extra_hp_limit += 3
 	extra_stamina_limit += 2
 	
 	upgrades_updated.emit()

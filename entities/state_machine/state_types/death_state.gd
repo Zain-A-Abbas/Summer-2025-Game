@@ -20,6 +20,10 @@ func enter_state(previous_state: State, args: Dictionary[String, Variant]):
 	# only play death sound for enemies spawned naturally
 	if !args.has("summoned") || (args.has("summoned") && !args["summoned"]):
 		char.play_sound_fx(&"death")
+	
+	# emit summon particles if summoned
+	if args.has("summoned") && args["summoned"]:
+		char.get_node("SummonedParticles").emitting = true
 		
 	if char is Enemy:
 		char.play_sound_fx(&"killed")

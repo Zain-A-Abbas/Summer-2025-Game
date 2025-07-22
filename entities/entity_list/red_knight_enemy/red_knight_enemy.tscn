@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b8tkb5tr2t8vj"]
+[gd_scene load_steps=47 format=3 uid="uid://b8tkb5tr2t8vj"]
 
 [ext_resource type="PackedScene" uid="uid://dvgf8gcq24c8" path="res://entities/entity_list/enemy_base/enemy_base.tscn" id="1_1anpf"]
 [ext_resource type="Script" uid="uid://b4ymyhvxbw3fo" path="res://entities/entity_list/red_knight_enemy/red_knight_enemy.gd" id="2_gs4ux"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rpfpfca5w2j8" path="res://effects/slash_texture.png" id="11_0bqms"]
 [ext_resource type="AudioStream" uid="uid://dpu77sbmryeo0" path="res://audio/entities/red_knight/Big_Sword_Whoosh_05.wav" id="12_p6bwr"]
 [ext_resource type="ArrayMesh" uid="uid://d0rnwegisvfwx" path="res://models/slash_curve.obj" id="12_xnuhp"]
+[ext_resource type="Texture2D" uid="uid://dgf80idq32aqx" path="res://ui/gameplay/shield_icon.png" id="13_657e3"]
 [ext_resource type="AudioStream" uid="uid://dl6asahtmoiy2" path="res://audio/entities/general/Stone Chain Run 1.wav" id="14_kt7bg"]
 [ext_resource type="AudioStream" uid="uid://d18ohe1khso8l" path="res://audio/entities/general/Stone Chain Run 2.wav" id="15_4h5qo"]
 [ext_resource type="AudioStream" uid="uid://fy1tdvy6686s" path="res://audio/entities/general/Stone Chain Run 3.wav" id="16_pdgy0"]
@@ -21,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://cf3xbw36dmhm1" path="res://audio/entities/red_knight/SFX_Bash_Shield_01.wav" id="19_kt7bg"]
 [ext_resource type="AudioStream" uid="uid://cu7hnap3kgm3g" path="res://audio/entities/red_knight/SFX_UnEquip_02.wav" id="20_4h5qo"]
 [ext_resource type="AudioStream" uid="uid://cn86wnr1a62ee" path="res://audio/entities/red_knight/SFX_Take_Ojbect_02.wav" id="20_kt7bg"]
-[ext_resource type="AudioStream" uid="uid://og08vcl0rt46" path="res://audio/entities/general/SFX_Dagger_Sheate_01.wav" id="21_4h5qo"]
+[ext_resource type="AudioStream" uid="uid://ba8p3ur7rbgr3" path="res://audio/entities/red_knight/Giant_Grunt2.wav" id="22_pdgy0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_inrej"]
 radius = 1.0
@@ -210,24 +211,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.105538, 3.2413, -0.184833)
-bones/1/rotation = Quaternion(-0.00033006, -0.0151747, 0.0217461, 0.999648)
-bones/3/rotation = Quaternion(0.168821, -0.0413894, 0.000354966, 0.984777)
-bones/4/rotation = Quaternion(0.287524, -0.114841, -0.0265722, 0.950492)
-bones/6/rotation = Quaternion(0.0214791, 0.942561, -0.333293, 0.00570878)
-bones/7/rotation = Quaternion(0.205657, -0.768592, 0.334237, 0.50523)
-bones/8/rotation = Quaternion(0.0480305, 0.654807, 0.0687044, 0.751133)
-bones/10/rotation = Quaternion(0.035636, 0.016334, 0.0115894, 0.999164)
-bones/13/rotation = Quaternion(-0.175425, 0.0776331, 0.0182056, 0.981258)
-bones/14/rotation = Quaternion(0.117896, 0.168878, -0.0241208, 0.978263)
-bones/18/rotation = Quaternion(0.209245, 0.751033, -0.286788, 0.556704)
-bones/19/rotation = Quaternion(-0.0136523, -0.613796, -0.0110785, 0.789269)
-bones/25/rotation = Quaternion(0.000269514, -0.0635404, 0.997235, 0.0385323)
-bones/26/rotation = Quaternion(0.0017431, 0.966395, -0.256974, 0.00645803)
-bones/27/rotation = Quaternion(-0.00643528, 0.697985, -0.715812, 0.0197228)
-bones/28/rotation = Quaternion(0.000219313, 0.229996, 0.972686, 0.0313551)
-bones/29/rotation = Quaternion(0.000218535, 0.996862, -0.0791105, 0.00260981)
-bones/30/rotation = Quaternion(0.02221, 0.653204, -0.756855, -0.00132776)
+bones/1/position = Vector3(0.0189209, 3.23467, -0.184958)
+bones/1/rotation = Quaternion(-0.000284371, -0.0168452, 0.0168612, 0.999716)
+bones/3/rotation = Quaternion(0.168683, -0.041382, 0.000333801, 0.984801)
+bones/4/rotation = Quaternion(0.28732, -0.114832, -0.0266047, 0.950554)
+bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
+bones/6/rotation = Quaternion(0.0438822, 0.937226, -0.3459, 0.00592459)
+bones/7/rotation = Quaternion(0.201566, -0.774476, 0.336814, 0.496098)
+bones/8/rotation = Quaternion(0.0484955, 0.654329, 0.068761, 0.751514)
+bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/10/rotation = Quaternion(0.00296883, 0.00136075, 0.000965419, 0.999994)
+bones/13/rotation = Quaternion(-0.175329, 0.0776282, 0.0182205, 0.981275)
+bones/14/rotation = Quaternion(0.116806, 0.169126, -0.0236332, 0.978363)
+bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
+bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
+bones/18/rotation = Quaternion(0.209745, 0.750775, -0.287462, 0.556516)
+bones/19/rotation = Quaternion(-0.0141998, -0.613783, -0.0103745, 0.789279)
+bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
+bones/25/rotation = Quaternion(0.000178714, -0.106701, 0.993963, 0.0255505)
+bones/26/rotation = Quaternion(0.00123538, 0.963751, -0.266767, 0.00432002)
+bones/27/rotation = Quaternion(0.00691008, 0.717689, -0.696237, 0.0113067)
+bones/28/rotation = Quaternion(0.000105839, 0.236867, 0.971424, 0.0151323)
+bones/29/rotation = Quaternion(0.000871387, 0.962005, -0.273016, 0.00289855)
+bones/30/rotation = Quaternion(0.0117516, 0.666679, -0.745135, 0.0132065)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -237,7 +243,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.415369, -0.658085, 0.628007, 0.0669422, -0.710623, -0.700382, 0.907187, -0.248877, 0.339224, -1.95405, 3.62953, -1.54496)
+transform = Transform3D(-0.417691, -0.664017, 0.620173, 0.0714309, -0.704454, -0.706147, 0.905777, -0.250652, 0.341675, -2.03303, 3.64258, -1.54907)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -286,6 +292,9 @@ material_override = SubResource("ShaderMaterial_jks58")
 instance_shader_parameters/lifetime = 0.01
 mesh = ExtResource("12_xnuhp")
 
+[node name="Hurtbox" parent="." index="6"]
+visible = false
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CapsuleShape3D_cwsr8")
@@ -305,11 +314,19 @@ max_health = 100
 move_speed = 75.0
 
 [node name="AttackIndicator" parent="." index="9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9604, 0)
 
 [node name="EnemyHP" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 texture = SubResource("ViewportTexture_5sssr")
+
+[node name="ShieldIcon" type="Sprite3D" parent="." index="12"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+pixel_size = 0.015
+billboard = 1
+texture_filter = 4
+texture = ExtResource("13_657e3")
 
 [node name="lift_sword" type="AudioStreamPlayer3D" parent="Sounds" index="0"]
 stream = ExtResource("20_4h5qo")
@@ -355,7 +372,7 @@ pitch_scale = 0.35
 
 [node name="shield_block" type="AudioStreamPlayer3D" parent="Sounds" index="7"]
 stream = ExtResource("19_kt7bg")
-volume_db = -12.0
+volume_db = -14.0
 max_db = -1.0
 pitch_scale = 1.5
 
@@ -365,11 +382,13 @@ volume_db = 1.0
 pitch_scale = 0.85
 
 [node name="death" parent="Sounds" index="9"]
-stream = ExtResource("21_4h5qo")
-volume_db = 5.0
-pitch_scale = 0.7
+stream = ExtResource("22_pdgy0")
+pitch_scale = 1.2
 
-[node name="Decal" parent="." index="14"]
+[node name="DamagedParticles" parent="." index="14"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 2.22426, 0)
+
+[node name="Decal" parent="." index="15"]
 size = Vector3(2, 2, 2)
 
 [editable path="red_knight"]

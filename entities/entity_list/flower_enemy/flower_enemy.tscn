@@ -119,25 +119,24 @@ death_state_duration = 1.34
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="flower/Armature" index="0"]
-bones/1/rotation = Quaternion(0.0839206, 0.000793384, -0.0766299, 0.993521)
-bones/2/rotation = Quaternion(-0.150831, 0.0268202, 0.138809, 0.978398)
-bones/3/rotation = Quaternion(-0.0574157, 0.027755, 0.0675946, 0.995673)
-bones/4/rotation = Quaternion(-0.722934, -0.00252082, -0.00958703, 0.690845)
-bones/5/rotation = Quaternion(4.75158e-05, -1.16068e-07, -0.00252709, 0.999997)
-bones/7/rotation = Quaternion(2.27256e-08, 3.29455e-08, -1.06023e-07, 1)
-bones/8/rotation = Quaternion(0.352469, 0.634521, 0.600169, -0.336073)
-bones/9/rotation = Quaternion(3.75702e-05, 1.43759e-07, 0.0039389, 0.999992)
+bones/3/rotation = Quaternion(0.0227587, 0.0108746, -0.00445935, 0.999672)
+bones/4/rotation = Quaternion(-0.722935, -0.00252083, -0.00958703, 0.690845)
+bones/5/rotation = Quaternion(4.75149e-05, -1.20256e-07, -0.00252709, 0.999997)
+bones/7/rotation = Quaternion(1.71395e-08, 2.56696e-08, -1.11379e-07, 1)
+bones/8/rotation = Quaternion(0.352469, 0.634521, 0.600169, -0.336072)
+bones/9/rotation = Quaternion(3.75739e-05, 1.43658e-07, 0.00393887, 0.999992)
 bones/10/rotation = Quaternion(-0.620482, -0.365581, -0.349931, 0.599083)
-bones/11/rotation = Quaternion(3.74626e-05, -1.79646e-07, -0.00393303, 0.999992)
-bones/13/rotation = Quaternion(2.40285e-05, -5.42206e-08, -0.00257448, 0.999997)
+bones/11/rotation = Quaternion(3.7459e-05, -1.72122e-07, -0.00393306, 0.999992)
+bones/12/rotation = Quaternion(-0.632213, 0.35651, 0.340063, 0.597966)
+bones/13/rotation = Quaternion(2.40173e-05, -4.6974e-08, -0.00257447, 0.999997)
 bones/14/rotation = Quaternion(-0.0101209, 0.722732, 0.690849, 0.0168455)
-bones/15/rotation = Quaternion(0.000150068, 1.23844e-06, 0.00798222, 0.999968)
+bones/15/rotation = Quaternion(0.000150078, 1.25435e-06, 0.00798222, 0.999968)
 
 [node name="Cylinder" parent="flower/Armature/Skeleton3D" index="0"]
 material_overlay = ExtResource("5_xorek")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="flower/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.958959, 0.272965, -0.0767271, 0.245779, 0.935157, 0.255097, 0.141384, 0.22577, -0.963866, -0.0376269, 4.91408, -0.0793068)
+transform = Transform3D(-0.999724, -0.00941076, -0.0215392, -0.00842079, 0.998924, -0.0455994, 0.0219451, -0.0454055, -0.998728, 0, 5, 0)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -227,5 +226,8 @@ pitch_scale = 0.65
 stream = ExtResource("12_xorek")
 volume_db = 5.0
 max_db = 3.0
+
+[node name="DamagedParticles" parent="." index="12"]
+transform = Transform3D(0.994597, -0.0516168, -0.0900662, 0.0479965, 0.997968, -0.0419108, 0.0920464, 0.0373615, 0.995054, 0, 2.39554, 0)
 
 [editable path="flower"]

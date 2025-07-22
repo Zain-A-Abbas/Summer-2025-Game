@@ -264,9 +264,7 @@ Zain Abbas
 
 3D ANIMATION
 Zain Abbas
-
-PRODUCER
-Donald Kehoe"
+Quaternius"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Control/CreditsPanel/VBoxContainer/HBoxContainer"]
@@ -300,7 +298,10 @@ ENGINE
 Godot
 
 MUSIC
-Dark Fantasy Studio"
+Dark Fantasy Studio
+
+PRODUCER
+Donald Kehoe"
 horizontal_alignment = 1
 
 [node name="ExitCredits" type="Button" parent="Control/CreditsPanel"]
@@ -696,29 +697,29 @@ transform = Transform3D(0.255, 0, -7.10543e-15, 0, 0.255, 0, 7.10543e-15, 0, 0.2
 visible = false
 
 [node name="GeneralSkeleton" parent="SubViewport/FakeTitle/PlayerAnimator/Armature" index="0"]
-bones/1/position = Vector3(0.0913579, 2.80012, -0.409064)
+bones/1/position = Vector3(0.168962, 2.75509, -0.404883)
 bones/1/rotation = Quaternion(-0.146726, -0.208587, -0.0248178, 0.966616)
-bones/3/rotation = Quaternion(0.166237, -0.0412472, -4.17574e-05, 0.985223)
-bones/4/rotation = Quaternion(0.279848, -0.114475, -0.0277928, 0.95279)
+bones/3/rotation = Quaternion(0.168212, -0.0413561, 0.000261273, 0.984883)
+bones/4/rotation = Quaternion(0.288276, -0.114876, -0.0264523, 0.950264)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0313741, 0.940253, -0.338978, 0.00580608)
-bones/7/rotation = Quaternion(0.20393, -0.771096, 0.335333, 0.501373)
-bones/8/rotation = Quaternion(0.0297095, 0.672713, 0.0665324, 0.736307)
+bones/6/rotation = Quaternion(0.041099, 0.93791, -0.344385, 0.00589881)
+bones/7/rotation = Quaternion(0.202108, -0.773706, 0.336477, 0.497307)
+bones/8/rotation = Quaternion(0.0412749, 0.661625, 0.0678894, 0.745613)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.0211792, 0.00970759, 0.00688769, 0.999705)
-bones/13/rotation = Quaternion(-0.170261, 0.0773638, 0.019009, 0.982174)
-bones/14/rotation = Quaternion(0.145349, 0.164232, -0.0315275, 0.975145)
+bones/10/rotation = Quaternion(0.00702287, 0.00321893, 0.00228395, 0.999968)
+bones/13/rotation = Quaternion(-0.175933, 0.0776594, 0.0181263, 0.981167)
+bones/14/rotation = Quaternion(0.132426, 0.165651, -0.0302269, 0.976785)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.168313, 0.769857, -0.231556, 0.570415)
-bones/19/rotation = Quaternion(0.000337796, -0.613947, -0.0290608, 0.788812)
+bones/18/rotation = Quaternion(0.199078, 0.756128, -0.273071, 0.56042)
+bones/19/rotation = Quaternion(-0.0064078, -0.613914, -0.0203922, 0.789084)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(-0.00115704, 0.20706, 0.964241, -0.165423)
-bones/26/rotation = Quaternion(0.0412515, 0.870281, -0.485057, 0.075023)
-bones/27/rotation = Quaternion(-0.0633178, 0.616553, -0.781734, 0.0688849)
-bones/28/rotation = Quaternion(0.0020891, 0.0104228, 0.954297, 0.298671)
-bones/29/rotation = Quaternion(-0.149475, 0.826095, -0.474488, -0.264737)
-bones/30/rotation = Quaternion(0.228077, 0.501227, -0.826168, 0.119153)
+bones/25/rotation = Quaternion(-0.00110119, 0.229744, 0.960433, -0.157435)
+bones/26/rotation = Quaternion(0.044736, 0.853303, -0.514016, 0.0752357)
+bones/27/rotation = Quaternion(-0.0524219, 0.606962, -0.790542, 0.0623864)
+bones/28/rotation = Quaternion(0.00222769, 0.0257372, 0.947573, 0.318495)
+bones/29/rotation = Quaternion(-0.151753, 0.818335, -0.491087, -0.257164)
+bones/30/rotation = Quaternion(0.237083, 0.50322, -0.822719, 0.117027)
 
 [node name="Cube_001" parent="SubViewport/FakeTitle/PlayerAnimator/Armature/GeneralSkeleton" index="0"]
 cast_shadow = 0
@@ -727,39 +728,39 @@ cast_shadow = 0
 cast_shadow = 0
 
 [node name="HandAttachment" parent="SubViewport/FakeTitle/PlayerAnimator/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.643165, -0.705045, 0.298748, 0.569216, -0.701183, -0.429344, 0.512183, -0.106087, 0.852299, -1.47718, 2.56065, -2.15487)
+transform = Transform3D(-0.591514, -0.740477, 0.319069, 0.6143, -0.670192, -0.416508, 0.522252, -0.0503666, 0.851302, -1.44326, 2.56725, -2.09155)
 
 [node name="CapeAttachment" parent="SubViewport/FakeTitle/PlayerAnimator/Armature/GeneralSkeleton" index="3" instance=ExtResource("21_3h7wq")]
-transform = Transform3D(0.876072, 0.0222974, -0.481665, 0.0138786, 0.99735, 0.0714128, 0.481981, -0.0692475, 0.873441, 0.213305, 4.71448, -0.752424)
+transform = Transform3D(0.875976, 0.0187, -0.481992, 0.0146302, 0.997759, 0.0652994, 0.482133, -0.0642523, 0.873739, 0.286461, 4.6675, -0.743026)
 
 [node name="SoftBody3D" parent="SubViewport/FakeTitle/PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment" index="0"]
 parent_collision_ignore = NodePath("../StaticBody3D")
-attachments/0/offset = Vector3(0.7, -0.249816, -0.78368)
-attachments/1/offset = Vector3(0.7, 0.426333, -0.602507)
-attachments/2/offset = Vector3(0.42, 0.426333, -0.602507)
-attachments/3/offset = Vector3(0.42, -0.249816, -0.78368)
-attachments/4/offset = Vector3(0.14, -0.249816, -0.78368)
-attachments/5/offset = Vector3(0.14, 0.426333, -0.602507)
-attachments/6/offset = Vector3(-0.14, 0.426333, -0.602507)
-attachments/7/offset = Vector3(-0.42, 0.426333, -0.602507)
-attachments/8/offset = Vector3(-0.7, 0.426333, -0.602507)
-attachments/9/offset = Vector3(-0.7, -0.249816, -0.78368)
-attachments/10/offset = Vector3(-0.42, -0.249816, -0.78368)
-attachments/11/offset = Vector3(-0.14, -0.249816, -0.78368)
+attachments/0/offset = Vector3(0.7, -0.249785, -0.783679)
+attachments/1/offset = Vector3(0.7, 0.426363, -0.602506)
+attachments/2/offset = Vector3(0.42, 0.426363, -0.602506)
+attachments/3/offset = Vector3(0.42, -0.249785, -0.783679)
+attachments/4/offset = Vector3(0.14, -0.249785, -0.783679)
+attachments/5/offset = Vector3(0.14, 0.426363, -0.602506)
+attachments/6/offset = Vector3(-0.14, 0.426363, -0.602506)
+attachments/7/offset = Vector3(-0.42, 0.426363, -0.602506)
+attachments/8/offset = Vector3(-0.7, 0.426363, -0.602506)
+attachments/9/offset = Vector3(-0.7, -0.249785, -0.783679)
+attachments/10/offset = Vector3(-0.42, -0.249785, -0.783679)
+attachments/11/offset = Vector3(-0.14, -0.249785, -0.783679)
 
 [node name="SoftBody3D2" parent="SubViewport/FakeTitle/PlayerAnimator/Armature/GeneralSkeleton/CapeAttachment" index="2"]
-attachments/0/offset = Vector3(0.7, 0.525971, -0.733997)
-attachments/1/offset = Vector3(0.42, 0.525971, -0.733997)
-attachments/2/offset = Vector3(0.14, 0.525971, -0.733997)
-attachments/3/offset = Vector3(-0.14, 0.525971, -0.733997)
-attachments/4/offset = Vector3(-0.42, 0.525971, -0.733997)
-attachments/5/offset = Vector3(-0.7, 0.525971, -0.733997)
-attachments/6/offset = Vector3(-0.7, -0.174029, -0.733997)
-attachments/7/offset = Vector3(-0.42, -0.174029, -0.733997)
-attachments/8/offset = Vector3(-0.14, -0.174029, -0.733997)
-attachments/9/offset = Vector3(0.14, -0.174029, -0.733997)
-attachments/10/offset = Vector3(0.42, -0.174029, -0.733997)
-attachments/11/offset = Vector3(0.7, -0.174029, -0.733997)
+attachments/0/offset = Vector3(0.7, 0.526001, -0.734)
+attachments/1/offset = Vector3(0.42, 0.526001, -0.734)
+attachments/2/offset = Vector3(0.14, 0.526001, -0.734)
+attachments/3/offset = Vector3(-0.14, 0.526001, -0.734)
+attachments/4/offset = Vector3(-0.42, 0.526001, -0.734)
+attachments/5/offset = Vector3(-0.7, 0.526001, -0.734)
+attachments/6/offset = Vector3(-0.7, -0.173999, -0.734)
+attachments/7/offset = Vector3(-0.42, -0.173999, -0.734)
+attachments/8/offset = Vector3(-0.14, -0.173999, -0.734)
+attachments/9/offset = Vector3(0.14, -0.173999, -0.734)
+attachments/10/offset = Vector3(0.42, -0.173999, -0.734)
+attachments/11/offset = Vector3(0.7, -0.173999, -0.734)
 
 [node name="AnimationPlayer" parent="SubViewport/FakeTitle/PlayerAnimator" index="1"]
 root_motion_track = NodePath("../Armature/GeneralSkeleton")

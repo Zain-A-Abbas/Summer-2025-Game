@@ -59,8 +59,11 @@ func activate_enemy():
 func prepare_states():
 	pass
 
-func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
-	pass
+func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	enemy_killed.emit(self)
+	hurtbox.set_collision_mask_value(2, 0)
+	get_node("Attacks").hide()
+	attack_indicator_animator.get_parent().hide()
 
 func damage_taken(enemy: Enemy, damage: int):
 	enemy_hp_bar.value = health_component.current_health

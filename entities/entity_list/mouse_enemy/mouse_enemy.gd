@@ -19,6 +19,7 @@ extends Enemy
 
 @onready var pounce: AttackObject = %basic_attack
 @onready var ray_cast: RayCast3D = %ray_cast
+@onready var dirt_particles: GPUParticles3D = %DirtParticles
 
 
 func prepare_states():
@@ -45,8 +46,8 @@ func _on_hurtbox_hit_received(attack_object: AttackObject, invin: bool) -> void:
 		resolve_hit(attack_object)
 
 func char_entity_die(args: Dictionary[String, Variant]  = {}):
+	super(args)
 	RunStats.enemies_killed += 1
-	enemy_killed.emit(self)
-	hurtbox.set_collision_mask_value(2, 0)
 	face_direction(position.direction_to(player.position))
+	decal.hide()
 	state_machine.change_state(&"Death", {"summoned": args.has("summoned")})

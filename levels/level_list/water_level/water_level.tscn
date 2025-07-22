@@ -758,8 +758,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8537, 2.58445, 14.7675)
 [node name="door_open_2" type="AudioStreamPlayer3D" parent="Sounds" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6868, 2.58445, 33.1684)
 stream = ExtResource("10_hainp")
+volume_db = 5.0
 unit_size = 20.0
-max_db = 1.0
 
 [node name="Player" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 0)

@@ -11,6 +11,7 @@ var burn_timer: float = 0.0
 
 func _init():
 	effect_type = AttackEffectType.BURN
+	resource_local_to_scene = true
 
 func initialize_effect(args: Dictionary[String, Variant]):
 	if args.has("duration"):
@@ -24,6 +25,8 @@ func apply_effect(target: CharacterEntity, delta: float = 0.0, delivering_object
 		target.health_component.lose_health(target.health_component.current_health - BURN_DAMAGE)
 		if target is Player:
 			target.burn_particles.emitting = true
+		
+		target.play_sound_fx(&"burning")
 		
 		burn_timer = 0.0
 	
