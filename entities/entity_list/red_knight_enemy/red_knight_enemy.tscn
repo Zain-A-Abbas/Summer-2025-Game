@@ -211,29 +211,29 @@ death_state_duration = 2.4
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="red_knight/Armature_001" index="0"]
-bones/1/position = Vector3(0.0189209, 3.23467, -0.184958)
-bones/1/rotation = Quaternion(-0.000284371, -0.0168452, 0.0168612, 0.999716)
-bones/3/rotation = Quaternion(0.168683, -0.041382, 0.000333801, 0.984801)
-bones/4/rotation = Quaternion(0.28732, -0.114832, -0.0266047, 0.950554)
+bones/1/position = Vector3(0.142552, 3.34634, -0.185379)
+bones/1/rotation = Quaternion(-0.000147929, -0.00889747, 0.0165227, 0.999824)
+bones/3/rotation = Quaternion(0.166139, -0.0412418, -5.6631e-05, 0.98524)
+bones/4/rotation = Quaternion(0.27954, -0.11446, -0.0278415, 0.95288)
 bones/5/rotation = Quaternion(0.487481, 0.526615, 0.526381, -0.456028)
-bones/6/rotation = Quaternion(0.0438822, 0.937226, -0.3459, 0.00592459)
-bones/7/rotation = Quaternion(0.201566, -0.774476, 0.336814, 0.496098)
-bones/8/rotation = Quaternion(0.0484955, 0.654329, 0.068761, 0.751514)
+bones/6/rotation = Quaternion(0.0203428, 0.942821, -0.332628, 0.00569736)
+bones/7/rotation = Quaternion(0.205877, -0.768271, 0.334096, 0.505721)
+bones/8/rotation = Quaternion(0.0542835, 0.648257, 0.0694742, 0.7563)
 bones/9/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/10/rotation = Quaternion(0.00296883, 0.00136075, 0.000965419, 0.999994)
-bones/13/rotation = Quaternion(-0.175329, 0.0776282, 0.0182205, 0.981275)
-bones/14/rotation = Quaternion(0.116806, 0.169126, -0.0236332, 0.978363)
+bones/10/rotation = Quaternion(0.0381232, 0.0174739, 0.012398, 0.999043)
+bones/13/rotation = Quaternion(-0.17005, 0.0773525, 0.0190417, 0.98221)
+bones/14/rotation = Quaternion(0.0994289, 0.173628, -0.0132874, 0.979689)
 bones/16/rotation = Quaternion(0.539721, -0.47449, -0.474702, -0.508153)
 bones/17/rotation = Quaternion(-0.0131803, 0.855199, -0.518056, -0.00887334)
-bones/18/rotation = Quaternion(0.209745, 0.750775, -0.287462, 0.556516)
-bones/19/rotation = Quaternion(-0.0141998, -0.613783, -0.0103745, 0.789279)
+bones/18/rotation = Quaternion(0.20653, 0.752421, -0.283125, 0.557717)
+bones/19/rotation = Quaternion(-0.0230268, -0.613515, 0.00097928, 0.789346)
 bones/22/rotation = Quaternion(-0.123819, -0.719523, -0.201835, 0.652853)
-bones/25/rotation = Quaternion(0.000178714, -0.106701, 0.993963, 0.0255505)
-bones/26/rotation = Quaternion(0.00123538, 0.963751, -0.266767, 0.00432002)
-bones/27/rotation = Quaternion(0.00691008, 0.717689, -0.696237, 0.0113067)
-bones/28/rotation = Quaternion(0.000105839, 0.236867, 0.971424, 0.0151323)
-bones/29/rotation = Quaternion(0.000871387, 0.962005, -0.273016, 0.00289855)
-bones/30/rotation = Quaternion(0.0117516, 0.666679, -0.745135, 0.0132065)
+bones/25/rotation = Quaternion(0.00027119, 0.00504118, 0.999235, 0.0387719)
+bones/26/rotation = Quaternion(0.00165365, 0.968832, -0.247631, 0.00638407)
+bones/27/rotation = Quaternion(0.0077428, 0.687316, -0.726263, 0.00882272)
+bones/28/rotation = Quaternion(0.000234988, 0.37784, 0.925261, 0.0335961)
+bones/29/rotation = Quaternion(0.00540558, 0.893812, -0.448284, 0.0106173)
+bones/30/rotation = Quaternion(0.0262304, 0.692628, -0.720809, -0.00361893)
 
 [node name="Cube_003" parent="red_knight/Armature_001/GeneralSkeleton" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -243,7 +243,7 @@ material_overlay = ExtResource("4_pdgy0")
 instance_shader_parameters/hit_effect = false
 
 [node name="BoneAttachment3D" parent="red_knight/Armature_001/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.417691, -0.664017, 0.620173, 0.0714309, -0.704454, -0.706147, 0.905777, -0.250652, 0.341675, -2.03303, 3.64258, -1.54907)
+transform = Transform3D(-0.425965, -0.658273, 0.62067, 0.0642551, -0.706299, -0.704992, 0.902455, -0.26042, 0.343156, -1.93852, 3.73784, -1.50024)
 
 [node name="SwordMesh" parent="red_knight/Armature_001/GeneralSkeleton/BoneAttachment3D" index="0"]
 material_overlay = ExtResource("4_pdgy0")
@@ -322,7 +322,7 @@ texture = SubResource("ViewportTexture_5sssr")
 
 [node name="ShieldIcon" type="Sprite3D" parent="." index="12"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 pixel_size = 0.015
 billboard = 1
 texture_filter = 4
